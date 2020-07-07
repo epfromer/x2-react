@@ -19,7 +19,7 @@ import {
 const App: () => React$Node = () => {
   return (
     <>
-      <Text style={styles.footer}>foo</Text>
+      <Text style={styles.footer}>foobar</Text>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
         <ScrollView
