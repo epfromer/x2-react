@@ -7,11 +7,13 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "windows": "react-native run-windows"
   },
   "dependencies": {
     "react": "16.11.0",
-    "react-native": "0.62.2"
+    "react-native": "^0.62.0-0",
+    "react-native-windows": "^0.62.0-0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
