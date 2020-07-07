@@ -1,11 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
 import {
   SafeAreaView,
@@ -27,6 +19,7 @@ import {
 const App: () => React$Node = () => {
   return (
     <>
+      <Text style={styles.footer}>foo</Text>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
         <ScrollView
