@@ -18,7 +18,7 @@ import {
 const App: () => React.ReactNode = () => {
   return (
     <>
-      <Text style={styles.footer}>foobar!!</Text>
+      <Text style={styles.footer}>foobar of the gods</Text>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
         <ScrollView
