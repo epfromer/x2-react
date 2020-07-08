@@ -19,13 +19,32 @@
     "@babel/core": "^7.10.4",
     "@babel/runtime": "^7.10.4",
     "@react-native-community/eslint-config": "^2.0.0",
+    "@types/jest": "^26.0.4",
+    "@types/react": "^16.9.41",
+    "@types/react-native": "^0.62.17",
+    "@types/react-test-renderer": "^16.9.2",
     "babel-jest": "^26.1.0",
     "eslint": "^7.4.0",
     "jest": "^26.1.0",
     "metro-react-native-babel-preset": "^0.60.0",
-    "react-test-renderer": "16.13.1"
+    "react-test-renderer": "16.13.1",
+    "typescript": "^3.9.6"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@react-native-community",
+      "plugin:prettier/recommended"
+    ]
+  },
+  "prettier": {
+    "semi": false,
+    "arrowParens": "always",
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "endOfLine": "auto"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"]
   }
 }
