@@ -13,7 +13,8 @@
   "dependencies": {
     "react": "16.13.1",
     "react-native": "^0.62.2",
-    "react-native-windows": "^0.62.1"
+    "react-native-windows": "^0.62.1",
+    "react-router-native": "^5.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.4",
@@ -22,6 +23,7 @@
     "@types/jest": "^26.0.4",
     "@types/react": "^16.9.41",
     "@types/react-native": "^0.62.17",
+    "@types/react-router-native": "^5.1.0",
     "@types/react-test-renderer": "^16.9.2",
     "babel-jest": "^26.1.0",
     "eslint": "^7.4.0",
@@ -45,6 +47,13 @@
   },
   "jest": {
     "preset": "react-native",
-    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"]
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   }
 }
