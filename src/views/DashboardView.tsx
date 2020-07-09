@@ -1,10 +1,16 @@
 import React from 'react'
-import { View, Text, Image, StyleSheet } from 'react-native'
-import { Card, ListItem, Button, Icon } from 'react-native-elements'
-
+import { StyleSheet, Text } from 'react-native'
+import { Card } from 'react-native-elements'
 
 export default function DashboardView() {
-  return <Text style={styles.header}>Dashboard</Text>
+  return (
+    <Card title="HELLO WORLD">
+      <Text>
+        The idea with React Native Elements is more about component structure
+        than actual design.
+      </Text>
+    </Card>
+  )
 }
 
 const styles = StyleSheet.create({
