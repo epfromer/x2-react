@@ -1,6 +1,8 @@
 import { Body, Card, CardItem, Container, Content, Header } from 'native-base'
 import React from 'react'
-import { StyleSheet, Text } from 'react-native'
+import { Image, StyleSheet, Text } from 'react-native'
+
+// https://docs.nativebase.io/Components.html#card-headfoot-headref
 
 export default function DashboardView() {
   return (
@@ -10,6 +12,15 @@ export default function DashboardView() {
         <Card>
           <CardItem header>
             <Text>NativeBase</Text>
+          </CardItem>
+          <CardItem cardBody>
+            <Image
+              source={{
+                uri:
+                  'https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg',
+              }}
+              style={{ height: 200, width: null, flex: 1 } as any}
+            />
           </CardItem>
           <CardItem>
             <Body>
