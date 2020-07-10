@@ -1,22 +1,27 @@
 import { Body, Card, CardItem } from 'native-base'
 import React from 'react'
 import { Image, ScrollView, StyleSheet, Text } from 'react-native'
+import { useHistory } from 'react-router-native'
 import {
   BARCHART,
   CHORD,
-  VOLUMETIMELINE,
-  NETWORKGRAPH,
-  TREEMAP,
   EVENTTIMELINE,
-  WORDCLOUD,
-  POLAR,
+  NETWORKGRAPH,
   PIE,
+  POLAR,
   SEARCH,
+  TREEMAP,
+  VOLUMETIMELINE,
+  WORDCLOUD,
 } from '../image/index'
 
 // https://docs.nativebase.io/Components.html#card-headfoot-headref
 
 export default function DashboardView() {
+  let history = useHistory()
+
+  const handleClick = (link: string) => history.push(link)
+
   const makeCard = (
     image: any,
     title: string,
@@ -25,7 +30,7 @@ export default function DashboardView() {
   ) => {
     return (
       <Card>
-        <CardItem header>
+        <CardItem header onPress={() => handleClick(link)}>
           <Text style={styles.cartTitle}>{title}</Text>
         </CardItem>
         <CardItem cardBody>
@@ -38,6 +43,9 @@ export default function DashboardView() {
           <Body>
             <Text>{description}</Text>
           </Body>
+        </CardItem>
+        <CardItem footer button onPress={() => handleClick(link)}>
+          <Text>{'Explore ' + title}</Text>
         </CardItem>
       </Card>
     )

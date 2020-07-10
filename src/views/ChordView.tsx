@@ -2,12 +2,12 @@ import { Body, Card, CardItem } from 'native-base'
 import React from 'react'
 import { ScrollView, Text } from 'react-native'
 
-export default function BarView() {
+export default function ChordView() {
   return (
     <ScrollView contentInsetAdjustmentBehavior="automatic">
       <Card>
         <CardItem header>
-          <Text>NativeBase</Text>
+          <Text>ChordView</Text>
         </CardItem>
         <CardItem>
           <Body>
