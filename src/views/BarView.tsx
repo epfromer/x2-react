@@ -1,8 +1,28 @@
+import { Body, Card, CardItem, Container, Content, Header } from 'native-base'
 import React from 'react'
-import { Text, StyleSheet } from 'react-native'
+import { StyleSheet, Text } from 'react-native'
 
 export default function BarView() {
-  return <Text style={styles.header}>BarView</Text>
+  return (
+    <Container>
+      <Header />
+      <Content>
+        <Card>
+          <CardItem header>
+            <Text>NativeBase</Text>
+          </CardItem>
+          <CardItem>
+            <Body>
+              <Text>some text</Text>
+            </Body>
+          </CardItem>
+          <CardItem footer>
+            <Text>GeekyAnts</Text>
+          </CardItem>
+        </Card>
+      </Content>
+    </Container>
+  )
 }
 
 const styles = StyleSheet.create({

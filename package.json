@@ -11,10 +11,10 @@
     "windows": "react-native run-windows"
   },
   "dependencies": {
+    "@react-native-community/toolbar-android": "^0.1.0-rc.2",
+    "native-base": "^2.13.12",
     "react": "16.13.1",
     "react-native": "^0.62.2",
-    "react-native-elements": "^2.0.4",
-    "react-native-vector-icons": "^7.0.0",
     "react-native-windows": "^0.62.1",
     "react-router-native": "^5.2.0"
   },

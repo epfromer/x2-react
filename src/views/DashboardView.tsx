@@ -1,15 +1,27 @@
+import { Body, Card, CardItem, Container, Content, Header } from 'native-base'
 import React from 'react'
 import { StyleSheet, Text } from 'react-native'
-import { Card } from 'react-native-elements'
 
 export default function DashboardView() {
   return (
-    <Card title="HELLO WORLD">
-      <Text>
-        The idea with React Native Elements is more about component structure
-        than actual design.
-      </Text>
-    </Card>
+    <Container>
+      <Header />
+      <Content>
+        <Card>
+          <CardItem header>
+            <Text>NativeBase</Text>
+          </CardItem>
+          <CardItem>
+            <Body>
+              <Text>some text</Text>
+            </Body>
+          </CardItem>
+          <CardItem footer>
+            <Text>GeekyAnts</Text>
+          </CardItem>
+        </Card>
+      </Content>
+    </Container>
   )
 }
 
