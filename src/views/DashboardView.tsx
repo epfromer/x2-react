@@ -1,43 +1,116 @@
-import { Body, Card, CardItem, Container, Content, Header } from 'native-base'
+import { Body, Card, CardItem } from 'native-base'
 import React from 'react'
-import { Image, StyleSheet, Text } from 'react-native'
+import { Image, ScrollView, StyleSheet, Text } from 'react-native'
+import {
+  BARCHART,
+  CHORD,
+  VOLUMETIMELINE,
+  NETWORKGRAPH,
+  TREEMAP,
+  EVENTTIMELINE,
+  WORDCLOUD,
+  POLAR,
+  PIE,
+  SEARCH,
+} from '../image/index'
 
 // https://docs.nativebase.io/Components.html#card-headfoot-headref
 
 export default function DashboardView() {
+  const makeCard = (
+    image: any,
+    title: string,
+    description: string,
+    link: string
+  ) => {
+    return (
+      <Card>
+        <CardItem header>
+          <Text style={styles.cartTitle}>{title}</Text>
+        </CardItem>
+        <CardItem cardBody>
+          <Image
+            source={image}
+            style={{ height: 200, width: null, flex: 1 } as any}
+          />
+        </CardItem>
+        <CardItem>
+          <Body>
+            <Text>{description}</Text>
+          </Body>
+        </CardItem>
+      </Card>
+    )
+  }
+
   return (
-    <Container>
-      <Header />
-      <Content>
-        <Card>
-          <CardItem header>
-            <Text>NativeBase</Text>
-          </CardItem>
-          <CardItem cardBody>
-            <Image
-              source={{
-                uri:
-                  'https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg',
-              }}
-              style={{ height: 200, width: null, flex: 1 } as any}
-            />
-          </CardItem>
-          <CardItem>
-            <Body>
-              <Text>some text</Text>
-            </Body>
-          </CardItem>
-          <CardItem footer>
-            <Text>GeekyAnts</Text>
-          </CardItem>
-        </Card>
-      </Content>
-    </Container>
+    <ScrollView contentInsetAdjustmentBehavior="automatic">
+      {makeCard(
+        CHORD,
+        'Chord',
+        'Chord diagram of Enron key contact communication.',
+        '/ChordView'
+      )}
+      {makeCard(
+        WORDCLOUD,
+        'Word Cloud',
+        'Word cloud of fraudulent project names.',
+        '/WordCloudView'
+      )}
+      {makeCard(
+        VOLUMETIMELINE,
+        'Volume Timeline',
+        'XY timeline of Enron email per day with drill down.',
+        '/VolumeTimelineView'
+      )}
+      {makeCard(
+        NETWORKGRAPH,
+        'Network Graph',
+        'Network graph of Enron key contact communication.',
+        '/NetworkGraphView'
+      )}
+      {makeCard(
+        TREEMAP,
+        'Tree Map',
+        'Tree map of email volume of Enron key contacts.',
+        '/TreeMapView'
+      )}
+      {makeCard(
+        EVENTTIMELINE,
+        'Event Timeline',
+        'Event timeline of Enron fraud and litigation.',
+        '/EventTimelineView'
+      )}
+      {makeCard(
+        BARCHART,
+        'Bar',
+        'Bar chart of email volume of Enron key contacts.',
+        '/BarView'
+      )}
+      {makeCard(
+        POLAR,
+        'Polar',
+        'Polar chart of email volume of Enron key contacts.',
+        '/PolarView'
+      )}
+      {makeCard(
+        PIE,
+        'Pie',
+        'Pie chart of email volume of Enron key contacts.',
+        '/PieView'
+      )}
+      {makeCard(
+        SEARCH,
+        'Search',
+        'Full text search with field filtering and hit highlighting.',
+        '/SearchView'
+      )}
+    </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
-  header: {
+  cartTitle: {
     fontSize: 20,
   },
 })
