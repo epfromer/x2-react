@@ -1,7 +1,6 @@
 import { Body, Card, CardItem } from 'native-base'
 import React from 'react'
 import { Image, ScrollView, StyleSheet, Text } from 'react-native'
-import { useHistory } from 'react-router-native'
 import {
   BARCHART,
   CHORD,
@@ -17,20 +16,20 @@ import {
 
 // https://docs.nativebase.io/Components.html#card-headfoot-headref
 
-export default function DashboardView() {
-  let history = useHistory()
+interface Props {
+  navigation: any
+}
 
-  const handleClick = (link: string) => history.push(link)
-
+export default function DashboardView({ navigation }: Props) {
   const makeCard = (
     image: any,
     title: string,
     description: string,
-    link: string
+    view: string
   ) => {
     return (
       <Card>
-        <CardItem header onPress={() => handleClick(link)}>
+        <CardItem header>
           <Text style={styles.cartTitle}>{title}</Text>
         </CardItem>
         <CardItem cardBody>
@@ -44,7 +43,7 @@ export default function DashboardView() {
             <Text>{description}</Text>
           </Body>
         </CardItem>
-        <CardItem footer button onPress={() => handleClick(link)}>
+        <CardItem footer button onPress={() => navigation.navigate(view)}>
           <Text>{'Explore ' + title}</Text>
         </CardItem>
       </Card>
@@ -57,61 +56,61 @@ export default function DashboardView() {
         CHORD,
         'Chord',
         'Chord diagram of Enron key contact communication.',
-        '/ChordView'
+        'ChordView'
       )}
       {makeCard(
         WORDCLOUD,
         'Word Cloud',
         'Word cloud of fraudulent project names.',
-        '/WordCloudView'
+        'WordCloudView'
       )}
       {makeCard(
         VOLUMETIMELINE,
         'Volume Timeline',
         'XY timeline of Enron email per day with drill down.',
-        '/VolumeTimelineView'
+        'VolumeTimelineView'
       )}
       {makeCard(
         NETWORKGRAPH,
         'Network Graph',
         'Network graph of Enron key contact communication.',
-        '/NetworkGraphView'
+        'NetworkGraphView'
       )}
       {makeCard(
         TREEMAP,
         'Tree Map',
         'Tree map of email volume of Enron key contacts.',
-        '/TreeMapView'
+        'TreeMapView'
       )}
       {makeCard(
         EVENTTIMELINE,
         'Event Timeline',
         'Event timeline of Enron fraud and litigation.',
-        '/EventTimelineView'
+        'EventTimelineView'
       )}
       {makeCard(
         BARCHART,
         'Bar',
         'Bar chart of email volume of Enron key contacts.',
-        '/BarView'
+        'BarView'
       )}
       {makeCard(
         POLAR,
         'Polar',
         'Polar chart of email volume of Enron key contacts.',
-        '/PolarView'
+        'PolarView'
       )}
       {makeCard(
         PIE,
         'Pie',
         'Pie chart of email volume of Enron key contacts.',
-        '/PieView'
+        'PieView'
       )}
       {makeCard(
         SEARCH,
         'Search',
         'Full text search with field filtering and hit highlighting.',
-        '/SearchView'
+        'SearchView'
       )}
     </ScrollView>
   )
