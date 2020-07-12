@@ -1,5 +1,5 @@
+import { createDrawerNavigator } from '@react-navigation/drawer'
 import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
 import React from 'react'
 import 'react-native-gesture-handler'
 import BarView from './src/views/BarView'
@@ -14,68 +14,68 @@ import TreeMapView from './src/views/TreeMapView'
 import VolumeTimelineView from './src/views/VolumeTimelineView'
 import WordCloudView from './src/views/WordCloudView'
 
-const Stack = createStackNavigator()
+const Drawer = createDrawerNavigator()
 
 const App: () => React.ReactNode = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
+      <Drawer.Navigator initialRouteName="DashboardView">
+        <Drawer.Screen
           name="DashboardView"
           component={DashboardView}
           options={{ title: 'Dashboard' }}
         />
-        <Stack.Screen
+        <Drawer.Screen
           name="ChordView"
           component={ChordView}
           options={{ title: 'Chord' }}
         />
-        <Stack.Screen
+        <Drawer.Screen
           name="WordCloudView"
           component={WordCloudView}
           options={{ title: 'Word Cloud' }}
         />
-        <Stack.Screen
+        <Drawer.Screen
           name="VolumeTimelineView"
           component={VolumeTimelineView}
           options={{ title: 'Volume Timeline' }}
         />
-        <Stack.Screen
+        <Drawer.Screen
           name="NetworkGraphView"
           component={NetworkGraphView}
           options={{ title: 'Network Graph' }}
         />
-        <Stack.Screen
+        <Drawer.Screen
           name="TreeMapView"
           component={TreeMapView}
           options={{ title: 'Tree Map' }}
         />
-        <Stack.Screen
+        <Drawer.Screen
           name="EventTimelineView"
           component={EventTimelineView}
           options={{ title: 'Event Timeline' }}
         />
-        <Stack.Screen
+        <Drawer.Screen
           name="BarView"
           component={BarView}
           options={{ title: 'Bar' }}
         />
-        <Stack.Screen
+        <Drawer.Screen
           name="PolarView"
           component={PolarView}
           options={{ title: 'Polar' }}
         />
-        <Stack.Screen
+        <Drawer.Screen
           name="PieView"
           component={PieView}
           options={{ title: 'Pie' }}
         />
-        <Stack.Screen
+        <Drawer.Screen
           name="SearchView"
           component={SearchView}
           options={{ title: 'Search' }}
         />
-      </Stack.Navigator>
+      </Drawer.Navigator>
     </NavigationContainer>
   )
 }
