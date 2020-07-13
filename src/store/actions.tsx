@@ -1,6 +1,7 @@
 import _ from 'lodash'
 import store from './'
 import { Email, RootState } from './types'
+import { REACT_APP_EMAIL_SERVER } from './env'
 
 // actions, aka async mutations
 
@@ -97,7 +98,7 @@ export function fetchAndCache(
   }
   const loadingIndicator = stat + 'Loading'
   store.dispatch(setReduxState(loadingIndicator, true))
-  const url = `${process.env.REACT_APP_EMAIL_SERVER}/${encodeQuery(stat)}`
+  const url = `${REACT_APP_EMAIL_SERVER}/${encodeQuery(stat)}`
   console.log(url)
   fetch(url)
     .then((resp) => resp.json())

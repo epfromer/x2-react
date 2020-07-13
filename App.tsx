@@ -13,70 +13,76 @@ import SearchView from './src/views/SearchView'
 import TreeMapView from './src/views/TreeMapView'
 import VolumeTimelineView from './src/views/VolumeTimelineView'
 import WordCloudView from './src/views/WordCloudView'
+import store, { fetchAndCache } from './src/store'
+import { Provider } from 'react-redux'
 
 const Drawer = createDrawerNavigator()
 
+fetchAndCache('contacts')
+
 const App: () => React.ReactNode = () => {
   return (
-    <NavigationContainer>
-      <Drawer.Navigator initialRouteName="DashboardView">
-        <Drawer.Screen
-          name="DashboardView"
-          component={DashboardView}
-          options={{ title: 'Dashboard' }}
-        />
-        <Drawer.Screen
-          name="ChordView"
-          component={ChordView}
-          options={{ title: 'Chord' }}
-        />
-        <Drawer.Screen
-          name="WordCloudView"
-          component={WordCloudView}
-          options={{ title: 'Word Cloud' }}
-        />
-        <Drawer.Screen
-          name="VolumeTimelineView"
-          component={VolumeTimelineView}
-          options={{ title: 'Volume Timeline' }}
-        />
-        <Drawer.Screen
-          name="NetworkGraphView"
-          component={NetworkGraphView}
-          options={{ title: 'Network Graph' }}
-        />
-        <Drawer.Screen
-          name="TreeMapView"
-          component={TreeMapView}
-          options={{ title: 'Tree Map' }}
-        />
-        <Drawer.Screen
-          name="EventTimelineView"
-          component={EventTimelineView}
-          options={{ title: 'Event Timeline' }}
-        />
-        <Drawer.Screen
-          name="BarView"
-          component={BarView}
-          options={{ title: 'Bar' }}
-        />
-        <Drawer.Screen
-          name="PolarView"
-          component={PolarView}
-          options={{ title: 'Polar' }}
-        />
-        <Drawer.Screen
-          name="PieView"
-          component={PieView}
-          options={{ title: 'Pie' }}
-        />
-        <Drawer.Screen
-          name="SearchView"
-          component={SearchView}
-          options={{ title: 'Search' }}
-        />
-      </Drawer.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Drawer.Navigator initialRouteName="DashboardView">
+          <Drawer.Screen
+            name="DashboardView"
+            component={DashboardView}
+            options={{ title: 'Dashboard' }}
+          />
+          <Drawer.Screen
+            name="ChordView"
+            component={ChordView}
+            options={{ title: 'Chord' }}
+          />
+          <Drawer.Screen
+            name="WordCloudView"
+            component={WordCloudView}
+            options={{ title: 'Word Cloud' }}
+          />
+          <Drawer.Screen
+            name="VolumeTimelineView"
+            component={VolumeTimelineView}
+            options={{ title: 'Volume Timeline' }}
+          />
+          <Drawer.Screen
+            name="NetworkGraphView"
+            component={NetworkGraphView}
+            options={{ title: 'Network Graph' }}
+          />
+          <Drawer.Screen
+            name="TreeMapView"
+            component={TreeMapView}
+            options={{ title: 'Tree Map' }}
+          />
+          <Drawer.Screen
+            name="EventTimelineView"
+            component={EventTimelineView}
+            options={{ title: 'Event Timeline' }}
+          />
+          <Drawer.Screen
+            name="BarView"
+            component={BarView}
+            options={{ title: 'Bar' }}
+          />
+          <Drawer.Screen
+            name="PolarView"
+            component={PolarView}
+            options={{ title: 'Polar' }}
+          />
+          <Drawer.Screen
+            name="PieView"
+            component={PieView}
+            options={{ title: 'Pie' }}
+          />
+          <Drawer.Screen
+            name="SearchView"
+            component={SearchView}
+            options={{ title: 'Search' }}
+          />
+        </Drawer.Navigator>
+      </NavigationContainer>
+    </Provider>
   )
 }
 
