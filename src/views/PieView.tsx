@@ -77,11 +77,12 @@ export default function PieView() {
     <>
       <AppHeader title="Pie" />
       <SafeAreaView style={styles.container}>
-        <PieECharts
-          title={isSenders ? 'Senders' : 'Receivers'}
-          search={isSenders ? 'from' : 'to'}
-          data={isSenders ? getSenders() : getReceivers()}
-        />
+        {isSenders && (
+          <PieECharts title="Senders" search="from" data={getSenders()} />
+        )}
+        {!isSenders && (
+          <PieECharts title="Receivers" search="to" data={getReceivers()} />
+        )}
         <Form>
           <Picker
             note
