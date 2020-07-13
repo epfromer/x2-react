@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { ECharts } from 'react-native-echarts-wrapper'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../store/types'
@@ -20,13 +20,15 @@ interface Props {
 
 export default function PieECharts({ title, search, data }: Props) {
   const darkMode = useSelector((state: RootState) => state.darkMode)
-  const chartRef = useRef(null)
+
+  function onData(name: string) {
+    data[0].handleClick(search, name)
+  }
 
   interface EChartsDatum {
     value: number
     name: string
     itemStyle: any
-    handleClick: () => void
   }
 
   const contacts: Array<EChartsDatum> = []
@@ -34,7 +36,6 @@ export default function PieECharts({ title, search, data }: Props) {
     contacts.push({
       name: datum.name,
       value: datum.total,
-      handleClick: () => datum.handleClick(search, datum.name),
       itemStyle: {
         normal: {
           color: datum.color,
@@ -48,6 +49,8 @@ export default function PieECharts({ title, search, data }: Props) {
       },
     })
   })
+
+  const additionalCode = `chart.on('click', p => sendData(p.data.name));`
 
   const config = {
     title: {
@@ -83,5 +86,7 @@ export default function PieECharts({ title, search, data }: Props) {
     ],
   }
 
-  return <ECharts ref={chartRef} option={config} />
+  return (
+    <ECharts onData={onData} additionalCode={additionalCode} option={config} />
+  )
 }
