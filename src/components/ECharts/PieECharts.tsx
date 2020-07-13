@@ -1,8 +1,9 @@
-import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import React, { useRef } from 'react'
 import { ECharts } from 'react-native-echarts-wrapper'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../store/types'
+
+// https://www.npmjs.com/package/react-native-echarts-wrapper
 
 interface Contact {
   name: string
@@ -19,6 +20,7 @@ interface Props {
 
 export default function PieECharts({ title, search, data }: Props) {
   const darkMode = useSelector((state: RootState) => state.darkMode)
+  const chartRef = useRef(null)
 
   interface EChartsDatum {
     value: number
@@ -81,15 +83,5 @@ export default function PieECharts({ title, search, data }: Props) {
     ],
   }
 
-  return (
-    <View style={styles.container}>
-      <ECharts option={config} />
-    </View>
-  )
+  return <ECharts ref={chartRef} option={config} />
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-})

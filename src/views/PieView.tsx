@@ -1,12 +1,17 @@
-import React from 'react'
+import { Form, Picker } from 'native-base'
+import React, { useState } from 'react'
+import { SafeAreaView, StyleSheet } from 'react-native'
+import { useDispatch, useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
 import PieECharts from '../components/ECharts/PieECharts'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from './../store/types'
 import { fetchAndCache } from './../store'
+import { RootState } from './../store/types'
+
+// https://docs.nativebase.io/Components.html#picker-def-headref
 
 export default function PieView() {
   const dispatch = useDispatch()
+  const [isSenders, setIsSenders] = useState(true)
   const contactsLoading = useSelector(
     (state: RootState) => state.contactsLoading
   )
@@ -21,6 +26,10 @@ export default function PieView() {
     })
     fetchAndCache('emails')
     // history.push('/SearchView')
+  }
+
+  function handleSendersReceivers(value: string) {
+    setIsSenders(value === 'Senders')
   }
 
   interface Contact {
@@ -67,7 +76,30 @@ export default function PieView() {
   return (
     <>
       <AppHeader title="Pie" />
-      <PieECharts title="Senders" search="from" data={getSenders()} />
+      <SafeAreaView style={styles.container}>
+        <PieECharts
+          title={isSenders ? 'Senders' : 'Receivers'}
+          search={isSenders ? 'from' : 'to'}
+          data={isSenders ? getSenders() : getReceivers()}
+        />
+        <Form>
+          <Picker
+            note
+            mode="dropdown"
+            selectedValue={isSenders ? 'Senders' : 'Receivers'}
+            onValueChange={handleSendersReceivers}
+          >
+            <Picker.Item label="Senders" value="Senders" />
+            <Picker.Item label="Receivers" value="Receivers" />
+          </Picker>
+        </Form>
+      </SafeAreaView>
     </>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+})
