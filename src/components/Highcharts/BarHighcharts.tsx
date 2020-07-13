@@ -1,5 +1,4 @@
 import HighchartsReactNative from '@highcharts/highcharts-react-native'
-import { WebView } from 'react-native-webview'
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 

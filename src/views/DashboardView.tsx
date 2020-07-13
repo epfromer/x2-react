@@ -56,6 +56,12 @@ export default function DashboardView({ navigation }: Props) {
       <AppHeader title="Dashboard" />
       <ScrollView contentInsetAdjustmentBehavior="automatic">
         {makeCard(
+          PIE,
+          'Pie',
+          'Pie chart of email volume of Enron key contacts.',
+          'PieView'
+        )}
+        {makeCard(
           CHORD,
           'Chord',
           'Chord diagram of Enron key contact communication.',
@@ -103,12 +109,12 @@ export default function DashboardView({ navigation }: Props) {
           'Polar chart of email volume of Enron key contacts.',
           'PolarView'
         )}
-        {makeCard(
+        {/* {makeCard(
           PIE,
           'Pie',
           'Pie chart of email volume of Enron key contacts.',
           'PieView'
-        )}
+        )} */}
         {makeCard(
           SEARCH,
           'Search',
