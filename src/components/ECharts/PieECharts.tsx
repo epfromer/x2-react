@@ -1,35 +1,82 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import { ECharts } from 'react-native-echarts-wrapper'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../store/types'
+
+interface Contact {
+  name: string
+  total: number
+  color: string
+  handleClick: (field: string, name: string) => void
+}
 
 interface Props {
   title: string
-  data: any
+  search: string
+  data: Array<Contact>
 }
 
-export default function PieECharts({ title, data }) {
+export default function PieECharts({ title, search, data }: Props) {
   const darkMode = useSelector((state: RootState) => state.darkMode)
-  const series: any = data.map((datum: any) => ({
-    value: datum.value,
-    name: datum.name,
-    itemStyle: {
-      color: datum.color,
-    },
-    handleClick: datum.handleClick,
-  }))
-  
+
+  interface EChartsDatum {
+    value: number
+    name: string
+    itemStyle: any
+    handleClick: () => void
+  }
+
+  const contacts: Array<EChartsDatum> = []
+  data.forEach((datum) => {
+    contacts.push({
+      name: datum.name,
+      value: datum.total,
+      handleClick: () => datum.handleClick(search, datum.name),
+      itemStyle: {
+        normal: {
+          color: datum.color,
+          lineStyle: {
+            color: datum.color,
+          },
+          areaStyle: {
+            color: datum.color,
+          },
+        },
+      },
+    })
+  })
+
   const config = {
-    xAxis: {
-      type: 'category',
-      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    title: {
+      text: title,
+      left: 'center',
+      top: 20,
+      textStyle: {
+        color: darkMode ? 'white' : 'black',
+      },
     },
-    yAxis: {
-      type: 'value',
+    tooltip: {
+      trigger: 'item',
+      formatter: '{b}: {c} ({d}%)',
     },
     series: [
       {
-        data: [820, 932, 901, 934, 1290, 1330, 1220],
-        type: 'line',
+        type: 'pie',
+        radius: '55%',
+        emphasis: {
+          itemStyle: {
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowColor: 'rgba(0, 0, 0, 0.5)',
+          },
+        },
+        data: contacts,
+        animationType: 'scale',
+        animationEasing: 'elasticOut',
+        animationDelay: function () {
+          return Math.random() * 200
+        },
       },
     ],
   }
