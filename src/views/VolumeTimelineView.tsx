@@ -1,27 +1,62 @@
-import { Body, Card, CardItem } from 'native-base'
+import { Spinner } from 'native-base'
 import React from 'react'
-import { ScrollView, Text } from 'react-native'
+import { SafeAreaView, StyleSheet } from 'react-native'
+import { useDispatch, useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
+import VolumeTimelineECharts from '../components/ECharts/VolumeTimelineECharts'
+import { RootState } from '../store/types'
+import { fetchAndCache } from './../store'
 
 export default function VolumeTimelineView() {
+  const dispatch = useDispatch()
+  const themePrimaryColor = useSelector(
+    (state: RootState) => state.themePrimaryColor
+  )
+  const emailSentLoading = useSelector(
+    (state: RootState) => state.emailSentLoading
+  )
+  const emailSent = useSelector((state: RootState) => state.emailSent)
+
+  function handleClick(date: string) {
+    dispatch({ type: 'clearSearch' })
+    dispatch({
+      type: 'setReduxState',
+      key: 'sent',
+      value: date,
+    })
+    fetchAndCache('emails')
+    // history.push('/SearchView')
+  }
+
+  interface Datum {
+    sent: string
+    value: number
+  }
+
+  const data: Array<Datum> = []
+  emailSent?.forEach((stat: any) => {
+    data.push({ sent: stat.sent, value: stat.ids.length })
+  })
+
   return (
     <>
       <AppHeader title="Volume Timeline" />
-      <ScrollView contentInsetAdjustmentBehavior="automatic">
-        <Card>
-          <CardItem header>
-            <Text>VolumeTimelineView</Text>
-          </CardItem>
-          <CardItem>
-            <Body>
-              <Text>some text</Text>
-            </Body>
-          </CardItem>
-          <CardItem footer>
-            <Text>GeekyAnts</Text>
-          </CardItem>
-        </Card>
-      </ScrollView>
+      <SafeAreaView style={styles.container}>
+        {emailSentLoading && <Spinner color={themePrimaryColor} />}
+        {emailSent && (
+          <VolumeTimelineECharts
+            title="Senders / Receivers"
+            data={data}
+            handleClick={handleClick}
+          />
+        )}
+      </SafeAreaView>
     </>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+})
