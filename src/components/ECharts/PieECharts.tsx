@@ -51,43 +51,43 @@ export default function PieECharts({ title, search, data }: Props) {
     })
   })
 
-  const additionalCode = `chart.on('click', p => sendData(p.data.name));`
-
-  const config = {
-    title: {
-      text: title,
-      left: 'center',
-      top: 20,
-      textStyle: {
-        color: darkMode ? 'white' : 'black',
-      },
-    },
-    tooltip: {
-      trigger: 'item',
-      formatter: '{b}: {c} ({d}%)',
-    },
-    series: [
-      {
-        type: 'pie',
-        radius: '55%',
-        emphasis: {
-          itemStyle: {
-            shadowBlur: 10,
-            shadowOffsetX: 0,
-            shadowColor: 'rgba(0, 0, 0, 0.5)',
+  return (
+    <ECharts
+      onData={onData}
+      additionalCode={`chart.on('click', p => sendData(p.data.name));`}
+      option={{
+        title: {
+          text: title,
+          left: 'center',
+          top: 20,
+          textStyle: {
+            color: darkMode ? 'white' : 'black',
           },
         },
-        data: contacts,
-        animationType: 'scale',
-        animationEasing: 'elasticOut',
-        animationDelay: function () {
-          return Math.random() * 200
+        tooltip: {
+          trigger: 'item',
+          formatter: '{b}: {c} ({d}%)',
         },
-      },
-    ],
-  }
-
-  return (
-    <ECharts onData={onData} additionalCode={additionalCode} option={config} />
+        series: [
+          {
+            type: 'pie',
+            radius: '55%',
+            emphasis: {
+              itemStyle: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: 'rgba(0, 0, 0, 0.5)',
+              },
+            },
+            data: contacts,
+            animationType: 'scale',
+            animationEasing: 'elasticOut',
+            animationDelay: function () {
+              return Math.random() * 200
+            },
+          },
+        ],
+      }}
+    />
   )
 }

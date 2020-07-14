@@ -2,7 +2,6 @@ import React from 'react'
 import Cloud from 'react-native-word-cloud'
 
 // https://www.npmjs.com/package/react-native-echarts-wrapper
-// https://www.npmjs.com/package/react-native-word-cloud
 
 // TODO build better word cloud for RN, publish to NPM?
 

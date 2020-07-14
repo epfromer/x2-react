@@ -2,7 +2,7 @@ import HighchartsReactNative from '@highcharts/highcharts-react-native'
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 
-// https://github.com/highcharts/highcharts-react-native/issues/86
+// TODO https://github.com/highcharts/highcharts-react-native/issues/86
 
 const config = {
   series: [
