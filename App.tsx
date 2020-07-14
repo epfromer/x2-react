@@ -19,6 +19,7 @@ import { Provider } from 'react-redux'
 const Drawer = createDrawerNavigator()
 
 fetchAndCache('contacts')
+fetchAndCache('wordCloud')
 
 const App: () => React.ReactNode = () => {
   return (

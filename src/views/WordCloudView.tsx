@@ -3,9 +3,9 @@ import React from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
-import WordCloudECharts from '../components/ECharts/WordCloudECharts'
 import { fetchAndCache } from './../store'
 import { RootState } from './../store/types'
+import WordCloud from '../components/WordCloud'
 
 export default function WordCloudView() {
   const dispatch = useDispatch()
@@ -24,16 +24,23 @@ export default function WordCloudView() {
     // history.push('/SearchView')
   }
 
+  const data: any = []
+  wordCloud?.forEach((word) =>
+    data.push({ name: word.tag, weight: word.weight })
+  )
+
   return (
     <>
       <AppHeader title="Word Cloud" />
       <SafeAreaView style={styles.container}>
         {wordCloudLoading && <Spinner color={themePrimaryColor} />}
-        <WordCloudECharts
-          title="Enron Project Names"
-          words={[]}
-          handleClick={handleClick}
-        />
+        {wordCloud && (
+          <WordCloud
+            title="Enron Project Names"
+            words={data}
+            handleClick={handleClick}
+          />
+        )}
       </SafeAreaView>
     </>
   )
@@ -42,5 +49,7 @@ export default function WordCloudView() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 })
