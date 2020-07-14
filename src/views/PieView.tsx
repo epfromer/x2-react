@@ -1,4 +1,4 @@
-import { Form, Picker } from 'native-base'
+import { Form, Picker, Spinner } from 'native-base'
 import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
@@ -16,6 +16,9 @@ export default function PieView() {
     (state: RootState) => state.contactsLoading
   )
   const contacts = useSelector((state: RootState) => state.contacts)
+  const themePrimaryColor = useSelector(
+    (state: RootState) => state.themePrimaryColor
+  )
 
   function handleClick(search: string, value: string) {
     dispatch({ type: 'clearSearch' })
@@ -77,6 +80,7 @@ export default function PieView() {
     <>
       <AppHeader title="Pie" />
       <SafeAreaView style={styles.container}>
+        {contactsLoading && <Spinner color={themePrimaryColor} />}
         {isSenders && (
           <PieECharts title="Senders" search="from" data={getSenders()} />
         )}

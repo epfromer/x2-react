@@ -46,7 +46,7 @@ const initialState: RootState = {
   contacts: undefined,
 
   darkMode: false,
-  themePrimaryColor: '#2196f3',
+  themePrimaryColor: '#f50057',
   themeSecondaryColor: '#f50057',
 
   // // app settings
