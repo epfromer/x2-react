@@ -1,5 +1,5 @@
-import { Spinner } from 'native-base'
-import React from 'react'
+import { Form, Picker, Spinner } from 'native-base'
+import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
@@ -9,6 +9,7 @@ import { RootState } from './../store/types'
 
 export default function PolarView() {
   const dispatch = useDispatch()
+  const [isSenders, setIsSenders] = useState(true)
   const themePrimaryColor = useSelector(
     (state: RootState) => state.themePrimaryColor
   )
@@ -26,6 +27,10 @@ export default function PolarView() {
     })
     fetchAndCache('emails')
     // history.push('/SearchView')
+  }
+
+  function handleSendersReceivers(value: string) {
+    setIsSenders(value === 'Senders')
   }
 
   interface Datum {
@@ -74,7 +79,23 @@ export default function PolarView() {
       <AppHeader title="Polar" />
       <SafeAreaView style={styles.container}>
         {contactsLoading && <Spinner color={themePrimaryColor} />}
-        {contacts && <PolarECharts title="Senders" data={getSenders()} />}
+        {contacts && isSenders && (
+          <PolarECharts title="Senders" data={getSenders()} />
+        )}
+        {contacts && !isSenders && (
+          <PolarECharts title="Receivers" data={getReceivers()} />
+        )}
+        <Form>
+          <Picker
+            note
+            mode="dropdown"
+            selectedValue={isSenders ? 'Senders' : 'Receivers'}
+            onValueChange={handleSendersReceivers}
+          >
+            <Picker.Item label="Senders" value="Senders" />
+            <Picker.Item label="Receivers" value="Receivers" />
+          </Picker>
+        </Form>
       </SafeAreaView>
     </>
   )

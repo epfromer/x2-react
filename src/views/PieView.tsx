@@ -81,10 +81,10 @@ export default function PieView() {
       <AppHeader title="Pie" />
       <SafeAreaView style={styles.container}>
         {contactsLoading && <Spinner color={themePrimaryColor} />}
-        {isSenders && (
+        {contacts && isSenders && (
           <PieECharts title="Senders" search="from" data={getSenders()} />
         )}
-        {!isSenders && (
+        {contacts && !isSenders && (
           <PieECharts title="Receivers" search="to" data={getReceivers()} />
         )}
         <Form>
