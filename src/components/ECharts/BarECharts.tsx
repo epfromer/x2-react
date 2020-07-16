@@ -11,22 +11,19 @@ import { RootState } from '../../store/types'
 interface Props {
   title: string
   contactNames: Array<string>
-  senderTotals: Array<number>
-  receiverTotals: Array<number>
+  search: string
+  totals: Array<number>
   handleClick: (key: string, value: string) => void
 }
 
 export default function BarECharts({
   title,
   contactNames,
-  senderTotals,
-  receiverTotals,
+  search,
+  totals,
   handleClick,
 }: Props) {
   const darkMode = useSelector((state: RootState) => state.darkMode)
-  const themePrimaryColor = useSelector(
-    (state: RootState) => state.themePrimaryColor
-  )
   const themeSecondaryColor = useSelector(
     (state: RootState) => state.themeSecondaryColor
   )
@@ -69,13 +66,8 @@ export default function BarECharts({
         series: [
           {
             type: 'bar',
-            color: themePrimaryColor,
-            data: senderTotals.reverse(),
-          },
-          {
-            type: 'bar',
             color: themeSecondaryColor,
-            data: receiverTotals.reverse(),
+            data: totals.reverse(),
           },
         ],
       }}

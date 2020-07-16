@@ -1,5 +1,5 @@
-import { Spinner } from 'native-base'
-import React from 'react'
+import { Form, Picker, Spinner } from 'native-base'
+import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
@@ -9,6 +9,7 @@ import { fetchAndCache } from './../store'
 
 export default function BarView() {
   const dispatch = useDispatch()
+  const [isSenders, setIsSenders] = useState(true)
   const themePrimaryColor = useSelector(
     (state: RootState) => state.themePrimaryColor
   )
@@ -22,6 +23,10 @@ export default function BarView() {
     dispatch({ type: 'setReduxState', key, value: `(${value})` })
     fetchAndCache('emails')
     // history.push('/SearchView')
+  }
+
+  function handleSendersReceivers(value: string) {
+    setIsSenders(value === 'Senders')
   }
 
   function getSenderTotals() {
@@ -59,14 +64,35 @@ export default function BarView() {
       <AppHeader title="Bar" />
       <SafeAreaView style={styles.container}>
         {contactsLoading && <Spinner color={themePrimaryColor} />}
-        <BarECharts
-          title="Senders / Receivers"
-          contactNames={getContactNames()}
-          senderTotals={getSenderTotals()}
-          receiverTotals={getReceiverTotals()}
-          handleClick={handleClick}
-        />
-        {/* <BarHighcharts /> */}
+        {contacts && isSenders && (
+          <BarECharts
+            title="Senders"
+            contactNames={getContactNames()}
+            search="from"
+            totals={getSenderTotals()}
+            handleClick={handleClick}
+          />
+        )}
+        {contacts && !isSenders && (
+          <BarECharts
+            title="Receivers"
+            contactNames={getContactNames()}
+            search="to"
+            totals={getReceiverTotals()}
+            handleClick={handleClick}
+          />
+        )}
+        <Form>
+          <Picker
+            note
+            mode="dropdown"
+            selectedValue={isSenders ? 'Senders' : 'Receivers'}
+            onValueChange={handleSendersReceivers}
+          >
+            <Picker.Item label="Senders" value="Senders" />
+            <Picker.Item label="Receivers" value="Receivers" />
+          </Picker>
+        </Form>
       </SafeAreaView>
     </>
   )
