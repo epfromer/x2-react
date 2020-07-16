@@ -13,6 +13,7 @@ export {
   getEmailIndex,
   getNextEmail,
   getPreviousEmail,
+  getEmailSentStats,
 } from './selectors'
 
 const initialState: RootState = {
