@@ -4,9 +4,8 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../../store/types'
 
 // https://www.npmjs.com/package/react-native-echarts-wrapper
+// https://echarts.apache.org/examples/en/editor.html?c=graph
 // TODO fix click handler
-
-const chartHeight = '600px'
 
 interface Props {
   title: string
@@ -49,7 +48,7 @@ export default function NetworkGraphECharts({
     target: datum[1],
     value: datum[2],
   }))
-  
+
   function onData(name: string) {
     console.log(name)
     // data[0].handleClick(search, name)
