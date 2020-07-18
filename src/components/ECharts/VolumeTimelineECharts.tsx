@@ -1,19 +1,14 @@
 import React from 'react'
 import { ECharts } from 'react-native-echarts-wrapper'
 import { useSelector } from 'react-redux'
-import { RootState } from '../../store/types'
+import { RootState, TotalEmailSentDatum } from '../../store/types'
 
 // https://www.npmjs.com/package/react-native-echarts-wrapper
 // TODO fix click handler
 
-interface Datum {
-  sent: string
-  value: number
-}
-
 interface Props {
   title: string
-  data: Array<Datum>
+  data: Array<TotalEmailSentDatum>
   handleClick: (date: string) => void
 }
 
@@ -26,13 +21,6 @@ export default function VolumeTimelineECharts({
   const themePrimaryColor = useSelector(
     (state: RootState) => state.themePrimaryColor
   )
-
-  const labels: Array<string> = []
-  const emailsSent: Array<number> = []
-  data.forEach((stat) => {
-    labels.push(stat.sent)
-    emailsSent.push(stat.value)
-  })
 
   function onData(name: string) {
     console.log(name)
@@ -69,7 +57,7 @@ export default function VolumeTimelineECharts({
           },
         ],
         xAxis: {
-          data: labels,
+          data: data.map((datum) => datum.sent),
           silent: false,
           splitLine: {
             show: false,
@@ -93,7 +81,7 @@ export default function VolumeTimelineECharts({
           {
             type: 'bar',
             color: themePrimaryColor,
-            data: emailsSent,
+            data: data.map((datum) => datum.value),
           },
         ],
       }}
