@@ -96,3 +96,14 @@ export interface RootState {
   themePrimaryColor: string
   themeSecondaryColor: string
 }
+
+export interface EmailXferedDatum {
+  name: string // name of sender/receiver
+  value: number // number of emails sent/received
+  color: string // color of contact
+}
+
+export interface TotalEmailSentDatum {
+  sent: string // send date
+  value: number // number of emails sent
+}

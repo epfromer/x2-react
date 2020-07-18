@@ -1,4 +1,4 @@
-import { RootState } from './types'
+import { RootState, EmailXferedDatum } from './types'
 
 // selectors, aka getters
 export const getEmailById = (state: RootState, id: string) =>
@@ -71,4 +71,36 @@ export const getEmailSentStats = (state: RootState) => {
   })
 
   return { data, nodes }
+}
+
+export function getEmailSenders(state: RootState) {
+  const data: Array<EmailXferedDatum> = []
+  if (state.contacts) {
+    state.contacts.forEach((contact) => {
+      if (contact.senderTotal) {
+        data.push({
+          name: contact.name,
+          value: contact.senderTotal,
+          color: contact.color,
+        })
+      }
+    })
+  }
+  return data
+}
+
+export function getEmailReceivers(state: RootState) {
+  const data: Array<EmailXferedDatum> = []
+  if (state.contacts) {
+    state.contacts.forEach((contact) => {
+      if (contact.senderTotal) {
+        data.push({
+          name: contact.name,
+          value: contact.receiverTotal,
+          color: contact.color,
+        })
+      }
+    })
+  }
+  return data
 }

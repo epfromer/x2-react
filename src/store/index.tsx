@@ -14,6 +14,8 @@ export {
   getNextEmail,
   getPreviousEmail,
   getEmailSentStats,
+  getEmailSenders,
+  getEmailReceivers,
 } from './selectors'
 
 const initialState: RootState = {
@@ -80,6 +82,8 @@ function reducer(state: RootState = initialState, action: Action) {
           else if (aName < bName) return 1
           else return 0
         })
+      } else if (action.key === 'emailSent') {
+        s.emailSent = _.cloneDeep(action.value)
       } else {
         // @ts-ignore
         s[action.key] = action.value

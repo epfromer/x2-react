@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
 import BarECharts from '../components/ECharts/BarECharts'
 import { Contact, RootState } from '../store/types'
-import { fetchAndCache } from './../store'
+import { fetchAndCache, getEmailReceivers, getEmailSenders } from './../store'
 
 export default function BarView() {
   const dispatch = useDispatch()
@@ -17,6 +17,10 @@ export default function BarView() {
     (state: RootState) => state.contactsLoading
   )
   const contacts = useSelector((state: RootState) => state.contacts)
+  const emailSenders = useSelector((state: RootState) => getEmailSenders(state))
+  const emailReceivers = useSelector((state: RootState) =>
+    getEmailReceivers(state)
+  )
 
   function handleClick(key: string, value: string) {
     dispatch({ type: 'clearSearch' })
@@ -67,18 +71,16 @@ export default function BarView() {
         {contacts && isSenders && (
           <BarECharts
             title="Senders"
-            contactNames={getContactNames()}
             search="from"
-            totals={getSenderTotals()}
+            data={emailSenders}
             handleClick={handleClick}
           />
         )}
         {contacts && !isSenders && (
           <BarECharts
             title="Receivers"
-            contactNames={getContactNames()}
             search="to"
-            totals={getReceiverTotals()}
+            data={emailReceivers}
             handleClick={handleClick}
           />
         )}
