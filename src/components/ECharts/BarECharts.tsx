@@ -1,4 +1,5 @@
 import React from 'react'
+import { StyleSheet, View } from 'react-native'
 import { ECharts } from 'react-native-echarts-wrapper'
 import { useSelector } from 'react-redux'
 import { EmailXferedDatum, RootState } from '../../store/types'
@@ -47,6 +48,8 @@ export default function BarECharts({
     })
   })
 
+  chartData.reverse()
+
   function onData(name: string) {
     console.log(name)
     // data[0].handleClick(search, name)
@@ -72,7 +75,7 @@ export default function BarECharts({
           },
         },
         grid: {
-          bottom: 90,
+          left: 100,
         },
         xAxis: {
           axisLabel: {
@@ -80,7 +83,7 @@ export default function BarECharts({
           },
         },
         yAxis: {
-          data: data.map((datum) => datum.name),
+          data: chartData.map((datum) => datum.name),
           axisLabel: {
             color: darkMode ? 'white' : 'black',
           },
@@ -95,3 +98,12 @@ export default function BarECharts({
     />
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#f5fcff',
+  },
+})

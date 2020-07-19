@@ -4,12 +4,14 @@ import { SafeAreaView, StyleSheet } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
 import BarECharts from '../components/ECharts/BarECharts'
-import { Contact, RootState } from '../store/types'
+import BarVictory from '../components/Victory/BarVictory'
+import { RootState } from '../store/types'
 import { fetchAndCache, getEmailReceivers, getEmailSenders } from './../store'
 
 export default function BarView() {
   const dispatch = useDispatch()
   const [isSenders, setIsSenders] = useState(true)
+  const [chartLib, setChartLib] = useState('ECharts')
   const themePrimaryColor = useSelector(
     (state: RootState) => state.themePrimaryColor
   )
@@ -29,40 +31,73 @@ export default function BarView() {
     // history.push('/SearchView')
   }
 
-  function handleSendersReceivers(value: string) {
-    setIsSenders(value === 'Senders')
-  }
-
   return (
     <>
       <AppHeader title="Bar" />
       <SafeAreaView style={styles.container}>
         {contactsLoading && <Spinner color={themePrimaryColor} />}
-        {contacts && isSenders && (
-          <BarECharts
-            title="Senders"
-            search="from"
-            data={emailSenders}
-            handleClick={handleClick}
-          />
-        )}
-        {contacts && !isSenders && (
-          <BarECharts
-            title="Receivers"
-            search="to"
-            data={emailReceivers}
-            handleClick={handleClick}
-          />
+        {contacts && (
+          <>
+            {chartLib === 'ECharts' && (
+              <>
+                {isSenders && (
+                  <BarECharts
+                    title="Senders"
+                    search="from"
+                    data={emailSenders}
+                    handleClick={handleClick}
+                  />
+                )}
+                {!isSenders && (
+                  <BarECharts
+                    title="Receivers"
+                    search="to"
+                    data={emailReceivers}
+                    handleClick={handleClick}
+                  />
+                )}
+              </>
+            )}
+            {chartLib === 'Victory' && (
+              <>
+                {isSenders && (
+                  <BarVictory
+                    title="Senders"
+                    search="from"
+                    data={emailSenders}
+                    handleClick={handleClick}
+                  />
+                )}
+                {!isSenders && (
+                  <BarVictory
+                    title="Receivers"
+                    search="to"
+                    data={emailReceivers}
+                    handleClick={handleClick}
+                  />
+                )}
+              </>
+            )}
+          </>
         )}
         <Form>
           <Picker
             note
             mode="dropdown"
             selectedValue={isSenders ? 'Senders' : 'Receivers'}
-            onValueChange={handleSendersReceivers}
+            onValueChange={(value) => setIsSenders(value === 'Senders')}
           >
             <Picker.Item label="Senders" value="Senders" />
             <Picker.Item label="Receivers" value="Receivers" />
+          </Picker>
+          <Picker
+            note
+            mode="dropdown"
+            selectedValue={chartLib}
+            onValueChange={(value) => setChartLib(value)}
+          >
+            <Picker.Item label="ECharts" value="ECharts" />
+            <Picker.Item label="Victory" value="Victory" />
           </Picker>
         </Form>
       </SafeAreaView>

@@ -11,7 +11,7 @@ interface Props {
   handleClick: (search: string, name: string) => void
 }
 
-export default function PolarECharts({ search, data, handleClick }: Props) {
+export default function PieVictory({ search, data, handleClick }: Props) {
   const darkMode = useSelector((state: RootState) => state.darkMode)
 
   interface Datum {
