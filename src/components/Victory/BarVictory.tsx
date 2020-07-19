@@ -1,13 +1,10 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import { useSelector } from 'react-redux'
-import {
-  VictoryAxis,
-  VictoryBar,
-  VictoryChart,
-  VictoryLabel,
-} from 'victory-native'
+import { VictoryAxis, VictoryBar, VictoryChart } from 'victory-native'
 import { EmailXferedDatum, RootState } from '../../store/types'
+
+const chartHeight = 440
 
 interface Props {
   title: string
@@ -16,12 +13,7 @@ interface Props {
   handleClick: (search: string, name: string) => void
 }
 
-export default function BarVictory({
-  title,
-  search,
-  data,
-  handleClick,
-}: Props) {
+export default function BarVictory({ search, data, handleClick }: Props) {
   const darkMode = useSelector((state: RootState) => state.darkMode)
 
   interface Datum {
@@ -38,24 +30,18 @@ export default function BarVictory({
     })
   )
 
-  console.log('victory bar')
-
   return (
     <View style={styles.container}>
-      <VictoryChart >
-        <VictoryLabel
-          text={title}
-          x={225}
-          y={30}
-          textAnchor="middle"
-          style={[{ fill: darkMode ? 'white' : 'black', fontSize: 10 }]}
-        />
+      <VictoryChart
+        height={chartHeight}
+        padding={{ left: 125, right: 10, top: 30, bottom: 20 }}
+      >
         <VictoryAxis
           style={{
             tickLabels: {
               fill: darkMode ? 'white' : 'black',
               fontSize: 15,
-              padding: 1,
+              padding: 10,
             },
           }}
         />
@@ -70,6 +56,7 @@ export default function BarVictory({
           }}
         />
         <VictoryBar
+          barWidth={60}
           animate={{
             duration: 2000,
             onLoad: { duration: 1000 },

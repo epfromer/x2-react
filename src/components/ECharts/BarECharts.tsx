@@ -16,12 +16,7 @@ interface Props {
   handleClick: (key: string, value: string) => void
 }
 
-export default function BarECharts({
-  title,
-  search,
-  data,
-  handleClick,
-}: Props) {
+export default function BarECharts({ search, data, handleClick }: Props) {
   const darkMode = useSelector((state: RootState) => state.darkMode)
 
   interface Datum {
@@ -60,14 +55,6 @@ export default function BarECharts({
       onData={onData}
       additionalCode={`chart.on('click', p => sendData(p.data));`}
       option={{
-        title: {
-          text: title,
-          top: 20,
-          left: 'center',
-          textStyle: {
-            color: darkMode ? 'white' : 'black',
-          },
-        },
         tooltip: {
           trigger: 'axis',
           axisPointer: {
