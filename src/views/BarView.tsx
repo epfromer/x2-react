@@ -33,36 +33,6 @@ export default function BarView() {
     setIsSenders(value === 'Senders')
   }
 
-  function getSenderTotals() {
-    const data: Array<number> = []
-    if (contacts) {
-      contacts.forEach((contact: Contact) => {
-        data.push(contact.senderTotal ? contact.senderTotal : 0)
-      })
-    }
-    return data
-  }
-
-  function getReceiverTotals() {
-    const data: Array<number> = []
-    if (contacts) {
-      contacts.forEach((contact: Contact) => {
-        data.push(contact.receiverTotal ? contact.receiverTotal : 0)
-      })
-    }
-    return data
-  }
-
-  function getContactNames() {
-    const data: Array<string> = []
-    if (contacts) {
-      contacts.forEach((contact: Contact) => {
-        data.push(contact.name)
-      })
-    }
-    return data
-  }
-
   return (
     <>
       <AppHeader title="Bar" />
