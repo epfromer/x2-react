@@ -1,24 +1,67 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
-import { VictoryBar, VictoryChart, VictoryTheme } from 'victory-native'
+import { useSelector } from 'react-redux'
+import { VictoryPie } from 'victory-native'
+import { EmailXferedDatum, RootState } from '../../store/types'
 
-const data = [
-  { quarter: 1, earnings: 13000 },
-  { quarter: 2, earnings: 16500 },
-  { quarter: 3, earnings: 14250 },
-  { quarter: 4, earnings: 19000 },
-]
+interface Props {
+  title: string
+  search: string
+  data: Array<EmailXferedDatum>
+  handleClick: (search: string, name: string) => void
+}
 
-export default class PieVictory extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <VictoryChart width={350} theme={VictoryTheme.material}>
-          <VictoryBar data={data} x="quarter" y="earnings" />
-        </VictoryChart>
-      </View>
-    )
+export default function PolarECharts({ search, data, handleClick }: Props) {
+  const darkMode = useSelector((state: RootState) => state.darkMode)
+
+  interface Datum {
+    x: string
+    y: number
+    color: string
   }
+  const vData: Array<Datum> = []
+  data.forEach((datum) =>
+    vData.push({
+      x: datum.name,
+      y: datum.value,
+      color: datum.color,
+    })
+  )
+
+  return (
+    <View style={styles.container}>
+      <VictoryPie
+        animate
+        data={vData}
+        style={{
+          data: {
+            fill: ({ datum }: any) => datum.color,
+          },
+          labels: {
+            fill: darkMode ? 'white' : 'black',
+            fontSize: 10,
+          },
+        }}
+        events={[
+          {
+            target: 'data',
+            eventHandlers: {
+              onClick: () => {
+                return [
+                  {
+                    mutation: (props: any) => {
+                      handleClick(search, props.datum.xName)
+                      return null
+                    },
+                  },
+                ]
+              },
+            },
+          },
+        ]}
+      />
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
