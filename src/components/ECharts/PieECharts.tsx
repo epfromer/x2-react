@@ -1,43 +1,37 @@
 import React from 'react'
 import { ECharts } from 'react-native-echarts-wrapper'
 import { useSelector } from 'react-redux'
-import { RootState } from '../../store/types'
+import { EmailXferedDatum, RootState } from '../../store/types'
 
 // https://www.npmjs.com/package/react-native-echarts-wrapper
 // https://echarts.apache.org/examples/en/index.html#chart-type-pie
 // TODO fix click handler
 
-interface Contact {
-  name: string
-  total: number
-  color: string
-  handleClick: (field: string, name: string) => void
-}
-
 interface Props {
   title: string
   search: string
-  data: Array<Contact>
+  data: Array<EmailXferedDatum>
+  handleClick: (search: string, name: string) => void
 }
 
-export default function PieECharts({ title, search, data }: Props) {
+export default function PieECharts({
+  title,
+  search,
+  data,
+  handleClick,
+}: Props) {
   const darkMode = useSelector((state: RootState) => state.darkMode)
 
-  function onData(name: string) {
-    data[0].handleClick(search, name)
-  }
-
-  interface EChartsDatum {
+  interface Datum {
     value: number
     name: string
     itemStyle: any
   }
-
-  const contacts: Array<EChartsDatum> = []
+  const chartData: Array<Datum> = []
   data.forEach((datum) => {
-    contacts.push({
+    chartData.push({
       name: datum.name,
-      value: datum.total,
+      value: datum.value,
       itemStyle: {
         normal: {
           color: datum.color,
@@ -51,6 +45,10 @@ export default function PieECharts({ title, search, data }: Props) {
       },
     })
   })
+
+  function onData(name: string) {
+    // handleClick(search, name)
+  }
 
   return (
     <ECharts
@@ -80,12 +78,10 @@ export default function PieECharts({ title, search, data }: Props) {
                 shadowColor: 'rgba(0, 0, 0, 0.5)',
               },
             },
-            data: contacts,
+            data: chartData,
             animationType: 'scale',
             animationEasing: 'elasticOut',
-            animationDelay: function () {
-              return Math.random() * 200
-            },
+            animationDelay: () => Math.random() * 200,
           },
         ],
       }}

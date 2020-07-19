@@ -4,7 +4,7 @@ import { SafeAreaView, StyleSheet } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
 import PieECharts from '../components/ECharts/PieECharts'
-import { fetchAndCache } from './../store'
+import { fetchAndCache, getEmailReceivers, getEmailSenders } from './../store'
 import { RootState } from './../store/types'
 
 // https://docs.nativebase.io/Components.html#picker-def-headref
@@ -16,6 +16,10 @@ export default function PieView() {
     (state: RootState) => state.contactsLoading
   )
   const contacts = useSelector((state: RootState) => state.contacts)
+  const emailSenders = useSelector((state: RootState) => getEmailSenders(state))
+  const emailReceivers = useSelector((state: RootState) =>
+    getEmailReceivers(state)
+  )
   const themePrimaryColor = useSelector(
     (state: RootState) => state.themePrimaryColor
   )
@@ -35,57 +39,26 @@ export default function PieView() {
     setIsSenders(value === 'Senders')
   }
 
-  interface Contact {
-    name: string
-    total: number
-    color: string
-    handleClick: (field: string, name: string) => void
-  }
-
-  function getSenders() {
-    const data: Array<Contact> = []
-    if (contacts) {
-      contacts.forEach((contact) => {
-        if (contact.senderTotal) {
-          data.push({
-            name: contact.name,
-            total: contact.senderTotal,
-            color: contact.color,
-            handleClick,
-          })
-        }
-      })
-    }
-    return data
-  }
-
-  function getReceivers() {
-    const data: Array<Contact> = []
-    if (contacts) {
-      contacts.forEach((contact) => {
-        if (contact.receiverTotal) {
-          data.push({
-            name: contact.name,
-            total: contact.receiverTotal,
-            color: contact.color,
-            handleClick,
-          })
-        }
-      })
-    }
-    return data
-  }
-
   return (
     <>
       <AppHeader title="Pie" />
       <SafeAreaView style={styles.container}>
         {contactsLoading && <Spinner color={themePrimaryColor} />}
         {contacts && isSenders && (
-          <PieECharts title="Senders" search="from" data={getSenders()} />
+          <PieECharts
+            title="Senders"
+            search="from"
+            data={emailSenders}
+            handleClick={handleClick}
+          />
         )}
         {contacts && !isSenders && (
-          <PieECharts title="Receivers" search="to" data={getReceivers()} />
+          <PieECharts
+            title="Receivers"
+            search="to"
+            data={emailReceivers}
+            handleClick={handleClick}
+          />
         )}
         <Form>
           <Picker

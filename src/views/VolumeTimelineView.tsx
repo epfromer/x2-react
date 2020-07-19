@@ -4,7 +4,7 @@ import { SafeAreaView, StyleSheet } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
 import VolumeTimelineECharts from '../components/ECharts/VolumeTimelineECharts'
-import { RootState } from '../store/types'
+import { RootState, TotalEmailSentDatum } from '../store/types'
 import { fetchAndCache } from './../store'
 
 export default function VolumeTimelineView() {
@@ -28,15 +28,13 @@ export default function VolumeTimelineView() {
     // history.push('/SearchView')
   }
 
-  interface Datum {
-    sent: string
-    value: number
+  let data: Array<TotalEmailSentDatum> = []
+  if (emailSent) {
+    data = emailSent.map((stat: any) => ({
+      sent: stat.sent,
+      value: stat.ids.length,
+    }))
   }
-
-  const data: Array<Datum> = []
-  emailSent?.forEach((stat: any) => {
-    data.push({ sent: stat.sent, value: stat.ids.length })
-  })
 
   return (
     <>

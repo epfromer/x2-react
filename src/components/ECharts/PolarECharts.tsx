@@ -10,18 +10,24 @@ import { RootState } from '../../store/types'
 
 interface Props {
   title: string
-  data: any
+  search: string
+  data: Array<EmailXferedDatum>
+  handleClick: (search: string, name: string) => void
 }
 
-export default function PolarECharts({ title, data }: Props) {
+export default function PolarECharts({
+  title,
+  search,
+  data,
+  handleClick,
+}: Props) {
   const darkMode = useSelector((state: RootState) => state.darkMode)
-  const series: any = data.map((datum: any) => ({
+  const series: Array<any> = data.map((datum) => ({
     value: datum.value,
     name: datum.name,
     itemStyle: {
       color: datum.color,
     },
-    handleClick: datum.handleClick,
   }))
 
   function onData(name: string) {

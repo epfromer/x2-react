@@ -4,7 +4,7 @@ import { SafeAreaView, StyleSheet } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
 import PolarECharts from '../components/ECharts/PolarECharts'
-import { fetchAndCache } from './../store'
+import { fetchAndCache, getEmailReceivers, getEmailSenders } from './../store'
 import { RootState } from './../store/types'
 
 export default function PolarView() {
@@ -17,6 +17,10 @@ export default function PolarView() {
     (state: RootState) => state.contactsLoading
   )
   const contacts = useSelector((state: RootState) => state.contacts)
+  const emailSenders = useSelector((state: RootState) => getEmailSenders(state))
+  const emailReceivers = useSelector((state: RootState) =>
+    getEmailReceivers(state)
+  )
 
   function handleClick(search: string, value: string) {
     dispatch({ type: 'clearSearch' })
@@ -33,57 +37,26 @@ export default function PolarView() {
     setIsSenders(value === 'Senders')
   }
 
-  interface Datum {
-    name: string
-    value: number
-    color: string
-    handleClick: (search: string, name: string) => void
-  }
-
-  function getSenders() {
-    const data: Array<Datum> = []
-    if (contacts) {
-      contacts.forEach((contact) => {
-        if (contact.senderTotal) {
-          data.push({
-            name: contact.name,
-            value: contact.senderTotal,
-            color: contact.color,
-            handleClick: () => handleClick('from', contact.name),
-          })
-        }
-      })
-    }
-    return data
-  }
-
-  function getReceivers() {
-    const data: Array<Datum> = []
-    if (contacts) {
-      contacts.forEach((contact) => {
-        if (contact.senderTotal) {
-          data.push({
-            name: contact.name,
-            value: contact.receiverTotal,
-            color: contact.color,
-            handleClick: () => handleClick('to', contact.name),
-          })
-        }
-      })
-    }
-    return data
-  }
-
   return (
     <>
       <AppHeader title="Polar" />
       <SafeAreaView style={styles.container}>
         {contactsLoading && <Spinner color={themePrimaryColor} />}
         {contacts && isSenders && (
-          <PolarECharts title="Senders" data={getSenders()} />
+          <PolarECharts
+            title="Senders"
+            search="from"
+            data={emailSenders}
+            handleClick={handleClick}
+          />
         )}
         {contacts && !isSenders && (
-          <PolarECharts title="Receivers" data={getReceivers()} />
+          <PolarECharts
+            title="Receivers"
+            search="to"
+            data={emailReceivers}
+            handleClick={handleClick}
+          />
         )}
         <Form>
           <Picker

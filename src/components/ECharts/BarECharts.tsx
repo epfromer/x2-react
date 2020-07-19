@@ -1,7 +1,7 @@
 import React from 'react'
 import { ECharts } from 'react-native-echarts-wrapper'
 import { useSelector } from 'react-redux'
-import { RootState } from '../../store/types'
+import { EmailXferedDatum, RootState } from '../../store/types'
 
 // https://www.npmjs.com/package/react-native-echarts-wrapper
 // https://echarts.apache.org/examples/en/index.html#chart-type-bar
@@ -10,23 +10,42 @@ import { RootState } from '../../store/types'
 
 interface Props {
   title: string
-  contactNames: Array<string>
   search: string
-  totals: Array<number>
+  data: Array<EmailXferedDatum>
   handleClick: (key: string, value: string) => void
 }
 
 export default function BarECharts({
   title,
-  contactNames,
   search,
-  totals,
+  data,
   handleClick,
 }: Props) {
   const darkMode = useSelector((state: RootState) => state.darkMode)
-  const themeSecondaryColor = useSelector(
-    (state: RootState) => state.themeSecondaryColor
-  )
+
+  interface Datum {
+    value: number
+    name: string
+    itemStyle: any
+  }
+  const chartData: Array<Datum> = []
+  data.forEach((datum) => {
+    chartData.push({
+      name: datum.name,
+      value: datum.value,
+      itemStyle: {
+        normal: {
+          color: datum.color,
+          lineStyle: {
+            color: datum.color,
+          },
+          areaStyle: {
+            color: datum.color,
+          },
+        },
+      },
+    })
+  })
 
   function onData(name: string) {
     console.log(name)
@@ -52,13 +71,16 @@ export default function BarECharts({
             type: 'shadow',
           },
         },
+        grid: {
+          bottom: 90,
+        },
         xAxis: {
           axisLabel: {
             color: darkMode ? 'white' : 'black',
           },
         },
         yAxis: {
-          data: contactNames.reverse(),
+          data: data.map((datum) => datum.name),
           axisLabel: {
             color: darkMode ? 'white' : 'black',
           },
@@ -66,8 +88,7 @@ export default function BarECharts({
         series: [
           {
             type: 'bar',
-            color: themeSecondaryColor,
-            data: totals.reverse(),
+            data: chartData,
           },
         ],
       }}

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
 import TreeMapECharts from '../components/ECharts/TreeMapECharts'
 import { RootState } from '../store/types'
-import { fetchAndCache } from './../store'
+import { fetchAndCache, getEmailReceivers, getEmailSenders } from './../store'
 
 export default function TreeMapView() {
   const dispatch = useDispatch()
@@ -17,6 +17,10 @@ export default function TreeMapView() {
     (state: RootState) => state.contactsLoading
   )
   const contacts = useSelector((state: RootState) => state.contacts)
+  const emailSenders = useSelector((state: RootState) => getEmailSenders(state))
+  const emailReceivers = useSelector((state: RootState) =>
+    getEmailReceivers(state)
+  )
 
   function handleClick(search: string, value: string) {
     dispatch({ type: 'clearSearch' })
@@ -33,44 +37,6 @@ export default function TreeMapView() {
     setIsSenders(value === 'Senders')
   }
 
-  interface Datum {
-    name: string
-    value: number
-    color: string
-  }
-
-  function getSenders() {
-    const data: Array<Datum> = []
-    if (contacts) {
-      contacts.forEach((contact) => {
-        if (contact.senderTotal) {
-          data.push({
-            name: contact.name,
-            value: contact.senderTotal,
-            color: contact.color,
-          })
-        }
-      })
-    }
-    return data
-  }
-
-  function getReceivers() {
-    const data: Array<Datum> = []
-    if (contacts) {
-      contacts.forEach((contact) => {
-        if (contact.receiverTotal) {
-          data.push({
-            name: contact.name,
-            value: contact.receiverTotal,
-            color: contact.color,
-          })
-        }
-      })
-    }
-    return data
-  }
-
   return (
     <>
       <AppHeader title="Tree Map" />
@@ -78,17 +44,17 @@ export default function TreeMapView() {
         {contactsLoading && <Spinner color={themePrimaryColor} />}
         {contacts && isSenders && (
           <TreeMapECharts
-            data={getSenders()}
+            title="Senders"
             search="from"
-            title="Named Senders to Any Recipient"
+            data={emailSenders}
             handleClick={handleClick}
           />
         )}
         {contacts && !isSenders && (
           <TreeMapECharts
-            data={getReceivers()}
+            title="Receivers"
             search="to"
-            title="Named Receivers from Any Sender"
+            data={emailReceivers}
             handleClick={handleClick}
           />
         )}
