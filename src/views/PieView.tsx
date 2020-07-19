@@ -4,6 +4,7 @@ import { SafeAreaView, StyleSheet } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
 import PieECharts from '../components/ECharts/PieECharts'
+import PieVictory from '../components/Victory/PieVictory'
 import { fetchAndCache, getEmailReceivers, getEmailSenders } from './../store'
 import { RootState } from './../store/types'
 
@@ -12,6 +13,7 @@ import { RootState } from './../store/types'
 export default function PieView() {
   const dispatch = useDispatch()
   const [isSenders, setIsSenders] = useState(true)
+  const [chartLib, setChartLib] = useState('ECharts')
   const contactsLoading = useSelector(
     (state: RootState) => state.contactsLoading
   )
@@ -35,16 +37,12 @@ export default function PieView() {
     // history.push('/SearchView')
   }
 
-  function handleSendersReceivers(value: string) {
-    setIsSenders(value === 'Senders')
-  }
-
   return (
     <>
       <AppHeader title="Pie" />
       <SafeAreaView style={styles.container}>
         {contactsLoading && <Spinner color={themePrimaryColor} />}
-        {contacts && isSenders && (
+        {chartLib === 'ECharts' && contacts && isSenders && (
           <PieECharts
             title="Senders"
             search="from"
@@ -52,7 +50,7 @@ export default function PieView() {
             handleClick={handleClick}
           />
         )}
-        {contacts && !isSenders && (
+        {chartLib === 'ECharts' && contacts && !isSenders && (
           <PieECharts
             title="Receivers"
             search="to"
@@ -60,12 +58,22 @@ export default function PieView() {
             handleClick={handleClick}
           />
         )}
+        {chartLib === 'Victory' && contacts && !isSenders && <PieVictory />}
         <Form>
           <Picker
             note
             mode="dropdown"
+            selectedValue={chartLib}
+            onValueChange={(value) => setChartLib(value)}
+          >
+            <Picker.Item label="ECharts" value="ECharts" />
+            <Picker.Item label="Victory" value="Victory" />
+          </Picker>
+          <Picker
+            note
+            mode="dropdown"
             selectedValue={isSenders ? 'Senders' : 'Receivers'}
-            onValueChange={handleSendersReceivers}
+            onValueChange={(value) => setIsSenders(value === 'Senders')}
           >
             <Picker.Item label="Senders" value="Senders" />
             <Picker.Item label="Receivers" value="Receivers" />
