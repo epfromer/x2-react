@@ -37,11 +37,7 @@ export default function PolarVictory({ search, data, handleClick }: Props) {
 
   return (
     <View style={styles.container}>
-      <VictoryChart
-        polar
-        padding={{ left: 50, right: 50 }}
-        containerComponent={<VictoryZoomContainer />}
-      >
+      <VictoryChart polar containerComponent={<VictoryZoomContainer />}>
         <VictoryPolarAxis
           dependentAxis
           style={{
@@ -103,6 +99,5 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f5fcff',
   },
 })

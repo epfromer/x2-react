@@ -6,8 +6,6 @@ import { EmailXferedDatum, RootState } from '../../store/types'
 
 // https://formidable.com/open-source/victory/docs/victory-bar
 
-const chartHeight = 440
-
 interface Props {
   title: string
   search: string
@@ -34,10 +32,7 @@ export default function BarVictory({ search, data, handleClick }: Props) {
 
   return (
     <View style={styles.container}>
-      <VictoryChart
-        height={chartHeight}
-        padding={{ left: 125, right: 10, top: 30, bottom: 20 }}
-      >
+      <VictoryChart padding={{ left: 125, right: 10, top: 30, bottom: 20 }}>
         <VictoryAxis
           style={{
             tickLabels: {
@@ -58,7 +53,6 @@ export default function BarVictory({ search, data, handleClick }: Props) {
           }}
         />
         <VictoryBar
-          barWidth={60}
           animate={{
             duration: 2000,
             onLoad: { duration: 1000 },
@@ -100,6 +94,5 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f5fcff',
   },
 })
