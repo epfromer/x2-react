@@ -1,12 +1,15 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import { useSelector } from 'react-redux'
-import { VictoryAxis, VictoryBar, VictoryChart } from 'victory-native'
+import {
+  VictoryBar,
+  VictoryChart,
+  VictoryPolarAxis,
+  VictoryZoomContainer,
+} from 'victory-native'
 import { EmailXferedDatum, RootState } from '../../store/types'
 
-// https://formidable.com/open-source/victory/docs/victory-bar
-
-const chartHeight = 440
+// https://formidable.com/open-source/victory/docs/victory-polar-axis
 
 interface Props {
   title: string
@@ -15,7 +18,7 @@ interface Props {
   handleClick: (search: string, name: string) => void
 }
 
-export default function BarVictory({ search, data, handleClick }: Props) {
+export default function PolarVictory({ search, data, handleClick }: Props) {
   const darkMode = useSelector((state: RootState) => state.darkMode)
 
   interface Datum {
@@ -35,19 +38,11 @@ export default function BarVictory({ search, data, handleClick }: Props) {
   return (
     <View style={styles.container}>
       <VictoryChart
-        height={chartHeight}
-        padding={{ left: 125, right: 10, top: 30, bottom: 20 }}
+        polar
+        padding={{ left: 50, right: 50 }}
+        containerComponent={<VictoryZoomContainer />}
       >
-        <VictoryAxis
-          style={{
-            tickLabels: {
-              fill: darkMode ? 'white' : 'black',
-              fontSize: 15,
-              padding: 10,
-            },
-          }}
-        />
-        <VictoryAxis
+        <VictoryPolarAxis
           dependentAxis
           style={{
             tickLabels: {
@@ -57,8 +52,17 @@ export default function BarVictory({ search, data, handleClick }: Props) {
             },
           }}
         />
+        <VictoryPolarAxis
+          labelPlacement="perpendicular"
+          style={{
+            tickLabels: {
+              fill: darkMode ? 'white' : 'black',
+              fontSize: 15,
+              padding: 1,
+            },
+          }}
+        />
         <VictoryBar
-          barWidth={60}
           animate={{
             duration: 2000,
             onLoad: { duration: 1000 },
@@ -80,8 +84,7 @@ export default function BarVictory({ search, data, handleClick }: Props) {
               },
             },
           ]}
-          horizontal
-          data={data.reverse()}
+          data={data}
           x="name"
           y="value"
           style={{

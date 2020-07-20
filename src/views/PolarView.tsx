@@ -4,12 +4,14 @@ import { SafeAreaView, StyleSheet } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
 import PolarECharts from '../components/ECharts/PolarECharts'
+import PolarVictory from '../components/Victory/PolarVictory'
 import { fetchAndCache, getEmailReceivers, getEmailSenders } from './../store'
 import { RootState } from './../store/types'
 
 export default function PolarView() {
   const dispatch = useDispatch()
   const [isSenders, setIsSenders] = useState(true)
+  const [chartLib, setChartLib] = useState('ECharts')
   const themePrimaryColor = useSelector(
     (state: RootState) => state.themePrimaryColor
   )
@@ -33,40 +35,73 @@ export default function PolarView() {
     // history.push('/SearchView')
   }
 
-  function handleSendersReceivers(value: string) {
-    setIsSenders(value === 'Senders')
-  }
-
   return (
     <>
       <AppHeader title="Polar" />
       <SafeAreaView style={styles.container}>
         {contactsLoading && <Spinner color={themePrimaryColor} />}
-        {contacts && isSenders && (
-          <PolarECharts
-            title="Senders"
-            search="from"
-            data={emailSenders}
-            handleClick={handleClick}
-          />
-        )}
-        {contacts && !isSenders && (
-          <PolarECharts
-            title="Receivers"
-            search="to"
-            data={emailReceivers}
-            handleClick={handleClick}
-          />
+        {contacts && (
+          <>
+            {chartLib === 'ECharts' && (
+              <>
+                {isSenders && (
+                  <PolarECharts
+                    title="Senders"
+                    search="from"
+                    data={emailSenders}
+                    handleClick={handleClick}
+                  />
+                )}
+                {!isSenders && (
+                  <PolarECharts
+                    title="Receivers"
+                    search="to"
+                    data={emailReceivers}
+                    handleClick={handleClick}
+                  />
+                )}
+              </>
+            )}
+            {chartLib === 'Victory' && (
+              <>
+                {isSenders && (
+                  <PolarVictory
+                    title="Senders"
+                    search="from"
+                    data={emailSenders}
+                    handleClick={handleClick}
+                  />
+                )}
+                {!isSenders && (
+                  <PolarVictory
+                    title="Receivers"
+                    search="to"
+                    data={emailReceivers}
+                    handleClick={handleClick}
+                  />
+                )}
+              </>
+            )}
+          </>
         )}
         <Form>
           <Picker
             note
             mode="dropdown"
             selectedValue={isSenders ? 'Senders' : 'Receivers'}
-            onValueChange={handleSendersReceivers}
+            onValueChange={(value) => setIsSenders(value === 'Senders')}
           >
             <Picker.Item label="Senders" value="Senders" />
             <Picker.Item label="Receivers" value="Receivers" />
+          </Picker>
+          <Picker
+            note
+            mode="dropdown"
+            selectedValue={chartLib}
+            onValueChange={(value) => setChartLib(value)}
+          >
+            <Picker.Item label="ECharts" value="ECharts" />
+            <Picker.Item label="Victory" value="Victory" />
           </Picker>
         </Form>
       </SafeAreaView>

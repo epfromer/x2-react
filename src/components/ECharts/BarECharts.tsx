@@ -1,5 +1,4 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
 import { ECharts } from 'react-native-echarts-wrapper'
 import { useSelector } from 'react-redux'
 import { EmailXferedDatum, RootState } from '../../store/types'
@@ -85,12 +84,3 @@ export default function BarECharts({ search, data, handleClick }: Props) {
     />
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#f5fcff',
-  },
-})

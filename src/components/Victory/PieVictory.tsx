@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux'
 import { VictoryPie } from 'victory-native'
 import { EmailXferedDatum, RootState } from '../../store/types'
 
+// https://formidable.com/open-source/victory/docs/victory-pie
+
 interface Props {
   title: string
   search: string
