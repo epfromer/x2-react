@@ -2,6 +2,8 @@ import { createDrawerNavigator } from '@react-navigation/drawer'
 import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 import 'react-native-gesture-handler'
+import { Provider } from 'react-redux'
+import store, { fetchAndCache } from './src/store'
 import BarView from './src/views/BarView'
 import ChordView from './src/views/ChordView'
 import DashboardView from './src/views/DashboardView'
@@ -13,8 +15,6 @@ import SearchView from './src/views/SearchView'
 import TreeMapView from './src/views/TreeMapView'
 import VolumeTimelineView from './src/views/VolumeTimelineView'
 import WordCloudView from './src/views/WordCloudView'
-import store, { fetchAndCache } from './src/store'
-import { Provider } from 'react-redux'
 
 const Drawer = createDrawerNavigator()
 

@@ -126,3 +126,7 @@ export function fetchAndCache(
       console.error('fetch error', error)
     })
 }
+
+export function setOrientation() {
+  
+}

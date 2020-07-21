@@ -95,6 +95,7 @@ export interface RootState {
   darkMode: boolean
   themePrimaryColor: string
   themeSecondaryColor: string
+  orientation: string
 }
 
 export interface EmailXferedDatum {

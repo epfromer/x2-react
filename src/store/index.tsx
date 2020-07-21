@@ -51,6 +51,7 @@ const initialState: RootState = {
   darkMode: false,
   themePrimaryColor: '#2196f3',
   themeSecondaryColor: '#f50057',
+  orientation: 'portrait',
 
   // // app settings
   // darkMode: localStorage.getItem('darkMode') === 'true' ? true : false,
