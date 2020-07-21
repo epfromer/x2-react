@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { useSelector } from 'react-redux'
 import { VictoryAxis, VictoryBar, VictoryChart } from 'victory-native'
@@ -15,6 +15,7 @@ interface Props {
 
 export default function BarVictory({ search, data, handleClick }: Props) {
   const darkMode = useSelector((state: RootState) => state.darkMode)
+  const [orientation, setOrientation] = useState('portrait')
 
   interface Datum {
     x: string
@@ -31,14 +32,28 @@ export default function BarVictory({ search, data, handleClick }: Props) {
   )
 
   return (
-    <View style={styles.container}>
-      <VictoryChart padding={{ left: 125, right: 10, top: 30, bottom: 20 }}>
+    <View
+      style={styles.container}
+      onLayout={({ nativeEvent }: any) =>
+        setOrientation(
+          nativeEvent.layout.width < nativeEvent.layout.height
+            ? 'portrait'
+            : 'landscape'
+        )
+      }
+    >
+      <VictoryChart
+        padding={
+          orientation === 'portrait'
+            ? { left: 125, right: 10, top: 30, bottom: 20 }
+            : { left: 90, top: 60, right: 0, bottom: 50 }
+        }
+      >
         <VictoryAxis
           style={{
             tickLabels: {
               fill: darkMode ? 'white' : 'black',
-              fontSize: 15,
-              padding: 10,
+              fontSize: 10,
             },
           }}
         />
@@ -47,8 +62,7 @@ export default function BarVictory({ search, data, handleClick }: Props) {
           style={{
             tickLabels: {
               fill: darkMode ? 'white' : 'black',
-              fontSize: 15,
-              padding: 1,
+              fontSize: 10,
             },
           }}
         />

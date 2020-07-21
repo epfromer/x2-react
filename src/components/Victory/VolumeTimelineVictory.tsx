@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import { Dimensions, StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import { useSelector } from 'react-redux'
 import {
   VictoryAxis,
-  VictoryBrushContainer,
   VictoryChart,
   VictoryLine,
   VictoryZoomContainer,
