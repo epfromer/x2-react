@@ -31,7 +31,7 @@ export default function NetworkGraphView() {
 
   return (
     <>
-      <AppHeader title="Pie" />
+      <AppHeader title="Network Graph" />
       <SafeAreaView style={styles.container}>
         {contactsLoading && <Spinner color={themePrimaryColor} />}
         {!contactsLoading && (
