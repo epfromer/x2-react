@@ -34,6 +34,11 @@ const App: () => React.ReactNode = () => {
             options={{ title: 'Dashboard' }}
           />
           <Drawer.Screen
+            name="SearchView"
+            component={SearchView}
+            options={{ title: 'Search' }}
+          />
+          <Drawer.Screen
             name="ChordView"
             component={ChordView}
             options={{ title: 'Chord' }}
@@ -77,11 +82,6 @@ const App: () => React.ReactNode = () => {
             name="PieView"
             component={PieView}
             options={{ title: 'Pie' }}
-          />
-          <Drawer.Screen
-            name="SearchView"
-            component={SearchView}
-            options={{ title: 'Search' }}
           />
         </Drawer.Navigator>
       </NavigationContainer>

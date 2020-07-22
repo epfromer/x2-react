@@ -27,7 +27,7 @@ const initialState: RootState = {
 
   // email list
   emailListPage: 0,
-  emailListItemsPerPage: 10,
+  emailListItemsPerPage: 20,
 
   // query
   querySort: 'sent',
