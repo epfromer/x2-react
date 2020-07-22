@@ -2,6 +2,7 @@ import _ from 'lodash'
 import store from './'
 import { Email, RootState } from './types'
 import { REACT_APP_EMAIL_SERVER } from './env'
+import { EMAIL_LIST_PAGE_LENGTH } from '../store/constants'
 
 // actions, aka async mutations
 
@@ -24,8 +25,8 @@ export const saveAppSettings = () => ({ type: 'saveAppSettings' })
 function makeQueryObj(): any {
   const state: RootState = store.getState()
   const query: any = {
-    skip: state.emailListPage * state.emailListItemsPerPage,
-    limit: state.emailListItemsPerPage,
+    skip: state.emailListPage * EMAIL_LIST_PAGE_LENGTH,
+    limit: EMAIL_LIST_PAGE_LENGTH,
     sort: state.querySort,
     order: state.queryOrder,
   }
@@ -127,6 +128,4 @@ export function fetchAndCache(
     })
 }
 
-export function setOrientation() {
-  
-}
+export function setOrientation() {}

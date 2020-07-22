@@ -12,16 +12,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
 import { RootState } from '../store/types'
 import { fetchAndCache } from './../store'
-import { MAX_FROM_LENGTH } from './../store/constants'
+import { EMAIL_LIST_PAGE_LENGTH, MAX_FROM_LENGTH } from './../store/constants'
+
+// TODO - VirtualizedList: You have a large list that is slow to update - make sure your renderItem function renders components that follow React performance best practices like PureComponent, shouldComponentUpdate, etc. {"contentLength": 3030, "dt": 1195, "prevDt": 5812}
 
 export default function SearchView() {
   const dispatch = useDispatch()
   const emails = useSelector((state: RootState) => state.emails)
   const totalEmails = useSelector((state: RootState) => state.totalEmails)
   const emailListPage = useSelector((state: RootState) => state.emailListPage)
-  const emailListItemsPerPage = useSelector(
-    (state: RootState) => state.emailListItemsPerPage
-  )
 
   const maxString = (s: string, maxLen: number): string => {
     if (s.length > maxLen) {
@@ -52,7 +51,7 @@ export default function SearchView() {
   )
 
   const hasMore = () =>
-    (emailListPage + 1) * emailListItemsPerPage < totalEmails
+    (emailListPage + 1) * EMAIL_LIST_PAGE_LENGTH < totalEmails
 
   const handleLoadMore = () => {
     if (hasMore()) {
@@ -76,7 +75,7 @@ export default function SearchView() {
             keyExtractor={(item) => item.id}
             onEndReached={handleLoadMore}
             onEndReachedThreshold={0.5}
-            initialNumToRender={10}
+            initialNumToRender={EMAIL_LIST_PAGE_LENGTH}
           />
         )}
       </SafeAreaView>

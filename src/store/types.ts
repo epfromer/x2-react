@@ -76,7 +76,6 @@ export interface RootState {
   emailsLoading: false
   totalEmails: number
   emailListPage: number
-  emailListItemsPerPage: number
   querySort: string
   queryOrder: number
   sent: string

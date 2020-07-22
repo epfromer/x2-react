@@ -27,7 +27,6 @@ const initialState: RootState = {
 
   // email list
   emailListPage: 0,
-  emailListItemsPerPage: 20,
 
   // query
   querySort: 'sent',
@@ -110,7 +109,6 @@ function reducer(state: RootState = initialState, action: Action) {
     case 'clearSearch': {
       const s = _.cloneDeep(state)
       s.emailListPage = 0
-      s.emailListItemsPerPage = 10
       s.querySort = 'sent'
       s.queryOrder = 1
       s.sent = ''
