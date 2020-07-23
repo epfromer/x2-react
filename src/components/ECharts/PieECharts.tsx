@@ -55,14 +55,6 @@ export default function PieECharts({
       onData={onData}
       additionalCode={`chart.on('click', p => sendData(p.data.name));`}
       option={{
-        title: {
-          text: title,
-          left: 'center',
-          top: 20,
-          textStyle: {
-            color: darkMode ? 'white' : 'black',
-          },
-        },
         tooltip: {
           trigger: 'item',
           formatter: '{b}: {c} ({d}%)',

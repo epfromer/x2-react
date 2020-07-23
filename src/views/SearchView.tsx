@@ -1,3 +1,4 @@
+import { Spinner } from 'native-base'
 import React from 'react'
 import {
   FlatList,
@@ -24,6 +25,10 @@ export default function SearchView({ navigation }: Props) {
   const emails = useSelector((state: RootState) => state.emails)
   const totalEmails = useSelector((state: RootState) => state.totalEmails)
   const emailListPage = useSelector((state: RootState) => state.emailListPage)
+  const emailsLoading = useSelector((state: RootState) => state.emailsLoading)
+  const themePrimaryColor = useSelector(
+    (state: RootState) => state.themePrimaryColor
+  )
 
   const maxString = (s: string, maxLen: number): string => {
     if (s.length > maxLen) {
@@ -71,6 +76,11 @@ export default function SearchView({ navigation }: Props) {
     <>
       <AppHeader title="Search" />
       <SafeAreaView style={styles.container}>
+        {emailsLoading && (
+          <View style={styles.loading}>
+            <Spinner color={themePrimaryColor} />
+          </View>
+        )}
         {emails && (
           <FlatList
             data={emails}
@@ -107,5 +117,14 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 15,
+  },
+  loading: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 })

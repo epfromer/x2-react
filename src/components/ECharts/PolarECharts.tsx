@@ -40,13 +40,6 @@ export default function PolarECharts({
       onData={onData}
       additionalCode={`chart.on('click', p => sendData(p.data));`}
       option={{
-        title: {
-          text: title,
-          left: 'center',
-          textStyle: {
-            color: darkMode ? 'white' : 'black',
-          },
-        },
         tooltip: {
           trigger: 'item',
           formatter: '{b} : {c} ({d}%)',

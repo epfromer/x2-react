@@ -1,6 +1,6 @@
 import { Spinner } from 'native-base'
 import React from 'react'
-import { SafeAreaView, StyleSheet } from 'react-native'
+import { SafeAreaView, StyleSheet, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
 import NetworkGraphECharts from '../components/ECharts/NetworkGraphECharts'
@@ -33,7 +33,11 @@ export default function NetworkGraphView() {
     <>
       <AppHeader title="Network Graph" />
       <SafeAreaView style={styles.container}>
-        {contactsLoading && <Spinner color={themePrimaryColor} />}
+        {contactsLoading && (
+          <View style={styles.loading}>
+            <Spinner color={themePrimaryColor} />
+          </View>
+        )}
         {!contactsLoading && (
           <NetworkGraphECharts
             title="Email Senders to Receivers"
@@ -50,5 +54,14 @@ export default function NetworkGraphView() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  loading: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 })

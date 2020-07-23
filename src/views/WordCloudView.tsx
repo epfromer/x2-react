@@ -1,6 +1,6 @@
 import { Spinner } from 'native-base'
 import React from 'react'
-import { SafeAreaView, StyleSheet } from 'react-native'
+import { SafeAreaView, StyleSheet, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
 import { fetchAndCache } from './../store'
@@ -33,7 +33,11 @@ export default function WordCloudView() {
     <>
       <AppHeader title="Word Cloud" />
       <SafeAreaView style={styles.container}>
-        {wordCloudLoading && <Spinner color={themePrimaryColor} />}
+        {wordCloudLoading && (
+          <View style={styles.loading}>
+            <Spinner color={themePrimaryColor} />
+          </View>
+        )}
         {wordCloud && (
           <WordCloud
             title="Enron Project Names"
@@ -51,5 +55,14 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  loading: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 })

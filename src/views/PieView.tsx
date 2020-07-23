@@ -1,6 +1,6 @@
 import { Form, Picker, Spinner } from 'native-base'
 import React, { useState } from 'react'
-import { SafeAreaView, StyleSheet } from 'react-native'
+import { SafeAreaView, StyleSheet, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
 import PieECharts from '../components/ECharts/PieECharts'
@@ -41,7 +41,11 @@ export default function PieView() {
     <>
       <AppHeader title="Pie" />
       <SafeAreaView style={styles.container}>
-        {contactsLoading && <Spinner color={themePrimaryColor} />}
+        {contactsLoading && (
+          <View style={styles.loading}>
+            <Spinner color={themePrimaryColor} />
+          </View>
+        )}
         {contacts && (
           <>
             {chartLib === 'ECharts' && (
@@ -114,5 +118,14 @@ export default function PieView() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  loading: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 })
