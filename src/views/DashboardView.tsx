@@ -20,7 +20,6 @@ import {
 interface Props {
   navigation: any
 }
-
 export default function DashboardView({ navigation }: Props) {
   const makeCard = (
     image: any,

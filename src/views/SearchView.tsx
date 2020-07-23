@@ -16,7 +16,10 @@ import { EMAIL_LIST_PAGE_LENGTH, MAX_FROM_LENGTH } from './../store/constants'
 
 // TODO - VirtualizedList: You have a large list that is slow to update - make sure your renderItem function renders components that follow React performance best practices like PureComponent, shouldComponentUpdate, etc. {"contentLength": 3030, "dt": 1195, "prevDt": 5812}
 
-export default function SearchView() {
+interface Props {
+  navigation: any
+}
+export default function SearchView({ navigation }: Props) {
   const dispatch = useDispatch()
   const emails = useSelector((state: RootState) => state.emails)
   const totalEmails = useSelector((state: RootState) => state.totalEmails)
@@ -31,7 +34,7 @@ export default function SearchView() {
   }
 
   const renderItem = ({ item }: any) => (
-    <TouchableOpacity onPress={() => console.log(item)}>
+    <TouchableOpacity onPress={() => navigation.navigate('EmailDetail')}>
       <View style={styles.itemContainer}>
         <View style={styles.itemTopRow}>
           <View>
@@ -97,6 +100,7 @@ const styles = StyleSheet.create({
   },
   emailFromText: {
     fontSize: 15,
+    fontWeight: 'bold',
   },
   emailSubject: {
     width: '100%',

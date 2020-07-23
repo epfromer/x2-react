@@ -15,6 +15,7 @@ import SearchView from './src/views/SearchView'
 import TreeMapView from './src/views/TreeMapView'
 import VolumeTimelineView from './src/views/VolumeTimelineView'
 import WordCloudView from './src/views/WordCloudView'
+import EmailDetailView from './src/views/EmailDetailView'
 
 const Drawer = createDrawerNavigator()
 
@@ -83,6 +84,7 @@ const App: () => React.ReactNode = () => {
             component={PieView}
             options={{ title: 'Pie' }}
           />
+          <Drawer.Screen name="EmailDetail" component={EmailDetailView} />
         </Drawer.Navigator>
       </NavigationContainer>
     </Provider>
