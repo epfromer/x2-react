@@ -39,7 +39,9 @@ export default function SearchView({ navigation }: Props) {
   }
 
   const renderItem = ({ item }: any) => (
-    <TouchableOpacity onPress={() => navigation.navigate('EmailDetail')}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate('EmailDetail', { id: item._id })}
+    >
       <View style={styles.itemContainer}>
         <View style={styles.itemTopRow}>
           <View>

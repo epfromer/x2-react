@@ -854,7 +854,7 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@highcharts/highcharts-react-native@^2.2.3":
+"@highcharts/highcharts-react-native@^2.2.2":
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/@highcharts/highcharts-react-native/-/highcharts-react-native-2.2.3.tgz#c65ed3d993d02067f4466b05d507731d16e32157"
   integrity sha512-9XEYuSwxj+17y3X2jlTW/Cum+GzbMsqkZmkRPN1emyzfWHAdygIKKIhr++OqTmgWaKCoS1GC9VDUNm1R7xEa4w==
@@ -1249,7 +1249,7 @@
     react-is "^16.13.0"
     use-subscription "^1.4.0"
 
-"@react-navigation/drawer@^5.8.6":
+"@react-navigation/drawer@^5.8.5":
   version "5.8.6"
   resolved "https://registry.yarnpkg.com/@react-navigation/drawer/-/drawer-5.8.6.tgz#390f4dc267f833cc4f5f12ce535a916ad295561f"
   integrity sha512-MuD/aIHQ3dNxB9dDzuW5B7X9e3o26I9bsjO0IB3I4MtwaQ3M4QqpBPCwWv3u35SQ7JMztnkc/bZ6WYRm5yrF4Q==
@@ -1257,7 +1257,7 @@
     color "^3.1.2"
     react-native-iphone-x-helper "^1.2.1"
 
-"@react-navigation/native@^5.7.1":
+"@react-navigation/native@^5.7.0":
   version "5.7.1"
   resolved "https://registry.yarnpkg.com/@react-navigation/native/-/native-5.7.1.tgz#5a59be6f7c1bf4cdf5e16625bf59688aeab808f8"
   integrity sha512-dhxH+CGC8YoVrjm05/gU/GeLfNpJGQO/KWyzSkEsns+nzxJ/jFZWG2uIksZym5zknJcYn9Ze7jecI7r+0SWAzA==
@@ -1369,7 +1369,7 @@
     "@types/istanbul-lib-coverage" "*"
     "@types/istanbul-lib-report" "*"
 
-"@types/jest@^26.0.6":
+"@types/jest@^26.0.5":
   version "26.0.6"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-26.0.6.tgz#b9f5ef7ba7e0e45a0c482667a0cf314f0a6ed6b3"
   integrity sha512-XhJCNf+oPyA90jyPhOT3yZo6xR8R7auyUAibzRewPwbOb649AOPXX/JSjbafcbxJrxs/+BymBmHSETM8VpGMOw==
@@ -1382,7 +1382,7 @@
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.5.tgz#dcce4430e64b443ba8945f0290fb564ad5bac6dd"
   integrity sha512-7+2BITlgjgDhH0vvwZU/HZJVyk+2XUlvxXe8dFMedNX/aMkaOq++rMAFXc0tM7ij15QaWlbdQASBR9dihi+bDQ==
 
-"@types/lodash@^4.14.158":
+"@types/lodash@^4.14.157":
   version "4.14.158"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.158.tgz#b38ea8b6fe799acd076d7a8d7ab71c26ef77f785"
   integrity sha512-InCEXJNTv/59yO4VSfuvNrZHt7eeNtWQEgnieIA+mIC+MOWM9arOWG2eQ8Vhk6NbOre6/BidiXhkZYeDY9U35w==
@@ -1407,7 +1407,7 @@
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
   integrity sha512-KfRL3PuHmqQLOG+2tGpRO26Ctg+Cq1E01D2DMriKEATHgWLfeNDmq9e29Q9WIky0dQ3NPkd1mzYH8Lm936Z9qw==
 
-"@types/react-native@^0.63.2":
+"@types/react-native@^0.63.1":
   version "0.63.2"
   resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.63.2.tgz#428a4d71351ccbc31ab170b5f32477c7ce78dfd7"
   integrity sha512-oxbp084lUsZvwfdWmWxKjJAuqEraQDRf+cE/JgwmrHQMguSrmgIHZ3xkeoQ5FYnW5NHIPpHudB3BbjL1Zn3vnA==
@@ -5143,12 +5143,11 @@ metro-react-native-babel-preset@0.59.0:
     "@babel/template" "^7.0.0"
     react-refresh "^0.4.0"
 
-metro-react-native-babel-preset@^0.61.0:
-  version "0.61.0"
-  resolved "https://registry.yarnpkg.com/metro-react-native-babel-preset/-/metro-react-native-babel-preset-0.61.0.tgz#4276f6a300daba5f43d6b35f30a8354f8aa093a1"
-  integrity sha512-k0j2K70YadKFFayFOtw9sbaB38LdkkJLluwqHvyl9CRAa3m7cWQ6pZbakCPrp3OWyo7dJWbP70ybOvjoDv2jwQ==
+metro-react-native-babel-preset@^0.60.0:
+  version "0.60.0"
+  resolved "https://registry.yarnpkg.com/metro-react-native-babel-preset/-/metro-react-native-babel-preset-0.60.0.tgz#9aaaeca10a04c117ea84fb18e54c44ddcaad2ab8"
+  integrity sha512-eByxCh52XWyMwh4eduzLz0HkraOX7X/tJBsOXvxhUaj8UEolxMYQWD1DO7rJbFiKfZbxRPortltDYzjJI4MpdQ==
   dependencies:
-    "@babel/core" "^7.0.0"
     "@babel/plugin-proposal-class-properties" "^7.0.0"
     "@babel/plugin-proposal-export-default-from" "^7.0.0"
     "@babel/plugin-proposal-nullish-coalescing-operator" "^7.0.0"
@@ -5481,7 +5480,7 @@ native-base-shoutem-theme@0.3.1:
     lodash "^4.17.14"
     prop-types "^15.5.10"
 
-native-base@^2.13.13:
+native-base@^2.13.12:
   version "2.13.13"
   resolved "https://registry.yarnpkg.com/native-base/-/native-base-2.13.13.tgz#431735005151f456c0faee6f00abe00b1e049dc9"
   integrity sha512-/JOCe/iqnIzto2QJBw/p/PRtJNB8G+NdLOWUYB43TZFWEk6aun1CRBQ0eJ5ibI0bL2aL2ytU2k9Wdp0HxM9Ong==
@@ -6172,7 +6171,7 @@ react-native-echarts-wrapper@^2.0.0:
   resolved "https://registry.yarnpkg.com/react-native-echarts-wrapper/-/react-native-echarts-wrapper-2.0.0.tgz#87c539841418ef900bc3e07efa8aae135d231b1d"
   integrity sha512-1PwWBuzr4lQJxiu1VtK/WNEnmmEJW2Q6uB9WOUCG4Ftua0MNQXKngeT+M1Zxlui4uHIwPGWNX5KXXEkDgO4rSw==
 
-react-native-gesture-handler@^1.7.0:
+react-native-gesture-handler@^1.6.1:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.7.0.tgz#0ef74a5ba836832e497dc49eb1ce58baa6c617e5"
   integrity sha512-1CrjJf8Z6Iz2XWzfZknYtsm2sud5Lu/pLhhokkgBIKttxqGDtetDEVFDJOTJWJyKCrUPk0X5tnWi/diSF4q++w==
@@ -6187,17 +6186,17 @@ react-native-iphone-x-helper@^1.0.3, react-native-iphone-x-helper@^1.2.1:
   resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.2.1.tgz#645e2ffbbb49e80844bb4cbbe34a126fda1e6772"
   integrity sha512-/VbpIEp8tSNNHIvstuA3Swx610whci1Zpc9mqNkqn14DkMbw+ORviln2u0XyHG1kPvvwTNGZY6QpeFwxYaSdbQ==
 
-react-native-reanimated@^1.10.1:
+react-native-reanimated@^1.9.0:
   version "1.10.1"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.10.1.tgz#82e79ae119e97b282ce53d16bc6db9765a56b22b"
   integrity sha512-j9+GOEmLLEzFpxpYOA9dSBusUHGaTJAHSJ9tIXU4IgklN7hIB5CA6ONMnm6iQ5lC/nhNFdLKag/jOgzVa+mHBQ==
   dependencies:
     fbjs "^1.0.0"
 
-react-native-safe-area-context@3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-3.1.1.tgz#9b04d1154766e6c1132030aca8f4b0336f561ccd"
-  integrity sha512-Iqb41OT5+QxFn0tpTbbHgz8+3VU/F9OH2fTeeoU7oZCzojOXQbC6sp6mN7BlsAoTKhngWoJLMcSosL58uRaLWQ==
+react-native-safe-area-context@3.0.7:
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-3.0.7.tgz#0f53de7a30d626d82936000f3f6db374ecc4b800"
+  integrity sha512-dqhRTlIFe5+P1yxitj0C9XVUxLqOmjomeqzUSSY8sNOWVjtIhEY/fl4ZKYpAVnktd8dt3zl13XmJTmRmy3d0uA==
 
 react-native-screens@^2.9.0:
   version "2.9.0"
@@ -6255,7 +6254,7 @@ react-native-word-cloud@^1.0.7:
   dependencies:
     react-native-canvas "^0.1.34"
 
-react-native@^0.63.2:
+react-native@^0.63.1:
   version "0.63.2"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.63.2.tgz#eaebf3430577b37fbd66ef228a86b3408259ef8e"
   integrity sha512-MkxHeJorUDzmQwKJrTfrFYMDRLyu9GSBpsFFMDX7X+HglVnaZi3CTzW2mRv1eIcazoseBOP2eJe+bnkyLl8Y2A==
