@@ -30,7 +30,7 @@ export default function DashboardView({ navigation }: Props) {
     return (
       <Card>
         <CardItem header>
-          <Text style={styles.cartTitle}>{title}</Text>
+          <Text style={styles.title}>{title}</Text>
         </CardItem>
         <CardItem cardBody>
           <Image
@@ -120,7 +120,7 @@ export default function DashboardView({ navigation }: Props) {
 }
 
 const styles = StyleSheet.create({
-  cartTitle: {
+  title: {
     fontSize: 20,
   },
 })

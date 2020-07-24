@@ -101,7 +101,6 @@ export default function SearchView({ navigation }: Props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
   },
   itemContainer: {
     margin: 5,
