@@ -29,22 +29,19 @@ export default function DashboardView({ navigation }: Props) {
   ) => {
     return (
       <Card>
-        <CardItem header>
+        <CardItem header button onPress={() => navigation.navigate(view)}>
           <Text style={styles.title}>{title}</Text>
         </CardItem>
-        <CardItem cardBody>
+        <CardItem cardBody button onPress={() => navigation.navigate(view)}>
           <Image
             source={image}
             style={{ height: 200, width: null, flex: 1 } as any}
           />
         </CardItem>
-        <CardItem>
+        <CardItem button onPress={() => navigation.navigate(view)}>
           <Body>
             <Text>{description}</Text>
           </Body>
-        </CardItem>
-        <CardItem footer button onPress={() => navigation.navigate(view)}>
-          <Text>{'Explore ' + title}</Text>
         </CardItem>
       </Card>
     )

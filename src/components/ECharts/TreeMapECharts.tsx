@@ -12,13 +12,7 @@ interface Props {
   data: any
   handleClick: (search: string, name: string) => void
 }
-
-export default function TreeMapECharts({
-  title,
-  search,
-  data,
-  handleClick,
-}: Props) {
+export default function TreeMapECharts({ search, data, handleClick }: Props) {
   const darkMode = useSelector((state: RootState) => state.darkMode)
   const chartData: Array<any> = data.map((datum: any) => ({
     name: datum.name,
@@ -28,14 +22,9 @@ export default function TreeMapECharts({
     },
   }))
 
-  function onData(name: string) {
-    console.log(name)
-    // data[0].handleClick(search, name)
-  }
-
   return (
     <ECharts
-      onData={onData}
+      onData={(name: string) => handleClick(search, name)}
       additionalCode={`chart.on('click', p => sendData(p.data.name));`}
       option={{
         tooltip: {

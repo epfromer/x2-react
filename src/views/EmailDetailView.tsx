@@ -61,10 +61,6 @@ export default function EmailDetailView({ route, navigation }: Props) {
     return s
   }
 
-  function displayText(str: string, className: any | undefined = undefined) {
-    return <Text style={className}>{str}</Text>
-  }
-
   return (
     <>
       <AppHeader title="Email Detail" />
@@ -76,23 +72,37 @@ export default function EmailDetailView({ route, navigation }: Props) {
         )}
         {email && (
           <ScrollView contentInsetAdjustmentBehavior="automatic">
-            {displayText(email.subject, styles.title)}
-            {displayText(`Sent: ${email.sent}`, styles.fields)}
-            {displayText(
-              email.fromContact
-                ? `From: ${email.from} (named contact: ${email.fromContact})`
-                : `From: ${email.from}`,
-              styles.fields
+            <Text style={styles.title}>{email.subject}</Text>
+            <Text style={styles.fieldBold}>
+              Sent: <Text style={styles.fields}>{email.sent}</Text>
+            </Text>
+            {email.fromContact ? (
+              <Text style={styles.fieldBold}>
+                From: <Text style={styles.fields}>{email.from}</Text> (named
+                contact: <Text style={styles.fields}>{email.fromContact}</Text>)
+              </Text>
+            ) : (
+              <Text style={styles.fieldBold}>
+                From: <Text style={styles.fields}>{email.from}</Text>
+              </Text>
             )}
-            {displayText(
-              email.toContact
-                ? `To: ${email.to} (named contact: ${email.toContact})`
-                : `To: ${email.to}`,
-              styles.fields
+            {email.toContact ? (
+              <Text style={styles.fieldBold}>
+                To: <Text style={styles.fields}>{email.to}</Text> (named
+                contact: <Text style={styles.fields}>{email.toContact}</Text>)
+              </Text>
+            ) : (
+              <Text style={styles.fieldBold}>
+                To: <Text style={styles.fields}>{email.to}</Text>
+              </Text>
             )}
-            {displayText(`CC: ${email.cc}`, styles.fields)}
-            {displayText(`BCC: ${email.bcc}`, styles.fields)}
-            {displayText(email.body, styles.body)}
+            <Text style={styles.fieldBold}>
+              CC: <Text style={styles.fields}>{email.cc}</Text>
+            </Text>
+            <Text style={styles.fieldBold}>
+              BCC: <Text style={styles.fields}>{email.bcc}</Text>
+            </Text>
+            <Text style={styles.body}>{email.body}</Text>
           </ScrollView>
         )}
       </SafeAreaView>
@@ -112,6 +122,13 @@ const styles = StyleSheet.create({
     fontSize: 15,
     paddingLeft: 10,
     paddingRight: 10,
+    fontWeight: 'normal',
+  },
+  fieldBold: {
+    fontSize: 15,
+    paddingLeft: 10,
+    paddingRight: 10,
+    fontWeight: 'bold',
   },
   body: {
     fontSize: 15,

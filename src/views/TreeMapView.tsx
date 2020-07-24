@@ -7,7 +7,10 @@ import TreeMapECharts from '../components/ECharts/TreeMapECharts'
 import { RootState } from '../store/types'
 import { fetchAndCache, getEmailReceivers, getEmailSenders } from './../store'
 
-export default function TreeMapView() {
+interface Props {
+  navigation: any
+}
+export default function TreeMapView({ navigation }: Props) {
   const dispatch = useDispatch()
   const [isSenders, setIsSenders] = useState(true)
   const themePrimaryColor = useSelector(
@@ -30,7 +33,7 @@ export default function TreeMapView() {
       value: `(${value})`,
     })
     fetchAndCache('emails')
-    // history.push('/SearchView')
+    navigation.navigate('SearchView')
   }
 
   function handleSendersReceivers(value: string) {
