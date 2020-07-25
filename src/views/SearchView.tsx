@@ -1,8 +1,12 @@
 import {
   Body,
   Button,
+  Form,
   Header,
   Icon,
+  Input,
+  Item,
+  Label,
   Left,
   Right,
   Spinner,
@@ -16,12 +20,14 @@ import {
   Text,
   TouchableOpacity,
   View,
+  ScrollView,
 } from 'react-native'
 import Modal from 'react-native-modal'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../store/types'
 import { fetchAndCache } from './../store'
 import { EMAIL_LIST_PAGE_LENGTH, MAX_FROM_LENGTH } from './../store/constants'
+import { Col, Row, Grid } from 'react-native-easy-grid'
 
 // TODO - VirtualizedList: You have a large list that is slow to update - make sure your renderItem function renders components that follow React performance best practices like PureComponent, shouldComponentUpdate, etc. {"contentLength": 3030, "dt": 1195, "prevDt": 5812}
 
@@ -62,18 +68,72 @@ export default function SearchView({ route, navigation }: Props) {
 
   function SearchDlg() {
     // https://www.npmjs.com/package/react-native-modal
+    // https://www.npmjs.com/package/react-native-easy-grid
+
+    let allText: string | undefined
+    let sent: string | undefined
+    let from: string | undefined
+    let to: string | undefined
+    let subject: string | undefined
+
+    function doQuery() {
+      console.log(allText)
+      setDlgOpen(false)
+    }
 
     return (
       <Modal
         isVisible={dlgOpen}
+        backdropOpacity={0.95}
+        backdropColor="white"
         supportedOrientations={['portrait', 'landscape']}
       >
-        <View style={styles.container}>
-          <Text>Hello!</Text>
-          <Button onPress={() => setDlgOpen(false)}>
-            <Text>Click Me!</Text>
-          </Button>
-        </View>
+        <ScrollView>
+          <Form>
+            <Item floatingLabel>
+              <Label>Filter (all text fields)</Label>
+              <Input onChangeText={(text) => (allText = text)} />
+            </Item>
+            <Item floatingLabel>
+              <Label>Filter Sent</Label>
+              <Input />
+            </Item>
+            <Item floatingLabel>
+              <Label>Filter From</Label>
+              <Input />
+            </Item>
+            <Item floatingLabel>
+              <Label>Filter To</Label>
+              <Input onChangeText={(text) => console.log(text)} />
+            </Item>
+            <Item floatingLabel>
+              <Label>Filter Subject</Label>
+              <Input />
+            </Item>
+            <Grid>
+              <Col>
+                <Button
+                  block
+                  small
+                  style={styles.button}
+                  onPress={() => setDlgOpen(false)}
+                >
+                  <Text>Cancel</Text>
+                </Button>
+              </Col>
+              <Col>
+                <Button
+                  block
+                  small
+                  style={styles.button}
+                  onPress={() => doQuery()}
+                >
+                  <Text>Search</Text>
+                </Button>
+              </Col>
+            </Grid>
+          </Form>
+        </ScrollView>
       </Modal>
     )
   }
@@ -150,6 +210,14 @@ export default function SearchView({ route, navigation }: Props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  dlgContainer: {
+    flex: 1,
+    justifyContent: 'space-between',
+    flexDirection: 'column',
+  },
+  button: {
+    margin: 15,
   },
   itemContainer: {
     margin: 5,

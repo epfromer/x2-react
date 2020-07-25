@@ -71,7 +71,7 @@ export default function EmailDetailView({ route, navigation }: Props) {
           </View>
         )}
         {email && (
-          <ScrollView contentInsetAdjustmentBehavior="automatic">
+          <ScrollView>
             <Text style={styles.title}>{email.subject}</Text>
             <Text style={styles.fieldBold}>
               Sent: <Text style={styles.fields}>{email.sent}</Text>

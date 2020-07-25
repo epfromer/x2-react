@@ -50,7 +50,7 @@ export default function DashboardView({ navigation }: Props) {
   return (
     <>
       <AppHeader title="Dashboard" />
-      <ScrollView contentInsetAdjustmentBehavior="automatic">
+      <ScrollView>
         {makeCard(
           CHORD,
           'Chord',

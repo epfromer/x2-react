@@ -7,7 +7,7 @@ export default function EventTimelineView() {
   return (
     <>
       <AppHeader title="Event Timeline" />
-      <ScrollView contentInsetAdjustmentBehavior="automatic">
+      <ScrollView>
         <Card>
           <CardItem header>
             <Text>EventTimelineView</Text>
