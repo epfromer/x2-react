@@ -1,4 +1,13 @@
-import { Spinner } from 'native-base'
+import {
+  Body,
+  Button,
+  Header,
+  Icon,
+  Left,
+  Right,
+  Spinner,
+  Title,
+} from 'native-base'
 import React, { useState } from 'react'
 import {
   FlatList,
@@ -13,7 +22,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../store/types'
 import { fetchAndCache } from './../store'
 import { EMAIL_LIST_PAGE_LENGTH, MAX_FROM_LENGTH } from './../store/constants'
-import { Body, Button, Header, Icon, Left, Right, Title } from 'native-base'
 
 // TODO - VirtualizedList: You have a large list that is slow to update - make sure your renderItem function renders components that follow React performance best practices like PureComponent, shouldComponentUpdate, etc. {"contentLength": 3030, "dt": 1195, "prevDt": 5812}
 
@@ -53,8 +61,13 @@ export default function SearchView({ route, navigation }: Props) {
   }
 
   function SearchDlg() {
+    // https://www.npmjs.com/package/react-native-modal
+
     return (
-      <Modal isVisible={dlgOpen}>
+      <Modal
+        isVisible={dlgOpen}
+        supportedOrientations={['portrait', 'landscape']}
+      >
         <View style={styles.container}>
           <Text>Hello!</Text>
           <Button onPress={() => setDlgOpen(false)}>
