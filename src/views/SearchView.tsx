@@ -100,7 +100,10 @@ export default function SearchView({ route, navigation }: Props) {
           <Form>
             <Item floatingLabel>
               <Label>Filter (all text fields)</Label>
-              <Input onChangeText={(text) => (newAllText = text)} />
+              <Input
+                onChangeText={(text) => (newAllText = text)}
+                value={allText}
+              />
             </Item>
             <Item floatingLabel>
               <Label>Filter Sent</Label>
