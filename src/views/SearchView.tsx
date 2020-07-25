@@ -1,5 +1,5 @@
 import { Spinner } from 'native-base'
-import React from 'react'
+import React, { useState } from 'react'
 import {
   FlatList,
   SafeAreaView,
@@ -8,19 +8,22 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
+import Modal from 'react-native-modal'
 import { useDispatch, useSelector } from 'react-redux'
-import AppHeader from '../components/AppHeader'
 import { RootState } from '../store/types'
 import { fetchAndCache } from './../store'
 import { EMAIL_LIST_PAGE_LENGTH, MAX_FROM_LENGTH } from './../store/constants'
+import { Body, Button, Header, Icon, Left, Right, Title } from 'native-base'
 
 // TODO - VirtualizedList: You have a large list that is slow to update - make sure your renderItem function renders components that follow React performance best practices like PureComponent, shouldComponentUpdate, etc. {"contentLength": 3030, "dt": 1195, "prevDt": 5812}
 
 interface Props {
+  route: any
   navigation: any
 }
-export default function SearchView({ navigation }: Props) {
+export default function SearchView({ route, navigation }: Props) {
   const dispatch = useDispatch()
+  const [dlgOpen, setDlgOpen] = useState(route.params.openDialog)
   const emails = useSelector((state: RootState) => state.emails)
   const totalEmails = useSelector((state: RootState) => state.totalEmails)
   const emailListPage = useSelector((state: RootState) => state.emailListPage)
@@ -28,6 +31,39 @@ export default function SearchView({ navigation }: Props) {
   const themePrimaryColor = useSelector(
     (state: RootState) => state.themePrimaryColor
   )
+
+  function AppHeader() {
+    return (
+      <Header>
+        <Left>
+          <Button transparent onPress={() => navigation.openDrawer()}>
+            <Icon name="menu" />
+          </Button>
+        </Left>
+        <Body>
+          <Title>Search</Title>
+        </Body>
+        <Right>
+          <Button transparent onPress={() => setDlgOpen(true)}>
+            <Icon name="search" />
+          </Button>
+        </Right>
+      </Header>
+    )
+  }
+
+  function SearchDlg() {
+    return (
+      <Modal isVisible={dlgOpen}>
+        <View style={styles.container}>
+          <Text>Hello!</Text>
+          <Button onPress={() => setDlgOpen(false)}>
+            <Text>Click Me!</Text>
+          </Button>
+        </View>
+      </Modal>
+    )
+  }
 
   const maxString = (s: string, maxLen: number): string => {
     if (s.length > maxLen) {
@@ -75,8 +111,9 @@ export default function SearchView({ navigation }: Props) {
 
   return (
     <>
-      <AppHeader title="Search" />
+      <AppHeader />
       <SafeAreaView style={styles.container}>
+        <SearchDlg />
         {emailsLoading && (
           <View style={styles.loading}>
             <Spinner color={themePrimaryColor} />

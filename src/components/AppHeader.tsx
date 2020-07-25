@@ -18,7 +18,16 @@ export default function AppHeader({ title }: Props) {
       <Body>
         <Title>{title}</Title>
       </Body>
-      <Right />
+      <Right>
+        <Button
+          transparent
+          onPress={() =>
+            navigation.navigate('SearchView', { openDialog: true })
+          }
+        >
+          <Icon name="search" />
+        </Button>
+      </Right>
     </Header>
   )
 }
