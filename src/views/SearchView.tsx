@@ -37,6 +37,7 @@ interface Props {
 }
 export default function SearchView({ route, navigation }: Props) {
   const dispatch = useDispatch()
+  const allText = useSelector((state: RootState) => state.allText)
   const [dlgOpen, setDlgOpen] = useState(route.params.openDialog)
   const emails = useSelector((state: RootState) => state.emails)
   const totalEmails = useSelector((state: RootState) => state.totalEmails)
@@ -70,14 +71,21 @@ export default function SearchView({ route, navigation }: Props) {
     // https://www.npmjs.com/package/react-native-modal
     // https://www.npmjs.com/package/react-native-easy-grid
 
-    let allText: string | undefined
+    let newAllText: string | undefined
     let sent: string | undefined
     let from: string | undefined
     let to: string | undefined
     let subject: string | undefined
 
     function doQuery() {
-      console.log(allText)
+      if (newAllText !== undefined) {
+        dispatch({
+          type: 'setReduxState',
+          key: 'allText',
+          value: newAllText,
+        })
+        fetchAndCache('emails')
+      }
       setDlgOpen(false)
     }
 
@@ -92,7 +100,7 @@ export default function SearchView({ route, navigation }: Props) {
           <Form>
             <Item floatingLabel>
               <Label>Filter (all text fields)</Label>
-              <Input onChangeText={(text) => (allText = text)} />
+              <Input onChangeText={(text) => (newAllText = text)} />
             </Item>
             <Item floatingLabel>
               <Label>Filter Sent</Label>
