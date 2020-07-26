@@ -11,7 +11,7 @@ import {
 } from 'react-native'
 import { Col, Grid } from 'react-native-easy-grid'
 import Modal from 'react-native-modal'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
 import { RootState } from '../store/types'
 import { fetchAndCache, setReduxState } from './../store'

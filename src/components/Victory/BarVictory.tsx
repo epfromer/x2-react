@@ -5,6 +5,7 @@ import { VictoryAxis, VictoryBar, VictoryChart } from 'victory-native'
 import { EmailXferedDatum, RootState } from '../../store/types'
 
 // https://formidable.com/open-source/victory/docs/victory-bar
+// TODO - https://github.com/FormidableLabs/victory-native/issues/568, events don't work on Android
 
 interface Props {
   title: string
@@ -75,8 +76,7 @@ export default function BarVictory({ search, data, handleClick }: Props) {
             {
               target: 'data',
               eventHandlers: {
-                onPress: () => {
-                  console.log('foo')
+                onPressIn: () => {
                   return [
                     {
                       mutation: (props: any) => {
