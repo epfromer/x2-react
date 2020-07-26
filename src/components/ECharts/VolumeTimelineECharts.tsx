@@ -12,25 +12,21 @@ interface Props {
   handleClick: (date: string) => void
 }
 
-export default function VolumeTimelineECharts({
-  title,
-  data,
-  handleClick,
-}: Props) {
+export default function VolumeTimelineECharts({ data, handleClick }: Props) {
   const darkMode = useSelector((state: RootState) => state.darkMode)
   const themePrimaryColor = useSelector(
     (state: RootState) => state.themePrimaryColor
   )
 
-  function onData(name: string) {
-    console.log(name)
-    // data[0].handleClick(search, name)
-  }
+  // function onData(name: string) {
+  //   console.log(name)
+  //   // data[0].handleClick(search, name)
+  // }
 
   return (
     <ECharts
-      onData={onData}
-      additionalCode={`chart.on('click', p => sendData(p.data.name));`}
+      onData={() => console.log('foo')}
+      additionalCode={`chart.on('click', p => sendData(p));`}
       option={{
         tooltip: {
           trigger: 'axis',

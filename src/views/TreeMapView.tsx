@@ -1,7 +1,7 @@
 import { Form, Picker, Spinner } from 'native-base'
 import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet, View } from 'react-native'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
 import TreeMapECharts from '../components/ECharts/TreeMapECharts'
 import { RootState } from '../store/types'
@@ -17,7 +17,6 @@ interface Props {
   navigation: any
 }
 export default function TreeMapView({ navigation }: Props) {
-  const dispatch = useDispatch()
   const [isSenders, setIsSenders] = useState(true)
   const themePrimaryColor = useSelector(
     (state: RootState) => state.themePrimaryColor

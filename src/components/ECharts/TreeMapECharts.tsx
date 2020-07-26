@@ -1,10 +1,7 @@
 import React from 'react'
 import { ECharts } from 'react-native-echarts-wrapper'
-import { useSelector } from 'react-redux'
-import { RootState } from '../../store/types'
 
 // https://www.npmjs.com/package/react-native-echarts-wrapper
-// TODO fix click handler
 
 interface Props {
   title: string
@@ -13,7 +10,6 @@ interface Props {
   handleClick: (search: string, name: string) => void
 }
 export default function TreeMapECharts({ search, data, handleClick }: Props) {
-  const darkMode = useSelector((state: RootState) => state.darkMode)
   const chartData: Array<any> = data.map((datum: any) => ({
     name: datum.name,
     value: datum.value,

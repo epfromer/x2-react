@@ -1,15 +1,18 @@
 import { Form, Picker, Spinner } from 'native-base'
 import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet, View } from 'react-native'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
 import VolumeTimelineECharts from '../components/ECharts/VolumeTimelineECharts'
 import VolumeTimelineVictory from '../components/Victory/VolumeTimelineVictory'
 import { RootState, TotalEmailSentDatum } from '../store/types'
 import { clearSearch, fetchAndCache, setReduxState } from './../store'
 
-export default function VolumeTimelineView() {
-  const dispatch = useDispatch()
+interface Props {
+  route: any
+  navigation: any
+}
+export default function VolumeTimelineView({ navigation }: Props) {
   const [chartLib, setChartLib] = useState('ECharts')
   const themePrimaryColor = useSelector(
     (state: RootState) => state.themePrimaryColor
@@ -23,7 +26,7 @@ export default function VolumeTimelineView() {
     clearSearch()
     setReduxState('sent', date)
     fetchAndCache('emails')
-    // history.push('/SearchView')
+    navigation.navigate('SearchView')
   }
 
   let data: Array<TotalEmailSentDatum> = []
