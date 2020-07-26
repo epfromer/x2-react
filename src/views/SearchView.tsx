@@ -16,18 +16,18 @@ import React, { useState } from 'react'
 import {
   FlatList,
   SafeAreaView,
+  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
-  ScrollView,
 } from 'react-native'
+import { Col, Grid } from 'react-native-easy-grid'
 import Modal from 'react-native-modal'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../store/types'
 import { fetchAndCache } from './../store'
 import { EMAIL_LIST_PAGE_LENGTH, MAX_FROM_LENGTH } from './../store/constants'
-import { Col, Row, Grid } from 'react-native-easy-grid'
 
 // TODO - VirtualizedList: You have a large list that is slow to update - make sure your renderItem function renders components that follow React performance best practices like PureComponent, shouldComponentUpdate, etc. {"contentLength": 3030, "dt": 1195, "prevDt": 5812}
 
@@ -35,10 +35,10 @@ interface Props {
   route: any
   navigation: any
 }
-export default function SearchView({ route, navigation }: Props) {
+export default function SearchView({ navigation }: Props) {
   const dispatch = useDispatch()
   const allText = useSelector((state: RootState) => state.allText)
-  const [dlgOpen, setDlgOpen] = useState(route.params.openDialog)
+  const [dlgOpen, setDlgOpen] = useState(false)
   const emails = useSelector((state: RootState) => state.emails)
   const totalEmails = useSelector((state: RootState) => state.totalEmails)
   const emailListPage = useSelector((state: RootState) => state.emailListPage)
@@ -71,14 +71,14 @@ export default function SearchView({ route, navigation }: Props) {
     // https://www.npmjs.com/package/react-native-modal
     // https://www.npmjs.com/package/react-native-easy-grid
 
-    let newAllText: string | undefined
+    const [newAllText, setNewAllText] = useState(allText)
     let sent: string | undefined
     let from: string | undefined
     let to: string | undefined
     let subject: string | undefined
 
     function doQuery() {
-      if (newAllText !== undefined) {
+      if (newAllText !== allText) {
         dispatch({
           type: 'setReduxState',
           key: 'allText',
@@ -101,8 +101,9 @@ export default function SearchView({ route, navigation }: Props) {
             <Item floatingLabel>
               <Label>Filter (all text fields)</Label>
               <Input
-                onChangeText={(text) => (newAllText = text)}
-                value={allText}
+                defaultValue={allText}
+                value={newAllText}
+                onChangeText={(text) => setNewAllText(text)}
               />
             </Item>
             <Item floatingLabel>
