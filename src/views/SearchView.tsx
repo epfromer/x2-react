@@ -1,17 +1,4 @@
-import {
-  Body,
-  Button,
-  Form,
-  Header,
-  Icon,
-  Input,
-  Item,
-  Label,
-  Left,
-  Right,
-  Spinner,
-  Title,
-} from 'native-base'
+import { Button, Form, Input, Item, Label, Spinner } from 'native-base'
 import React, { useState } from 'react'
 import {
   FlatList,
@@ -25,6 +12,7 @@ import {
 import { Col, Grid } from 'react-native-easy-grid'
 import Modal from 'react-native-modal'
 import { useDispatch, useSelector } from 'react-redux'
+import AppHeader from '../components/AppHeader'
 import { RootState } from '../store/types'
 import { fetchAndCache } from './../store'
 import { EMAIL_LIST_PAGE_LENGTH, MAX_FROM_LENGTH } from './../store/constants'
@@ -46,26 +34,6 @@ export default function SearchView({ navigation }: Props) {
   const themePrimaryColor = useSelector(
     (state: RootState) => state.themePrimaryColor
   )
-
-  function AppHeader() {
-    return (
-      <Header>
-        <Left>
-          <Button transparent onPress={() => navigation.openDrawer()}>
-            <Icon name="menu" />
-          </Button>
-        </Left>
-        <Body>
-          <Title>Search</Title>
-        </Body>
-        <Right>
-          <Button transparent onPress={() => setDlgOpen(true)}>
-            <Icon name="search" />
-          </Button>
-        </Right>
-      </Header>
-    )
-  }
 
   function SearchDlg() {
     // https://www.npmjs.com/package/react-native-modal
@@ -194,16 +162,24 @@ export default function SearchView({ navigation }: Props) {
     }
   }
 
+  const filterList = () => {
+    let s = ''
+    if (allText) s += `allText=${allText}`
+    return s
+  }
+
   return (
     <>
-      <AppHeader />
+      <AppHeader title="Search" />
       <SafeAreaView style={styles.container}>
         <SearchDlg />
-        <Button full light style={styles.filterButton}>
-          <Text>
-            Filters: this is a a really long list of filters that should go on
-            for many many moons
-          </Text>
+        <Button
+          full
+          light
+          style={styles.filterButton}
+          onPress={() => setDlgOpen(true)}
+        >
+          <Text>Filters: {filterList()}</Text>
         </Button>
         {emailsLoading && (
           <View style={styles.loading}>
