@@ -22,6 +22,12 @@ export default function AppHeader({ title }: Props) {
         <Button transparent onPress={() => navigation.navigate('SearchView')}>
           <Icon name="search" />
         </Button>
+        <Button
+          transparent
+          onPress={() => navigation.navigate('DashboardView')}
+        >
+          <Icon type="MaterialIcons" name="dashboard" />
+        </Button>
       </Right>
     </Header>
   )
