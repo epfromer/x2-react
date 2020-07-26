@@ -199,6 +199,12 @@ export default function SearchView({ navigation }: Props) {
       <AppHeader />
       <SafeAreaView style={styles.container}>
         <SearchDlg />
+        <Button full light style={styles.filterButton}>
+          <Text>
+            Filters: this is a a really long list of filters that should go on
+            for many many moons
+          </Text>
+        </Button>
         {emailsLoading && (
           <View style={styles.loading}>
             <Spinner color={themePrimaryColor} />
@@ -222,6 +228,9 @@ export default function SearchView({ navigation }: Props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  filterButton: {
+    padding: 5,
   },
   dlgContainer: {
     flex: 1,
