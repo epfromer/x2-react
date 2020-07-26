@@ -1,15 +1,20 @@
 import { Form, Picker, Spinner } from 'native-base'
 import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet, View } from 'react-native'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
 import BarECharts from '../components/ECharts/BarECharts'
 import BarVictory from '../components/Victory/BarVictory'
 import { RootState } from '../store/types'
-import { fetchAndCache, getEmailReceivers, getEmailSenders } from './../store'
+import {
+  clearSearch,
+  fetchAndCache,
+  getEmailReceivers,
+  getEmailSenders,
+  setReduxState,
+} from './../store'
 
 export default function BarView() {
-  const dispatch = useDispatch()
   const [isSenders, setIsSenders] = useState(true)
   const [chartLib, setChartLib] = useState('ECharts')
   const themePrimaryColor = useSelector(
@@ -25,8 +30,8 @@ export default function BarView() {
   )
 
   function handleClick(key: string, value: string) {
-    dispatch({ type: 'clearSearch' })
-    dispatch({ type: 'setReduxState', key, value: `(${value})` })
+    clearSearch()
+    setReduxState(key, `(${value})`)
     fetchAndCache('emails')
     // history.push('/SearchView')
   }

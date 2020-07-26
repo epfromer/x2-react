@@ -3,9 +3,9 @@ import React from 'react'
 import { SafeAreaView, StyleSheet, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
-import { fetchAndCache } from './../store'
-import { RootState } from './../store/types'
 import WordCloud from '../components/WordCloud'
+import { clearSearch, fetchAndCache, setReduxState } from './../store'
+import { RootState } from './../store/types'
 
 export default function WordCloudView() {
   const dispatch = useDispatch()
@@ -18,8 +18,8 @@ export default function WordCloudView() {
   )
 
   function handleClick(word: string) {
-    dispatch({ type: 'clearSearch' })
-    dispatch({ type: 'setReduxState', key: 'allText', value: word })
+    clearSearch()
+    setReduxState('allText', word)
     fetchAndCache('emails')
     // history.push('/SearchView')
   }

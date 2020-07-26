@@ -1,12 +1,12 @@
 import { Spinner } from 'native-base'
 import React, { useEffect, useState } from 'react'
 import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
+import Highlighter from 'react-native-highlight-words'
 import { useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
 import { getEmailById } from '../store'
+import { REACT_APP_EMAIL_SERVER } from '../store/env'
 import { Email, RootState } from '../store/types'
-import { Body, Card, CardItem } from 'native-base'
-import Highlighter from 'react-native-highlight-words'
 
 interface Props {
   route: any
@@ -36,7 +36,7 @@ export default function EmailDetailView({ route, navigation }: Props) {
 
   function doFetch() {
     setLoading(true)
-    const url = `${process.env.REACT_APP_EMAIL_SERVER}/email/${route.params.id}`
+    const url = `${REACT_APP_EMAIL_SERVER}/email/${route.params.id}`
     console.log(url)
     fetch(url)
       .then((resp) => resp.json())

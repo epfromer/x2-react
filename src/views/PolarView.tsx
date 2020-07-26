@@ -5,7 +5,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
 import PolarECharts from '../components/ECharts/PolarECharts'
 import PolarVictory from '../components/Victory/PolarVictory'
-import { fetchAndCache, getEmailReceivers, getEmailSenders } from './../store'
+import {
+  clearSearch,
+  fetchAndCache,
+  getEmailReceivers,
+  getEmailSenders,
+  setReduxState,
+} from './../store'
 import { RootState } from './../store/types'
 
 export default function PolarView() {
@@ -25,12 +31,8 @@ export default function PolarView() {
   )
 
   function handleClick(search: string, value: string) {
-    dispatch({ type: 'clearSearch' })
-    dispatch({
-      type: 'setReduxState',
-      key: search,
-      value: `(${value})`,
-    })
+    clearSearch()
+    setReduxState(search, `(${value})`)
     fetchAndCache('emails')
     // history.push('/SearchView')
   }

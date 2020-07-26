@@ -14,7 +14,7 @@ import Modal from 'react-native-modal'
 import { useDispatch, useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
 import { RootState } from '../store/types'
-import { fetchAndCache } from './../store'
+import { fetchAndCache, setReduxState } from './../store'
 import { EMAIL_LIST_PAGE_LENGTH, MAX_FROM_LENGTH } from './../store/constants'
 
 // TODO - VirtualizedList: You have a large list that is slow to update - make sure your renderItem function renders components that follow React performance best practices like PureComponent, shouldComponentUpdate, etc. {"contentLength": 3030, "dt": 1195, "prevDt": 5812}
@@ -26,6 +26,10 @@ interface Props {
 export default function SearchView({ navigation }: Props) {
   const dispatch = useDispatch()
   const allText = useSelector((state: RootState) => state.allText)
+  const from = useSelector((state: RootState) => state.from)
+  const to = useSelector((state: RootState) => state.to)
+  const subject = useSelector((state: RootState) => state.subject)
+  const sent = useSelector((state: RootState) => state.sent)
   const [dlgOpen, setDlgOpen] = useState(false)
   const emails = useSelector((state: RootState) => state.emails)
   const totalEmails = useSelector((state: RootState) => state.totalEmails)
@@ -40,20 +44,18 @@ export default function SearchView({ navigation }: Props) {
     // https://www.npmjs.com/package/react-native-easy-grid
 
     const [newAllText, setNewAllText] = useState(allText)
-    let sent: string | undefined
-    let from: string | undefined
-    let to: string | undefined
-    let subject: string | undefined
+    const [newFrom, setNewFrom] = useState(from)
+    const [newTo, setNewTo] = useState(to)
+    const [newSubject, setNewSubject] = useState(subject)
+    const [newSent, setNewSent] = useState(sent)
 
     function doQuery() {
-      if (newAllText !== allText) {
-        dispatch({
-          type: 'setReduxState',
-          key: 'allText',
-          value: newAllText,
-        })
-        fetchAndCache('emails')
-      }
+      if (newAllText !== allText) setReduxState('allText', newAllText)
+      if (newFrom !== from) setReduxState('from', newFrom)
+      if (newTo !== to) setReduxState('to', newTo)
+      if (newSubject !== subject) setReduxState('subject', newSubject)
+      if (newSent !== sent) setReduxState('sent', newSent)
+      fetchAndCache('emails')
       setDlgOpen(false)
     }
 
@@ -165,6 +167,7 @@ export default function SearchView({ navigation }: Props) {
   const filterList = () => {
     let s = ''
     if (allText) s += `allText=${allText}`
+    if (s === '') s = 'none'
     return s
   }
 

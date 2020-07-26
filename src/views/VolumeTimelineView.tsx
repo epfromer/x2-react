@@ -6,7 +6,7 @@ import AppHeader from '../components/AppHeader'
 import VolumeTimelineECharts from '../components/ECharts/VolumeTimelineECharts'
 import VolumeTimelineVictory from '../components/Victory/VolumeTimelineVictory'
 import { RootState, TotalEmailSentDatum } from '../store/types'
-import { fetchAndCache } from './../store'
+import { clearSearch, fetchAndCache, setReduxState } from './../store'
 
 export default function VolumeTimelineView() {
   const dispatch = useDispatch()
@@ -20,12 +20,8 @@ export default function VolumeTimelineView() {
   const emailSent = useSelector((state: RootState) => state.emailSent)
 
   function handleClick(date: string) {
-    dispatch({ type: 'clearSearch' })
-    dispatch({
-      type: 'setReduxState',
-      key: 'sent',
-      value: date,
-    })
+    clearSearch()
+    setReduxState('sent', date)
     fetchAndCache('emails')
     // history.push('/SearchView')
   }

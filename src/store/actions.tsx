@@ -6,21 +6,25 @@ import { EMAIL_LIST_PAGE_LENGTH } from '../store/constants'
 
 // actions, aka async mutations
 
-// set any redux state element
-export const setReduxState = (k: string, v: string | boolean | number) => ({
-  type: 'setReduxState',
-  key: k,
-  value: v,
-})
+export const setReduxState = (k: string, v: string | boolean | number) =>
+  store.dispatch({
+    type: 'setReduxState',
+    key: k,
+    value: v,
+  })
 
-export const appendEmails = (k: string, v: Array<Email>) => ({
-  type: 'appendEmails',
-  value: v,
-})
+export const appendEmails = (k: string, v: Array<Email>) =>
+  store.dispatch({
+    type: 'appendEmails',
+    key: '',
+    value: v,
+  })
 
-export const clearSearch = () => ({ type: 'clearSearch' })
+export const clearSearch = () =>
+  store.dispatch({ type: 'clearSearch', key: '', value: '' })
 
-export const saveAppSettings = () => ({ type: 'saveAppSettings' })
+export const saveAppSettings = () =>
+  store.dispatch({ type: 'saveAppSettings', key: '', value: '' })
 
 function makeQueryObj(): any {
   const state: RootState = store.getState()
@@ -98,7 +102,7 @@ export function fetchAndCache(
     // console.log('cache miss')
   }
   const loadingIndicator = stat + 'Loading'
-  store.dispatch(setReduxState(loadingIndicator, true))
+  setReduxState(loadingIndicator, true)
   const url = `${REACT_APP_EMAIL_SERVER}/${encodeQuery(stat)}`
   console.log(url)
   fetch(url)
@@ -113,16 +117,12 @@ export function fetchAndCache(
             sent: email.sent.slice(0, 10) + ' ' + email.sent.slice(11, 19),
           })),
         })
-        store.dispatch({
-          type: 'setReduxState',
-          key: 'totalEmails',
-          value: json.total,
-        })
+        setReduxState('totalEmails', json.total)
       } else {
-        store.dispatch(setReduxState(stat, json))
+        setReduxState(stat, json)
       }
     })
-    .then(() => store.dispatch(setReduxState(loadingIndicator, false)))
+    .then(() => setReduxState(loadingIndicator, false))
     .catch((error) => {
       console.error('fetch error', error)
     })

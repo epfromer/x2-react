@@ -5,7 +5,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
 import PieECharts from '../components/ECharts/PieECharts'
 import PieVictory from '../components/Victory/PieVictory'
-import { fetchAndCache, getEmailReceivers, getEmailSenders } from './../store'
+import {
+  clearSearch,
+  fetchAndCache,
+  getEmailReceivers,
+  getEmailSenders,
+  setReduxState,
+} from './../store'
 import { RootState } from './../store/types'
 
 // https://docs.nativebase.io/Components.html#picker-def-headref
@@ -27,12 +33,8 @@ export default function PieView() {
   )
 
   function handleClick(search: string, value: string) {
-    dispatch({ type: 'clearSearch' })
-    dispatch({
-      type: 'setReduxState',
-      key: search,
-      value: `(${value})`,
-    })
+    clearSearch()
+    setReduxState(search, `(${value})`)
     fetchAndCache('emails')
     // history.push('/SearchView')
   }

@@ -4,7 +4,12 @@ import { SafeAreaView, StyleSheet, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
 import NetworkGraphECharts from '../components/ECharts/NetworkGraphECharts'
-import { fetchAndCache, getEmailSentStats } from './../store'
+import {
+  clearSearch,
+  fetchAndCache,
+  getEmailSentStats,
+  setReduxState,
+} from './../store'
 import { RootState } from './../store/types'
 
 export default function NetworkGraphView() {
@@ -21,9 +26,9 @@ export default function NetworkGraphView() {
 
   function handleClick(to: string, from: string) {
     if (to && from) {
-      dispatch({ type: 'clearSearch' })
-      dispatch({ type: 'setReduxState', key: 'to', value: `(${to})` })
-      dispatch({ type: 'setReduxState', key: 'from', value: `(${from})` })
+      clearSearch()
+      setReduxState('to', `(${to})`)
+      setReduxState('from', `(${from})`)
       fetchAndCache('emails')
       // history.push('/SearchView')
     }

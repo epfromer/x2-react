@@ -5,7 +5,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
 import TreeMapECharts from '../components/ECharts/TreeMapECharts'
 import { RootState } from '../store/types'
-import { fetchAndCache, getEmailReceivers, getEmailSenders } from './../store'
+import {
+  clearSearch,
+  fetchAndCache,
+  getEmailReceivers,
+  getEmailSenders,
+  setReduxState,
+} from './../store'
 
 interface Props {
   navigation: any
@@ -26,12 +32,8 @@ export default function TreeMapView({ navigation }: Props) {
   )
 
   function handleClick(search: string, value: string) {
-    dispatch({ type: 'clearSearch' })
-    dispatch({
-      type: 'setReduxState',
-      key: search,
-      value: `(${value})`,
-    })
+    clearSearch()
+    setReduxState(search, `(${value})`)
     fetchAndCache('emails')
     navigation.navigate('SearchView')
   }
