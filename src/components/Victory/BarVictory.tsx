@@ -75,7 +75,8 @@ export default function BarVictory({ search, data, handleClick }: Props) {
             {
               target: 'data',
               eventHandlers: {
-                onClick: () => {
+                onPress: () => {
+                  console.log('foo')
                   return [
                     {
                       mutation: (props: any) => {
