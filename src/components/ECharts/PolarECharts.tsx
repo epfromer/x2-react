@@ -5,8 +5,6 @@ import { EmailXferedDatum, RootState } from '../../store/types'
 
 // https://www.npmjs.com/package/react-native-echarts-wrapper
 // https://echarts.apache.org/examples/en/index.html#chart-type-bar
-// TODO fix y axis lable truncation
-// TODO fix click handler
 
 interface Props {
   title: string
@@ -14,13 +12,7 @@ interface Props {
   data: Array<EmailXferedDatum>
   handleClick: (search: string, name: string) => void
 }
-
-export default function PolarECharts({
-  title,
-  search,
-  data,
-  handleClick,
-}: Props) {
+export default function PolarECharts({ search, data, handleClick }: Props) {
   const darkMode = useSelector((state: RootState) => state.darkMode)
   const series: Array<any> = data.map((datum) => ({
     value: datum.value,
@@ -30,15 +22,10 @@ export default function PolarECharts({
     },
   }))
 
-  function onData(name: string) {
-    console.log(name)
-    // data[0].handleClick(search, name)
-  }
-
   return (
     <ECharts
-      onData={onData}
-      additionalCode={`chart.on('click', p => sendData(p.data));`}
+      onData={(name: string) => handleClick(search, name)}
+      additionalCode={`chart.on('click', p => sendData(p.data.name));`}
       option={{
         tooltip: {
           trigger: 'item',

@@ -1,7 +1,7 @@
 import { Form, Picker, Spinner } from 'native-base'
 import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet, View } from 'react-native'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
 import PolarECharts from '../components/ECharts/PolarECharts'
 import PolarVictory from '../components/Victory/PolarVictory'
@@ -14,8 +14,11 @@ import {
 } from './../store'
 import { RootState } from './../store/types'
 
-export default function PolarView() {
-  const dispatch = useDispatch()
+interface Props {
+  route: any
+  navigation: any
+}
+export default function PolarView({ navigation }: Props) {
   const [isSenders, setIsSenders] = useState(true)
   const [chartLib, setChartLib] = useState('ECharts')
   const themePrimaryColor = useSelector(
@@ -34,7 +37,7 @@ export default function PolarView() {
     clearSearch()
     setReduxState(search, `(${value})`)
     fetchAndCache('emails')
-    // history.push('/SearchView')
+    navigation.navigate('SearchView')
   }
 
   return (
