@@ -44,14 +44,9 @@ export default function BarECharts({ search, data, handleClick }: Props) {
 
   chartData.reverse()
 
-  function onData(name: string) {
-    console.log(name)
-    // data[0].handleClick(search, name)
-  }
-
   return (
     <ECharts
-      onData={onData}
+      onData={(o: any) => handleClick(search, o.name)}
       additionalCode={`chart.on('click', p => sendData(p.data));`}
       option={{
         tooltip: {

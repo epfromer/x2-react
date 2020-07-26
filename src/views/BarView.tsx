@@ -14,7 +14,11 @@ import {
   setReduxState,
 } from './../store'
 
-export default function BarView() {
+interface Props {
+  route: any
+  navigation: any
+}
+export default function BarView({ navigation }: Props) {
   const [isSenders, setIsSenders] = useState(true)
   const [chartLib, setChartLib] = useState('ECharts')
   const themePrimaryColor = useSelector(
@@ -33,7 +37,7 @@ export default function BarView() {
     clearSearch()
     setReduxState(key, `(${value})`)
     fetchAndCache('emails')
-    // history.push('/SearchView')
+    navigation.navigate('SearchView')
   }
 
   return (
