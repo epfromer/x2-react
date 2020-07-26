@@ -5,7 +5,6 @@ import { RootState } from '../../store/types'
 
 // https://www.npmjs.com/package/react-native-echarts-wrapper
 // https://echarts.apache.org/examples/en/editor.html?c=graph
-// TODO fix click handler
 
 interface Props {
   title: string
@@ -15,7 +14,6 @@ interface Props {
 }
 
 export default function NetworkGraphECharts({
-  title,
   data,
   nodes,
   handleClick,
@@ -49,24 +47,11 @@ export default function NetworkGraphECharts({
     value: datum[2],
   }))
 
-  function onData(name: string) {
-    console.log(name)
-    // data[0].handleClick(search, name)
-  }
-
   return (
     <ECharts
-      onData={onData}
-      additionalCode={`chart.on('click', p => sendData(p.data.name));`}
+      onData={(o: any) => handleClick(o.target, o.source)}
+      additionalCode={`chart.on('click', p => sendData(p.data));`}
       option={{
-        title: {
-          text: title,
-          top: 20,
-          left: 'center',
-          textStyle: {
-            color: darkMode ? 'white' : 'black',
-          },
-        },
         tooltip: {},
         legend: [
           {
@@ -80,7 +65,6 @@ export default function NetworkGraphECharts({
         animation: false,
         series: [
           {
-            name: title,
             top: 50,
             left: 50,
             right: 50,

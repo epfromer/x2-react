@@ -79,8 +79,8 @@ export default function EmailDetailView({ route, navigation }: Props) {
             </Text>
             {email.fromContact ? (
               <Text style={styles.fieldBold}>
-                From: <Text style={styles.fields}>{highlight(email.from)}</Text>
-                (named contact:
+                From: <Text style={styles.fields}>{highlight(email.from)}</Text>{' '}
+                (named contact:{' '}
                 <Text style={styles.fields}>{email.fromContact}</Text>)
               </Text>
             ) : (

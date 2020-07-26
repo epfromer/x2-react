@@ -1,7 +1,7 @@
 import { Form, Picker, Spinner } from 'native-base'
 import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet, View } from 'react-native'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
 import PieECharts from '../components/ECharts/PieECharts'
 import PieVictory from '../components/Victory/PieVictory'
@@ -16,8 +16,11 @@ import { RootState } from './../store/types'
 
 // https://docs.nativebase.io/Components.html#picker-def-headref
 
-export default function PieView() {
-  const dispatch = useDispatch()
+interface Props {
+  route: any
+  navigation: any
+}
+export default function PieView({ navigation }: Props) {
   const [isSenders, setIsSenders] = useState(true)
   const [chartLib, setChartLib] = useState('ECharts')
   const contactsLoading = useSelector(
@@ -36,7 +39,7 @@ export default function PieView() {
     clearSearch()
     setReduxState(search, `(${value})`)
     fetchAndCache('emails')
-    // history.push('/SearchView')
+    navigation.navigate('SearchView')
   }
 
   return (

@@ -1,7 +1,7 @@
 import { Spinner } from 'native-base'
 import React from 'react'
 import { SafeAreaView, StyleSheet, View } from 'react-native'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
 import NetworkGraphECharts from '../components/ECharts/NetworkGraphECharts'
 import {
@@ -12,8 +12,11 @@ import {
 } from './../store'
 import { RootState } from './../store/types'
 
-export default function NetworkGraphView() {
-  const dispatch = useDispatch()
+interface Props {
+  route: any
+  navigation: any
+}
+export default function NetworkGraphView({ navigation }: Props) {
   const emailSentStats = useSelector((state: RootState) =>
     getEmailSentStats(state)
   )
@@ -30,7 +33,7 @@ export default function NetworkGraphView() {
       setReduxState('to', `(${to})`)
       setReduxState('from', `(${from})`)
       fetchAndCache('emails')
-      // history.push('/SearchView')
+      navigation.navigate('SearchView')
     }
   }
 

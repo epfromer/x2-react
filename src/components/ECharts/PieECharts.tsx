@@ -5,7 +5,6 @@ import { EmailXferedDatum, RootState } from '../../store/types'
 
 // https://www.npmjs.com/package/react-native-echarts-wrapper
 // https://echarts.apache.org/examples/en/index.html#chart-type-pie
-// TODO fix click handler
 
 interface Props {
   title: string
@@ -14,12 +13,7 @@ interface Props {
   handleClick: (search: string, name: string) => void
 }
 
-export default function PieECharts({
-  title,
-  search,
-  data,
-  handleClick,
-}: Props) {
+export default function PieECharts({ search, data, handleClick }: Props) {
   const darkMode = useSelector((state: RootState) => state.darkMode)
 
   interface Datum {
@@ -46,13 +40,9 @@ export default function PieECharts({
     })
   })
 
-  function onData(name: string) {
-    // handleClick(search, name)
-  }
-
   return (
     <ECharts
-      onData={onData}
+      onData={(name: string) => handleClick(search, name)}
       additionalCode={`chart.on('click', p => sendData(p.data.name));`}
       option={{
         tooltip: {

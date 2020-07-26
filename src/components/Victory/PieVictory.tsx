@@ -5,6 +5,7 @@ import { VictoryPie } from 'victory-native'
 import { EmailXferedDatum, RootState } from '../../store/types'
 
 // https://formidable.com/open-source/victory/docs/victory-pie
+// TODO - https://github.com/FormidableLabs/victory-native/issues/568, events don't work on Android
 
 interface Props {
   title: string

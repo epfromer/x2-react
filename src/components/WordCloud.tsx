@@ -16,7 +16,7 @@ interface Props {
   handleClick: (word: string) => void
 }
 
-export default function WordCloud({ title, words, handleClick }: Props) {
+export default function WordCloud({ words, handleClick }: Props) {
   const kwords: Array<any> = []
   words.forEach((word) => {
     kwords.push({
@@ -34,6 +34,6 @@ export default function WordCloud({ title, words, handleClick }: Props) {
   })
 
   return (
-    <Cloud keywords={kwords} scale={250} containerCircleColor={'#345678'} />
+    <Cloud keywords={kwords} scale={450} containerCircleColor={'#345678'} />
   )
 }

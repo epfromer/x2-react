@@ -1,14 +1,17 @@
 import { Spinner } from 'native-base'
 import React from 'react'
 import { SafeAreaView, StyleSheet, View } from 'react-native'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
 import WordCloud from '../components/WordCloud'
 import { clearSearch, fetchAndCache, setReduxState } from './../store'
 import { RootState } from './../store/types'
 
-export default function WordCloudView() {
-  const dispatch = useDispatch()
+interface Props {
+  route: any
+  navigation: any
+}
+export default function WordCloudView({ navigation }: Props) {
   const wordCloudLoading = useSelector(
     (state: RootState) => state.wordCloudLoading
   )
@@ -21,7 +24,7 @@ export default function WordCloudView() {
     clearSearch()
     setReduxState('allText', word)
     fetchAndCache('emails')
-    // history.push('/SearchView')
+    navigation.navigate('SearchView')
   }
 
   const data: any = []

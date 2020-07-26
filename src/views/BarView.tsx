@@ -14,6 +14,8 @@ import {
   setReduxState,
 } from './../store'
 
+// https://docs.nativebase.io/Components.html#picker-def-headref
+
 interface Props {
   route: any
   navigation: any
