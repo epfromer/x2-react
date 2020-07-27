@@ -13,6 +13,7 @@ interface Props {
   navigation: any
 }
 export default function EmailDetailView({ route, navigation }: Props) {
+  const darkMode = useSelector((state: RootState) => state.darkMode)
   const [loading, setLoading] = useState(false)
   const themePrimaryColor = useSelector(
     (state: RootState) => state.themePrimaryColor
@@ -39,24 +40,28 @@ export default function EmailDetailView({ route, navigation }: Props) {
     title: {
       fontSize: 20,
       padding: 10,
+      color: darkMode ? 'white' : 'black',
     },
     fields: {
       fontSize: 15,
       paddingLeft: 10,
       paddingRight: 10,
       fontWeight: 'normal',
+      color: darkMode ? 'white' : 'black',
     },
     fieldBold: {
       fontSize: 15,
       paddingLeft: 10,
       paddingRight: 10,
       fontWeight: 'bold',
+      color: darkMode ? 'white' : 'black',
     },
     body: {
       fontSize: 15,
       paddingTop: 10,
       paddingLeft: 10,
       paddingRight: 10,
+      color: darkMode ? 'white' : 'black',
     },
     loading: {
       position: 'absolute',
