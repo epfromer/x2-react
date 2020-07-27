@@ -72,24 +72,40 @@ export default function SearchView({ navigation }: Props) {
               <Input
                 defaultValue={allText}
                 value={newAllText}
-                onChangeText={(text) => setNewAllText(text)}
+                onChangeText={(s) => setNewAllText(s)}
               />
             </Item>
             <Item floatingLabel>
               <Label>Filter Sent</Label>
-              <Input />
+              <Input
+                defaultValue={sent}
+                value={newSent}
+                onChangeText={(s) => setNewSent(s)}
+              />
             </Item>
             <Item floatingLabel>
               <Label>Filter From</Label>
-              <Input />
+              <Input
+                defaultValue={from}
+                value={newFrom}
+                onChangeText={(s) => setNewFrom(s)}
+              />
             </Item>
             <Item floatingLabel>
               <Label>Filter To</Label>
-              <Input onChangeText={(text) => console.log(text)} />
+              <Input
+                defaultValue={to}
+                value={newTo}
+                onChangeText={(s) => setNewTo(s)}
+              />
             </Item>
             <Item floatingLabel>
               <Label>Filter Subject</Label>
-              <Input />
+              <Input
+                defaultValue={subject}
+                value={newSubject}
+                onChangeText={(s) => setNewSubject(s)}
+              />
             </Item>
             <Grid>
               <Col>
@@ -197,6 +213,11 @@ export default function SearchView({ navigation }: Props) {
             onEndReachedThreshold={0.5}
             initialNumToRender={EMAIL_LIST_PAGE_LENGTH}
           />
+        )}
+        {emails && emails.length === 0 && (
+          <View style={styles.loading}>
+            <Text>Nothing found</Text>
+          </View>
         )}
       </SafeAreaView>
     </>
