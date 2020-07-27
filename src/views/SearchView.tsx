@@ -24,6 +24,7 @@ interface Props {
   navigation: any
 }
 export default function SearchView({ navigation }: Props) {
+  const darkMode = useSelector((state: RootState) => state.darkMode)
   const allText = useSelector((state: RootState) => state.allText)
   const from = useSelector((state: RootState) => state.from)
   const to = useSelector((state: RootState) => state.to)
@@ -37,6 +38,49 @@ export default function SearchView({ navigation }: Props) {
   const themePrimaryColor = useSelector(
     (state: RootState) => state.themePrimaryColor
   )
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+    },
+    filterButton: {
+      padding: 5,
+    },
+    dlgContainer: {
+      flex: 1,
+      justifyContent: 'space-between',
+      flexDirection: 'column',
+    },
+    button: {
+      margin: 15,
+    },
+    itemContainer: {
+      margin: 5,
+    },
+    itemTopRow: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+    },
+    bold: {
+      fontSize: 15,
+      fontWeight: 'bold',
+      color: darkMode ? 'white' : 'black',
+    },
+    text: {
+      color: darkMode ? 'white' : 'black',
+    },
+    title: {
+      fontSize: 15,
+    },
+    loading: {
+      position: 'absolute',
+      left: 0,
+      right: 0,
+      top: 0,
+      bottom: 0,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+  })
 
   function SearchDlg() {
     // https://www.npmjs.com/package/react-native-modal
@@ -150,16 +194,20 @@ export default function SearchView({ navigation }: Props) {
       <View style={styles.itemContainer}>
         <View style={styles.itemTopRow}>
           <View>
-            <Text numberOfLines={1} style={styles.emailFromText}>
+            <Text numberOfLines={1} style={styles.bold}>
               {maxString(item.from, MAX_FROM_LENGTH)}
             </Text>
           </View>
           <View>
-            <Text numberOfLines={1}>{item.sent.substring(0, 10)}</Text>
+            <Text numberOfLines={1} style={styles.text}>
+              {item.sent.substring(0, 10)}
+            </Text>
           </View>
         </View>
-        <View style={styles.emailSubject}>
-          <Text numberOfLines={1}>{item.subject}</Text>
+        <View>
+          <Text numberOfLines={1} style={styles.text}>
+            {item.subject}
+          </Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -223,46 +271,3 @@ export default function SearchView({ navigation }: Props) {
     </>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  filterButton: {
-    padding: 5,
-  },
-  dlgContainer: {
-    flex: 1,
-    justifyContent: 'space-between',
-    flexDirection: 'column',
-  },
-  button: {
-    margin: 15,
-  },
-  itemContainer: {
-    margin: 5,
-  },
-  itemTopRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  emailFromText: {
-    fontSize: 15,
-    fontWeight: 'bold',
-  },
-  emailSubject: {
-    width: '100%',
-  },
-  title: {
-    fontSize: 15,
-  },
-  loading: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-})

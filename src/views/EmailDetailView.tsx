@@ -26,13 +26,48 @@ export default function EmailDetailView({ route, navigation }: Props) {
   const from = useSelector((state: RootState) => state.from)
   const subject = useSelector((state: RootState) => state.subject)
   const body = useSelector((state: RootState) => state.body)
-
   const highlightedTerms: Array<string> = []
   if (allText) highlightedTerms.push(allText)
   if (to) highlightedTerms.push(to)
   if (from) highlightedTerms.push(from)
   if (subject) highlightedTerms.push(subject)
   if (body) highlightedTerms.push(body)
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+    },
+    title: {
+      fontSize: 20,
+      padding: 10,
+    },
+    fields: {
+      fontSize: 15,
+      paddingLeft: 10,
+      paddingRight: 10,
+      fontWeight: 'normal',
+    },
+    fieldBold: {
+      fontSize: 15,
+      paddingLeft: 10,
+      paddingRight: 10,
+      fontWeight: 'bold',
+    },
+    body: {
+      fontSize: 15,
+      paddingTop: 10,
+      paddingLeft: 10,
+      paddingRight: 10,
+    },
+    loading: {
+      position: 'absolute',
+      left: 0,
+      right: 0,
+      top: 0,
+      bottom: 0,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+  })
 
   function doFetch() {
     setLoading(true)
@@ -112,40 +147,3 @@ export default function EmailDetailView({ route, navigation }: Props) {
     </>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  title: {
-    fontSize: 20,
-    padding: 10,
-  },
-  fields: {
-    fontSize: 15,
-    paddingLeft: 10,
-    paddingRight: 10,
-    fontWeight: 'normal',
-  },
-  fieldBold: {
-    fontSize: 15,
-    paddingLeft: 10,
-    paddingRight: 10,
-    fontWeight: 'bold',
-  },
-  body: {
-    fontSize: 15,
-    paddingTop: 10,
-    paddingLeft: 10,
-    paddingRight: 10,
-  },
-  loading: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-})

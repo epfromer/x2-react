@@ -1,5 +1,9 @@
 import { createDrawerNavigator } from '@react-navigation/drawer'
-import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native'
+import {
+  DarkTheme,
+  DefaultTheme,
+  NavigationContainer,
+} from '@react-navigation/native'
 import React from 'react'
 import 'react-native-gesture-handler'
 import { useSelector } from 'react-redux'
