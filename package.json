@@ -23,7 +23,7 @@
     "lodash": "^4.17.19",
     "native-base": "^2.13.13",
     "react": "16.13.1",
-    "react-native": "^0.63.1",
+    "react-native": "^0.63.2",
     "react-native-canvas": "^0.1.37",
     "react-native-easy-grid": "^0.2.2",
     "react-native-echarts-wrapper": "^2.0.0",
