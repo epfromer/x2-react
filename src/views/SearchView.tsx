@@ -106,7 +106,7 @@ export default function SearchView({ navigation }: Props) {
       <Modal
         isVisible={dlgOpen}
         backdropOpacity={0.95}
-        backdropColor="white"
+        backdropColor={darkMode ? 'black' : 'white'}
         supportedOrientations={['portrait', 'landscape']}
       >
         <ScrollView>
