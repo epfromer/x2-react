@@ -140,7 +140,7 @@ export default function EmailDetailView({ route }: Props) {
         <Button transparent onPress={() => console.log('foo')}>
           <Icon type="MaterialIcons" name="arrow-back" />
         </Button>
-        <Text>foo</Text>
+        <Text>{totalEmails ? `${emailIndex} of ${totalEmails}` : ''}</Text>
         <Button transparent onPress={() => console.log('foo')}>
           <Icon type="MaterialIcons" name="arrow-forward" />
         </Button>
