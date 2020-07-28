@@ -142,9 +142,10 @@ export default function EmailDetailView({ route, navigation }: Props) {
       <View style={styles.emailHeader}>
         <Button
           transparent
+          disabled={!previousEmailId}
           onPress={() => {
-            console.log(nextEmailId())
-            navigation.navigate('EmailDetail', { id: nextEmailId() })
+            previousEmailId &&
+              navigation.navigate('EmailDetail', { id: previousEmailId })
           }}
         >
           <Icon type="MaterialIcons" name="arrow-back" />
@@ -152,7 +153,14 @@ export default function EmailDetailView({ route, navigation }: Props) {
         <Text style={styles.text}>
           {totalEmails ? `${emailIndex} of ${totalEmails}` : ''}
         </Text>
-        <Button transparent onPress={() => console.log('foo')}>
+        <Button
+          transparent
+          disabled={!nextEmailId}
+          onPress={() => {
+            nextEmailId &&
+              navigation.navigate('EmailDetail', { id: nextEmailId })
+          }}
+        >
           <Icon type="MaterialIcons" name="arrow-forward" />
         </Button>
       </View>
