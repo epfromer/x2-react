@@ -17,7 +17,7 @@ interface Props {
   route: any
   navigation: any
 }
-export default function EmailDetailView({ route }: Props) {
+export default function EmailDetailView({ route, navigation }: Props) {
   const darkMode = useSelector((state: RootState) => state.darkMode)
   const [loading, setLoading] = useState(false)
   const themePrimaryColor = useSelector(
@@ -61,6 +61,9 @@ export default function EmailDetailView({ route }: Props) {
     spaceBetween: {
       justifyContent: 'space-between',
       flexDirection: 'row',
+    },
+    text: {
+      color: darkMode ? 'white' : 'black',
     },
     title: {
       fontSize: 20,
@@ -137,10 +140,18 @@ export default function EmailDetailView({ route }: Props) {
   function EmailHeader() {
     return (
       <View style={styles.emailHeader}>
-        <Button transparent onPress={() => console.log('foo')}>
+        <Button
+          transparent
+          onPress={() => {
+            console.log(nextEmailId())
+            navigation.navigate('EmailDetail', { id: nextEmailId() })
+          }}
+        >
           <Icon type="MaterialIcons" name="arrow-back" />
         </Button>
-        <Text>{totalEmails ? `${emailIndex} of ${totalEmails}` : ''}</Text>
+        <Text style={styles.text}>
+          {totalEmails ? `${emailIndex} of ${totalEmails}` : ''}
+        </Text>
         <Button transparent onPress={() => console.log('foo')}>
           <Icon type="MaterialIcons" name="arrow-forward" />
         </Button>
