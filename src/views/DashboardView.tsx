@@ -1,6 +1,7 @@
 import { Body, Card, CardItem } from 'native-base'
 import React from 'react'
 import { Image, ScrollView, StyleSheet, Text } from 'react-native'
+import { useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
 import {
   BARCHART,
@@ -14,6 +15,7 @@ import {
   VOLUMETIMELINE,
   WORDCLOUD,
 } from '../image/index'
+import { RootState } from '../store/types'
 
 // https://docs.nativebase.io/Components.html#card-headfoot-headref
 
@@ -21,6 +23,21 @@ interface Props {
   navigation: any
 }
 export default function DashboardView({ navigation }: Props) {
+  const darkMode = useSelector((state: RootState) => state.darkMode)
+
+  const styles = StyleSheet.create({
+    title: {
+      fontSize: 20,
+      color: darkMode ? 'white' : 'black',
+    },
+    card: {
+      backgroundColor: darkMode ? 'black' : 'white',
+    },
+    text: {
+      color: darkMode ? 'white' : 'black',
+    },
+  })
+
   const makeCard = (
     image: any,
     title: string,
@@ -29,7 +46,12 @@ export default function DashboardView({ navigation }: Props) {
   ) => {
     return (
       <Card>
-        <CardItem header button onPress={() => navigation.navigate(view)}>
+        <CardItem
+          header
+          button
+          style={styles.card}
+          onPress={() => navigation.navigate(view)}
+        >
           <Text style={styles.title}>{title}</Text>
         </CardItem>
         <CardItem cardBody button onPress={() => navigation.navigate(view)}>
@@ -38,9 +60,13 @@ export default function DashboardView({ navigation }: Props) {
             style={{ height: 200, width: null, flex: 1 } as any}
           />
         </CardItem>
-        <CardItem button onPress={() => navigation.navigate(view)}>
+        <CardItem
+          button
+          style={styles.card}
+          onPress={() => navigation.navigate(view)}
+        >
           <Body>
-            <Text>{description}</Text>
+            <Text style={styles.text}>{description}</Text>
           </Body>
         </CardItem>
       </Card>
@@ -115,9 +141,3 @@ export default function DashboardView({ navigation }: Props) {
     </>
   )
 }
-
-const styles = StyleSheet.create({
-  title: {
-    fontSize: 20,
-  },
-})
