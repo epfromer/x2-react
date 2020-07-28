@@ -12,7 +12,6 @@ interface Props {
   data: Array<EmailXferedDatum>
   handleClick: (key: string, value: string) => void
 }
-
 export default function BarECharts({ search, data, handleClick }: Props) {
   const darkMode = useSelector((state: RootState) => state.darkMode)
 
@@ -46,6 +45,7 @@ export default function BarECharts({ search, data, handleClick }: Props) {
     <ECharts
       onData={(o: any) => handleClick(search, o.name)}
       additionalCode={`chart.on('click', p => sendData(p.data));`}
+      backgroundColor={darkMode ? 'black' : 'white'}
       option={{
         tooltip: {
           trigger: 'axis',

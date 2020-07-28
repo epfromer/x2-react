@@ -27,6 +27,7 @@ export default function VolumeTimelineECharts({ data, handleClick }: Props) {
     <ECharts
       onData={() => console.log('foo')}
       additionalCode={`chart.on('click', p => sendData(p));`}
+      backgroundColor={darkMode ? 'black' : 'white'}
       option={{
         tooltip: {
           trigger: 'axis',

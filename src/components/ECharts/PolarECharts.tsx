@@ -26,6 +26,7 @@ export default function PolarECharts({ search, data, handleClick }: Props) {
     <ECharts
       onData={(name: string) => handleClick(search, name)}
       additionalCode={`chart.on('click', p => sendData(p.data.name));`}
+      backgroundColor={darkMode ? 'black' : 'white'}
       option={{
         tooltip: {
           trigger: 'item',
@@ -42,6 +43,7 @@ export default function PolarECharts({ search, data, handleClick }: Props) {
           {
             type: 'pie',
             data: series,
+            radius: '55%',
             roseType: 'radius',
             label: {
               color: 'rgba(255, 255, 255, 0.3)',

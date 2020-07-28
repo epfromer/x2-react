@@ -1,6 +1,8 @@
 import React from 'react'
 import { ECharts } from 'react-native-echarts-wrapper'
 import { EmailXferedDatum } from '../../store/types'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../store/types'
 
 // https://www.npmjs.com/package/react-native-echarts-wrapper
 // https://echarts.apache.org/examples/en/index.html#chart-type-pie
@@ -12,6 +14,7 @@ interface Props {
   handleClick: (search: string, name: string) => void
 }
 export default function PieECharts({ search, data, handleClick }: Props) {
+  const darkMode = useSelector((state: RootState) => state.darkMode)
   interface Datum {
     value: number
     name: string
@@ -40,6 +43,7 @@ export default function PieECharts({ search, data, handleClick }: Props) {
     <ECharts
       onData={(name: string) => handleClick(search, name)}
       additionalCode={`chart.on('click', p => sendData(p.data.name));`}
+      backgroundColor={darkMode ? 'black' : 'white'}
       option={{
         tooltip: {
           trigger: 'item',

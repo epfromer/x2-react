@@ -12,7 +12,6 @@ interface Props {
   nodes: Array<any>
   handleClick: (to: string, from: string) => void
 }
-
 export default function NetworkGraphECharts({
   data,
   nodes,
@@ -51,6 +50,7 @@ export default function NetworkGraphECharts({
     <ECharts
       onData={(o: any) => handleClick(o.target, o.source)}
       additionalCode={`chart.on('click', p => sendData(p.data));`}
+      backgroundColor={darkMode ? 'black' : 'white'}
       option={{
         tooltip: {},
         legend: [
