@@ -854,7 +854,7 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@highcharts/highcharts-react-native@^2.2.2":
+"@highcharts/highcharts-react-native@^2.2.3":
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/@highcharts/highcharts-react-native/-/highcharts-react-native-2.2.3.tgz#c65ed3d993d02067f4466b05d507731d16e32157"
   integrity sha512-9XEYuSwxj+17y3X2jlTW/Cum+GzbMsqkZmkRPN1emyzfWHAdygIKKIhr++OqTmgWaKCoS1GC9VDUNm1R7xEa4w==
@@ -5485,7 +5485,7 @@ native-base-shoutem-theme@0.3.1:
     lodash "^4.17.14"
     prop-types "^15.5.10"
 
-native-base@^2.13.12:
+native-base@^2.13.13:
   version "2.13.13"
   resolved "https://registry.yarnpkg.com/native-base/-/native-base-2.13.13.tgz#431735005151f456c0faee6f00abe00b1e049dc9"
   integrity sha512-/JOCe/iqnIzto2QJBw/p/PRtJNB8G+NdLOWUYB43TZFWEk6aun1CRBQ0eJ5ibI0bL2aL2ytU2k9Wdp0HxM9Ong==
