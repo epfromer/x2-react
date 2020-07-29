@@ -1203,6 +1203,15 @@
     sudo-prompt "^9.0.0"
     wcwidth "^1.0.1"
 
+"@react-native-community/datetimepicker@^2.6.1":
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/@react-native-community/datetimepicker/-/datetimepicker-2.6.1.tgz#9f80b2831cc819618e2b50654b71d1bcecd8b8fb"
+  integrity sha512-HtBrvllO1hGb2gl0rl9GL2/GkgMEA5TMBE1OJutPvl8msEhjDnJEXJ9TjhgNIjLjyKJhKpvQ6LKMbvn38H7dnQ==
+  dependencies:
+    invariant "^2.2.4"
+  optionalDependencies:
+    react-native-windows "^0.62.0-0"
+
 "@react-native-community/eslint-config@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@react-native-community/eslint-config/-/eslint-config-2.0.0.tgz#35dcc529a274803fc4e0a6b3d6c274551fb91774"
@@ -6256,7 +6265,7 @@ react-native-webview@^10.3.2:
     escape-string-regexp "2.0.0"
     invariant "2.2.4"
 
-react-native-windows@^0.62.3:
+react-native-windows@^0.62.0-0, react-native-windows@^0.62.3:
   version "0.62.3"
   resolved "https://registry.yarnpkg.com/react-native-windows/-/react-native-windows-0.62.3.tgz#91623479c444439caa99ec3d6763ca480f6d1e11"
   integrity sha512-KP+vI7D0FvufI05uaVz6ckDfDYBSuQXb1ypSjozec/2p5kkGs3+8lpcrwM/wbnCVVcZq5PeVUKe5GeWvoltXew==

@@ -1,4 +1,13 @@
-import { Button, Form, Input, Item, Label, Spinner } from 'native-base'
+import {
+  Button,
+  DatePicker,
+  Form,
+  Icon,
+  Input,
+  Item,
+  Label,
+  Spinner,
+} from 'native-base'
 import React, { useState } from 'react'
 import {
   FlatList,
@@ -16,6 +25,7 @@ import AppHeader from '../components/AppHeader'
 import { RootState } from '../store/types'
 import { fetchAndCache, setReduxState } from './../store'
 import { EMAIL_LIST_PAGE_LENGTH, MAX_FROM_LENGTH } from './../store/constants'
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 // TODO - VirtualizedList: You have a large list that is slow to update - make sure your renderItem function renders components that follow React performance best practices like PureComponent, shouldComponentUpdate, etc. {"contentLength": 3030, "dt": 1195, "prevDt": 5812}
 
@@ -102,6 +112,29 @@ export default function SearchView({ navigation }: Props) {
       setDlgOpen(false)
     }
 
+    function SentDatePicker() {
+
+      // use https://github.com/mmazzarolo/react-native-modal-datetime-picker
+
+      return (
+        <DatePicker
+          defaultDate={new Date(2018, 4, 4)}
+          minimumDate={new Date(2018, 1, 1)}
+          maximumDate={new Date(2018, 12, 31)}
+          locale={'en'}
+          timeZoneOffsetInMinutes={undefined}
+          modalTransparent={false}
+          animationType={'fade'}
+          androidMode={'default'}
+          placeHolderText="Select date"
+          textStyle={{ color: 'green' }}
+          placeHolderTextStyle={{ color: '#d3d3d3' }}
+          onDateChange={() => console.log('set date')}
+          disabled={false}
+        />
+      )
+    }
+
     return (
       <Modal
         isVisible={dlgOpen}
@@ -111,6 +144,7 @@ export default function SearchView({ navigation }: Props) {
       >
         <ScrollView>
           <Form>
+            <SentDatePicker />
             <Item floatingLabel>
               <Label>Filter (all text fields)</Label>
               <Input
@@ -126,6 +160,8 @@ export default function SearchView({ navigation }: Props) {
                 value={newSent}
                 onChangeText={(s) => setNewSent(s)}
               />
+
+              <Icon name="calendar" onPress={() => console.log('foo')} />
             </Item>
             <Item floatingLabel>
               <Label>Filter From</Label>
