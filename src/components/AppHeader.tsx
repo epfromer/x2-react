@@ -42,6 +42,12 @@ export default function AppHeader({ title }: Props) {
         </Button>
         <Button
           transparent
+          onPress={() => navigation.navigate('AppSettingsView')}
+        >
+          <Icon name="settings" />
+        </Button>
+        <Button
+          transparent
           onPress={() => navigation.navigate('DashboardView')}
         >
           <Icon type="MaterialIcons" name="dashboard" />
