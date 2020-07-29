@@ -3,6 +3,7 @@ import store from './'
 import { Email, RootState } from './types'
 import { REACT_APP_EMAIL_SERVER } from './env'
 import { EMAIL_LIST_PAGE_LENGTH } from '../store/constants'
+import AsyncStorage from '@react-native-community/async-storage'
 
 // actions, aka async mutations
 
@@ -128,4 +129,11 @@ export function fetchAndCache(
     })
 }
 
-export function setOrientation() {}
+export async function getLocalStorage() {
+  try {
+    const value = await AsyncStorage.getItem(key)
+    if (value !== null) return value
+  } catch (e) {
+    console.error(e)
+  }
+}

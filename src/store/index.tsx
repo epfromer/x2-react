@@ -17,6 +17,7 @@ export {
   getEmailSenders,
   getEmailReceivers,
 } from './selectors'
+import AsyncStorage from '@react-native-community/async-storage'
 
 const initialState: RootState = {
   // search results
@@ -53,7 +54,7 @@ const initialState: RootState = {
   orientation: 'portrait',
 
   // // app settings
-  // darkMode: localStorage.getItem('darkMode') === 'true' ? true : false,
+  darkMode: AsyncStorage.getItem('darkMode') === 'true' ? true : false,
   // // @ts-ignore
   // themePrimaryColor: localStorage.getItem('themePrimaryColor')
   //   ? localStorage.getItem('themePrimaryColor')
