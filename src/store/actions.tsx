@@ -131,8 +131,12 @@ export function fetchAndCache(
 
 export async function getLocalStorage() {
   try {
-    const value = await AsyncStorage.getItem(key)
-    if (value !== null) return value
+    let value = await AsyncStorage.getItem('darkMode')
+    if (value !== null) setReduxState('darkMode', Boolean(value))
+    value = await AsyncStorage.getItem('themePrimaryColor')
+    if (value !== null) setReduxState('themePrimaryColor', value)
+    value = await AsyncStorage.getItem('themeSecondaryColor')
+    if (value !== null) setReduxState('themeSecondaryColor', value)
   } catch (e) {
     console.error(e)
   }
