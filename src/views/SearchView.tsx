@@ -1,13 +1,4 @@
-import {
-  Button,
-  DatePicker,
-  Form,
-  Icon,
-  Input,
-  Item,
-  Label,
-  Spinner,
-} from 'native-base'
+import { Button, Form, Icon, Input, Item, Label, Spinner } from 'native-base'
 import React, { useState } from 'react'
 import {
   FlatList,
@@ -20,14 +11,17 @@ import {
 } from 'react-native'
 import { Col, Grid } from 'react-native-easy-grid'
 import Modal from 'react-native-modal'
+import DateTimePickerModal from 'react-native-modal-datetime-picker'
 import { useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
 import { RootState } from '../store/types'
 import { fetchAndCache, setReduxState } from './../store'
 import { EMAIL_LIST_PAGE_LENGTH, MAX_FROM_LENGTH } from './../store/constants'
-import DateTimePicker from '@react-native-community/datetimepicker';
+var moment = require('moment')
 
 // TODO - VirtualizedList: You have a large list that is slow to update - make sure your renderItem function renders components that follow React performance best practices like PureComponent, shouldComponentUpdate, etc. {"contentLength": 3030, "dt": 1195, "prevDt": 5812}
+
+const FILTER_DATE = '2000-10-04'
 
 interface Props {
   route: any
@@ -101,6 +95,7 @@ export default function SearchView({ navigation }: Props) {
     const [newTo, setNewTo] = useState(to)
     const [newSubject, setNewSubject] = useState(subject)
     const [newSent, setNewSent] = useState(sent)
+    const [datePickerOpen, setDatePickerOpen] = useState(false)
 
     function doQuery() {
       if (newAllText !== allText) setReduxState('allText', newAllText)
@@ -113,24 +108,23 @@ export default function SearchView({ navigation }: Props) {
     }
 
     function SentDatePicker() {
-
       // use https://github.com/mmazzarolo/react-native-modal-datetime-picker
 
+      const initialDate = sent ? new Date(sent) : new Date(FILTER_DATE)
+
       return (
-        <DatePicker
-          defaultDate={new Date(2018, 4, 4)}
-          minimumDate={new Date(2018, 1, 1)}
-          maximumDate={new Date(2018, 12, 31)}
-          locale={'en'}
-          timeZoneOffsetInMinutes={undefined}
-          modalTransparent={false}
-          animationType={'fade'}
-          androidMode={'default'}
-          placeHolderText="Select date"
-          textStyle={{ color: 'green' }}
-          placeHolderTextStyle={{ color: '#d3d3d3' }}
-          onDateChange={() => console.log('set date')}
-          disabled={false}
+        <DateTimePickerModal
+          isVisible={datePickerOpen}
+          isDarkModeEnabled={darkMode}
+          date={initialDate}
+          mode="date"
+          onConfirm={(date: Date) => {
+            setDatePickerOpen(false)
+            setNewSent(moment(date).format().slice(0, 10))
+          }}
+          onCancel={() => {
+            setDatePickerOpen(false)
+          }}
         />
       )
     }
@@ -151,6 +145,7 @@ export default function SearchView({ navigation }: Props) {
                 defaultValue={allText}
                 value={newAllText}
                 onChangeText={(s) => setNewAllText(s)}
+                style={{ color: darkMode ? 'white' : 'black' } as any}
               />
             </Item>
             <Item floatingLabel>
@@ -159,9 +154,14 @@ export default function SearchView({ navigation }: Props) {
                 defaultValue={sent}
                 value={newSent}
                 onChangeText={(s) => setNewSent(s)}
+                style={{ color: darkMode ? 'white' : 'black' } as any}
               />
 
-              <Icon name="calendar" onPress={() => console.log('foo')} />
+              <Icon
+                name="calendar"
+                style={{ color: darkMode ? 'white' : 'black' } as any}
+                onPress={() => setDatePickerOpen(true)}
+              />
             </Item>
             <Item floatingLabel>
               <Label>Filter From</Label>
@@ -169,6 +169,7 @@ export default function SearchView({ navigation }: Props) {
                 defaultValue={from}
                 value={newFrom}
                 onChangeText={(s) => setNewFrom(s)}
+                style={{ color: darkMode ? 'white' : 'black' } as any}
               />
             </Item>
             <Item floatingLabel>
@@ -177,6 +178,7 @@ export default function SearchView({ navigation }: Props) {
                 defaultValue={to}
                 value={newTo}
                 onChangeText={(s) => setNewTo(s)}
+                style={{ color: darkMode ? 'white' : 'black' } as any}
               />
             </Item>
             <Item floatingLabel>
@@ -185,6 +187,7 @@ export default function SearchView({ navigation }: Props) {
                 defaultValue={subject}
                 value={newSubject}
                 onChangeText={(s) => setNewSubject(s)}
+                style={{ color: darkMode ? 'white' : 'black' } as any}
               />
             </Item>
             <Grid>
@@ -298,7 +301,7 @@ export default function SearchView({ navigation }: Props) {
             initialNumToRender={EMAIL_LIST_PAGE_LENGTH}
           />
         )}
-        {emails && emails.length === 0 && (
+        {emails && emails.length === 0 && !emailsLoading && (
           <View style={styles.loading}>
             <Text>Nothing found</Text>
           </View>
