@@ -34,10 +34,14 @@ export default function AppSettingsView() {
 
   const PrimaryColorPicker = () => (
     <ColorPicker
-      onColorSelected={(color) => console.log(`Color selected: ${color}`)}
+      onColorSelected={(color: string) =>
+        console.log(`Color selected: ${color}`)
+      }
       style={styles.container}
     />
   )
+
+  // TODO - conform to look like x2-react
 
   return (
     <>
