@@ -93,7 +93,6 @@ export interface RootState {
   contacts: Array<Contact> | undefined
   darkMode: boolean
   themePrimaryColor: string
-  themeSecondaryColor: string
   orientation: string
 }
 

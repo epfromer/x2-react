@@ -1,8 +1,7 @@
-import { Body, Card, CardItem } from 'native-base'
 import React from 'react'
-import { Image, ScrollView, StyleSheet, Text } from 'react-native'
-import { useSelector } from 'react-redux'
+import { ScrollView } from 'react-native'
 import AppHeader from '../components/AppHeader'
+import DashboardCard from '../components/DashboardCard'
 import {
   BARCHART,
   CHORD,
@@ -15,128 +14,85 @@ import {
   VOLUMETIMELINE,
   WORDCLOUD,
 } from '../image/index'
-import { RootState } from '../store/types'
-
-// https://docs.nativebase.io/Components.html#card-headfoot-headref
 
 interface Props {
   navigation: any
 }
 export default function DashboardView({ navigation }: Props) {
-  const darkMode = useSelector((state: RootState) => state.darkMode)
-
-  const styles = StyleSheet.create({
-    title: {
-      fontSize: 20,
-      color: darkMode ? 'white' : 'black',
-    },
-    card: {
-      backgroundColor: darkMode ? 'black' : 'white',
-    },
-    text: {
-      color: darkMode ? 'white' : 'black',
-    },
-  })
-
-  const makeCard = (
-    image: any,
-    title: string,
-    description: string,
-    view: string
-  ) => {
-    return (
-      <Card>
-        <CardItem
-          header
-          button
-          style={styles.card}
-          onPress={() => navigation.navigate(view)}
-        >
-          <Text style={styles.title}>{title}</Text>
-        </CardItem>
-        <CardItem cardBody button onPress={() => navigation.navigate(view)}>
-          <Image
-            source={image}
-            style={{ height: 200, width: null, flex: 1 } as any}
-          />
-        </CardItem>
-        <CardItem
-          button
-          style={styles.card}
-          onPress={() => navigation.navigate(view)}
-        >
-          <Body>
-            <Text style={styles.text}>{description}</Text>
-          </Body>
-        </CardItem>
-      </Card>
-    )
-  }
-
   return (
     <>
       <AppHeader title="Dashboard" />
       <ScrollView>
-        {makeCard(
-          CHORD,
-          'Chord',
-          'Chord diagram of Enron key contact communication.',
-          'ChordView'
-        )}
-        {makeCard(
-          WORDCLOUD,
-          'Word Cloud',
-          'Word cloud of fraudulent project names.',
-          'WordCloudView'
-        )}
-        {makeCard(
-          VOLUMETIMELINE,
-          'Volume Timeline',
-          'XY timeline of Enron email per day with drill down.',
-          'VolumeTimelineView'
-        )}
-        {makeCard(
-          NETWORKGRAPH,
-          'Network Graph',
-          'Network graph of Enron key contact communication.',
-          'NetworkGraphView'
-        )}
-        {makeCard(
-          TREEMAP,
-          'Tree Map',
-          'Tree map of email volume of Enron key contacts.',
-          'TreeMapView'
-        )}
-        {makeCard(
-          EVENTTIMELINE,
-          'Event Timeline',
-          'Event timeline of Enron fraud and litigation.',
-          'EventTimelineView'
-        )}
-        {makeCard(
-          BARCHART,
-          'Bar',
-          'Bar chart of email volume of Enron key contacts.',
-          'BarView'
-        )}
-        {makeCard(
-          POLAR,
-          'Polar',
-          'Polar chart of email volume of Enron key contacts.',
-          'PolarView'
-        )}
-        {makeCard(
-          PIE,
-          'Pie',
-          'Pie chart of email volume of Enron key contacts.',
-          'PieView'
-        )}
-        {makeCard(
-          SEARCH,
-          'Search',
-          'Full text search with field filtering and hit highlighting.',
-          'SearchView'
-        )}
+        <DashboardCard
+          navigation={navigation}
+          image={CHORD}
+          title="Chord"
+          description="Chord diagram of Enron key contact communication."
+          link="ChordView"
+        />
+        <DashboardCard
+          navigation={navigation}
+          image={WORDCLOUD}
+          title="Word Cloud"
+          description="Word cloud of fraudulent project names."
+          link="WordCloudView"
+        />
+        <DashboardCard
+          navigation={navigation}
+          image={VOLUMETIMELINE}
+          title="Volume Timeline"
+          description="XY timeline of Enron email per day with drill down."
+          link="VolumeTimelineView"
+        />
+        <DashboardCard
+          navigation={navigation}
+          image={NETWORKGRAPH}
+          title="Network Graph"
+          description="Network graph of Enron key contact communication."
+          link="NetworkGraphView"
+        />
+        <DashboardCard
+          navigation={navigation}
+          image={TREEMAP}
+          title="Tree Map"
+          description="Tree map of email volume of Enron key contacts."
+          link="TreeMapView"
+        />
+        <DashboardCard
+          navigation={navigation}
+          image={EVENTTIMELINE}
+          title="Event Timeline"
+          description="Event timeline of Enron fraud and litigation."
+          link="EventTimelineView"
+        />
+        <DashboardCard
+          navigation={navigation}
+          image={BARCHART}
+          title="Bar"
+          description="Bar chart of email volume of Enron key contacts."
+          link="BarView"
+        />
+        <DashboardCard
+          navigation={navigation}
+          image={POLAR}
+          title="Polar"
+          description="Polar chart of email volume of Enron key contacts."
+          link="PolarView"
+        />
+        <DashboardCard
+          navigation={navigation}
+          image={PIE}
+          title="Pie"
+          description="Pie chart of email volume of Enron key contacts."
+          link="PieView"
+        />
+        <DashboardCard
+          navigation={navigation}
+          image={SEARCH}
+          title="Search"
+          description="Full text search with field filtering and hit highlighting."
+          link="SearchView"
+        />
       </ScrollView>
     </>
   )

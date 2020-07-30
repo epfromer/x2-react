@@ -11,9 +11,6 @@ export default function AppSettingsView() {
   const themePrimaryColor = useSelector(
     (state: RootState) => state.themePrimaryColor
   )
-  const themeSecondaryColor = useSelector(
-    (state: RootState) => state.themeSecondaryColor
-  )
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -48,21 +45,12 @@ export default function AppSettingsView() {
       <AppHeader title="Settings" />
       <SafeAreaView style={styles.container}>
         <ScrollView>
-          <Text style={styles.title}>Primary Interface Color</Text>
+          <Text style={styles.title}>Interface Color</Text>
           <View style={styles.picker}>
             <PrimaryColorPicker
               defaultColor={themePrimaryColor}
               onChange={(color: string) =>
                 saveSetting('themePrimaryColor', color)
-              }
-            />
-          </View>
-          <Text style={styles.title}>Secondary Interface Color</Text>
-          <View style={styles.picker}>
-            <PrimaryColorPicker
-              defaultColor={themeSecondaryColor}
-              onChange={(color: string) =>
-                saveSetting('themeSecondaryColor', color)
               }
             />
           </View>
