@@ -47,7 +47,7 @@
     "react-redux": "^7.2.1",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "victory-native": "^35.0.0"
+    "victory-native": "^35.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
@@ -59,9 +59,9 @@
     "@types/react-native": "^0.63.2",
     "@types/react-redux": "^7.1.9",
     "@types/react-test-renderer": "^16.9.2",
-    "babel-jest": "^26.1.0",
+    "babel-jest": "^26.2.1",
     "eslint": "^7.5.0",
-    "jest": "^26.1.0",
+    "jest": "^26.2.1",
     "metro-react-native-babel-preset": "^0.61.0",
     "react-test-renderer": "16.13.1",
     "typescript": "^3.9.7"
