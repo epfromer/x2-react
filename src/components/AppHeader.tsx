@@ -1,5 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import { Body, Button, Header, Icon, Left, Right, Title } from 'native-base'
+import { StyleSheet } from 'react-native'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { saveAppSettings, setReduxState } from '../store/'
@@ -11,6 +12,13 @@ interface Props {
 export default function AppHeader({ title }: Props) {
   const navigation: any = useNavigation()
   const darkMode = useSelector((state: RootState) => state.darkMode)
+  const styles = StyleSheet.create({
+    container: {
+      backgroundColor: useSelector(
+        (state: RootState) => state.themePrimaryColor
+      ),
+    },
+  })
 
   function setDarkMode(on: boolean) {
     setReduxState('darkMode', on)
@@ -18,7 +26,7 @@ export default function AppHeader({ title }: Props) {
   }
 
   return (
-    <Header>
+    <Header style={styles.container}>
       <Left>
         <Button transparent onPress={() => navigation.openDrawer()}>
           <Icon name="menu" />

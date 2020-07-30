@@ -1,13 +1,19 @@
 import React from 'react'
 import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
-import { ColorPicker } from 'react-native-color-picker'
 import { useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
+import PrimaryColorPicker from '../components/PrimaryColorPicker'
 import { RootState } from '../store/types'
+import { saveAppSettings, setReduxState } from '../store/'
 
 export default function AppSettingsView() {
   const darkMode = useSelector((state: RootState) => state.darkMode)
-
+  const themePrimaryColor = useSelector(
+    (state: RootState) => state.themePrimaryColor
+  )
+  const themeSecondaryColor = useSelector(
+    (state: RootState) => state.themeSecondaryColor
+  )
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -32,16 +38,10 @@ export default function AppSettingsView() {
     },
   })
 
-  const PrimaryColorPicker = () => (
-    <ColorPicker
-      onColorSelected={(color: string) =>
-        console.log(`Color selected: ${color}`)
-      }
-      style={styles.container}
-    />
-  )
-
-  // TODO - conform to look like x2-react
+  const saveSetting = (setting: string, value: string | number | boolean) => {
+    setReduxState(setting, value)
+    saveAppSettings()
+  }
 
   return (
     <>
@@ -50,11 +50,21 @@ export default function AppSettingsView() {
         <ScrollView>
           <Text style={styles.title}>Primary Interface Color</Text>
           <View style={styles.picker}>
-            <PrimaryColorPicker />
+            <PrimaryColorPicker
+              defaultColor={themePrimaryColor}
+              onChange={(color: string) =>
+                saveSetting('themePrimaryColor', color)
+              }
+            />
           </View>
           <Text style={styles.title}>Secondary Interface Color</Text>
           <View style={styles.picker}>
-            <PrimaryColorPicker />
+            <PrimaryColorPicker
+              defaultColor={themeSecondaryColor}
+              onChange={(color: string) =>
+                saveSetting('themeSecondaryColor', color)
+              }
+            />
           </View>
           <Text style={styles.title}>text</Text>
           <Text style={styles.title}>text</Text>

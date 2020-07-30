@@ -56,6 +56,7 @@ export default function SearchView({ navigation }: Props) {
     },
     button: {
       margin: 15,
+      backgroundColor: themePrimaryColor,
     },
     itemContainer: {
       margin: 5,

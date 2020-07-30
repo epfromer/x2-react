@@ -91,11 +91,11 @@ function reducer(state: RootState = initialState, action: Action) {
     case 'saveAppSettings': {
       const s = _.cloneDeep(state)
       AsyncStorage.setItem('darkMode', String(state.darkMode))
-      // localStorage.setItem('themePrimaryColor', String(state.themePrimaryColor))
-      // localStorage.setItem(
-      //   'themeSecondaryColor',
-      //   String(state.themeSecondaryColor)
-      // )
+      AsyncStorage.setItem('themePrimaryColor', String(state.themePrimaryColor))
+      AsyncStorage.setItem(
+        'themeSecondaryColor',
+        String(state.themeSecondaryColor)
+      )
       return s
     }
     case 'clearSearch': {
