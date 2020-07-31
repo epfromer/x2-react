@@ -5,7 +5,9 @@ import { useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
 import ColorPickerDlg from '../components/ColorPickerDlg'
 import { saveAppSettings, setReduxState } from '../store/'
+import { REACT_APP_EMAIL_SERVER } from '../store/env'
 import { Contact, RootState } from '../store/types'
+import { fetchAndCache } from './../store'
 
 export default function AppSettingsView() {
   const darkMode = useSelector((state: RootState) => state.darkMode)
@@ -59,6 +61,16 @@ export default function AppSettingsView() {
     if (colorPickerItem === 'themePrimaryColor') {
       setReduxState('themePrimaryColor', color)
       saveAppSettings()
+    } else {
+      const url = `${REACT_APP_EMAIL_SERVER}/contacts/${colorPickerItem}`
+      const payload = {
+        method: 'PUT',
+        body: JSON.stringify({ color }),
+        headers: { 'Content-type': 'application/json; charset=UTF-8' },
+      }
+      fetch(url, payload)
+        .then(() => fetchAndCache('contacts', true))
+        .catch((err) => console.log('fetch error', err))
     }
   }
 
@@ -78,7 +90,7 @@ export default function AppSettingsView() {
           <Button
             small
             style={{ backgroundColor: contact.color, width: 100 } as any}
-            onPress={() => chooseColor(contact.name, contact.color)}
+            onPress={() => chooseColor(contact._id, contact.color)}
           >
             <Text>&nbsp;</Text>
           </Button>
@@ -95,6 +107,7 @@ export default function AppSettingsView() {
           open={colorPickerDlgOpen}
           defaultColor={colorPickerDefault}
           onClose={handleColorChosen}
+          onCancel={() => setColorPickerDlgOpen(false)}
         />
         <ScrollView>
           <Text style={styles.title}>Colors</Text>

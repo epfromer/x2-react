@@ -1,6 +1,7 @@
 import Slider from '@react-native-community/slider'
+import { Button } from 'native-base'
 import React from 'react'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Text } from 'react-native'
 import { ColorPicker } from 'react-native-color-picker'
 import Modal from 'react-native-modal'
 import { useSelector } from 'react-redux'
@@ -10,14 +11,27 @@ interface Props {
   open: boolean
   defaultColor: string
   onClose: (c: string) => void
+  onCancel: () => void
 }
-export default function ColorPickerDlg({ open, defaultColor, onClose }: Props) {
+export default function ColorPickerDlg({
+  open,
+  defaultColor,
+  onClose,
+  onCancel,
+}: Props) {
+  const darkMode = useSelector((state: RootState) => state.darkMode)
+  const themePrimaryColor = useSelector(
+    (state: RootState) => state.themePrimaryColor
+  )
   const styles = StyleSheet.create({
     container: {
       flex: 1,
     },
+    button: {
+      marginTop: 30,
+      backgroundColor: themePrimaryColor,
+    },
   })
-  const darkMode = useSelector((state: RootState) => state.darkMode)
 
   return (
     <Modal
@@ -34,6 +48,9 @@ export default function ColorPickerDlg({ open, defaultColor, onClose }: Props) {
         style={styles.container}
         sliderComponent={Slider as any}
       />
+      <Button block small style={styles.button} onPress={() => onCancel()}>
+        <Text>Cancel</Text>
+      </Button>
     </Modal>
   )
 }
