@@ -5,12 +5,14 @@ import AppHeader from '../components/AppHeader'
 import PrimaryColorPicker from '../components/PrimaryColorPicker'
 import { RootState } from '../store/types'
 import { saveAppSettings, setReduxState } from '../store/'
+import ContactSettings from '../components/ContactSettings'
 
 export default function AppSettingsView() {
   const darkMode = useSelector((state: RootState) => state.darkMode)
   const themePrimaryColor = useSelector(
     (state: RootState) => state.themePrimaryColor
   )
+
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -19,7 +21,7 @@ export default function AppSettingsView() {
       height: 200,
     },
     title: {
-      fontSize: 15,
+      fontSize: 20,
       paddingTop: 5,
       paddingLeft: 15,
       color: darkMode ? 'white' : 'black',
@@ -44,26 +46,16 @@ export default function AppSettingsView() {
     <>
       <AppHeader title="Settings" />
       <SafeAreaView style={styles.container}>
-        <ScrollView>
-          <Text style={styles.title}>Interface Color</Text>
-          <View style={styles.picker}>
-            <PrimaryColorPicker
-              defaultColor={themePrimaryColor}
-              onChange={(color: string) =>
-                saveSetting('themePrimaryColor', color)
-              }
-            />
-          </View>
-          <Text style={styles.title}>text</Text>
-          <Text style={styles.title}>text</Text>
-          <Text style={styles.title}>text</Text>
-          <Text style={styles.title}>text</Text>
-          <Text style={styles.title}>text</Text>
-          <Text style={styles.title}>text</Text>
-          <Text style={styles.title}>text</Text>
-          <Text style={styles.title}>text</Text>
-          <Text style={styles.title}>text</Text>
-        </ScrollView>
+        <Text style={styles.title}>Interface Colors</Text>
+        <View style={styles.picker}>
+          <PrimaryColorPicker
+            defaultColor={themePrimaryColor}
+            onChange={(color: string) =>
+              saveSetting('themePrimaryColor', color)
+            }
+          />
+        </View>
+        <ContactSettings />
       </SafeAreaView>
     </>
   )
