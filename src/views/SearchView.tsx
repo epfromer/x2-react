@@ -157,7 +157,6 @@ export default function SearchView({ navigation }: Props) {
                 onChangeText={(s) => setNewSent(s)}
                 style={{ color: darkMode ? 'white' : 'black' } as any}
               />
-
               <Icon
                 name="calendar"
                 style={{ color: darkMode ? 'white' : 'black' } as any}

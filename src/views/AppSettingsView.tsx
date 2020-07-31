@@ -1,30 +1,47 @@
-import React from 'react'
-import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { Button, Spinner, Text } from 'native-base'
+import React, { useState } from 'react'
+import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native'
 import { useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
-import PrimaryColorPicker from '../components/PrimaryColorPicker'
-import { RootState } from '../store/types'
+import ColorPickerDlg from '../components/ColorPickerDlg'
 import { saveAppSettings, setReduxState } from '../store/'
-import ContactSettings from '../components/ContactSettings'
+import { Contact, RootState } from '../store/types'
 
 export default function AppSettingsView() {
   const darkMode = useSelector((state: RootState) => state.darkMode)
+  const [colorPickerDefault, setColorPickerDefault] = useState('')
+  const [colorPickerItem, setColorPickerItem] = useState('')
+  const [colorPickerDlgOpen, setColorPickerDlgOpen] = useState(false)
   const themePrimaryColor = useSelector(
     (state: RootState) => state.themePrimaryColor
+  )
+  const contacts = useSelector((state: RootState) => state.contacts)
+  const contactsLoading = useSelector(
+    (state: RootState) => state.contactsLoading
   )
 
   const styles = StyleSheet.create({
     container: {
       flex: 1,
     },
-    picker: {
-      height: 200,
+    contactContainer: {
+      marginTop: 10,
     },
     title: {
       fontSize: 20,
       paddingTop: 5,
       paddingLeft: 15,
       color: darkMode ? 'white' : 'black',
+    },
+    text: {
+      marginTop: 5,
+      color: darkMode ? 'white' : 'black',
+    },
+    itemRow: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginLeft: 15,
+      marginRight: 15,
     },
     loading: {
       position: 'absolute',
@@ -37,25 +54,75 @@ export default function AppSettingsView() {
     },
   })
 
-  const saveSetting = (setting: string, value: string | number | boolean) => {
-    setReduxState(setting, value)
-    saveAppSettings()
+  const handleColorChosen = (color: string) => {
+    setColorPickerDlgOpen(false)
+    if (colorPickerItem === 'themePrimaryColor') {
+      setReduxState('themePrimaryColor', color)
+      saveAppSettings()
+    }
   }
+
+  const chooseColor = (item: string, defaultColor: string) => {
+    setColorPickerItem(item)
+    setColorPickerDefault(defaultColor)
+    setColorPickerDlgOpen(true)
+  }
+
+  const renderContact = (contact: Contact) => (
+    <View style={styles.contactContainer} key={contact._id}>
+      <View style={styles.itemRow}>
+        <View>
+          <Text style={styles.text}>{contact.name}</Text>
+        </View>
+        <View>
+          <Button
+            small
+            style={{ backgroundColor: contact.color, width: 100 } as any}
+            onPress={() => chooseColor(contact.name, contact.color)}
+          >
+            <Text>&nbsp;</Text>
+          </Button>
+        </View>
+      </View>
+    </View>
+  )
 
   return (
     <>
       <AppHeader title="Settings" />
       <SafeAreaView style={styles.container}>
-        <Text style={styles.title}>Interface Colors</Text>
-        <View style={styles.picker}>
-          <PrimaryColorPicker
-            defaultColor={themePrimaryColor}
-            onChange={(color: string) =>
-              saveSetting('themePrimaryColor', color)
-            }
-          />
-        </View>
-        <ContactSettings />
+        <ColorPickerDlg
+          open={colorPickerDlgOpen}
+          defaultColor={colorPickerDefault}
+          onClose={handleColorChosen}
+        />
+        <ScrollView>
+          <Text style={styles.title}>Colors</Text>
+          <View style={styles.itemRow}>
+            <View>
+              <Text style={styles.text}>Primary Interface</Text>
+            </View>
+            <View>
+              <Button
+                small
+                style={
+                  { backgroundColor: themePrimaryColor, width: 100 } as any
+                }
+                onPress={() =>
+                  chooseColor('themePrimaryColor', themePrimaryColor)
+                }
+              >
+                <Text>&nbsp;</Text>
+              </Button>
+            </View>
+          </View>
+          {contactsLoading && (
+            <View style={styles.loading}>
+              <Spinner color={themePrimaryColor} />
+            </View>
+          )}
+          {contacts && contacts.map((contact) => renderContact(contact))}
+        </ScrollView>
       </SafeAreaView>
     </>
   )
