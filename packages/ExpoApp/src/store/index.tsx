@@ -3,22 +3,6 @@ import _ from 'lodash'
 import { applyMiddleware, createStore } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import { Action, Email, RootState } from './types'
-export {
-  clearSearch,
-  fetchAndCache,
-  getLocalStorage,
-  saveAppSettings,
-  setReduxState,
-} from './actions'
-export {
-  getEmailById,
-  getEmailIndex,
-  getEmailReceivers,
-  getEmailSenders,
-  getEmailSentStats,
-  getNextEmail,
-  getPreviousEmail,
-} from './selectors'
 
 const initialState: RootState = {
   // search results
