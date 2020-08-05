@@ -1,1 +1,1 @@
-export const HelloWorld = "hello world, i am victorious!!!!"
+export const HelloWorld = "hello world, i am victorious!!!"
