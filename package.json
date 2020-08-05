@@ -1,93 +1,23 @@
 {
-  "name": "X2ReactNative",
-  "version": "0.0.1",
-  "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "start": "react-native start",
-    "test": "jest",
-    "lint": "eslint .",
-    "windows": "react-native run-windows"
-  },
-  "dependencies": {
-    "@highcharts/highcharts-react-native": "^2.2.3",
-    "@react-native-community/async-storage": "^1.11.0",
-    "@react-native-community/datetimepicker": "^2.6.1",
-    "@react-native-community/masked-view": "^0.1.10",
-    "@react-native-community/slider": "^3.0.3",
-    "@react-native-community/toolbar-android": "^0.1.0-rc.2",
-    "@react-navigation/drawer": "^5.8.7",
-    "@react-navigation/native": "^5.7.2",
-    "@types/moment": "^2.13.0",
-    "@types/victory": "^33.1.4",
-    "echarts": "^4.8.0",
-    "highcharts": "^8.1.2",
-    "highcharts-react-official": "^3.0.0",
-    "lodash": "^4.17.19",
-    "moment": "^2.27.0",
-    "native-base": "^2.13.13",
-    "react": "16.13.1",
-    "react-native": "^0.63.2",
-    "react-native-canvas": "^0.1.37",
-    "react-native-color-picker": "^0.5.2",
-    "react-native-easy-grid": "^0.2.2",
-    "react-native-echarts-wrapper": "^2.0.0",
-    "react-native-gesture-handler": "^1.6.1",
-    "react-native-highlight-words": "^1.0.1",
-    "react-native-modal": "^11.5.6",
-    "react-native-modal-datetime-picker": "^8.7.1",
-    "react-native-reanimated": "^1.10.1",
-    "react-native-safe-area-context": "3.0.7",
-    "react-native-screens": "^2.9.0",
-    "react-native-svg": "^12.1.0",
-    "react-native-vector-icons": "^7.0.0",
-    "react-native-webview": "^10.3.2",
-    "react-native-windows": "^0.62.3",
-    "react-native-word-cloud": "^1.0.7",
-    "react-redux": "^7.2.1",
-    "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0",
-    "victory-native": "^35.0.1"
-  },
+  "name": "root",
+  "private": true,
   "devDependencies": {
-    "@babel/core": "^7.10.5",
-    "@babel/runtime": "^7.10.5",
-    "@react-native-community/eslint-config": "^2.0.0",
-    "@types/jest": "^26.0.7",
-    "@types/lodash": "^4.14.158",
-    "@types/react": "^16.9.43",
-    "@types/react-native": "^0.63.2",
-    "@types/react-redux": "^7.1.9",
-    "@types/react-test-renderer": "^16.9.2",
-    "babel-jest": "^26.2.1",
-    "eslint": "^7.5.0",
-    "jest": "^26.2.1",
-    "metro-react-native-babel-preset": "^0.61.0",
-    "react-test-renderer": "16.13.1",
-    "typescript": "^3.9.7"
+    "lerna": "^3.22.1"
   },
-  "eslintConfig": {
-    "extends": [
-      "@react-native-community",
-      "plugin:prettier/recommended"
-    ]
+  "scripts": {
+    "yarn": "yarn"
   },
-  "prettier": {
-    "semi": false,
-    "arrowParens": "always",
-    "singleQuote": true,
-    "trailingComma": "es5",
-    "endOfLine": "auto"
-  },
-  "jest": {
-    "preset": "react-native",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/react-native",
+      "**/react-native/**",
+      "**/expo",
+      "**/expo/**",
+      "**/@carimus",
+      "**/@carimus/**"
     ]
   }
 }
