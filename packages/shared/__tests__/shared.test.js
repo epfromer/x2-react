@@ -2,6 +2,6 @@
 
 const shared = require('..');
 
-describe('@foo/shared', () => {
+describe('@x2react/shared', () => {
     it('needs tests');
 });

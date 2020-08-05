@@ -10,7 +10,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "@foo/shared": "^0.0.0",
+    "@x2react/shared": "^0.0.0",
     "expo": "^38.0.9",
     "metro-config": "^0.56.0",
     "react": "16.13.1",

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { HelloWorld } from '@foo/shared'
+import { HelloWorld } from '@x2react/shared'
 
 export default function App() {
   return (
