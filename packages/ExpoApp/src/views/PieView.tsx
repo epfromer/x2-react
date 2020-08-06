@@ -43,84 +43,9 @@ export default function PieView({ navigation }: Props) {
   // }
 
   return (
-    <>
     <View style={styles.container}>
-      <Text>foooo</Text>
+      <Text>PieView</Text>
     </View>
-
-      {/* <AppHeader title="Pie" />
-      <SafeAreaView style={styles.container}>
-        {contactsLoading && (
-          <View style={styles.loading}>
-            <Spinner color={themePrimaryColor} />
-          </View>
-        )}
-        {contacts && (
-          <>
-            {chartLib === 'ECharts' && (
-              <>
-                {isSenders && (
-                  <PieECharts
-                    title="Senders"
-                    search="from"
-                    data={emailSenders}
-                    handleClick={handleClick}
-                  />
-                )}
-                {!isSenders && (
-                  <PieECharts
-                    title="Receivers"
-                    search="to"
-                    data={emailReceivers}
-                    handleClick={handleClick}
-                  />
-                )}
-              </>
-            )}
-            {chartLib === 'Victory' && (
-              <>
-                {isSenders && (
-                  <PieVictory
-                    title="Senders"
-                    search="from"
-                    data={emailSenders}
-                    handleClick={handleClick}
-                  />
-                )}
-                {!isSenders && (
-                  <PieVictory
-                    title="Receivers"
-                    search="to"
-                    data={emailReceivers}
-                    handleClick={handleClick}
-                  />
-                )}
-              </>
-            )}
-          </>
-        )}
-        <Form>
-          <Picker
-            note
-            mode="dropdown"
-            selectedValue={isSenders ? 'Senders' : 'Receivers'}
-            onValueChange={(value) => setIsSenders(value === 'Senders')}
-          >
-            <Picker.Item label="Senders" value="Senders" />
-            <Picker.Item label="Receivers" value="Receivers" />
-          </Picker>
-          <Picker
-            note
-            mode="dropdown"
-            selectedValue={chartLib}
-            onValueChange={(value) => setChartLib(value)}
-          >
-            <Picker.Item label="ECharts" value="ECharts" />
-            <Picker.Item label="Victory" value="Victory" />
-          </Picker>
-        </Form>
-      </SafeAreaView> */}
-    </>
   )
 }
 

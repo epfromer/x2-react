@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Button, View } from 'react-native'
 // import AppHeader from '../components/AppHeader'
 // import DashboardCard from '../components/DashboardCard'
 // import {
@@ -21,7 +21,7 @@ interface Props {
 export default function DashboardView({ navigation }: Props) {
   return (
     <View style={styles.container}>
-      <Text>dashboard</Text>
+      <Button onPress={() => navigation.goBack()} title="DashboardView" />
     </View>
   )
 }
@@ -29,7 +29,7 @@ export default function DashboardView({ navigation }: Props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    // backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
