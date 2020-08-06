@@ -1,6 +1,5 @@
-import { Form, Picker, Spinner } from 'native-base'
-import React, { useState } from 'react'
-import { SafeAreaView, StyleSheet, View, Text } from 'react-native'
+import React from 'react'
+import { StyleSheet, Text, View } from 'react-native'
 
 // import { useSelector } from 'react-redux'
 // import AppHeader from '../components/AppHeader'
@@ -45,7 +44,10 @@ export default function PieView({ navigation }: Props) {
 
   return (
     <>
-      <Text>foo</Text>
+    <View style={styles.container}>
+      <Text>foooo</Text>
+    </View>
+
       {/* <AppHeader title="Pie" />
       <SafeAreaView style={styles.container}>
         {contactsLoading && (
@@ -123,8 +125,14 @@ export default function PieView({ navigation }: Props) {
 }
 
 const styles = StyleSheet.create({
+  // container: {
+  //   flex: 1,
+  // },
   container: {
     flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   loading: {
     position: 'absolute',
