@@ -1,36 +1,25 @@
+import { PIE } from '@x2react/shared'
 import React from 'react'
-import { StyleSheet, Button, View } from 'react-native'
-// import AppHeader from '../components/AppHeader'
-// import DashboardCard from '../components/DashboardCard'
-// import {
-//   BARCHART,
-//   CHORD,
-//   EVENTTIMELINE,
-//   NETWORKGRAPH,
-//   PIE,
-//   POLAR,
-//   SEARCH,
-//   TREEMAP,
-//   VOLUMETIMELINE,
-//   WORDCLOUD,
-// } from '../image/index'
+import { ImageSourcePropType, ScrollView } from 'react-native'
+import AppHeader from '../components/AppHeader'
+import DashboardCard from '../components/DashboardCard'
 
 interface Props {
   navigation: any
 }
 export default function DashboardView({ navigation }: Props) {
   return (
-    <View style={styles.container}>
-      <Button onPress={() => navigation.goBack()} title="DashboardView" />
-    </View>
+    <>
+      <AppHeader title="Dashboard" />
+      <ScrollView>
+        <DashboardCard
+          navigation={navigation}
+          image={PIE as ImageSourcePropType}
+          title="Pie"
+          description="Pie chart of email volume of Enron key contacts."
+          link="PieView"
+        />
+      </ScrollView>
+    </>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    // backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-})
