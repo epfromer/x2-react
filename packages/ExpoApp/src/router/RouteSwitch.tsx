@@ -7,11 +7,11 @@ import {
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from '../store/types'
+// import AppSettingsView from '../views/AppSettingsView'
+import BarView from '../views/BarView'
 import DashboardView from '../views/DashboardView'
 import PieView from '../views/PieView'
 
-// import AppSettingsView from '../views/AppSettingsView'
-// import BarView from '../views/BarView'
 // import ChordView from '../views/ChordView'
 // import DashboardView from '../views/DashboardView'
 // import EmailDetailView from '../views/EmailDetailView'
@@ -40,6 +40,11 @@ export default function RouteSwitch() {
           name="PieView"
           component={PieView}
           options={{ title: 'Pie' }}
+        />
+        <Drawer.Screen
+          name="BarView"
+          component={BarView}
+          options={{ title: 'Bar' }}
         />
       </Drawer.Navigator>
     </NavigationContainer>
