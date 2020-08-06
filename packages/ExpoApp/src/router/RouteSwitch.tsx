@@ -9,14 +9,13 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../store/types'
 // import AppSettingsView from '../views/AppSettingsView'
 import BarView from '../views/BarView'
+import ChordView from '../views/ChordView'
 import DashboardView from '../views/DashboardView'
-import PieView from '../views/PieView'
-
-// import ChordView from '../views/ChordView'
-// import DashboardView from '../views/DashboardView'
 // import EmailDetailView from '../views/EmailDetailView'
 // import EventTimelineView from '../views/EventTimelineView'
-// import NetworkGraphView from '../views/NetworkGraphView'
+import NetworkGraphView from '../views/NetworkGraphView'
+import PieView from '../views/PieView'
+
 // import PolarView from '../views/PolarView'
 // import SearchView from '../views/SearchView'
 // import TreeMapView from '../views/TreeMapView'
@@ -45,6 +44,16 @@ export default function RouteSwitch() {
           name="BarView"
           component={BarView}
           options={{ title: 'Bar' }}
+        />
+        <Drawer.Screen
+          name="ChordView"
+          component={ChordView}
+          options={{ title: 'Chord' }}
+        />
+        <Drawer.Screen
+          name="NetworkGraphView"
+          component={NetworkGraphView}
+          options={{ title: 'Network Graph' }}
         />
       </Drawer.Navigator>
     </NavigationContainer>
