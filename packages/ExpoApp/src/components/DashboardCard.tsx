@@ -1,6 +1,11 @@
-import { Body, Card, CardItem } from 'native-base'
 import React from 'react'
-import { Image, ImageSourcePropType, StyleSheet, Text } from 'react-native'
+import {
+  ImageSourcePropType,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+} from 'react-native'
+import { Card } from 'react-native-elements'
 import { useSelector } from 'react-redux'
 import { RootState } from '../store/types'
 
@@ -31,34 +36,15 @@ export default function DashboardCard({
     },
     text: {
       color: darkMode ? 'white' : 'black',
+      marginBottom: 10,
     },
   })
 
   return (
-    <Card>
-      <CardItem
-        header
-        button
-        style={styles.card}
-        onPress={() => navigation.navigate(link)}
-      >
-        <Text style={styles.title}>{title}</Text>
-      </CardItem>
-      <CardItem cardBody button onPress={() => navigation.navigate(link)}>
-        <Image
-          source={image}
-          style={{ height: 200, width: null, flex: 1 } as any}
-        />
-      </CardItem>
-      <CardItem
-        button
-        style={styles.card}
-        onPress={() => navigation.navigate(link)}
-      >
-        <Body>
-          <Text style={styles.text}>{description}</Text>
-        </Body>
-      </CardItem>
-    </Card>
+    <TouchableOpacity onPress={() => navigation.navigate(link)}>
+      <Card title={title} image={image}>
+        <Text style={styles.text}>{description}</Text>
+      </Card>
+    </TouchableOpacity>
   )
 }
