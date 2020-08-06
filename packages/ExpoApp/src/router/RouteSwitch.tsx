@@ -15,10 +15,9 @@ import DashboardView from '../views/DashboardView'
 // import EventTimelineView from '../views/EventTimelineView'
 import NetworkGraphView from '../views/NetworkGraphView'
 import PieView from '../views/PieView'
-
-// import PolarView from '../views/PolarView'
+import PolarView from '../views/PolarView'
 // import SearchView from '../views/SearchView'
-// import TreeMapView from '../views/TreeMapView'
+import TreeMapView from '../views/TreeMapView'
 // import VolumeTimelineView from '../views/VolumeTimelineView'
 // import WordCloudView from '../views/WordCloudView'
 
@@ -54,6 +53,16 @@ export default function RouteSwitch() {
           name="NetworkGraphView"
           component={NetworkGraphView}
           options={{ title: 'Network Graph' }}
+        />
+        <Drawer.Screen
+          name="PolarView"
+          component={PolarView}
+          options={{ title: 'Polar' }}
+        />
+        <Drawer.Screen
+          name="TreeMapView"
+          component={TreeMapView}
+          options={{ title: 'Tree Map' }}
         />
       </Drawer.Navigator>
     </NavigationContainer>
