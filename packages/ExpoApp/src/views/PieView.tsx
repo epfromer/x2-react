@@ -5,7 +5,7 @@ import Spinner from 'react-native-loading-spinner-overlay'
 import { useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
 import PieECharts from '../components/ECharts/PieECharts'
-// import PieVictory from '../components/Victory/PieVictory'
+import PieVictory from '../components/Victory/PieVictory'
 import { clearSearch, fetchAndCache, setReduxState } from './../store/actions'
 import { getEmailReceivers, getEmailSenders } from './../store/selectors'
 import { RootState } from './../store/types'
@@ -64,7 +64,7 @@ export default function PieView({ navigation }: Props) {
             {chartLib === 'Victory' && (
               <>
                 {isSenders && (
-                  <PieECharts
+                  <PieVictory
                     title="Senders"
                     search="from"
                     data={emailSenders}
@@ -72,7 +72,7 @@ export default function PieView({ navigation }: Props) {
                   />
                 )}
                 {!isSenders && (
-                  <PieECharts
+                  <PieVictory
                     title="Receivers"
                     search="to"
                     data={emailReceivers}
