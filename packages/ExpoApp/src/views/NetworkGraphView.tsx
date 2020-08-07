@@ -1,5 +1,5 @@
 import React from 'react'
-import { SafeAreaView, StyleSheet, View } from 'react-native'
+import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
@@ -19,9 +19,6 @@ export default function NetworkGraphView({ navigation }: Props) {
   const contactsLoading = useSelector(
     (state: RootState) => state.contactsLoading
   )
-  const themePrimaryColor = useSelector(
-    (state: RootState) => state.themePrimaryColor
-  )
 
   function handleClick(to: string, from: string) {
     if (to && from) {
@@ -37,11 +34,7 @@ export default function NetworkGraphView({ navigation }: Props) {
     <>
       <AppHeader title="Network Graph" />
       <SafeAreaView style={styles.container}>
-        {contactsLoading && (
-          <View style={styles.loading}>
-            <Spinner color={themePrimaryColor} />
-          </View>
-        )}
+        <Spinner visible={contactsLoading} textContent={'Loading...'} />
         {!contactsLoading && (
           <NetworkGraphECharts
             title="Email Senders to Receivers"

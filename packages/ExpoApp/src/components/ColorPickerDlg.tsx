@@ -1,8 +1,8 @@
 import Slider from '@react-native-community/slider'
-import { Button } from 'react-native-elements'
 import React from 'react'
-import { StyleSheet, Text } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { ColorPicker } from 'react-native-color-picker'
+import { Button } from 'react-native-elements'
 import Modal from 'react-native-modal'
 import { useSelector } from 'react-redux'
 import { RootState } from '../store/types'
@@ -20,9 +20,6 @@ export default function ColorPickerDlg({
   onCancel,
 }: Props) {
   const darkMode = useSelector((state: RootState) => state.darkMode)
-  const themePrimaryColor = useSelector(
-    (state: RootState) => state.themePrimaryColor
-  )
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -30,7 +27,6 @@ export default function ColorPickerDlg({
     button: {
       marginTop: 30,
       height: 50,
-      backgroundColor: themePrimaryColor,
     },
   })
 

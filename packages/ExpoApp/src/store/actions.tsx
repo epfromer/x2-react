@@ -133,8 +133,6 @@ export async function getLocalStorage() {
   try {
     let value = await AsyncStorage.getItem('darkMode')
     if (value !== null) setReduxState('darkMode', Boolean(value))
-    value = await AsyncStorage.getItem('themePrimaryColor')
-    if (value !== null) setReduxState('themePrimaryColor', value)
   } catch (e) {
     console.error(e)
   }

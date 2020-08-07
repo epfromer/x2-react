@@ -20,9 +20,6 @@ interface Props {
 export default function VolumeTimelineVictory({ data }: Props) {
   const darkMode = useSelector((state: RootState) => state.darkMode)
   const [orientation, setOrientation] = useState('portrait')
-  const themePrimaryColor = useSelector(
-    (state: RootState) => state.themePrimaryColor
-  )
   const [zoomDomain, setZoomDomain] = useState({
     x: [new Date(1999, 1, 1), new Date(2002, 3, 1)],
   })
@@ -87,7 +84,6 @@ export default function VolumeTimelineVictory({ data }: Props) {
         />
         <VictoryLine
           style={{
-            data: { stroke: themePrimaryColor },
             labels: {
               fontSize: 15,
               fill: darkMode ? 'white' : 'black',

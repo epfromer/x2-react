@@ -3,11 +3,11 @@ import {
   SafeAreaView,
   ScrollView,
   StyleSheet,
+  Switch,
   Text,
   View,
-  Switch,
 } from 'react-native'
-import { Button, CheckBox } from 'react-native-elements'
+import { Button } from 'react-native-elements'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
@@ -25,9 +25,6 @@ export default function AppSettingsView() {
   const [colorPickerDefault, setColorPickerDefault] = useState('')
   const [colorPickerItem, setColorPickerItem] = useState('')
   const [colorPickerDlgOpen, setColorPickerDlgOpen] = useState(false)
-  const themePrimaryColor = useSelector(
-    (state: RootState) => state.themePrimaryColor
-  )
   const contacts = useSelector((state: RootState) => state.contacts)
   const contactsLoading = useSelector(
     (state: RootState) => state.contactsLoading
@@ -70,20 +67,15 @@ export default function AppSettingsView() {
 
   const handleColorChosen = (color: string) => {
     setColorPickerDlgOpen(false)
-    if (colorPickerItem === 'themePrimaryColor') {
-      setReduxState('themePrimaryColor', color)
-      saveAppSettings()
-    } else {
-      const url = `${REACT_APP_EMAIL_SERVER}/contacts/${colorPickerItem}`
-      const payload = {
-        method: 'PUT',
-        body: JSON.stringify({ color }),
-        headers: { 'Content-type': 'application/json; charset=UTF-8' },
-      }
-      fetch(url, payload)
-        .then(() => fetchAndCache('contacts', true))
-        .catch((err) => console.log('fetch error', err))
+    const url = `${REACT_APP_EMAIL_SERVER}/contacts/${colorPickerItem}`
+    const payload = {
+      method: 'PUT',
+      body: JSON.stringify({ color }),
+      headers: { 'Content-type': 'application/json; charset=UTF-8' },
     }
+    fetch(url, payload)
+      .then(() => fetchAndCache('contacts', true))
+      .catch((err) => console.log('fetch error', err))
   }
 
   const chooseColor = (item: string, defaultColor: string) => {
@@ -137,27 +129,6 @@ export default function AppSettingsView() {
         />
         <ScrollView>
           <DarkModeSwitch />
-          <View style={styles.itemRow}>
-            <View>
-              <Text style={styles.text}>Primary Interface (Header...)</Text>
-            </View>
-            <View>
-              <Button
-                buttonStyle={
-                  {
-                    backgroundColor: themePrimaryColor,
-                    width: 100,
-                    height: 30,
-                  } as any
-                }
-                onPress={() =>
-                  chooseColor('themePrimaryColor', themePrimaryColor)
-                }
-              >
-                <Text>&nbsp;</Text>
-              </Button>
-            </View>
-          </View>
           <Spinner visible={contactsLoading} textContent={'Loading...'} />
           {contacts && contacts.map((contact) => renderContact(contact))}
         </ScrollView>

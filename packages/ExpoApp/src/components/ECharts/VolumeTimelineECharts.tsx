@@ -14,9 +14,6 @@ interface Props {
 
 export default function VolumeTimelineECharts({ data, handleClick }: Props) {
   const darkMode = useSelector((state: RootState) => state.darkMode)
-  const themePrimaryColor = useSelector(
-    (state: RootState) => state.themePrimaryColor
-  )
 
   // function onData(name: string) {
   //   console.log(name)
@@ -70,7 +67,6 @@ export default function VolumeTimelineECharts({ data, handleClick }: Props) {
         series: [
           {
             type: 'bar',
-            color: themePrimaryColor,
             data: data.map((datum) => datum.value),
           },
         ],

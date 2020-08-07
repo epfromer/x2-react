@@ -1,5 +1,5 @@
 import React from 'react'
-import { SafeAreaView, StyleSheet, View } from 'react-native'
+import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
@@ -16,9 +16,6 @@ export default function WordCloudView({ navigation }: Props) {
     (state: RootState) => state.wordCloudLoading
   )
   const wordCloud = useSelector((state: RootState) => state.wordCloud)
-  const themePrimaryColor = useSelector(
-    (state: RootState) => state.themePrimaryColor
-  )
 
   function handleClick(word: string) {
     clearSearch()
@@ -36,11 +33,7 @@ export default function WordCloudView({ navigation }: Props) {
     <>
       <AppHeader title="Word Cloud" />
       <SafeAreaView style={styles.container}>
-        {wordCloudLoading && (
-          <View style={styles.loading}>
-            <Spinner color={themePrimaryColor} />
-          </View>
-        )}
+        <Spinner visible={wordCloudLoading} textContent={'Loading...'} />
         {wordCloud && (
           <WordCloud
             title="Enron Project Names"

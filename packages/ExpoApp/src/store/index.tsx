@@ -35,7 +35,6 @@ const initialState: RootState = {
 
   // app settings
   darkMode: false,
-  themePrimaryColor: '#2196f3',
   orientation: 'portrait',
 }
 
@@ -74,7 +73,6 @@ function reducer(state: RootState = initialState, action: Action) {
     case 'saveAppSettings': {
       const s = _.cloneDeep(state)
       AsyncStorage.setItem('darkMode', String(state.darkMode))
-      AsyncStorage.setItem('themePrimaryColor', String(state.themePrimaryColor))
       return s
     }
     case 'clearSearch': {

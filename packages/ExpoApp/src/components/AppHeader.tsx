@@ -19,9 +19,6 @@ export default function AppHeader({ title }: Props) {
   return (
     <Header
       placement="left"
-      backgroundColor={useSelector(
-        (state: RootState) => state.themePrimaryColor
-      )}
       leftComponent={
         <Icon
           name="menu"
