@@ -1,11 +1,12 @@
 import React from 'react'
 import {
+  Image,
   ImageSourcePropType,
   StyleSheet,
   Text,
   TouchableOpacity,
+  View,
 } from 'react-native'
-import { Card } from 'react-native-elements'
 import { useSelector } from 'react-redux'
 import { RootState } from '../store/types'
 
@@ -29,22 +30,35 @@ export default function DashboardCard({
   const styles = StyleSheet.create({
     title: {
       fontSize: 20,
+      marginLeft: 10,
+      marginTop: 10,
       color: darkMode ? 'white' : 'black',
-    },
-    card: {
-      backgroundColor: darkMode ? 'black' : 'white',
     },
     text: {
       color: darkMode ? 'white' : 'black',
+      marginLeft: 10,
       marginBottom: 10,
+    },
+    image: {
+      width: '90%',
+      height: 150,
+      margin: '5%',
+    },
+    separator: {
+      marginVertical: 8,
+      borderBottomColor: '#737373',
+      borderBottomWidth: StyleSheet.hairlineWidth,
     },
   })
 
+  const Separator = () => <View style={styles.separator} />
+
   return (
     <TouchableOpacity onPress={() => navigation.navigate(link)}>
-      <Card title={title} image={image}>
-        <Text style={styles.text}>{description}</Text>
-      </Card>
+      <Text style={styles.title}>{title}</Text>
+      <Image source={image} style={styles.image} />
+      <Text style={styles.text}>{description}</Text>
+      <Separator />
     </TouchableOpacity>
   )
 }

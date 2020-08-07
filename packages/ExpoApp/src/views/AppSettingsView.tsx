@@ -1,6 +1,13 @@
 import React, { useState } from 'react'
-import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
-import { Button } from 'react-native-elements'
+import {
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  Switch,
+} from 'react-native'
+import { Button, CheckBox } from 'react-native-elements'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { useSelector } from 'react-redux'
 import AppHeader from '../components/AppHeader'
@@ -46,8 +53,9 @@ export default function AppSettingsView() {
     itemRow: {
       flexDirection: 'row',
       justifyContent: 'space-between',
-      marginLeft: 15,
-      marginRight: 15,
+      marginLeft: 10,
+      marginRight: 10,
+      marginTop: 10,
     },
     loading: {
       position: 'absolute',
@@ -102,6 +110,21 @@ export default function AppSettingsView() {
     </View>
   )
 
+  const setDarkMode = (on: boolean) => {
+    setReduxState('darkMode', on)
+    saveAppSettings()
+  }
+
+  const DarkModeSwitch = () => (
+    <View style={styles.itemRow}>
+      <Text style={styles.text}>Dark mode {darkMode ? 'on' : 'off'}</Text>
+      <Switch
+        value={darkMode}
+        onValueChange={() => setDarkMode(darkMode ? false : true)}
+      />
+    </View>
+  )
+
   return (
     <>
       <AppHeader title="Settings" />
@@ -113,10 +136,10 @@ export default function AppSettingsView() {
           onCancel={() => setColorPickerDlgOpen(false)}
         />
         <ScrollView>
-          <Text style={styles.title}>Colors</Text>
+          <DarkModeSwitch />
           <View style={styles.itemRow}>
             <View>
-              <Text style={styles.text}>Primary Interface</Text>
+              <Text style={styles.text}>Primary Interface (Header...)</Text>
             </View>
             <View>
               <Button

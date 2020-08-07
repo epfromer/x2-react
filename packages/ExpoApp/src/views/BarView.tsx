@@ -10,8 +10,6 @@ import { RootState } from '../store/types'
 import { clearSearch, fetchAndCache, setReduxState } from './../store/actions'
 import { getEmailReceivers, getEmailSenders } from './../store/selectors'
 
-// https://docs.nativebase.io/Components.html#picker-def-headref
-
 interface Props {
   route: any
   navigation: any
