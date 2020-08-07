@@ -2,13 +2,12 @@ import React, { useState } from 'react'
 import {
   FlatList,
   SafeAreaView,
-  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native'
-import { Button } from 'react-native-elements'
+import { Button, Input, Icon } from 'react-native-elements'
 import Spinner from 'react-native-loading-spinner-overlay'
 import Modal from 'react-native-modal'
 import DateTimePickerModal from 'react-native-modal-datetime-picker'
@@ -44,6 +43,7 @@ export default function SearchView({ navigation }: Props) {
     },
     filterButton: {
       padding: 5,
+      height: 60,
     },
     dlgContainer: {
       flex: 1,
@@ -51,13 +51,17 @@ export default function SearchView({ navigation }: Props) {
       flexDirection: 'column',
     },
     button: {
-      margin: 15,
+      width: 80,
     },
     itemContainer: {
       margin: 5,
     },
-    itemTopRow: {
+    spaceBetweenRow: {
       flexDirection: 'row',
+      justifyContent: 'space-between',
+    },
+    spaceBetweenColumn: {
+      flexDirection: 'column',
       justifyContent: 'space-between',
     },
     bold: {
@@ -132,17 +136,9 @@ export default function SearchView({ navigation }: Props) {
         backdropColor={darkMode ? 'black' : 'white'}
         supportedOrientations={['portrait', 'landscape']}
       >
-        <ScrollView>
+        <SafeAreaView>
           <SentDatePicker />
-          {/* <Item floatingLabel>
-              <Label>Filter (all text fields)</Label>
-              <Input
-                defaultValue={allText}
-                value={newAllText}
-                onChangeText={(s) => setNewAllText(s)}
-                style={{ color: darkMode ? 'white' : 'black' } as any}
-              />
-            </Item>
+          {/* 
             <Item floatingLabel>
               <Label>Filter Sent</Label>
               <Input
@@ -184,29 +180,54 @@ export default function SearchView({ navigation }: Props) {
                 style={{ color: darkMode ? 'white' : 'black' } as any}
               />
             </Item> */}
-          {/* <Grid>
-              <Col>
-                <Button
-                  block
-                  small
-                  style={styles.button}
-                  onPress={() => setDlgOpen(false)}
-                >
-                  <Text>Cancel</Text>
-                </Button>
-              </Col>
-              <Col>
-                <Button
-                  block
-                  small
-                  style={styles.button}
-                  onPress={() => doQuery()}
-                >
-                  <Text>Search</Text>
-                </Button>
-              </Col>
-            </Grid> */}
-        </ScrollView>
+          <View style={styles.spaceBetweenColumn}>
+            <Input
+              label="Filter (all text fields)"
+              labelStyle={styles.text}
+              inputStyle={styles.text}
+              value={newAllText}
+              onChangeText={(s) => setNewAllText(s)}
+              rightIcon={
+                <Icon
+                  name="close"
+                  iconStyle={styles.text}
+                  onPress={() => setNewAllText('')}
+                />
+              }
+            />
+            <Input
+              label="Filter Sent"
+              labelStyle={styles.text}
+              inputStyle={styles.text}
+              value={sent}
+              onChangeText={(s) => setNewSent(s)}
+              rightIcon={
+                <Icon
+                  name="date-range"
+                  iconStyle={styles.text}
+                  onPress={() => setDatePickerOpen(true)}
+                />
+              }
+            />
+            <View style={styles.spaceBetweenRow}>
+              <Button
+                buttonStyle={styles.button}
+                onPress={() => setDlgOpen(false)}
+                title="Cancel"
+              />
+              <Button
+                buttonStyle={styles.button}
+                onPress={() => setDlgOpen(false)}
+                title="Clear"
+              />
+              <Button
+                buttonStyle={styles.button}
+                onPress={() => doQuery()}
+                title="Search"
+              />
+            </View>
+          </View>
+        </SafeAreaView>
       </Modal>
     )
   }
@@ -224,7 +245,7 @@ export default function SearchView({ navigation }: Props) {
       onPress={() => navigation.navigate('EmailDetail', { id: item._id })}
     >
       <View style={styles.itemContainer}>
-        <View style={styles.itemTopRow}>
+        <View style={styles.spaceBetweenRow}>
           <View>
             <Text numberOfLines={1} style={styles.bold}>
               {maxString(item.from, MAX_FROM_LENGTH)}
@@ -263,7 +284,7 @@ export default function SearchView({ navigation }: Props) {
     if (subject) s += `subject=${subject} `
     if (sent) s += `sent=${sent} `
     if (s === '') s = 'none'
-    return s
+    return 'Filters: ' + s
   }
 
   return (
@@ -273,9 +294,8 @@ export default function SearchView({ navigation }: Props) {
         <Button
           buttonStyle={styles.filterButton}
           onPress={() => setDlgOpen(true)}
-        >
-          <Text>Filters: {filterList()}</Text>
-        </Button>
+          title={filterList()}
+        />
         <Spinner visible={emailsLoading} textContent={'Loading...'} />
         {emails && (
           <FlatList

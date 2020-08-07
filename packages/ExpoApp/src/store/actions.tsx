@@ -132,7 +132,9 @@ export function fetchAndCache(
 export async function getLocalStorage() {
   try {
     let value = await AsyncStorage.getItem('darkMode')
-    if (value !== null) setReduxState('darkMode', Boolean(value))
+    if (value !== null) {
+      setReduxState('darkMode', value === 'true' ? true : false)
+    }
   } catch (e) {
     console.error(e)
   }

@@ -47,6 +47,8 @@ function reducer(state: RootState = initialState, action: Action) {
         s.emails = _.cloneDeep(action.value)
       } else if (action.key === 'cachedQuery') {
         s.cachedQuery = _.cloneDeep(action.value)
+      } else if (action.key === 'wordCloud') {
+        s.wordCloud = _.cloneDeep(action.value)
       } else if (action.key === 'contacts') {
         s.contacts = _.cloneDeep(action.value)
         s.contacts?.sort((a: any, b: any) => {
@@ -60,6 +62,7 @@ function reducer(state: RootState = initialState, action: Action) {
         s.emailSent = _.cloneDeep(action.value)
       } else {
         // @ts-ignore
+        // console.log('setting', action.key, action.value)
         s[action.key] = action.value
       }
       return s
