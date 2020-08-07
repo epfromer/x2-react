@@ -39,6 +39,8 @@ export default function PieECharts({ search, data, handleClick }: Props) {
     })
   })
 
+  console.log(darkMode)
+
   return (
     <ECharts
       onData={(name: string) => handleClick(search, name)}

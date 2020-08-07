@@ -14,6 +14,7 @@ interface Props {
   navigation: any
 }
 export default function VolumeTimelineView({ navigation }: Props) {
+  const darkMode = useSelector((state: RootState) => state.darkMode)
   const [chartLib, setChartLib] = useState('ECharts')
   const emailSentLoading = useSelector(
     (state: RootState) => state.emailSentLoading
@@ -34,6 +35,27 @@ export default function VolumeTimelineView({ navigation }: Props) {
       value: stat.ids.length,
     }))
   }
+
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+    },
+    loading: {
+      position: 'absolute',
+      left: 0,
+      right: 0,
+      top: 0,
+      bottom: 0,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    picker: {
+      height: 150,
+    },
+    itemStyle: {
+      color: darkMode ? 'white' : 'black',
+    },
+  })
 
   return (
     <>
@@ -62,6 +84,7 @@ export default function VolumeTimelineView({ navigation }: Props) {
           selectedValue={chartLib}
           onValueChange={(value: string) => setChartLib(value)}
           style={styles.picker}
+          itemStyle={styles.itemStyle}
         >
           <Picker.Item label="ECharts" value="ECharts" />
           <Picker.Item label="Victory" value="Victory" />
@@ -71,20 +94,3 @@ export default function VolumeTimelineView({ navigation }: Props) {
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  loading: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  picker: {
-    height: 150,
-  },
-})

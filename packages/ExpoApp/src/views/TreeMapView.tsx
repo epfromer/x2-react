@@ -13,6 +13,7 @@ interface Props {
   navigation: any
 }
 export default function TreeMapView({ navigation }: Props) {
+  const darkMode = useSelector((state: RootState) => state.darkMode)
   const [isSenders, setIsSenders] = useState(true)
   const contactsLoading = useSelector(
     (state: RootState) => state.contactsLoading
@@ -29,6 +30,27 @@ export default function TreeMapView({ navigation }: Props) {
     fetchAndCache('emails')
     navigation.navigate('SearchView')
   }
+
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+    },
+    loading: {
+      position: 'absolute',
+      left: 0,
+      right: 0,
+      top: 0,
+      bottom: 0,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    picker: {
+      height: 150,
+    },
+    itemStyle: {
+      color: darkMode ? 'white' : 'black',
+    },
+  })
 
   return (
     <>
@@ -55,6 +77,7 @@ export default function TreeMapView({ navigation }: Props) {
           selectedValue={isSenders ? 'Senders' : 'Receivers'}
           onValueChange={(value) => setIsSenders(value === 'Senders')}
           style={styles.picker}
+          itemStyle={styles.itemStyle}
         >
           <Picker.Item label="Senders" value="Senders" />
           <Picker.Item label="Receivers" value="Receivers" />
@@ -63,21 +86,3 @@ export default function TreeMapView({ navigation }: Props) {
     </>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  loading: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  picker: {
-    height: 150,
-  },
-})

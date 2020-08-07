@@ -35,6 +35,11 @@ export default function RouteSwitch() {
           options={{ title: 'Dashboard' }}
         />
         <Drawer.Screen
+          name="AppSettingsView"
+          component={AppSettingsView}
+          options={{ title: 'Settings' }}
+        />
+        <Drawer.Screen
           name="PieView"
           component={PieView}
           options={{ title: 'Pie' }}
@@ -73,11 +78,6 @@ export default function RouteSwitch() {
           name="WordCloudView"
           component={WordCloudView}
           options={{ title: 'Word Cloud' }}
-        />
-        <Drawer.Screen
-          name="AppSettingsView"
-          component={AppSettingsView}
-          options={{ title: 'Settings' }}
         />
       </Drawer.Navigator>
     </NavigationContainer>
