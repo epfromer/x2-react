@@ -7,7 +7,7 @@ import {
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from '../store/types'
-// import AppSettingsView from '../views/AppSettingsView'
+import AppSettingsView from '../views/AppSettingsView'
 import BarView from '../views/BarView'
 import ChordView from '../views/ChordView'
 import DashboardView from '../views/DashboardView'
@@ -73,6 +73,11 @@ export default function RouteSwitch() {
           name="WordCloudView"
           component={WordCloudView}
           options={{ title: 'Word Cloud' }}
+        />
+        <Drawer.Screen
+          name="AppSettingsView"
+          component={AppSettingsView}
+          options={{ title: 'Settings' }}
         />
       </Drawer.Navigator>
     </NavigationContainer>
