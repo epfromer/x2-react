@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { useSelector } from 'react-redux'
-import AppHeader from '../components/AppHeader'
 import VolumeTimelineECharts from '../components/ECharts/VolumeTimelineECharts'
 import VolumeTimelineVictory from '../components/Victory/VolumeTimelineVictory'
 import { RootState, TotalEmailSentDatum } from '../store/types'
@@ -59,7 +58,6 @@ export default function VolumeTimelineView({ navigation }: Props) {
 
   return (
     <>
-      <AppHeader title="Volume Timeline" />
       <SafeAreaView style={styles.container}>
         <Spinner visible={emailSentLoading} textContent={'Loading...'} />
         {emailSent && (

@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { useSelector } from 'react-redux'
-import AppHeader from '../components/AppHeader'
 import PolarECharts from '../components/ECharts/PolarECharts'
 import PolarVictory from '../components/Victory/PolarVictory'
 import { clearSearch, fetchAndCache, setReduxState } from './../store/actions'
@@ -57,7 +56,6 @@ export default function PolarView({ navigation }: Props) {
 
   return (
     <>
-      <AppHeader title="Polar" />
       <SafeAreaView style={styles.container}>
         <Spinner visible={contactsLoading} textContent={'Loading...'} />
         {contacts && (

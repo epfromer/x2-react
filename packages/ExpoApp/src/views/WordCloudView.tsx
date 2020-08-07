@@ -2,7 +2,6 @@ import React from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { useSelector } from 'react-redux'
-import AppHeader from '../components/AppHeader'
 import WordCloud from '../components/WordCloud'
 import { clearSearch, fetchAndCache, setReduxState } from './../store/actions'
 import { RootState } from './../store/types'
@@ -31,7 +30,6 @@ export default function WordCloudView({ navigation }: Props) {
 
   return (
     <>
-      <AppHeader title="Word Cloud" />
       <SafeAreaView style={styles.container}>
         <Spinner visible={wordCloudLoading} textContent={'Loading...'} />
         {wordCloud && (

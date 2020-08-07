@@ -4,7 +4,6 @@ import { Button, Icon } from 'react-native-elements'
 import Highlighter from 'react-native-highlight-words'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { useSelector } from 'react-redux'
-import AppHeader from '../components/AppHeader'
 import { REACT_APP_EMAIL_SERVER } from '../store/env'
 import {
   getEmailById,
@@ -168,7 +167,6 @@ export default function EmailDetailView({ route, navigation }: Props) {
 
   return (
     <>
-      <AppHeader title="Email Detail" />
       <SafeAreaView style={styles.container}>
         <Spinner visible={loading} textContent={'Loading...'} />
         {email && (

@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { useSelector } from 'react-redux'
-import AppHeader from '../components/AppHeader'
 import TreeMapECharts from '../components/ECharts/TreeMapECharts'
 import { RootState } from '../store/types'
 import { clearSearch, fetchAndCache, setReduxState } from './../store/actions'
@@ -54,7 +53,6 @@ export default function TreeMapView({ navigation }: Props) {
 
   return (
     <>
-      <AppHeader title="Tree Map" />
       <SafeAreaView style={styles.container}>
         <Spinner visible={contactsLoading} textContent={'Loading...'} />
         {contacts && isSenders && (

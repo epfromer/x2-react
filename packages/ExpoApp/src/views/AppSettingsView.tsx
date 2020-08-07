@@ -10,7 +10,6 @@ import {
 import { Button } from 'react-native-elements'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { useSelector } from 'react-redux'
-import AppHeader from '../components/AppHeader'
 import ColorPickerDlg from '../components/ColorPickerDlg'
 import { REACT_APP_EMAIL_SERVER } from '../store/env'
 import { Contact, RootState } from '../store/types'
@@ -119,7 +118,6 @@ export default function AppSettingsView() {
 
   return (
     <>
-      <AppHeader title="Settings" />
       <SafeAreaView style={styles.container}>
         <ColorPickerDlg
           open={colorPickerDlgOpen}

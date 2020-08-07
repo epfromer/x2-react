@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { useSelector } from 'react-redux'
-import AppHeader from '../components/AppHeader'
 import BarECharts from '../components/ECharts/BarECharts'
 import BarVictory from '../components/Victory/BarVictory'
 import { RootState } from '../store/types'
@@ -57,7 +56,6 @@ export default function BarView({ navigation }: Props) {
 
   return (
     <>
-      <AppHeader title="Bar" />
       <SafeAreaView style={styles.container}>
         <Spinner visible={contactsLoading} textContent={'Loading...'} />
         {contacts && (

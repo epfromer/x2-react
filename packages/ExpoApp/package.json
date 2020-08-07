@@ -19,6 +19,7 @@
     "@react-native-community/slider": "^3.0.3",
     "@react-navigation/drawer": "^5.9.0",
     "@react-navigation/native": "^5.7.3",
+    "@react-navigation/stack": "^5.9.0",
     "@x2react/shared": "^0.0.0",
     "echarts": "^4.8.0",
     "expo": "~38.0.8",

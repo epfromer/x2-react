@@ -19,7 +19,7 @@ interface Props {
   description: string
   link: string
 }
-export default function DashboardCard({
+export default function HomeCard({
   navigation,
   image,
   title,

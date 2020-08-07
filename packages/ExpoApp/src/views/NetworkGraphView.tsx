@@ -2,7 +2,6 @@ import React from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { useSelector } from 'react-redux'
-import AppHeader from '../components/AppHeader'
 import NetworkGraphECharts from '../components/ECharts/NetworkGraphECharts'
 import { clearSearch, fetchAndCache, setReduxState } from './../store/actions'
 import { getEmailSentStats } from './../store/selectors'
@@ -32,7 +31,6 @@ export default function NetworkGraphView({ navigation }: Props) {
 
   return (
     <>
-      <AppHeader title="Network Graph" />
       <SafeAreaView style={styles.container}>
         <Spinner visible={contactsLoading} textContent={'Loading...'} />
         {!contactsLoading && (

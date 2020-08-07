@@ -13,7 +13,6 @@ import Spinner from 'react-native-loading-spinner-overlay'
 import Modal from 'react-native-modal'
 import DateTimePickerModal from 'react-native-modal-datetime-picker'
 import { useSelector } from 'react-redux'
-import AppHeader from '../components/AppHeader'
 import { RootState } from '../store/types'
 import { fetchAndCache, setReduxState } from './../store/actions'
 import { EMAIL_LIST_PAGE_LENGTH, MAX_FROM_LENGTH } from './../store/constants'
@@ -269,7 +268,6 @@ export default function SearchView({ navigation }: Props) {
 
   return (
     <>
-      <AppHeader title="Search" />
       <SafeAreaView style={styles.container}>
         <SearchDlg />
         <Button

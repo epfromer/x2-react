@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { useSelector } from 'react-redux'
-import AppHeader from '../components/AppHeader'
 import PieECharts from '../components/ECharts/PieECharts'
 import PieVictory from '../components/Victory/PieVictory'
 import { clearSearch, fetchAndCache, setReduxState } from './../store/actions'
@@ -56,7 +55,6 @@ export default function PieView({ navigation }: Props) {
 
   return (
     <>
-      <AppHeader title="Pie" />
       <SafeAreaView style={styles.container}>
         <Spinner visible={contactsLoading} textContent={'Loading...'} />
         {contacts && (
