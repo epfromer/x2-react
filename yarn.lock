@@ -5925,6 +5925,11 @@ csstype@^3.0.2:
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.2.tgz#ee5ff8f208c8cd613b389f7b222c9801ca62b3f7"
   integrity sha512-ofovWglpqoqbfLNOTBNZLSbMuGrblAf1efvvArGKOZMBrIoJeu5UsAipQolkijtyQx5MtAzT/J9IHj/CEY1mJw==
 
+ctx-polyfill@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/ctx-polyfill/-/ctx-polyfill-1.1.4.tgz#08420bc5c540d08ac36d05720ca503c65e302d65"
+  integrity sha1-CEILxcVA0IrDbQVyDKUDxl4wLWU=
+
 currently-unhandled@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/currently-unhandled/-/currently-unhandled-0.4.1.tgz#988df33feab191ef799a61369dd76c17adf957ea"
@@ -14021,6 +14026,13 @@ react-native-appearance@~0.3.3:
     invariant "^2.2.4"
     use-subscription "^1.0.0"
 
+react-native-canvas@^0.1.34:
+  version "0.1.37"
+  resolved "https://registry.yarnpkg.com/react-native-canvas/-/react-native-canvas-0.1.37.tgz#62381f685effcd3263d10f13b4174a8c5b533dcf"
+  integrity sha512-8W3YlS9WoxQeyK7/fjzlVIOcAqigE5pscn9xoU7rSYyzOJ69h5LjDlytjgZ6i7G7KqCRTarVIYJL8dAuER1OVQ==
+  dependencies:
+    ctx-polyfill "^1.1.4"
+
 react-native-echarts-wrapper@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/react-native-echarts-wrapper/-/react-native-echarts-wrapper-2.0.0.tgz#87c539841418ef900bc3e07efa8aae135d231b1d"
@@ -14124,6 +14136,13 @@ react-native-webview@^10.3.3:
   dependencies:
     escape-string-regexp "2.0.0"
     invariant "2.2.4"
+
+react-native-word-cloud@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/react-native-word-cloud/-/react-native-word-cloud-1.0.7.tgz#c48ea2649eebfb27336963c17321268e6286ad06"
+  integrity sha512-wKiQHfefG3UKSt089Uina7GW72t0/lY5WaTR0fHAV0lhlxPUaAu5zeGpTXICpezwnkolklMtXIrfAQEzqMW+4w==
+  dependencies:
+    react-native-canvas "^0.1.34"
 
 react-native@0.63.2:
   version "0.63.2"

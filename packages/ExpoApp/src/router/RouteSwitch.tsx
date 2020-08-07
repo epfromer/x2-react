@@ -19,7 +19,7 @@ import PolarView from '../views/PolarView'
 // import SearchView from '../views/SearchView'
 import TreeMapView from '../views/TreeMapView'
 import VolumeTimelineView from '../views/VolumeTimelineView'
-// import WordCloudView from '../views/WordCloudView'
+import WordCloudView from '../views/WordCloudView'
 
 const Drawer = createDrawerNavigator()
 
@@ -68,6 +68,11 @@ export default function RouteSwitch() {
           name="VolumeTimelineView"
           component={VolumeTimelineView}
           options={{ title: 'Volume Timeline' }}
+        />
+        <Drawer.Screen
+          name="WordCloudView"
+          component={WordCloudView}
+          options={{ title: 'Word Cloud' }}
         />
       </Drawer.Navigator>
     </NavigationContainer>
