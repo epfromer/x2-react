@@ -88,7 +88,6 @@ export default function SearchView({ navigation }: Props) {
 
   function SearchDlg() {
     // https://www.npmjs.com/package/react-native-modal
-    // https://www.npmjs.com/package/react-native-easy-grid
 
     const [newAllText, setNewAllText] = useState(allText)
     const [newFrom, setNewFrom] = useState(from)
@@ -97,7 +96,7 @@ export default function SearchView({ navigation }: Props) {
     const [newSent, setNewSent] = useState(sent)
     const [datePickerOpen, setDatePickerOpen] = useState(false)
 
-    function doQuery() {
+    const doQuery = () => {
       if (newAllText !== allText) setReduxState('allText', newAllText)
       if (newFrom !== from) setReduxState('from', newFrom)
       if (newTo !== to) setReduxState('to', newTo)
@@ -107,7 +106,15 @@ export default function SearchView({ navigation }: Props) {
       setDlgOpen(false)
     }
 
-    function SentDatePicker() {
+    const clearFields = () => {
+      setNewAllText('')
+      setNewFrom('')
+      setNewTo('')
+      setNewSubject('')
+      setNewSent('')
+    }
+
+    const SentDatePicker = () => {
       // use https://github.com/mmazzarolo/react-native-modal-datetime-picker
 
       const initialDate = sent ? new Date(sent) : new Date(FILTER_DATE)
@@ -138,48 +145,6 @@ export default function SearchView({ navigation }: Props) {
       >
         <SafeAreaView>
           <SentDatePicker />
-          {/* 
-            <Item floatingLabel>
-              <Label>Filter Sent</Label>
-              <Input
-                defaultValue={sent}
-                value={newSent}
-                onChangeText={(s) => setNewSent(s)}
-                style={{ color: darkMode ? 'white' : 'black' } as any}
-              />
-              <Icon
-                name="calendar"
-                style={{ color: darkMode ? 'white' : 'black' } as any}
-                onPress={() => setDatePickerOpen(true)}
-              />
-            </Item>
-            <Item floatingLabel>
-              <Label>Filter From</Label>
-              <Input
-                defaultValue={from}
-                value={newFrom}
-                onChangeText={(s) => setNewFrom(s)}
-                style={{ color: darkMode ? 'white' : 'black' } as any}
-              />
-            </Item>
-            <Item floatingLabel>
-              <Label>Filter To</Label>
-              <Input
-                defaultValue={to}
-                value={newTo}
-                onChangeText={(s) => setNewTo(s)}
-                style={{ color: darkMode ? 'white' : 'black' } as any}
-              />
-            </Item>
-            <Item floatingLabel>
-              <Label>Filter Subject</Label>
-              <Input
-                defaultValue={subject}
-                value={newSubject}
-                onChangeText={(s) => setNewSubject(s)}
-                style={{ color: darkMode ? 'white' : 'black' } as any}
-              />
-            </Item> */}
           <View style={styles.spaceBetweenColumn}>
             <Input
               label="Filter (all text fields)"
@@ -199,13 +164,55 @@ export default function SearchView({ navigation }: Props) {
               label="Filter Sent"
               labelStyle={styles.text}
               inputStyle={styles.text}
-              value={sent}
+              value={newSent}
               onChangeText={(s) => setNewSent(s)}
               rightIcon={
                 <Icon
                   name="date-range"
                   iconStyle={styles.text}
                   onPress={() => setDatePickerOpen(true)}
+                />
+              }
+            />
+            <Input
+              label="Filter From"
+              labelStyle={styles.text}
+              inputStyle={styles.text}
+              value={newFrom}
+              onChangeText={(s) => setNewFrom(s)}
+              rightIcon={
+                <Icon
+                  name="close"
+                  iconStyle={styles.text}
+                  onPress={() => setNewFrom('')}
+                />
+              }
+            />
+            <Input
+              label="Filter To"
+              labelStyle={styles.text}
+              inputStyle={styles.text}
+              value={newTo}
+              onChangeText={(s) => setNewTo(s)}
+              rightIcon={
+                <Icon
+                  name="close"
+                  iconStyle={styles.text}
+                  onPress={() => setNewTo('')}
+                />
+              }
+            />
+            <Input
+              label="Filter Subject"
+              labelStyle={styles.text}
+              inputStyle={styles.text}
+              value={newSubject}
+              onChangeText={(s) => setNewSubject(s)}
+              rightIcon={
+                <Icon
+                  name="close"
+                  iconStyle={styles.text}
+                  onPress={() => setNewSubject('')}
                 />
               }
             />
@@ -217,7 +224,7 @@ export default function SearchView({ navigation }: Props) {
               />
               <Button
                 buttonStyle={styles.button}
-                onPress={() => setDlgOpen(false)}
+                onPress={() => clearFields()}
                 title="Clear"
               />
               <Button
