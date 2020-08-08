@@ -25,9 +25,6 @@ const VolumeTimelineVictory: React.FC<Props> = ({
   handleClick,
 }) => {
   const darkMode = useSelector((state: RootState) => state.darkMode)
-  const themePrimaryColor = useSelector(
-    (state: RootState) => state.themePrimaryColor
-  )
   const [zoomDomain, setZoomDomain] = useState({
     x: [new Date(1999, 1, 1), new Date(2002, 3, 1)],
   })
@@ -79,7 +76,6 @@ const VolumeTimelineVictory: React.FC<Props> = ({
         />
         <VictoryLine
           style={{
-            data: { stroke: themePrimaryColor },
             labels: {
               fontSize: 15,
               fill: darkMode ? 'white' : 'black',
@@ -137,7 +133,6 @@ const VolumeTimelineVictory: React.FC<Props> = ({
         />
         <VictoryLine
           style={{
-            data: { stroke: themePrimaryColor },
             labels: {
               fontSize: 15,
               fill: darkMode ? 'white' : 'black',

@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import EmailTableHead from '../components/emaillist/EmailTableHead'
 import ExpandingRow from '../components/emaillist/ExpandingRow'
 import { RootState } from '../store/types'
-import { fetchAndCache } from './../store'
+import { fetchAndCache } from './../store/actions'
 
 // https://github.com/WebDevSimplified/React-Infinite-Scrolling
 

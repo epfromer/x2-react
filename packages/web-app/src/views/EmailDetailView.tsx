@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import EmailCardActions from '../components/emaillist/EmailCardActions'
-import { getEmailById } from '../store'
+import { getEmailById } from '../store/selectors'
 import { Email, RootState } from './../store/types'
 
 const useStyles = makeStyles((theme) => ({

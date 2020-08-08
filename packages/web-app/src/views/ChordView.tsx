@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import ChordECharts from '../components/ECharts/ChordECharts'
 import ChordHighcharts from '../components/Highcharts/ChordHighcharts'
-import { fetchAndCache, getEmailSentStats } from './../store'
+import { fetchAndCache } from './../store/actions'
+import { getEmailSentStats } from './../store/selectors'
 import { RootState } from './../store/types'
 
 export default function ChordView() {

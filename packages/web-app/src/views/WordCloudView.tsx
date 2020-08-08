@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import WordCloudECharts from '../components/ECharts/WordCloudECharts'
 import WordCloudHighcharts from '../components/Highcharts/WordCloudHighcharts'
-import { fetchAndCache } from './../store'
+import { fetchAndCache } from './../store/actions'
 import { RootState } from './../store/types'
 
 export default function WordCloudView() {

@@ -20,9 +20,6 @@ const VolumeTimelineHighcharts: React.FC<Props> = ({
   handleClick,
 }) => {
   const darkMode = useSelector((state: RootState) => state.darkMode)
-  const themePrimaryColor = useSelector(
-    (state: RootState) => state.themePrimaryColor
-  )
   const dailyTotals: Array<[number, number]> = data.map((stat) => [
     new Date(stat.sent).getTime(),
     stat.value,
@@ -70,7 +67,6 @@ const VolumeTimelineHighcharts: React.FC<Props> = ({
       {
         type: 'area',
         name: '# emails sent',
-        color: themePrimaryColor,
         data: dailyTotals,
       },
     ],

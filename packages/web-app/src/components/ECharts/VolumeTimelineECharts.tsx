@@ -19,9 +19,6 @@ const VolumeTimelineECharts: React.FC<Props> = ({
   handleClick,
 }) => {
   const darkMode = useSelector((state: RootState) => state.darkMode)
-  const themePrimaryColor = useSelector(
-    (state: RootState) => state.themePrimaryColor
-  )
 
   return (
     <ReactEcharts
@@ -78,7 +75,6 @@ const VolumeTimelineECharts: React.FC<Props> = ({
         series: [
           {
             type: 'bar',
-            color: themePrimaryColor,
             data: data.map((datum) => datum.value),
           },
         ],

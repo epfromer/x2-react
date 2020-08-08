@@ -8,7 +8,8 @@ import BarECharts from '../components/ECharts/BarECharts'
 import BarHighcarts from '../components/Highcharts/BarHighcharts'
 import BarVictory from '../components/Victory/BarVictory'
 import { RootState } from '../store/types'
-import { fetchAndCache, getEmailReceivers, getEmailSenders } from './../store'
+import { getEmailReceivers, getEmailSenders } from './../store/selectors'
+import { fetchAndCache } from './../store/actions'
 
 export default function BarView() {
   const dispatch = useDispatch()

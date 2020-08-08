@@ -9,7 +9,7 @@ import HighchartTimeline from 'highcharts/modules/timeline'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { fetchAndCache } from './../store'
+import { fetchAndCache } from './../store/actions'
 import { Contact, RootState } from './../store/types'
 
 HighchartTimeline(Highcharts)

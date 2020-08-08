@@ -8,7 +8,8 @@ import PolarChartJS from '../components/ChartJS/PolarChartJS'
 import PolarECharts from '../components/ECharts/PolarECharts'
 import PolarHighcharts from '../components/Highcharts/PolarHighcharts'
 import PolarVictory from '../components/Victory/PolarVictory'
-import { fetchAndCache, getEmailReceivers, getEmailSenders } from './../store'
+import { fetchAndCache } from './../store/actions'
+import { getEmailReceivers, getEmailSenders } from './../store/selectors'
 import { RootState } from './../store/types'
 
 export default function PolarView() {

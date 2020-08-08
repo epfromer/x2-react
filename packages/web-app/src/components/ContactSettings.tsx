@@ -9,7 +9,7 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { fetchAndCache } from '../store'
+import { fetchAndCache } from '../store/actions'
 import { RootState } from '../store/types'
 import ColorPickerDlg from './ColorPickerDlg'
 

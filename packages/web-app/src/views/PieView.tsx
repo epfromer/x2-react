@@ -8,7 +8,8 @@ import PieChartJS from '../components/ChartJS/PieChartJS'
 import PieECharts from '../components/ECharts/PieECharts'
 import PieHighcharts from '../components/Highcharts/PieHighcharts'
 import PieVictory from '../components/Victory/PieVictory'
-import { fetchAndCache, getEmailReceivers, getEmailSenders } from './../store'
+import { fetchAndCache } from './../store/actions'
+import { getEmailReceivers, getEmailSenders } from './../store/selectors'
 import { RootState } from './../store/types'
 
 export default function PieView() {

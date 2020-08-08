@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import NetworkGraphECharts from '../components/ECharts/NetworkGraphECharts'
 import NetworkGraphHighcharts from '../components/Highcharts/NetworkGraphHighcharts'
-import { fetchAndCache, getEmailSentStats } from './../store'
+import { fetchAndCache } from './../store/actions'
+import { getEmailSentStats } from './../store/selectors'
 import { RootState } from './../store/types'
 
 export default function NetworkGraphView() {

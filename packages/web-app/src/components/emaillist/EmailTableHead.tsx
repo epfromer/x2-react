@@ -9,7 +9,7 @@ import DateRangeIcon from '@material-ui/icons/DateRange'
 import debounce from 'lodash/debounce'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchAndCache } from '../../store'
+import { fetchAndCache } from '../../store/actions'
 import { RootState } from '../../store/types'
 import FilterDate from './FilterDate'
 

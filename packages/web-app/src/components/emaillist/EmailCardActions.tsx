@@ -8,7 +8,11 @@ import ArrowRightIcon from '@material-ui/icons/ArrowRight'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { getEmailIndex, getNextEmail, getPreviousEmail } from '../../store'
+import {
+  getEmailIndex,
+  getNextEmail,
+  getPreviousEmail,
+} from '../../store/selectors'
 import { RootState } from '../../store/types'
 
 interface Props {

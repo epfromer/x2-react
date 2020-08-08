@@ -22,9 +22,6 @@ const VolumeTimelineChartJS: React.FC<Props> = ({
   const chartContainer: any = useRef(null)
   const [, setChartInstance] = useState<any>(null)
   const darkMode = useSelector((state: RootState) => state.darkMode)
-  const themePrimaryColor = useSelector(
-    (state: RootState) => state.themePrimaryColor
-  )
 
   interface Datum {
     time: string
@@ -77,9 +74,7 @@ const VolumeTimelineChartJS: React.FC<Props> = ({
           label: title,
           data: dailyTotals.map((d: Datum) => d.value),
           fill: 'none',
-          backgroundColor: themePrimaryColor,
           pointRadius: 2,
-          borderColor: themePrimaryColor,
           borderWidth: 1,
           lineTension: 0,
         },

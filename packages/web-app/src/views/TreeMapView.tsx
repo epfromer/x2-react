@@ -6,7 +6,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import TreeMapECharts from '../components/ECharts/TreeMapECharts'
 import TreeMapHighcharts from '../components/Highcharts/TreeMapHighcharts'
-import { fetchAndCache, getEmailReceivers, getEmailSenders } from './../store'
+import { fetchAndCache } from './../store/actions'
+import { getEmailReceivers, getEmailSenders } from './../store/selectors'
 import { RootState } from './../store/types'
 
 export default function TreeMapView() {

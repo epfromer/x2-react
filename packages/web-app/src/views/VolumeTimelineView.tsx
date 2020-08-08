@@ -7,7 +7,7 @@ import VolumeTimelineChartJS from '../components/ChartJS/VolumeTimelineChartJS'
 import VolumeTimelineECharts from '../components/ECharts/VolumeTimelineECharts'
 import VolumeTimelineHighcharts from '../components/Highcharts/VolumeTimelineHighcharts'
 import VolumeTimelineVictory from '../components/Victory/VolumeTimelineVictory'
-import { fetchAndCache } from './../store'
+import { fetchAndCache } from './../store/actions'
 import { RootState, TotalEmailSentDatum } from './../store/types'
 
 export default function TimelineView() {
