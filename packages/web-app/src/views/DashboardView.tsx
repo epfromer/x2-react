@@ -1,6 +1,19 @@
 import Grid from '@material-ui/core/Grid'
 import React from 'react'
 import DashboardCard from '../components/DashboardCard'
+import {
+  BARCHART,
+  CHORD,
+  EVENTTIMELINE,
+  NETWORKGRAPH,
+  PIE,
+  POLAR,
+  SEARCH,
+  SETTINGS,
+  TREEMAP,
+  VOLUMETIMELINE,
+  WORDCLOUD,
+} from '@x2react/shared'
 
 export default function DashboardView() {
   const makeCard = (
@@ -24,61 +37,61 @@ export default function DashboardView() {
   return (
     <Grid container spacing={3}>
       {makeCard(
-        '/chord.png',
+        CHORD,
         'Chord',
         'Chord diagram of Enron key contact communication.',
         '/ChordView'
       )}
       {makeCard(
-        '/wordcloud.png',
+        WORDCLOUD,
         'Word Cloud',
         'Word cloud of fraudulent project names.',
         '/WordCloudView'
       )}
       {makeCard(
-        '/volumetimeline.png',
+        VOLUMETIMELINE,
         'Volume Timeline',
         'XY timeline of Enron email per day with drill down.',
         '/VolumeTimelineView'
       )}
       {makeCard(
-        '/networkgraph.png',
+        NETWORKGRAPH,
         'Network Graph',
         'Network graph of Enron key contact communication.',
         '/NetworkGraphView'
       )}
       {makeCard(
-        '/treemap.png',
+        TREEMAP,
         'Tree Map',
         'Tree map of email volume of Enron key contacts.',
         '/TreeMapView'
       )}
       {makeCard(
-        '/eventTimeline.png',
+        EVENTTIMELINE,
         'Event Timeline',
         'Event timeline of Enron fraud and litigation.',
         '/EventTimelineView'
       )}
       {makeCard(
-        '/barchart.png',
+        BARCHART,
         'Bar',
         'Bar chart of email volume of Enron key contacts.',
         '/BarView'
       )}
       {makeCard(
-        '/polar.png',
+        POLAR,
         'Polar',
         'Polar chart of email volume of Enron key contacts.',
         '/PolarView'
       )}
       {makeCard(
-        '/pie.png',
+        PIE,
         'Pie',
         'Pie chart of email volume of Enron key contacts.',
         '/PieView'
       )}
       {makeCard(
-        '/search.png',
+        SEARCH,
         'Search',
         'Full text search with field filtering and hit highlighting.',
         '/SearchView'

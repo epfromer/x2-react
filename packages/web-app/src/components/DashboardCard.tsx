@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 interface Props {
-  image: string
+  image: any
   title: string
   description: string
   link: string
