@@ -1,6 +1,4 @@
 import Grid from '@material-ui/core/Grid'
-import React from 'react'
-import DashboardCard from '../components/DashboardCard'
 import {
   BARCHART,
   CHORD,
@@ -9,11 +7,12 @@ import {
   PIE,
   POLAR,
   SEARCH,
-  SETTINGS,
   TREEMAP,
   VOLUMETIMELINE,
   WORDCLOUD,
 } from '@x2react/shared'
+import React from 'react'
+import DashboardCard from '../components/DashboardCard'
 
 export default function DashboardView() {
   const makeCard = (
