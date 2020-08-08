@@ -5,11 +5,15 @@
     "lerna": "^3.22.1"
   },
   "scripts": {
-    "yarn": "yarn",
     "android": "lerna --scope=NativeApp run android --stream --",
-    "web": "lerna --scope=web-app run serve",
     "expo": "lerna --scope=ExpoApp run start --stream --",
-    "postinstall": "cd ./packages/ExpoApp && expo-yarn-workspaces postinstall"
+    "postinstall": "cd ./packages/ExpoApp && expo-yarn-workspaces postinstall",
+    "web": "lerna --scope=web-app run serve",
+    "yarn check": "yarn check",
+    "yarn global upgrade-interactive": "yarn global upgrade-interactive",
+    "yarn outdated": "yarn outdated",
+    "yarn upgrade-interactive": "yarn upgrade-interactive",
+    "yarn": "yarn"
   },
   "workspaces": {
     "packages": [

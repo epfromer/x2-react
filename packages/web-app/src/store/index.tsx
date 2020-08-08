@@ -2,21 +2,6 @@ import _ from 'lodash'
 import { applyMiddleware, createStore } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import { Action, Email, RootState } from './types'
-export {
-  clearSearch,
-  fetchAndCache,
-  saveAppSettings,
-  setReduxState,
-} from './actions'
-export {
-  getEmailById,
-  getEmailIndex,
-  getNextEmail,
-  getPreviousEmail,
-  getEmailSentStats,
-  getEmailSenders,
-  getEmailReceivers,
-} from './selectors'
 
 const initialState: RootState = {
   // search results
@@ -50,14 +35,6 @@ const initialState: RootState = {
 
   // app settings
   darkMode: localStorage.getItem('darkMode') === 'true' ? true : false,
-  // @ts-ignore
-  themePrimaryColor: localStorage.getItem('themePrimaryColor')
-    ? localStorage.getItem('themePrimaryColor')
-    : '#2196f3',
-  // @ts-ignore
-  themeSecondaryColor: localStorage.getItem('themeSecondaryColor')
-    ? localStorage.getItem('themeSecondaryColor')
-    : '#f50057',
 }
 
 function reducer(state: RootState = initialState, action: Action) {
@@ -95,11 +72,6 @@ function reducer(state: RootState = initialState, action: Action) {
     case 'saveAppSettings': {
       const s = _.cloneDeep(state)
       localStorage.setItem('darkMode', String(state.darkMode))
-      localStorage.setItem('themePrimaryColor', String(state.themePrimaryColor))
-      localStorage.setItem(
-        'themeSecondaryColor',
-        String(state.themeSecondaryColor)
-      )
       return s
     }
     case 'clearSearch': {

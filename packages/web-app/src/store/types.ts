@@ -93,8 +93,6 @@ export interface RootState {
   contactsLoading: boolean
   contacts: Array<Contact> | undefined
   darkMode: boolean
-  themePrimaryColor: string
-  themeSecondaryColor: string
 }
 
 export interface EmailXferedDatum {
