@@ -1,8 +1,7 @@
-import * as Highcharts from 'highcharts'
-import HighchartsReactNative from '@highcharts/highcharts-react-native'
+// import HighchartsReactNative from '@highcharts/highcharts-react-native'
+import { EmailXferedDatum } from '@x2react/shared'
 import React from 'react'
 import { StyleSheet, View, Text } from 'react-native'
-import { EmailXferedDatum } from '../../store/types'
 
 // TODO https://github.com/highcharts/highcharts-react-native/issues/86
 
@@ -26,7 +25,8 @@ interface Props {
 export default function BarHighcharts() {
   return (
     <View>
-      <HighchartsReactNative styles={styles.container} options={config} />
+      {/* <HighchartsReactNative styles={styles.container} options={config} /> */}
+      <Text>highcharts</Text>
     </View>
   )
 }

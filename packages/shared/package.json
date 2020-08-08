@@ -1,10 +1,10 @@
 {
   "name": "@x2react/shared",
   "version": "0.0.0",
-  "description": "Now I’m the model of a modern major general / The venerated Virginian veteran whose men are all / Lining up, to put me up on a pedestal / Writin’ letters to relatives / Embellishin’ my elegance and eloquence / But the elephant is in the room / The truth is in ya face when ya hear the British cannons go / BOOM",
+  "description": "Shared components for X2 React",
   "keywords": [],
   "author": "Ed Pfromer <epfromer@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "main": "lib/shared.js",
   "directories": {
     "lib": "lib",
@@ -18,5 +18,13 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "dependencies": {
+    "@react-native-community/async-storage": "^1.11.0",
+    "lodash": "^4.17.19",
+    "react": "~16.11.0",
+    "react-redux": "^7.2.1",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0"
   }
 }

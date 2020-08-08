@@ -1,11 +1,11 @@
 import Slider from '@react-native-community/slider'
+import { RootState } from '@x2react/shared'
 import React from 'react'
 import { StyleSheet } from 'react-native'
 import { ColorPicker } from 'react-native-color-picker'
 import { Button } from 'react-native-elements'
 import Modal from 'react-native-modal'
 import { useSelector } from 'react-redux'
-import { RootState } from '../store/types'
 
 interface Props {
   open: boolean

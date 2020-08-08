@@ -1,8 +1,7 @@
+import { EmailXferedDatum, RootState } from '@x2react/shared'
 import React from 'react'
 import { ECharts } from 'react-native-echarts-wrapper'
-import { EmailXferedDatum } from '../../store/types'
 import { useSelector } from 'react-redux'
-import { RootState } from '../../store/types'
 
 // https://www.npmjs.com/package/react-native-echarts-wrapper
 // https://echarts.apache.org/examples/en/index.html#chart-type-pie

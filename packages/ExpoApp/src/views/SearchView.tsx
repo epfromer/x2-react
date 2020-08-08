@@ -1,3 +1,10 @@
+import {
+  EMAIL_LIST_PAGE_LENGTH,
+  fetchAndCache,
+  MAX_FROM_LENGTH,
+  RootState,
+  setReduxState,
+} from '@x2react/shared'
 import React, { useState } from 'react'
 import {
   FlatList,
@@ -12,9 +19,6 @@ import Spinner from 'react-native-loading-spinner-overlay'
 import Modal from 'react-native-modal'
 import DateTimePickerModal from 'react-native-modal-datetime-picker'
 import { useSelector } from 'react-redux'
-import { RootState } from '../store/types'
-import { fetchAndCache, setReduxState } from './../store/actions'
-import { EMAIL_LIST_PAGE_LENGTH, MAX_FROM_LENGTH } from './../store/constants'
 var moment = require('moment')
 
 // TODO - VirtualizedList: You have a large list that is slow to update - make sure your renderItem function renders components that follow React performance best practices like PureComponent, shouldComponentUpdate, etc. {"contentLength": 3030, "dt": 1195, "prevDt": 5812}

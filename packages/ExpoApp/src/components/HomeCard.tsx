@@ -1,3 +1,4 @@
+import { RootState } from '@x2react/shared'
 import React from 'react'
 import {
   Image,
@@ -8,7 +9,6 @@ import {
   View,
 } from 'react-native'
 import { useSelector } from 'react-redux'
-import { RootState } from '../store/types'
 
 // https://docs.nativebase.io/Components.html#card-headfoot-headref
 

@@ -1,9 +1,8 @@
-import _ from 'lodash'
-import store from './'
-import { Email, RootState } from './types'
-import { REACT_APP_EMAIL_SERVER } from './env'
-import { EMAIL_LIST_PAGE_LENGTH } from '../store/constants'
 import AsyncStorage from '@react-native-community/async-storage'
+import { EMAIL_LIST_PAGE_LENGTH, EMAIL_SERVER } from '@x2react/shared'
+import _ from 'lodash'
+import { store } from './'
+import { Email, RootState } from './types'
 
 // actions, aka async mutations
 
@@ -104,7 +103,7 @@ export function fetchAndCache(
   }
   const loadingIndicator = stat + 'Loading'
   setReduxState(loadingIndicator, true)
-  const url = `${REACT_APP_EMAIL_SERVER}/${encodeQuery(stat)}`
+  const url = `${EMAIL_SERVER}/${encodeQuery(stat)}`
   console.log(url)
   fetch(url)
     .then((resp) => resp.json())

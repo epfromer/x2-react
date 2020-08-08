@@ -1,3 +1,11 @@
+import {
+  Contact,
+  EMAIL_SERVER,
+  fetchAndCache,
+  RootState,
+  saveAppSettings,
+  setReduxState,
+} from '@x2react/shared'
 import React, { useState } from 'react'
 import {
   SafeAreaView,
@@ -11,13 +19,6 @@ import { Button } from 'react-native-elements'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { useSelector } from 'react-redux'
 import ColorPickerDlg from '../components/ColorPickerDlg'
-import { REACT_APP_EMAIL_SERVER } from '../store/env'
-import { Contact, RootState } from '../store/types'
-import {
-  fetchAndCache,
-  saveAppSettings,
-  setReduxState,
-} from './../store/actions'
 
 export default function AppSettingsView() {
   const darkMode = useSelector((state: RootState) => state.darkMode)
@@ -66,7 +67,7 @@ export default function AppSettingsView() {
 
   const handleColorChosen = (color: string) => {
     setColorPickerDlgOpen(false)
-    const url = `${REACT_APP_EMAIL_SERVER}/contacts/${colorPickerItem}`
+    const url = `${EMAIL_SERVER}/contacts/${colorPickerItem}`
     const payload = {
       method: 'PUT',
       body: JSON.stringify({ color }),

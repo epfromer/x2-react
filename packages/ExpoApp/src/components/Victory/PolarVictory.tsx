@@ -1,3 +1,4 @@
+import { EmailXferedDatum, RootState } from '@x2react/shared'
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import { useSelector } from 'react-redux'
@@ -7,7 +8,6 @@ import {
   VictoryPolarAxis,
   VictoryZoomContainer,
 } from 'victory-native'
-import { EmailXferedDatum, RootState } from '../../store/types'
 
 // https://formidable.com/open-source/victory/docs/victory-polar-axis
 

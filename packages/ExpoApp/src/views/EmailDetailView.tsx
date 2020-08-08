@@ -1,17 +1,18 @@
+import {
+  Email,
+  EMAIL_SERVER,
+  getEmailById,
+  getEmailIndex,
+  getNextEmail,
+  getPreviousEmail,
+  RootState,
+} from '@x2react/shared'
 import React, { useEffect, useState } from 'react'
 import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { Button, Icon } from 'react-native-elements'
 import Highlighter from 'react-native-highlight-words'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { useSelector } from 'react-redux'
-import { REACT_APP_EMAIL_SERVER } from '../store/env'
-import {
-  getEmailById,
-  getEmailIndex,
-  getNextEmail,
-  getPreviousEmail,
-} from '../store/selectors'
-import { Email, RootState } from '../store/types'
 
 interface Props {
   route: any
@@ -111,7 +112,7 @@ export default function EmailDetailView({ route, navigation }: Props) {
 
   function doFetch() {
     setLoading(true)
-    const url = `${REACT_APP_EMAIL_SERVER}/email/${route.params.id}`
+    const url = `${EMAIL_SERVER}/email/${route.params.id}`
     console.log(url)
     fetch(url)
       .then((resp) => resp.json())

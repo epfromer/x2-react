@@ -1,7 +1,7 @@
+import { RootState, TotalEmailSentDatum } from '@x2react/shared'
 import React from 'react'
 import { ECharts } from 'react-native-echarts-wrapper'
 import { useSelector } from 'react-redux'
-import { RootState, TotalEmailSentDatum } from '../../store/types'
 
 // https://www.npmjs.com/package/react-native-echarts-wrapper
 // TODO fix click handler

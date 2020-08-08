@@ -1,10 +1,14 @@
+import {
+  clearSearch,
+  fetchAndCache,
+  RootState,
+  setReduxState,
+} from '@x2react/shared'
 import React from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { useSelector } from 'react-redux'
 import WordCloud from '../components/WordCloud'
-import { clearSearch, fetchAndCache, setReduxState } from './../store/actions'
-import { RootState } from './../store/types'
 
 interface Props {
   route: any

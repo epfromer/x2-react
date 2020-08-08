@@ -1,13 +1,18 @@
 import { Picker } from '@react-native-community/picker'
+import {
+  clearSearch,
+  fetchAndCache,
+  getEmailReceivers,
+  getEmailSenders,
+  RootState,
+  setReduxState,
+} from '@x2react/shared'
 import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { useSelector } from 'react-redux'
 import PolarECharts from '../components/ECharts/PolarECharts'
 import PolarVictory from '../components/Victory/PolarVictory'
-import { clearSearch, fetchAndCache, setReduxState } from './../store/actions'
-import { getEmailReceivers, getEmailSenders } from './../store/selectors'
-import { RootState } from './../store/types'
 
 interface Props {
   route: any

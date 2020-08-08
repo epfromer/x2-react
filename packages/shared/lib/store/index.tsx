@@ -97,6 +97,5 @@ function reducer(state: RootState = initialState, action: Action) {
   }
 }
 
-const store = createStore(reducer, applyMiddleware(thunkMiddleware))
+export const store = createStore(reducer, applyMiddleware(thunkMiddleware))
 
-export default store

@@ -1,8 +1,8 @@
+import { EmailXferedDatum, RootState } from '@x2react/shared'
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { useSelector } from 'react-redux'
 import { VictoryAxis, VictoryBar, VictoryChart } from 'victory-native'
-import { EmailXferedDatum, RootState } from '../../store/types'
 
 // https://formidable.com/open-source/victory/docs/victory-bar
 // TODO - https://github.com/FormidableLabs/victory-native/issues/568, events don't work on Android

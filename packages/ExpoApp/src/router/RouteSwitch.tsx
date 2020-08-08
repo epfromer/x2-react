@@ -4,9 +4,9 @@ import {
   NavigationContainer,
 } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
+import { RootState } from '@x2react/shared'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { RootState } from '../store/types'
 import AppSettingsView from '../views/AppSettingsView'
 import BarView from '../views/BarView'
 import ChordView from '../views/ChordView'

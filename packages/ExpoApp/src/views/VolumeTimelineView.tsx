@@ -1,12 +1,17 @@
 import { Picker } from '@react-native-community/picker'
+import {
+  clearSearch,
+  fetchAndCache,
+  RootState,
+  setReduxState,
+  TotalEmailSentDatum,
+} from '@x2react/shared'
 import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { useSelector } from 'react-redux'
 import VolumeTimelineECharts from '../components/ECharts/VolumeTimelineECharts'
 import VolumeTimelineVictory from '../components/Victory/VolumeTimelineVictory'
-import { RootState, TotalEmailSentDatum } from '../store/types'
-import { clearSearch, fetchAndCache, setReduxState } from './../store/actions'
 
 interface Props {
   route: any
@@ -91,4 +96,3 @@ export default function VolumeTimelineView({ navigation }: Props) {
     </>
   )
 }
-

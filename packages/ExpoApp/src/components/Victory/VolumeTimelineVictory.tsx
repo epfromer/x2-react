@@ -1,3 +1,4 @@
+import { RootState, TotalEmailSentDatum } from '@x2react/shared'
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { useSelector } from 'react-redux'
@@ -7,7 +8,6 @@ import {
   VictoryLine,
   VictoryZoomContainer,
 } from 'victory-native'
-import { RootState, TotalEmailSentDatum } from '../../store/types'
 
 // https://formidable.com/open-source/victory/docs/victory-polar-axis
 
