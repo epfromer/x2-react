@@ -1,8 +1,8 @@
 {
   "main": "__generated__/AppEntry.js",
   "name": "ExpoApp",
-  "private": true,
   "version": "0.0.1",
+  "private": true,
   "scripts": {
     "start": "expo start -c",
     "android": "expo start --android",
@@ -63,7 +63,7 @@
     "@types/react-redux": "^7.1.9",
     "@types/react-test-renderer": "^16.9.2",
     "@types/victory": "^33.1.4",
-    "babel-jest": "^26.2.2",
+    "babel-jest": "^24.9.0",
     "babel-preset-expo": "^8.2.3",
     "eslint": "^7.6.0",
     "expo-yarn-workspaces": "^1.2.1",
