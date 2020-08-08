@@ -7,10 +7,9 @@ import TableCell from '@material-ui/core/TableCell'
 import TableContainer from '@material-ui/core/TableContainer'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
+import { fetchAndCache, RootState } from '@x2react/shared'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { fetchAndCache } from '../store/actions'
-import { RootState } from '../store/types'
 import ColorPickerDlg from './ColorPickerDlg'
 
 export default function ContactSettings() {

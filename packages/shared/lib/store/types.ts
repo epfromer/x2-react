@@ -3,6 +3,7 @@ export interface Action {
   key: string
   value: any
 }
+
 export interface EmailSent {
   id: string
   to: Array<string>

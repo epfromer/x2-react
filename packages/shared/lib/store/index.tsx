@@ -35,6 +35,7 @@ const initialState: RootState = {
 
   // app settings
   darkMode: false,
+  // darkMode: localStorage.getItem('darkMode') === 'true' ? true : false,
   orientation: 'portrait',
 }
 
@@ -76,6 +77,7 @@ function reducer(state: RootState = initialState, action: Action) {
     case 'saveAppSettings': {
       const s = _.cloneDeep(state)
       AsyncStorage.setItem('darkMode', String(state.darkMode))
+      // localStorage.setItem('darkMode', String(state.darkMode))
       return s
     }
     case 'clearSearch': {

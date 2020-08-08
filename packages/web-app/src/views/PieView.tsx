@@ -1,19 +1,23 @@
 import Grid from '@material-ui/core/Grid'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Typography from '@material-ui/core/Typography'
+import {
+  clearSearch,
+  fetchAndCache,
+  getEmailReceivers,
+  getEmailSenders,
+  RootState,
+  setReduxState
+} from '@x2react/shared'
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import PieChartJS from '../components/ChartJS/PieChartJS'
 import PieECharts from '../components/ECharts/PieECharts'
 import PieHighcharts from '../components/Highcharts/PieHighcharts'
 import PieVictory from '../components/Victory/PieVictory'
-import { fetchAndCache } from './../store/actions'
-import { getEmailReceivers, getEmailSenders } from './../store/selectors'
-import { RootState } from './../store/types'
 
 export default function PieView() {
-  const dispatch = useDispatch()
   const history = useHistory()
   const contactsLoading = useSelector(
     (state: RootState) => state.contactsLoading
@@ -25,12 +29,8 @@ export default function PieView() {
   )
 
   function handleClick(search: string, value: string) {
-    dispatch({ type: 'clearSearch' })
-    dispatch({
-      type: 'setReduxState',
-      key: search,
-      value: `(${value})`,
-    })
+    clearSearch()
+    setReduxState(search, `(${value})`)
     fetchAndCache('emails')
     history.push('/SearchView')
   }

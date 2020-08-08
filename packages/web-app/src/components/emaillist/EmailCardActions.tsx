@@ -5,15 +5,15 @@ import Tooltip from '@material-ui/core/Tooltip'
 import ArrowBack from '@material-ui/icons/ArrowBack'
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft'
 import ArrowRightIcon from '@material-ui/icons/ArrowRight'
-import React from 'react'
-import { useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
 import {
   getEmailIndex,
   getNextEmail,
   getPreviousEmail,
-} from '../../store/selectors'
-import { RootState } from '../../store/types'
+  RootState,
+} from '@x2react/shared'
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
 interface Props {
   id: string

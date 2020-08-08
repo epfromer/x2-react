@@ -1,10 +1,10 @@
+import { RootState } from '@x2react/shared'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import HighchartsWheel from 'highcharts/modules/dependency-wheel'
 import HighchartSankey from 'highcharts/modules/sankey'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { RootState } from '../../store/types'
 
 HighchartSankey(Highcharts)
 HighchartsWheel(Highcharts)

@@ -1,8 +1,8 @@
+import { RootState, TotalEmailSentDatum } from '@x2react/shared'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { RootState, TotalEmailSentDatum } from '../../store/types'
 
 // https://www.highcharts.com/demo/line-time-series
 

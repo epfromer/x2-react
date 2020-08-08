@@ -1,19 +1,23 @@
 import Grid from '@material-ui/core/Grid'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Typography from '@material-ui/core/Typography'
+import {
+  clearSearch,
+  fetchAndCache,
+  getEmailReceivers,
+  getEmailSenders,
+  RootState,
+  setReduxState,
+} from '@x2react/shared'
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import PolarChartJS from '../components/ChartJS/PolarChartJS'
 import PolarECharts from '../components/ECharts/PolarECharts'
 import PolarHighcharts from '../components/Highcharts/PolarHighcharts'
 import PolarVictory from '../components/Victory/PolarVictory'
-import { fetchAndCache } from './../store/actions'
-import { getEmailReceivers, getEmailSenders } from './../store/selectors'
-import { RootState } from './../store/types'
 
 export default function PolarView() {
-  const dispatch = useDispatch()
   const history = useHistory()
   const contactsLoading = useSelector(
     (state: RootState) => state.contactsLoading
@@ -25,12 +29,8 @@ export default function PolarView() {
   )
 
   function handleClick(search: string, value: string) {
-    dispatch({ type: 'clearSearch' })
-    dispatch({
-      type: 'setReduxState',
-      key: search,
-      value: `(${value})`,
-    })
+    clearSearch()
+    setReduxState(search, `(${value})`)
     fetchAndCache('emails')
     history.push('/SearchView')
   }

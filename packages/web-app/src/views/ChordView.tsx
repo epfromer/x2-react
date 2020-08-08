@@ -1,16 +1,19 @@
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Typography from '@material-ui/core/Typography'
+import {
+  clearSearch,
+  fetchAndCache,
+  getEmailSentStats,
+  RootState,
+  setReduxState,
+} from '@x2react/shared'
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import ChordECharts from '../components/ECharts/ChordECharts'
 import ChordHighcharts from '../components/Highcharts/ChordHighcharts'
-import { fetchAndCache } from './../store/actions'
-import { getEmailSentStats } from './../store/selectors'
-import { RootState } from './../store/types'
 
 export default function ChordView() {
-  const dispatch = useDispatch()
   const history = useHistory()
   const emailSentStats = useSelector((state: RootState) =>
     getEmailSentStats(state)
@@ -21,9 +24,9 @@ export default function ChordView() {
 
   function handleClick(from: string, to: string) {
     if (!from || !to) return
-    dispatch({ type: 'clearSearch' })
-    dispatch({ type: 'setReduxState', key: 'from', value: `(${from})` })
-    dispatch({ type: 'setReduxState', key: 'to', value: `(${to})` })
+    clearSearch()
+    setReduxState('from', `(${from})`)
+    setReduxState('to', `(${to})`)
     fetchAndCache('emails')
     history.push('/SearchView')
   }

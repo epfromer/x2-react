@@ -1,9 +1,9 @@
+import { EmailXferedDatum, RootState } from '@x2react/shared'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import HighchartPolar from 'highcharts/highcharts-more'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { EmailXferedDatum, RootState } from '../../store/types'
 
 HighchartPolar(Highcharts)
 

@@ -1,15 +1,18 @@
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Typography from '@material-ui/core/Typography'
+import {
+  clearSearch,
+  fetchAndCache,
+  RootState,
+  setReduxState,
+} from '@x2react/shared'
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import WordCloudECharts from '../components/ECharts/WordCloudECharts'
 import WordCloudHighcharts from '../components/Highcharts/WordCloudHighcharts'
-import { fetchAndCache } from './../store/actions'
-import { RootState } from './../store/types'
 
 export default function WordCloudView() {
-  const dispatch = useDispatch()
   const history = useHistory()
   const wordCloudLoading = useSelector(
     (state: RootState) => state.wordCloudLoading
@@ -17,14 +20,14 @@ export default function WordCloudView() {
   const wordCloud = useSelector((state: RootState) => state.wordCloud)
 
   function handleClick(word: string) {
-    dispatch({ type: 'clearSearch' })
-    dispatch({ type: 'setReduxState', key: 'allText', value: word })
+    clearSearch()
+    setReduxState('allText', word)
     fetchAndCache('emails')
     history.push('/SearchView')
   }
 
   const data: any = []
-  wordCloud?.forEach((word) =>
+  wordCloud?.forEach((word: any) =>
     data.push({ name: word.tag, weight: word.weight })
   )
 

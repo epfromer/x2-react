@@ -4,12 +4,11 @@ import { makeStyles } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
 import TableContainer from '@material-ui/core/TableContainer'
+import { fetchAndCache, RootState, setReduxState } from '@x2react/shared'
 import React, { useCallback, useRef } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import EmailTableHead from '../components/emaillist/EmailTableHead'
 import ExpandingRow from '../components/emaillist/ExpandingRow'
-import { RootState } from '../store/types'
-import { fetchAndCache } from './../store/actions'
 
 // https://github.com/WebDevSimplified/React-Infinite-Scrolling
 
@@ -24,7 +23,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SearchView() {
   const classes = useStyles()
-  const dispatch = useDispatch()
   const emailsLoading = useSelector((state: RootState) => state.emailsLoading)
   const emails = useSelector((state: RootState) => state.emails)
   const totalEmails = useSelector((state: RootState) => state.totalEmails)
@@ -43,11 +41,7 @@ export default function SearchView() {
       if (observer.current) observer.current.disconnect()
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && hasMore()) {
-          dispatch({
-            type: 'setReduxState',
-            key: 'emailListPage',
-            value: emailListPage + 1,
-          })
+          setReduxState('emailListPage', emailListPage + 1)
           fetchAndCache('emails', false, true)
         }
       })
@@ -71,7 +65,7 @@ export default function SearchView() {
             >
               <EmailTableHead />
               <TableBody>
-                {emails.map((email, index) => {
+                {emails.map((email: any, index: any) => {
                   if (emails.length === index + 1) {
                     return (
                       <ExpandingRow

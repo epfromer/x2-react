@@ -1,12 +1,12 @@
 import MomentUtils from '@date-io/moment'
 import { MuiPickersUtilsProvider } from '@material-ui/pickers'
+import { store } from '@x2react/shared'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import App from './App'
 import './index.css'
 import * as serviceWorker from './serviceWorker'
-import store from './store'
 
 const AppWithPickers = () => (
   <MuiPickersUtilsProvider utils={MomentUtils}>

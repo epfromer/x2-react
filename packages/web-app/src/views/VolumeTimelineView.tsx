@@ -1,17 +1,21 @@
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Typography from '@material-ui/core/Typography'
+import {
+  clearSearch,
+  fetchAndCache,
+  RootState,
+  setReduxState,
+  TotalEmailSentDatum,
+} from '@x2react/shared'
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import VolumeTimelineChartJS from '../components/ChartJS/VolumeTimelineChartJS'
 import VolumeTimelineECharts from '../components/ECharts/VolumeTimelineECharts'
 import VolumeTimelineHighcharts from '../components/Highcharts/VolumeTimelineHighcharts'
 import VolumeTimelineVictory from '../components/Victory/VolumeTimelineVictory'
-import { fetchAndCache } from './../store/actions'
-import { RootState, TotalEmailSentDatum } from './../store/types'
 
 export default function TimelineView() {
-  const dispatch = useDispatch()
   const history = useHistory()
   const emailSentLoading = useSelector(
     (state: RootState) => state.emailSentLoading
@@ -19,12 +23,8 @@ export default function TimelineView() {
   const emailSent = useSelector((state: RootState) => state.emailSent)
 
   function handleClick(date: string) {
-    dispatch({ type: 'clearSearch' })
-    dispatch({
-      type: 'setReduxState',
-      key: 'sent',
-      value: date,
-    })
+    clearSearch()
+    setReduxState('sent', date)
     fetchAndCache('emails')
     history.push('/SearchView')
   }

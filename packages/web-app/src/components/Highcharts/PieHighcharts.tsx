@@ -1,8 +1,8 @@
+import { EmailXferedDatum, RootState } from '@x2react/shared'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { EmailXferedDatum, RootState } from '../../store/types'
 
 // https://www.highcharts.com/demo/pie-basic
 

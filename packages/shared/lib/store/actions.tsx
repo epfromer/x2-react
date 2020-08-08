@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-community/async-storage'
-import { EMAIL_LIST_PAGE_LENGTH, EMAIL_SERVER } from '@x2react/shared'
 import _ from 'lodash'
 import { store } from './'
+import { EMAIL_LIST_PAGE_LENGTH, EMAIL_SERVER } from './constants'
 import { Email, RootState } from './types'
 
 // actions, aka async mutations

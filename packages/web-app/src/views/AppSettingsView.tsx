@@ -1,14 +1,12 @@
 import Typography from '@material-ui/core/Typography'
+import { saveAppSettings, setReduxState } from '@x2react/shared'
 import React from 'react'
-import { useDispatch } from 'react-redux'
 import ContactSettings from '../components/ContactSettings'
 
 export default function AppSettingsView() {
-  const dispatch = useDispatch()
-
   const saveSetting = (setting: string, value: string | number | boolean) => {
-    dispatch({ type: 'setReduxState', key: setting, value: value })
-    dispatch({ type: 'saveAppSettings' })
+    setReduxState(setting, value)
+    saveAppSettings()
   }
 
   return (

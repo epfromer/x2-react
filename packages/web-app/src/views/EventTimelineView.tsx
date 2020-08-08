@@ -3,14 +3,19 @@ import LinearProgress from '@material-ui/core/LinearProgress'
 import Tooltip from '@material-ui/core/Tooltip'
 import SwapHorizontalCircleIcon from '@material-ui/icons/SwapHorizontalCircle'
 import SwapVerticalCircleIcon from '@material-ui/icons/SwapVerticalCircle'
+import {
+  clearSearch,
+  Contact,
+  fetchAndCache,
+  RootState,
+  setReduxState,
+} from '@x2react/shared'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import HighchartTimeline from 'highcharts/modules/timeline'
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { fetchAndCache } from './../store/actions'
-import { Contact, RootState } from './../store/types'
 
 HighchartTimeline(Highcharts)
 
@@ -21,7 +26,6 @@ HighchartTimeline(Highcharts)
 // https://www.econcrises.org/2016/12/07/enron-corporation-2001/
 
 export default function EventTimelineView() {
-  const dispatch = useDispatch()
   const history = useHistory()
   const contactsLoading = useSelector(
     (state: RootState) => state.contactsLoading
@@ -41,8 +45,8 @@ export default function EventTimelineView() {
 
   function handleClick(key: string, value: string) {
     if (!key) return
-    dispatch({ type: 'clearSearch' })
-    dispatch({ type: 'setReduxState', key, value })
+    clearSearch()
+    setReduxState(key, value)
     fetchAndCache('emails')
     history.push('/SearchView')
   }

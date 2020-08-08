@@ -1,13 +1,17 @@
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Typography from '@material-ui/core/Typography'
+import {
+  clearSearch,
+  fetchAndCache,
+  getEmailSentStats,
+  RootState,
+  setReduxState,
+} from '@x2react/shared'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import NetworkGraphECharts from '../components/ECharts/NetworkGraphECharts'
 import NetworkGraphHighcharts from '../components/Highcharts/NetworkGraphHighcharts'
-import { fetchAndCache } from './../store/actions'
-import { getEmailSentStats } from './../store/selectors'
-import { RootState } from './../store/types'
 
 export default function NetworkGraphView() {
   const dispatch = useDispatch()
@@ -21,9 +25,9 @@ export default function NetworkGraphView() {
 
   function handleClick(to: string, from: string) {
     if (to && from) {
-      dispatch({ type: 'clearSearch' })
-      dispatch({ type: 'setReduxState', key: 'to', value: `(${to})` })
-      dispatch({ type: 'setReduxState', key: 'from', value: `(${from})` })
+      clearSearch()
+      setReduxState('to', `(${to})`)
+      setReduxState('from', `(${from})`)
       fetchAndCache('emails')
       history.push('/SearchView')
     }

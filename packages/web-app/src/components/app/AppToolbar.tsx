@@ -8,11 +8,11 @@ import Brightness7 from '@material-ui/icons/Brightness7'
 import DashboardIcon from '@material-ui/icons/Dashboard'
 import MenuIcon from '@material-ui/icons/Menu'
 import Settings from '@material-ui/icons/Settings'
+import { RootState, saveAppSettings, setReduxState } from '@x2react/shared'
 import clsx from 'clsx'
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { RootState } from '../../store/types'
 
 // https://material-ui.com/components/material-icons/
 
@@ -40,16 +40,12 @@ interface Props {
 
 const AppToolbar: React.FC<Props> = ({ drawerOpen, setDrawerOpen }) => {
   const classes = useStyles()
-  const dispatch = useDispatch()
   const history = useHistory()
   const darkMode = useSelector((state: RootState) => state.darkMode)
 
-  const setReduxState = (key: string, value: string | number | boolean) =>
-    dispatch({ type: 'setReduxState', key, value })
-
-  const saveSetting = (setting: string, value: string | boolean) => {
-    setReduxState(setting, value)
-    dispatch({ type: 'saveAppSettings' })
+  const setDarkMode = (on: boolean) => {
+    setReduxState('darkMode', on)
+    saveAppSettings()
   }
 
   return (
@@ -84,7 +80,7 @@ const AppToolbar: React.FC<Props> = ({ drawerOpen, setDrawerOpen }) => {
           <IconButton
             color="inherit"
             data-testid="dark-mode"
-            onClick={() => saveSetting('darkMode', false)}
+            onClick={() => setDarkMode(false)}
           >
             <Brightness7 />
           </IconButton>
@@ -92,7 +88,7 @@ const AppToolbar: React.FC<Props> = ({ drawerOpen, setDrawerOpen }) => {
           <IconButton
             color="inherit"
             data-testid="dark-mode"
-            onClick={() => saveSetting('darkMode', true)}
+            onClick={() => setDarkMode(true)}
           >
             <Brightness4 />
           </IconButton>

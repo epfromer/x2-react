@@ -1,18 +1,22 @@
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Typography from '@material-ui/core/Typography'
+import {
+  clearSearch,
+  fetchAndCache,
+  getEmailReceivers,
+  getEmailSenders,
+  RootState,
+  setReduxState,
+} from '@x2react/shared'
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import BarChartJS from '../components/ChartJS/BarChartJS'
 import BarECharts from '../components/ECharts/BarECharts'
 import BarHighcarts from '../components/Highcharts/BarHighcharts'
 import BarVictory from '../components/Victory/BarVictory'
-import { RootState } from '../store/types'
-import { getEmailReceivers, getEmailSenders } from './../store/selectors'
-import { fetchAndCache } from './../store/actions'
 
 export default function BarView() {
-  const dispatch = useDispatch()
   const history = useHistory()
   const contactsLoading = useSelector(
     (state: RootState) => state.contactsLoading
@@ -24,8 +28,8 @@ export default function BarView() {
   )
 
   function handleClick(key: string, value: string) {
-    dispatch({ type: 'clearSearch' })
-    dispatch({ type: 'setReduxState', key, value: `(${value})` })
+    clearSearch()
+    setReduxState(key, `(${value})`)
     fetchAndCache('emails')
     history.push('/SearchView')
   }

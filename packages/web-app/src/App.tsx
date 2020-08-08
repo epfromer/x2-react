@@ -6,6 +6,7 @@ import {
   makeStyles,
   ThemeProvider,
 } from '@material-ui/core/styles'
+import { fetchAndCache, RootState } from '@x2react/shared'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { BrowserRouter as Router } from 'react-router-dom'
@@ -14,8 +15,6 @@ import AppDrawer from './components/app/AppDrawer'
 import AppFooter from './components/app/AppFooter'
 import AppToolbar from './components/app/AppToolbar'
 import RouteSwitch from './router/RouteSwitch'
-import { fetchAndCache } from './store/actions'
-import { RootState } from './store/types'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,10 +37,12 @@ export default function App() {
   const [drawerOpen, setDrawerOpen] = React.useState(false)
   const darkMode = useSelector((state: RootState) => state.darkMode)
 
+  // TODO - move these higher?
   fetchAndCache('emailSent')
   fetchAndCache('wordCloud')
   fetchAndCache('contacts')
   fetchAndCache('emails')
+  // getLocalStorage()
 
   const palette: any = {}
   if (darkMode) palette.type = 'dark'

@@ -3,12 +3,11 @@ import CardContent from '@material-ui/core/CardContent'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
+import { Email, getEmailById, RootState } from '@x2react/shared'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import EmailCardActions from '../components/emaillist/EmailCardActions'
-import { getEmailById } from '../store/selectors'
-import { Email, RootState } from './../store/types'
 
 const useStyles = makeStyles((theme) => ({
   root: { width: '100%' },

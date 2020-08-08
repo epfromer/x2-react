@@ -5,12 +5,10 @@ import TableRow from '@material-ui/core/TableRow'
 import TableSortLabel from '@material-ui/core/TableSortLabel'
 import TextField from '@material-ui/core/TextField'
 import DateRangeIcon from '@material-ui/icons/DateRange'
-// @ts-ignore
+import { fetchAndCache, RootState, setReduxState } from '@x2react/shared'
 import debounce from 'lodash/debounce'
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchAndCache } from '../../store/actions'
-import { RootState } from '../../store/types'
+import { useSelector } from 'react-redux'
 import FilterDate from './FilterDate'
 
 var moment = require('moment')
@@ -19,7 +17,6 @@ const DEBOUNCE_MS = 1000
 const FILTER_DATE = '2000-10-04'
 
 const EmailTableHead: React.FC = () => {
-  const dispatch = useDispatch()
   const [datePickerOpen, setDatePickerOpen] = useState(false)
   const querySort = useSelector((state: RootState) => state.querySort)
   const queryOrder = useSelector((state: RootState) => state.queryOrder)
@@ -50,8 +47,8 @@ const EmailTableHead: React.FC = () => {
   ]
 
   const debouncedSearch = debounce((field: string, term: string) => {
-    dispatch({ type: 'setReduxState', key: 'emailListPage', value: 0 })
-    dispatch({ type: 'setReduxState', key: field, value: term })
+    setReduxState('emailListPage', 0)
+    setReduxState(field, term)
     fetchAndCache('emails')
   }, DEBOUNCE_MS)
 
@@ -63,18 +60,14 @@ const EmailTableHead: React.FC = () => {
         span={timeSpan}
         onClear={() => {
           setDatePickerOpen(false)
-          dispatch({ type: 'setReduxState', key: 'sent', value: '' })
-          dispatch({ type: 'setReduxState', key: 'timeSpan', value: 0 })
+          setReduxState('sent', '')
+          setReduxState('timeSpan', 0)
           fetchAndCache('emails')
         }}
         onClose={(date: string, span: number) => {
           setDatePickerOpen(false)
-          dispatch({
-            type: 'setReduxState',
-            key: 'sent',
-            value: moment(date).format().slice(0, 10),
-          })
-          dispatch({ type: 'setReduxState', key: 'timeSpan', value: span })
+          setReduxState('sent', moment(date).format().slice(0, 10))
+          setReduxState('timeSpan', span)
           fetchAndCache('emails')
         }}
       />
@@ -131,29 +124,13 @@ const EmailTableHead: React.FC = () => {
                     : 'asc'
                 }
                 onClick={() => {
-                  dispatch({
-                    type: 'setReduxState',
-                    key: 'emailListPage',
-                    value: 0,
-                  })
+                  setReduxState('emailListPage', 0)
                   if (querySort === c.field) {
-                    dispatch({
-                      type: 'setReduxState',
-                      key: 'queryOrder',
-                      value: queryOrder === 1 ? -1 : 1,
-                    })
+                    setReduxState('queryOrder', queryOrder === 1 ? -1 : 1)
                   } else {
-                    dispatch({
-                      type: 'setReduxState',
-                      key: 'queryOrder',
-                      value: 1,
-                    })
+                    setReduxState('queryOrder', 1)
                   }
-                  dispatch({
-                    type: 'setReduxState',
-                    key: 'querySort',
-                    value: c.field,
-                  })
+                  setReduxState('querySort', c.field)
                   fetchAndCache('emails')
                 }}
               >

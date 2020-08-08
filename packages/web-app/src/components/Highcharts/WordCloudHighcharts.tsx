@@ -1,9 +1,9 @@
+import { RootState } from '@x2react/shared'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
+import HighchartWordCloud from 'highcharts/modules/wordcloud'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { RootState } from '../../store/types'
-import HighchartWordCloud from 'highcharts/modules/wordcloud'
 
 HighchartWordCloud(Highcharts)
 

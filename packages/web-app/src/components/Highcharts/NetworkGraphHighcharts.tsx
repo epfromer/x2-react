@@ -1,9 +1,9 @@
+import { RootState } from '@x2react/shared'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import HighchartNetworkGraph from 'highcharts/modules/networkgraph'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { RootState } from '../../store/types'
 
 HighchartNetworkGraph(Highcharts)
 
