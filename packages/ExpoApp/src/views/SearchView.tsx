@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
-import { Button, Input, Icon } from 'react-native-elements'
+import { Button, Icon, Input } from 'react-native-elements'
 import Spinner from 'react-native-loading-spinner-overlay'
 import Modal from 'react-native-modal'
 import DateTimePickerModal from 'react-native-modal-datetime-picker'

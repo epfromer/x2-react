@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^10.2.0",
+    "@highcharts/highcharts-react-native": "^3.0.1",
     "@react-native-community/async-storage": "^1.11.0",
     "@react-native-community/datetimepicker": "^2.6.1",
     "@react-native-community/masked-view": "^0.1.10",
@@ -23,6 +24,7 @@
     "@x2react/shared": "^0.0.0",
     "echarts": "^4.8.0",
     "expo": "~38.0.8",
+    "highcharts": "^8.1.2",
     "prop-types": "^15.7.2",
     "react": "~16.11.0",
     "react-dom": "~16.11.0",
@@ -39,6 +41,7 @@
     "react-native-safe-area-context": "~3.0.7",
     "react-native-screens": "~2.9.0",
     "react-native-svg": "^12.1.0",
+    "react-native-unimodules": "^0.10.1",
     "react-native-vector-icons": "^7.0.0",
     "react-native-web": "~0.11.7",
     "react-native-webview": "^10.3.3",

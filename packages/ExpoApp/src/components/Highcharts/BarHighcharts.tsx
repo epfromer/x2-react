@@ -1,6 +1,8 @@
-// import HighchartsReactNative from '@highcharts/highcharts-react-native'
+import * as Highcharts from 'highcharts'
+import HighchartsReactNative from '@highcharts/highcharts-react-native'
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, Text } from 'react-native'
+import { EmailXferedDatum } from '../../store/types'
 
 // TODO https://github.com/highcharts/highcharts-react-native/issues/86
 
@@ -15,15 +17,16 @@ const config = {
   },
 }
 
+interface Props {
+  title: string
+  search: string
+  data: Array<EmailXferedDatum>
+  handleClick: (key: string, value: string) => void
+}
 export default function BarHighcharts() {
   return (
     <View>
-      {/* <HighchartsReactNative
-        useCDN={true}
-        styles={styles.container}
-        options={config}
-        useSSL={true}
-      /> */}
+      <HighchartsReactNative styles={styles.container} options={config} />
     </View>
   )
 }

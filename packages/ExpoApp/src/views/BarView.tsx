@@ -4,6 +4,7 @@ import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { useSelector } from 'react-redux'
 import BarECharts from '../components/ECharts/BarECharts'
+import BarHighcharts from '../components/Highcharts/BarHighcharts'
 import BarVictory from '../components/Victory/BarVictory'
 import { RootState } from '../store/types'
 import { clearSearch, fetchAndCache, setReduxState } from './../store/actions'
@@ -100,6 +101,26 @@ export default function BarView({ navigation }: Props) {
                 )}
               </>
             )}
+            {chartLib === 'Highcharts' && (
+              <>
+                {isSenders && (
+                  <BarHighcharts
+                    title="Senders"
+                    search="from"
+                    data={emailSenders}
+                    handleClick={handleClick}
+                  />
+                )}
+                {!isSenders && (
+                  <BarHighcharts
+                    title="Receivers"
+                    search="to"
+                    data={emailReceivers}
+                    handleClick={handleClick}
+                  />
+                )}
+              </>
+            )}
           </>
         )}
         <Picker
@@ -118,6 +139,7 @@ export default function BarView({ navigation }: Props) {
           itemStyle={styles.itemStyle}
         >
           <Picker.Item label="ECharts" value="ECharts" />
+          <Picker.Item label="Highcharts" value="Highcharts" />
           <Picker.Item label="Victory" value="Victory" />
         </Picker>
       </SafeAreaView>
