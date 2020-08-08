@@ -12,9 +12,9 @@ import {
   WORDCLOUD,
 } from '@x2react/shared'
 import React from 'react'
-import DashboardCard from '../components/DashboardCard'
+import HomeCard from '../components/HomeCard'
 
-export default function DashboardView() {
+export default function HomeView() {
   const makeCard = (
     image: string,
     title: string,
@@ -23,7 +23,7 @@ export default function DashboardView() {
   ) => {
     return (
       <Grid item xs={12} sm={6} md={3}>
-        <DashboardCard
+        <HomeCard
           image={image}
           title={title}
           description={description}

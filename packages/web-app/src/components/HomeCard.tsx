@@ -19,12 +19,7 @@ interface Props {
   description: string
   link: string
 }
-const DashboardCard: React.FC<Props> = ({
-  image,
-  title,
-  description,
-  link,
-}) => {
+const HomeCard: React.FC<Props> = ({ image, title, description, link }) => {
   const classes = useStyles()
   const history = useHistory()
 
@@ -47,4 +42,4 @@ const DashboardCard: React.FC<Props> = ({
   )
 }
 
-export default DashboardCard
+export default HomeCard

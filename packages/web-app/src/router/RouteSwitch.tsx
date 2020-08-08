@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 import AppSettingsView from '../views/AppSettingsView'
 import BarView from '../views/BarView'
 import ChordView from '../views/ChordView'
-import DashboardView from '../views/DashboardView'
+import HomeView from '../views/HomeView'
 import EmailDetailView from '../views/EmailDetailView'
 import EventTimelineView from '../views/EventTimelineView'
 import NetworkGraphView from '../views/NetworkGraphView'
@@ -54,7 +54,7 @@ export default function RouteSwitch() {
         <PieView />
       </Route>
       <Route path="/">
-        <DashboardView />
+        <HomeView />
       </Route>
     </Switch>
   )

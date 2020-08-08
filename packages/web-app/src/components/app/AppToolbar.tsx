@@ -106,7 +106,7 @@ const AppToolbar: React.FC<Props> = ({ drawerOpen, setDrawerOpen }) => {
           <Settings />
         </IconButton>
       </Tooltip>
-      <Tooltip title="Dashboard" aria-label="Dashboard">
+      <Tooltip title="X2 Home" aria-label="X2 Home">
         <IconButton color="inherit" onClick={() => history.push('/')}>
           <DashboardIcon />
         </IconButton>

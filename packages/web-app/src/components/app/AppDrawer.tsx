@@ -16,7 +16,7 @@ interface Props {
 
 const AppDrawer: React.FC<Props> = ({ open, setOpen }) => {
   const mainListItems = [
-    { icon: <DashboardIcon />, name: 'Dashboard', route: '/' },
+    { icon: <DashboardIcon />, name: 'X2 Home', route: '/' },
     { icon: <Email />, name: 'Search', route: '/SearchView' },
   ]
 
