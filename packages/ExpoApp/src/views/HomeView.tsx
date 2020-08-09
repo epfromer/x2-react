@@ -10,11 +10,10 @@ import {
   TREEMAP,
   VOLUMETIMELINE,
   WORDCLOUD,
-} from '@x2react/common'
+} from '@klonzo/x2-react-common'
 import React from 'react'
 import { ScrollView } from 'react-native'
 import HomeCard from '../components/HomeCard'
-// import { sayHello } from '@x2react/common'
 
 interface Props {
   navigation: any

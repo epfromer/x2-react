@@ -1,6 +1,7 @@
 {
-  "name": "@x2react/common",
-  "version": "0.0.0",
+  "name": "@klonzo/x2-react-common",
+  "version": "0.0.1",
+  "private": true,
   "description": "Shared components for X2 React",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

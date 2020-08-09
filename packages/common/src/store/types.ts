@@ -10,6 +10,12 @@ export interface EmailSent {
   sent: string
 }
 
+export interface EmailSentStat {
+  id: string
+  color: string
+  emailTotal: number
+}
+
 export interface EmailReceived {
   id: string
   from: string

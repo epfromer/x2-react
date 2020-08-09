@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-community/async-storage'
 import _ from 'lodash'
-import { store } from './'
+import { store } from '.'
 import { EMAIL_LIST_PAGE_LENGTH, EMAIL_SERVER } from './constants'
 import { Email, RootState } from './types'
 
