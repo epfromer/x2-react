@@ -1,5 +1,4 @@
 import {
-  BARCHART,
   CHORD,
   EVENTTIMELINE,
   NETWORKGRAPH,
@@ -11,10 +10,11 @@ import {
   VOLUMETIMELINE,
   WORDCLOUD,
 } from '@x2react/shared'
+import { BARCHART, sayHello } from '@x2react/common'
 import React from 'react'
 import { ScrollView, Text } from 'react-native'
 import HomeCard from '../components/HomeCard'
-import { sayHello } from '@x2react/common'
+// import { sayHello } from '@x2react/common'
 
 interface Props {
   navigation: any

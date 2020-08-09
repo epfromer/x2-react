@@ -1,11 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.sayGoodbye = exports.sayHello = void 0;
-function sayHello() {
+export function sayHello() {
     return "hello";
 }
-exports.sayHello = sayHello;
-function sayGoodbye() {
+export function sayGoodbye() {
     return "bye";
 }
-exports.sayGoodbye = sayGoodbye;
