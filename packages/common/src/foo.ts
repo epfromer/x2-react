@@ -1,6 +1,6 @@
 export function sayHello() {
-  return "hello"
+  return 'hello'
 }
 export function sayGoodbye() {
-  return "bye"
+  return 'bye'
 }

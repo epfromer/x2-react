@@ -1,5 +1,16 @@
-// https://github.com/microsoft/TypeScript-React-Starter/issues/12
+// images
+export {
+  BARCHART,
+  CHORD,
+  EVENTTIMELINE,
+  NETWORKGRAPH,
+  PIE,
+  POLAR,
+  SEARCH,
+  SETTINGS,
+  TREEMAP,
+  VOLUMETIMELINE,
+  WORDCLOUD,
+} from './img/index'
 
-export {BARCHART} from './assets/index'
-
-export {sayHello, sayGoodbye} from './foo'
+export { sayHello, sayGoodbye } from './foo'

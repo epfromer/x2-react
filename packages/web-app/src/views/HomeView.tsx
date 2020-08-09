@@ -10,7 +10,7 @@ import {
   TREEMAP,
   VOLUMETIMELINE,
   WORDCLOUD,
-} from '@x2react/shared'
+} from '@x2react/common'
 import React from 'react'
 import HomeCard from '../components/HomeCard'
 
