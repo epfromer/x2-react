@@ -13,4 +13,9 @@ export {
   WORDCLOUD,
 } from './img/index'
 
-export { sayHello, sayGoodbye } from './foo'
+// Redux store
+export * from './store/index'
+export * from './store/actions'
+export * from './store/constants'
+export * from './store/types'
+export * from './store/selectors'
