@@ -1,14 +1,13 @@
 {
-  "name": "@klonzo/x2-react-common",
+  "name": "@klonzo/common",
   "version": "0.0.1",
   "private": true,
   "description": "Shared components for X2 React",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc && copyfiles -u 1 src/img/*.png dist",
-    "link": "npm run build && cd dist && npm link"
+    "start": "tsc -w --preserveWatchOutput && copyfiles -u 1 src/img/*.png lib",
+    "link": "npm run build && cd lib && npm link"
   },
   "devDependencies": {
     "@react-native-community/async-storage": "^1.11.0",

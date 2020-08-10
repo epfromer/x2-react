@@ -1,9 +1,7 @@
 {
   "name": "x2-react-monorepo",
   "private": true,
-  "devDependencies": {
-    "lerna": "latest"
-  },
+  "license": "MIT",
   "scripts": {
     "android": "lerna --scope=NativeApp run android --stream --",
     "expo": "lerna --scope=ExpoApp run start --stream --",
@@ -14,6 +12,9 @@
     "yarn outdated": "yarn outdated",
     "yarn upgrade-interactive": "yarn upgrade-interactive",
     "yarn": "yarn"
+  },
+  "devDependencies": {
+    "lerna": "latest"
   },
   "workspaces": {
     "packages": [
