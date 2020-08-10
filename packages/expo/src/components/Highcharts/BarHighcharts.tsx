@@ -1,5 +1,5 @@
 // import HighchartsReactNative from '@highcharts/highcharts-react-native'
-import { EmailXferedDatum } from '@klonzo/shared'
+import { EmailXferedDatum } from '@klonzo/common'
 import React from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 

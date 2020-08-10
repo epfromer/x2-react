@@ -4,7 +4,7 @@ import {
   MAX_FROM_LENGTH,
   RootState,
   setReduxState,
-} from '@klonzo/shared'
+} from '@klonzo/common'
 import React, { useState } from 'react'
 import {
   FlatList,

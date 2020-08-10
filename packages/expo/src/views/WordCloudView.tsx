@@ -3,7 +3,7 @@ import {
   fetchAndCache,
   RootState,
   setReduxState,
-} from '@klonzo/shared'
+} from '@klonzo/common'
 import React from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'

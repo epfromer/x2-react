@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-community/async-storage'
 import _ from 'lodash'
-import { store } from '.'
+import { store } from './index'
 import { EMAIL_LIST_PAGE_LENGTH, EMAIL_SERVER } from './constants'
 import { Email, RootState } from './types'
 
@@ -16,7 +16,7 @@ export const setReduxState = (k: string, v: string | boolean | number) =>
 export const appendEmails = (k: string, v: Array<Email>) =>
   store.dispatch({
     type: 'appendEmails',
-    key: '',
+    key: k,
     value: v,
   })
 

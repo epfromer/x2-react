@@ -1,4 +1,4 @@
-import { RootState, EmailXferedDatum } from './types'
+import { RootState, EmailXferedDatum, EmailSentStat } from './types'
 
 // selectors, aka getters
 export const getEmailById = (state: RootState, id: string) =>
@@ -40,13 +40,6 @@ export const getEmailSentStats = (state: RootState) => {
     })
   })
 
-  // create array of 'nodes'
-  interface Node {
-    id: string
-    color: string
-    emailTotal: number
-  }
-
   const emailTotal = new Map()
   data.forEach((contact) => {
     if (emailTotal.has(contact[0])) {
@@ -61,7 +54,7 @@ export const getEmailSentStats = (state: RootState) => {
     }
   })
 
-  const nodes: Array<Node> = []
+  const nodes: Array<EmailSentStat> = []
   state.contacts?.forEach((contact) => {
     nodes.push({
       id: contact.name,

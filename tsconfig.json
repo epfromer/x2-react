@@ -2,7 +2,7 @@
   "exclude": ["node_modules", "dist", "lib", "__tests__", "**/*.test*", "**/*.spec*"],
   "files":  [],
   "compilerOptions": {
-    "skipLibCheck": false,
+    "skipLibCheck": true,
     "target": "esnext",
     "module": "esnext",
     "lib": ["dom", "esnext"],
@@ -28,11 +28,11 @@
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
+    "typeRoots": ["./node_modules/@types"]
   },
   "references": [
     { "path": "packages/common" },
     { "path": "packages/expo" },
-    { "path": "packages/web" },
-    { "path": "packages/d" },
+    { "path": "packages/web" }
   ]
 }

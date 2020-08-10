@@ -1,4 +1,4 @@
-import { RootState } from '@klonzo/shared'
+import { RootState } from '@klonzo/common'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import HighchartNetworkGraph from 'highcharts/modules/networkgraph'

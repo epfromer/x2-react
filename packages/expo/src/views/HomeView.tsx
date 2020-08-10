@@ -10,7 +10,7 @@ import {
   TREEMAP,
   VOLUMETIMELINE,
   WORDCLOUD,
-} from '@klonzo/shared'
+} from '@klonzo/common'
 import React from 'react'
 import { ScrollView } from 'react-native'
 import HomeCard from '../components/HomeCard'

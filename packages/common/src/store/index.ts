@@ -100,4 +100,3 @@ function reducer(state: RootState = initialState, action: Action) {
 }
 
 export const store = createStore(reducer, applyMiddleware(thunkMiddleware))
-

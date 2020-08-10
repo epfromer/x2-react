@@ -4,7 +4,7 @@ import {
   NavigationContainer,
 } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { RootState } from '@klonzo/shared'
+import { RootState } from '@klonzo/common'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import AppSettingsView from '../views/AppSettingsView'

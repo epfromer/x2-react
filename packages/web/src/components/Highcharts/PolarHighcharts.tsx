@@ -1,4 +1,4 @@
-import { EmailXferedDatum, RootState } from '@klonzo/shared'
+import { EmailXferedDatum, RootState } from '@klonzo/common'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import HighchartPolar from 'highcharts/highcharts-more'

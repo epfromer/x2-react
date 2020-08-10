@@ -1,4 +1,4 @@
-import { RootState } from '@klonzo/shared'
+import { RootState } from '@klonzo/common'
 import React from 'react'
 import {
   Image,

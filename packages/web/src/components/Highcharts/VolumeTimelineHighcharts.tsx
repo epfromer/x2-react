@@ -1,4 +1,4 @@
-import { RootState, TotalEmailSentDatum } from '@klonzo/shared'
+import { RootState, TotalEmailSentDatum } from '@klonzo/common'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import React from 'react'

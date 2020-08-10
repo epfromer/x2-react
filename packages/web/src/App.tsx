@@ -6,7 +6,7 @@ import {
   makeStyles,
   ThemeProvider,
 } from '@material-ui/core/styles'
-import { fetchAndCache, RootState } from '@klonzo/shared'
+import { fetchAndCache, RootState } from '@klonzo/common'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { BrowserRouter as Router } from 'react-router-dom'

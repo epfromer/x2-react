@@ -1,8 +1,8 @@
 {
-  "main": "__generated__/AppEntry.js",
   "name": "@klonzo/expo",
   "version": "0.0.1",
   "private": true,
+  "main": "__generated__/AppEntry.js",
   "scripts": {
     "start": "expo start -c",
     "android": "expo start --android",
@@ -13,22 +13,18 @@
   "dependencies": {
     "@expo/vector-icons": "^10.2.0",
     "@highcharts/highcharts-react-native": "^3.0.1",
-    "@react-native-community/async-storage": "^1.11.0",
+    "@klonzo/common": "^0.0.1",
     "@react-native-community/datetimepicker": "^2.6.1",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-native-community/picker": "^1.6.5",
     "@react-native-community/slider": "^3.0.3",
-    "@react-navigation/drawer": "^5.9.0",
     "@react-navigation/native": "^5.7.3",
     "@react-navigation/stack": "^5.9.0",
-    "@klonzo/common": "^0.0.1",
-    "@klonzo/shared": "^0.0.0",
     "echarts": "^4.8.0",
     "expo": "~38.0.8",
     "highcharts": "^8.1.2",
+    "moment": "^2.27.0",
     "prop-types": "^15.7.2",
-    "react": "~16.11.0",
-    "react-dom": "~16.11.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz",
     "react-native-color-picker": "^0.5.2",
     "react-native-echarts-wrapper": "^2.0.0",
@@ -47,9 +43,6 @@
     "react-native-web": "~0.11.7",
     "react-native-webview": "^10.3.3",
     "react-native-word-cloud": "^1.0.7",
-    "react-redux": "^7.2.1",
-    "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0",
     "victory-native": "^35.0.1"
   },
   "devDependencies": {
@@ -57,13 +50,6 @@
     "@babel/runtime": "^7.11.2",
     "@react-native-community/eslint-config": "^2.0.0",
     "@testing-library/dom": "^7.22.0",
-    "@types/jest": "^26.0.9",
-    "@types/react": "~16.9.44",
-    "@types/react-native": "^0.63.6",
-    "@types/react-native-vector-icons": "^6.4.5",
-    "@types/react-redux": "^7.1.9",
-    "@types/react-test-renderer": "^16.9.2",
-    "@types/victory": "^33.1.4",
     "babel-jest": "^24.9.0",
     "babel-preset-expo": "^8.2.3",
     "eslint": "^7.6.0",
@@ -73,8 +59,7 @@
     "jest": "^26.2.2",
     "metro-react-native-babel-preset": "^0.61.0",
     "prettier": "^2.0.5",
-    "react-test-renderer": "16.13.1",
-    "typescript": "~3.9.7"
+    "react-test-renderer": "16.13.1"
   },
   "eslintConfig": {
     "extends": [

@@ -5,7 +5,7 @@ import {
   fetchAndCache,
   RootState,
   setReduxState,
-} from '@klonzo/shared'
+} from '@klonzo/common'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'

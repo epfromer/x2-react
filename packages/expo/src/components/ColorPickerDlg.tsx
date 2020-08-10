@@ -1,5 +1,5 @@
 import Slider from '@react-native-community/slider'
-import { RootState } from '@klonzo/shared'
+import { RootState } from '@klonzo/common'
 import React from 'react'
 import { StyleSheet } from 'react-native'
 import { ColorPicker } from 'react-native-color-picker'

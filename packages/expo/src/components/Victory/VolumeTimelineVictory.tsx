@@ -1,4 +1,4 @@
-import { RootState, TotalEmailSentDatum } from '@klonzo/shared'
+import { RootState, TotalEmailSentDatum } from '@klonzo/common'
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { useSelector } from 'react-redux'

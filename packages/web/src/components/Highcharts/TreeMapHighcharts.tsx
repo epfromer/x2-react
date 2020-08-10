@@ -2,7 +2,7 @@ import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { RootState } from '@klonzo/shared'
+import { RootState } from '@klonzo/common'
 require('highcharts/modules/treemap')(Highcharts)
 
 // https://www.highcharts.com/demo/treemap-coloraxis

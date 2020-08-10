@@ -1,5 +1,5 @@
 import Typography from '@material-ui/core/Typography'
-import { saveAppSettings, setReduxState } from '@klonzo/shared'
+import { saveAppSettings, setReduxState } from '@klonzo/common'
 import React from 'react'
 import ContactSettings from '../components/ContactSettings'
 

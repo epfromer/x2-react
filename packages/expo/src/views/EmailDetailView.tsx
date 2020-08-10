@@ -6,7 +6,7 @@ import {
   getNextEmail,
   getPreviousEmail,
   RootState,
-} from '@klonzo/shared'
+} from '@klonzo/common'
 import React, { useEffect, useState } from 'react'
 import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { Button, Icon } from 'react-native-elements'

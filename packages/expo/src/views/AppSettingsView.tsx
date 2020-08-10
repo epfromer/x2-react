@@ -5,7 +5,7 @@ import {
   RootState,
   saveAppSettings,
   setReduxState,
-} from '@klonzo/shared'
+} from '@klonzo/common'
 import React, { useState } from 'react'
 import {
   SafeAreaView,

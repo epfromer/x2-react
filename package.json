@@ -13,8 +13,18 @@
     "yarn upgrade-interactive": "yarn upgrade-interactive",
     "yarn": "yarn"
   },
+  "dependencies": {
+    "lodash": "^4.17.19",
+    "react": "~16.11.0",
+    "react-dom": "~16.11.0"
+  },
   "devDependencies": {
-    "lerna": "latest"
+    "lerna": "latest",
+    "eslint": "^7.6.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.0.5",
+    "typescript": "~3.9.7"
   },
   "workspaces": {
     "packages": [
