@@ -16,7 +16,7 @@ interface Props {
   handleClick: (word: string) => void
 }
 
-export default function WordCloud({ words, handleClick }: Props) {
+export default function WordCloud({ words }: Props) {
   const kwords: Array<any> = []
   words.forEach((word) => {
     kwords.push({

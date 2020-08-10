@@ -1,10 +1,10 @@
 {
   "include": [
-    "src"
+    "src", "react-native-echarts-wrapper.d.ts"
   ],
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "dist",
-    "rootDir": "src",
+    "rootDir": "src"
   }
 }
