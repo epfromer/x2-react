@@ -11,8 +11,6 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "@expo/vector-icons": "^10.2.0",
-    "@highcharts/highcharts-react-native": "^3.0.1",
     "@klonzo/common": "^0.0.1",
     "@react-native-community/datetimepicker": "^2.6.1",
     "@react-native-community/masked-view": "^0.1.10",
@@ -21,6 +19,7 @@
     "@react-navigation/native": "^5.7.3",
     "@react-navigation/stack": "^5.9.0",
     "expo": "~38.0.8",
+    "react": "~16.11.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz",
     "react-native-color-picker": "^0.5.2",
     "react-native-echarts-wrapper": "^2.0.0",
@@ -30,22 +29,29 @@
     "react-native-loading-spinner-overlay": "^1.1.0",
     "react-native-modal": "^11.5.6",
     "react-native-modal-datetime-picker": "^8.9.0",
-    "react-native-reanimated": "~1.9.0",
     "react-native-safe-area-context": "~3.0.7",
     "react-native-screens": "~2.9.0",
     "react-native-svg": "^12.1.0",
-    "react-native-unimodules": "^0.10.1",
     "react-native-vector-icons": "^7.0.0",
-    "react-native-web": "~0.11.7",
     "react-native-webview": "^10.3.3",
     "react-native-word-cloud": "^1.0.7",
+    "react-redux": "^7.2.1",
+    "redux": "^4.0.5",
     "victory-native": "^35.0.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.11.1",
     "@react-native-community/eslint-config": "^2.0.0",
-    "babel-preset-expo": "^8.2.3",
+    "eslint": "^7.6.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-react-app": "^5.2.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-prettier": "^3.1.4",
     "expo-yarn-workspaces": "^1.2.1",
-    "metro-react-native-babel-preset": "^0.61.0"
+    "highcharts": "^8.1.2",
+    "moment": "^2.27.0",
+    "prettier": "^2.0.5",
+    "prop-types": "^15.7.2"
   },
   "eslintConfig": {
     "extends": [

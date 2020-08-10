@@ -5,6 +5,12 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "dist",
-    "rootDir": "src"
-  }
+    "rootDir": "src",
+    "baseUrl": "."
+  },
+  "references": [
+    {
+      "path": "../common"
+    }
+  ]
 }
