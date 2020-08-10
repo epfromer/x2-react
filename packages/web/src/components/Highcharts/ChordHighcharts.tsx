@@ -1,4 +1,4 @@
-import { RootState } from '@x2react/shared'
+import { RootState } from '@klonzo/shared'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import HighchartsWheel from 'highcharts/modules/dependency-wheel'

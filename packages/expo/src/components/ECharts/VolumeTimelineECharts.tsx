@@ -1,4 +1,4 @@
-import { RootState, TotalEmailSentDatum } from '@x2react/shared'
+import { RootState, TotalEmailSentDatum } from '@klonzo/shared'
 import React from 'react'
 import { ECharts } from 'react-native-echarts-wrapper'
 import { useSelector } from 'react-redux'

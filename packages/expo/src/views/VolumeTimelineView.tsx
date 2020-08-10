@@ -5,7 +5,7 @@ import {
   RootState,
   setReduxState,
   TotalEmailSentDatum,
-} from '@x2react/shared'
+} from '@klonzo/shared'
 import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'

@@ -1,4 +1,4 @@
-import { EmailXferedDatum, RootState } from '@x2react/shared'
+import { EmailXferedDatum, RootState } from '@klonzo/shared'
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import { useSelector } from 'react-redux'

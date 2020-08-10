@@ -1,11 +1,11 @@
-# `@x2react/shared`
+# `@klonzo/shared`
 
 > TODO: description
 
 ## Usage
 
 ```
-const shared = require('@x2react/shared');
+const shared = require('@klonzo/shared');
 
 // TODO: DEMONSTRATE API
 ```

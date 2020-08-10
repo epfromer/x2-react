@@ -1,7 +1,7 @@
 import { Chart } from 'chart.js'
 import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { EmailXferedDatum, RootState } from '@x2react/shared'
+import { EmailXferedDatum, RootState } from '@klonzo/shared'
 
 // https://www.chartjs.org/docs/latest/charts/bar.html
 

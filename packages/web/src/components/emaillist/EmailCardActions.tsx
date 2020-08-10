@@ -10,7 +10,7 @@ import {
   getNextEmail,
   getPreviousEmail,
   RootState,
-} from '@x2react/shared'
+} from '@klonzo/shared'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'

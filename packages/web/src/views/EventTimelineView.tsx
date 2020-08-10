@@ -9,7 +9,7 @@ import {
   fetchAndCache,
   RootState,
   setReduxState,
-} from '@x2react/shared'
+} from '@klonzo/shared'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import HighchartTimeline from 'highcharts/modules/timeline'

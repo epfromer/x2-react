@@ -1,4 +1,4 @@
-import { fetchAndCache, getLocalStorage, store } from '@x2react/shared'
+import { fetchAndCache, getLocalStorage, store } from '@klonzo/shared'
 import React from 'react'
 import 'react-native-gesture-handler'
 import { Provider } from 'react-redux'

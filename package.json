@@ -4,8 +4,8 @@
   "license": "MIT",
   "scripts": {
     "android": "lerna --scope=NativeApp run android --stream --",
-    "expo": "lerna --scope=ExpoApp run start --stream --",
-    "postinstall": "cd ./packages/ExpoApp && expo-yarn-workspaces postinstall",
+    "expo": "lerna --scope=@klonzo/expo run start --stream --",
+    "postinstall": "cd ./packages/expo && expo-yarn-workspaces postinstall",
     "web": "lerna --scope=web-app run serve",
     "yarn check": "yarn check",
     "yarn global upgrade-interactive": "yarn global upgrade-interactive",

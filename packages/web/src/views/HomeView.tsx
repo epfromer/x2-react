@@ -10,7 +10,7 @@ import {
   TREEMAP,
   VOLUMETIMELINE,
   WORDCLOUD,
-} from '@x2react/common'
+} from '@klonzo/common'
 import React from 'react'
 import HomeCard from '../components/HomeCard'
 

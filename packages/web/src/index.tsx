@@ -1,6 +1,6 @@
 import MomentUtils from '@date-io/moment'
 import { MuiPickersUtilsProvider } from '@material-ui/pickers'
-import { store } from '@x2react/shared'
+import { store } from '@klonzo/shared'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
