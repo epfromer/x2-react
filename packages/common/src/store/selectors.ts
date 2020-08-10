@@ -22,23 +22,25 @@ export const getEmailIndex = (state: RootState, id: string) =>
 export const getEmailSentStats = (state: RootState) => {
   // create array of [from, to, number sent]
   const data: Array<[string, string, number]> = []
-  state.contacts?.forEach((contact) => {
-    const sent = new Map()
-    contact.asSender.forEach((email) => {
-      email.to.forEach((recipient) => {
-        if (sent.has(recipient)) {
-          sent.set(recipient, sent.get(recipient) + 1)
-        } else {
-          sent.set(recipient, 1)
+  if (state.contacts) {
+    state.contacts.forEach((contact) => {
+      const sent = new Map()
+      contact.asSender.forEach((email) => {
+        email.to.forEach((recipient) => {
+          if (sent.has(recipient)) {
+            sent.set(recipient, sent.get(recipient) + 1)
+          } else {
+            sent.set(recipient, 1)
+          }
+        })
+      })
+      sent.forEach((v, k) => {
+        if (contact.name !== k) {
+          data.push([contact.name, k, v])
         }
       })
     })
-    sent.forEach((v, k) => {
-      if (contact.name !== k) {
-        data.push([contact.name, k, v])
-      }
-    })
-  })
+  }
 
   const emailTotal = new Map()
   data.forEach((contact) => {
@@ -55,13 +57,15 @@ export const getEmailSentStats = (state: RootState) => {
   })
 
   const nodes: Array<EmailSentStat> = []
-  state.contacts?.forEach((contact) => {
-    nodes.push({
-      id: contact.name,
-      color: contact.color,
-      emailTotal: emailTotal.get(contact.name),
+  if (state.contacts) {
+    state.contacts.forEach((contact) => {
+      nodes.push({
+        id: contact.name,
+        color: contact.color,
+        emailTotal: emailTotal.get(contact.name),
+      })
     })
-  })
+  }
 
   return { data, nodes }
 }

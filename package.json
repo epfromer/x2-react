@@ -3,10 +3,10 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "android": "lerna --scope=NativeApp run android --stream --",
     "expo": "lerna --scope=@klonzo/expo run start --stream --",
+    "build-common": "lerna --scope=@klonzo/common run build --stream --",
     "postinstall": "cd ./packages/expo && expo-yarn-workspaces postinstall",
-    "web": "lerna --scope=web-app run serve",
+    "web": "lerna --scope=@klonzo/web run serve",
     "yarn check": "yarn check",
     "yarn global upgrade-interactive": "yarn global upgrade-interactive",
     "yarn outdated": "yarn outdated",

@@ -52,13 +52,15 @@ function reducer(state: RootState = initialState, action: Action) {
         s.wordCloud = _.cloneDeep(action.value)
       } else if (action.key === 'contacts') {
         s.contacts = _.cloneDeep(action.value)
-        s.contacts?.sort((a: any, b: any) => {
-          const aName = a.name.toLowerCase()
-          const bName = b.name.toLowerCase()
-          if (aName < bName) return -1
-          else if (aName < bName) return 1
-          else return 0
-        })
+        if (s.contacts) {
+          s.contacts.sort((a: any, b: any) => {
+            const aName = a.name.toLowerCase()
+            const bName = b.name.toLowerCase()
+            if (aName < bName) return -1
+            else if (aName < bName) return 1
+            else return 0
+          })
+        }
       } else if (action.key === 'emailSent') {
         s.emailSent = _.cloneDeep(action.value)
       } else {
@@ -76,8 +78,11 @@ function reducer(state: RootState = initialState, action: Action) {
     }
     case 'saveAppSettings': {
       const s = _.cloneDeep(state)
-      AsyncStorage.setItem('darkMode', String(state.darkMode))
-      // localStorage.setItem('darkMode', String(state.darkMode))
+      if (typeof Storage !== 'undefined') {
+        localStorage.setItem('darkMode', String(state.darkMode))
+      } else {
+        AsyncStorage.setItem('darkMode', String(state.darkMode))
+      }
       return s
     }
     case 'clearSearch': {

@@ -1,3 +1,4 @@
+import { fetchAndCache, RootState } from '@klonzo/common'
 import AppBar from '@material-ui/core/AppBar'
 import Container from '@material-ui/core/Container'
 import CssBaseline from '@material-ui/core/CssBaseline'
@@ -6,7 +7,6 @@ import {
   makeStyles,
   ThemeProvider,
 } from '@material-ui/core/styles'
-import { fetchAndCache, RootState } from '@klonzo/common'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { BrowserRouter as Router } from 'react-router-dom'

@@ -6,8 +6,7 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "start": "tsc && copyfiles -u 1 src/img/*.png lib",
-    "link": "npm run build && cd lib && npm link"
+    "build": "tsc && copyfiles -u 1 src/img/*.png lib"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.11.0",
@@ -27,7 +26,8 @@
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.5",
-    "eslint-plugin-react-hooks": "^4.0.8"
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "typescript": "^3.9.7"
   },
   "eslintConfig": {
     "extends": [
