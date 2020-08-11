@@ -7,10 +7,6 @@
     "build-common": "lerna --scope=@klonzo/common run build --stream --",
     "postinstall": "cd ./packages/expo && expo-yarn-workspaces postinstall",
     "web": "lerna --scope=@klonzo/web run serve",
-    "yarn check": "yarn check",
-    "yarn global upgrade-interactive": "yarn global upgrade-interactive",
-    "yarn outdated": "yarn outdated",
-    "yarn upgrade-interactive": "yarn upgrade-interactive",
     "yarn": "yarn"
   },
   "devDependencies": {
