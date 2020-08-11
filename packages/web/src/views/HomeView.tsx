@@ -36,6 +36,18 @@ export default function HomeView() {
   return (
     <Grid container spacing={3}>
       {makeCard(
+        PIE,
+        'Pie',
+        'Pie chart of email volume of Enron key contacts.',
+        '/PieView'
+      )}
+      {makeCard(
+        BARCHART,
+        'Bar',
+        'Bar chart of email volume of Enron key contacts.',
+        '/BarView'
+      )}
+      {makeCard(
         CHORD,
         'Chord',
         'Chord diagram of Enron key contact communication.',
@@ -72,22 +84,10 @@ export default function HomeView() {
         '/EventTimelineView'
       )}
       {makeCard(
-        BARCHART,
-        'Bar',
-        'Bar chart of email volume of Enron key contacts.',
-        '/BarView'
-      )}
-      {makeCard(
         POLAR,
         'Polar',
         'Polar chart of email volume of Enron key contacts.',
         '/PolarView'
-      )}
-      {makeCard(
-        PIE,
-        'Pie',
-        'Pie chart of email volume of Enron key contacts.',
-        '/PieView'
       )}
       {makeCard(
         SEARCH,
