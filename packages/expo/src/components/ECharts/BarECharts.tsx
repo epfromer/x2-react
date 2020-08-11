@@ -1,4 +1,8 @@
-import { EmailXferedDatum, RootState } from '@klonzo/common'
+import {
+  EmailXferedDatum,
+  getBarEChartsConfig,
+  RootState,
+} from '@klonzo/common'
 import React from 'react'
 import { ECharts } from 'react-native-echarts-wrapper'
 import { useSelector } from 'react-redux'
@@ -12,68 +16,27 @@ interface Props {
   data: Array<EmailXferedDatum>
   handleClick: (key: string, value: string) => void
 }
-export default function BarECharts({ search, data, handleClick }: Props) {
-  const darkMode = useSelector((state: RootState) => state.darkMode)
-
-  interface Datum {
-    value: number
-    name: string
-    itemStyle: any
-  }
-  const chartData: Array<Datum> = []
-  data.forEach((datum) => {
-    chartData.push({
-      name: datum.name,
-      value: datum.value,
-      itemStyle: {
-        normal: {
-          color: datum.color,
-          lineStyle: {
-            color: datum.color,
-          },
-          areaStyle: {
-            color: datum.color,
-          },
-        },
-      },
-    })
-  })
-
-  chartData.reverse()
+export default function BarECharts({
+  title,
+  search,
+  data,
+  handleClick,
+}: Props) {
+  data.reverse()
 
   return (
     <ECharts
       onData={(o: any) => handleClick(search, o.name)}
       additionalCode={`chart.on('click', p => sendData(p.data));`}
-      backgroundColor={darkMode ? 'black' : 'white'}
-      option={{
-        tooltip: {
-          trigger: 'axis',
-          axisPointer: {
-            type: 'shadow',
-          },
-        },
-        grid: {
-          left: 100,
-        },
-        xAxis: {
-          axisLabel: {
-            color: darkMode ? 'white' : 'black',
-          },
-        },
-        yAxis: {
-          data: chartData.map((datum) => datum.name),
-          axisLabel: {
-            color: darkMode ? 'white' : 'black',
-          },
-        },
-        series: [
-          {
-            type: 'bar',
-            data: chartData,
-          },
-        ],
-      }}
+      backgroundColor={
+        useSelector((state: RootState) => state.darkMode) ? 'black' : 'white'
+      }
+      option={getBarEChartsConfig(
+        useSelector((state: RootState) => state.darkMode),
+        data,
+        title,
+        { left: 100 }
+      )}
     />
   )
 }

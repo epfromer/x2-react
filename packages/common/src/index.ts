@@ -19,3 +19,6 @@ export * from './store/actions'
 export * from './store/constants'
 export * from './store/types'
 export * from './store/selectors'
+
+// Chart configs
+export * from './ECharts/index'
