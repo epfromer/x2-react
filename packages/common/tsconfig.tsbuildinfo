@@ -327,13 +327,18 @@
         "affectsGlobalScope": false
       },
       "./src/echarts/pieecharts.ts": {
-        "version": "d7a5c5dbff7467d63753cd8dd86dd0e733241862c27533b288dfc0a2ff0f06b4",
-        "signature": "f6734d747f540f65d3f7f8be42af1eb760dbbef8da0d17005e19338070272adf",
+        "version": "e0e4e7c3a5ee48d539e875eec20c6bafe381e79b5b31969e776159b9954d6932",
+        "signature": "b52e11de6850755fc08ab6dfd571eef4e01636fa69c58fff84c4ebc776e42289",
+        "affectsGlobalScope": false
+      },
+      "./src/echarts/polarecharts.ts": {
+        "version": "5fe88d020b6592f2b015e252b8b7c09fef946de6dc7517fc9c151be3caa41594",
+        "signature": "a5633f8a71cf54efb22946b01340a223d60d3300a19a224eaf6097455838a04f",
         "affectsGlobalScope": false
       },
       "./src/echarts/index.ts": {
-        "version": "652359b5b1e3259d40c195a6792bcb328ac3e7d564940e5bb666fecb4b4787f4",
-        "signature": "b0de02f55ca80cff634cf6877ec4bfe68f7dc6227cd5ecfcd43fe30f57efcf44",
+        "version": "323202a5f9263a56be0bceaf0dfb0d68deadcc35cd4be2434eaddf70047ca23a",
+        "signature": "172c181785a0a5fec8183a59627fee8bf297b2ec5637982c5baa4406f01f9591",
         "affectsGlobalScope": false
       },
       "./src/index.ts": {
@@ -3043,7 +3048,8 @@
         "../../node_modules/@types/node/util.d.ts",
         "./src/echarts/barecharts.ts",
         "./src/echarts/networkgraphecharts.ts",
-        "./src/echarts/pieecharts.ts"
+        "./src/echarts/pieecharts.ts",
+        "./src/echarts/polarecharts.ts"
       ],
       "./src/echarts/networkgraphecharts.ts": [
         "../../node_modules/@types/node/fs.d.ts",
@@ -3054,6 +3060,15 @@
         "../../node_modules/@types/node/util.d.ts"
       ],
       "./src/echarts/pieecharts.ts": [
+        "../../node_modules/@types/node/fs.d.ts",
+        "../../node_modules/@types/node/process.d.ts",
+        "../../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../../node_modules/@types/node/ts3.2/process.d.ts",
+        "../../node_modules/@types/node/ts3.2/util.d.ts",
+        "../../node_modules/@types/node/util.d.ts",
+        "./src/store/types.ts"
+      ],
+      "./src/echarts/polarecharts.ts": [
         "../../node_modules/@types/node/fs.d.ts",
         "../../node_modules/@types/node/process.d.ts",
         "../../node_modules/@types/node/ts3.2/fs.d.ts",
@@ -5102,9 +5117,13 @@
       "./src/echarts/index.ts": [
         "./src/echarts/barecharts.ts",
         "./src/echarts/networkgraphecharts.ts",
-        "./src/echarts/pieecharts.ts"
+        "./src/echarts/pieecharts.ts",
+        "./src/echarts/polarecharts.ts"
       ],
       "./src/echarts/pieecharts.ts": [
+        "./src/store/types.ts"
+      ],
+      "./src/echarts/polarecharts.ts": [
         "./src/store/types.ts"
       ],
       "./src/img/png.d.ts": [
@@ -5334,20 +5353,8 @@
       "./src/echarts/barecharts.ts",
       "./src/echarts/index.ts",
       "./src/echarts/networkgraphecharts.ts",
-      [
-        "./src/echarts/pieecharts.ts",
-        [
-          {
-            "file": "./src/echarts/pieecharts.ts",
-            "start": 141,
-            "length": 5,
-            "messageText": "'title' is declared but its value is never read.",
-            "category": 1,
-            "code": 6133,
-            "reportsUnnecessary": true
-          }
-        ]
-      ],
+      "./src/echarts/pieecharts.ts",
+      "./src/echarts/polarecharts.ts",
       "./src/img/index.ts",
       "./src/img/png.d.ts",
       "./src/index.ts",
