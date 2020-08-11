@@ -35,7 +35,6 @@ const initialState: RootState = {
 
   // app settings
   darkMode: false,
-  // darkMode: localStorage.getItem('darkMode') === 'true' ? true : false,
   orientation: 'portrait',
 }
 

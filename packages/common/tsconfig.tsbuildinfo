@@ -202,7 +202,7 @@
         "affectsGlobalScope": true
       },
       "./src/img/index.ts": {
-        "version": "91d36ffecd4528f9662d6ae7161df4966f12f80dd7b4b5541a5ead6c043aa3b6",
+        "version": "42e2d6e3cacc10aa086de04cad2712a9acfc0cb619e32019ee873d7bc0673c12",
         "signature": "682de124448f5cc5da4b61975600470b5598f6911c30346a0a964fb8ea5ebc16",
         "affectsGlobalScope": false
       },
@@ -292,38 +292,38 @@
         "affectsGlobalScope": false
       },
       "./src/store/types.ts": {
-        "version": "34ad3ec24a43ea1a4cefff3068035cc7a3d3b64fec86a00e8cca71192826db56",
+        "version": "e43d581e7bb99baf5813978a1c68664c388ee920bead4a9dea7787176df4ad95",
         "signature": "64a4b734f9becca6649063b8bfc85d955d09607f0005784fe3559441d2b7a318",
         "affectsGlobalScope": false
       },
       "./src/store/index.ts": {
-        "version": "c8ae8fdb40f3844935aacfc622cc8a87be929db0512db1d800363a551000cc49",
+        "version": "757e19cd03717ab5927e24fd2c19f5bae226cc90da1253e0209363d90cd412f6",
         "signature": "88c11d87d54d7e441f6c1bb69de0a7e870a0325c974b080d7eda179f27a0e984",
         "affectsGlobalScope": false
       },
       "./src/store/constants.ts": {
-        "version": "7e20a5a8e44e4d19748e1a3773e45d6e301e5d964758328c06a31426410c738b",
+        "version": "e85e4fb9696379d117b39101a4e2ae1fc8ace1646e9771f94b16c41c8a760097",
         "signature": "22a53106a1e1ce0f073953f08e57ad561899963b59d7232172bcc9ee7c5b39aa",
         "affectsGlobalScope": false
       },
       "./src/store/actions.ts": {
-        "version": "f05778ca185e8cb49fa2cd2765c835c330d7d5dcda7aca14e333f939a8aef737",
+        "version": "66e3b751befbffe2259e7b32c762df20386f30ec1d3d7e61b6e23e5f46ae7f39",
         "signature": "b17d8b70cc2cffbcbc0d411b69ca8a25da6e9d778f02a93fe38b8a31998d4a5c",
         "affectsGlobalScope": false
       },
       "./src/store/selectors.ts": {
-        "version": "7c85cf62811e0c6cc0d2b765a9ed8942578715d965de9d19d9f8bfe19ee0e0c1",
+        "version": "55f406733ecbc4476b9fcca1a227e41cadce7eb5e4cd99449401cbc883f1084b",
         "signature": "22a4166b3bb825e55957c0d23adc550863a2d177f1fd5fe15f639c456bb703b7",
         "affectsGlobalScope": false
       },
       "./src/index.ts": {
-        "version": "ef07ae6ec4e4c8e785831102ba17a944476177bd29d17d6e52f64c07c91b3101",
+        "version": "59af16c674691989568132fe9bb320325117b5df1b569bcc3d96f73fcbe47833",
         "signature": "99deb866bb87920899e07d354b9bc34b794c1874a8252dd16e3065582562a507",
         "affectsGlobalScope": false
       },
       "./src/img/png.d.ts": {
-        "version": "21853d200e30cc89f3a0bf3247a8f3336bf859a4f0ec54b989addbbdffd5a9fc",
-        "signature": "21853d200e30cc89f3a0bf3247a8f3336bf859a4f0ec54b989addbbdffd5a9fc",
+        "version": "603d47082b7792a57735ad8d9037b07a32cbb1187dd22689348809e313bb130c",
+        "signature": "603d47082b7792a57735ad8d9037b07a32cbb1187dd22689348809e313bb130c",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/aria-query/index.d.ts": {
