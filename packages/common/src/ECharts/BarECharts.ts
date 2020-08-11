@@ -1,10 +1,4 @@
-import { EmailXferedDatum } from '../store/types'
-
-interface BarEChartsDatum {
-  value: number
-  name: string
-  itemStyle: any
-}
+import { EChartsDatum, EmailXferedDatum } from '../store/types'
 
 export function getBarEChartsConfig(
   darkMode: boolean,
@@ -12,7 +6,7 @@ export function getBarEChartsConfig(
   title: string,
   gridConfig: any
 ) {
-  const chartData: Array<BarEChartsDatum> = []
+  const chartData: Array<EChartsDatum> = []
   data.forEach((datum) => {
     chartData.push({
       name: datum.name,

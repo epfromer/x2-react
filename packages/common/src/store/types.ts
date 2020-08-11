@@ -112,3 +112,9 @@ export interface TotalEmailSentDatum {
   sent: string // send date
   value: number // number of emails sent
 }
+
+export interface EChartsDatum {
+  value: number
+  name: string
+  itemStyle: any
+}
