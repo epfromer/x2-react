@@ -1,7 +1,7 @@
+import { getNetworkGraphEChartsConfig, RootState } from '@klonzo/common'
 import ReactEcharts from 'echarts-for-react'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { RootState, getNetworkGraphEChartsConfig } from '@klonzo/common'
 
 // https://echarts.apache.org/examples/en/editor.html?c=graph
 
@@ -14,12 +14,12 @@ interface Props {
   nodes: Array<any>
   handleClick: (to: string, from: string) => void
 }
-const NetworkGraphECharts: React.FC<Props> = ({
+export default function NetworkGraphECharts({
   title,
   data,
   nodes,
   handleClick,
-}) => {
+}: Props) {
   return (
     <div>
       <ReactEcharts
@@ -37,5 +37,3 @@ const NetworkGraphECharts: React.FC<Props> = ({
     </div>
   )
 }
-
-export default NetworkGraphECharts

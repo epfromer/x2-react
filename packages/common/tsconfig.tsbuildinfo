@@ -202,11 +202,11 @@
         "affectsGlobalScope": true
       },
       "./src/img/index.ts": {
-        "version": "91d36ffecd4528f9662d6ae7161df4966f12f80dd7b4b5541a5ead6c043aa3b6",
+        "version": "42e2d6e3cacc10aa086de04cad2712a9acfc0cb619e32019ee873d7bc0673c12",
         "signature": "682de124448f5cc5da4b61975600470b5598f6911c30346a0a964fb8ea5ebc16",
         "affectsGlobalScope": false
       },
-      "./node_modules/@react-native-community/async-storage/types/index.d.ts": {
+      "../../node_modules/@react-native-community/async-storage/types/index.d.ts": {
         "version": "87f20ddd4c71fb907ea6ed0273c398057ed9972676094c78794ed37260c2f3a8",
         "signature": "87f20ddd4c71fb907ea6ed0273c398057ed9972676094c78794ed37260c2f3a8",
         "affectsGlobalScope": false
@@ -292,7 +292,7 @@
         "affectsGlobalScope": false
       },
       "./src/store/types.ts": {
-        "version": "34ad3ec24a43ea1a4cefff3068035cc7a3d3b64fec86a00e8cca71192826db56",
+        "version": "e43d581e7bb99baf5813978a1c68664c388ee920bead4a9dea7787176df4ad95",
         "signature": "64a4b734f9becca6649063b8bfc85d955d09607f0005784fe3559441d2b7a318",
         "affectsGlobalScope": false
       },
@@ -302,7 +302,7 @@
         "affectsGlobalScope": false
       },
       "./src/store/constants.ts": {
-        "version": "7e20a5a8e44e4d19748e1a3773e45d6e301e5d964758328c06a31426410c738b",
+        "version": "e85e4fb9696379d117b39101a4e2ae1fc8ace1646e9771f94b16c41c8a760097",
         "signature": "22a53106a1e1ce0f073953f08e57ad561899963b59d7232172bcc9ee7c5b39aa",
         "affectsGlobalScope": false
       },
@@ -312,7 +312,7 @@
         "affectsGlobalScope": false
       },
       "./src/store/selectors.ts": {
-        "version": "7c85cf62811e0c6cc0d2b765a9ed8942578715d965de9d19d9f8bfe19ee0e0c1",
+        "version": "55f406733ecbc4476b9fcca1a227e41cadce7eb5e4cd99449401cbc883f1084b",
         "signature": "22a4166b3bb825e55957c0d23adc550863a2d177f1fd5fe15f639c456bb703b7",
         "affectsGlobalScope": false
       },
@@ -332,13 +332,13 @@
         "affectsGlobalScope": false
       },
       "./src/index.ts": {
-        "version": "dd2cba30ddee1f3e4eb5ec61dc2c67ace1c896b291bdfbe6485c5a3ddbe9f512",
+        "version": "46338f0e596774bef7aac599e25e9129b8738b08e595a745958f0d8bc9a26d3f",
         "signature": "9c3dd9bd18bac0b474317599f0280596a5248a342e14a8635f509237ae072b68",
         "affectsGlobalScope": false
       },
       "./src/img/png.d.ts": {
-        "version": "21853d200e30cc89f3a0bf3247a8f3336bf859a4f0ec54b989addbbdffd5a9fc",
-        "signature": "21853d200e30cc89f3a0bf3247a8f3336bf859a4f0ec54b989addbbdffd5a9fc",
+        "version": "603d47082b7792a57735ad8d9037b07a32cbb1187dd22689348809e313bb130c",
+        "signature": "603d47082b7792a57735ad8d9037b07a32cbb1187dd22689348809e313bb130c",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/aria-query/index.d.ts": {
@@ -1087,6 +1087,14 @@
         "../../node_modules/@types/node/ts3.2/util.d.ts",
         "../../node_modules/@types/node/util.d.ts"
       ],
+      "../../node_modules/@react-native-community/async-storage/types/index.d.ts": [
+        "../../node_modules/@types/node/fs.d.ts",
+        "../../node_modules/@types/node/process.d.ts",
+        "../../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../../node_modules/@types/node/ts3.2/process.d.ts",
+        "../../node_modules/@types/node/ts3.2/util.d.ts",
+        "../../node_modules/@types/node/util.d.ts"
+      ],
       "../../node_modules/@types/aria-query/index.d.ts": [
         "../../node_modules/@types/node/fs.d.ts",
         "../../node_modules/@types/node/process.d.ts",
@@ -3005,14 +3013,6 @@
         "../../node_modules/@types/node/util.d.ts"
       ],
       "../../node_modules/typescript/lib/lib.esnext.string.d.ts": [
-        "../../node_modules/@types/node/fs.d.ts",
-        "../../node_modules/@types/node/process.d.ts",
-        "../../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../../node_modules/@types/node/ts3.2/process.d.ts",
-        "../../node_modules/@types/node/ts3.2/util.d.ts",
-        "../../node_modules/@types/node/util.d.ts"
-      ],
-      "./node_modules/@react-native-community/async-storage/types/index.d.ts": [
         "../../node_modules/@types/node/fs.d.ts",
         "../../node_modules/@types/node/process.d.ts",
         "../../node_modules/@types/node/ts3.2/fs.d.ts",
@@ -3079,6 +3079,7 @@
         "./src/store/types.ts"
       ],
       "./src/store/actions.ts": [
+        "../../node_modules/@react-native-community/async-storage/types/index.d.ts",
         "../../node_modules/@types/lodash/ts3.1/index.d.ts",
         "../../node_modules/@types/node/fs.d.ts",
         "../../node_modules/@types/node/process.d.ts",
@@ -3086,7 +3087,6 @@
         "../../node_modules/@types/node/ts3.2/process.d.ts",
         "../../node_modules/@types/node/ts3.2/util.d.ts",
         "../../node_modules/@types/node/util.d.ts",
-        "./node_modules/@react-native-community/async-storage/types/index.d.ts",
         "./src/store/constants.ts",
         "./src/store/index.ts",
         "./src/store/types.ts"
@@ -3100,6 +3100,7 @@
         "../../node_modules/@types/node/util.d.ts"
       ],
       "./src/store/index.ts": [
+        "../../node_modules/@react-native-community/async-storage/types/index.d.ts",
         "../../node_modules/@types/lodash/ts3.1/index.d.ts",
         "../../node_modules/@types/node/fs.d.ts",
         "../../node_modules/@types/node/process.d.ts",
@@ -3109,7 +3110,6 @@
         "../../node_modules/@types/node/util.d.ts",
         "../../node_modules/redux-thunk/index.d.ts",
         "../../node_modules/redux/index.d.ts",
-        "./node_modules/@react-native-community/async-storage/types/index.d.ts",
         "./src/store/types.ts"
       ],
       "./src/store/selectors.ts": [
@@ -3141,6 +3141,14 @@
         "../../node_modules/@types/node/util.d.ts"
       ],
       "../../node_modules/@babel/types/lib/index.d.ts": [
+        "../../node_modules/@types/node/fs.d.ts",
+        "../../node_modules/@types/node/process.d.ts",
+        "../../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../../node_modules/@types/node/ts3.2/process.d.ts",
+        "../../node_modules/@types/node/ts3.2/util.d.ts",
+        "../../node_modules/@types/node/util.d.ts"
+      ],
+      "../../node_modules/@react-native-community/async-storage/types/index.d.ts": [
         "../../node_modules/@types/node/fs.d.ts",
         "../../node_modules/@types/node/process.d.ts",
         "../../node_modules/@types/node/ts3.2/fs.d.ts",
@@ -5073,14 +5081,6 @@
         "../../node_modules/@types/node/ts3.2/util.d.ts",
         "../../node_modules/@types/node/util.d.ts"
       ],
-      "./node_modules/@react-native-community/async-storage/types/index.d.ts": [
-        "../../node_modules/@types/node/fs.d.ts",
-        "../../node_modules/@types/node/process.d.ts",
-        "../../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../../node_modules/@types/node/ts3.2/process.d.ts",
-        "../../node_modules/@types/node/ts3.2/util.d.ts",
-        "../../node_modules/@types/node/util.d.ts"
-      ],
       "./src/echarts/barecharts.ts": [
         "./src/store/types.ts"
       ],
@@ -5119,6 +5119,7 @@
     "semanticDiagnosticsPerFile": [
       "../../node_modules/@babel/parser/typings/babel-parser.d.ts",
       "../../node_modules/@babel/types/lib/index.d.ts",
+      "../../node_modules/@react-native-community/async-storage/types/index.d.ts",
       "../../node_modules/@types/aria-query/index.d.ts",
       "../../node_modules/@types/babel__core/index.d.ts",
       "../../node_modules/@types/babel__generator/index.d.ts",
@@ -5311,7 +5312,6 @@
       "../../node_modules/typescript/lib/lib.esnext.intl.d.ts",
       "../../node_modules/typescript/lib/lib.esnext.promise.d.ts",
       "../../node_modules/typescript/lib/lib.esnext.string.d.ts",
-      "./node_modules/@react-native-community/async-storage/types/index.d.ts",
       "./src/echarts/barecharts.ts",
       "./src/echarts/index.ts",
       "./src/echarts/networkgraphecharts.ts",
