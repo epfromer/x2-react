@@ -321,9 +321,14 @@
         "signature": "74cd599fa64ca68ac3fe19141e345b2ef0fcd3f010599929dbd7f276648c8fc2",
         "affectsGlobalScope": false
       },
+      "./src/echarts/networkgraphecharts.ts": {
+        "version": "e117e6226f4786b66dd4105130112c0879c0fa8206df5cd128cf719179d4020f",
+        "signature": "30b24b54cf624db12129e037f8ea036ef679f7c4934f2659ef082bc760318c01",
+        "affectsGlobalScope": false
+      },
       "./src/echarts/index.ts": {
-        "version": "8adc148c24975bfb15147bb2d247947fabb93d4dfd84c6a1ac9b349db89a2f09",
-        "signature": "792555ae373733ecf70353da82f1110b4fbc86b99c57e2811f6e556949e2245c",
+        "version": "06a94ae665ffd6ff3e514edc4b175fea5d515d110c74f0b576dc618344aaa0e8",
+        "signature": "e17e27cf143207a5940b493455a197191b34c4d666ecc058ef5b833ae604d32f",
         "affectsGlobalScope": false
       },
       "./src/index.ts": {
@@ -3031,7 +3036,16 @@
         "../../node_modules/@types/node/ts3.2/process.d.ts",
         "../../node_modules/@types/node/ts3.2/util.d.ts",
         "../../node_modules/@types/node/util.d.ts",
-        "./src/echarts/barecharts.ts"
+        "./src/echarts/barecharts.ts",
+        "./src/echarts/networkgraphecharts.ts"
+      ],
+      "./src/echarts/networkgraphecharts.ts": [
+        "../../node_modules/@types/node/fs.d.ts",
+        "../../node_modules/@types/node/process.d.ts",
+        "../../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../../node_modules/@types/node/ts3.2/process.d.ts",
+        "../../node_modules/@types/node/ts3.2/util.d.ts",
+        "../../node_modules/@types/node/util.d.ts"
       ],
       "./src/img/index.ts": [
         "../../node_modules/@types/node/fs.d.ts",
@@ -5071,7 +5085,8 @@
         "./src/store/types.ts"
       ],
       "./src/echarts/index.ts": [
-        "./src/echarts/barecharts.ts"
+        "./src/echarts/barecharts.ts",
+        "./src/echarts/networkgraphecharts.ts"
       ],
       "./src/img/png.d.ts": [
         "../../node_modules/@types/node/fs.d.ts",
@@ -5299,6 +5314,7 @@
       "./node_modules/@react-native-community/async-storage/types/index.d.ts",
       "./src/echarts/barecharts.ts",
       "./src/echarts/index.ts",
+      "./src/echarts/networkgraphecharts.ts",
       "./src/img/index.ts",
       "./src/img/png.d.ts",
       "./src/index.ts",

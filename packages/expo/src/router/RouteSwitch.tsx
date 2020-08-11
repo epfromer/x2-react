@@ -32,7 +32,7 @@ export default function RouteSwitch() {
         <Stack.Screen
           name="Home"
           component={HomeView}
-          options={{ title: 'X2 Home' }}
+          options={{ title: 'x2 Home' }}
         />
         <Stack.Screen
           name="AppSettingsView"

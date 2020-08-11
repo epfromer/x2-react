@@ -2,7 +2,7 @@
   "name": "@klonzo/common",
   "version": "0.0.1",
   "private": true,
-  "description": "Shared components for X2 React",
+  "description": "Shared components for x2-React",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {

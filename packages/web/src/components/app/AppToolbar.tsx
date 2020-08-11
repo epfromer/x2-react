@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const APP_NAME = 'X2 React'
+const APP_NAME = 'x2 React'
 
 interface Props {
   drawerOpen: boolean
@@ -102,7 +102,7 @@ const AppToolbar: React.FC<Props> = ({ drawerOpen, setDrawerOpen }) => {
           <Settings />
         </IconButton>
       </Tooltip>
-      <Tooltip title="X2 Home" aria-label="X2 Home">
+      <Tooltip title="x2 Home" aria-label="x2 Home">
         <IconButton color="inherit" onClick={() => history.push('/')}>
           <DashboardIcon />
         </IconButton>
