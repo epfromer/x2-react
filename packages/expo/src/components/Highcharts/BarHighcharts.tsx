@@ -1,20 +1,12 @@
 import HighchartsReactNative from '@highcharts/highcharts-react-native'
-import { EmailXferedDatum } from '@klonzo/common'
+import {
+  EmailXferedDatum,
+  getBarHighchartsConfig,
+  RootState,
+} from '@klonzo/common'
 import React from 'react'
-import { StyleSheet, View, Text } from 'react-native'
-
-// TODO https://github.com/highcharts/highcharts-react-native/issues/86
-
-const config = {
-  series: [
-    {
-      data: [1, 2, 3],
-    },
-  ],
-  chart: {
-    type: 'line',
-  },
-}
+import { StyleSheet } from 'react-native'
+import { useSelector } from 'react-redux'
 
 interface Props {
   title: string
@@ -29,16 +21,23 @@ export default function BarHighcharts({
   handleClick,
 }: Props) {
   return (
-    <View style={styles.container}>
-      <HighchartsReactNative styles={styles.container} options={config} />
-    </View>
+    <HighchartsReactNative
+      styles={styles.container}
+      options={getBarHighchartsConfig(
+        useSelector((state: RootState) => state.darkMode),
+        title,
+        search,
+        data,
+        useSelector((state: RootState) => state.darkMode) ? 'black' : 'white',
+        handleClick
+      )}
+    />
   )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     justifyContent: 'center',
   },
 })

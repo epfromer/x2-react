@@ -1,4 +1,8 @@
-import { EmailXferedDatum, RootState } from '@klonzo/common'
+import {
+  EmailXferedDatum,
+  RootState,
+  getBarHighchartsConfig,
+} from '@klonzo/common'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import React from 'react'
@@ -14,63 +18,25 @@ interface Props {
   data: Array<EmailXferedDatum>
   handleClick: (search: string, value: string) => void
 }
-
 export default function BarHighcharts({
   title,
   search,
   data,
   handleClick,
 }: Props) {
-  const darkMode = useSelector((state: RootState) => state.darkMode)
-
-  const reversedData = data.map((datum) => datum).reverse()
-
-  const config = {
-    chart: {
-      type: 'bar',
-      height: chartHeight,
-      backgroundColor: darkMode ? '#303030' : '#FAFAFA',
-    },
-    title: {
-      text: title,
-      style: {
-        color: darkMode ? 'white' : 'black',
-      },
-    },
-    xAxis: {
-      categories: reversedData.map((datum) => datum.name),
-      title: {
-        text: null,
-      },
-    },
-    yAxis: {
-      min: 0,
-      labels: {
-        overflow: 'justify',
-      },
-      title: {
-        text: null,
-      },
-    },
-    tooltip: {
-      valueSuffix: ' email',
-    },
-    plotOptions: {
-      bar: {
-        events: {
-          click: (e: any) => handleClick(search, e.point.category),
-        },
-      },
-    },
-    series: [
-      {
-        showInLegend: false,
-        colorByPoint: true,
-        colors: reversedData.map((datum) => datum.color),
-        data: reversedData.map((datum) => datum.value),
-      },
-    ],
-  }
-
-  return <HighchartsReact highcharts={Highcharts} options={config} />
+  return (
+    <HighchartsReact
+      highcharts={Highcharts}
+      options={getBarHighchartsConfig(
+        useSelector((state: RootState) => state.darkMode),
+        title,
+        search,
+        data.map((datum) => datum).reverse(),
+        useSelector((state: RootState) => state.darkMode)
+          ? '#303030'
+          : '#FAFAFA',
+        handleClick
+      )}
+    />
+  )
 }

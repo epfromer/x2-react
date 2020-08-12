@@ -22,3 +22,4 @@ export * from './store/selectors'
 
 // Chart configs
 export * from './ECharts/index'
+export * from './Highcharts/index'

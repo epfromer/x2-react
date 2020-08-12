@@ -1,6 +1,6 @@
 {
   "include": [
-    "src", "react-native-echarts-wrapper.d.ts"
+    "src", "react-native-echarts-wrapper.d.ts", "../common/src/Highcharts/index.ts"
   ],
   "extends": "../../tsconfig.json",
   "compilerOptions": {

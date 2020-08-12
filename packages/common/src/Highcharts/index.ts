@@ -1,0 +1,1 @@
+export { getBarHighchartsConfig } from './BarHighcharts'
