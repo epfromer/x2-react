@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "x2 React",
-    "slug": "x2-React",
+    "name": "x2 React Native",
+    "slug": "x2-React-Native",
     "privacy": "public",
     "platforms": [
       "ios",
