@@ -336,9 +336,14 @@
         "signature": "a5633f8a71cf54efb22946b01340a223d60d3300a19a224eaf6097455838a04f",
         "affectsGlobalScope": false
       },
+      "./src/echarts/treemapecharts.ts": {
+        "version": "53dfeeff98dae9dac8b9de9d4576cafdc2daf12dd1b63f7ae1341a56a1f718fb",
+        "signature": "4940105b5c29539cd8353e426b7b5784ac9de935cafcdb8a534d6385adc2226a",
+        "affectsGlobalScope": false
+      },
       "./src/echarts/index.ts": {
-        "version": "323202a5f9263a56be0bceaf0dfb0d68deadcc35cd4be2434eaddf70047ca23a",
-        "signature": "172c181785a0a5fec8183a59627fee8bf297b2ec5637982c5baa4406f01f9591",
+        "version": "adac126eaec09925c4c4b5f0d3bb13cfac63039aa4dfa468eab6346d74161eb6",
+        "signature": "a184621283488a85b0e3a89203724f87a247faec620d6f08455bfdc326627fa8",
         "affectsGlobalScope": false
       },
       "./src/index.ts": {
@@ -3049,7 +3054,8 @@
         "./src/echarts/barecharts.ts",
         "./src/echarts/networkgraphecharts.ts",
         "./src/echarts/pieecharts.ts",
-        "./src/echarts/polarecharts.ts"
+        "./src/echarts/polarecharts.ts",
+        "./src/echarts/treemapecharts.ts"
       ],
       "./src/echarts/networkgraphecharts.ts": [
         "../../node_modules/@types/node/fs.d.ts",
@@ -3069,6 +3075,15 @@
         "./src/store/types.ts"
       ],
       "./src/echarts/polarecharts.ts": [
+        "../../node_modules/@types/node/fs.d.ts",
+        "../../node_modules/@types/node/process.d.ts",
+        "../../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../../node_modules/@types/node/ts3.2/process.d.ts",
+        "../../node_modules/@types/node/ts3.2/util.d.ts",
+        "../../node_modules/@types/node/util.d.ts",
+        "./src/store/types.ts"
+      ],
+      "./src/echarts/treemapecharts.ts": [
         "../../node_modules/@types/node/fs.d.ts",
         "../../node_modules/@types/node/process.d.ts",
         "../../node_modules/@types/node/ts3.2/fs.d.ts",
@@ -5118,12 +5133,16 @@
         "./src/echarts/barecharts.ts",
         "./src/echarts/networkgraphecharts.ts",
         "./src/echarts/pieecharts.ts",
-        "./src/echarts/polarecharts.ts"
+        "./src/echarts/polarecharts.ts",
+        "./src/echarts/treemapecharts.ts"
       ],
       "./src/echarts/pieecharts.ts": [
         "./src/store/types.ts"
       ],
       "./src/echarts/polarecharts.ts": [
+        "./src/store/types.ts"
+      ],
+      "./src/echarts/treemapecharts.ts": [
         "./src/store/types.ts"
       ],
       "./src/img/png.d.ts": [
@@ -5355,6 +5374,7 @@
       "./src/echarts/networkgraphecharts.ts",
       "./src/echarts/pieecharts.ts",
       "./src/echarts/polarecharts.ts",
+      "./src/echarts/treemapecharts.ts",
       "./src/img/index.ts",
       "./src/img/png.d.ts",
       "./src/index.ts",
