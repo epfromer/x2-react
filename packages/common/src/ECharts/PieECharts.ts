@@ -1,6 +1,10 @@
 import { EChartsDatum, EmailXferedDatum } from '../store/types'
 
-export function getPieEChartsConfig(data: Array<EmailXferedDatum>) {
+export function getPieEChartsConfig(
+  darkMode: boolean,
+  title: string,
+  data: Array<EmailXferedDatum>
+) {
   const chartData: Array<EChartsDatum> = []
   data.forEach((datum) => {
     chartData.push({
@@ -21,6 +25,14 @@ export function getPieEChartsConfig(data: Array<EmailXferedDatum>) {
   })
 
   return {
+    title: {
+      text: title,
+      top: 20,
+      left: 'center',
+      textStyle: {
+        color: darkMode ? 'white' : 'black',
+      },
+    },
     tooltip: {
       trigger: 'item',
       formatter: '{b}: {c} ({d}%)',

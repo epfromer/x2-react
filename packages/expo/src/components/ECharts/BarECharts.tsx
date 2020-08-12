@@ -33,8 +33,8 @@ export default function BarECharts({
       }
       option={getBarEChartsConfig(
         useSelector((state: RootState) => state.darkMode),
-        data,
         title,
+        data,
         { left: 100 }
       )}
     />

@@ -6,7 +6,9 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "build": "tsc && copyfiles -u 1 src/img/*.png lib"
+    "build": "tsc",
+    "build:watch": "tsc -w",
+    "postbuild": "copyfiles -u 1 src/img/*.png lib"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.11.0",

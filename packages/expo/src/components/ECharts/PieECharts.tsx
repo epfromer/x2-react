@@ -16,7 +16,12 @@ interface Props {
   data: Array<EmailXferedDatum>
   handleClick: (search: string, name: string) => void
 }
-export default function PieECharts({ search, data, handleClick }: Props) {
+export default function PieECharts({
+  title,
+  search,
+  data,
+  handleClick,
+}: Props) {
   return (
     <ECharts
       onData={(name: string) => handleClick(search, name)}
@@ -24,7 +29,11 @@ export default function PieECharts({ search, data, handleClick }: Props) {
       backgroundColor={
         useSelector((state: RootState) => state.darkMode) ? 'black' : 'white'
       }
-      option={getPieEChartsConfig(data)}
+      option={getPieEChartsConfig(
+        useSelector((state: RootState) => state.darkMode),
+        title,
+        data
+      )}
     />
   )
 }

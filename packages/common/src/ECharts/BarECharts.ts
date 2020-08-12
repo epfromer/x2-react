@@ -2,8 +2,8 @@ import { EChartsDatum, EmailXferedDatum } from '../store/types'
 
 export function getBarEChartsConfig(
   darkMode: boolean,
-  data: Array<EmailXferedDatum>,
   title: string,
+  data: Array<EmailXferedDatum>,
   gridConfig: any
 ) {
   const chartData: Array<EChartsDatum> = []
