@@ -77,7 +77,7 @@ export default function BarVictory({
             },
           ]}
           horizontal
-          data={data.reverse()}
+          data={data.map((datum) => datum).reverse()}
           x="name"
           y="value"
           style={{

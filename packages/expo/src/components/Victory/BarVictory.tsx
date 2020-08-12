@@ -90,7 +90,7 @@ export default function BarVictory({ search, data, handleClick }: Props) {
             },
           ]}
           horizontal
-          data={data.reverse()}
+          data={data.map((datum) => datum).reverse()}
           x="name"
           y="value"
           style={{

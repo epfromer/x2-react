@@ -22,8 +22,6 @@ export default function BarECharts({
   data,
   handleClick,
 }: Props) {
-  data.reverse()
-
   return (
     <ECharts
       onData={(o: any) => handleClick(search, o.name)}
@@ -34,7 +32,7 @@ export default function BarECharts({
       option={getBarEChartsConfig(
         useSelector((state: RootState) => state.darkMode),
         title,
-        data,
+        data.map((datum) => datum).reverse(),
         { left: 100 }
       )}
     />
