@@ -1,4 +1,4 @@
-// import HighchartsReactNative from '@highcharts/highcharts-react-native'
+import HighchartsReactNative from '@highcharts/highcharts-react-native'
 import { EmailXferedDatum } from '@klonzo/common'
 import React from 'react'
 import { StyleSheet, View, Text } from 'react-native'
@@ -22,17 +22,22 @@ interface Props {
   data: Array<EmailXferedDatum>
   handleClick: (key: string, value: string) => void
 }
-export default function BarHighcharts() {
+export default function BarHighcharts({
+  title,
+  search,
+  data,
+  handleClick,
+}: Props) {
   return (
-    <View>
-      {/* <HighchartsReactNative styles={styles.container} options={config} /> */}
-      <Text>highcharts</Text>
+    <View style={styles.container}>
+      <HighchartsReactNative styles={styles.container} options={config} />
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: '#fff',
     justifyContent: 'center',
   },
