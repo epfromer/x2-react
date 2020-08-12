@@ -1,7 +1,7 @@
+import { EmailXferedDatum, RootState } from '@klonzo/common'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { VictoryAxis, VictoryBar, VictoryChart, VictoryLabel } from 'victory'
-import { EmailXferedDatum, RootState } from '../../store/types'
 
 // https://formidable.com/open-source/victory/docs/victory-bar
 
@@ -14,7 +14,12 @@ interface Props {
   handleClick: (key: string, value: string) => void
 }
 
-const BarVictory: React.FC<Props> = ({ title, search, data, handleClick }) => {
+export default function BarVictory({
+  title,
+  search,
+  data,
+  handleClick,
+}: Props) {
   const darkMode = useSelector((state: RootState) => state.darkMode)
 
   return (
@@ -85,5 +90,3 @@ const BarVictory: React.FC<Props> = ({ title, search, data, handleClick }) => {
     </div>
   )
 }
-
-export default BarVictory

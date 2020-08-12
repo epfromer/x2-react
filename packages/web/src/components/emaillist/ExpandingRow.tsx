@@ -1,9 +1,9 @@
+import { Email } from '@klonzo/common'
 import Collapse from '@material-ui/core/Collapse'
 import TableCell from '@material-ui/core/TableCell'
 import TableRow from '@material-ui/core/TableRow'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { Email } from '../../store/types'
 import ExpandMoreFunc from './ExpandMore'
 
 const EXPANDED_BODY_LENGTH = 1000
@@ -13,7 +13,7 @@ interface Props {
   lastRowRef?: any
 }
 
-const ExpandingRow: React.FC<Props> = ({ email, lastRowRef }) => {
+export default function ExpandingRow({ email, lastRowRef }: Props) {
   const [open, setOpen] = React.useState(false)
   const history = useHistory()
 
@@ -50,5 +50,3 @@ const ExpandingRow: React.FC<Props> = ({ email, lastRowRef }) => {
     </>
   )
 }
-
-export default ExpandingRow

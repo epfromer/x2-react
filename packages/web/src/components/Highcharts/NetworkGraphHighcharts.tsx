@@ -18,12 +18,12 @@ interface Props {
   handleClick: (to: string, from: string) => void
 }
 
-const NetworkGraphHighcharts: React.FC<Props> = ({
+export default function NetworkGraphHighcharts({
   title,
   data,
   nodes,
   handleClick,
-}) => {
+}: Props) {
   const [config, setConfig] = useState<any>(null)
   const darkMode = useSelector((state: RootState) => state.darkMode)
 
@@ -98,5 +98,3 @@ const NetworkGraphHighcharts: React.FC<Props> = ({
     </div>
   )
 }
-
-export default NetworkGraphHighcharts

@@ -15,13 +15,13 @@ interface Props {
   open: boolean
 }
 
-const FilterDate: React.FC<Props> = ({
+export default function FilterDate({
   onClose,
   onClear,
   date,
   span,
   open,
-}) => {
+}: Props) {
   const [filterDate, setFilterDate] = useState(new Date(moment(date)))
   const [filterSpan, setFilterSpan] = useState(span)
 
@@ -77,5 +77,3 @@ const FilterDate: React.FC<Props> = ({
     </Dialog>
   )
 }
-
-export default FilterDate

@@ -1,3 +1,4 @@
+import { EmailXferedDatum, RootState } from '@klonzo/common'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import {
@@ -7,7 +8,6 @@ import {
   VictoryPolarAxis,
   VictoryZoomContainer,
 } from 'victory'
-import { EmailXferedDatum, RootState } from '../../store/types'
 
 // https://formidable.com/open-source/victory/docs/victory-polar-axis
 
@@ -20,12 +20,12 @@ interface Props {
   handleClick: (field: string, name: string) => void
 }
 
-const PolarVictory: React.FC<Props> = ({
+export default function PolarVictory({
   title,
   search,
   data,
   handleClick,
-}) => {
+}: Props) {
   const darkMode = useSelector((state: RootState) => state.darkMode)
 
   return (
@@ -95,5 +95,3 @@ const PolarVictory: React.FC<Props> = ({
     </VictoryChart>
   )
 }
-
-export default PolarVictory

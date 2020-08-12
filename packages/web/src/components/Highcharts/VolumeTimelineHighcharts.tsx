@@ -14,11 +14,11 @@ interface Props {
   handleClick: (date: string) => void
 }
 
-const VolumeTimelineHighcharts: React.FC<Props> = ({
+export default function VolumeTimelineHighcharts({
   title,
   data,
   handleClick,
-}) => {
+}: Props) {
   const darkMode = useSelector((state: RootState) => state.darkMode)
   const dailyTotals: Array<[number, number]> = data.map((stat) => [
     new Date(stat.sent).getTime(),
@@ -74,5 +74,3 @@ const VolumeTimelineHighcharts: React.FC<Props> = ({
 
   return <HighchartsReact highcharts={Highcharts} options={config} />
 }
-
-export default VolumeTimelineHighcharts

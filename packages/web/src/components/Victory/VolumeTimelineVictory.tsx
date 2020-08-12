@@ -1,3 +1,4 @@
+import { RootState, TotalEmailSentDatum } from '@klonzo/common'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import {
@@ -7,7 +8,6 @@ import {
   VictoryLine,
   VictoryZoomContainer,
 } from 'victory'
-import { RootState, TotalEmailSentDatum } from '../../store/types'
 
 // https://formidable.com/open-source/victory/gallery/brush-and-zoom
 
@@ -19,11 +19,11 @@ interface Props {
   handleClick: (date: string) => void
 }
 
-const VolumeTimelineVictory: React.FC<Props> = ({
+export default function VolumeTimelineVictory({
   title,
   data,
   handleClick,
-}) => {
+}: Props) {
   const darkMode = useSelector((state: RootState) => state.darkMode)
   const [zoomDomain, setZoomDomain] = useState({
     x: [new Date(1999, 1, 1), new Date(2002, 3, 1)],
@@ -150,5 +150,3 @@ const VolumeTimelineVictory: React.FC<Props> = ({
     </div>
   )
 }
-
-export default VolumeTimelineVictory

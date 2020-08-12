@@ -14,12 +14,12 @@ interface Props {
   handleClick: (search: string, name: string) => void
 }
 
-const TreeMapHighcharts: React.FC<Props> = ({
+export default function TreeMapHighcharts({
   data,
   search,
   title,
   handleClick,
-}) => {
+}: Props) {
   const [config, setConfig] = useState({})
   const darkMode = useSelector((state: RootState) => state.darkMode)
 
@@ -76,5 +76,3 @@ const TreeMapHighcharts: React.FC<Props> = ({
 
   return <HighchartsReact highcharts={Highcharts} options={config} />
 }
-
-export default TreeMapHighcharts

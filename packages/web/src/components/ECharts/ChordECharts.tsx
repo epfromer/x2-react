@@ -1,7 +1,7 @@
+import { RootState } from '@klonzo/common'
 import ReactEcharts from 'echarts-for-react'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { RootState } from '../../store/types'
 require('echarts-wordcloud')
 
 // https://echarts.apache.org/examples/en/index.html#chart-type-graph
@@ -15,7 +15,12 @@ interface Props {
   handleClick: (from: string, to: string) => void
 }
 
-const ChordECharts: React.FC<Props> = ({ title, data, nodes, handleClick }) => {
+export default function ChordECharts({
+  title,
+  data,
+  nodes,
+  handleClick,
+}: Props) {
   const darkMode = useSelector((state: RootState) => state.darkMode)
   const maxSent = nodes.reduce((maxVal, cur) =>
     cur.emailTotal > maxVal.emailTotal ? cur : maxVal
@@ -92,5 +97,3 @@ const ChordECharts: React.FC<Props> = ({ title, data, nodes, handleClick }) => {
     />
   )
 }
-
-export default ChordECharts

@@ -15,12 +15,12 @@ interface Props {
   handleClick: (search: string, value: string) => void
 }
 
-const BarHighcharts: React.FC<Props> = ({
+export default function BarHighcharts({
   title,
   search,
   data,
   handleClick,
-}) => {
+}: Props) {
   const darkMode = useSelector((state: RootState) => state.darkMode)
 
   const reversedData = data.map((datum) => datum).reverse()
@@ -74,5 +74,3 @@ const BarHighcharts: React.FC<Props> = ({
 
   return <HighchartsReact highcharts={Highcharts} options={config} />
 }
-
-export default BarHighcharts

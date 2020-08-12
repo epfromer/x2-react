@@ -1,7 +1,7 @@
+import { RootState, TotalEmailSentDatum } from '@klonzo/common'
 import { Chart } from 'chart.js'
 import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { RootState, TotalEmailSentDatum } from '../../store/types'
 
 // https://www.chartjs.org/docs/latest/charts/bar.html
 // https://www.createwithdata.com/react-chartjs-dashboard/
@@ -14,11 +14,11 @@ interface Props {
   handleClick: (date: string) => void
 }
 
-const VolumeTimelineChartJS: React.FC<Props> = ({
+export default function VolumeTimelineChartJS({
   title,
   data,
   handleClick,
-}) => {
+}: Props) {
   const chartContainer: any = useRef(null)
   const [, setChartInstance] = useState<any>(null)
   const darkMode = useSelector((state: RootState) => state.darkMode)
@@ -96,5 +96,3 @@ const VolumeTimelineChartJS: React.FC<Props> = ({
     </div>
   )
 }
-
-export default VolumeTimelineChartJS

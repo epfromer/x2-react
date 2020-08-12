@@ -13,12 +13,12 @@ interface Props {
   handleClick: (search: string, name: string) => void
 }
 
-const PieHighcharts: React.FC<Props> = ({
+export default function PieHighcharts({
   title,
   search,
   data,
   handleClick,
-}) => {
+}: Props) {
   const darkMode = useSelector((state: RootState) => state.darkMode)
 
   interface HighChartsDatum {
@@ -83,5 +83,3 @@ const PieHighcharts: React.FC<Props> = ({
 
   return <HighchartsReact highcharts={Highcharts} options={config} />
 }
-
-export default PieHighcharts

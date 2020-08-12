@@ -16,12 +16,12 @@ interface Props {
   handleClick: (search: string, name: string) => void
 }
 
-const PolarHighcharts: React.FC<Props> = ({
+export default function PolarHighcharts({
   title,
   search,
   data,
   handleClick,
-}) => {
+}: Props) {
   const darkMode = useSelector((state: RootState) => state.darkMode)
 
   interface Datum {
@@ -37,7 +37,7 @@ const PolarHighcharts: React.FC<Props> = ({
     color: datum.color,
     pointPlacement: 'between',
     events: {
-      click: (e: any) => handleClick(search, datum.name),
+      click: () => handleClick(search, datum.name),
     },
   }))
 
@@ -78,5 +78,3 @@ const PolarHighcharts: React.FC<Props> = ({
 
   return <HighchartsReact highcharts={Highcharts} options={config} />
 }
-
-export default PolarHighcharts

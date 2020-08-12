@@ -14,7 +14,12 @@ interface Props {
   handleClick: (key: string, value: string) => void
 }
 
-const BarChartJS: React.FC<Props> = ({ title, search, data, handleClick }) => {
+export default function BarChartJS({
+  title,
+  search,
+  data,
+  handleClick,
+}: Props) {
   const chartContainer: any = useRef(null)
   const [, setChartInstance] = useState<any>(null)
   const darkMode = useSelector((state: RootState) => state.darkMode)
@@ -81,5 +86,3 @@ const BarChartJS: React.FC<Props> = ({ title, search, data, handleClick }) => {
     </div>
   )
 }
-
-export default BarChartJS

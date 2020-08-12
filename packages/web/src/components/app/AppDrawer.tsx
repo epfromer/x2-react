@@ -14,7 +14,7 @@ interface Props {
   setOpen: (s: boolean) => void
 }
 
-const AppDrawer: React.FC<Props> = ({ open, setOpen }) => {
+export default function AppDrawer({ open, setOpen }: Props) {
   const mainListItems = [
     { icon: <DashboardIcon />, name: 'x2 Home', route: '/' },
     { icon: <Email />, name: 'Search', route: '/SearchView' },
@@ -67,5 +67,3 @@ const AppDrawer: React.FC<Props> = ({ open, setOpen }) => {
     </Drawer>
   )
 }
-
-export default AppDrawer

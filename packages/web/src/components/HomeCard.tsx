@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   cardImage: {
     height: 340,
   },
@@ -19,7 +19,7 @@ interface Props {
   description: string
   link: string
 }
-const HomeCard: React.FC<Props> = ({ image, title, description, link }) => {
+export default function HomeCard({ image, title, description, link }: Props) {
   const classes = useStyles()
   const history = useHistory()
 
@@ -41,5 +41,3 @@ const HomeCard: React.FC<Props> = ({ image, title, description, link }) => {
     </Card>
   )
 }
-
-export default HomeCard

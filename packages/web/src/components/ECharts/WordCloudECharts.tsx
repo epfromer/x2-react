@@ -1,7 +1,7 @@
+import { RootState } from '@klonzo/common'
 import ReactEcharts from 'echarts-for-react'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { RootState } from '../../store/types'
 require('echarts-wordcloud')
 
 // https://www.npmjs.com/package/echarts-wordcloud
@@ -14,7 +14,7 @@ interface Props {
   handleClick: (word: string) => void
 }
 
-const WordCloudECharts: React.FC<Props> = ({ title, words, handleClick }) => {
+export default function WordCloudECharts({ title, words, handleClick }: Props) {
   const wordCloud: Array<any> = words.map((word: any) => ({
     name: word.name,
     value: word.weight,
@@ -81,5 +81,3 @@ const WordCloudECharts: React.FC<Props> = ({ title, words, handleClick }) => {
     />
   )
 }
-
-export default WordCloudECharts

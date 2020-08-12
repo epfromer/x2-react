@@ -1,7 +1,7 @@
+import { EmailXferedDatum, RootState } from '@klonzo/common'
 import { Chart } from 'chart.js'
 import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { EmailXferedDatum, RootState } from '../../store/types'
 
 // https://www.chartjs.org/docs/latest/charts/doughnut.html
 
@@ -13,7 +13,12 @@ interface Props {
   data: Array<EmailXferedDatum>
   handleClick: (search: string, name: string) => void
 }
-const PieChartJS: React.FC<Props> = ({ title, search, data, handleClick }) => {
+export default function PieChartJS({
+  title,
+  search,
+  data,
+  handleClick,
+}: Props) {
   const chartContainer: any = useRef(null)
   const [, setChartInstance] = useState<any>(null)
   const darkMode = useSelector((state: RootState) => state.darkMode)
@@ -62,5 +67,3 @@ const PieChartJS: React.FC<Props> = ({ title, search, data, handleClick }) => {
     </div>
   )
 }
-
-export default PieChartJS

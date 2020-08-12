@@ -1,7 +1,7 @@
+import { EmailXferedDatum, RootState } from '@klonzo/common'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { VictoryPie } from 'victory'
-import { EmailXferedDatum, RootState } from '../../store/types'
 
 // https://formidable.com/open-source/victory/docs/victory-pie/
 
@@ -14,7 +14,12 @@ interface Props {
   handleClick: (field: string, name: string) => void
 }
 
-const PieVictory: React.FC<Props> = ({ title, search, data, handleClick }) => {
+export default function PieVictory({
+  title,
+  search,
+  data,
+  handleClick,
+}: Props) {
   const darkMode = useSelector((state: RootState) => state.darkMode)
 
   return (
@@ -55,5 +60,3 @@ const PieVictory: React.FC<Props> = ({ title, search, data, handleClick }) => {
     </div>
   )
 }
-
-export default PieVictory

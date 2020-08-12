@@ -19,7 +19,7 @@ interface Props {
   id: string
 }
 
-const EmailCardActions: React.FC<Props> = ({ id }) => {
+export default function EmailCardActions({ id }: Props) {
   const history = useHistory()
   const totalEmails = useSelector((state: RootState) => state.emails?.length)
   const emailIndex = useSelector((state: RootState) => getEmailIndex(state, id))
@@ -77,5 +77,3 @@ const EmailCardActions: React.FC<Props> = ({ id }) => {
     </CardActions>
   )
 }
-
-export default EmailCardActions

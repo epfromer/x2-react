@@ -24,11 +24,11 @@ interface Props {
   handleClick: (word: string) => void
 }
 
-const WordCloudHighcharts: React.FC<Props> = ({
+export default function WordCloudHighcharts({
   title,
   words,
   handleClick,
-}) => {
+}: Props) {
   const darkMode = useSelector((state: RootState) => state.darkMode)
 
   const config = {
@@ -61,5 +61,3 @@ const WordCloudHighcharts: React.FC<Props> = ({
 
   return <HighchartsReact highcharts={Highcharts} options={config} />
 }
-
-export default WordCloudHighcharts

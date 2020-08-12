@@ -10,7 +10,7 @@ interface Props {
   route: string
 }
 
-const NavListItem: React.FC<Props> = ({ icon, name, route }) => {
+export default function NavListItem({ icon, name, route }: Props) {
   const history = useHistory()
 
   return (
@@ -20,5 +20,3 @@ const NavListItem: React.FC<Props> = ({ icon, name, route }) => {
     </ListItem>
   )
 }
-
-export default NavListItem

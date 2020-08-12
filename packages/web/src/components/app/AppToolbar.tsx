@@ -16,7 +16,7 @@ import { useHistory } from 'react-router-dom'
 
 // https://material-ui.com/components/material-icons/
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed
   },
@@ -38,7 +38,7 @@ interface Props {
   setDrawerOpen: (s: boolean) => void
 }
 
-const AppToolbar: React.FC<Props> = ({ drawerOpen, setDrawerOpen }) => {
+export default function AppToolbar({ drawerOpen, setDrawerOpen }: Props) {
   const classes = useStyles()
   const history = useHistory()
   const darkMode = useSelector((state: RootState) => state.darkMode)
@@ -110,5 +110,3 @@ const AppToolbar: React.FC<Props> = ({ drawerOpen, setDrawerOpen }) => {
     </Toolbar>
   )
 }
-
-export default AppToolbar

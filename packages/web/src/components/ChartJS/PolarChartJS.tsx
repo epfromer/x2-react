@@ -1,7 +1,7 @@
+import { EmailXferedDatum, RootState } from '@klonzo/common'
 import { Chart } from 'chart.js'
 import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { EmailXferedDatum, RootState } from '../../store/types'
 
 // https://www.chartjs.org/docs/latest/charts/polar.html
 
@@ -14,12 +14,12 @@ interface Props {
   handleClick: (search: string, name: string) => void
 }
 
-const PolarChartJS: React.FC<Props> = ({
+export default function PolarChartJS({
   title,
   search,
   data,
   handleClick,
-}) => {
+}: Props) {
   const chartContainer: any = useRef(null)
   const [, setChartInstance] = useState<any>(null)
   const darkMode = useSelector((state: RootState) => state.darkMode)
@@ -68,5 +68,3 @@ const PolarChartJS: React.FC<Props> = ({
     </div>
   )
 }
-
-export default PolarChartJS

@@ -20,12 +20,12 @@ interface Props {
   handleClick: (from: string, to: string) => void
 }
 
-const ChordHighcharts: React.FC<Props> = ({
+export default function ChordHighcharts({
   title,
   data,
   nodes,
   handleClick,
-}) => {
+}: Props) {
   const [config, setConfig] = useState<any>(null)
   const darkMode = useSelector((state: RootState) => state.darkMode)
 
@@ -90,5 +90,3 @@ const ChordHighcharts: React.FC<Props> = ({
     </div>
   )
 }
-
-export default ChordHighcharts
