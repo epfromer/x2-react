@@ -341,9 +341,14 @@
         "signature": "4940105b5c29539cd8353e426b7b5784ac9de935cafcdb8a534d6385adc2226a",
         "affectsGlobalScope": false
       },
+      "./src/echarts/volumetimelineecharts.ts": {
+        "version": "d57ac0c2d5141493504ced90d5f59b400a487fd0249387543c8146ee15d8d2ab",
+        "signature": "1f7150158d6019fda9698db935db95fb0b0fe33905eeaa0365cda42fc8fc5ad1",
+        "affectsGlobalScope": false
+      },
       "./src/echarts/index.ts": {
-        "version": "adac126eaec09925c4c4b5f0d3bb13cfac63039aa4dfa468eab6346d74161eb6",
-        "signature": "a184621283488a85b0e3a89203724f87a247faec620d6f08455bfdc326627fa8",
+        "version": "56b8cd354da6fb3b71c25a9851553df5bb7c0b4aebdd8eface90a7192362fa89",
+        "signature": "9f1eaf792d56ad0dedbaedaee6cfc8898116957613e91ad556403f636386b4d7",
         "affectsGlobalScope": false
       },
       "./src/index.ts": {
@@ -3055,7 +3060,8 @@
         "./src/echarts/networkgraphecharts.ts",
         "./src/echarts/pieecharts.ts",
         "./src/echarts/polarecharts.ts",
-        "./src/echarts/treemapecharts.ts"
+        "./src/echarts/treemapecharts.ts",
+        "./src/echarts/volumetimelineecharts.ts"
       ],
       "./src/echarts/networkgraphecharts.ts": [
         "../../node_modules/@types/node/fs.d.ts",
@@ -3084,6 +3090,15 @@
         "./src/store/types.ts"
       ],
       "./src/echarts/treemapecharts.ts": [
+        "../../node_modules/@types/node/fs.d.ts",
+        "../../node_modules/@types/node/process.d.ts",
+        "../../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../../node_modules/@types/node/ts3.2/process.d.ts",
+        "../../node_modules/@types/node/ts3.2/util.d.ts",
+        "../../node_modules/@types/node/util.d.ts",
+        "./src/store/types.ts"
+      ],
+      "./src/echarts/volumetimelineecharts.ts": [
         "../../node_modules/@types/node/fs.d.ts",
         "../../node_modules/@types/node/process.d.ts",
         "../../node_modules/@types/node/ts3.2/fs.d.ts",
@@ -5134,7 +5149,8 @@
         "./src/echarts/networkgraphecharts.ts",
         "./src/echarts/pieecharts.ts",
         "./src/echarts/polarecharts.ts",
-        "./src/echarts/treemapecharts.ts"
+        "./src/echarts/treemapecharts.ts",
+        "./src/echarts/volumetimelineecharts.ts"
       ],
       "./src/echarts/pieecharts.ts": [
         "./src/store/types.ts"
@@ -5143,6 +5159,9 @@
         "./src/store/types.ts"
       ],
       "./src/echarts/treemapecharts.ts": [
+        "./src/store/types.ts"
+      ],
+      "./src/echarts/volumetimelineecharts.ts": [
         "./src/store/types.ts"
       ],
       "./src/img/png.d.ts": [
@@ -5375,6 +5394,7 @@
       "./src/echarts/pieecharts.ts",
       "./src/echarts/polarecharts.ts",
       "./src/echarts/treemapecharts.ts",
+      "./src/echarts/volumetimelineecharts.ts",
       "./src/img/index.ts",
       "./src/img/png.d.ts",
       "./src/index.ts",
