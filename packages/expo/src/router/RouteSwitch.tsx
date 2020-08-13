@@ -1,15 +1,14 @@
+import { RootState } from '@klonzo/common'
 import {
   DarkTheme,
   DefaultTheme,
   NavigationContainer,
 } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { RootState } from '@klonzo/common'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import AppSettingsView from '../views/AppSettingsView'
 import BarView from '../views/BarView'
-import ChordView from '../views/ChordView'
 import EmailDetailView from '../views/EmailDetailView'
 import EventTimelineView from '../views/EventTimelineView'
 import HomeView from '../views/HomeView'
@@ -19,7 +18,6 @@ import PolarView from '../views/PolarView'
 import SearchView from '../views/SearchView'
 import TreeMapView from '../views/TreeMapView'
 import VolumeTimelineView from '../views/VolumeTimelineView'
-import WordCloudView from '../views/WordCloudView'
 
 const Stack = createStackNavigator()
 
@@ -55,11 +53,6 @@ export default function RouteSwitch() {
           options={{ title: 'Bar' }}
         />
         <Stack.Screen
-          name="ChordView"
-          component={ChordView}
-          options={{ title: 'Chord' }}
-        />
-        <Stack.Screen
           name="NetworkGraphView"
           component={NetworkGraphView}
           options={{ title: 'Network Graph' }}
@@ -83,11 +76,6 @@ export default function RouteSwitch() {
           name="VolumeTimelineView"
           component={VolumeTimelineView}
           options={{ title: 'Volume Timeline' }}
-        />
-        <Stack.Screen
-          name="WordCloudView"
-          component={WordCloudView}
-          options={{ title: 'Word Cloud' }}
         />
         <Stack.Screen
           name="EmailDetail"

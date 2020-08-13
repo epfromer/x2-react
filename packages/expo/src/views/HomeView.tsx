@@ -1,6 +1,5 @@
 import {
   BARCHART,
-  CHORD,
   EVENTTIMELINE,
   NETWORKGRAPH,
   PIE,
@@ -9,7 +8,6 @@ import {
   SETTINGS,
   TREEMAP,
   VOLUMETIMELINE,
-  WORDCLOUD,
 } from '@klonzo/common'
 import React from 'react'
 import { ScrollView } from 'react-native'
@@ -34,20 +32,6 @@ export default function HomeView({ navigation }: Props) {
         title="Bar"
         description="Bar chart of email volume of Enron key contacts."
         link="BarView"
-      />
-      <HomeCard
-        navigation={navigation}
-        image={CHORD as any}
-        title="Chord"
-        description="Chord diagram of Enron key contact communication."
-        link="ChordView"
-      />
-      <HomeCard
-        navigation={navigation}
-        image={WORDCLOUD as any}
-        title="Word Cloud"
-        description="Word cloud of fraudulent project names."
-        link="WordCloudView"
       />
       <HomeCard
         navigation={navigation}
