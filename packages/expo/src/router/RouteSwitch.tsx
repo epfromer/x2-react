@@ -2,7 +2,7 @@ import { RootState } from '@klonzo/common'
 import {
   DarkTheme,
   DefaultTheme,
-  NavigationContainer
+  NavigationContainer,
 } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import React from 'react'

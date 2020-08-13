@@ -1,3 +1,4 @@
+import { mockStore } from '@klonzo/common'
 import '@testing-library/jest-dom/extend-expect'
 import { render } from '@testing-library/react'
 import { createMemoryHistory } from 'history'
@@ -7,7 +8,6 @@ import React from 'react'
 import { Provider } from 'react-redux'
 import { Router } from 'react-router'
 import configureStore from 'redux-mock-store'
-import { store } from './store/mockStore'
 
 // https://testing-library.com/docs/vue-testing-library/intro
 
@@ -16,13 +16,13 @@ export function renderComp(
   customStore = {},
   history = createMemoryHistory()
 ) {
-  const newStore = { ...store }
+  const newStore = _.cloneDeep(mockStore)
   _.merge(newStore, customStore)
 
-  const mockStore = configureStore([])(newStore)
+  const mock = configureStore([])(newStore)
   return render(
     <Router history={history}>
-      <Provider store={mockStore}>{comp}</Provider>
+      <Provider store={mock}>{comp}</Provider>
     </Router>
   )
 }

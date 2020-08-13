@@ -22,8 +22,9 @@ export default function ChordECharts({
   handleClick,
 }: Props) {
   const darkMode = useSelector((state: RootState) => state.darkMode)
-  const maxSent = nodes.reduce((maxVal, cur) =>
-    cur.emailTotal > maxVal.emailTotal ? cur : maxVal
+  const maxSent = nodes.reduce(
+    (maxVal, cur) => (cur.emailTotal > maxVal.emailTotal ? cur : maxVal),
+    0
   ).emailTotal
   const chartNodes: Array<any> = nodes.map((node) => ({
     id: node.id,

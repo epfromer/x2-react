@@ -1,6 +1,6 @@
 {
   "include": [
-    "src"
+    "src", "src/__tests__/mockStore.ts"
   ],
   "extends": "../../tsconfig.json",
   "compilerOptions": {

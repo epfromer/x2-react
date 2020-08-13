@@ -3,7 +3,7 @@ import {
   fetchAndCache,
   getEmailSentStats,
   RootState,
-  setReduxState
+  setReduxState,
 } from '@klonzo/common'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Typography from '@material-ui/core/Typography'
@@ -53,6 +53,9 @@ export default function NetworkGraphView() {
           />
         </div>
       )}
+      <button hidden onClick={() => handleClick('foo', 'bar')}>
+        handleClick
+      </button>
     </div>
   )
 }
