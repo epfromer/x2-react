@@ -2,7 +2,7 @@ import { RootState } from '@klonzo/common'
 import {
   DarkTheme,
   DefaultTheme,
-  NavigationContainer,
+  NavigationContainer
 } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import React from 'react'
@@ -10,7 +10,6 @@ import { useSelector } from 'react-redux'
 import AppSettingsView from '../views/AppSettingsView'
 import BarView from '../views/BarView'
 import EmailDetailView from '../views/EmailDetailView'
-import EventTimelineView from '../views/EventTimelineView'
 import HomeView from '../views/HomeView'
 import NetworkGraphView from '../views/NetworkGraphView'
 import PieView from '../views/PieView'
@@ -66,11 +65,6 @@ export default function RouteSwitch() {
           name="TreeMapView"
           component={TreeMapView}
           options={{ title: 'Tree Map' }}
-        />
-        <Stack.Screen
-          name="EventTimelineView"
-          component={EventTimelineView}
-          options={{ title: 'Event Timeline' }}
         />
         <Stack.Screen
           name="VolumeTimelineView"

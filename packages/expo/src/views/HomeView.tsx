@@ -1,6 +1,5 @@
 import {
   BARCHART,
-  EVENTTIMELINE,
   NETWORKGRAPH,
   PIE,
   POLAR,
@@ -53,13 +52,6 @@ export default function HomeView({ navigation }: Props) {
         title="Tree Map"
         description="Tree map of email volume of Enron key contacts."
         link="TreeMapView"
-      />
-      <HomeCard
-        navigation={navigation}
-        image={EVENTTIMELINE as any}
-        title="Event Timeline"
-        description="Event timeline of Enron fraud and litigation."
-        link="EventTimelineView"
       />
       <HomeCard
         navigation={navigation}

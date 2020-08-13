@@ -138,7 +138,7 @@ export default function BarView({ navigation }: Props) {
       </Picker>
       <Picker
         selectedValue={chartLib}
-        onValueChange={(value: string) => setChartLib(value)}
+        onValueChange={(value) => setChartLib(value as string)}
         style={styles.picker}
         itemStyle={styles.itemStyle}
       >
