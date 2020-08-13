@@ -12,7 +12,6 @@ interface Props {
   data: Array<EmailXferedDatum>
   handleClick: (search: string, name: string) => void
 }
-
 export default function PieHighcharts({
   title,
   search,

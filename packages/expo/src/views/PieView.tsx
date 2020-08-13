@@ -1,4 +1,3 @@
-import { Picker } from '@react-native-community/picker'
 import {
   clearSearch,
   fetchAndCache,
@@ -7,11 +6,13 @@ import {
   RootState,
   setReduxState,
 } from '@klonzo/common'
+import { Picker } from '@react-native-community/picker'
 import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { useSelector } from 'react-redux'
 import PieECharts from '../components/ECharts/PieECharts'
+import PieHighcharts from '../components/Highcharts/PieHighcharts'
 import PieVictory from '../components/Victory/PieVictory'
 
 interface Props {
@@ -104,6 +105,26 @@ export default function PieView({ navigation }: Props) {
                 )}
               </>
             )}
+            {chartLib === 'Highcharts' && (
+              <>
+                {isSenders && (
+                  <PieHighcharts
+                    title="Senders"
+                    search="from"
+                    data={emailSenders}
+                    handleClick={handleClick}
+                  />
+                )}
+                {!isSenders && (
+                  <PieHighcharts
+                    title="Receivers"
+                    search="to"
+                    data={emailReceivers}
+                    handleClick={handleClick}
+                  />
+                )}
+              </>
+            )}
           </>
         )}
         <Picker
@@ -122,6 +143,7 @@ export default function PieView({ navigation }: Props) {
           itemStyle={styles.itemStyle}
         >
           <Picker.Item label="ECharts" value="ECharts" />
+          <Picker.Item label="Highcharts" value="Highcharts" />
           <Picker.Item label="Victory" value="Victory" />
         </Picker>
       </SafeAreaView>
