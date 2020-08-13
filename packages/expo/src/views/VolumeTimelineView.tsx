@@ -1,4 +1,3 @@
-import { Picker } from '@react-native-community/picker'
 import {
   clearSearch,
   fetchAndCache,
@@ -6,11 +5,13 @@ import {
   setReduxState,
   TotalEmailSentDatum,
 } from '@klonzo/common'
+import { Picker } from '@react-native-community/picker'
 import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { useSelector } from 'react-redux'
 import VolumeTimelineECharts from '../components/ECharts/VolumeTimelineECharts'
+import VolumeTimelineHighcharts from '../components/Highcharts/VolumeTimelineHighcharts'
 import VolumeTimelineVictory from '../components/Victory/VolumeTimelineVictory'
 
 interface Props {
@@ -81,6 +82,13 @@ export default function VolumeTimelineView({ navigation }: Props) {
                 handleClick={handleClick}
               />
             )}
+            {chartLib === 'Highcharts' && (
+              <VolumeTimelineHighcharts
+                title="Senders / Receivers"
+                data={data}
+                handleClick={handleClick}
+              />
+            )}
           </>
         )}
         <Picker
@@ -90,6 +98,7 @@ export default function VolumeTimelineView({ navigation }: Props) {
           itemStyle={styles.itemStyle}
         >
           <Picker.Item label="ECharts" value="ECharts" />
+          <Picker.Item label="Highcharts" value="Highcharts" />
           <Picker.Item label="Victory" value="Victory" />
         </Picker>
       </SafeAreaView>

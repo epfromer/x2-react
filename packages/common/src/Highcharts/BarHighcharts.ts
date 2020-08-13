@@ -31,7 +31,6 @@ export function getBarHighchartsConfig(
       },
     },
     yAxis: {
-      min: 0,
       labels: {
         overflow: 'justify',
         style: {

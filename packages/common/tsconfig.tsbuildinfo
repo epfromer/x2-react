@@ -352,8 +352,8 @@
         "affectsGlobalScope": false
       },
       "./src/highcharts/barhighcharts.ts": {
-        "version": "e89482e12944513f215b21215bb7da3021d23e6ee1cde6a368f7257fdda7f6fa",
-        "signature": "862cca74b09e0664210adaceeef42060281412e702a39946d1ccb45d8ce034f7",
+        "version": "8cba2177ed01f59fccebcd5cb23942cba82c5f93cc50f4012b2fcaf45bbadacb",
+        "signature": "75b291b5a1ab9d312c7aa5c7c580cee198960129062580721b1450bc21fe38d4",
         "affectsGlobalScope": false
       },
       "./src/highcharts/piehighcharts.ts": {
@@ -361,9 +361,14 @@
         "signature": "2957d4f719fc2f2aeef6b447987d23469e2d023516c73285536544e2e164ac26",
         "affectsGlobalScope": false
       },
+      "./src/highcharts/volumetimeline.ts": {
+        "version": "d1439c7042ded08ed507ff1a6ad7f4938246ee9c0e69aae252811da1df6843c6",
+        "signature": "0b4d04eead804b6c26bed5414339460f9c9e6bbe3292f12e7faf81ebee043a68",
+        "affectsGlobalScope": false
+      },
       "./src/highcharts/index.ts": {
-        "version": "46ea9564798c14a404d96a7bb1909d005b6e765aa745c6900a1038a8c0d94715",
-        "signature": "3351031d21004297f941b9d28940f352bc3f72e2a01caaded9c1e6a607a89c3f",
+        "version": "f4b89373fed1f79dffae8138ce614a13ef4a44400c4432be77b8e93a317e0fec",
+        "signature": "77f686d9876105d87d1d607b5d13cbbf26ef40ea30a2cb5135dcd370a35849f7",
         "affectsGlobalScope": false
       },
       "./src/index.ts": {
@@ -3357,9 +3362,20 @@
         "../../node_modules/@types/node/ts3.2/util.d.ts",
         "../../node_modules/@types/node/util.d.ts",
         "./src/highcharts/barhighcharts.ts",
-        "./src/highcharts/piehighcharts.ts"
+        "./src/highcharts/piehighcharts.ts",
+        "./src/highcharts/volumetimeline.ts"
       ],
       "./src/highcharts/piehighcharts.ts": [
+        "../../node_modules/@types/graceful-fs/index.d.ts",
+        "../../node_modules/@types/node/fs.d.ts",
+        "../../node_modules/@types/node/process.d.ts",
+        "../../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../../node_modules/@types/node/ts3.2/process.d.ts",
+        "../../node_modules/@types/node/ts3.2/util.d.ts",
+        "../../node_modules/@types/node/util.d.ts",
+        "./src/store/types.ts"
+      ],
+      "./src/highcharts/volumetimeline.ts": [
         "../../node_modules/@types/graceful-fs/index.d.ts",
         "../../node_modules/@types/node/fs.d.ts",
         "../../node_modules/@types/node/process.d.ts",
@@ -5490,9 +5506,13 @@
       ],
       "./src/highcharts/index.ts": [
         "./src/highcharts/barhighcharts.ts",
-        "./src/highcharts/piehighcharts.ts"
+        "./src/highcharts/piehighcharts.ts",
+        "./src/highcharts/volumetimeline.ts"
       ],
       "./src/highcharts/piehighcharts.ts": [
+        "./src/store/types.ts"
+      ],
+      "./src/highcharts/volumetimeline.ts": [
         "./src/store/types.ts"
       ],
       "./src/img/png.d.ts": [
@@ -5732,6 +5752,7 @@
       "./src/highcharts/barhighcharts.ts",
       "./src/highcharts/index.ts",
       "./src/highcharts/piehighcharts.ts",
+      "./src/highcharts/volumetimeline.ts",
       "./src/img/index.ts",
       "./src/img/png.d.ts",
       "./src/index.ts",
