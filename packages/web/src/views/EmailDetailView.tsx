@@ -101,6 +101,9 @@ export default function EmailDetailView() {
           <EmailCardActions id={id} />
         </>
       )}
+      <button hidden onClick={() => displayText('foo foobar bar')}>
+        displayText
+      </button>
     </Card>
   )
 }

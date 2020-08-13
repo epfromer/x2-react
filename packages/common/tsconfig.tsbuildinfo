@@ -312,7 +312,7 @@
         "affectsGlobalScope": false
       },
       "./src/store/selectors.ts": {
-        "version": "7c85cf62811e0c6cc0d2b765a9ed8942578715d965de9d19d9f8bfe19ee0e0c1",
+        "version": "fb211d2ac5854fc9f5e0b6978d777bcd6e27a78b6c96a65c8151c20984c09ae9",
         "signature": "22a4166b3bb825e55957c0d23adc550863a2d177f1fd5fe15f639c456bb703b7",
         "affectsGlobalScope": false
       },
@@ -377,8 +377,8 @@
         "affectsGlobalScope": false
       },
       "./src/__tests__/mockstore.ts": {
-        "version": "1e01c0c945c520de4337fe40f65eb2fb664c04327d4ec483703aafc4a9b8130e",
-        "signature": "d7d53c90f5525d2a55a27b0af5747e26a9a4c575af25870c777f62a0a8977a67",
+        "version": "50a192a6c4b3cc1b91fc4c735264fa8b5594237a7f7911d5cb3e2c95ea436aed",
+        "signature": "cd18b74a437b8f687d1c21e325e0a85386ec71e08d23412850a8b58f144b03a0",
         "affectsGlobalScope": false
       },
       "./src/img/png.d.ts": {

@@ -1,8 +1,10 @@
 import { RootState, EmailXferedDatum, EmailSentStat } from './types'
 
 // selectors, aka getters
-export const getEmailById = (state: RootState, id: string) =>
-  state.emails.find((e) => e._id === id)
+export const getEmailById = (state: RootState, id: string) => {
+  if (!state.emails || !state.emails.length) return undefined
+  return state.emails.find((e) => e._id === id)
+}
 
 export const getNextEmail = (state: RootState, id: string) => {
   if (!state.emails || !state.emails.length) return undefined

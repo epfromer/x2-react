@@ -30,7 +30,6 @@ export default function ChordHighcharts({
   const darkMode = useSelector((state: RootState) => state.darkMode)
 
   function createChart() {
-    console.log('create chart')
     setConfig({
       chart: {
         height: chartHeight,

@@ -266,6 +266,9 @@ export default function EventTimelineView() {
         </IconButton>
       </Tooltip>
       {config && <HighchartsReact highcharts={Highcharts} options={config} />}
+      <button hidden onClick={() => handleClick('foo', 'to')}>
+        handleClick
+      </button>
     </div>
   )
 }
