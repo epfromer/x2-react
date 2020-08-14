@@ -202,7 +202,7 @@
         "affectsGlobalScope": true
       },
       "./src/img/index.ts": {
-        "version": "91d36ffecd4528f9662d6ae7161df4966f12f80dd7b4b5541a5ead6c043aa3b6",
+        "version": "42e2d6e3cacc10aa086de04cad2712a9acfc0cb619e32019ee873d7bc0673c12",
         "signature": "682de124448f5cc5da4b61975600470b5598f6911c30346a0a964fb8ea5ebc16",
         "affectsGlobalScope": false
       },
@@ -302,7 +302,7 @@
         "affectsGlobalScope": false
       },
       "./src/store/constants.ts": {
-        "version": "7e20a5a8e44e4d19748e1a3773e45d6e301e5d964758328c06a31426410c738b",
+        "version": "e85e4fb9696379d117b39101a4e2ae1fc8ace1646e9771f94b16c41c8a760097",
         "signature": "22a53106a1e1ce0f073953f08e57ad561899963b59d7232172bcc9ee7c5b39aa",
         "affectsGlobalScope": false
       },
@@ -312,7 +312,7 @@
         "affectsGlobalScope": false
       },
       "./src/store/selectors.ts": {
-        "version": "fb211d2ac5854fc9f5e0b6978d777bcd6e27a78b6c96a65c8151c20984c09ae9",
+        "version": "f72c01720cc431cd356dd66ffbc4bbe9bf360fc1585ef9ac0881db8d75a5a5f3",
         "signature": "22a4166b3bb825e55957c0d23adc550863a2d177f1fd5fe15f639c456bb703b7",
         "affectsGlobalScope": false
       },
@@ -371,19 +371,19 @@
         "signature": "77f686d9876105d87d1d607b5d13cbbf26ef40ea30a2cb5135dcd370a35849f7",
         "affectsGlobalScope": false
       },
-      "./src/index.ts": {
-        "version": "4fcf089a56085da0b339264d0dca448624f8105e6337b6e8f0cca3df7d1e19ec",
-        "signature": "deaddd1dc92762cb485faa92da4c5614b4f960932797c8619e2e71ac2bf75278",
-        "affectsGlobalScope": false
-      },
       "./src/__tests__/mockstore.ts": {
         "version": "50a192a6c4b3cc1b91fc4c735264fa8b5594237a7f7911d5cb3e2c95ea436aed",
         "signature": "cd18b74a437b8f687d1c21e325e0a85386ec71e08d23412850a8b58f144b03a0",
         "affectsGlobalScope": false
       },
+      "./src/index.ts": {
+        "version": "16d5863dd88b424f36e6ad3ae58d3d182382bef66c7a56f94caa8b1cb8e6799c",
+        "signature": "bdb87b14ed7ce182ea102292ca8a5708581850b039c950753919f09b9cd38616",
+        "affectsGlobalScope": false
+      },
       "./src/img/png.d.ts": {
-        "version": "21853d200e30cc89f3a0bf3247a8f3336bf859a4f0ec54b989addbbdffd5a9fc",
-        "signature": "21853d200e30cc89f3a0bf3247a8f3336bf859a4f0ec54b989addbbdffd5a9fc",
+        "version": "603d47082b7792a57735ad8d9037b07a32cbb1187dd22689348809e313bb130c",
+        "signature": "603d47082b7792a57735ad8d9037b07a32cbb1187dd22689348809e313bb130c",
         "affectsGlobalScope": false
       },
       "../../node_modules/@types/aria-query/index.d.ts": {
@@ -3440,6 +3440,7 @@
         "../../node_modules/@types/node/ts3.2/process.d.ts",
         "../../node_modules/@types/node/ts3.2/util.d.ts",
         "../../node_modules/@types/node/util.d.ts",
+        "./src/__tests__/mockstore.ts",
         "./src/echarts/index.ts",
         "./src/highcharts/index.ts",
         "./src/img/index.ts",
@@ -5569,6 +5570,7 @@
         "../../node_modules/@types/node/util.d.ts"
       ],
       "./src/index.ts": [
+        "./src/__tests__/mockstore.ts",
         "./src/echarts/index.ts",
         "./src/highcharts/index.ts",
         "./src/img/index.ts",
