@@ -23,6 +23,3 @@ export * from './store/selectors'
 // Chart configs
 export * from './ECharts/index'
 export * from './Highcharts/index'
-
-// Test
-export { mockStore } from './__tests__/mockStore'

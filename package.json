@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "expo": "lerna --scope=@klonzo/expo run start --stream --",
-    "build-common": "lerna --scope=@klonzo/common run build --stream --",
+    "common:build": "lerna --scope=@klonzo/common run build --stream --",
     "postinstall": "cd ./packages/expo && expo-yarn-workspaces postinstall",
     "web": "lerna --scope=@klonzo/web run serve",
     "web:test": "lerna --scope=@klonzo/web run test",
