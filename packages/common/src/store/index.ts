@@ -53,15 +53,7 @@ export type AppThunk<ReturnType = void> = ThunkAction<
 //       action.value.map((email: Email) => s.emails.push({ ...email }))
 //       return s
 //     }
-//     case 'saveAppSettings': {
-//       const s = _.cloneDeep(state)
-//       if (typeof Storage !== 'undefined') {
-//         localStorage.setItem('darkMode', String(state.darkMode))
-//       } else {
-//         AsyncStorage.setItem('darkMode', String(state.darkMode))
-//       }
-//       return s
-//     }
+
 //     case 'clearSearch': {
 //       const s = _.cloneDeep(state)
 //       s.emailListPage = 0

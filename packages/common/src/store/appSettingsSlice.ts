@@ -78,7 +78,7 @@ export const appSettingsSlice = createSlice({
   },
 })
 
-// TODO
+// Selectors
 export const selectDarkMode = (state: RootState) => state.appSettings.darkMode
 
 export const { setDarkMode } = appSettingsSlice.actions
