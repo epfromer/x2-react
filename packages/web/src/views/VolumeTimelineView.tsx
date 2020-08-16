@@ -1,12 +1,12 @@
-import LinearProgress from '@material-ui/core/LinearProgress'
-import Typography from '@material-ui/core/Typography'
 import {
   clearSearch,
-  fetchAndCache,
-  RootState,
+  selectEmailSent,
+  selectEmailSentLoading,
   setReduxState,
   TotalEmailSentDatum,
 } from '@klonzo/common'
+import LinearProgress from '@material-ui/core/LinearProgress'
+import Typography from '@material-ui/core/Typography'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
@@ -17,15 +17,13 @@ import VolumeTimelineVictory from '../components/Victory/VolumeTimelineVictory'
 
 export default function TimelineView() {
   const history = useHistory()
-  const emailSentLoading = useSelector(
-    (state: RootState) => state.emailSentLoading
-  )
-  const emailSent = useSelector((state: RootState) => state.emailSent)
+  const emailSentLoading = useSelector(selectEmailSentLoading)
+  const emailSent = useSelector(selectEmailSent)
 
   function handleClick(date: string) {
     clearSearch()
     setReduxState('sent', date)
-    fetchAndCache('emails')
+    // fetchAndCache('emails')
     history.push('/SearchView')
   }
 

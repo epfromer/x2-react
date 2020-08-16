@@ -1,13 +1,13 @@
-import LinearProgress from '@material-ui/core/LinearProgress'
-import Typography from '@material-ui/core/Typography'
 import {
   clearSearch,
-  fetchAndCache,
-  getEmailReceivers,
-  getEmailSenders,
-  RootState,
+  selectContacts,
+  selectContactsLoading,
+  selectEmailReceivers,
+  selectEmailSenders,
   setReduxState,
 } from '@klonzo/common'
+import LinearProgress from '@material-ui/core/LinearProgress'
+import Typography from '@material-ui/core/Typography'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
@@ -18,19 +18,15 @@ import BarVictory from '../components/Victory/BarVictory'
 
 export default function BarView() {
   const history = useHistory()
-  const contactsLoading = useSelector(
-    (state: RootState) => state.contactsLoading
-  )
-  const contacts = useSelector((state: RootState) => state.contacts)
-  const emailSenders = useSelector((state: RootState) => getEmailSenders(state))
-  const emailReceivers = useSelector((state: RootState) =>
-    getEmailReceivers(state)
-  )
+  const contactsLoading = useSelector(selectContactsLoading)
+  const contacts = useSelector(selectContacts)
+  const emailSenders = useSelector(selectEmailSenders)
+  const emailReceivers = useSelector(selectEmailReceivers)
 
   function handleClick(key: string, value: string) {
     clearSearch()
     setReduxState(key, `(${value})`)
-    fetchAndCache('emails')
+    // fetchAndCache('emails')
     history.push('/SearchView')
   }
 

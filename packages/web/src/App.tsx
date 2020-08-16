@@ -1,6 +1,7 @@
 import {
   getContactsAsync,
   getWordCloudAsync,
+  getEmailSentAsync,
   loadAppSettingsAsync,
   selectDarkMode,
 } from '@klonzo/common'
@@ -42,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
 // fetchAndCache('emails')
 getContactsAsync()
 getWordCloudAsync()
+getEmailSentAsync()
 loadAppSettingsAsync()
 
 export default function App() {

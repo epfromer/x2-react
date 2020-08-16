@@ -1,9 +1,8 @@
 import {
   clearSearch,
-  fetchAndCache,
-  getEmailSentStats,
-  RootState,
-  setReduxState,
+  selectContactsLoading,
+  selectEmailSentByContact,
+  setReduxState
 } from '@klonzo/common'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Typography from '@material-ui/core/Typography'
@@ -15,19 +14,15 @@ import NetworkGraphHighcharts from '../components/Highcharts/NetworkGraphHighcha
 
 export default function NetworkGraphView() {
   const history = useHistory()
-  const emailSentStats = useSelector((state: RootState) =>
-    getEmailSentStats(state)
-  )
-  const contactsLoading = useSelector(
-    (state: RootState) => state.contactsLoading
-  )
+  const emailSentByContact = useSelector(selectEmailSentByContact)
+  const contactsLoading = useSelector(selectContactsLoading)
 
   function handleClick(to: string, from: string) {
     if (to && from) {
       clearSearch()
       setReduxState('to', `(${to})`)
       setReduxState('from', `(${from})`)
-      fetchAndCache('emails')
+      // fetchAndCache('emails')
       history.push('/SearchView')
     }
   }
@@ -40,15 +35,15 @@ export default function NetworkGraphView() {
           <Typography variant="h5">Highcharts</Typography>
           <NetworkGraphHighcharts
             title="Email Senders to Receivers"
-            data={emailSentStats.data}
-            nodes={emailSentStats.nodes}
+            data={emailSentByContact.data}
+            nodes={emailSentByContact.nodes}
             handleClick={handleClick}
           />
           <Typography variant="h5">ECharts</Typography>
           <NetworkGraphECharts
             title="Email Senders to Receivers"
-            data={emailSentStats.data}
-            nodes={emailSentStats.nodes}
+            data={emailSentByContact.data}
+            nodes={emailSentByContact.nodes}
             handleClick={handleClick}
           />
         </div>

@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-community/async-storage'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState, store } from './index'
-import { CachedQuery, Email, EmailSentByDay } from './types'
+import { CachedQuery, Email } from './types'
 
 export interface AppSettingsState {
   darkMode: boolean
@@ -20,8 +20,6 @@ export interface AppSettingsState {
   subject: string
   allText: string
   body: string
-  emailSentLoading: boolean
-  emailSent: Array<EmailSentByDay> | undefined
 }
 const initialState: AppSettingsState = {
   // app settings
@@ -44,9 +42,6 @@ const initialState: AppSettingsState = {
   subject: '',
   allText: '',
   body: '',
-  // stats
-  emailSentLoading: false,
-  emailSent: undefined,
 }
 
 export const appSettingsSlice = createSlice({

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { EMAIL_SERVER } from './constants'
 import { RootState, store } from './index'
-import { Contact, EmailXferedDatum } from './types'
+import { Contact, EmailSentStat, EmailXferedDatum } from './types'
 
 export interface contactsState {
   contactsLoading: boolean
@@ -32,7 +32,7 @@ export const { setContactsLoading, setContacts } = contactsSlice.actions
 export const selectContactsLoading = (state: RootState) =>
   state.contacts.contactsLoading
 export const selectContacts = (state: RootState) => state.contacts.contacts
-export const selectEmailSenders = (state: RootState) => {
+export function selectEmailSenders(state: RootState) {
   const data: Array<EmailXferedDatum> = []
   if (state.contacts.contacts) {
     state.contacts.contacts.forEach((contact) => {
@@ -61,6 +61,56 @@ export function selectEmailReceivers(state: RootState) {
     })
   }
   return data
+}
+export function selectEmailSentByContact(state: RootState) {
+  //  create array of [from, to, number sent]
+  const data: Array<[string, string, number]> = []
+  if (state.contacts.contacts) {
+    state.contacts.contacts.forEach((contact) => {
+      const sent = new Map()
+      contact.asSender.forEach((email) => {
+        email.to.forEach((recipient) => {
+          if (sent.has(recipient)) {
+            sent.set(recipient, sent.get(recipient) + 1)
+          } else {
+            sent.set(recipient, 1)
+          }
+        })
+      })
+      sent.forEach((v, k) => {
+        if (contact.name !== k) {
+          data.push([contact.name, k, v])
+        }
+      })
+    })
+  }
+
+  const emailTotal = new Map()
+  data.forEach((contact) => {
+    if (emailTotal.has(contact[0])) {
+      emailTotal.set(contact[0], emailTotal.get(contact[0]) + contact[2])
+    } else {
+      emailTotal.set(contact[0], contact[2])
+    }
+    if (emailTotal.has(contact[1])) {
+      emailTotal.set(contact[1], emailTotal.get(contact[1]) + contact[2])
+    } else {
+      emailTotal.set(contact[1], contact[2])
+    }
+  })
+
+  const nodes: Array<EmailSentStat> = []
+  if (state.contacts.contacts) {
+    state.contacts.contacts.forEach((contact) => {
+      nodes.push({
+        id: contact.name,
+        color: contact.color,
+        emailTotal: emailTotal.get(contact.name),
+      })
+    })
+  }
+
+  return { data, nodes }
 }
 
 // Aync actions

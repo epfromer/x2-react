@@ -2,12 +2,18 @@ import {
   Action,
   configureStore,
   getDefaultMiddleware,
-  ThunkAction,
+  ThunkAction
 } from '@reduxjs/toolkit'
 import logger from 'redux-logger'
 import appSettingsReducer from './appSettingsSlice'
 import contactsReducer from './contactsSlice'
+import emailSentReducer from './emailSentSlice'
 import wordCloudReducer from './wordCloudSlice'
+
+export * from './appSettingsSlice'
+export * from './contactsSlice'
+export * from './emailSentSlice'
+export * from './wordCloudSlice'
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppThunk<ReturnType = void> = ThunkAction<
@@ -17,42 +23,11 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   Action<string>
 >
 
-// function reducer(state: RootState = initialState, action: Action) {
-//   switch (action.type) {
-//     case 'setReduxState': {
-//       const s: RootState = _.cloneDeep(state)
-//       if (action.key === 'emails') {
-//         // console.log('overwrite emails')
-//         s.emails = _.cloneDeep(action.value)
-//       } else if (action.key === 'cachedQuery') {
-//         s.cachedQuery = _.cloneDeep(action.value)
-//       } else if (action.key === 'contacts') {
-//         s.contacts = _.cloneDeep(action.value)
-//         if (s.contacts) {
-//           s.contacts.sort((a: any, b: any) => {
-//             const aName = a.name.toLowerCase()
-//             const bName = b.name.toLowerCase()
-//             if (aName < bName) return -1
-//             else if (aName < bName) return 1
-//             else return 0
-//           })
-//         }
-//       } else if (action.key === 'emailSent') {
-//         s.emailSent = _.cloneDeep(action.value)
-//       } else {
-//         // @ts-ignore
-//         // console.log('setting', action.key, action.value)
-//         s[action.key] = action.value
-//       }
-//       return s
-//     }
 //     case 'appendEmails': {
-//       // console.log('append emails')
 //       const s: RootState = _.cloneDeep(state)
 //       action.value.map((email: Email) => s.emails.push({ ...email }))
 //       return s
 //     }
-
 //     case 'clearSearch': {
 //       const s = _.cloneDeep(state)
 //       s.emailListPage = 0
@@ -67,10 +42,6 @@ export type AppThunk<ReturnType = void> = ThunkAction<
 //       s.body = ''
 //       return s
 //     }
-//     default:
-//       return state
-//   }
-// }
 
 const middleware = [...getDefaultMiddleware(), logger]
 
@@ -78,11 +49,8 @@ export const store = configureStore({
   reducer: {
     appSettings: appSettingsReducer,
     contacts: contactsReducer,
+    emailSent: emailSentReducer,
     wordCloud: wordCloudReducer,
   },
   middleware,
 })
-
-export * from './appSettingsSlice'
-export * from './contactsSlice'
-export * from './wordCloudSlice'

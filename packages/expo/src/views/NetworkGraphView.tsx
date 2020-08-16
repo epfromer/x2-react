@@ -1,8 +1,7 @@
 import {
   clearSearch,
-  fetchAndCache,
-  getEmailSentStats,
-  RootState,
+  selectContactsLoading,
+  selectEmailSent,
   setReduxState,
 } from '@klonzo/common'
 import React from 'react'
@@ -16,19 +15,15 @@ interface Props {
   navigation: any
 }
 export default function NetworkGraphView({ navigation }: Props) {
-  const emailSentStats = useSelector((state: RootState) =>
-    getEmailSentStats(state)
-  )
-  const contactsLoading = useSelector(
-    (state: RootState) => state.contactsLoading
-  )
+  const emailSent = useSelector(selectEmailSent)
+  const contactsLoading = useSelector(selectContactsLoading)
 
   function handleClick(to: string, from: string) {
     if (to && from) {
       clearSearch()
       setReduxState('to', `(${to})`)
       setReduxState('from', `(${from})`)
-      fetchAndCache('emails')
+      // fetchAndCache('emails')
       navigation.navigate('SearchView')
     }
   }
@@ -40,8 +35,8 @@ export default function NetworkGraphView({ navigation }: Props) {
         {!contactsLoading && (
           <NetworkGraphECharts
             title="Email Senders to Receivers"
-            data={emailSentStats.data}
-            nodes={emailSentStats.nodes}
+            data={emailSent.data}
+            nodes={emailSent.nodes}
             handleClick={handleClick}
           />
         )}
