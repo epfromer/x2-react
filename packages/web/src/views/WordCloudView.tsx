@@ -1,11 +1,11 @@
-import LinearProgress from '@material-ui/core/LinearProgress'
-import Typography from '@material-ui/core/Typography'
 import {
   clearSearch,
-  fetchAndCache,
-  RootState,
+  selectWordCloud,
+  selectWordCloudLoading,
   setReduxState,
 } from '@klonzo/common'
+import LinearProgress from '@material-ui/core/LinearProgress'
+import Typography from '@material-ui/core/Typography'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
@@ -14,15 +14,13 @@ import WordCloudHighcharts from '../components/Highcharts/WordCloudHighcharts'
 
 export default function WordCloudView() {
   const history = useHistory()
-  const wordCloudLoading = useSelector(
-    (state: RootState) => state.wordCloudLoading
-  )
-  const wordCloud = useSelector((state: RootState) => state.wordCloud)
+  const wordCloudLoading = useSelector(selectWordCloudLoading)
+  const wordCloud = useSelector(selectWordCloud)
 
   function handleClick(word: string) {
     clearSearch()
     setReduxState('allText', word)
-    fetchAndCache('emails')
+    // fetchAndCache('emails')
     history.push('/SearchView')
   }
 

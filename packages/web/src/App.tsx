@@ -1,4 +1,8 @@
-import { loadAppSettings, selectDarkMode } from '@klonzo/common'
+import {
+  loadAppSettingsAsync,
+  selectDarkMode,
+  getWordCloudAsync,
+} from '@klonzo/common'
 import AppBar from '@material-ui/core/AppBar'
 import Container from '@material-ui/core/Container'
 import CssBaseline from '@material-ui/core/CssBaseline'
@@ -36,7 +40,8 @@ const useStyles = makeStyles((theme) => ({
 // fetchAndCache('wordCloud')
 // fetchAndCache('contacts')
 // fetchAndCache('emails')
-loadAppSettings()
+getWordCloudAsync()
+loadAppSettingsAsync()
 
 export default function App() {
   const classes = useStyles()

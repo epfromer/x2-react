@@ -1,3 +1,5 @@
+/*
+
 import { EMAIL_SERVER } from './constants'
 import { store } from './index'
 import { Email } from './types'
@@ -73,35 +75,37 @@ export function fetchAndCache(
   invalidateCache: boolean = false,
   append: boolean = false
 ) {
-  if (!invalidateCache && cacheValid(stat)) {
-    // console.log('cache hit')
-    return
-  } else {
-    // console.log('cache miss')
-  }
-  const loadingIndicator = stat + 'Loading'
-  store.setReduxState(loadingIndicator, true)
-  const url = `${EMAIL_SERVER}/${encodeQuery(stat)}`
-  console.log(url)
-  fetch(url)
-    .then((resp) => resp.json())
-    .then((json) => {
-      if (stat === 'emails') {
-        store.dispatch({
-          type: append ? 'appendEmails' : 'setReduxState',
-          key: 'emails',
-          value: json.emails.map((email: Email) => ({
-            ...email,
-            sent: email.sent.slice(0, 10) + ' ' + email.sent.slice(11, 19),
-          })),
-        })
-        setReduxState('totalEmails', json.total)
-      } else {
-        setReduxState(stat, json)
-      }
-    })
-    .then(() => setReduxState(loadingIndicator, false))
-    .catch((error) => {
-      console.error('fetch error', error)
-    })
+  // if (!invalidateCache && cacheValid(stat)) {
+  //   // console.log('cache hit')
+  //   return
+  // } else {
+  //   // console.log('cache miss')
+  // }
+  // const loadingIndicator = stat + 'Loading'
+  // store.setReduxState(loadingIndicator, true)
+  // const url = `${EMAIL_SERVER}/${encodeQuery(stat)}`
+  // console.log(url)
+  // fetch(url)
+  //   .then((resp) => resp.json())
+  //   .then((json) => {
+  //     if (stat === 'emails') {
+  //       store.dispatch({
+  //         type: append ? 'appendEmails' : 'setReduxState',
+  //         key: 'emails',
+  //         value: json.emails.map((email: Email) => ({
+  //           ...email,
+  //           sent: email.sent.slice(0, 10) + ' ' + email.sent.slice(11, 19),
+  //         })),
+  //       })
+  //       setReduxState('totalEmails', json.total)
+  //     } else {
+  //       setReduxState(stat, json)
+  //     }
+  //   })
+  //   .then(() => setReduxState(loadingIndicator, false))
+  //   .catch((error) => {
+  //     console.error('fetch error', error)
+  //   })
 }
+
+*/

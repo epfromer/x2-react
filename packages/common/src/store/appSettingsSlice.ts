@@ -1,13 +1,7 @@
 import AsyncStorage from '@react-native-community/async-storage'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { store, RootState } from './index'
-import {
-  CachedQuery,
-  Contact,
-  Email,
-  EmailSentByDay,
-  WordCloudTag,
-} from './types'
+import { RootState, store } from './index'
+import { CachedQuery, Contact, Email, EmailSentByDay } from './types'
 
 export interface AppSettingsState {
   darkMode: boolean
@@ -28,8 +22,6 @@ export interface AppSettingsState {
   body: string
   emailSentLoading: boolean
   emailSent: Array<EmailSentByDay> | undefined
-  wordCloudLoading: boolean
-  wordCloud: Array<WordCloudTag> | undefined
   contactsLoading: boolean
   contacts: Array<Contact> | undefined
 }
@@ -57,8 +49,6 @@ const initialState: AppSettingsState = {
   // stats
   emailSentLoading: false,
   emailSent: undefined,
-  wordCloudLoading: false,
-  wordCloud: undefined,
   contactsLoading: false,
   contacts: undefined,
 }
@@ -77,13 +67,14 @@ export const appSettingsSlice = createSlice({
     },
   },
 })
+export default appSettingsSlice.reducer
+export const { setDarkMode } = appSettingsSlice.actions
 
 // Selectors
 export const selectDarkMode = (state: RootState) => state.appSettings.darkMode
 
-export const { setDarkMode } = appSettingsSlice.actions
-
-export async function loadAppSettings() {
+// Aync actions
+export async function loadAppSettingsAsync() {
   try {
     let darkMode = false
     if (typeof Storage !== 'undefined') {
@@ -99,5 +90,3 @@ export async function loadAppSettings() {
     console.error(e)
   }
 }
-
-export default appSettingsSlice.reducer

@@ -1,4 +1,3 @@
-// import AsyncStorage from '@react-native-community/async-storage'
 import {
   Action,
   configureStore,
@@ -7,6 +6,7 @@ import {
 } from '@reduxjs/toolkit'
 import logger from 'redux-logger'
 import appSettingsReducer from './appSettingsSlice'
+import wordCloudReducer from './wordCloudSlice'
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppThunk<ReturnType = void> = ThunkAction<
@@ -25,8 +25,6 @@ export type AppThunk<ReturnType = void> = ThunkAction<
 //         s.emails = _.cloneDeep(action.value)
 //       } else if (action.key === 'cachedQuery') {
 //         s.cachedQuery = _.cloneDeep(action.value)
-//       } else if (action.key === 'wordCloud') {
-//         s.wordCloud = _.cloneDeep(action.value)
 //       } else if (action.key === 'contacts') {
 //         s.contacts = _.cloneDeep(action.value)
 //         if (s.contacts) {
@@ -73,19 +71,15 @@ export type AppThunk<ReturnType = void> = ThunkAction<
 //   }
 // }
 
-// export const store = createStore(reducer, applyMiddleware(thunkMiddleware))
-
 const middleware = [...getDefaultMiddleware(), logger]
 
 export const store = configureStore({
   reducer: {
     appSettings: appSettingsReducer,
+    wordCloud: wordCloudReducer,
   },
   middleware,
 })
 
-export {
-  loadAppSettings,
-  selectDarkMode,
-  setDarkMode,
-} from './appSettingsSlice'
+export * from './appSettingsSlice'
+export * from './wordCloudSlice'
