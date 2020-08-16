@@ -1,6 +1,6 @@
 import {
   getVolumeTimeHighchartsConfig,
-  RootState,
+  selectDarkMode,
   TotalEmailSentDatum,
 } from '@klonzo/common'
 import Highcharts from 'highcharts'
@@ -20,16 +20,15 @@ export default function VolumeTimelineHighcharts({
   data,
   handleClick,
 }: Props) {
+  const darkMode = useSelector(selectDarkMode)
   return (
     <HighchartsReact
       highcharts={Highcharts}
       options={getVolumeTimeHighchartsConfig(
-        useSelector((state: RootState) => state.darkMode),
+        darkMode,
         title,
         data,
-        useSelector((state: RootState) => state.darkMode)
-          ? '#303030'
-          : '#FAFAFA',
+        darkMode ? '#303030' : '#FAFAFA',
         handleClick
       )}
     />

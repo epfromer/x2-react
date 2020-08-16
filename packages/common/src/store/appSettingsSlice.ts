@@ -1,5 +1,6 @@
+import AsyncStorage from '@react-native-community/async-storage'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { RootState } from './index'
+import { store, RootState } from './index'
 import {
   CachedQuery,
   Contact,
@@ -68,6 +69,11 @@ export const appSettingsSlice = createSlice({
   reducers: {
     setDarkMode: (state, action: PayloadAction<boolean>) => {
       state.darkMode = action.payload
+      if (typeof Storage !== 'undefined') {
+        localStorage.setItem('darkMode', String(state.darkMode))
+      } else {
+        AsyncStorage.setItem('darkMode', String(state.darkMode))
+      }
     },
   },
 })
@@ -76,5 +82,22 @@ export const appSettingsSlice = createSlice({
 export const selectDarkMode = (state: RootState) => state.appSettings.darkMode
 
 export const { setDarkMode } = appSettingsSlice.actions
+
+export async function loadAppSettings() {
+  try {
+    let darkMode = false
+    if (typeof Storage !== 'undefined') {
+      darkMode = localStorage.getItem('darkMode') === 'true' ? true : false
+    } else {
+      let value = await AsyncStorage.getItem('darkMode')
+      if (value !== null) {
+        darkMode = value === 'true' ? true : false
+      }
+    }
+    store.dispatch(setDarkMode(darkMode))
+  } catch (e) {
+    console.error(e)
+  }
+}
 
 export default appSettingsSlice.reducer

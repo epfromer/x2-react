@@ -1,4 +1,4 @@
-import { fetchAndCache, getLocalStorage, RootState } from '@klonzo/common'
+import { loadAppSettings, selectDarkMode } from '@klonzo/common'
 import AppBar from '@material-ui/core/AppBar'
 import Container from '@material-ui/core/Container'
 import CssBaseline from '@material-ui/core/CssBaseline'
@@ -36,12 +36,12 @@ const useStyles = makeStyles((theme) => ({
 // fetchAndCache('wordCloud')
 // fetchAndCache('contacts')
 // fetchAndCache('emails')
-// getLocalStorage()
+loadAppSettings()
 
 export default function App() {
   const classes = useStyles()
   const [drawerOpen, setDrawerOpen] = React.useState(false)
-  const darkMode = useSelector((state: RootState) => state.darkMode)
+  const darkMode = useSelector(selectDarkMode)
 
   const palette: any = {}
   if (darkMode) palette.type = 'dark'

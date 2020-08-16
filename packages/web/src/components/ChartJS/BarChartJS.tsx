@@ -1,7 +1,7 @@
+import { EmailXferedDatum, selectDarkMode } from '@klonzo/common'
 import { Chart } from 'chart.js'
 import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { EmailXferedDatum, RootState } from '@klonzo/common'
 
 // https://www.chartjs.org/docs/latest/charts/bar.html
 
@@ -22,7 +22,7 @@ export default function BarChartJS({
 }: Props) {
   const chartContainer: any = useRef(null)
   const [, setChartInstance] = useState<any>(null)
-  const darkMode = useSelector((state: RootState) => state.darkMode)
+  const darkMode = useSelector(selectDarkMode)
 
   const reversedData = data.map((datum) => datum).reverse()
 

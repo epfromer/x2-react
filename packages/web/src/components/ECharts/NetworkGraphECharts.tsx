@@ -1,4 +1,4 @@
-import { getNetworkGraphEChartsConfig, RootState } from '@klonzo/common'
+import { getNetworkGraphEChartsConfig, selectDarkMode } from '@klonzo/common'
 import ReactEcharts from 'echarts-for-react'
 import React from 'react'
 import { useSelector } from 'react-redux'
@@ -28,7 +28,7 @@ export default function NetworkGraphECharts({
           click: (e: any) => handleClick(e.data.target, e.data.source),
         }}
         option={getNetworkGraphEChartsConfig(
-          useSelector((state: RootState) => state.darkMode),
+          useSelector(selectDarkMode),
           title,
           data,
           nodes

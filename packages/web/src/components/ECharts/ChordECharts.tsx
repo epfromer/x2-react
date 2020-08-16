@@ -1,4 +1,4 @@
-import { RootState } from '@klonzo/common'
+import { selectDarkMode } from '@klonzo/common'
 import ReactEcharts from 'echarts-for-react'
 import React from 'react'
 import { useSelector } from 'react-redux'
@@ -21,7 +21,7 @@ export default function ChordECharts({
   nodes,
   handleClick,
 }: Props) {
-  const darkMode = useSelector((state: RootState) => state.darkMode)
+  const darkMode = useSelector(selectDarkMode)
   const maxSent = nodes.reduce(
     (maxVal, cur) => (cur.emailTotal > maxVal.emailTotal ? cur : maxVal),
     0

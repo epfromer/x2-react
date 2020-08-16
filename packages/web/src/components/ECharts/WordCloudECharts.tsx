@@ -1,4 +1,4 @@
-import { RootState } from '@klonzo/common'
+import { selectDarkMode } from '@klonzo/common'
 import ReactEcharts from 'echarts-for-react'
 import React from 'react'
 import { useSelector } from 'react-redux'
@@ -19,8 +19,6 @@ export default function WordCloudECharts({ title, words, handleClick }: Props) {
     name: word.name,
     value: word.weight,
   }))
-  const darkMode = useSelector((state: RootState) => state.darkMode)
-
   return (
     <ReactEcharts
       style={{ height: chartHeight, width: '100%' }}
@@ -33,7 +31,7 @@ export default function WordCloudECharts({ title, words, handleClick }: Props) {
           top: 20,
           left: 'center',
           textStyle: {
-            color: darkMode ? 'white' : 'black',
+            color: useSelector(selectDarkMode) ? 'white' : 'black',
           },
         },
         series: [

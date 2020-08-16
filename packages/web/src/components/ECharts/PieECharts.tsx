@@ -1,7 +1,7 @@
 import {
   EmailXferedDatum,
   getPieEChartsConfig,
-  RootState,
+  selectDarkMode,
 } from '@klonzo/common'
 import ReactEcharts from 'echarts-for-react'
 import React from 'react'
@@ -30,11 +30,7 @@ export default function PieECharts({
       onEvents={{
         click: (e: any) => handleClick(search, e.data.name),
       }}
-      option={getPieEChartsConfig(
-        useSelector((state: RootState) => state.darkMode),
-        title,
-        data
-      )}
+      option={getPieEChartsConfig(useSelector(selectDarkMode), title, data)}
     />
   )
 }

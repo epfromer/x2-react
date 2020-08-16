@@ -1,4 +1,4 @@
-import { EmailXferedDatum, RootState } from '@klonzo/common'
+import { EmailXferedDatum, selectDarkMode } from '@klonzo/common'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { VictoryAxis, VictoryBar, VictoryChart, VictoryLabel } from 'victory'
@@ -20,7 +20,7 @@ export default function BarVictory({
   data,
   handleClick,
 }: Props) {
-  const darkMode = useSelector((state: RootState) => state.darkMode)
+  const darkMode = useSelector(selectDarkMode)
 
   return (
     <div>

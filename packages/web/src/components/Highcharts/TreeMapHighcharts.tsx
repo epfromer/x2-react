@@ -1,8 +1,8 @@
+import { selectDarkMode } from '@klonzo/common'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { RootState } from '@klonzo/common'
 require('highcharts/modules/treemap')(Highcharts)
 
 // https://www.highcharts.com/demo/treemap-coloraxis
@@ -21,7 +21,7 @@ export default function TreeMapHighcharts({
   handleClick,
 }: Props) {
   const [config, setConfig] = useState({})
-  const darkMode = useSelector((state: RootState) => state.darkMode)
+  const darkMode = useSelector(selectDarkMode)
 
   function createChart() {
     // https://www.highcharts.com/docs/chart-and-series-types/treemap

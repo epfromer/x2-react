@@ -92,4 +92,8 @@ export const store = configureStore({
   middleware,
 })
 
-export { selectDarkMode, setDarkMode } from './appSettingsSlice'
+export {
+  loadAppSettings,
+  selectDarkMode,
+  setDarkMode,
+} from './appSettingsSlice'

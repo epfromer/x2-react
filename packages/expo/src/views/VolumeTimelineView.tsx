@@ -2,6 +2,7 @@ import {
   clearSearch,
   fetchAndCache,
   RootState,
+  selectDarkMode,
   setReduxState,
   TotalEmailSentDatum,
 } from '@klonzo/common'
@@ -19,7 +20,6 @@ interface Props {
   navigation: any
 }
 export default function VolumeTimelineView({ navigation }: Props) {
-  const darkMode = useSelector((state: RootState) => state.darkMode)
   const [chartLib, setChartLib] = useState('ECharts')
   const emailSentLoading = useSelector(
     (state: RootState) => state.emailSentLoading
@@ -58,7 +58,7 @@ export default function VolumeTimelineView({ navigation }: Props) {
       height: 150,
     },
     itemStyle: {
-      color: darkMode ? 'white' : 'black',
+      color: useSelector(selectDarkMode) ? 'white' : 'black',
     },
   })
 

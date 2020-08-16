@@ -1,6 +1,6 @@
 import {
   getVolumeTimelineEChartsConfig,
-  RootState,
+  selectDarkMode,
   TotalEmailSentDatum,
 } from '@klonzo/common'
 import ReactEcharts from 'echarts-for-react'
@@ -29,7 +29,7 @@ export default function VolumeTimelineECharts({
         click: (e: any) => handleClick(e.name),
       }}
       option={getVolumeTimelineEChartsConfig(
-        useSelector((state: RootState) => state.darkMode),
+        useSelector(selectDarkMode),
         title,
         data
       )}

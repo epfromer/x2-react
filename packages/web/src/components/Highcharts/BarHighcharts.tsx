@@ -1,6 +1,6 @@
 import {
   EmailXferedDatum,
-  RootState,
+  selectDarkMode,
   getBarHighchartsConfig,
 } from '@klonzo/common'
 import Highcharts from 'highcharts'
@@ -22,17 +22,16 @@ export default function BarHighcharts({
   data,
   handleClick,
 }: Props) {
+  const darkMode = useSelector(selectDarkMode)
   return (
     <HighchartsReact
       highcharts={Highcharts}
       options={getBarHighchartsConfig(
-        useSelector((state: RootState) => state.darkMode),
+        darkMode,
         title,
         search,
         data,
-        useSelector((state: RootState) => state.darkMode)
-          ? '#303030'
-          : '#FAFAFA',
+        darkMode ? '#303030' : '#FAFAFA',
         handleClick
       )}
     />

@@ -1,4 +1,4 @@
-import { RootState, TotalEmailSentDatum } from '@klonzo/common'
+import { selectDarkMode, TotalEmailSentDatum } from '@klonzo/common'
 import { Chart } from 'chart.js'
 import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
@@ -21,7 +21,7 @@ export default function VolumeTimelineChartJS({
 }: Props) {
   const chartContainer: any = useRef(null)
   const [, setChartInstance] = useState<any>(null)
-  const darkMode = useSelector((state: RootState) => state.darkMode)
+  const darkMode = useSelector(selectDarkMode)
 
   interface Datum {
     time: string

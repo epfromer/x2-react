@@ -1,7 +1,7 @@
 import {
   EmailXferedDatum,
   getBarEChartsConfig,
-  RootState,
+  selectDarkMode,
 } from '@klonzo/common'
 import ReactEcharts from 'echarts-for-react'
 import React from 'react'
@@ -30,12 +30,7 @@ export default function BarECharts({
       onEvents={{
         click: (e: any) => handleClick(search, e.name),
       }}
-      option={getBarEChartsConfig(
-        useSelector((state: RootState) => state.darkMode),
-        title,
-        data,
-        {}
-      )}
+      option={getBarEChartsConfig(useSelector(selectDarkMode), title, data, {})}
     />
   )
 }

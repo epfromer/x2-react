@@ -1,4 +1,4 @@
-import { RootState } from '@klonzo/common'
+import { selectDarkMode } from '@klonzo/common'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import HighchartsWheel from 'highcharts/modules/dependency-wheel'
@@ -27,7 +27,7 @@ export default function ChordHighcharts({
   handleClick,
 }: Props) {
   const [config, setConfig] = useState<any>(null)
-  const darkMode = useSelector((state: RootState) => state.darkMode)
+  const darkMode = useSelector(selectDarkMode)
 
   function createChart() {
     setConfig({

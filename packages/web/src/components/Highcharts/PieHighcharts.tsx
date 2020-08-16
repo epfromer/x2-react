@@ -1,4 +1,4 @@
-import { EmailXferedDatum, RootState } from '@klonzo/common'
+import { EmailXferedDatum, selectDarkMode } from '@klonzo/common'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import React from 'react'
@@ -18,7 +18,7 @@ export default function PieHighcharts({
   data,
   handleClick,
 }: Props) {
-  const darkMode = useSelector((state: RootState) => state.darkMode)
+  const darkMode = useSelector(selectDarkMode)
 
   interface HighChartsDatum {
     name: string

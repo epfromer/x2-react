@@ -1,15 +1,16 @@
-import IconButton from '@material-ui/core/IconButton'
-import LinearProgress from '@material-ui/core/LinearProgress'
-import Tooltip from '@material-ui/core/Tooltip'
-import SwapHorizontalCircleIcon from '@material-ui/icons/SwapHorizontalCircle'
-import SwapVerticalCircleIcon from '@material-ui/icons/SwapVerticalCircle'
 import {
   clearSearch,
   Contact,
   fetchAndCache,
   RootState,
+  selectDarkMode,
   setReduxState,
 } from '@klonzo/common'
+import IconButton from '@material-ui/core/IconButton'
+import LinearProgress from '@material-ui/core/LinearProgress'
+import Tooltip from '@material-ui/core/Tooltip'
+import SwapHorizontalCircleIcon from '@material-ui/icons/SwapHorizontalCircle'
+import SwapVerticalCircleIcon from '@material-ui/icons/SwapVerticalCircle'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import HighchartTimeline from 'highcharts/modules/timeline'
@@ -31,7 +32,7 @@ export default function EventTimelineView() {
     (state: RootState) => state.contactsLoading
   )
   const contacts = useSelector((state: RootState) => state.contacts)
-  const darkMode = useSelector((state: RootState) => state.darkMode)
+  const darkMode = useSelector(selectDarkMode)
   const [vertical, setVertical] = useState(true)
 
   const getContactColor = (name: string) => {

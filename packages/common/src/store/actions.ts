@@ -1,4 +1,3 @@
-import AsyncStorage from '@react-native-community/async-storage'
 import { EMAIL_SERVER } from './constants'
 import { store } from './index'
 import { Email } from './types'
@@ -127,23 +126,4 @@ export function fetchAndCache(
     .catch((error) => {
       console.error('fetch error', error)
     })
-}
-
-export async function getLocalStorage() {
-  try {
-    if (typeof Storage !== 'undefined') {
-      console.log(localStorage.getItem('darkMode') === 'true' ? true : false)
-      setReduxState(
-        'darkMode',
-        localStorage.getItem('darkMode') === 'true' ? true : false
-      )
-    } else {
-      let value = await AsyncStorage.getItem('darkMode')
-      if (value !== null) {
-        setReduxState('darkMode', value === 'true' ? true : false)
-      }
-    }
-  } catch (e) {
-    console.error(e)
-  }
 }

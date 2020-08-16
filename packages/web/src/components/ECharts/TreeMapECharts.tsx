@@ -1,4 +1,4 @@
-import { getTreeMapEChartsConfig, RootState } from '@klonzo/common'
+import { getTreeMapEChartsConfig, selectDarkMode } from '@klonzo/common'
 import ReactEcharts from 'echarts-for-react'
 import React from 'react'
 import { useSelector } from 'react-redux'
@@ -30,11 +30,7 @@ export default function TreeMapECharts({
           if (e.nodeData.name) handleClick(search, e.nodeData.name)
         },
       }}
-      option={getTreeMapEChartsConfig(
-        useSelector((state: RootState) => state.darkMode),
-        title,
-        data
-      )}
+      option={getTreeMapEChartsConfig(useSelector(selectDarkMode), title, data)}
     />
   )
 }
