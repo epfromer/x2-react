@@ -6,6 +6,7 @@ import {
 } from '@reduxjs/toolkit'
 import logger from 'redux-logger'
 import appSettingsReducer from './appSettingsSlice'
+import contactsReducer from './contactsSlice'
 import wordCloudReducer from './wordCloudSlice'
 
 export type RootState = ReturnType<typeof store.getState>
@@ -76,10 +77,12 @@ const middleware = [...getDefaultMiddleware(), logger]
 export const store = configureStore({
   reducer: {
     appSettings: appSettingsReducer,
+    contacts: contactsReducer,
     wordCloud: wordCloudReducer,
   },
   middleware,
 })
 
 export * from './appSettingsSlice'
+export * from './contactsSlice'
 export * from './wordCloudSlice'

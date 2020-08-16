@@ -1,7 +1,8 @@
 {
   "include": [
-    "src", "src/__tests__/mockStore.ts"
+    "src"
   ],
+  "composite": true,
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "lib",

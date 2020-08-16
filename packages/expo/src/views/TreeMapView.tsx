@@ -1,12 +1,13 @@
-import { Picker } from '@react-native-community/picker'
 import {
   clearSearch,
-  fetchAndCache,
-  getEmailReceivers,
-  getEmailSenders,
-  RootState,
+  selectContacts,
+  selectContactsLoading,
+  selectDarkMode,
+  selectEmailReceivers,
+  selectEmailSenders,
   setReduxState,
 } from '@klonzo/common'
+import { Picker } from '@react-native-community/picker'
 import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
@@ -17,21 +18,16 @@ interface Props {
   navigation: any
 }
 export default function TreeMapView({ navigation }: Props) {
-  const darkMode = useSelector((state: RootState) => state.darkMode)
   const [isSenders, setIsSenders] = useState(true)
-  const contactsLoading = useSelector(
-    (state: RootState) => state.contactsLoading
-  )
-  const contacts = useSelector((state: RootState) => state.contacts)
-  const emailSenders = useSelector((state: RootState) => getEmailSenders(state))
-  const emailReceivers = useSelector((state: RootState) =>
-    getEmailReceivers(state)
-  )
+  const contactsLoading = useSelector(selectContactsLoading)
+  const contacts = useSelector(selectContacts)
+  const emailSenders = useSelector(selectEmailSenders)
+  const emailReceivers = useSelector(selectEmailReceivers)
 
   function handleClick(search: string, value: string) {
     clearSearch()
     setReduxState(search, `(${value})`)
-    fetchAndCache('emails')
+    // fetchAndCache('emails')
     navigation.navigate('SearchView')
   }
 
@@ -52,7 +48,7 @@ export default function TreeMapView({ navigation }: Props) {
       height: 150,
     },
     itemStyle: {
-      color: darkMode ? 'white' : 'black',
+      color: useSelector(selectDarkMode) ? 'white' : 'black',
     },
   })
 

@@ -1,7 +1,8 @@
 import {
+  getContactsAsync,
+  getWordCloudAsync,
   loadAppSettingsAsync,
   selectDarkMode,
-  getWordCloudAsync,
 } from '@klonzo/common'
 import AppBar from '@material-ui/core/AppBar'
 import Container from '@material-ui/core/Container'
@@ -38,8 +39,8 @@ const useStyles = makeStyles((theme) => ({
 
 // fetchAndCache('emailSent')
 // fetchAndCache('wordCloud')
-// fetchAndCache('contacts')
 // fetchAndCache('emails')
+getContactsAsync()
 getWordCloudAsync()
 loadAppSettingsAsync()
 
