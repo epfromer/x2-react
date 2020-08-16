@@ -32,11 +32,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-fetchAndCache('emailSent')
-fetchAndCache('wordCloud')
-fetchAndCache('contacts')
-fetchAndCache('emails')
-getLocalStorage()
+// fetchAndCache('emailSent')
+// fetchAndCache('wordCloud')
+// fetchAndCache('contacts')
+// fetchAndCache('emails')
+// getLocalStorage()
 
 export default function App() {
   const classes = useStyles()

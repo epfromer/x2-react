@@ -1,3 +1,4 @@
+import { selectDarkMode, setDarkMode } from '@klonzo/common'
 import IconButton from '@material-ui/core/IconButton'
 import { makeStyles } from '@material-ui/core/styles'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -8,10 +9,9 @@ import Brightness7 from '@material-ui/icons/Brightness7'
 import DashboardIcon from '@material-ui/icons/Dashboard'
 import MenuIcon from '@material-ui/icons/Menu'
 import Settings from '@material-ui/icons/Settings'
-import { RootState, saveAppSettings, setReduxState } from '@klonzo/common'
 import clsx from 'clsx'
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
 // https://material-ui.com/components/material-icons/
@@ -41,12 +41,8 @@ interface Props {
 export default function AppToolbar({ drawerOpen, setDrawerOpen }: Props) {
   const classes = useStyles()
   const history = useHistory()
-  const darkMode = useSelector((state: RootState) => state.darkMode)
-
-  const setDarkMode = (on: boolean) => {
-    setReduxState('darkMode', on)
-    saveAppSettings()
-  }
+  const dispatch = useDispatch()
+  const darkMode = useSelector(selectDarkMode)
 
   return (
     <Toolbar className={classes.toolbar}>
@@ -80,7 +76,7 @@ export default function AppToolbar({ drawerOpen, setDrawerOpen }: Props) {
           <IconButton
             color="inherit"
             data-testid="dark-mode"
-            onClick={() => setDarkMode(false)}
+            onClick={() => dispatch(setDarkMode(false))}
           >
             <Brightness7 />
           </IconButton>
@@ -88,7 +84,7 @@ export default function AppToolbar({ drawerOpen, setDrawerOpen }: Props) {
           <IconButton
             color="inherit"
             data-testid="dark-mode"
-            onClick={() => setDarkMode(true)}
+            onClick={() => dispatch(setDarkMode(true))}
           >
             <Brightness4 />
           </IconButton>

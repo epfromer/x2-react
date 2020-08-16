@@ -1,8 +1,7 @@
 import AsyncStorage from '@react-native-community/async-storage'
-import _ from 'lodash'
+import { EMAIL_SERVER } from './constants'
 import { store } from './index'
-import { EMAIL_LIST_PAGE_LENGTH, EMAIL_SERVER } from './constants'
-import { Email, RootState } from './types'
+import { Email } from './types'
 
 // actions, aka async mutations
 
@@ -27,21 +26,23 @@ export const saveAppSettings = () =>
   store.dispatch({ type: 'saveAppSettings', key: '', value: '' })
 
 function makeQueryObj(): any {
-  const state: RootState = store.getState()
-  const query: any = {
-    skip: state.emailListPage * EMAIL_LIST_PAGE_LENGTH,
-    limit: EMAIL_LIST_PAGE_LENGTH,
-    sort: state.querySort,
-    order: state.queryOrder,
-  }
-  if (state.sent) query.sent = state.sent
-  if (state.timeSpan) query.timeSpan = state.timeSpan
-  if (state.from) query.from = state.from
-  if (state.to) query.to = state.to
-  if (state.subject) query.subject = state.subject
-  if (state.allText) query.allText = state.allText
-  if (state.body) query.body = state.body
-  return query
+  // const state: RootState = store.getState()
+  // const query: any = {
+  //   skip: state.emailListPage * EMAIL_LIST_PAGE_LENGTH,
+  //   limit: EMAIL_LIST_PAGE_LENGTH,
+  //   sort: state.querySort,
+  //   order: state.queryOrder,
+  // }
+  // if (state.sent) query.sent = state.sent
+  // if (state.timeSpan) query.timeSpan = state.timeSpan
+  // if (state.from) query.from = state.from
+  // if (state.to) query.to = state.to
+  // if (state.subject) query.subject = state.subject
+  // if (state.allText) query.allText = state.allText
+  // if (state.body) query.body = state.body
+  // return query
+  debugger
+  return {}
 }
 
 function encodeQuery(stat: string) {
@@ -77,16 +78,16 @@ function encodeQuery(stat: string) {
 }
 
 function cacheValid(stat: string): boolean {
-  const state: RootState = store.getState()
-  if (stat === 'emails') {
-    if (state.cachedQuery) {
-      return _.isEqual(makeQueryObj(), state.cachedQuery)
-    }
-  } else {
-    // TODO key
-    // @ts-ignore
-    if (state[stat] || state[stat + 'Loading']) return true
-  }
+  // const state: RootState = store.getState()
+  // if (stat === 'emails') {
+  //   if (state.cachedQuery) {
+  //     return _.isEqual(makeQueryObj(), state.cachedQuery)
+  //   }
+  // } else {
+  //   // TODO key
+  //   // @ts-ignore
+  //   if (state[stat] || state[stat + 'Loading']) return true
+  // }
   return false
 }
 

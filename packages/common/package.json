@@ -13,10 +13,12 @@
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.11.0",
+    "@reduxjs/toolkit": "^1.4.0",
+    "@types/redux-logger": "^3.0.8",
     "lodash": "^4.17.19",
     "react": "~16.11.0",
     "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "redux-logger": "^3.0.6"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",

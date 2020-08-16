@@ -6,7 +6,8 @@
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": "src",
-    "baseUrl": "."
+    "baseUrl": ".",
+    "noEmit": true
   },
   "references": [
     {

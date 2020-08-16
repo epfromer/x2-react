@@ -1,9 +1,3 @@
-export interface Action {
-  type: string
-  key: string
-  value: any
-}
-
 export interface EmailSent {
   id: string
   to: Array<string>
@@ -76,32 +70,6 @@ export interface CachedQuery {
   allText?: string
   body?: string
 }
-
-export interface RootState {
-  cachedQuery: CachedQuery | undefined
-  emails: Array<Email>
-  emailsLoading: false
-  totalEmails: number
-  emailListPage: number
-  querySort: string
-  queryOrder: number
-  sent: string
-  timeSpan: number
-  from: string
-  to: string
-  subject: string
-  allText: string
-  body: string
-  emailSentLoading: boolean
-  emailSent: Array<EmailSentByDay> | undefined
-  wordCloudLoading: boolean
-  wordCloud: Array<WordCloudTag> | undefined
-  contactsLoading: boolean
-  contacts: Array<Contact> | undefined
-  darkMode: boolean
-  orientation: string
-}
-
 export interface EmailXferedDatum {
   name: string // name of sender/receiver
   value: number // number of emails sent/received
