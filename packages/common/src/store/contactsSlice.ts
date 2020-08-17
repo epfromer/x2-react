@@ -3,12 +3,12 @@ import { EMAIL_SERVER } from './constants'
 import { RootState, store } from './index'
 import { Contact, EmailSentStat, EmailXferedDatum } from './types'
 
-export interface contactsState {
+export interface ContactsState {
   contactsLoading: boolean
   contacts: Array<Contact> | undefined
 }
 
-const initialState: contactsState = {
+const initialState: ContactsState = {
   contactsLoading: false,
   contacts: undefined,
 }
