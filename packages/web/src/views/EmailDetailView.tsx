@@ -1,9 +1,17 @@
+import {
+  Email,
+  getEmailById,
+  selectAllText,
+  selectBody,
+  selectFrom,
+  selectSubject,
+  selectTo,
+} from '@klonzo/common'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
-import { Email, getEmailById, RootState } from '@klonzo/common'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
@@ -23,12 +31,12 @@ export default function EmailDetailView() {
   const { id } = useParams()
   const [loading, setLoading] = useState(false)
   const [email, setEmail] = useState<Email | null>(null)
-  const cachedEmail = useSelector((state: RootState) => getEmailById(state, id))
-  const allText = useSelector((state: RootState) => state.allText)
-  const to = useSelector((state: RootState) => state.to)
-  const from = useSelector((state: RootState) => state.from)
-  const subject = useSelector((state: RootState) => state.subject)
-  const body = useSelector((state: RootState) => state.body)
+  const cachedEmail = getEmailById(id)
+  const allText = useSelector(selectAllText)
+  const to = useSelector(selectTo)
+  const from = useSelector(selectFrom)
+  const subject = useSelector(selectSubject)
+  const body = useSelector(selectBody)
 
   const highlightedTerms: Array<string> = []
   if (allText) highlightedTerms.push(allText)

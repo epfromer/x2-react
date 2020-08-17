@@ -4,7 +4,6 @@ import {
   selectEmailListPage,
   selectEmailLoading,
   selectEmailTotal,
-  setReduxState,
 } from '@klonzo/common'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Paper from '@material-ui/core/Paper'
@@ -45,7 +44,7 @@ export default function SearchView() {
       if (observer.current) observer.current.disconnect()
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && hasMore()) {
-          setReduxState('emailListPage', emailListPage + 1)
+          // setReduxState('emailListPage', emailListPage + 1)
           // TODO fetchAndCache('emails', false, true)
         }
       })

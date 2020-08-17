@@ -1,3 +1,9 @@
+import {
+  getEmailIndex,
+  getNextEmailId,
+  getPreviousEmailId,
+  selectEmail,
+} from '@klonzo/common'
 import CardActions from '@material-ui/core/CardActions'
 import Grid from '@material-ui/core/Grid'
 import IconButton from '@material-ui/core/IconButton'
@@ -5,13 +11,6 @@ import Tooltip from '@material-ui/core/Tooltip'
 import ArrowBack from '@material-ui/icons/ArrowBack'
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft'
 import ArrowRightIcon from '@material-ui/icons/ArrowRight'
-import {
-  getEmailIndex,
-  getNextEmail,
-  getPreviousEmail,
-  RootState,
-  selectEmail,
-} from '@klonzo/common'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
@@ -23,15 +22,9 @@ interface Props {
 export default function EmailCardActions({ id }: Props) {
   const history = useHistory()
   const totalEmails = useSelector(selectEmail)?.length
-  const emailIndex = useSelector((state: RootState) => getEmailIndex(state, id))
-  const previousEmailId = useSelector((state: RootState) => {
-    const email = getPreviousEmail(state, id)
-    return email ? email._id : null
-  })
-  const nextEmailId = useSelector((state: RootState) => {
-    const email = getNextEmail(state, id)
-    return email ? email._id : null
-  })
+  const emailIndex = getEmailIndex(id)
+  const previousEmailId = getPreviousEmailId(id)
+  const nextEmailId = getNextEmailId(id)
 
   return (
     <CardActions>

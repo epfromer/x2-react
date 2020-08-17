@@ -38,11 +38,45 @@ export const selectEmailLoading = (state: RootState) => state.email.emailLoading
 export const selectEmail = (state: RootState) => state.email.email
 export const selectEmailTotal = (state: RootState) => state.email.emailTotal
 
+// Getters
+export const getEmailById = (id: string) => {
+  const state: RootState = store.getState()
+  if (!state.email.email || !state.email.email.length) return undefined
+  return state.email.email.find((e: Email) => e._id === id)
+}
+export const getNextEmailId = (id: string) => {
+  const state: RootState = store.getState()
+  if (!state.email.email || !state.email.email.length) return undefined
+  const i = state.email.email.findIndex((e: Email) => e._id === id)
+  return i < state.email.email.length - 1
+    ? state.email.email[i + 1]._id
+    : undefined
+}
+export const getPreviousEmailId = (id: string) => {
+  const state: RootState = store.getState()
+  if (!state.email.email || !state.email.email.length) return undefined
+  const i = state.email.email.findIndex((e: Email) => e._id === id)
+  return i > 0 ? state.email.email[i - 1]._id : undefined
+}
+export const getEmailIndex = (id: string) => {
+  const state: RootState = store.getState()
+  if (!state.email.email || !state.email.email.length) return undefined
+  return state.email.email.findIndex((e: Email) => e._id === id) + 1
+}
+
+//TODO
 //     case 'appendEmails': {
 //       const s: RootState = _.cloneDeep(state)
 //       action.value.map((email: Email) => s.emails.push({ ...email }))
 //       return s
 //     }
+
+// export const appendEmails = (k: string, v: Array<Email>) =>
+//   store.dispatch({
+//     type: 'appendEmails',
+//     key: k,
+//     value: v,
+//   })
 
 function makeQueryObj(): any {
   const state: RootState = store.getState()

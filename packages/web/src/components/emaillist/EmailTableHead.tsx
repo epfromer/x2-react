@@ -8,15 +8,15 @@ import {
   selectSubject,
   selectTimeSpan,
   selectTo,
+  setAllText,
   setEmailListPage,
+  setFrom,
   setQueryOrder,
   setQuerySort,
-  setReduxState,
-  setAllText,
   setSent,
-  setFrom,
-  setTo,
   setSubject,
+  setTimeSpan,
+  setTo,
 } from '@klonzo/common'
 import IconButton from '@material-ui/core/IconButton'
 import TableCell from '@material-ui/core/TableCell'
@@ -25,11 +25,11 @@ import TableRow from '@material-ui/core/TableRow'
 import TableSortLabel from '@material-ui/core/TableSortLabel'
 import TextField from '@material-ui/core/TextField'
 import DateRangeIcon from '@material-ui/icons/DateRange'
+import { ActionCreatorWithPayload } from '@reduxjs/toolkit'
 import debounce from 'lodash/debounce'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import FilterDate from './FilterDate'
-import { ActionCreatorWithPayload } from '@reduxjs/toolkit'
 
 var moment = require('moment')
 
@@ -86,15 +86,15 @@ const EmailTableHead: React.FC = () => {
         span={timeSpan}
         onClear={() => {
           setDatePickerOpen(false)
-          setReduxState('sent', '')
-          setReduxState('timeSpan', 0)
-          // fetchAndCache('emails')
+          dispatch(setSent(''))
+          dispatch(setTimeSpan(0))
+          getEmailAsync()
         }}
         onClose={(date: string, span: number) => {
           setDatePickerOpen(false)
-          setReduxState('sent', moment(date).format().slice(0, 10))
-          setReduxState('timeSpan', span)
-          // fetchAndCache('emails')
+          dispatch(setSent(moment(date).format().slice(0, 10)))
+          dispatch(setTimeSpan(span))
+          getEmailAsync()
         }}
       />
       <TableHead>
