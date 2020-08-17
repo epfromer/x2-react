@@ -1,9 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from './index'
-import { CachedQuery } from './types'
 
 export interface QueryState {
-  cachedQuery: CachedQuery | undefined
   querySort: string
   queryOrder: number
   sent: string
@@ -17,7 +15,6 @@ export interface QueryState {
 }
 
 const initialState: QueryState = {
-  cachedQuery: undefined,
   querySort: 'sent',
   queryOrder: 1,
   sent: '',
@@ -34,9 +31,6 @@ export const querySlice = createSlice({
   name: 'query',
   initialState,
   reducers: {
-    setCachedQuery: (state, action: PayloadAction<CachedQuery>) => {
-      state.cachedQuery = action.payload
-    },
     setQuerySort: (state, action: PayloadAction<string>) => {
       state.querySort = action.payload
     },
@@ -86,7 +80,6 @@ export const {
   clearSearch,
   setAllText,
   setBody,
-  setCachedQuery,
   setEmailListPage,
   setFrom,
   setQueryOrder,
@@ -100,7 +93,6 @@ export const {
 // Selectors
 export const selectAllText = (state: RootState) => state.query.allText
 export const selectBody = (state: RootState) => state.query.body
-export const selectCachedQuery = (state: RootState) => state.query.cachedQuery
 export const selectEmailListPage = (state: RootState) =>
   state.query.emailListPage
 export const selectFrom = (state: RootState) => state.query.from

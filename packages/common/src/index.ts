@@ -13,6 +13,6 @@ export {
   VOLUMETIMELINE,
   WORDCLOUD,
 } from './img/index'
-export * from './store/constants'
+export * from './constants'
 export * from './store/index'
 export * from './store/types'

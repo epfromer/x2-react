@@ -1,6 +1,6 @@
 {
   "include": [
-    "src"
+    "src", "src/constants.ts"
   ],
   "composite": true,
   "extends": "../../tsconfig.json",

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { EMAIL_SERVER } from './constants'
+import { EMAIL_SERVER } from '../constants'
 import { RootState, store } from './index'
 import { Contact, EmailSentStat, EmailXferedDatum } from './types'
 

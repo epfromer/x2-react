@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { EMAIL_LIST_PAGE_LENGTH, EMAIL_SERVER } from './constants'
+import { EMAIL_LIST_PAGE_LENGTH, EMAIL_SERVER } from '../constants'
 import { RootState, store } from './index'
 import { Email } from './types'
 
@@ -23,14 +23,15 @@ export const emailSlice = createSlice({
       state.emailLoading = action.payload
     },
     setEmail: (state, action: PayloadAction<Array<Email>>) => {
+      // console.log('setting email')
       state.email = action.payload
     },
     appendEmail: (state, action: PayloadAction<Array<Email>>) => {
       if (state.email) {
-        console.log('appending email')
+        // console.log('appending email')
         state.email.push(...action.payload)
       } else {
-        console.log('setting email')
+        // console.log('setting email')
         state.email = action.payload
       }
     },
@@ -78,13 +79,6 @@ export const getEmailIndex = (id: string) => {
   return state.email.email.findIndex((e: Email) => e._id === id) + 1
 }
 
-//TODO
-//     case 'appendEmails': {
-//       const s: RootState = _.cloneDeep(state)
-//       action.value.map((email: Email) => s.emails.push({ ...email }))
-//       return s
-//     }
-
 function makeQueryObj(): any {
   const state: RootState = store.getState()
   const query: any = {
@@ -108,13 +102,6 @@ function encodeQuery() {
   let queryString = ''
   const query = makeQueryObj()
 
-  // // store this away for cache comparisons
-  // store.dispatch({
-  //   type: 'setReduxState',
-  //   key: 'cachedQuery',
-  //   value: query,
-  // })
-
   // encode into URL friendly string
   let params = ''
   Object.keys(query).forEach((key) => {
@@ -131,13 +118,12 @@ function encodeQuery() {
 
 // Aync actions
 export async function getEmailAsync(append: boolean = false) {
-  store.dispatch(setEmailLoading(true))
   const query = `${EMAIL_SERVER}/${encodeQuery()}`
   console.log(query)
+  store.dispatch(setEmailLoading(true))
   fetch(query)
     .then((resp) => resp.json())
     .then((json) => {
-      // TODO - cache
       if (append) {
         store.dispatch(appendEmail(json.emails))
       } else {

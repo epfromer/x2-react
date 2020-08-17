@@ -59,17 +59,6 @@ export interface EmailList {
   emails: Array<Email>
 }
 
-export interface CachedQuery {
-  sort?: string
-  order?: number
-  sent?: string
-  timeSpan?: number
-  from?: string
-  to?: string
-  subject?: string
-  allText?: string
-  body?: string
-}
 export interface EmailXferedDatum {
   name: string // name of sender/receiver
   value: number // number of emails sent/received
