@@ -3,7 +3,9 @@ import {
   selectEmail,
   selectEmailListPage,
   selectEmailLoading,
+  getEmailAsync,
   selectEmailTotal,
+  setEmailListPage,
 } from '@klonzo/common'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Paper from '@material-ui/core/Paper'
@@ -12,7 +14,7 @@ import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
 import TableContainer from '@material-ui/core/TableContainer'
 import React, { useCallback, useRef } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import EmailTableHead from '../components/emaillist/EmailTableHead'
 import ExpandingRow from '../components/emaillist/ExpandingRow'
 
@@ -28,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function SearchView() {
+  const dispatch = useDispatch()
   const classes = useStyles()
   const emailsLoading = useSelector(selectEmailLoading)
   const emails = useSelector(selectEmail)
@@ -44,8 +47,8 @@ export default function SearchView() {
       if (observer.current) observer.current.disconnect()
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && hasMore()) {
-          // setReduxState('emailListPage', emailListPage + 1)
-          // TODO fetchAndCache('emails', false, true)
+          dispatch(setEmailListPage(emailListPage + 1))
+          getEmailAsync(true)
         }
       })
       if (node) observer.current.observe(node)

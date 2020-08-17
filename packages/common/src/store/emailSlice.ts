@@ -25,13 +25,27 @@ export const emailSlice = createSlice({
     setEmail: (state, action: PayloadAction<Array<Email>>) => {
       state.email = action.payload
     },
+    appendEmail: (state, action: PayloadAction<Array<Email>>) => {
+      if (state.email) {
+        console.log('appending email')
+        state.email.push(...action.payload)
+      } else {
+        console.log('setting email')
+        state.email = action.payload
+      }
+    },
     setEmailTotal: (state, action: PayloadAction<number>) => {
       state.emailTotal = action.payload
     },
   },
 })
 export default emailSlice.reducer
-export const { setEmailLoading, setEmail, setEmailTotal } = emailSlice.actions
+export const {
+  appendEmail,
+  setEmail,
+  setEmailLoading,
+  setEmailTotal,
+} = emailSlice.actions
 
 // Selectors
 export const selectEmailLoading = (state: RootState) => state.email.emailLoading
@@ -70,13 +84,6 @@ export const getEmailIndex = (id: string) => {
 //       action.value.map((email: Email) => s.emails.push({ ...email }))
 //       return s
 //     }
-
-// export const appendEmails = (k: string, v: Array<Email>) =>
-//   store.dispatch({
-//     type: 'appendEmails',
-//     key: k,
-//     value: v,
-//   })
 
 function makeQueryObj(): any {
   const state: RootState = store.getState()
@@ -123,10 +130,7 @@ function encodeQuery() {
 }
 
 // Aync actions
-export async function getEmailAsync(
-  invalidateCache: boolean = false,
-  append: boolean = false
-) {
+export async function getEmailAsync(append: boolean = false) {
   store.dispatch(setEmailLoading(true))
   const query = `${EMAIL_SERVER}/${encodeQuery()}`
   console.log(query)
@@ -134,7 +138,11 @@ export async function getEmailAsync(
     .then((resp) => resp.json())
     .then((json) => {
       // TODO - cache
-      store.dispatch(setEmail(json.emails))
+      if (append) {
+        store.dispatch(appendEmail(json.emails))
+      } else {
+        store.dispatch(setEmail(json.emails))
+      }
       store.dispatch(setEmailTotal(json.total))
     })
     .then(() => store.dispatch(setEmailLoading(false)))
