@@ -1,30 +1,32 @@
 import {
   clearSearch,
+  getEmailAsync,
   selectContactsLoading,
   selectEmailSentByContact,
-  setReduxState
+  setFrom,
+  setTo,
 } from '@klonzo/common'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Typography from '@material-ui/core/Typography'
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import NetworkGraphECharts from '../components/ECharts/NetworkGraphECharts'
 import NetworkGraphHighcharts from '../components/Highcharts/NetworkGraphHighcharts'
 
 export default function NetworkGraphView() {
+  const dispatch = useDispatch()
   const history = useHistory()
   const emailSentByContact = useSelector(selectEmailSentByContact)
   const contactsLoading = useSelector(selectContactsLoading)
 
   function handleClick(to: string, from: string) {
-    if (to && from) {
-      clearSearch()
-      setReduxState('to', `(${to})`)
-      setReduxState('from', `(${from})`)
-      // fetchAndCache('emails')
-      history.push('/SearchView')
-    }
+    if (!from || !to) return
+    dispatch(clearSearch())
+    dispatch(setFrom(`(${from})`))
+    dispatch(setTo(`(${to})`))
+    getEmailAsync()
+    history.push('/SearchView')
   }
 
   return (

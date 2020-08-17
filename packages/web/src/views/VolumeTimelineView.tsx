@@ -1,14 +1,15 @@
 import {
   clearSearch,
+  getEmailAsync,
   selectEmailSent,
   selectEmailSentLoading,
-  setReduxState,
+  setSent,
   TotalEmailSentDatum,
 } from '@klonzo/common'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Typography from '@material-ui/core/Typography'
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import VolumeTimelineChartJS from '../components/ChartJS/VolumeTimelineChartJS'
 import VolumeTimelineECharts from '../components/ECharts/VolumeTimelineECharts'
@@ -16,14 +17,15 @@ import VolumeTimelineHighcharts from '../components/Highcharts/VolumeTimelineHig
 import VolumeTimelineVictory from '../components/Victory/VolumeTimelineVictory'
 
 export default function TimelineView() {
+  const dispatch = useDispatch()
   const history = useHistory()
   const emailSentLoading = useSelector(selectEmailSentLoading)
   const emailSent = useSelector(selectEmailSent)
 
   function handleClick(date: string) {
-    clearSearch()
-    setReduxState('sent', date)
-    // fetchAndCache('emails')
+    dispatch(clearSearch())
+    dispatch(setSent(date))
+    getEmailAsync()
     history.push('/SearchView')
   }
 

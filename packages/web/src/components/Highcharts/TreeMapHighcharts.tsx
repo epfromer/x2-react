@@ -33,6 +33,9 @@ export default function TreeMapHighcharts({
       },
       title: {
         text: title,
+        style: {
+          color: darkMode ? 'white' : 'black',
+        },
       },
       plotOptions: {
         series: {

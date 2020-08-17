@@ -1,10 +1,13 @@
 import {
   clearSearch,
   Contact,
-  fetchAndCache,
-  RootState,
+  getEmailAsync,
+  selectContacts,
+  selectContactsLoading,
   selectDarkMode,
-  setReduxState,
+  setAllText,
+  setFrom,
+  setTo,
 } from '@klonzo/common'
 import IconButton from '@material-ui/core/IconButton'
 import LinearProgress from '@material-ui/core/LinearProgress'
@@ -15,7 +18,7 @@ import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import HighchartTimeline from 'highcharts/modules/timeline'
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
 HighchartTimeline(Highcharts)
@@ -27,11 +30,10 @@ HighchartTimeline(Highcharts)
 // https://www.econcrises.org/2016/12/07/enron-corporation-2001/
 
 export default function EventTimelineView() {
+  const dispatch = useDispatch()
   const history = useHistory()
-  const contactsLoading = useSelector(
-    (state: RootState) => state.contactsLoading
-  )
-  const contacts = useSelector((state: RootState) => state.contacts)
+  const contactsLoading = useSelector(selectContactsLoading)
+  const contacts = useSelector(selectContacts)
   const darkMode = useSelector(selectDarkMode)
   const [vertical, setVertical] = useState(true)
 
@@ -46,9 +48,15 @@ export default function EventTimelineView() {
 
   function handleClick(key: string, value: string) {
     if (!key) return
-    clearSearch()
-    setReduxState(key, value)
-    fetchAndCache('emails')
+    dispatch(clearSearch())
+    if (key === 'to') {
+      dispatch(setTo(value))
+    } else if (key === 'from') {
+      dispatch(setFrom(value))
+    } else if (key === 'allText') {
+      dispatch(setAllText(value))
+    }
+    getEmailAsync()
     history.push('/SearchView')
   }
 
@@ -87,9 +95,7 @@ export default function EventTimelineView() {
       {
         dataLabels: {
           allowOverlap: false,
-          format:
-            '<span style="color:{point.color}">● </span><span style="font-weight: bold;" > ' +
-            '{point.x:%d %b %Y}</span><br/>{point.label}',
+          format: '{point.x:%d %b %Y}<br/>{point.label}',
         },
         marker: {
           symbol: 'circle',

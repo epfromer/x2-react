@@ -1,26 +1,28 @@
 import {
   clearSearch,
+  getEmailAsync,
   selectWordCloud,
   selectWordCloudLoading,
-  setReduxState,
+  setAllText,
 } from '@klonzo/common'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Typography from '@material-ui/core/Typography'
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import WordCloudECharts from '../components/ECharts/WordCloudECharts'
 import WordCloudHighcharts from '../components/Highcharts/WordCloudHighcharts'
 
 export default function WordCloudView() {
+  const dispatch = useDispatch()
   const history = useHistory()
   const wordCloudLoading = useSelector(selectWordCloudLoading)
   const wordCloud = useSelector(selectWordCloud)
 
   function handleClick(word: string) {
-    clearSearch()
-    setReduxState('allText', word)
-    // fetchAndCache('emails')
+    dispatch(clearSearch())
+    dispatch(setAllText(word))
+    getEmailAsync()
     history.push('/SearchView')
   }
 

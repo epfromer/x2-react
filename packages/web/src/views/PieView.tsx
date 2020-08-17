@@ -1,16 +1,18 @@
 import {
   clearSearch,
+  getEmailAsync,
   selectContacts,
   selectContactsLoading,
   selectEmailReceivers,
   selectEmailSenders,
-  setReduxState,
+  setFrom,
+  setTo,
 } from '@klonzo/common'
 import Grid from '@material-ui/core/Grid'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Typography from '@material-ui/core/Typography'
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import PieChartJS from '../components/ChartJS/PieChartJS'
 import PieECharts from '../components/ECharts/PieECharts'
@@ -18,6 +20,7 @@ import PieHighcharts from '../components/Highcharts/PieHighcharts'
 import PieVictory from '../components/Victory/PieVictory'
 
 export default function PieView() {
+  const dispatch = useDispatch()
   const history = useHistory()
   const contactsLoading = useSelector(selectContactsLoading)
   const contacts = useSelector(selectContacts)
@@ -25,9 +28,13 @@ export default function PieView() {
   const emailReceivers = useSelector(selectEmailReceivers)
 
   function handleClick(search: string, value: string) {
-    clearSearch()
-    setReduxState(search, `(${value})`)
-    // fetchAndCache('emails')
+    dispatch(clearSearch())
+    if (search === 'from') {
+      dispatch(setFrom(`(${value})`))
+    } else {
+      dispatch(setTo(`(${value})`))
+    }
+    getEmailAsync()
     history.push('/SearchView')
   }
 

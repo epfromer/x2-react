@@ -30,7 +30,12 @@ export default function BarECharts({
       onEvents={{
         click: (e: any) => handleClick(search, e.name),
       }}
-      option={getBarEChartsConfig(useSelector(selectDarkMode), title, data, {})}
+      option={getBarEChartsConfig(
+        useSelector(selectDarkMode),
+        title,
+        data.map((datum) => datum).reverse(),
+        {}
+      )}
     />
   )
 }

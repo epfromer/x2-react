@@ -1,15 +1,17 @@
 import {
   clearSearch,
+  getEmailAsync,
   selectContacts,
   selectContactsLoading,
   selectEmailReceivers,
   selectEmailSenders,
-  setReduxState,
+  setFrom,
+  setTo,
 } from '@klonzo/common'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Typography from '@material-ui/core/Typography'
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import BarChartJS from '../components/ChartJS/BarChartJS'
 import BarECharts from '../components/ECharts/BarECharts'
@@ -17,6 +19,7 @@ import BarHighcarts from '../components/Highcharts/BarHighcharts'
 import BarVictory from '../components/Victory/BarVictory'
 
 export default function BarView() {
+  const dispatch = useDispatch()
   const history = useHistory()
   const contactsLoading = useSelector(selectContactsLoading)
   const contacts = useSelector(selectContacts)
@@ -24,9 +27,13 @@ export default function BarView() {
   const emailReceivers = useSelector(selectEmailReceivers)
 
   function handleClick(key: string, value: string) {
-    clearSearch()
-    setReduxState(key, `(${value})`)
-    // fetchAndCache('emails')
+    dispatch(clearSearch())
+    if (key === 'from') {
+      dispatch(setFrom(`(${value})`))
+    } else {
+      dispatch(setTo(`(${value})`))
+    }
+    getEmailAsync()
     history.push('/SearchView')
   }
 

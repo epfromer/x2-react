@@ -1,28 +1,31 @@
 import {
   clearSearch,
+  getEmailAsync,
   selectContactsLoading,
   selectEmailSentByContact,
-  setReduxState,
+  setFrom,
+  setTo,
 } from '@klonzo/common'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Typography from '@material-ui/core/Typography'
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import ChordECharts from '../components/ECharts/ChordECharts'
 import ChordHighcharts from '../components/Highcharts/ChordHighcharts'
 
 export default function ChordView() {
+  const dispatch = useDispatch()
   const history = useHistory()
   const emailSentByContact = useSelector(selectEmailSentByContact)
   const contactsLoading = useSelector(selectContactsLoading)
 
   function handleClick(from: string, to: string) {
     if (!from || !to) return
-    clearSearch()
-    setReduxState('from', `(${from})`)
-    setReduxState('to', `(${to})`)
-    // fetchAndCache('emails')
+    dispatch(clearSearch())
+    dispatch(setFrom(`(${from})`))
+    dispatch(setTo(`(${to})`))
+    getEmailAsync()
     history.push('/SearchView')
   }
 

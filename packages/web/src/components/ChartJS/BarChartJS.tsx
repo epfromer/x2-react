@@ -24,8 +24,6 @@ export default function BarChartJS({
   const [, setChartInstance] = useState<any>(null)
   const darkMode = useSelector(selectDarkMode)
 
-  const reversedData = data.map((datum) => datum).reverse()
-
   const config: any = {
     type: 'horizontalBar',
     options: {
@@ -39,7 +37,7 @@ export default function BarChartJS({
       },
       onClick: (e: any, item: any) => {
         if (item && item.length > 0) {
-          handleClick(search, reversedData[item[0]._index].name)
+          handleClick(search, data[item[0]._index].name)
         }
       },
       scales: {
@@ -61,12 +59,12 @@ export default function BarChartJS({
       },
     },
     data: {
-      labels: reversedData.map((datum) => datum.name),
+      labels: data.map((datum) => datum.name),
       datasets: [
         {
           label: title,
-          backgroundColor: reversedData.map((datum) => datum.color),
-          data: reversedData.map((datum) => datum.value),
+          backgroundColor: data.map((datum) => datum.color),
+          data: data.map((datum) => datum.value),
         },
       ],
     },
