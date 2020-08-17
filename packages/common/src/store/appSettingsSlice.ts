@@ -11,7 +11,7 @@ const initialState: AppSettingsState = {
   darkMode: false,
   orientation: 'portrait',
 }
-g 
+
 export const appSettingsSlice = createSlice({
   name: 'appSettings',
   initialState,

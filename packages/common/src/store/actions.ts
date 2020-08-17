@@ -16,6 +16,3 @@ export const appendEmails = (k: string, v: Array<Email>) =>
     key: k,
     value: v,
   })
-
-export const clearSearch = () =>
-  store.dispatch({ type: 'clearSearch', key: '', value: '' })

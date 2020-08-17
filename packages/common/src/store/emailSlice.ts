@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { EMAIL_SERVER } from './constants'
+import { EMAIL_LIST_PAGE_LENGTH, EMAIL_SERVER } from './constants'
 import { RootState, store } from './index'
 import { Email } from './types'
 
@@ -44,10 +44,59 @@ export const selectEmailTotal = (state: RootState) => state.email.emailTotal
 //       return s
 //     }
 
+function makeQueryObj(): any {
+  const state: RootState = store.getState()
+  const query: any = {
+    skip: state.query.emailListPage * EMAIL_LIST_PAGE_LENGTH,
+    limit: EMAIL_LIST_PAGE_LENGTH,
+    sort: state.query.querySort,
+    order: state.query.queryOrder,
+  }
+  if (state.query.sent) query.sent = state.query.sent
+  if (state.query.timeSpan) query.timeSpan = state.query.timeSpan
+  if (state.query.from) query.from = state.query.from
+  if (state.query.to) query.to = state.query.to
+  if (state.query.subject) query.subject = state.query.subject
+  if (state.query.allText) query.allText = state.query.allText
+  if (state.query.body) query.body = state.query.body
+  return query
+}
+
+function encodeQuery() {
+  // encode query for URL
+  let queryString = ''
+  const query = makeQueryObj()
+
+  // // store this away for cache comparisons
+  // store.dispatch({
+  //   type: 'setReduxState',
+  //   key: 'cachedQuery',
+  //   value: query,
+  // })
+
+  // encode into URL friendly string
+  let params = ''
+  Object.keys(query).forEach((key) => {
+    if (
+      (typeof query[key] === 'string' && query[key]) ||
+      typeof query[key] === 'number'
+    ) {
+      params += '&' + key + '=' + encodeURIComponent(query[key])
+    }
+  })
+  queryString = 'email/?' + params.slice(1)
+  return queryString
+}
+
 // Aync actions
-export async function getEmailAsync() {
+export async function getEmailAsync(
+  invalidateCache: boolean = false,
+  append: boolean = false
+) {
   store.dispatch(setEmailLoading(true))
-  fetch(`${EMAIL_SERVER}/email`)
+  const query = `${EMAIL_SERVER}/${encodeQuery()}`
+  console.log(query)
+  fetch(query)
     .then((resp) => resp.json())
     .then((json) => {
       // TODO - cache

@@ -2,7 +2,7 @@ import {
   Action,
   configureStore,
   getDefaultMiddleware,
-  ThunkAction,
+  ThunkAction
 } from '@reduxjs/toolkit'
 import logger from 'redux-logger'
 import appSettingsReducer from './appSettingsSlice'
@@ -15,6 +15,8 @@ import wordCloudReducer from './wordCloudSlice'
 export * from './appSettingsSlice'
 export * from './contactsSlice'
 export * from './emailSentSlice'
+export * from './emailSlice'
+export * from './querySlice'
 export * from './wordCloudSlice'
 
 export type RootState = ReturnType<typeof store.getState>

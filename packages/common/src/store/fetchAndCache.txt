@@ -4,57 +4,8 @@ import { EMAIL_SERVER } from './constants'
 import { store } from './index'
 import { Email } from './types'
 
-function makeQueryObj(): any {
-  // const state: RootState = store.getState()
-  // const query: any = {
-  //   skip: state.emailListPage * EMAIL_LIST_PAGE_LENGTH,
-  //   limit: EMAIL_LIST_PAGE_LENGTH,
-  //   sort: state.querySort,
-  //   order: state.queryOrder,
-  // }
-  // if (state.sent) query.sent = state.sent
-  // if (state.timeSpan) query.timeSpan = state.timeSpan
-  // if (state.from) query.from = state.from
-  // if (state.to) query.to = state.to
-  // if (state.subject) query.subject = state.subject
-  // if (state.allText) query.allText = state.allText
-  // if (state.body) query.body = state.body
-  // return query
-  debugger
-  return {}
-}
 
-function encodeQuery(stat: string) {
-  // encode query for URL
-  let queryString = ''
-  if (stat === 'emails') {
-    // a query string with params
-    const query = makeQueryObj()
 
-    // store this away for cache comparisons
-    store.dispatch({
-      type: 'setReduxState',
-      key: 'cachedQuery',
-      value: query,
-    })
-
-    // encode into URL friendly string
-    let params = ''
-    Object.keys(query).forEach((key) => {
-      if (
-        (typeof query[key] === 'string' && query[key]) ||
-        typeof query[key] === 'number'
-      ) {
-        params += '&' + key + '=' + encodeURIComponent(query[key])
-      }
-    })
-    queryString = 'email/?' + params.slice(1)
-  } else {
-    // simply the name of the stat
-    queryString = stat
-  }
-  return queryString
-}
 
 function cacheValid(stat: string): boolean {
   // const state: RootState = store.getState()
