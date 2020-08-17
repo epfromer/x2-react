@@ -8,9 +8,6 @@ export default function AppSettingsView() {
       <Typography variant="h4" gutterBottom>
         Settings
       </Typography>
-      <Typography variant="h5" gutterBottom>
-        Enron Key Contacts
-      </Typography>
       <ContactSettings />
       <button hidden>saveSetting</button>
     </div>

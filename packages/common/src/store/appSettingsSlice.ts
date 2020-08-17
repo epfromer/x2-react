@@ -7,7 +7,6 @@ export interface AppSettingsState {
   orientation: string
 }
 const initialState: AppSettingsState = {
-  // app settings
   darkMode: false,
   orientation: 'portrait',
 }

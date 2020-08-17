@@ -6,7 +6,8 @@
     "start": "serve -s build",
     "serve": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --coverage --watchAll",
+    "test": "react-scripts test --coverage",
+    "test:watch": "react-scripts test --coverage --watchAll",
     "eject": "react-scripts eject"
   },
   "dependencies": {

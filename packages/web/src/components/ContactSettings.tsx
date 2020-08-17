@@ -1,3 +1,8 @@
+import {
+  getContactsAsync,
+  selectContacts,
+  selectContactsLoading,
+} from '@klonzo/common'
 import Button from '@material-ui/core/Button'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Paper from '@material-ui/core/Paper'
@@ -7,7 +12,6 @@ import TableCell from '@material-ui/core/TableCell'
 import TableContainer from '@material-ui/core/TableContainer'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
-import { fetchAndCache, RootState } from '@klonzo/common'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import ColorPickerDlg from './ColorPickerDlg'
@@ -16,10 +20,8 @@ export default function ContactSettings() {
   const [openColorPicker, setOpenColorPicker] = useState(false)
   const [pickedColor, setPickedColor] = useState('')
   const [contactId, setContactId] = useState('')
-  const contacts = useSelector((state: RootState) => state.contacts)
-  const contactsLoading = useSelector(
-    (state: RootState) => state.contactsLoading
-  )
+  const contactsLoading = useSelector(selectContactsLoading)
+  const contacts = useSelector(selectContacts)
 
   function handleColorChosen(color: string) {
     setOpenColorPicker(false)
@@ -31,8 +33,8 @@ export default function ContactSettings() {
       headers: { 'Content-type': 'application/json; charset=UTF-8' },
     }
     fetch(url, payload)
-      .then(() => fetchAndCache('contacts', true))
-      .catch((err) => console.log('fetch error', err))
+      .then(() => getContactsAsync())
+      .catch((error) => console.error('ContactSettings', error))
   }
 
   return (

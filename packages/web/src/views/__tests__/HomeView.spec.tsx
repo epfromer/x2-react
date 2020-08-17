@@ -4,7 +4,7 @@ import React from 'react'
 import { renderComp } from '../../setupTests'
 import HomeView from '../HomeView'
 
-test('renders', async () => {
+test('HomeView', async () => {
   const history = createMemoryHistory()
   const { getByText } = renderComp(<HomeView />, {}, history)
   const button = getByText(/Chord diagram of Enron/i)

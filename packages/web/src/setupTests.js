@@ -1,4 +1,4 @@
-import { mockStore } from '@klonzo/common'
+import { store } from '@klonzo/common'
 import '@testing-library/jest-dom/extend-expect'
 import { render } from '@testing-library/react'
 import { createMemoryHistory } from 'history'
@@ -16,13 +16,9 @@ export function renderComp(
   customStore = {},
   history = createMemoryHistory()
 ) {
-  const newStore = _.cloneDeep(mockStore)
-  _.merge(newStore, customStore)
-
-  const mock = configureStore([])(newStore)
   return render(
     <Router history={history}>
-      <Provider store={mock}>{comp}</Provider>
+      <Provider store={store}>{comp}</Provider>
     </Router>
   )
 }
