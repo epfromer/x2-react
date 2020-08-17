@@ -1,3 +1,23 @@
+import {
+  getEmailAsync,
+  selectAllText,
+  selectFrom,
+  selectQueryOrder,
+  selectQuerySort,
+  selectSent,
+  selectSubject,
+  selectTimeSpan,
+  selectTo,
+  setEmailListPage,
+  setQueryOrder,
+  setQuerySort,
+  setReduxState,
+  setAllText,
+  setSent,
+  setFrom,
+  setTo,
+  setSubject,
+} from '@klonzo/common'
 import IconButton from '@material-ui/core/IconButton'
 import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
@@ -5,11 +25,11 @@ import TableRow from '@material-ui/core/TableRow'
 import TableSortLabel from '@material-ui/core/TableSortLabel'
 import TextField from '@material-ui/core/TextField'
 import DateRangeIcon from '@material-ui/icons/DateRange'
-import { fetchAndCache, RootState, setReduxState } from '@klonzo/common'
 import debounce from 'lodash/debounce'
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import FilterDate from './FilterDate'
+import { ActionCreatorWithPayload } from '@reduxjs/toolkit'
 
 var moment = require('moment')
 
@@ -17,40 +37,46 @@ const DEBOUNCE_MS = 1000
 const FILTER_DATE = '2000-10-04'
 
 const EmailTableHead: React.FC = () => {
+  const dispatch = useDispatch()
   const [datePickerOpen, setDatePickerOpen] = useState(false)
-  const querySort = useSelector((state: RootState) => state.querySort)
-  const queryOrder = useSelector((state: RootState) => state.queryOrder)
-  const from = useSelector((state: RootState) => state.from)
-  const to = useSelector((state: RootState) => state.to)
-  const subject = useSelector((state: RootState) => state.subject)
-  const sent = useSelector((state: RootState) => state.sent)
-  const allText = useSelector((state: RootState) => state.allText)
-  const timeSpan = useSelector((state: RootState) => state.timeSpan)
+  const querySort = useSelector(selectQuerySort)
+  const queryOrder = useSelector(selectQueryOrder)
+  const from = useSelector(selectFrom)
+  const to = useSelector(selectTo)
+  const subject = useSelector(selectSubject)
+  const sent = useSelector(selectSent)
+  const allText = useSelector(selectAllText)
+  const timeSpan = useSelector(selectTimeSpan)
 
   const makeHeadCell = (
     label: string,
     field: string,
+    action: ActionCreatorWithPayload<string, string>,
     defaultValue: string,
     tabIndex: number
   ) => ({
     label,
     field,
+    action,
     defaultValue,
     tabIndex,
   })
 
   const headCells = [
-    makeHeadCell('Sent', 'sent', sent, 2),
-    makeHeadCell('From', 'from', from, 3),
-    makeHeadCell('To', 'to', to, 4),
-    makeHeadCell('Subject', 'subject', subject, 5),
+    makeHeadCell('Sent', 'sent', setSent, sent, 2),
+    makeHeadCell('From', 'from', setFrom, from, 3),
+    makeHeadCell('To', 'to', setTo, to, 4),
+    makeHeadCell('Subject', 'subject', setSubject, subject, 5),
   ]
 
-  const debouncedSearch = debounce((field: string, term: string) => {
-    setReduxState('emailListPage', 0)
-    setReduxState(field, term)
-    fetchAndCache('emails')
-  }, DEBOUNCE_MS)
+  const debouncedSearch = debounce(
+    (action: ActionCreatorWithPayload<string, string>, term: string) => {
+      dispatch(setEmailListPage(0))
+      dispatch(action(term))
+      getEmailAsync()
+    },
+    DEBOUNCE_MS
+  )
 
   return (
     <>
@@ -62,13 +88,13 @@ const EmailTableHead: React.FC = () => {
           setDatePickerOpen(false)
           setReduxState('sent', '')
           setReduxState('timeSpan', 0)
-          fetchAndCache('emails')
+          // fetchAndCache('emails')
         }}
         onClose={(date: string, span: number) => {
           setDatePickerOpen(false)
           setReduxState('sent', moment(date).format().slice(0, 10))
           setReduxState('timeSpan', span)
-          fetchAndCache('emails')
+          // fetchAndCache('emails')
         }}
       />
       <TableHead>
@@ -82,7 +108,7 @@ const EmailTableHead: React.FC = () => {
               tabIndex={1}
               defaultValue={allText}
               data-testid="all-text"
-              onChange={(e) => debouncedSearch('allText', e.target.value)}
+              onChange={(e) => debouncedSearch(setAllText, e.target.value)}
             />
           </TableCell>
         </TableRow>
@@ -104,7 +130,7 @@ const EmailTableHead: React.FC = () => {
                 variant="filled"
                 tabIndex={c.tabIndex}
                 defaultValue={c.defaultValue}
-                onChange={(e) => debouncedSearch(c.field, e.target.value)}
+                onChange={(e) => debouncedSearch(c.action, e.target.value)}
               />
             </TableCell>
           ))}
@@ -124,14 +150,14 @@ const EmailTableHead: React.FC = () => {
                     : 'asc'
                 }
                 onClick={() => {
-                  setReduxState('emailListPage', 0)
+                  dispatch(setEmailListPage(0))
                   if (querySort === c.field) {
-                    setReduxState('queryOrder', queryOrder === 1 ? -1 : 1)
+                    dispatch(setQueryOrder(queryOrder === 1 ? -1 : 1))
                   } else {
-                    setReduxState('queryOrder', 1)
+                    dispatch(setQueryOrder(1))
                   }
-                  setReduxState('querySort', c.field)
-                  fetchAndCache('emails')
+                  dispatch(setQuerySort(c.field))
+                  getEmailAsync()
                 }}
               >
                 {c.label}

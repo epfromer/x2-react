@@ -1,10 +1,17 @@
+import {
+  EMAIL_LIST_PAGE_LENGTH,
+  selectEmail,
+  selectEmailListPage,
+  selectEmailLoading,
+  selectEmailTotal,
+  setReduxState,
+} from '@klonzo/common'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Paper from '@material-ui/core/Paper'
 import { makeStyles } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
 import TableContainer from '@material-ui/core/TableContainer'
-import { fetchAndCache, RootState, setReduxState } from '@klonzo/common'
 import React, { useCallback, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import EmailTableHead from '../components/emaillist/EmailTableHead'
@@ -23,16 +30,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SearchView() {
   const classes = useStyles()
-  const emailsLoading = useSelector((state: RootState) => state.emailsLoading)
-  const emails = useSelector((state: RootState) => state.emails)
-  const totalEmails = useSelector((state: RootState) => state.totalEmails)
-  const emailListPage = useSelector((state: RootState) => state.emailListPage)
-  const emailListItemsPerPage = useSelector(
-    (state: RootState) => state.emailListItemsPerPage
-  )
+  const emailsLoading = useSelector(selectEmailLoading)
+  const emails = useSelector(selectEmail)
+  const totalEmails = useSelector(selectEmailTotal)
+  const emailListPage = useSelector(selectEmailListPage)
 
   const hasMore = () =>
-    (emailListPage + 1) * emailListItemsPerPage < totalEmails
+    (emailListPage + 1) * EMAIL_LIST_PAGE_LENGTH < totalEmails
 
   const observer: any = useRef()
   const lastRowRef = useCallback(
@@ -42,7 +46,7 @@ export default function SearchView() {
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && hasMore()) {
           setReduxState('emailListPage', emailListPage + 1)
-          fetchAndCache('emails', false, true)
+          // TODO fetchAndCache('emails', false, true)
         }
       })
       if (node) observer.current.observe(node)

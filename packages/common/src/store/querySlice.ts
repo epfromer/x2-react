@@ -111,14 +111,3 @@ export const selectAllText = (state: RootState) => state.query.allText
 export const selectBody = (state: RootState) => state.query.body
 export const selectEmailListPage = (state: RootState) =>
   state.query.emailListPage
-
-// Aync actions
-export async function queryAsync() {
-  // TODO
-  // store.dispatch(setQueryLoading(true))
-  // fetch(`${EMAIL_SERVER}/query`)
-  //   .then((resp) => resp.json())
-  //   .then((json) => store.dispatch(setQuery(json)))
-  //   .then(() => store.dispatch(setQueryLoading(false)))
-  //   .catch((error) => console.error('getQueryAsync: ', error))
-}

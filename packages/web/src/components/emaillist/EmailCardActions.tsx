@@ -10,6 +10,7 @@ import {
   getNextEmail,
   getPreviousEmail,
   RootState,
+  selectEmail,
 } from '@klonzo/common'
 import React from 'react'
 import { useSelector } from 'react-redux'
@@ -21,7 +22,7 @@ interface Props {
 
 export default function EmailCardActions({ id }: Props) {
   const history = useHistory()
-  const totalEmails = useSelector((state: RootState) => state.emails?.length)
+  const totalEmails = useSelector(selectEmail)?.length
   const emailIndex = useSelector((state: RootState) => getEmailIndex(state, id))
   const previousEmailId = useSelector((state: RootState) => {
     const email = getPreviousEmail(state, id)

@@ -1,4 +1,5 @@
-// images
+export * from './ECharts/index'
+export * from './Highcharts/index'
 export {
   BARCHART,
   CHORD,
@@ -12,14 +13,8 @@ export {
   VOLUMETIMELINE,
   WORDCLOUD,
 } from './img/index'
-
-// Redux store
-export * from './store/index'
 export * from './store/actions'
 export * from './store/constants'
-export * from './store/types'
+export * from './store/index'
 export * from './store/selectors'
-
-// Chart configs
-export * from './ECharts/index'
-export * from './Highcharts/index'
+export * from './store/types'

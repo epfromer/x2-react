@@ -1,10 +1,5 @@
-import {
-  Action,
-  configureStore,
-  getDefaultMiddleware,
-  ThunkAction
-} from '@reduxjs/toolkit'
-import logger from 'redux-logger'
+import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit'
+// import logger from 'redux-logger'
 import appSettingsReducer from './appSettingsSlice'
 import contactsReducer from './contactsSlice'
 import emailSentReducer from './emailSentSlice'
@@ -27,7 +22,7 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   Action<string>
 >
 
-const middleware = [...getDefaultMiddleware(), logger]
+// const middleware = [...getDefaultMiddleware(), logger]
 
 export const store = configureStore({
   reducer: {
@@ -38,5 +33,5 @@ export const store = configureStore({
     query: queryReducer,
     wordCloud: wordCloudReducer,
   },
-  middleware,
+  // middleware,
 })
