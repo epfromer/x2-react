@@ -46,6 +46,7 @@ export default function EmailCardActions({ id }: Props) {
             <span>
               <IconButton
                 aria-label="previous email"
+                data-testid="previous-email"
                 disabled={!previousEmailId}
                 onClick={() =>
                   history.push(`/EmailDetailView/${previousEmailId}`)
@@ -59,6 +60,7 @@ export default function EmailCardActions({ id }: Props) {
             <span>
               <IconButton
                 aria-label="next email"
+                data-testid="next-email"
                 disabled={!nextEmailId}
                 onClick={() => history.push(`/EmailDetailView/${nextEmailId}`)}
               >

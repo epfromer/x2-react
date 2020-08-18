@@ -119,7 +119,7 @@ function encodeQuery() {
 // Aync actions
 export async function getEmailAsync(append: boolean = false) {
   const query = `${EMAIL_SERVER}/${encodeQuery()}`
-  console.log(query)
+  // console.log(query)
   store.dispatch(setEmailLoading(true))
   fetch(query)
     .then((resp) => resp.json())
