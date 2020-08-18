@@ -6,7 +6,7 @@ import PolarView from '../PolarView'
 
 test('renders', async () => {
   const history = createMemoryHistory()
-  const { getByText } = renderComp(<PolarView />, {}, history)
+  const { getByText } = renderComp(<PolarView />, history)
   const button = getByText(/handleClick/i)
   await fireEvent.click(button)
   expect(history.location.pathname).toMatch('/SearchView')

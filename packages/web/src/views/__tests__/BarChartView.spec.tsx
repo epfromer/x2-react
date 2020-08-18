@@ -6,7 +6,7 @@ import BarView from '../BarView'
 
 test('handleClick', async () => {
   const history = createMemoryHistory()
-  const { getByText } = renderComp(<BarView />, {}, history)
+  const { getByText } = renderComp(<BarView />, history)
   const button = getByText(/handleClick/i)
   await fireEvent.click(button)
   expect(history.location.pathname).toMatch('/SearchView')

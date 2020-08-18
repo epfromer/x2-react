@@ -6,7 +6,7 @@ import TreeMapView from '../TreeMapView'
 
 test('renders', async () => {
   const history = createMemoryHistory()
-  const { getByText } = renderComp(<TreeMapView />, {}, history)
+  const { getByText } = renderComp(<TreeMapView />, history)
   const button = getByText(/handleClickTreeMap/i)
   await fireEvent.click(button)
   expect(history.location.pathname).toMatch('/SearchView')

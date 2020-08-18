@@ -6,7 +6,7 @@ import WordCloudView from '../WordCloudView'
 
 test('handleClick', async () => {
   const history = createMemoryHistory()
-  const { getByText } = renderComp(<WordCloudView />, {}, history)
+  const { getByText } = renderComp(<WordCloudView />, history)
   const button = getByText(/handleClick/i)
   await fireEvent.click(button)
   expect(history.location.pathname).toMatch('/SearchView')

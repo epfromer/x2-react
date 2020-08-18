@@ -11,10 +11,26 @@ test('toggle vertical', async () => {
   expect(button).toBeInTheDocument()
 })
 
-test('handleClick', async () => {
+test('toFoo', async () => {
   const history = createMemoryHistory()
-  const { getByText } = renderComp(<EventTimelineView />, {}, history)
-  const button = getByText(/handleClick/i)
+  const { getByText } = renderComp(<EventTimelineView />, history)
+  const button = getByText(/toFoo/i)
   await fireEvent.click(button)
-  expect(button).toBeInTheDocument()
+  expect(history.location.pathname).toMatch('/')
+})
+
+test('fromFoo', async () => {
+  const history = createMemoryHistory()
+  const { getByText } = renderComp(<EventTimelineView />, history)
+  const button = getByText(/fromFoo/i)
+  await fireEvent.click(button)
+  expect(history.location.pathname).toMatch('/')
+})
+
+test('allTextFoo', async () => {
+  const history = createMemoryHistory()
+  const { getByText } = renderComp(<EventTimelineView />, history)
+  const button = getByText(/allTextFoo/i)
+  await fireEvent.click(button)
+  expect(history.location.pathname).toMatch('/')
 })

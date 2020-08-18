@@ -9,7 +9,6 @@ test('renders', async () => {
   const history = createMemoryHistory()
   const { getByText } = renderComp(
     <AppDrawer open={true} setOpen={setOpen} />,
-    {},
     history
   )
   const button = getByText(/Word Cloud/i)
