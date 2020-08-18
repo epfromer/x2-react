@@ -1,38 +1,13 @@
 {
-  "exclude": ["node_modules", "dist", "lib", "__tests__", "**/*.test*", "**/*.spec*"],
-  "files":  [],
+  "extends": "./tsconfig.build.json",
+
   "compilerOptions": {
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
-    "declaration": true,
-    "declarationMap": true,
-    "downlevelIteration": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
+    "paths": {
+      "@klonzo/*": ["packages/*/src"]
+    },
     "jsx": "react",
-    "lib": ["dom", "esnext"],
-    "module": "esnext",
-    "moduleResolution": "node",
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitReturns": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": false,
-    "outDir": "lib",
-    "paths": {"@klonzo/*": ["packages/*/src"]},
-    "removeComments": false,
-    "resolveJsonModule": true,
-    "rootDir": ".",
-    "skipLibCheck": true,
-    "sourceMap": true,
-    "strict": true,
-    "target": "esnext",
-    "typeRoots": ["./node_modules/@types"]
-  },
-  "references": [
-    { "path": "packages/common" },
-    { "path": "packages/expo" },
-    { "path": "packages/web" }
-  ]
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  }
 }

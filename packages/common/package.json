@@ -3,20 +3,20 @@
   "version": "0.0.1",
   "private": true,
   "description": "Shared components for x2-React",
-  "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "prebuild": "rimraf lib",
-    "build": "tsc",
-    "watch": "tsc -w",
-    "postbuild": "copyfiles -u 1 src/img/*.png lib"
+    "prebuild": "rimraf -rf ./dist",
+    "build": "tsc -p tsconfig.build.json",
+    "postbuild": "copyfiles -u 1 src/img/*.png dist",
+    "test": "yarn run build"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.11.0",
     "@reduxjs/toolkit": "^1.4.0",
     "@types/redux-logger": "^3.0.8",
-    "lodash": "^4.17.19",
-    "react": "~16.11.0",
+    "react": "~16.13.1",
+    "react-redux": "^7.2.1",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6"
   },
@@ -28,10 +28,11 @@
     "eslint-config-react-app": "^5.2.1",
     "eslint-plugin-flowtype": "^5.2.0",
     "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.5",
     "eslint-plugin-react-hooks": "^4.0.8",
+    "prettier": "^2.0.5",
+    "prop-types": "^15.7.2",
     "rimraf": "^3.0.2",
     "typescript": "^3.9.7"
   },
