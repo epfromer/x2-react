@@ -50,8 +50,11 @@ export default function WordCloudView() {
           />
         </div>
       )}
-      <button hidden onClick={() => handleClick('foo')} data-testid="handle-click">
-      </button>
+      <button
+        hidden
+        onClick={() => handleClick('foo')}
+        data-testid="handle-click"
+      ></button>
     </div>
   )
 }

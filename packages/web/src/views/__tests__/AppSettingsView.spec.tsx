@@ -1,4 +1,3 @@
-import { fireEvent } from '@testing-library/react'
 import React from 'react'
 import { renderComp } from '../../setupTests'
 import AppSettingsView from '../AppSettingsView'

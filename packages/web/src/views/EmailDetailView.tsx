@@ -109,8 +109,11 @@ export default function EmailDetailView() {
           <EmailCardActions id={id} />
         </>
       )}
-      <button hidden onClick={() => displayText('foo foobar bar')} data-testid="handle-click">
-      </button>
+      <button
+        hidden
+        onClick={() => displayText('foo foobar bar')}
+        data-testid="handle-click"
+      ></button>
     </Card>
   )
 }

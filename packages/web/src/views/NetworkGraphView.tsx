@@ -50,8 +50,11 @@ export default function NetworkGraphView() {
           />
         </div>
       )}
-      <button hidden onClick={() => handleClick('foo', 'bar')} data-testid="handle-click">
-      </button>
+      <button
+        hidden
+        onClick={() => handleClick('foo', 'bar')}
+        data-testid="handle-click"
+      ></button>
     </div>
   )
 }

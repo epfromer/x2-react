@@ -121,8 +121,11 @@ export default function PolarView() {
           </Grid>
         </Grid>
       )}
-      <button hidden onClick={() => handleClick('foo', 'bar')} data-testid="handle-click">
-      </button>
+      <button
+        hidden
+        onClick={() => handleClick('foo', 'bar')}
+        data-testid="handle-click"
+      ></button>
     </div>
   )
 }
