@@ -22,17 +22,24 @@ export default function VolumeTimelineECharts({
   data,
   handleClick,
 }: Props) {
+  const onClick = (e: any) => handleClick(e.name)
+
   return (
-    <ReactEcharts
-      style={{ height: chartHeight, width: chartWidth }}
-      onEvents={{
-        click: (e: any) => handleClick(e.name),
-      }}
-      option={getVolumeTimelineEChartsConfig(
-        useSelector(selectDarkMode),
-        title,
-        data
-      )}
-    />
+    <div>
+      <ReactEcharts
+        style={{ height: chartHeight, width: chartWidth }}
+        onEvents={{ click: onClick }}
+        option={getVolumeTimelineEChartsConfig(
+          useSelector(selectDarkMode),
+          title,
+          data
+        )}
+      />
+      <button
+        hidden
+        onClick={onClick}
+        data-testid="volume-timeline-echarts"
+      ></button>
+    </div>
   )
 }

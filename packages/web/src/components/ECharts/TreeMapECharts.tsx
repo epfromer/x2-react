@@ -19,18 +19,20 @@ export default function TreeMapECharts({
   data,
   handleClick,
 }: Props) {
+  const onClick = (e: any) => handleClick(search, e.name)
+
   return (
-    <ReactEcharts
-      style={{ height: chartHeight }}
-      onEvents={{
-        click: (e: any) => {
-          // navigate on click to breadcrumb, not map
-          // TODO - how to determine breadcrumb click?
-          if (e.hasOwnProperty('data')) return
-          if (e.nodeData.name) handleClick(search, e.nodeData.name)
-        },
-      }}
-      option={getTreeMapEChartsConfig(useSelector(selectDarkMode), title, data)}
-    />
+    <div>
+      <ReactEcharts
+        style={{ height: chartHeight }}
+        onEvents={{ click: onClick }}
+        option={getTreeMapEChartsConfig(
+          useSelector(selectDarkMode),
+          title,
+          data
+        )}
+      />
+      <button hidden onClick={onClick} data-testid="tree-map-echarts"></button>
+    </div>
   )
 }

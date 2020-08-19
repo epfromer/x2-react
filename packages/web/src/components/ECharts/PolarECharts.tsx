@@ -24,13 +24,16 @@ export default function PolarECharts({
   data,
   handleClick,
 }: Props) {
+  const onClick = (e: any) => handleClick(search, e.name)
+
   return (
-    <ReactEcharts
-      style={{ height: chartHeight, width: chartWidth }}
-      onEvents={{
-        click: (e: any) => handleClick(search, e.data.name),
-      }}
-      option={getPolarEChartsConfig(useSelector(selectDarkMode), title, data)}
-    />
+    <div>
+      <ReactEcharts
+        style={{ height: chartHeight, width: chartWidth }}
+        onEvents={{ click: onClick }}
+        option={getPolarEChartsConfig(useSelector(selectDarkMode), title, data)}
+      />
+      <button hidden onClick={onClick} data-testid="polar-echarts"></button>
+    </div>
   )
 }

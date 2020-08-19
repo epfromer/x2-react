@@ -24,9 +24,6 @@ export default function NetworkGraphECharts({
     <div>
       <ReactEcharts
         style={{ height: chartHeight, width: chartWidth }}
-        onEvents={{
-          click: (e: any) => handleClick(e.data.target, e.data.source),
-        }}
         option={getNetworkGraphEChartsConfig(
           useSelector(selectDarkMode),
           title,
@@ -34,6 +31,7 @@ export default function NetworkGraphECharts({
           nodes
         )}
       />
+      <button hidden data-testid="network-graph-echarts"></button>
     </div>
   )
 }
