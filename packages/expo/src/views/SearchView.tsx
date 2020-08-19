@@ -1,9 +1,23 @@
 import {
   EMAIL_LIST_PAGE_LENGTH,
-  fetchAndCache,
+  getEmailAsync,
   MAX_FROM_LENGTH,
-  RootState,
-  setReduxState,
+  selectAllText,
+  selectDarkMode,
+  selectEmail,
+  selectEmailListPage,
+  selectEmailLoading,
+  selectEmailTotal,
+  selectFrom,
+  selectSent,
+  selectSubject,
+  selectTo,
+  setAllText,
+  setEmailListPage,
+  setFrom,
+  setSent,
+  setSubject,
+  setTo,
 } from '@klonzo/common'
 import React, { useState } from 'react'
 import {
@@ -18,7 +32,7 @@ import { Button, Icon, Input } from 'react-native-elements'
 import Spinner from 'react-native-loading-spinner-overlay'
 import Modal from 'react-native-modal'
 import DateTimePickerModal from 'react-native-modal-datetime-picker'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 var moment = require('moment')
 
 // TODO - VirtualizedList: You have a large list that is slow to update - make sure your renderItem function renders components that follow React performance best practices like PureComponent, shouldComponentUpdate, etc. {"contentLength": 3030, "dt": 1195, "prevDt": 5812}
@@ -30,17 +44,18 @@ interface Props {
   navigation: any
 }
 export default function SearchView({ navigation }: Props) {
-  const darkMode = useSelector((state: RootState) => state.darkMode)
-  const allText = useSelector((state: RootState) => state.allText)
-  const from = useSelector((state: RootState) => state.from)
-  const to = useSelector((state: RootState) => state.to)
-  const subject = useSelector((state: RootState) => state.subject)
-  const sent = useSelector((state: RootState) => state.sent)
+  const dispatch = useDispatch()
+  const darkMode = useSelector(selectDarkMode)
+  const allText = useSelector(selectAllText)
+  const from = useSelector(selectFrom)
+  const to = useSelector(selectTo)
+  const subject = useSelector(selectSubject)
+  const sent = useSelector(selectSent)
   const [dlgOpen, setDlgOpen] = useState(false)
-  const emails = useSelector((state: RootState) => state.emails)
-  const totalEmails = useSelector((state: RootState) => state.totalEmails)
-  const emailListPage = useSelector((state: RootState) => state.emailListPage)
-  const emailsLoading = useSelector((state: RootState) => state.emailsLoading)
+  const emailsLoading = useSelector(selectEmailLoading)
+  const emails = useSelector(selectEmail)
+  const totalEmails = useSelector(selectEmailTotal)
+  const emailListPage = useSelector(selectEmailListPage)
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -101,12 +116,12 @@ export default function SearchView({ navigation }: Props) {
     const [datePickerOpen, setDatePickerOpen] = useState(false)
 
     const doQuery = () => {
-      if (newAllText !== allText) setReduxState('allText', newAllText)
-      if (newFrom !== from) setReduxState('from', newFrom)
-      if (newTo !== to) setReduxState('to', newTo)
-      if (newSubject !== subject) setReduxState('subject', newSubject)
-      if (newSent !== sent) setReduxState('sent', newSent)
-      fetchAndCache('emails')
+      if (newAllText !== allText) dispatch(setAllText(newAllText))
+      if (newFrom !== from) dispatch(setFrom(newFrom))
+      if (newTo !== to) dispatch(setTo(newTo))
+      if (newSubject !== subject) dispatch(setSubject(newSubject))
+      if (newSent !== sent) dispatch(setSent(newSent))
+      getEmailAsync()
       setDlgOpen(false)
     }
 
@@ -282,8 +297,8 @@ export default function SearchView({ navigation }: Props) {
 
   const handleLoadMore = () => {
     if (hasMore()) {
-      setReduxState('emailListPage', emailListPage + 1)
-      fetchAndCache('emails', false, true)
+      dispatch(setEmailListPage(emailListPage + 1))
+      getEmailAsync(true)
     }
   }
 
