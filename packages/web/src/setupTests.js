@@ -7,6 +7,7 @@ import {
   setFrom,
   setSubject,
   setTo,
+  setWordCloud,
   store,
 } from '@klonzo/common'
 import '@testing-library/jest-dom/extend-expect'
@@ -76,6 +77,19 @@ const contacts = [
   },
 ]
 store.dispatch(setContacts(contacts))
+const wordCloud = [
+  {
+    _id: '5f1301b1ab4d2f1a58ee5d90',
+    tag: 'avici',
+    weight: 29,
+  },
+  {
+    _id: '5f1301b1ab4d2f1a58ee5d91',
+    tag: 'azurix',
+    weight: 490,
+  },
+]
+store.dispatch(setWordCloud(wordCloud))
 const emailSent = [
   {
     _id: '5f1301b1ab4d2f1a58ee5d21',

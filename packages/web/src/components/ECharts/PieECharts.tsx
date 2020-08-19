@@ -24,13 +24,16 @@ export default function PieECharts({
   data,
   handleClick,
 }: Props) {
+  const onClick = (e: any) => handleClick(search, e.name)
+
   return (
-    <ReactEcharts
-      style={{ height: chartHeight }}
-      onEvents={{
-        click: (e: any) => handleClick(search, e.data.name),
-      }}
-      option={getPieEChartsConfig(useSelector(selectDarkMode), title, data)}
-    />
+    <div>
+      <ReactEcharts
+        style={{ height: chartHeight }}
+        onEvents={{ click: onClick }}
+        option={getPieEChartsConfig(useSelector(selectDarkMode), title, data)}
+      />
+      <button hidden onClick={onClick} data-testid="pie-echarts"></button>
+    </div>
   )
 }

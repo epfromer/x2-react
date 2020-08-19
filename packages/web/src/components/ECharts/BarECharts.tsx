@@ -24,18 +24,21 @@ export default function BarECharts({
   data,
   handleClick,
 }: Props) {
+  const onClick = (e: any) => handleClick(search, e.name)
+
   return (
-    <ReactEcharts
-      style={{ height: chartHeight, width: chartWidth }}
-      onEvents={{
-        click: (e: any) => handleClick(search, e.name),
-      }}
-      option={getBarEChartsConfig(
-        useSelector(selectDarkMode),
-        title,
-        data.map((datum) => datum).reverse(),
-        {}
-      )}
-    />
+    <div>
+      <ReactEcharts
+        style={{ height: chartHeight, width: chartWidth }}
+        onEvents={{ click: onClick }}
+        option={getBarEChartsConfig(
+          useSelector(selectDarkMode),
+          title,
+          data.map((datum) => datum).reverse(),
+          {}
+        )}
+      />
+      <button hidden onClick={onClick} data-testid="bar-echarts"></button>
+    </div>
   )
 }
