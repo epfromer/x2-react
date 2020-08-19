@@ -1,12 +1,13 @@
 import {
   setAllText,
   setBody,
+  setContacts,
   setEmail,
+  setEmailSent,
   setFrom,
   setSubject,
   setTo,
   store,
-  setContacts,
 } from '@klonzo/common'
 import '@testing-library/jest-dom/extend-expect'
 import { render } from '@testing-library/react'
@@ -75,6 +76,22 @@ const contacts = [
   },
 ]
 store.dispatch(setContacts(contacts))
+const emailSent = [
+  {
+    _id: '5f1301b1ab4d2f1a58ee5d21',
+    sent: '1999-01-06',
+    ids: ['5f3ca4f5-d3fb-48dd-b2e8-e0dbaab4753f'],
+  },
+  {
+    _id: '5f1301b1ab4d2f1a58ee5d23',
+    sent: '1999-01-08',
+    ids: [
+      'bb15e4d9-9f28-4bcc-8cdf-9694033e8e59',
+      '2bb04817-3737-46f3-ad9a-3c7cb5af2e35',
+    ],
+  },
+]
+store.dispatch(setEmailSent(emailSent))
 const email = [
   {
     _id: '5f12fbcdab4d2f1a58edd105',
