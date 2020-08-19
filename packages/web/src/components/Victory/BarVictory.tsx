@@ -13,7 +13,6 @@ interface Props {
   data: Array<EmailXferedDatum>
   handleClick: (key: string, value: string) => void
 }
-
 export default function BarVictory({
   title,
   search,
@@ -21,6 +20,14 @@ export default function BarVictory({
   handleClick,
 }: Props) {
   const darkMode = useSelector(selectDarkMode)
+
+  const onClick = () => {
+    return [
+      {
+        mutation: (props: any) => handleClick(search, props.datum.xName),
+      },
+    ]
+  }
 
   return (
     <div>
@@ -63,16 +70,7 @@ export default function BarVictory({
             {
               target: 'data',
               eventHandlers: {
-                onClick: () => {
-                  return [
-                    {
-                      mutation: (props: any) => {
-                        handleClick(search, props.datum.xName)
-                        return null
-                      },
-                    },
-                  ]
-                },
+                onClick,
               },
             },
           ]}
@@ -87,6 +85,7 @@ export default function BarVictory({
           }}
         />
       </VictoryChart>
+      <button hidden onClick={onClick} data-testid="bar-victory"></button>
     </div>
   )
 }

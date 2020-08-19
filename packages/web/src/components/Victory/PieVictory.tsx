@@ -13,7 +13,6 @@ interface Props {
   data: Array<EmailXferedDatum>
   handleClick: (field: string, name: string) => void
 }
-
 export default function PieVictory({
   title,
   search,
@@ -21,6 +20,14 @@ export default function PieVictory({
   handleClick,
 }: Props) {
   const darkMode = useSelector(selectDarkMode)
+
+  const onClick = () => {
+    return [
+      {
+        mutation: (props: any) => handleClick(search, props.datum.xName),
+      },
+    ]
+  }
 
   return (
     <div>
@@ -43,20 +50,12 @@ export default function PieVictory({
           {
             target: 'data',
             eventHandlers: {
-              onClick: () => {
-                return [
-                  {
-                    mutation: (props: any) => {
-                      handleClick(search, props.datum.xName)
-                      return null
-                    },
-                  },
-                ]
-              },
+              onClick,
             },
           },
         ]}
       />
+      <button hidden onClick={onClick} data-testid="pie-victory"></button>
     </div>
   )
 }

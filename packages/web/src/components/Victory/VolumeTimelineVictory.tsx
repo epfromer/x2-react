@@ -18,7 +18,6 @@ interface Props {
   data: Array<TotalEmailSentDatum>
   handleClick: (date: string) => void
 }
-
 export default function VolumeTimelineVictory({
   title,
   data,
@@ -29,9 +28,7 @@ export default function VolumeTimelineVictory({
     x: [new Date(1999, 1, 1), new Date(2002, 3, 1)],
   })
 
-  function handleZoom(domain: any) {
-    setZoomDomain(domain)
-  }
+  const handleZoom = (domain: any) => setZoomDomain(domain)
 
   interface Datum {
     sent: number
@@ -41,6 +38,14 @@ export default function VolumeTimelineVictory({
     sent: new Date(datum.sent).getTime(),
     value: datum.value,
   }))
+
+  const onClick = () => {
+    return [
+      {
+        mutation: (props: any) => handleClick(props.datum.xName),
+      },
+    ]
+  }
 
   return (
     <div>
@@ -92,17 +97,7 @@ export default function VolumeTimelineVictory({
             {
               target: 'data',
               eventHandlers: {
-                onClick: () => {
-                  return [
-                    {
-                      mutation: (props: any) => {
-                        // TODO - no datum prop - bug
-                        // handleClick(search, props.datum.xName)
-                        return null
-                      },
-                    },
-                  ]
-                },
+                onClick,
               },
             },
           ]}
@@ -147,6 +142,11 @@ export default function VolumeTimelineVictory({
           y="value"
         />
       </VictoryChart>
+      <button
+        hidden
+        onClick={onClick}
+        data-testid="volume-timeline-victory"
+      ></button>
     </div>
   )
 }
