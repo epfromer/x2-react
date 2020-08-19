@@ -14,7 +14,6 @@ interface Props {
   span: number
   open: boolean
 }
-
 export default function FilterDate({
   onClose,
   onClear,
