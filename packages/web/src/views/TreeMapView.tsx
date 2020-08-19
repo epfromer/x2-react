@@ -81,8 +81,7 @@ export default function TreeMapView() {
           </Grid>
         </Grid>
       )}
-      <button hidden onClick={() => handleClick('foo', 'bar')}>
-        handleClickTreeMap
+      <button hidden onClick={() => handleClick('foo', 'bar')} data-testid="handle-click">
       </button>
     </div>
   )

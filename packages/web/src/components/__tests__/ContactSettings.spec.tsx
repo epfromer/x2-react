@@ -3,11 +3,10 @@ import React from 'react'
 import { renderComp } from '../../setupTests'
 import ContactSettings from '../ContactSettings'
 
-// TODO
-// test('handleClick', async () => {
-//   const { getByText, getByTestId } = renderComp(<ContactSettings />)
-//   const row = getByTestId('5ec916d6fef4030598a9c838')
-//   await fireEvent.click(row)
-//   const button = getByText('handleColorChosen')
-//   await fireEvent.click(button)
-// })
+test('handleClick', async () => {
+  const { getByTestId } = renderComp(<ContactSettings />)
+  const row = getByTestId('5f1301b1ab4d2f1a58ee5999')
+  await fireEvent.click(row)
+  const button = getByTestId('handle-click')
+  await fireEvent.click(button)
+})

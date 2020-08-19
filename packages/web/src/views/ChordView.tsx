@@ -50,8 +50,7 @@ export default function ChordView() {
           />
         </div>
       )}
-      <button hidden onClick={() => handleClick('foo', 'bar')}>
-        handleClick
+      <button hidden onClick={() => handleClick('foo', 'bar')} data-testid="handle-click">
       </button>
     </div>
   )

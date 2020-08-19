@@ -83,8 +83,7 @@ export default function ContactSettings() {
           </TableBody>
         </Table>
       </TableContainer>
-      <button hidden onClick={() => handleColorChosen('red')}>
-        handleColorChosen
+      <button hidden onClick={() => handleColorChosen('red')} data-testid="handle-click">
       </button>
     </>
   )

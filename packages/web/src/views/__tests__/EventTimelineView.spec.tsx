@@ -13,24 +13,24 @@ test('toggle vertical', async () => {
 
 test('toFoo', async () => {
   const history = createMemoryHistory()
-  const { getByText } = renderComp(<EventTimelineView />, history)
-  const button = getByText(/toFoo/i)
+  const { getByTestId } = renderComp(<EventTimelineView />, history)
+  const button = getByTestId('to-foo')
   await fireEvent.click(button)
   expect(history.location.pathname).toMatch('/')
 })
 
 test('fromFoo', async () => {
   const history = createMemoryHistory()
-  const { getByText } = renderComp(<EventTimelineView />, history)
-  const button = getByText(/fromFoo/i)
+  const { getByTestId } = renderComp(<EventTimelineView />, history)
+  const button = getByTestId('from-foo')
   await fireEvent.click(button)
   expect(history.location.pathname).toMatch('/')
 })
 
 test('allTextFoo', async () => {
   const history = createMemoryHistory()
-  const { getByText } = renderComp(<EventTimelineView />, history)
-  const button = getByText(/allTextFoo/i)
+  const { getByTestId } = renderComp(<EventTimelineView />, history)
+  const button = getByTestId('all-text-foo')
   await fireEvent.click(button)
   expect(history.location.pathname).toMatch('/')
 })

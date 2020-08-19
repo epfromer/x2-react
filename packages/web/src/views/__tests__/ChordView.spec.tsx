@@ -6,8 +6,8 @@ import ChordView from '../ChordView'
 
 test('handleClick', async () => {
   const history = createMemoryHistory()
-  const { getByText } = renderComp(<ChordView />, history)
-  const button = getByText(/handleClick/i)
+  const { getByTestId } = renderComp(<ChordView />, history)
+  const button = getByTestId('handle-click')
   await fireEvent.click(button)
   expect(history.location.pathname).toMatch('/SearchView')
 })

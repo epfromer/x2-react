@@ -6,16 +6,16 @@ import EmailDetailView from '../EmailDetailView'
 
 test('displayText', async () => {
   const history = createMemoryHistory()
-  const { getByText } = renderComp(<EmailDetailView />, history)
-  const button = getByText(/displayText/i)
+  const { getByTestId } = renderComp(<EmailDetailView />, history)
+  const button = getByTestId('handle-click')
   await fireEvent.click(button)
   expect(history.location.pathname).toMatch('/')
 })
 
 test('highlighted terms', async () => {
   const history = createMemoryHistory()
-  const { getByText } = renderComp(<EmailDetailView />, history)
-  const button = getByText(/displayText/i)
+  const { getByTestId } = renderComp(<EmailDetailView />, history)
+  const button = getByTestId('handle-click')
   await fireEvent.click(button)
   expect(history.location.pathname).toMatch('/')
 })

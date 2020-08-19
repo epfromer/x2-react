@@ -9,7 +9,7 @@ export default function AppSettingsView() {
         Settings
       </Typography>
       <ContactSettings />
-      <button hidden>saveSetting</button>
+      <button hidden data-testid="save-setting"></button>
     </div>
   )
 }

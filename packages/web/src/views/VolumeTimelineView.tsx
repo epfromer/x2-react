@@ -68,8 +68,7 @@ export default function TimelineView() {
           />
         </div>
       )}
-      <button hidden onClick={() => handleClick('foo')}>
-        handleClick
+      <button hidden onClick={() => handleClick('foo')} data-testid="handle-click">
       </button>
     </div>
   )

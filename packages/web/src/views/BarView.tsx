@@ -96,8 +96,7 @@ export default function BarView() {
           />
         </div>
       )}
-      <button hidden onClick={() => handleClick('foo', 'to')}>
-        handleClick
+      <button hidden onClick={() => handleClick('foo', 'to')} data-testid="handle-click">
       </button>
     </div>
   )
