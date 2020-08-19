@@ -1,4 +1,4 @@
-import { EmailXferedDatum, RootState } from '@klonzo/common'
+import { EmailXferedDatum, selectDarkMode } from '@klonzo/common'
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { useSelector } from 'react-redux'
@@ -15,7 +15,7 @@ interface Props {
 }
 
 export default function BarVictory({ search, data, handleClick }: Props) {
-  const darkMode = useSelector((state: RootState) => state.darkMode)
+  const darkMode = useSelector(selectDarkMode)
   const [orientation, setOrientation] = useState('portrait')
 
   interface Datum {

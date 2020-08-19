@@ -1,4 +1,4 @@
-import { EmailXferedDatum, RootState } from '@klonzo/common'
+import { EmailXferedDatum, selectDarkMode } from '@klonzo/common'
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import { useSelector } from 'react-redux'
@@ -19,7 +19,7 @@ interface Props {
 }
 
 export default function PolarVictory({ search, data, handleClick }: Props) {
-  const darkMode = useSelector((state: RootState) => state.darkMode)
+  const darkMode = useSelector(selectDarkMode)
 
   interface Datum {
     x: string

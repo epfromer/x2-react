@@ -1,10 +1,10 @@
 import {
   Contact,
   EMAIL_SERVER,
-  fetchAndCache,
-  RootState,
-  saveAppSettings,
-  setReduxState,
+  getContactsAsync,
+  selectContacts,
+  selectContactsLoading,
+  selectDarkMode,
 } from '@klonzo/common'
 import React, { useState } from 'react'
 import {
@@ -21,14 +21,12 @@ import { useSelector } from 'react-redux'
 import ColorPickerDlg from '../components/ColorPickerDlg'
 
 export default function AppSettingsView() {
-  const darkMode = useSelector((state: RootState) => state.darkMode)
+  const darkMode = useSelector(selectDarkMode)
   const [colorPickerDefault, setColorPickerDefault] = useState('')
   const [colorPickerItem, setColorPickerItem] = useState('')
   const [colorPickerDlgOpen, setColorPickerDlgOpen] = useState(false)
-  const contacts = useSelector((state: RootState) => state.contacts)
-  const contactsLoading = useSelector(
-    (state: RootState) => state.contactsLoading
-  )
+  const contactsLoading = useSelector(selectContactsLoading)
+  const contacts = useSelector(selectContacts)
 
   const styles = StyleSheet.create({
     container: {
@@ -74,8 +72,8 @@ export default function AppSettingsView() {
       headers: { 'Content-type': 'application/json; charset=UTF-8' },
     }
     fetch(url, payload)
-      .then(() => fetchAndCache('contacts', true))
-      .catch((err) => console.log('fetch error', err))
+      .then(() => getContactsAsync())
+      .catch((error) => console.error('AppSettingsView', error))
   }
 
   const chooseColor = (item: string, defaultColor: string) => {
@@ -102,10 +100,7 @@ export default function AppSettingsView() {
     </View>
   )
 
-  const setDarkMode = (on: boolean) => {
-    setReduxState('darkMode', on)
-    saveAppSettings()
-  }
+  const setDarkMode = (on: boolean) => setDarkMode(on)
 
   const DarkModeSwitch = () => (
     <View style={styles.itemRow}>

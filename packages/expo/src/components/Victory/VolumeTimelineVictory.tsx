@@ -1,4 +1,4 @@
-import { RootState, TotalEmailSentDatum } from '@klonzo/common'
+import { selectDarkMode, TotalEmailSentDatum } from '@klonzo/common'
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { useSelector } from 'react-redux'
@@ -18,7 +18,7 @@ interface Props {
 }
 
 export default function VolumeTimelineVictory({ data }: Props) {
-  const darkMode = useSelector((state: RootState) => state.darkMode)
+  const darkMode = useSelector(selectDarkMode)
   const [orientation, setOrientation] = useState('portrait')
   const [zoomDomain, setZoomDomain] = useState({
     x: [new Date(1999, 1, 1), new Date(2002, 3, 1)],

@@ -3,9 +3,15 @@ import {
   EMAIL_SERVER,
   getEmailById,
   getEmailIndex,
-  getNextEmail,
-  getPreviousEmail,
-  RootState,
+  getNextEmailId,
+  getPreviousEmailId,
+  selectAllText,
+  selectBody,
+  selectDarkMode,
+  selectEmail,
+  selectFrom,
+  selectSubject,
+  selectTo,
 } from '@klonzo/common'
 import React, { useEffect, useState } from 'react'
 import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
@@ -19,29 +25,19 @@ interface Props {
   navigation: any
 }
 export default function EmailDetailView({ route, navigation }: Props) {
-  const darkMode = useSelector((state: RootState) => state.darkMode)
+  const darkMode = useSelector(selectDarkMode)
   const [loading, setLoading] = useState(false)
   const [email, setEmail] = useState<Email | null>(null)
-  const cachedEmail = useSelector((state: RootState) =>
-    getEmailById(state, route.params.id)
-  )
-  const allText = useSelector((state: RootState) => state.allText)
-  const to = useSelector((state: RootState) => state.to)
-  const from = useSelector((state: RootState) => state.from)
-  const subject = useSelector((state: RootState) => state.subject)
-  const body = useSelector((state: RootState) => state.body)
-  const totalEmails = useSelector((state: RootState) => state.emails?.length)
-  const emailIndex = useSelector((state: RootState) =>
-    getEmailIndex(state, route.params.id)
-  )
-  const previousEmailId = useSelector((state: RootState) => {
-    const e = getPreviousEmail(state, route.params.id)
-    return e ? e._id : null
-  })
-  const nextEmailId = useSelector((state: RootState) => {
-    const e = getNextEmail(state, route.params.id)
-    return e ? e._id : null
-  })
+  const cachedEmail = getEmailById(route.params.id)
+  const allText = useSelector(selectAllText)
+  const to = useSelector(selectTo)
+  const from = useSelector(selectFrom)
+  const subject = useSelector(selectSubject)
+  const body = useSelector(selectBody)
+  const totalEmails = useSelector(selectEmail)?.length
+  const emailIndex = getEmailIndex(route.params.id)
+  const previousEmailId = getPreviousEmailId(route.params.id)
+  const nextEmailId = getNextEmailId(route.params.id)
 
   const styles = StyleSheet.create({
     container: {

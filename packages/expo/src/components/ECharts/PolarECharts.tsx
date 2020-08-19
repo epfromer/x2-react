@@ -1,7 +1,7 @@
 import {
   EmailXferedDatum,
   getPolarEChartsConfig,
-  RootState,
+  selectDarkMode
 } from '@klonzo/common'
 import React from 'react'
 import { ECharts } from 'react-native-echarts-wrapper'
@@ -26,14 +26,8 @@ export default function PolarECharts({
     <ECharts
       onData={(name: string) => handleClick(search, name)}
       additionalCode={`chart.on('click', p => sendData(p.data.name));`}
-      backgroundColor={
-        useSelector((state: RootState) => state.darkMode) ? 'black' : 'white'
-      }
-      option={getPolarEChartsConfig(
-        useSelector((state: RootState) => state.darkMode),
-        title,
-        data
-      )}
+      backgroundColor={useSelector(selectDarkMode) ? 'black' : 'white'}
+      option={getPolarEChartsConfig(useSelector(selectDarkMode), title, data)}
     />
   )
 }

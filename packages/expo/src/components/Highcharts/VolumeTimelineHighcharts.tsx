@@ -1,7 +1,7 @@
 import HighchartsReactNative from '@highcharts/highcharts-react-native'
 import {
   getVolumeTimeHighchartsConfig,
-  RootState,
+  selectDarkMode,
   TotalEmailSentDatum,
 } from '@klonzo/common'
 import React from 'react'
@@ -25,10 +25,10 @@ export default function VolumeTimelineHighcharts({
     <HighchartsReactNative
       styles={styles.container}
       options={getVolumeTimeHighchartsConfig(
-        useSelector((state: RootState) => state.darkMode),
+        useSelector(selectDarkMode),
         title,
         data,
-        useSelector((state: RootState) => state.darkMode) ? 'black' : 'white',
+        useSelector(selectDarkMode) ? 'black' : 'white',
         handleClick
       )}
     />

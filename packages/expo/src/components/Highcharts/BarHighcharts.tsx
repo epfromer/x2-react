@@ -2,7 +2,7 @@ import HighchartsReactNative from '@highcharts/highcharts-react-native'
 import {
   EmailXferedDatum,
   getBarHighchartsConfig,
-  RootState,
+  selectDarkMode,
 } from '@klonzo/common'
 import React from 'react'
 import { StyleSheet } from 'react-native'
@@ -24,11 +24,11 @@ export default function BarHighcharts({
     <HighchartsReactNative
       styles={styles.container}
       options={getBarHighchartsConfig(
-        useSelector((state: RootState) => state.darkMode),
+        useSelector(selectDarkMode),
         title,
         search,
         data,
-        useSelector((state: RootState) => state.darkMode) ? 'black' : 'white',
+        useSelector(selectDarkMode) ? 'black' : 'white',
         handleClick
       )}
     />

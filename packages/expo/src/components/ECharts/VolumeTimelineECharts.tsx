@@ -1,6 +1,6 @@
 import {
   getVolumeTimelineEChartsConfig,
-  RootState,
+  selectDarkMode,
   TotalEmailSentDatum,
 } from '@klonzo/common'
 import React from 'react'
@@ -20,8 +20,6 @@ export default function VolumeTimelineECharts({
   data,
   handleClick,
 }: Props) {
-  const darkMode = useSelector((state: RootState) => state.darkMode)
-
   // function onData(name: string) {
   //   console.log(name)
   //   // data[0].handleClick(search, name)
@@ -31,9 +29,9 @@ export default function VolumeTimelineECharts({
     <ECharts
       onData={() => console.log('foo')}
       additionalCode={`chart.on('click', p => sendData(p));`}
-      backgroundColor={darkMode ? 'black' : 'white'}
+      backgroundColor={useSelector(selectDarkMode) ? 'black' : 'white'}
       option={getVolumeTimelineEChartsConfig(
-        useSelector((state: RootState) => state.darkMode),
+        useSelector(selectDarkMode),
         title,
         data
       )}

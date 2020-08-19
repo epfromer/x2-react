@@ -1,7 +1,7 @@
 import HighchartsReactNative from '@highcharts/highcharts-react-native'
 import {
   EmailXferedDatum,
-  RootState,
+  selectDarkMode,
   getPieHighchartsConfig,
 } from '@klonzo/common'
 import React from 'react'
@@ -27,11 +27,11 @@ export default function PieHighcharts({
     <HighchartsReactNative
       styles={styles.container}
       options={getPieHighchartsConfig(
-        useSelector((state: RootState) => state.darkMode),
+        useSelector(selectDarkMode),
         title,
         search,
         data,
-        useSelector((state: RootState) => state.darkMode) ? 'black' : 'white',
+        useSelector(selectDarkMode) ? 'black' : 'white',
         handleClick
       )}
     />

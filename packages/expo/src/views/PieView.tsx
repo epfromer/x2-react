@@ -1,16 +1,19 @@
 import {
   clearSearch,
-  fetchAndCache,
-  getEmailReceivers,
-  getEmailSenders,
-  RootState,
-  setReduxState,
+  getEmailAsync,
+  selectContacts,
+  selectContactsLoading,
+  selectDarkMode,
+  selectEmailReceivers,
+  selectEmailSenders,
+  setFrom,
+  setTo,
 } from '@klonzo/common'
 import { Picker } from '@react-native-community/picker'
 import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import PieECharts from '../components/ECharts/PieECharts'
 import PieHighcharts from '../components/Highcharts/PieHighcharts'
 import PieVictory from '../components/Victory/PieVictory'
@@ -20,21 +23,23 @@ interface Props {
   navigation: any
 }
 export default function PieView({ navigation }: Props) {
-  const darkMode = useSelector((state: RootState) => state.darkMode)
+  const dispatch = useDispatch()
+  const darkMode = useSelector(selectDarkMode)
   const [isSenders, setIsSenders] = useState(true)
   const [chartLib, setChartLib] = useState('ECharts')
-  const contactsLoading = useSelector(
-    (state: RootState) => state.contactsLoading
-  )
-  const contacts = useSelector((state: RootState) => state.contacts)
-  const emailSenders = useSelector((state: RootState) => getEmailSenders(state))
-  const emailReceivers = useSelector((state: RootState) =>
-    getEmailReceivers(state)
-  )
+  const contactsLoading = useSelector(selectContactsLoading)
+  const contacts = useSelector(selectContacts)
+  const emailSenders = useSelector(selectEmailSenders)
+  const emailReceivers = useSelector(selectEmailReceivers)
+
   function handleClick(search: string, value: string) {
-    clearSearch()
-    setReduxState(search, `(${value})`)
-    fetchAndCache('emails')
+    dispatch(clearSearch())
+    if (search === 'from') {
+      dispatch(setFrom(`(${value})`))
+    } else {
+      dispatch(setTo(`(${value})`))
+    }
+    getEmailAsync()
     navigation.navigate('SearchView')
   }
 

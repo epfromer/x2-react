@@ -1,4 +1,4 @@
-import { RootState } from '@klonzo/common'
+import { selectDarkMode } from '@klonzo/common'
 import React from 'react'
 import {
   Image,
@@ -26,7 +26,7 @@ export default function HomeCard({
   description,
   link,
 }: Props) {
-  const darkMode = useSelector((state: RootState) => state.darkMode)
+  const darkMode = useSelector(selectDarkMode)
   const styles = StyleSheet.create({
     title: {
       fontSize: 20,

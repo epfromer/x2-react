@@ -1,5 +1,5 @@
+import { selectDarkMode } from '@klonzo/common'
 import Slider from '@react-native-community/slider'
-import { RootState } from '@klonzo/common'
 import React from 'react'
 import { StyleSheet } from 'react-native'
 import { ColorPicker } from 'react-native-color-picker'
@@ -19,7 +19,7 @@ export default function ColorPickerDlg({
   onClose,
   onCancel,
 }: Props) {
-  const darkMode = useSelector((state: RootState) => state.darkMode)
+  const darkMode = useSelector(selectDarkMode)
   const styles = StyleSheet.create({
     container: {
       flex: 1,
