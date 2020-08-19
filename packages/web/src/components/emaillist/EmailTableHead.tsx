@@ -78,28 +78,55 @@ const EmailTableHead: React.FC = () => {
     DEBOUNCE_MS
   )
 
+  const onDateClear = () => {
+    setDatePickerOpen(false)
+    dispatch(setSent(''))
+    dispatch(setTimeSpan(0))
+    getEmailAsync()
+  }
+
+  const onDateClose = (date: string, span: number) => {
+    setDatePickerOpen(false)
+    dispatch(setSent(moment(date).format().slice(0, 10)))
+    dispatch(setTimeSpan(span))
+    getEmailAsync()
+  }
+
+  const onSort = (field: string) => {
+    dispatch(setEmailListPage(0))
+    if (querySort === field) {
+      dispatch(setQueryOrder(queryOrder === 1 ? -1 : 1))
+    } else {
+      dispatch(setQueryOrder(1))
+    }
+    dispatch(setQuerySort(field))
+    getEmailAsync()
+  }
+
+  // TODO - bug, date doesn't show in input field when set
+
   return (
     <>
       <FilterDate
         open={datePickerOpen}
         date={sent ? sent : FILTER_DATE}
         span={timeSpan}
-        onClear={() => {
-          setDatePickerOpen(false)
-          dispatch(setSent(''))
-          dispatch(setTimeSpan(0))
-          getEmailAsync()
-        }}
-        onClose={(date: string, span: number) => {
-          setDatePickerOpen(false)
-          dispatch(setSent(moment(date).format().slice(0, 10)))
-          dispatch(setTimeSpan(span))
-          getEmailAsync()
-        }}
+        onClear={onDateClear}
+        onClose={(date: string, span: number) => onDateClose(date, span)}
       />
       <TableHead>
         <TableRow>
           <TableCell colSpan={5}>
+            <button
+              hidden
+              onClick={onDateClear}
+              data-testid="onDateClear"
+            ></button>
+            <button
+              hidden
+              onClick={() => onDateClose('2001-10-28T22:00:13.000Z', 2)}
+              data-testid="onDateClose"
+            ></button>
             <TextField
               label={'Filter (all text fields)'}
               fullWidth={true}
@@ -149,16 +176,7 @@ const EmailTableHead: React.FC = () => {
                       : 'desc'
                     : 'asc'
                 }
-                onClick={() => {
-                  dispatch(setEmailListPage(0))
-                  if (querySort === c.field) {
-                    dispatch(setQueryOrder(queryOrder === 1 ? -1 : 1))
-                  } else {
-                    dispatch(setQueryOrder(1))
-                  }
-                  dispatch(setQuerySort(c.field))
-                  getEmailAsync()
-                }}
+                onClick={() => onSort(c.field)}
               >
                 {c.label}
               </TableSortLabel>
