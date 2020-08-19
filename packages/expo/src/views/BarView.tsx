@@ -1,16 +1,19 @@
-import { Picker } from '@react-native-community/picker'
 import {
   clearSearch,
-  fetchAndCache,
-  getEmailReceivers,
-  getEmailSenders,
-  RootState,
-  setReduxState,
+  getEmailAsync,
+  selectContacts,
+  selectContactsLoading,
+  selectDarkMode,
+  selectEmailReceivers,
+  selectEmailSenders,
+  setFrom,
+  setTo,
 } from '@klonzo/common'
+import { Picker } from '@react-native-community/picker'
 import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import BarECharts from '../components/ECharts/BarECharts'
 import BarHighcharts from '../components/Highcharts/BarHighcharts'
 import BarVictory from '../components/Victory/BarVictory'
@@ -20,17 +23,14 @@ interface Props {
   navigation: any
 }
 export default function BarView({ navigation }: Props) {
-  const darkMode = useSelector((state: RootState) => state.darkMode)
+  const dispatch = useDispatch()
+  const darkMode = useSelector(selectDarkMode)
   const [isSenders, setIsSenders] = useState(true)
   const [chartLib, setChartLib] = useState('ECharts')
-  const contactsLoading = useSelector(
-    (state: RootState) => state.contactsLoading
-  )
-  const contacts = useSelector((state: RootState) => state.contacts)
-  const emailSenders = useSelector((state: RootState) => getEmailSenders(state))
-  const emailReceivers = useSelector((state: RootState) =>
-    getEmailReceivers(state)
-  )
+  const contactsLoading = useSelector(selectContactsLoading)
+  const contacts = useSelector(selectContacts)
+  const emailSenders = useSelector(selectEmailSenders)
+  const emailReceivers = useSelector(selectEmailReceivers)
 
   const styles = StyleSheet.create({
     container: {
@@ -54,9 +54,13 @@ export default function BarView({ navigation }: Props) {
   })
 
   function handleClick(key: string, value: string) {
-    clearSearch()
-    setReduxState(key, `(${value})`)
-    fetchAndCache('emails')
+    dispatch(clearSearch())
+    if (key === 'from') {
+      dispatch(setFrom(`(${value})`))
+    } else {
+      dispatch(setTo(`(${value})`))
+    }
+    getEmailAsync()
     navigation.navigate('SearchView')
   }
 

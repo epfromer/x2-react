@@ -1,4 +1,4 @@
-import { RootState } from '@klonzo/common'
+import { selectDarkMode } from '@klonzo/common'
 import {
   DarkTheme,
   DefaultTheme,
@@ -21,7 +21,7 @@ import VolumeTimelineView from '../views/VolumeTimelineView'
 const Stack = createStackNavigator()
 
 export default function RouteSwitch() {
-  const darkMode = useSelector((state: RootState) => state.darkMode)
+  const darkMode = useSelector(selectDarkMode)
 
   return (
     <NavigationContainer theme={darkMode ? DarkTheme : DefaultTheme}>
