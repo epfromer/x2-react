@@ -4,7 +4,8 @@
   "private": true,
   "main": "__generated__/AppEntry.js",
   "scripts": {
-    "start": "expo start -c"
+    "start": "expo start -c",
+    "test": "jest --verbose --coverage"
   },
   "dependencies": {
     "@highcharts/highcharts-react-native": "^3.0.1",
@@ -42,6 +43,8 @@
   "devDependencies": {
     "@babel/core": "^7.11.1",
     "@react-native-community/eslint-config": "^2.0.0",
+    "@testing-library/react-native": "^7.0.2",
+    "babel-preset-expo": "~8.2.0",
     "eslint": "^7.6.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-config-react-app": "^5.2.1",
@@ -52,9 +55,11 @@
     "eslint-plugin-react-hooks": "^4.0.8",
     "expo-yarn-workspaces": "^1.2.1",
     "highcharts": "^8.1.2",
+    "jest-expo": "~38.0.0",
     "moment": "^2.27.0",
     "prettier": "^2.0.5",
     "prop-types": "^15.7.2",
+    "react-test-renderer": "^16.13.1",
     "typescript": "^3.9.7"
   },
   "eslintConfig": {
@@ -71,7 +76,11 @@
     "endOfLine": "auto"
   },
   "jest": {
-    "preset": "react-native",
+    "preset": "jest-expo",
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}"
+    ],
+    "setupFiles": ["./src/setupTests.js"],
     "moduleFileExtensions": [
       "ts",
       "tsx",

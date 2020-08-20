@@ -18,7 +18,7 @@ import React from 'react'
 import { Provider } from 'react-redux'
 import { Router } from 'react-router'
 
-// https://testing-library.com/docs/vue-testing-library/intro
+// https://testing-library.com/docs/react-testing-library/intro
 
 const contacts = [
   {
