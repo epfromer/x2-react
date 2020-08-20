@@ -84,6 +84,9 @@
     "setupFiles": [
       "./src/setupTests.js"
     ],
+    "transformIgnorePatterns": [
+			"node_modules/(?!@react-native-community|@expo\\vector-icons|unimodules-permissions-interface|expo-permissions|expo-constants|@highcharts|highcharts-react-native|expo-asset|expo-font|@unimodules|react-native|react-navigation|react-native-fs|victory-*)"
+		],
     "moduleFileExtensions": [
       "ts",
       "tsx",

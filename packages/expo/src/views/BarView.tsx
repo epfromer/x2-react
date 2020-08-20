@@ -136,6 +136,7 @@ export default function BarView({ navigation }: Props) {
         onValueChange={(value) => setIsSenders(value === 'Senders')}
         style={styles.picker}
         itemStyle={styles.itemStyle}
+        testID="xmittype"
       >
         <Picker.Item label="Senders" value="Senders" />
         <Picker.Item label="Receivers" value="Receivers" />

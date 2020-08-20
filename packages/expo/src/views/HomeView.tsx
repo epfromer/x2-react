@@ -13,7 +13,7 @@ import { ScrollView } from 'react-native'
 import HomeCard from '../components/HomeCard'
 
 interface Props {
-  navigation?: any
+  navigation: any
 }
 export default function HomeView({ navigation }: Props) {
   return (
