@@ -1,16 +1,17 @@
 import {
   clearSearch,
-  fetchAndCache,
-  RootState,
+  getEmailAsync,
   selectDarkMode,
-  setReduxState,
+  selectEmailSent,
+  selectEmailSentLoading,
+  setSent,
   TotalEmailSentDatum,
 } from '@klonzo/common'
 import { Picker } from '@react-native-community/picker'
 import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import VolumeTimelineECharts from '../components/ECharts/VolumeTimelineECharts'
 import VolumeTimelineHighcharts from '../components/Highcharts/VolumeTimelineHighcharts'
 import VolumeTimelineVictory from '../components/Victory/VolumeTimelineVictory'
@@ -20,16 +21,15 @@ interface Props {
   navigation: any
 }
 export default function VolumeTimelineView({ navigation }: Props) {
+  const dispatch = useDispatch()
   const [chartLib, setChartLib] = useState('ECharts')
-  const emailSentLoading = useSelector(
-    (state: RootState) => state.emailSentLoading
-  )
-  const emailSent = useSelector((state: RootState) => state.emailSent)
+  const emailSentLoading = useSelector(selectEmailSentLoading)
+  const emailSent = useSelector(selectEmailSent)
 
   function handleClick(date: string) {
-    clearSearch()
-    setReduxState('sent', date)
-    fetchAndCache('emails')
+    dispatch(clearSearch())
+    dispatch(setSent(date))
+    getEmailAsync()
     navigation.navigate('SearchView')
   }
 

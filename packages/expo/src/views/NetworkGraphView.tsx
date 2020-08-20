@@ -1,13 +1,15 @@
 import {
   clearSearch,
+  getEmailAsync,
   selectContactsLoading,
-  selectEmailSent,
-  setReduxState,
+  selectEmailSentByContact,
+  setFrom,
+  setTo,
 } from '@klonzo/common'
 import React from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import NetworkGraphECharts from '../components/ECharts/NetworkGraphECharts'
 
 interface Props {
@@ -15,17 +17,17 @@ interface Props {
   navigation: any
 }
 export default function NetworkGraphView({ navigation }: Props) {
-  const emailSent = useSelector(selectEmailSent)
+  const dispatch = useDispatch()
+  const emailSentByContact = useSelector(selectEmailSentByContact)
   const contactsLoading = useSelector(selectContactsLoading)
 
   function handleClick(to: string, from: string) {
-    if (to && from) {
-      clearSearch()
-      setReduxState('to', `(${to})`)
-      setReduxState('from', `(${from})`)
-      // fetchAndCache('emails')
-      navigation.navigate('SearchView')
-    }
+    if (!from || !to) return
+    dispatch(clearSearch())
+    dispatch(setFrom(`(${from})`))
+    dispatch(setTo(`(${to})`))
+    getEmailAsync()
+    navigation.navigate('SearchView')
   }
 
   return (
@@ -35,8 +37,8 @@ export default function NetworkGraphView({ navigation }: Props) {
         {!contactsLoading && (
           <NetworkGraphECharts
             title="Email Senders to Receivers"
-            data={emailSent.data}
-            nodes={emailSent.nodes}
+            data={emailSentByContact.data}
+            nodes={emailSentByContact.nodes}
             handleClick={handleClick}
           />
         )}
