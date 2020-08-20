@@ -22,12 +22,17 @@ interface Props {
   route: any
   navigation: any
   isSendersDef?: boolean
+  chartLibDef?: string
 }
-export default function BarView({ navigation, isSendersDef = true }: Props) {
+export default function BarView({
+  navigation,
+  isSendersDef = true,
+  chartLibDef = 'ECharts',
+}: Props) {
   const dispatch = useDispatch()
   const darkMode = useSelector(selectDarkMode)
   const [isSenders, setIsSenders] = useState(isSendersDef)
-  const [chartLib, setChartLib] = useState('ECharts')
+  const [chartLib, setChartLib] = useState(chartLibDef)
   const contactsLoading = useSelector(selectContactsLoading)
   const contacts = useSelector(selectContacts)
   const emailSenders = useSelector(selectEmailSenders)
