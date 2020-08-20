@@ -1,3 +1,4 @@
+export * from './constants'
 export * from './ECharts/index'
 export * from './Highcharts/index'
 export {
@@ -13,6 +14,7 @@ export {
   VOLUMETIMELINE,
   WORDCLOUD,
 } from './img/index'
-export * from './constants'
+export * from './store/async'
+export * from './store/getters'
 export * from './store/index'
 export * from './store/types'

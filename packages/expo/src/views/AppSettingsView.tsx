@@ -5,6 +5,7 @@ import {
   selectContacts,
   selectContactsLoading,
   selectDarkMode,
+  setDarkMode,
 } from '@klonzo/common'
 import React, { useState } from 'react'
 import {
@@ -17,10 +18,11 @@ import {
 } from 'react-native'
 import { Button } from 'react-native-elements'
 import Spinner from 'react-native-loading-spinner-overlay'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import ColorPickerDlg from '../components/ColorPickerDlg'
 
 export default function AppSettingsView() {
+  const dispatch = useDispatch()
   const darkMode = useSelector(selectDarkMode)
   const [colorPickerDefault, setColorPickerDefault] = useState('')
   const [colorPickerItem, setColorPickerItem] = useState('')
@@ -100,14 +102,12 @@ export default function AppSettingsView() {
     </View>
   )
 
-  const setDarkMode = (on: boolean) => setDarkMode(on)
-
   const DarkModeSwitch = () => (
     <View style={styles.itemRow}>
       <Text style={styles.text}>Dark mode {darkMode ? 'on' : 'off'}</Text>
       <Switch
         value={darkMode}
-        onValueChange={() => setDarkMode(darkMode ? false : true)}
+        onValueChange={() => dispatch(setDarkMode(darkMode ? false : true))}
       />
     </View>
   )

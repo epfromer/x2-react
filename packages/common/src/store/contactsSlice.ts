@@ -1,6 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { EMAIL_SERVER } from '../constants'
-import { RootState, store } from './index'
 import { Contact, EmailSentStat, EmailXferedDatum } from './types'
 
 export interface ContactsState {
@@ -29,10 +27,9 @@ export default contactsSlice.reducer
 export const { setContactsLoading, setContacts } = contactsSlice.actions
 
 // Selectors
-export const selectContactsLoading = (state: RootState) =>
-  state.contacts.contactsLoading
-export const selectContacts = (state: RootState) => state.contacts.contacts
-export function selectEmailSenders(state: RootState) {
+export const selectContactsLoading = (state) => state.contacts.contactsLoading
+export const selectContacts = (state) => state.contacts.contacts
+export function selectEmailSenders(state) {
   const data: Array<EmailXferedDatum> = []
   if (state.contacts.contacts) {
     state.contacts.contacts.forEach((contact) => {
@@ -47,7 +44,7 @@ export function selectEmailSenders(state: RootState) {
   }
   return data
 }
-export function selectEmailReceivers(state: RootState) {
+export function selectEmailReceivers(state) {
   const data: Array<EmailXferedDatum> = []
   if (state.contacts.contacts) {
     state.contacts.contacts.forEach((contact) => {
@@ -62,7 +59,7 @@ export function selectEmailReceivers(state: RootState) {
   }
   return data
 }
-export function selectEmailSentByContact(state: RootState) {
+export function selectEmailSentByContact(state) {
   //  create array of [from, to, number sent]
   const data: Array<[string, string, number]> = []
   if (state.contacts.contacts) {
@@ -111,14 +108,4 @@ export function selectEmailSentByContact(state: RootState) {
   }
 
   return { data, nodes }
-}
-
-// Aync actions
-export async function getContactsAsync() {
-  store.dispatch(setContactsLoading(true))
-  fetch(`${EMAIL_SERVER}/contacts`)
-    .then((resp) => resp.json())
-    .then((json) => store.dispatch(setContacts(json)))
-    .then(() => store.dispatch(setContactsLoading(false)))
-    .catch((error) => console.error('getContactsAsync: ', error))
 }

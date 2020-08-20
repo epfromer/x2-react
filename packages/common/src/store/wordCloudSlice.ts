@@ -1,6 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { EMAIL_SERVER } from '../constants'
-import { RootState, store } from './index'
 import { WordCloudTag } from './types'
 
 export interface WordCloudState {
@@ -29,16 +27,6 @@ export default wordCloudSlice.reducer
 export const { setWordCloudLoading, setWordCloud } = wordCloudSlice.actions
 
 // Selectors
-export const selectWordCloudLoading = (state: RootState) =>
+export const selectWordCloudLoading = (state) =>
   state.wordCloud.wordCloudLoading
-export const selectWordCloud = (state: RootState) => state.wordCloud.wordCloud
-
-// Aync actions
-export async function getWordCloudAsync() {
-  store.dispatch(setWordCloudLoading(true))
-  fetch(`${EMAIL_SERVER}/wordCloud`)
-    .then((resp) => resp.json())
-    .then((json) => store.dispatch(setWordCloud(json)))
-    .then(() => store.dispatch(setWordCloudLoading(false)))
-    .catch((error) => console.error('getWordCloudAsync: ', error))
-}
+export const selectWordCloud = (state) => state.wordCloud.wordCloud

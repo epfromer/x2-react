@@ -1,6 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { EMAIL_SERVER } from '../constants'
-import { RootState, store } from './index'
 import { EmailSentByDay } from './types'
 
 export interface emailSentState {
@@ -29,16 +27,6 @@ export default emailSentSlice.reducer
 export const { setEmailSentLoading, setEmailSent } = emailSentSlice.actions
 
 // Selectors
-export const selectEmailSentLoading = (state: RootState) =>
+export const selectEmailSentLoading = (state) =>
   state.emailSent.emailSentLoading
-export const selectEmailSent = (state: RootState) => state.emailSent.emailSent
-
-// Aync actions
-export async function getEmailSentAsync() {
-  store.dispatch(setEmailSentLoading(true))
-  fetch(`${EMAIL_SERVER}/emailSent`)
-    .then((resp) => resp.json())
-    .then((json) => store.dispatch(setEmailSent(json)))
-    .then(() => store.dispatch(setEmailSentLoading(false)))
-    .catch((error) => console.error('getEmailSentAsync: ', error))
-}
+export const selectEmailSent = (state) => state.emailSent.emailSent

@@ -1,4 +1,9 @@
-import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit'
+import {
+  Action,
+  configureStore,
+  ThunkAction,
+  createSerializableStateInvariantMiddleware,
+} from '@reduxjs/toolkit'
 // import logger from 'redux-logger'
 import appSettingsReducer from './appSettingsSlice'
 import contactsReducer from './contactsSlice'
@@ -24,6 +29,10 @@ export type AppThunk<ReturnType = void> = ThunkAction<
 
 // const middleware = [...getDefaultMiddleware(), logger]
 
+const serializableMiddleware = createSerializableStateInvariantMiddleware({
+  warnAfter: 200,
+})
+
 export const store = configureStore({
   reducer: {
     appSettings: appSettingsReducer,
@@ -33,5 +42,5 @@ export const store = configureStore({
     query: queryReducer,
     wordCloud: wordCloudReducer,
   },
-  // middleware,
+  middleware: [serializableMiddleware],
 })
