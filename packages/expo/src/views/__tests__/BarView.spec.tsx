@@ -10,6 +10,4 @@ test('BarView', () => {
   )
   const picker = getByTestId('xmittype')
   expect(picker).not.toBeNull()
-  // fireEvent.press(card)
-  // expect(navigation.navigate).toHaveBeenCalledWith('PieView')
 })

@@ -21,11 +21,12 @@ import BarVictory from '../components/Victory/BarVictory'
 interface Props {
   route: any
   navigation: any
+  isSendersDef?: boolean
 }
-export default function BarView({ navigation }: Props) {
+export default function BarView({ navigation, isSendersDef = true }: Props) {
   const dispatch = useDispatch()
   const darkMode = useSelector(selectDarkMode)
-  const [isSenders, setIsSenders] = useState(true)
+  const [isSenders, setIsSenders] = useState(isSendersDef)
   const [chartLib, setChartLib] = useState('ECharts')
   const contactsLoading = useSelector(selectContactsLoading)
   const contacts = useSelector(selectContacts)
