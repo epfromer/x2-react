@@ -1,9 +1,11 @@
-import { renderComp } from '../../setupTests'
-import React from 'react'
-import HomeView from '../HomeView'
+import { fireEvent } from '@testing-library/react-native';
+import React from 'react';
+import { renderComp } from '../../setupTests';
+import HomeView from '../HomeView';
 
 test('HomeView', () => {
   const { getByText } = renderComp(<HomeView navigation={{}} />)
-  const button = getByText(/Pie chart/i)
-  expect(button).not.toBeNull()
+  const card = getByText(/Pie chart/i)
+  expect(card).not.toBeNull()
+  // fireEvent.press(card)
 })
