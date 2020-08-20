@@ -96,6 +96,7 @@ export default function AppSettingsView() {
               { backgroundColor: contact.color, width: 100, height: 30 } as any
             }
             onPress={() => chooseColor(contact._id, contact.color)}
+            testID={contact._id}
           />
         </View>
       </View>
