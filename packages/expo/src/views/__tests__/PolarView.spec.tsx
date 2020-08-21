@@ -1,44 +1,24 @@
+import { fireEvent } from '@testing-library/react-native'
 import React from 'react'
 import { renderComp } from '../../setupTests'
 import PolarView from '../PolarView'
 
-test('PolarView ECharts Senders', () => {
+test('PolarView', () => {
   const navigation = { navigate: jest.fn() }
   const { getByTestId } = renderComp(
     <PolarView navigation={navigation} route="foo" />
   )
-  const picker = getByTestId('xmittype')
-  expect(picker).not.toBeNull()
-})
 
-test('PolarView ECharts Receivers', () => {
-  const navigation = { navigate: jest.fn() }
-  const { getByTestId } = renderComp(
-    <PolarView navigation={navigation} route="foo" isSendersDef={false} />
-  )
-  const picker = getByTestId('xmittype')
-  expect(picker).not.toBeNull()
-})
+  const xmitPicker = getByTestId('xmit-picker')
+  expect(xmitPicker).not.toBeNull()
+  const chartLibPicker = getByTestId('chartlib-picker')
+  expect(chartLibPicker).not.toBeNull()
 
-test('PolarView Victory Senders', () => {
-  const navigation = { navigate: jest.fn() }
-  const { getByTestId } = renderComp(
-    <PolarView navigation={navigation} route="foo" chartLibDef="Victory" />
-  )
-  const picker = getByTestId('xmittype')
-  expect(picker).not.toBeNull()
-})
+  fireEvent(chartLibPicker, 'valueChange', 'Highcharts')
+  fireEvent(chartLibPicker, 'valueChange', 'Victory')
 
-test('PolarView Victory Receivers', () => {
-  const navigation = { navigate: jest.fn() }
-  const { getByTestId } = renderComp(
-    <PolarView
-      navigation={navigation}
-      route="foo"
-      chartLibDef="Victory"
-      isSendersDef={false}
-    />
-  )
-  const picker = getByTestId('xmittype')
-  expect(picker).not.toBeNull()
+  fireEvent(xmitPicker, 'valueChange', 'Receivers')
+  fireEvent(chartLibPicker, 'valueChange', 'ECharts')
+  fireEvent(chartLibPicker, 'valueChange', 'Highcharts')
+  fireEvent(chartLibPicker, 'valueChange', 'Victory')
 })

@@ -10,7 +10,7 @@ import {
   setTo,
 } from '@klonzo/common'
 import React, { useState } from 'react'
-import { SafeAreaView, StyleSheet, View } from 'react-native'
+import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
 import RNPickerSelect from 'react-native-picker-select'
 import { useDispatch, useSelector } from 'react-redux'
@@ -31,13 +31,6 @@ export default function PieView({ navigation }: Props) {
   const contacts = useSelector(selectContacts)
   const emailSenders = useSelector(selectEmailSenders)
   const emailReceivers = useSelector(selectEmailReceivers)
-
-  function handleClick(search: string, value: string) {
-    dispatch(clearSearch())
-    dispatch(search === 'from' ? setFrom(`(${value})`) : setTo(`(${value})`))
-    getEmailAsync()
-    navigation.navigate('SearchView')
-  }
 
   const styles = StyleSheet.create({
     container: {
@@ -83,96 +76,101 @@ export default function PieView({ navigation }: Props) {
     },
   })
 
+  function handleClick(search: string, value: string) {
+    dispatch(clearSearch())
+    dispatch(search === 'from' ? setFrom(`(${value})`) : setTo(`(${value})`))
+    getEmailAsync()
+    navigation.navigate('SearchView')
+  }
+
   return (
-    <>
-      <SafeAreaView style={styles.container}>
-        <Spinner visible={contactsLoading} textContent={'Loading...'} />
-        {contacts && (
-          <>
-            {chartLib === 'ECharts' && (
-              <>
-                {isSenders && (
-                  <PieECharts
-                    title="Senders"
-                    search="from"
-                    data={emailSenders}
-                    handleClick={handleClick}
-                  />
-                )}
-                {!isSenders && (
-                  <PieECharts
-                    title="Receivers"
-                    search="to"
-                    data={emailReceivers}
-                    handleClick={handleClick}
-                  />
-                )}
-              </>
-            )}
-            {chartLib === 'Victory' && (
-              <>
-                {isSenders && (
-                  <PieVictory
-                    title="Senders"
-                    search="from"
-                    data={emailSenders}
-                    handleClick={handleClick}
-                  />
-                )}
-                {!isSenders && (
-                  <PieVictory
-                    title="Receivers"
-                    search="to"
-                    data={emailReceivers}
-                    handleClick={handleClick}
-                  />
-                )}
-              </>
-            )}
-            {chartLib === 'Highcharts' && (
-              <>
-                {isSenders && (
-                  <PieHighcharts
-                    title="Senders"
-                    search="from"
-                    data={emailSenders}
-                    handleClick={handleClick}
-                  />
-                )}
-                {!isSenders && (
-                  <PieHighcharts
-                    title="Receivers"
-                    search="to"
-                    data={emailReceivers}
-                    handleClick={handleClick}
-                  />
-                )}
-              </>
-            )}
-          </>
-        )}
-        <RNPickerSelect
-          value={isSenders ? 'Senders' : 'Receivers'}
-          touchableWrapperProps={{ testID: 'xmit-picker' }}
-          style={pickerSelectStyles}
-          onValueChange={(value) => setIsSenders(value === 'Senders')}
-          items={[
-            { label: 'Senders', value: 'Senders' },
-            { label: 'Receivers', value: 'Receivers' },
-          ]}
-        />
-        <RNPickerSelect
-          value={chartLib}
-          touchableWrapperProps={{ testID: 'chartlib-picker' }}
-          style={pickerSelectStyles}
-          onValueChange={(value) => setChartLib(value)}
-          items={[
-            { label: 'ECharts', value: 'ECharts' },
-            { label: 'Highcharts', value: 'Highcharts' },
-            { label: 'Victory', value: 'Victory' },
-          ]}
-        />
-      </SafeAreaView>
-    </>
+    <SafeAreaView style={styles.container}>
+      <Spinner visible={contactsLoading} textContent={'Loading...'} />
+      {contacts && (
+        <>
+          {chartLib === 'ECharts' && (
+            <>
+              {isSenders && (
+                <PieECharts
+                  title="Senders"
+                  search="from"
+                  data={emailSenders}
+                  handleClick={handleClick}
+                />
+              )}
+              {!isSenders && (
+                <PieECharts
+                  title="Receivers"
+                  search="to"
+                  data={emailReceivers}
+                  handleClick={handleClick}
+                />
+              )}
+            </>
+          )}
+          {chartLib === 'Victory' && (
+            <>
+              {isSenders && (
+                <PieVictory
+                  title="Senders"
+                  search="from"
+                  data={emailSenders}
+                  handleClick={handleClick}
+                />
+              )}
+              {!isSenders && (
+                <PieVictory
+                  title="Receivers"
+                  search="to"
+                  data={emailReceivers}
+                  handleClick={handleClick}
+                />
+              )}
+            </>
+          )}
+          {chartLib === 'Highcharts' && (
+            <>
+              {isSenders && (
+                <PieHighcharts
+                  title="Senders"
+                  search="from"
+                  data={emailSenders}
+                  handleClick={handleClick}
+                />
+              )}
+              {!isSenders && (
+                <PieHighcharts
+                  title="Receivers"
+                  search="to"
+                  data={emailReceivers}
+                  handleClick={handleClick}
+                />
+              )}
+            </>
+          )}
+        </>
+      )}
+      <RNPickerSelect
+        value={isSenders ? 'Senders' : 'Receivers'}
+        touchableWrapperProps={{ testID: 'xmit-picker' }}
+        style={pickerSelectStyles}
+        onValueChange={(value) => setIsSenders(value === 'Senders')}
+        items={[
+          { label: 'Senders', value: 'Senders' },
+          { label: 'Receivers', value: 'Receivers' },
+        ]}
+      />
+      <RNPickerSelect
+        value={chartLib}
+        touchableWrapperProps={{ testID: 'chartlib-picker' }}
+        style={pickerSelectStyles}
+        onValueChange={(value) => setChartLib(value)}
+        items={[
+          { label: 'ECharts', value: 'ECharts' },
+          { label: 'Highcharts', value: 'Highcharts' },
+          { label: 'Victory', value: 'Victory' },
+        ]}
+      />
+    </SafeAreaView>
   )
 }

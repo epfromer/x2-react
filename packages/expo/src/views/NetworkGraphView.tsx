@@ -8,25 +8,21 @@ import {
   setFrom,
   setTo,
 } from '@klonzo/common'
-import { Picker } from '@react-native-community/picker'
 import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
+import RNPickerSelect from 'react-native-picker-select'
 import { useDispatch, useSelector } from 'react-redux'
 import NetworkGraphECharts from '../components/ECharts/NetworkGraphECharts'
 
 interface Props {
   route: any
   navigation: any
-  chartLibDef?: string
 }
-export default function NetworkGraphView({
-  navigation,
-  chartLibDef = 'ECharts',
-}: Props) {
+export default function NetworkGraphView({ navigation }: Props) {
   const dispatch = useDispatch()
   const darkMode = useSelector(selectDarkMode)
-  const [chartLib, setChartLib] = useState(chartLibDef)
+  const [chartLib, setChartLib] = useState('ECharts')
   const emailSentByContact = useSelector(selectEmailSentByContact)
   const contactsLoading = useSelector(selectContactsLoading)
   const contacts = useSelector(selectContacts)
@@ -52,6 +48,29 @@ export default function NetworkGraphView({
     },
   })
 
+  const pickerSelectStyles = StyleSheet.create({
+    inputIOS: {
+      fontSize: 16,
+      paddingVertical: 12,
+      paddingHorizontal: 10,
+      borderWidth: 1,
+      borderColor: 'gray',
+      borderRadius: 4,
+      color: darkMode ? 'white' : 'black',
+      paddingRight: 30, // to ensure the text is never behind the icon
+    },
+    inputAndroid: {
+      fontSize: 16,
+      paddingHorizontal: 10,
+      paddingVertical: 8,
+      borderWidth: 0.5,
+      borderColor: 'purple',
+      borderRadius: 8,
+      color: darkMode ? 'white' : 'black',
+      paddingRight: 30, // to ensure the text is never behind the icon
+    },
+  })
+
   function handleClick(to: string, from: string) {
     if (!from || !to) return
     dispatch(clearSearch())
@@ -62,31 +81,27 @@ export default function NetworkGraphView({
   }
 
   return (
-    <>
-      <SafeAreaView style={styles.container}>
-        <Spinner visible={contactsLoading} textContent={'Loading...'} />
-        {contacts && (
-          <>
-            {chartLib === 'ECharts' && (
-              <NetworkGraphECharts
-                title="Email Senders to Receivers"
-                data={emailSentByContact.data}
-                nodes={emailSentByContact.nodes}
-                handleClick={handleClick}
-              />
-            )}
-          </>
-        )}
-        <Picker
-          selectedValue={chartLib}
-          onValueChange={(value) => setChartLib(value as string)}
-          style={styles.picker}
-          itemStyle={styles.itemStyle}
-          testID="xmittype"
-        >
-          <Picker.Item label="ECharts" value="ECharts" />
-        </Picker>
-      </SafeAreaView>
-    </>
+    <SafeAreaView style={styles.container}>
+      <Spinner visible={contactsLoading} textContent={'Loading...'} />
+      {contacts && (
+        <>
+          {chartLib === 'ECharts' && (
+            <NetworkGraphECharts
+              title="Email Senders to Receivers"
+              data={emailSentByContact.data}
+              nodes={emailSentByContact.nodes}
+              handleClick={handleClick}
+            />
+          )}
+        </>
+      )}
+      <RNPickerSelect
+        value={chartLib}
+        touchableWrapperProps={{ testID: 'chartlib-picker' }}
+        style={pickerSelectStyles}
+        onValueChange={(value) => setChartLib(value)}
+        items={[{ label: 'ECharts', value: 'ECharts' }]}
+      />
+    </SafeAreaView>
   )
 }

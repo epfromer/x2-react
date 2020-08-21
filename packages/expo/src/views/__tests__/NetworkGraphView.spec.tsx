@@ -7,6 +7,6 @@ test('NetworkGraphView', () => {
   const { getByTestId } = renderComp(
     <NetworkGraphView navigation={navigation} route="foo" />
   )
-  const picker = getByTestId('xmittype')
-  expect(picker).not.toBeNull()
+  const chartLibPicker = getByTestId('chartlib-picker')
+  expect(chartLibPicker).not.toBeNull()
 })

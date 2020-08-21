@@ -9,42 +9,26 @@ import {
   setFrom,
   setTo,
 } from '@klonzo/common'
-import { Picker } from '@react-native-community/picker'
 import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
+import RNPickerSelect from 'react-native-picker-select'
 import { useDispatch, useSelector } from 'react-redux'
 import TreeMapECharts from '../components/ECharts/TreeMapECharts'
 
 interface Props {
   route: any
   navigation: any
-  isSendersDef?: boolean
-  chartLibDef?: string
 }
-export default function TreeMapView({
-  navigation,
-  isSendersDef = true,
-  chartLibDef = 'ECharts',
-}: Props) {
+export default function TreeMapView({ navigation }: Props) {
   const dispatch = useDispatch()
-  const [isSenders, setIsSenders] = useState(isSendersDef)
-  const [chartLib, setChartLib] = useState(chartLibDef)
+  const darkMode = useSelector(selectDarkMode)
+  const [isSenders, setIsSenders] = useState(true)
+  const [chartLib, setChartLib] = useState('ECharts')
   const contactsLoading = useSelector(selectContactsLoading)
   const contacts = useSelector(selectContacts)
   const emailSenders = useSelector(selectEmailSenders)
   const emailReceivers = useSelector(selectEmailReceivers)
-
-  function handleClick(search: string, value: string) {
-    dispatch(clearSearch())
-    if (search === 'from') {
-      dispatch(setFrom(`(${value})`))
-    } else {
-      dispatch(setTo(`(${value})`))
-    }
-    getEmailAsync()
-    navigation.navigate('SearchView')
-  }
 
   const styles = StyleSheet.create({
     container: {
@@ -67,45 +51,72 @@ export default function TreeMapView({
     },
   })
 
+  const pickerSelectStyles = StyleSheet.create({
+    inputIOS: {
+      fontSize: 16,
+      paddingVertical: 12,
+      paddingHorizontal: 10,
+      borderWidth: 1,
+      borderColor: 'gray',
+      borderRadius: 4,
+      color: darkMode ? 'white' : 'black',
+      paddingRight: 30, // to ensure the text is never behind the icon
+    },
+    inputAndroid: {
+      fontSize: 16,
+      paddingHorizontal: 10,
+      paddingVertical: 8,
+      borderWidth: 0.5,
+      borderColor: 'purple',
+      borderRadius: 8,
+      color: darkMode ? 'white' : 'black',
+      paddingRight: 30, // to ensure the text is never behind the icon
+    },
+  })
+
+  function handleClick(search: string, value: string) {
+    dispatch(clearSearch())
+    dispatch(search === 'from' ? setFrom(`(${value})`) : setTo(`(${value})`))
+    getEmailAsync()
+    navigation.navigate('SearchView')
+  }
+
   return (
-    <>
-      <SafeAreaView style={styles.container}>
-        <Spinner visible={contactsLoading} textContent={'Loading...'} />
-        {contacts && isSenders && (
-          <TreeMapECharts
-            title="Senders"
-            search="from"
-            data={emailSenders}
-            handleClick={handleClick}
-          />
-        )}
-        {contacts && !isSenders && (
-          <TreeMapECharts
-            title="Receivers"
-            search="to"
-            data={emailReceivers}
-            handleClick={handleClick}
-          />
-        )}
-        <Picker
-          selectedValue={isSenders ? 'Senders' : 'Receivers'}
-          onValueChange={(value) => setIsSenders(value === 'Senders')}
-          style={styles.picker}
-          itemStyle={styles.itemStyle}
-          testID="xmittype"
-        >
-          <Picker.Item label="Senders" value="Senders" />
-          <Picker.Item label="Receivers" value="Receivers" />
-        </Picker>
-        <Picker
-          selectedValue={chartLib}
-          onValueChange={(value) => setChartLib(value as string)}
-          style={styles.picker}
-          itemStyle={styles.itemStyle}
-        >
-          <Picker.Item label="ECharts" value="ECharts" />
-        </Picker>
-      </SafeAreaView>
-    </>
+    <SafeAreaView style={styles.container}>
+      <Spinner visible={contactsLoading} textContent={'Loading...'} />
+      {contacts && isSenders && (
+        <TreeMapECharts
+          title="Senders"
+          search="from"
+          data={emailSenders}
+          handleClick={handleClick}
+        />
+      )}
+      {contacts && !isSenders && (
+        <TreeMapECharts
+          title="Receivers"
+          search="to"
+          data={emailReceivers}
+          handleClick={handleClick}
+        />
+      )}
+      <RNPickerSelect
+        value={isSenders ? 'Senders' : 'Receivers'}
+        touchableWrapperProps={{ testID: 'xmit-picker' }}
+        style={pickerSelectStyles}
+        onValueChange={(value) => setIsSenders(value === 'Senders')}
+        items={[
+          { label: 'Senders', value: 'Senders' },
+          { label: 'Receivers', value: 'Receivers' },
+        ]}
+      />
+      <RNPickerSelect
+        value={chartLib}
+        touchableWrapperProps={{ testID: 'chartlib-picker' }}
+        style={pickerSelectStyles}
+        onValueChange={(value) => setChartLib(value)}
+        items={[{ label: 'ECharts', value: 'ECharts' }]}
+      />
+    </SafeAreaView>
   )
 }
