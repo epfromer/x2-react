@@ -35,8 +35,6 @@ import DateTimePickerModal from 'react-native-modal-datetime-picker'
 import { useDispatch, useSelector } from 'react-redux'
 var moment = require('moment')
 
-// TODO - VirtualizedList: You have a large list that is slow to update - make sure your renderItem function renders components that follow React performance best practices like PureComponent, shouldComponentUpdate, etc. {"contentLength": 3030, "dt": 1195, "prevDt": 5812}
-
 const FILTER_DATE = '2000-10-04'
 
 interface Props {
@@ -318,6 +316,7 @@ export default function SearchView({ navigation }: Props) {
       <SafeAreaView style={styles.container}>
         <SearchDlg />
         <Button
+          testID="open-dialog"
           buttonStyle={styles.filterButton}
           onPress={() => setDlgOpen(true)}
           title={filterList()}
