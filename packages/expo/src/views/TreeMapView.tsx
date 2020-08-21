@@ -1,33 +1,48 @@
 import {
   clearSearch,
+  getEmailAsync,
   selectContacts,
   selectContactsLoading,
   selectDarkMode,
   selectEmailReceivers,
   selectEmailSenders,
-  setReduxState,
+  setFrom,
+  setTo,
 } from '@klonzo/common'
 import { Picker } from '@react-native-community/picker'
 import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import TreeMapECharts from '../components/ECharts/TreeMapECharts'
 
 interface Props {
+  route: any
   navigation: any
+  isSendersDef?: boolean
+  chartLibDef?: string
 }
-export default function TreeMapView({ navigation }: Props) {
-  const [isSenders, setIsSenders] = useState(true)
+export default function TreeMapView({
+  navigation,
+  isSendersDef = true,
+  chartLibDef = 'ECharts',
+}: Props) {
+  const dispatch = useDispatch()
+  const [isSenders, setIsSenders] = useState(isSendersDef)
+  const [chartLib, setChartLib] = useState(chartLibDef)
   const contactsLoading = useSelector(selectContactsLoading)
   const contacts = useSelector(selectContacts)
   const emailSenders = useSelector(selectEmailSenders)
   const emailReceivers = useSelector(selectEmailReceivers)
 
   function handleClick(search: string, value: string) {
-    clearSearch()
-    setReduxState(search, `(${value})`)
-    // fetchAndCache('emails')
+    dispatch(clearSearch())
+    if (search === 'from') {
+      dispatch(setFrom(`(${value})`))
+    } else {
+      dispatch(setTo(`(${value})`))
+    }
+    getEmailAsync()
     navigation.navigate('SearchView')
   }
 
@@ -77,9 +92,18 @@ export default function TreeMapView({ navigation }: Props) {
           onValueChange={(value) => setIsSenders(value === 'Senders')}
           style={styles.picker}
           itemStyle={styles.itemStyle}
+          testID="xmittype"
         >
           <Picker.Item label="Senders" value="Senders" />
           <Picker.Item label="Receivers" value="Receivers" />
+        </Picker>
+        <Picker
+          selectedValue={chartLib}
+          onValueChange={(value) => setChartLib(value as string)}
+          style={styles.picker}
+          itemStyle={styles.itemStyle}
+        >
+          <Picker.Item label="ECharts" value="ECharts" />
         </Picker>
       </SafeAreaView>
     </>
