@@ -21,12 +21,18 @@ import PieVictory from '../components/Victory/PieVictory'
 interface Props {
   route: any
   navigation: any
+  isSendersDef?: boolean
+  chartLibDef?: string
 }
-export default function PieView({ navigation }: Props) {
+export default function PieView({
+  navigation,
+  isSendersDef = true,
+  chartLibDef = 'ECharts',
+}: Props) {
   const dispatch = useDispatch()
   const darkMode = useSelector(selectDarkMode)
-  const [isSenders, setIsSenders] = useState(true)
-  const [chartLib, setChartLib] = useState('ECharts')
+  const [isSenders, setIsSenders] = useState(isSendersDef)
+  const [chartLib, setChartLib] = useState(chartLibDef)
   const contactsLoading = useSelector(selectContactsLoading)
   const contacts = useSelector(selectContacts)
   const emailSenders = useSelector(selectEmailSenders)
@@ -137,6 +143,7 @@ export default function PieView({ navigation }: Props) {
           onValueChange={(value) => setIsSenders(value === 'Senders')}
           style={styles.picker}
           itemStyle={styles.itemStyle}
+          testID="xmittype"
         >
           <Picker.Item label="Senders" value="Senders" />
           <Picker.Item label="Receivers" value="Receivers" />
