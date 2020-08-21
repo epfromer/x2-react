@@ -1477,10 +1477,10 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@highcharts/highcharts-react-native@^3.0.1":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@highcharts/highcharts-react-native/-/highcharts-react-native-3.1.1.tgz#19c260c3fdad23f2769b45d5f433b545ab5708fc"
-  integrity sha512-9QY5NqgQzWy0F4k1pqM+gkNlCVDQhjSJY3kXVAjxtNHH6YKYjMACX9h5UVT/WsplrXVa7rc5cy0vw+1WLt/xvQ==
+"@highcharts/highcharts-react-native@^3.1.2":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@highcharts/highcharts-react-native/-/highcharts-react-native-3.1.2.tgz#d3a29c2f9cff7e23286e86b7d8c029a9a7b9d463"
+  integrity sha512-9X5JJTTHaZtI+fp6MUxctdSeOOKLrtgzTlFp2wYvrNnSzyl3ClfFkJk1kyplwpJNUBkUgSDO3nPOAgnhiUGwDQ==
   dependencies:
     metro-config "^0.60.0"
     react-native-unimodules "^0.10.1"

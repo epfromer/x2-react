@@ -23,15 +23,16 @@ export default function PieHighcharts({
   data,
   handleClick,
 }: Props) {
+  const darkMode = useSelector(selectDarkMode)
   return (
     <HighchartsReactNative
       styles={styles.container}
       options={getPieHighchartsConfig(
-        useSelector(selectDarkMode),
+        darkMode,
         title,
         search,
         data,
-        useSelector(selectDarkMode) ? 'black' : 'white',
+        darkMode ? 'black' : 'white',
         handleClick
       )}
     />

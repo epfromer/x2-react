@@ -20,15 +20,16 @@ export default function BarHighcharts({
   data,
   handleClick,
 }: Props) {
+  const darkMode = useSelector(selectDarkMode)
   return (
     <HighchartsReactNative
       styles={styles.container}
       options={getBarHighchartsConfig(
-        useSelector(selectDarkMode),
+        darkMode,
         title,
         search,
         data,
-        useSelector(selectDarkMode) ? 'black' : 'white',
+        darkMode ? 'black' : 'white',
         handleClick
       )}
     />

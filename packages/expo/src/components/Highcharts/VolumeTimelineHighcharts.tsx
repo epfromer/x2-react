@@ -21,14 +21,15 @@ export default function VolumeTimelineHighcharts({
   data,
   handleClick,
 }: Props) {
+  const darkMode = useSelector(selectDarkMode)
   return (
     <HighchartsReactNative
       styles={styles.container}
       options={getVolumeTimeHighchartsConfig(
-        useSelector(selectDarkMode),
+        darkMode,
         title,
         data,
-        useSelector(selectDarkMode) ? 'black' : 'white',
+        darkMode ? 'black' : 'white',
         handleClick
       )}
     />
