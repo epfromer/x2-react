@@ -168,9 +168,11 @@ export default function SearchView({ navigation }: Props) {
               labelStyle={styles.text}
               inputStyle={styles.text}
               value={newAllText}
+              testID="set-all-text"
               onChangeText={(s) => setNewAllText(s)}
               rightIcon={
                 <Icon
+                  testID="close-all-text"
                   name="close"
                   iconStyle={styles.text}
                   onPress={() => setNewAllText('')}
@@ -182,9 +184,11 @@ export default function SearchView({ navigation }: Props) {
               labelStyle={styles.text}
               inputStyle={styles.text}
               value={newSent}
+              testID="set-sent"
               onChangeText={(s) => setNewSent(s)}
               rightIcon={
                 <Icon
+                  testID="close-sent"
                   name="date-range"
                   iconStyle={styles.text}
                   onPress={() => setDatePickerOpen(true)}
@@ -196,9 +200,11 @@ export default function SearchView({ navigation }: Props) {
               labelStyle={styles.text}
               inputStyle={styles.text}
               value={newFrom}
+              testID="set-from"
               onChangeText={(s) => setNewFrom(s)}
               rightIcon={
                 <Icon
+                  testID="close-from"
                   name="close"
                   iconStyle={styles.text}
                   onPress={() => setNewFrom('')}
@@ -210,9 +216,11 @@ export default function SearchView({ navigation }: Props) {
               labelStyle={styles.text}
               inputStyle={styles.text}
               value={newTo}
+              testID="set-to"
               onChangeText={(s) => setNewTo(s)}
               rightIcon={
                 <Icon
+                  testID="close-to"
                   name="close"
                   iconStyle={styles.text}
                   onPress={() => setNewTo('')}
@@ -224,9 +232,11 @@ export default function SearchView({ navigation }: Props) {
               labelStyle={styles.text}
               inputStyle={styles.text}
               value={newSubject}
+              testID="set-subject"
               onChangeText={(s) => setNewSubject(s)}
               rightIcon={
                 <Icon
+                  testID="close-subject"
                   name="close"
                   iconStyle={styles.text}
                   onPress={() => setNewSubject('')}
@@ -235,16 +245,19 @@ export default function SearchView({ navigation }: Props) {
             />
             <View style={styles.spaceBetweenRow}>
               <Button
+                testID="cancel-dialog"
                 buttonStyle={styles.button}
                 onPress={() => setDlgOpen(false)}
                 title="Cancel"
               />
               <Button
+                testID="clear-fields"
                 buttonStyle={styles.button}
                 onPress={() => clearFields()}
                 title="Clear"
               />
               <Button
+                testID="do-query"
                 buttonStyle={styles.button}
                 onPress={() => doQuery()}
                 title="Search"
