@@ -31,7 +31,6 @@ export default function TimelineView() {
 
   let data: Array<TotalEmailSentDatum> = []
   if (emailSent) {
-    console.log(emailSent)
     data = emailSent.map((stat: any) => ({
       sent: stat.sent,
       value: stat.ids.length,

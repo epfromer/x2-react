@@ -6,7 +6,7 @@
     "start": "serve -s build",
     "watch": "react-app-rewired start",
     "build": "react-app-rewired build",
-    "test": "react-scripts test --coverage --watchAll"
+    "test": "react-app-rewired test --coverage --watchAll"
   },
   "dependencies": {
     "@date-io/moment": "1.x",
