@@ -27,22 +27,22 @@ test('SearchView', () => {
   fireEvent.changeText(getByTestId('set-subject'), 'foo')
 
   expect(getByTestId('close-to')).not.toBeNull()
-  fireEvent.press(getByTestId('close-to'), 'foo')
+  fireEvent.press(getByTestId('close-to'))
   expect(getByTestId('set-to')).not.toBeNull()
   fireEvent.changeText(getByTestId('set-to'), 'foo')
 
   expect(getByTestId('close-from')).not.toBeNull()
-  fireEvent.press(getByTestId('close-from'), 'foo')
+  fireEvent.press(getByTestId('close-from'))
   expect(getByTestId('set-from')).not.toBeNull()
   fireEvent.changeText(getByTestId('set-from'), 'foo')
 
   expect(getByTestId('close-sent')).not.toBeNull()
-  fireEvent.press(getByTestId('close-sent'), 'foo')
+  fireEvent.press(getByTestId('close-sent'))
   expect(getByTestId('set-sent')).not.toBeNull()
   fireEvent.changeText(getByTestId('set-sent'), 'foo')
 
   expect(getByTestId('close-all-text')).not.toBeNull()
-  fireEvent.press(getByTestId('close-all-text'), 'foo')
+  fireEvent.press(getByTestId('close-all-text'))
   expect(getByTestId('set-all-text')).not.toBeNull()
   fireEvent.changeText(getByTestId('set-all-text'), 'foo')
 })
