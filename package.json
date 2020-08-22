@@ -13,7 +13,7 @@
     "postinstall": "cd ./packages/expo && expo-yarn-workspaces postinstall",
     "test": "lerna run --parallel test",
     "watch": "lerna run --parallel watch",
-    "web": "lerna --scope=@klonzo/web run start:dev --stream --",
+    "web": "lerna --scope=@klonzo/web run watch --stream",
     "yarn": "yarn"
   },
   "devDependencies": {
