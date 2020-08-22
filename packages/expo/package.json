@@ -5,11 +5,12 @@
   "main": "__generated__/AppEntry.js",
   "scripts": {
     "start": "expo start -c",
-    "test": "jest --verbose --coverage"
+    "test": "jest --verbose --coverage",
+    "watch": "expo start -c"
   },
   "dependencies": {
     "@highcharts/highcharts-react-native": "^3.1.2",
-    "@klonzo/common": "^0.0.1",
+    "@klonzo/common": "*",
     "@react-native-community/datetimepicker": "^2.6.1",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-native-community/slider": "^3.0.3",

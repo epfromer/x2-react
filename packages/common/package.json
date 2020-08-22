@@ -9,7 +9,8 @@
     "prebuild": "rimraf -rf ./dist",
     "build": "tsc -p tsconfig.build.json",
     "postbuild": "copyfiles -u 1 src/img/*.png dist",
-    "test": "yarn run build"
+    "test": "yarn run build",
+    "watch": "tsc -w -p tsconfig.build.json"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.11.0",

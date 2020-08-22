@@ -1,5 +1,4 @@
 import {
-  FOO,
   BARCHART,
   NETWORKGRAPH,
   PIE,
@@ -19,7 +18,6 @@ interface Props {
 export default function HomeView({ navigation }: Props) {
   return (
     <ScrollView>
-      <Text>{FOO}</Text>
       <HomeCard
         navigation={navigation}
         image={PIE as any}

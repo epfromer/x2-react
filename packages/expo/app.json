@@ -29,7 +29,7 @@
       "config": "metro.config.js"
     },
     "android": {
-      "package": "io.habilelabs.test",
+      "package": "io.klonzo.test",
       "icon": "./assets/icon.png",
       "versionCode": 1,
       "permissions": []

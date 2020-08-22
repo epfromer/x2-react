@@ -1,6 +1,5 @@
 import Grid from '@material-ui/core/Grid'
 import {
-  FOO,
   BARCHART,
   CHORD,
   EVENTTIMELINE,
@@ -36,7 +35,6 @@ export default function HomeView() {
 
   return (
     <Grid container spacing={3}>
-      <div>{FOO}</div>
       {makeCard(
         PIE,
         'Pie',
