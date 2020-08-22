@@ -9,7 +9,7 @@
   },
   "scripts": {
     "expo": "lerna --scope=@klonzo/expo run start --stream --",
-    "common:build": "lerna --scope=@klonzo/common run build --stream --",
+    "build": "lerna --scope=@klonzo/common run build --stream --",
     "postinstall": "cd ./packages/expo && expo-yarn-workspaces postinstall",
     "test": "lerna run --parallel test",
     "watch": "lerna run --parallel watch",

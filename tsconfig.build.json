@@ -3,6 +3,7 @@
   "compilerOptions": {
     "module": "commonjs",
     "sourceMap": true,
+    "skipLibCheck": true,
     "target": "es5"
   }
 }
