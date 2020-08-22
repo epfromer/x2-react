@@ -9,7 +9,7 @@
     "prebuild": "rimraf -rf ./dist",
     "build": "tsc -p tsconfig.build.json",
     "postbuild": "copyfiles -u 1 src/img/*.png dist",
-    "test": "yarn run build",
+    "test": "jest --verbose --coverage",
     "watch": "tsc -w -p tsconfig.build.json"
   },
   "dependencies": {
@@ -32,9 +32,12 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.5",
     "eslint-plugin-react-hooks": "^4.0.8",
+    "jest": "^26.4.2",
+    "jest-transform-stub": "^2.0.0",
     "prettier": "^2.0.5",
     "prop-types": "^15.7.2",
     "rimraf": "^3.0.2",
+    "ts-jest": "^26.2.0",
     "typescript": "^3.9.7"
   },
   "eslintConfig": {
@@ -49,5 +52,25 @@
     "singleQuote": true,
     "trailingComma": "es5",
     "endOfLine": "auto"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}"
+    ],
+    "setupFiles": [
+      "./src/setupTests.js"
+    ],
+    "transform": {
+      ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub"
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   }
 }
