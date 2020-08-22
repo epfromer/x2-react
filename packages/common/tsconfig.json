@@ -1,11 +1,10 @@
 {
-  "include": [
-    "src", "src/constants.ts"
-  ],
-  "composite": true,
   "extends": "../../tsconfig.json",
+  "include": ["src/**/*"],
+  "composite": true,
   "compilerOptions": {
-    "outDir": "lib",
+    "jsx": "react",
+    "outDir": "dist",
     "rootDir": "src",
   }
 }

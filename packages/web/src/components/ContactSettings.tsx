@@ -2,6 +2,7 @@ import {
   getContactsAsync,
   selectContacts,
   selectContactsLoading,
+  Contact,
 } from '@klonzo/common'
 import Button from '@material-ui/core/Button'
 import LinearProgress from '@material-ui/core/LinearProgress'
@@ -57,7 +58,7 @@ export default function ContactSettings() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {contacts?.map((c) => (
+            {contacts?.map((c: Contact) => (
               <TableRow key={c.name}>
                 <TableCell component="th" scope="row">
                   {c.name}

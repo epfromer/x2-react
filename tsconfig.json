@@ -1,13 +1,9 @@
 {
   "extends": "./tsconfig.build.json",
-
   "compilerOptions": {
     "baseUrl": ".",
-    "paths": {
-      "@klonzo/*": ["packages/*/src"]
-    },
-    "jsx": "react",
     "esModuleInterop": true,
+    "paths": {"@klonzo/*": ["packages/*/src"]},
     "skipLibCheck": true
   }
 }

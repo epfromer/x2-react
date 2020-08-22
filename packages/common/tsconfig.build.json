@@ -1,16 +1,11 @@
 {
   "extends": "../../tsconfig.build.json",
-
+  "include": ["src/**/*"],
   "compilerOptions": {
     "declaration": true,
     "esModuleInterop": true,
     "jsx": "react",
     "outDir": "./dist",
-    "rootDir": "./src",
-    "skipLibCheck": true
-  },
-
-  "include": [
-    "src/**/*"
-  ]
+    "rootDir": "./src"
+  }
 }

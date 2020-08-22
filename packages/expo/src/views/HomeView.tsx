@@ -1,4 +1,5 @@
 import {
+  FOO,
   BARCHART,
   NETWORKGRAPH,
   PIE,
@@ -9,7 +10,7 @@ import {
   VOLUMETIMELINE,
 } from '@klonzo/common'
 import React from 'react'
-import { ScrollView } from 'react-native'
+import { ScrollView, Text } from 'react-native'
 import HomeCard from '../components/HomeCard'
 
 interface Props {
@@ -18,6 +19,7 @@ interface Props {
 export default function HomeView({ navigation }: Props) {
   return (
     <ScrollView>
+      <Text>{FOO}</Text>
       <HomeCard
         navigation={navigation}
         image={PIE as any}

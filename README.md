@@ -1,3 +1,3 @@
 # x2-React
 
-React Native front end for email searching. Interfaces to x2-server.
+Monorepo of React based front ends (React, React Native) for data visualization and searching of Enron email. Interfaces to x2-server.
