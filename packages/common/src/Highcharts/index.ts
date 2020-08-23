@@ -1,3 +1,3 @@
 export { getBarHighchartsConfig } from './BarHighcharts'
 export { getPieHighchartsConfig } from './PieHighcharts'
-export { getVolumeTimeHighchartsConfig } from './VolumeTimeline'
+export { getVolumeTimeHighchartsConfig } from './VolumeTimelineHighcharts'
