@@ -22,6 +22,7 @@
     "redux-logger": "^3.0.6"
   },
   "devDependencies": {
+    "@react-native-community/async-storage": "^1.12.0",
     "babel-eslint": "^10.1.0",
     "copyfiles": "^2.3.0",
     "eslint": "^7.6.0",
@@ -33,6 +34,7 @@
     "eslint-plugin-react": "^7.20.5",
     "eslint-plugin-react-hooks": "^4.0.8",
     "jest": "^26.4.2",
+    "jest-fetch-mock": "^3.0.3",
     "jest-transform-stub": "^2.0.0",
     "prettier": "^2.0.5",
     "prop-types": "^15.7.2",
@@ -55,10 +57,15 @@
   },
   "jest": {
     "preset": "ts-jest",
+    "setupFiles": [
+      "./src/setupTests.js"
+    ],
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}"
     ],
-    "roots": ["src"],
+    "roots": [
+      "src"
+    ],
     "transform": {
       ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub"
     },

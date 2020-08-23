@@ -1,9 +1,30 @@
+import mockAsyncStorage from '@react-native-community/async-storage/jest/async-storage-mock'
 import '@testing-library/jest-dom/extend-expect'
+import fetchMock from 'jest-fetch-mock'
 import {
+  clearSearch,
+  getContactsAsync,
+  getEmailAsync,
   getEmailById,
   getEmailIndex,
+  getEmailSentAsync,
   getNextEmailId,
   getPreviousEmailId,
+  getWordCloudAsync,
+  loadAppSettingsAsync,
+  selectAllText,
+  selectBody,
+  selectEmailListPage,
+  selectEmailReceivers,
+  selectEmailSenders,
+  selectEmailSentByContact,
+  selectFrom,
+  selectQueryOrder,
+  selectQuerySort,
+  selectSent,
+  selectSubject,
+  selectTimeSpan,
+  selectTo,
   setAllText,
   setBody,
   setContacts,
@@ -15,6 +36,7 @@ import {
   setWordCloud,
   store,
 } from '../index'
+jest.mock('@react-native-community/async-storage', () => mockAsyncStorage)
 
 const contacts = [
   {
@@ -164,4 +186,59 @@ test('getPreviousEmailId', () => {
 
 test('getEmailIndex', () => {
   expect(getEmailIndex('5f12fbcdab4d2f1a58edd10b')).toBeTruthy()
+})
+
+test('getWordCloudAsync', async () => {
+  fetchMock.mockResponseOnce(JSON.stringify(wordCloud))
+  await getWordCloudAsync()
+  expect(store.getState().wordCloud.wordCloud).toEqual(wordCloud)
+})
+
+test('getWordCloudAsync', async () => {
+  fetchMock.mockResponseOnce(JSON.stringify(contacts))
+  await getContactsAsync()
+  expect(store.getState().contacts.contacts).toEqual(contacts)
+})
+
+test('loadAppSettingsAsync', async () => {
+  await loadAppSettingsAsync()
+  expect(store.getState().appSettings.darkMode).toEqual(false)
+})
+
+test('getEmailSentAsync', async () => {
+  fetchMock.mockResponseOnce(JSON.stringify(emailSent))
+  await getEmailSentAsync()
+  expect(store.getState().emailSent.emailSent).toEqual(emailSent)
+})
+
+test('getEmailAsync', async () => {
+  fetchMock.mockResponseOnce(JSON.stringify(email))
+  await getEmailAsync()
+  expect(store.getState().email.email).toEqual(email)
+})
+
+test('getEmailIndex', () => {
+  store.dispatch(clearSearch())
+  expect(selectAllText(store.getState())).toEqual('')
+  expect(selectBody(store.getState())).toEqual('')
+  expect(selectEmailListPage(store.getState())).toEqual(0)
+  expect(selectFrom(store.getState())).toEqual('')
+  expect(selectQueryOrder(store.getState())).toEqual(1)
+  expect(selectQuerySort(store.getState())).toEqual('sent')
+  expect(selectSent(store.getState())).toEqual('')
+  expect(selectSubject(store.getState())).toEqual('')
+  expect(selectTimeSpan(store.getState())).toEqual(0)
+  expect(selectTo(store.getState())).toEqual('')
+})
+
+test('selectEmailSenders', () => {
+  expect(selectEmailSenders(store.getState())).toBeTruthy()
+})
+
+test('selectEmailReceivers', () => {
+  expect(selectEmailReceivers(store.getState())).toBeTruthy()
+})
+
+test('selectEmailSentByContact', () => {
+  expect(selectEmailSentByContact(store.getState())).toBeTruthy()
 })
