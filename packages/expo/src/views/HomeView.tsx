@@ -9,7 +9,7 @@ import {
   VOLUMETIMELINE,
 } from '@klonzo/common'
 import React from 'react'
-import { ScrollView, Text } from 'react-native'
+import { ScrollView } from 'react-native'
 import HomeCard from '../components/HomeCard'
 
 interface Props {

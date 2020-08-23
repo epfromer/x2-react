@@ -58,9 +58,7 @@
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}"
     ],
-    "setupFiles": [
-      "./src/setupTests.js"
-    ],
+    "roots": ["src"],
     "transform": {
       ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub"
     },
