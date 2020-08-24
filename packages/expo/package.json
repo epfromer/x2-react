@@ -5,7 +5,7 @@
   "main": "__generated__/AppEntry.js",
   "scripts": {
     "start": "expo start -c",
-    "test": "jest --verbose --coverage --runInBand --detectOpenHandles",
+    "test": "jest --verbose --coverage",
     "watch": "expo start -c"
   },
   "dependencies": {
@@ -18,7 +18,7 @@
     "@react-navigation/stack": "^5.9.0",
     "expo": "~38.0.9",
     "highcharts": "^8.2.0",
-    "metro-config": "^0.62.0",
+    "metro-config": "^0.63.0",
     "react": "~16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz",
     "react-native-color-picker": "^0.5.2",
