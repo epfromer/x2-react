@@ -2,7 +2,7 @@ import React from 'react'
 import { renderComp } from '../../setupTests'
 import NetworkGraphView from '../NetworkGraphView'
 
-test('NetworkGraphView', () => {
+test('NetworkGraphView', async () => {
   const navigation = { navigate: jest.fn() }
   const { getByTestId } = renderComp(
     <NetworkGraphView navigation={navigation} route="foo" />

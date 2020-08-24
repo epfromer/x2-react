@@ -3,7 +3,7 @@ import React from 'react'
 import { renderComp } from '../../setupTests'
 import TreeMapView from '../TreeMapView'
 
-test('TreeMapView', () => {
+test('TreeMapView', async () => {
   const navigation = { navigate: jest.fn() }
   const { getByTestId } = renderComp(
     <TreeMapView navigation={navigation} route="foo" />
@@ -13,5 +13,5 @@ test('TreeMapView', () => {
   expect(xmitPicker).not.toBeNull()
   const chartLibPicker = getByTestId('chartlib-picker')
   expect(chartLibPicker).not.toBeNull()
-  fireEvent(xmitPicker, 'valueChange', 'Receivers')
+  await fireEvent(xmitPicker, 'valueChange', 'Receivers')
 })

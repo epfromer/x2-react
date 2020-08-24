@@ -325,32 +325,30 @@ export default function SearchView({ navigation }: Props) {
   }
 
   return (
-    <>
-      <SafeAreaView style={styles.container}>
-        <SearchDlg />
-        <Button
-          testID="open-dialog"
-          buttonStyle={styles.filterButton}
-          onPress={() => setDlgOpen(true)}
-          title={filterList()}
+    <SafeAreaView style={styles.container}>
+      <SearchDlg />
+      <Button
+        testID="open-dialog"
+        buttonStyle={styles.filterButton}
+        onPress={() => setDlgOpen(true)}
+        title={filterList()}
+      />
+      <Spinner visible={emailsLoading} textContent={'Loading...'} />
+      {emails && (
+        <FlatList
+          data={emails}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+          onEndReached={handleLoadMore}
+          onEndReachedThreshold={0.5}
+          initialNumToRender={EMAIL_LIST_PAGE_LENGTH}
         />
-        <Spinner visible={emailsLoading} textContent={'Loading...'} />
-        {emails && (
-          <FlatList
-            data={emails}
-            renderItem={renderItem}
-            keyExtractor={(item) => item.id}
-            onEndReached={handleLoadMore}
-            onEndReachedThreshold={0.5}
-            initialNumToRender={EMAIL_LIST_PAGE_LENGTH}
-          />
-        )}
-        {emails && emails.length === 0 && !emailsLoading && (
-          <View style={styles.loading}>
-            <Text>Nothing found</Text>
-          </View>
-        )}
-      </SafeAreaView>
-    </>
+      )}
+      {emails && emails.length === 0 && !emailsLoading && (
+        <View style={styles.loading}>
+          <Text>Nothing found</Text>
+        </View>
+      )}
+    </SafeAreaView>
   )
 }
