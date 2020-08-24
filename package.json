@@ -8,8 +8,8 @@
     ]
   },
   "engines": {
-    "node": "latest",
-    "yarn": "latest"
+    "node": ">= 14",
+    "yarn": ">= 1"
   },
   "scripts": {
     "clean": "lerna clean",
