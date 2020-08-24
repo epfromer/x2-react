@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function EmailDetailView() {
   const classes = useStyles()
-  const { id } = useParams()
+  const { id } = useParams() as any
   const [loading, setLoading] = useState(false)
   const [email, setEmail] = useState<Email | null>(null)
   const cachedEmail = getEmailById(id)
