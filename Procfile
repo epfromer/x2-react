@@ -1,0 +1,1 @@
+web: serve -s packages/web/build

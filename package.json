@@ -7,11 +7,15 @@
       "packages/*"
     ]
   },
+  "engines": {
+    "node": ">= 12"
+  },
   "scripts": {
+    "clean": "lerna clean",
     "expo": "lerna --scope=@klonzo/expo run start --stream --",
-    "build": "lerna --scope=@klonzo/common run build --stream --",
+    "build": "lerna run build",
     "postinstall": "cd ./packages/expo && expo-yarn-workspaces postinstall",
-    "test": "lerna run --parallel test",
+    "test": "lerna run test",
     "watch": "lerna run --parallel watch --stream",
     "web": "lerna --scope=@klonzo/web run watch --stream",
     "yarn": "yarn"
@@ -27,6 +31,7 @@
     "eslint-plugin-react": "^7.20.5",
     "eslint-plugin-react-hooks": "^4.0.8",
     "prettier": "^2.0.5",
+    "serve": "^11.3.2",
     "typescript": "^3.9.7"
   },
   "eslintConfig": {

@@ -3,8 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "engines": {
-    "npm": ">= 6",
-    "node": ">= 10"
+    "node": ">= 12"
   },
   "scripts": {
     "start": "serve -s build",
