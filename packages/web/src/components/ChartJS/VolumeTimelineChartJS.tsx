@@ -74,6 +74,7 @@ export default function VolumeTimelineChartJS({
           label: title,
           data: dailyTotals.map((d: Datum) => d.value),
           fill: 'none',
+          backgroundColor: '#c43a31',
           pointRadius: 2,
           borderWidth: 1,
           lineTension: 0,

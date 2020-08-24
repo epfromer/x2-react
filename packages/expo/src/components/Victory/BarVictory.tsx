@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux'
 import { VictoryAxis, VictoryBar, VictoryChart } from 'victory-native'
 
 // https://formidable.com/open-source/victory/docs/victory-bar
-// TODO - https://github.com/FormidableLabs/victory-native/issues/568, events don't work on Android
 
 interface Props {
   title: string
@@ -14,7 +13,7 @@ interface Props {
   handleClick: (search: string, name: string) => void
 }
 
-export default function BarVictory({ search, data, handleClick }: Props) {
+export default function BarVictory({ data }: Props) {
   const darkMode = useSelector(selectDarkMode)
   const [orientation, setOrientation] = useState('portrait')
 
@@ -72,23 +71,6 @@ export default function BarVictory({ search, data, handleClick }: Props) {
             duration: 2000,
             onLoad: { duration: 1000 },
           }}
-          events={[
-            {
-              target: 'data',
-              eventHandlers: {
-                onPressIn: () => {
-                  return [
-                    {
-                      mutation: (props: any) => {
-                        handleClick(search, props.datum.xName)
-                        return null
-                      },
-                    },
-                  ]
-                },
-              },
-            },
-          ]}
           horizontal
           data={data.map((datum) => datum).reverse()}
           x="name"

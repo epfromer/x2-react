@@ -14,7 +14,7 @@ interface Props {
   handleClick: (search: string, name: string) => void
 }
 
-export default function PieVictory({ search, data, handleClick }: Props) {
+export default function PieVictory({ data }: Props) {
   const darkMode = useSelector(selectDarkMode)
 
   interface Datum {
@@ -45,23 +45,6 @@ export default function PieVictory({ search, data, handleClick }: Props) {
             fontSize: 10,
           },
         }}
-        events={[
-          {
-            target: 'data',
-            eventHandlers: {
-              onClick: () => {
-                return [
-                  {
-                    mutation: (props: any) => {
-                      handleClick(search, props.datum.xName)
-                      return null
-                    },
-                  },
-                ]
-              },
-            },
-          },
-        ]}
       />
     </View>
   )

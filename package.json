@@ -12,12 +12,9 @@
   },
   "scripts": {
     "clean": "lerna clean",
-    "expo": "lerna --scope=@klonzo/expo run start --stream --",
     "build": "lerna run build",
     "postinstall": "cd ./packages/expo && expo-yarn-workspaces postinstall",
-    "test": "lerna run test",
     "watch": "lerna run --parallel watch --stream",
-    "web": "lerna --scope=@klonzo/web run watch --stream",
     "yarn": "yarn"
   },
   "devDependencies": {

@@ -39,14 +39,6 @@ export default function VolumeTimelineVictory({
     value: datum.value,
   }))
 
-  const onClick = () => {
-    return [
-      {
-        mutation: (props: any) => handleClick(props.datum.xName),
-      },
-    ]
-  }
-
   return (
     <div>
       <VictoryChart
@@ -81,6 +73,7 @@ export default function VolumeTimelineVictory({
         />
         <VictoryLine
           style={{
+            data: { stroke: '#c43a31' },
             labels: {
               fontSize: 15,
               fill: darkMode ? 'white' : 'black',
@@ -93,14 +86,6 @@ export default function VolumeTimelineVictory({
           data={chartData}
           x="sent"
           y="value"
-          events={[
-            {
-              target: 'data',
-              eventHandlers: {
-                onClick,
-              },
-            },
-          ]}
         />
       </VictoryChart>
       <VictoryChart
@@ -128,6 +113,7 @@ export default function VolumeTimelineVictory({
         />
         <VictoryLine
           style={{
+            data: { stroke: '#c43a31' },
             labels: {
               fontSize: 15,
               fill: darkMode ? 'white' : 'black',
@@ -142,11 +128,7 @@ export default function VolumeTimelineVictory({
           y="value"
         />
       </VictoryChart>
-      <button
-        hidden
-        onClick={onClick}
-        data-testid="volume-timeline-victory"
-      ></button>
+      <button hidden data-testid="volume-timeline-victory"></button>
     </div>
   )
 }

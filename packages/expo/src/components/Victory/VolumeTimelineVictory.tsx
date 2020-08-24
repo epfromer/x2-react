@@ -84,6 +84,7 @@ export default function VolumeTimelineVictory({ data }: Props) {
         />
         <VictoryLine
           style={{
+            data: { stroke: '#c43a31' },
             labels: {
               fontSize: 15,
               fill: darkMode ? 'white' : 'black',
@@ -96,24 +97,6 @@ export default function VolumeTimelineVictory({ data }: Props) {
           data={chartData}
           x="sent"
           y="value"
-          events={[
-            {
-              target: 'data',
-              eventHandlers: {
-                onClick: () => {
-                  return [
-                    {
-                      mutation: () => {
-                        // TODO - no datum prop - bug
-                        // handleClick(search, props.datum.xName)
-                        return null
-                      },
-                    },
-                  ]
-                },
-              },
-            },
-          ]}
         />
       </VictoryChart>
     </View>

@@ -18,7 +18,7 @@ interface Props {
   handleClick: (search: string, name: string) => void
 }
 
-export default function PolarVictory({ search, data, handleClick }: Props) {
+export default function PolarVictory({ data }: Props) {
   const darkMode = useSelector(selectDarkMode)
 
   interface Datum {
@@ -63,23 +63,6 @@ export default function PolarVictory({ search, data, handleClick }: Props) {
             duration: 2000,
             onLoad: { duration: 1000 },
           }}
-          events={[
-            {
-              target: 'data',
-              eventHandlers: {
-                onClick: () => {
-                  return [
-                    {
-                      mutation: (props: any) => {
-                        handleClick(search, props.datum.xName)
-                        return null
-                      },
-                    },
-                  ]
-                },
-              },
-            },
-          ]}
           data={data}
           x="name"
           y="value"

@@ -10,7 +10,7 @@
     "clean": "rimraf dist",
     "compile": "tsc -p tsconfig.build.json",
     "compile:watch": "tsc -w -p tsconfig.build.json",
-    "copy-assets": "copyfiles -u 1 src/img/*.png dist/img/",
+    "copy-assets": "copyfiles -u 1 src/img/*.png dist/",
     "coverage": "jest --verbose --coverage",
     "test": "run-s build coverage",
     "watch": "run-s build compile:watch"
