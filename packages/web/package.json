@@ -12,6 +12,7 @@
     "test": "react-app-rewired test --coverage --watchAll"
   },
   "dependencies": {
+    "@amcharts/amcharts4": "^4.9.37",
     "@date-io/moment": "1.x",
     "@klonzo/common": "*",
     "@material-ui/core": "^4.11.0",
