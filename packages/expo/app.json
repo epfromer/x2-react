@@ -33,6 +33,8 @@
       "icon": "./assets/icon.png",
       "versionCode": 1,
       "permissions": []
-    }
+    },
+    "description": "Data viz and searching of Enron email.  Interfaces to x2-server (https://github.com/epfromer/x2-server).",
+    "githubUrl": "https://github.com/epfromer/x2-React"
   }
 }
