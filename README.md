@@ -1,4 +1,4 @@
-# x2-React
+# x2-react
 
 Monorepo of React based front ends (React, React Native) for data visualization and searching of Enron email. Interfaces to x2-server (<https://github.com/epfromer/x2-server>).
 
