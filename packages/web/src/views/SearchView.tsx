@@ -1,5 +1,5 @@
 import {
-  EMAIL_LIST_PAGE_LENGTH,
+  emailListPageLength,
   selectEmail,
   selectEmailListPage,
   selectEmailLoading,
@@ -38,7 +38,7 @@ export default function SearchView() {
   const emailListPage = useSelector(selectEmailListPage)
 
   const hasMore = () =>
-    (emailListPage + 1) * EMAIL_LIST_PAGE_LENGTH < totalEmails
+    (emailListPage + 1) * emailListPageLength < totalEmails
 
   const observer: any = useRef()
   const lastRowRef = useCallback(

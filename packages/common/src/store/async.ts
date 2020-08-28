@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-community/async-storage'
-import { EMAIL_LIST_PAGE_LENGTH, EMAIL_SERVER } from '../constants'
+import { emailListPageLength, emailServer } from '../constants'
 import {
   appendEmail,
   setContacts,
@@ -17,7 +17,7 @@ import {
 
 export async function getWordCloudAsync() {
   store.dispatch(setWordCloudLoading(true))
-  fetch(`${EMAIL_SERVER}/wordCloud`)
+  fetch(`${emailServer}/wordCloud`)
     .then((resp) => resp.json())
     .then((json) => store.dispatch(setWordCloud(json)))
     .then(() => store.dispatch(setWordCloudLoading(false)))
@@ -43,7 +43,7 @@ export async function loadAppSettingsAsync() {
 
 export async function getContactsAsync() {
   store.dispatch(setContactsLoading(true))
-  fetch(`${EMAIL_SERVER}/contacts`)
+  fetch(`${emailServer}/contacts`)
     .then((resp) => resp.json())
     .then((json) => store.dispatch(setContacts(json)))
     .then(() => store.dispatch(setContactsLoading(false)))
@@ -52,7 +52,7 @@ export async function getContactsAsync() {
 
 export async function getEmailSentAsync() {
   store.dispatch(setEmailSentLoading(true))
-  fetch(`${EMAIL_SERVER}/emailSent`)
+  fetch(`${emailServer}/emailSent`)
     .then((resp) => resp.json())
     .then((json) => store.dispatch(setEmailSent(json)))
     .then(() => store.dispatch(setEmailSentLoading(false)))
@@ -62,8 +62,8 @@ export async function getEmailSentAsync() {
 function makeQueryObj(): any {
   const state = store.getState()
   const query: any = {
-    skip: state.query.emailListPage * EMAIL_LIST_PAGE_LENGTH,
-    limit: EMAIL_LIST_PAGE_LENGTH,
+    skip: state.query.emailListPage * emailListPageLength,
+    limit: emailListPageLength,
     sort: state.query.querySort,
     order: state.query.queryOrder,
   }
@@ -97,7 +97,7 @@ function encodeQuery() {
 }
 
 export async function getEmailAsync(append: boolean = false) {
-  const query = `${EMAIL_SERVER}/${encodeQuery()}`
+  const query = `${emailServer}/${encodeQuery()}`
   // console.log(query)
   store.dispatch(setEmailLoading(true))
   fetch(query)

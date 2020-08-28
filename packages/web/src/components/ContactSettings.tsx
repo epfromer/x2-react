@@ -27,7 +27,7 @@ export default function ContactSettings() {
   function handleColorChosen(color: string) {
     setOpenColorPicker(false)
     if (!color) return
-    const url = `${process.env.REACT_APP_EMAIL_SERVER}/contacts/${contactId}`
+    const url = `${process.env.REACT_APP_emailServer}/contacts/${contactId}`
     const payload = {
       method: 'PUT',
       body: JSON.stringify({ color }),

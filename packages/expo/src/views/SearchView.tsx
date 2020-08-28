@@ -1,5 +1,5 @@
 import {
-  EMAIL_LIST_PAGE_LENGTH,
+  emailListPageLength,
   getEmailAsync,
   MAX_FROM_LENGTH,
   selectAllText,
@@ -304,7 +304,7 @@ export default function SearchView({ navigation }: Props) {
   )
 
   const hasMore = () =>
-    (emailListPage + 1) * EMAIL_LIST_PAGE_LENGTH < totalEmails
+    (emailListPage + 1) * emailListPageLength < totalEmails
 
   const handleLoadMore = () => {
     if (hasMore()) {
@@ -341,7 +341,7 @@ export default function SearchView({ navigation }: Props) {
           keyExtractor={(item) => item.id}
           onEndReached={handleLoadMore}
           onEndReachedThreshold={0.5}
-          initialNumToRender={EMAIL_LIST_PAGE_LENGTH}
+          initialNumToRender={emailListPageLength}
         />
       )}
       {emails && emails.length === 0 && !emailsLoading && (

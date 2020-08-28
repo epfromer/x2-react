@@ -1,6 +1,6 @@
 import {
   Email,
-  EMAIL_SERVER,
+  emailServer,
   getEmailById,
   getEmailIndex,
   getNextEmailId,
@@ -108,7 +108,7 @@ export default function EmailDetailView({ route, navigation }: Props) {
 
   function doFetch() {
     setLoading(true)
-    const url = `${EMAIL_SERVER}/email/${route.params.id}`
+    const url = `${emailServer}/email/${route.params.id}`
     console.log(url)
     fetch(url)
       .then((resp) => resp.json())

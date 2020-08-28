@@ -1,6 +1,6 @@
 import {
   Contact,
-  EMAIL_SERVER,
+  emailServer,
   getContactsAsync,
   selectContacts,
   selectContactsLoading,
@@ -67,7 +67,7 @@ export default function AppSettingsView() {
 
   const handleColorChosen = (color: string) => {
     setColorPickerDlgOpen(false)
-    const url = `${EMAIL_SERVER}/contacts/${colorPickerItem}`
+    const url = `${emailServer}/contacts/${colorPickerItem}`
     const payload = {
       method: 'PUT',
       body: JSON.stringify({ color }),

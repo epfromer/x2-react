@@ -2,6 +2,8 @@
   "name": "@klonzo/common",
   "version": "0.0.1",
   "private": true,
+  "license": "MIT",
+  "author": "Ed Pfromer epfromer@gmail.com",
   "description": "Shared components for x2-React",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

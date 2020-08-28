@@ -47,7 +47,7 @@ export default function EmailDetailView() {
 
   function doFetch() {
     setLoading(true)
-    const url = `${process.env.REACT_APP_EMAIL_SERVER}/email/${id}`
+    const url = `${process.env.REACT_APP_emailServer}/email/${id}`
     // console.log(url)
     fetch(url)
       .then((resp) => resp.json())
