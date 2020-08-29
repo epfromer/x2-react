@@ -44,6 +44,7 @@ export interface Email {
   _id: string
   id: string
   sent: string
+  sentShort: string
   from: string
   fromContact: string
   to: string
