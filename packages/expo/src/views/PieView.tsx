@@ -1,8 +1,8 @@
 import {
   clearSearch,
   getEmailAsync,
-  selectContacts,
-  selectContactsLoading,
+  selectCustodians,
+  selectCustodiansLoading,
   selectDarkMode,
   selectEmailReceivers,
   selectEmailSenders,
@@ -27,8 +27,8 @@ export default function PieView({ navigation }: Props) {
   const darkMode = useSelector(selectDarkMode)
   const [isSenders, setIsSenders] = useState(true)
   const [chartLib, setChartLib] = useState('ECharts')
-  const contactsLoading = useSelector(selectContactsLoading)
-  const contacts = useSelector(selectContacts)
+  const custodiansLoading = useSelector(selectCustodiansLoading)
+  const custodians = useSelector(selectCustodians)
   const emailSenders = useSelector(selectEmailSenders)
   const emailReceivers = useSelector(selectEmailReceivers)
 
@@ -85,8 +85,8 @@ export default function PieView({ navigation }: Props) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Spinner visible={contactsLoading} textContent={'Loading...'} />
-      {contacts && (
+      <Spinner visible={custodiansLoading} textContent={'Loading...'} />
+      {custodians && (
         <>
           {chartLib === 'ECharts' && (
             <>

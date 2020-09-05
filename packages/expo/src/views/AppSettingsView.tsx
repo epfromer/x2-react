@@ -1,9 +1,9 @@
 import {
-  Contact,
+  Custodian,
   emailServer,
-  getContactsAsync,
-  selectContacts,
-  selectContactsLoading,
+  getCustodiansAsync,
+  selectCustodians,
+  selectCustodiansLoading,
   selectDarkMode,
   setDarkMode,
 } from '@klonzo/common'
@@ -27,14 +27,14 @@ export default function AppSettingsView() {
   const [colorPickerDefault, setColorPickerDefault] = useState('')
   const [colorPickerItem, setColorPickerItem] = useState('')
   const [colorPickerDlgOpen, setColorPickerDlgOpen] = useState(false)
-  const contactsLoading = useSelector(selectContactsLoading)
-  const contacts = useSelector(selectContacts)
+  const custodiansLoading = useSelector(selectCustodiansLoading)
+  const custodians = useSelector(selectCustodians)
 
   const styles = StyleSheet.create({
     container: {
       flex: 1,
     },
-    contactContainer: {
+    custodianContainer: {
       marginTop: 10,
     },
     title: {
@@ -67,14 +67,14 @@ export default function AppSettingsView() {
 
   const handleColorChosen = (color: string) => {
     setColorPickerDlgOpen(false)
-    const url = `${emailServer}/contacts/${colorPickerItem}`
+    const url = `${emailServer}/custodians/${colorPickerItem}`
     const payload = {
       method: 'PUT',
       body: JSON.stringify({ color }),
       headers: { 'Content-type': 'application/json; charset=UTF-8' },
     }
     fetch(url, payload)
-      .then(() => getContactsAsync())
+      .then(() => getCustodiansAsync())
       .catch((error) => console.error('AppSettingsView', error))
   }
 
@@ -84,19 +84,19 @@ export default function AppSettingsView() {
     setColorPickerDlgOpen(true)
   }
 
-  const renderContact = (contact: Contact) => (
-    <View style={styles.contactContainer} key={contact._id}>
+  const renderCustodian = (custodian: Custodian) => (
+    <View style={styles.custodianContainer} key={custodian.id}>
       <View style={styles.itemRow}>
         <View>
-          <Text style={styles.text}>{contact.name}</Text>
+          <Text style={styles.text}>{custodian.name}</Text>
         </View>
         <View>
           <Button
             buttonStyle={
-              { backgroundColor: contact.color, width: 100, height: 30 } as any
+              { backgroundColor: custodian.color, width: 100, height: 30 } as any
             }
-            onPress={() => chooseColor(contact._id, contact.color)}
-            testID={contact._id}
+            onPress={() => chooseColor(custodian.id, custodian.color)}
+            testID={custodian.id}
           />
         </View>
       </View>
@@ -124,8 +124,8 @@ export default function AppSettingsView() {
         />
         <ScrollView>
           <DarkModeSwitch />
-          <Spinner visible={contactsLoading} textContent={'Loading...'} />
-          {contacts && contacts.map((contact) => renderContact(contact))}
+          <Spinner visible={custodiansLoading} textContent={'Loading...'} />
+          {custodians && custodians.map((custodian) => renderCustodian(custodian))}
         </ScrollView>
       </SafeAreaView>
     </>

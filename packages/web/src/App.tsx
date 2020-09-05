@@ -1,5 +1,5 @@
 import {
-  getContactsAsync,
+  getCustodiansAsync,
   getEmailAsync,
   getEmailSentAsync,
   getWordCloudAsync,
@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-getContactsAsync()
+getCustodiansAsync()
 getWordCloudAsync()
 getEmailSentAsync()
 getEmailAsync()

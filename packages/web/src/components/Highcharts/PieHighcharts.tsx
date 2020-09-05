@@ -27,9 +27,9 @@ export default function PieHighcharts({
     events: any
   }
 
-  const contacts: Array<HighChartsDatum> = []
+  const custodians: Array<HighChartsDatum> = []
   data.forEach((datum) => {
-    contacts.push({
+    custodians.push({
       name: datum.name,
       y: datum.value,
       color: datum.color,
@@ -75,7 +75,7 @@ export default function PieHighcharts({
       {
         name: 'Brands',
         colorByPoint: true,
-        data: contacts,
+        data: custodians,
       },
     ],
   }

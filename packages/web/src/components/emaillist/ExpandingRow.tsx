@@ -31,14 +31,14 @@ export default function ExpandingRow({ email, lastRowRef }: Props) {
       <TableRow ref={lastRowRef} hover>
         <TableCell
           onClick={() => setOpen(!open)}
-          data-testid={`expand-more-${email._id}`}
+          data-testid={`expand-more-${email.id}`}
         >
           <ExpandMoreFunc />
         </TableCell>
-        <LinkedTableCell field={email.sent} id={email._id} />
-        <LinkedTableCell field={email.from} id={email._id} />
-        <LinkedTableCell field={email.to} id={email._id} />
-        <LinkedTableCell field={email.subject} id={email._id} />
+        <LinkedTableCell field={email.sent} id={email.id} />
+        <LinkedTableCell field={email.from} id={email.id} />
+        <LinkedTableCell field={email.to} id={email.id} />
+        <LinkedTableCell field={email.subject} id={email.id} />
       </TableRow>
       <TableRow>
         <TableCell colSpan={5} style={{ padding: 0 }}>

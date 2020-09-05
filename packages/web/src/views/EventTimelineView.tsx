@@ -1,9 +1,9 @@
 import {
   clearSearch,
-  Contact,
+  Custodian,
   getEmailAsync,
-  selectContacts,
-  selectContactsLoading,
+  selectCustodians,
+  selectCustodiansLoading,
   selectDarkMode,
   setAllText,
   setFrom,
@@ -32,13 +32,13 @@ HighchartTimeline(Highcharts)
 export default function EventTimelineView() {
   const dispatch = useDispatch()
   const history = useHistory()
-  const contactsLoading = useSelector(selectContactsLoading)
-  const contacts = useSelector(selectContacts)
+  const custodiansLoading = useSelector(selectCustodiansLoading)
+  const custodians = useSelector(selectCustodians)
   const darkMode = useSelector(selectDarkMode)
   const [vertical, setVertical] = useState(true)
 
-  const getContactColor = (name: string) => {
-    const found = contacts?.find((c: Contact) => c.name === name)
+  const getCustodianColor = (name: string) => {
+    const found = custodians?.find((c: Custodian) => c.name === name)
     return found ? found.color : ''
   }
 
@@ -123,7 +123,7 @@ export default function EventTimelineView() {
             description: 'Watkins meets with Lay',
             queryKey: 'from',
             queryValue: '(Watkins, Sherron)',
-            color: getContactColor('Watkins, Sherron'),
+            color: getCustodianColor('Watkins, Sherron'),
           },
           {
             x: new Date('2001-10-12').getTime(),
@@ -191,7 +191,7 @@ export default function EventTimelineView() {
               'Fastow indicted on charges of conspiracy, fraud, money laundering and other counts.',
             queryKey: 'from',
             queryValue: '(Fastow, Andrew)',
-            color: getContactColor('Fastow, Andrew'),
+            color: getCustodianColor('Fastow, Andrew'),
           },
           {
             x: new Date('2004-01-14').getTime(),
@@ -200,7 +200,7 @@ export default function EventTimelineView() {
               'Fastow pleads guilty to two counts of conspiracy and agrees to serve 10 years in prison.',
             queryKey: 'from',
             queryValue: '(Fastow, Andrew)',
-            color: getContactColor('Fastow, Andrew'),
+            color: getCustodianColor('Fastow, Andrew'),
           },
           {
             x: new Date('2004-01-22').getTime(),
@@ -208,7 +208,7 @@ export default function EventTimelineView() {
             description: 'Causey indicted for wire fraud and conspiracy',
             queryKey: 'from',
             queryValue: '(Causey, Richard)',
-            color: getContactColor('Causey, Richard'),
+            color: getCustodianColor('Causey, Richard'),
           },
           {
             x: new Date('2004-02-19').getTime(),
@@ -217,7 +217,7 @@ export default function EventTimelineView() {
               'Skilling added to Causey indictment, pleads innocent to more than 30 counts.',
             queryKey: 'from',
             queryValue: '(Skilling, Jeff)',
-            color: getContactColor('Skilling, Jeff'),
+            color: getCustodianColor('Skilling, Jeff'),
           },
           {
             x: new Date('2004-07-08').getTime(),
@@ -226,7 +226,7 @@ export default function EventTimelineView() {
               'Lay surrenders after being indicted. He pleads innocent.',
             queryKey: 'from',
             queryValue: '(Lay, Kenneth)',
-            color: getContactColor('Lay, Kenneth'),
+            color: getCustodianColor('Lay, Kenneth'),
           },
           {
             x: new Date('2005-12-28').getTime(),
@@ -235,7 +235,7 @@ export default function EventTimelineView() {
               'Causey pleads guilty, agrees to testify against Lay and Skilling',
             queryKey: 'from',
             queryValue: '(Causey, Richard)',
-            color: getContactColor('Causey, Richard'),
+            color: getCustodianColor('Causey, Richard'),
           },
           {
             x: new Date('2006-07-05').getTime(),
@@ -243,7 +243,7 @@ export default function EventTimelineView() {
             description: 'Lay dies of heart attack while vacationing in Aspen',
             queryKey: 'from',
             queryValue: '(Lay, Kenneth)',
-            color: getContactColor('Lay, Kenneth'),
+            color: getCustodianColor('Lay, Kenneth'),
           },
           {
             x: new Date('2006-10-23').getTime(),
@@ -251,7 +251,7 @@ export default function EventTimelineView() {
             description: 'Skilling sentenced to 24 years in prison',
             queryKey: 'from',
             queryValue: '(Skilling, Jeff)',
-            color: getContactColor('Skilling, Jeff'),
+            color: getCustodianColor('Skilling, Jeff'),
           },
         ],
       },
@@ -260,7 +260,7 @@ export default function EventTimelineView() {
 
   return (
     <div>
-      {contactsLoading && <LinearProgress />}
+      {custodiansLoading && <LinearProgress />}
       <Tooltip
         title="Toggle Horitonal / Vertical"
         aria-label="Toggle Horitonal / Vertical"

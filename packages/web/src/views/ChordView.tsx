@@ -1,8 +1,8 @@
 import {
   clearSearch,
   getEmailAsync,
-  selectContactsLoading,
-  selectEmailSentByContact,
+  selectCustodiansLoading,
+  selectEmailSentByCustodian,
   setFrom,
   setTo,
 } from '@klonzo/common'
@@ -17,8 +17,8 @@ import ChordHighcharts from '../components/Highcharts/ChordHighcharts'
 export default function ChordView() {
   const dispatch = useDispatch()
   const history = useHistory()
-  const emailSentByContact = useSelector(selectEmailSentByContact)
-  const contactsLoading = useSelector(selectContactsLoading)
+  const emailSentByCustodian = useSelector(selectEmailSentByCustodian)
+  const custodiansLoading = useSelector(selectCustodiansLoading)
 
   function handleClick(from: string, to: string) {
     if (!from || !to) return
@@ -31,21 +31,21 @@ export default function ChordView() {
 
   return (
     <div>
-      {contactsLoading && <LinearProgress />}
-      {!contactsLoading && (
+      {custodiansLoading && <LinearProgress />}
+      {!custodiansLoading && (
         <div>
           <Typography variant="h5">Highcharts</Typography>
           <ChordHighcharts
             title="Email Senders to Receivers"
-            data={emailSentByContact.data}
-            nodes={emailSentByContact.nodes}
+            data={emailSentByCustodian.data}
+            nodes={emailSentByCustodian.nodes}
             handleClick={handleClick}
           />
           <Typography variant="h5">ECharts</Typography>
           <ChordECharts
             title="Email Senders to Receivers"
-            data={emailSentByContact.data}
-            nodes={emailSentByContact.nodes}
+            data={emailSentByCustodian.data}
+            nodes={emailSentByCustodian.nodes}
             handleClick={handleClick}
           />
         </div>

@@ -1,8 +1,8 @@
 import {
   clearSearch,
   getEmailAsync,
-  selectContacts,
-  selectContactsLoading,
+  selectCustodians,
+  selectCustodiansLoading,
   selectEmailReceivers,
   selectEmailSenders,
   setFrom,
@@ -21,8 +21,8 @@ import BarVictory from '../components/Victory/BarVictory'
 export default function BarView() {
   const dispatch = useDispatch()
   const history = useHistory()
-  const contactsLoading = useSelector(selectContactsLoading)
-  const contacts = useSelector(selectContacts)
+  const custodiansLoading = useSelector(selectCustodiansLoading)
+  const custodians = useSelector(selectCustodians)
   const emailSenders = useSelector(selectEmailSenders)
   const emailReceivers = useSelector(selectEmailReceivers)
 
@@ -39,8 +39,8 @@ export default function BarView() {
 
   return (
     <div>
-      {contactsLoading && <LinearProgress />}
-      {contacts && (
+      {custodiansLoading && <LinearProgress />}
+      {custodians && (
         <div>
           <Typography variant="h5">Victory</Typography>
           <BarVictory

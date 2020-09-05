@@ -174,12 +174,12 @@ export default function EmailDetailView({ route, navigation }: Props) {
               <Text style={styles.fieldBold}>
                 Sent: <Text style={styles.fields}>{email.sent}</Text>
               </Text>
-              {email.fromContact ? (
+              {email.fromCustodian ? (
                 <Text style={styles.fieldBold}>
                   From:{' '}
                   <Text style={styles.fields}>{highlight(email.from)}</Text>{' '}
-                  (named contact:{' '}
-                  <Text style={styles.fields}>{email.fromContact}</Text>)
+                  (named custodian:{' '}
+                  <Text style={styles.fields}>{email.fromCustodian}</Text>)
                 </Text>
               ) : (
                 <Text style={styles.fieldBold}>
@@ -187,11 +187,11 @@ export default function EmailDetailView({ route, navigation }: Props) {
                   <Text style={styles.fields}>{highlight(email.from)}</Text>
                 </Text>
               )}
-              {email.toContact ? (
+              {email.toCustodian ? (
                 <Text style={styles.fieldBold}>
                   To: <Text style={styles.fields}>{highlight(email.to)}</Text>{' '}
-                  (named contact:{' '}
-                  <Text style={styles.fields}>{email.toContact}</Text>)
+                  (named custodian:{' '}
+                  <Text style={styles.fields}>{email.toCustodian}</Text>)
                 </Text>
               ) : (
                 <Text style={styles.fieldBold}>

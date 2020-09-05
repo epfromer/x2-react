@@ -6,14 +6,14 @@ import {
 } from '@reduxjs/toolkit'
 // import logger from 'redux-logger'
 import appSettingsReducer from './appSettingsSlice'
-import contactsReducer from './contactsSlice'
+import custodiansReducer from './custodiansSlice'
 import emailSentReducer from './emailSentSlice'
 import emailReducer from './emailSlice'
 import queryReducer from './querySlice'
 import wordCloudReducer from './wordCloudSlice'
 
 export * from './appSettingsSlice'
-export * from './contactsSlice'
+export * from './custodiansSlice'
 export * from './emailSentSlice'
 export * from './emailSlice'
 export * from './querySlice'
@@ -36,7 +36,7 @@ const serializableMiddleware = createSerializableStateInvariantMiddleware({
 export const store = configureStore({
   reducer: {
     appSettings: appSettingsReducer,
-    contacts: contactsReducer,
+    custodians: custodiansReducer,
     email: emailReducer,
     emailSent: emailSentReducer,
     query: queryReducer,

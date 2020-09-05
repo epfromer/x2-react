@@ -38,19 +38,19 @@ export default function HomeView() {
       {makeCard(
         PIE,
         'Pie',
-        'Pie chart of email volume of Enron key contacts.',
+        'Pie chart of email volume of Enron key custodians.',
         '/PieView'
       )}
       {makeCard(
         BARCHART,
         'Bar',
-        'Bar chart of email volume of Enron key contacts.',
+        'Bar chart of email volume of Enron key custodians.',
         '/BarView'
       )}
       {makeCard(
         CHORD,
         'Chord',
-        'Chord diagram of Enron key contact communication.',
+        'Chord diagram of Enron key custodian communication.',
         '/ChordView'
       )}
       {makeCard(
@@ -68,13 +68,13 @@ export default function HomeView() {
       {makeCard(
         NETWORKGRAPH,
         'Network Graph',
-        'Network graph of Enron key contact communication.',
+        'Network graph of Enron key custodian communication.',
         '/NetworkGraphView'
       )}
       {makeCard(
         TREEMAP,
         'Tree Map',
-        'Tree map of email volume of Enron key contacts.',
+        'Tree map of email volume of Enron key custodians.',
         '/TreeMapView'
       )}
       {makeCard(
@@ -86,7 +86,7 @@ export default function HomeView() {
       {makeCard(
         POLAR,
         'Polar',
-        'Polar chart of email volume of Enron key contacts.',
+        'Polar chart of email volume of Enron key custodians.',
         '/PolarView'
       )}
       {makeCard(

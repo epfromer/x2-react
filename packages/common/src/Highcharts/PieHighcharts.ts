@@ -15,9 +15,9 @@ export function getPieHighchartsConfig(
   backgroundColor: string,
   handleClick: (key: string, value: string) => void
 ) {
-  const contacts: Array<HighChartsDatum> = []
+  const custodians: Array<HighChartsDatum> = []
   data.forEach((datum) => {
-    contacts.push({
+    custodians.push({
       name: datum.name,
       y: datum.value,
       color: datum.color,
@@ -58,7 +58,7 @@ export function getPieHighchartsConfig(
     },
     series: [
       {
-        data: contacts,
+        data: custodians,
       },
     ],
   }

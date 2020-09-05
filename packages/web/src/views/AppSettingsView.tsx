@@ -1,6 +1,6 @@
 import Typography from '@material-ui/core/Typography'
 import React from 'react'
-import ContactSettings from '../components/ContactSettings'
+import CustodianSettings from '../components/CustodianSettings'
 
 export default function AppSettingsView() {
   return (
@@ -8,7 +8,7 @@ export default function AppSettingsView() {
       <Typography variant="h4" gutterBottom>
         Settings
       </Typography>
-      <ContactSettings />
+      <CustodianSettings />
       <button hidden data-testid="save-setting"></button>
     </div>
   )

@@ -1,5 +1,5 @@
 import {
-  getContactsAsync,
+  getCustodiansAsync,
   getEmailAsync,
   getEmailSentAsync,
   getWordCloudAsync,
@@ -11,7 +11,7 @@ import 'react-native-gesture-handler'
 import { Provider } from 'react-redux'
 import RouteSwitch from './src/router/RouteSwitch'
 
-getContactsAsync()
+getCustodiansAsync()
 getWordCloudAsync()
 getEmailSentAsync()
 getEmailAsync()

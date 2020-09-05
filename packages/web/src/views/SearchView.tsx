@@ -75,12 +75,12 @@ export default function SearchView() {
                     return (
                       <ExpandingRow
                         lastRowRef={lastRowRef}
-                        key={email._id}
+                        key={email.id}
                         email={email}
                       />
                     )
                   } else {
-                    return <ExpandingRow key={email._id} email={email} />
+                    return <ExpandingRow key={email.id} email={email} />
                   }
                 })}
               </TableBody>

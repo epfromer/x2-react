@@ -2,8 +2,8 @@ import AsyncStorage from '@react-native-community/async-storage'
 import { emailListPageLength, emailServer } from '../constants'
 import {
   appendEmail,
-  setContacts,
-  setContactsLoading,
+  setCustodians,
+  setCustodiansLoading,
   setDarkMode,
   setEmail,
   setEmailLoading,
@@ -41,13 +41,13 @@ export async function loadAppSettingsAsync() {
   }
 }
 
-export async function getContactsAsync() {
-  store.dispatch(setContactsLoading(true))
-  fetch(`${emailServer}/contacts`)
+export async function getCustodiansAsync() {
+  store.dispatch(setCustodiansLoading(true))
+  fetch(`${emailServer}/custodians`)
     .then((resp) => resp.json())
-    .then((json) => store.dispatch(setContacts(json)))
-    .then(() => store.dispatch(setContactsLoading(false)))
-    .catch((error) => console.error('getContactsAsync: ', error))
+    .then((json) => store.dispatch(setCustodians(json)))
+    .then(() => store.dispatch(setCustodiansLoading(false)))
+    .catch((error) => console.error('getCustodiansAsync: ', error))
 }
 
 export async function getEmailSentAsync() {

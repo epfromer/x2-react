@@ -346,7 +346,7 @@
         "signature": "334afbe4359cddc170d0b0c7c4729d1b523f882f89ddc0f055bb1c613d529a68",
         "affectsGlobalScope": false
       },
-      "./src/store/contactsslice.ts": {
+      "./src/store/custodiansslice.ts": {
         "version": "7848fc51bb2e2b160738d9eb2084f30a0efdb3c49d3f116e3da41e19d478a5dd",
         "signature": "37d57568799fe1fe00880f43173562d62d3aea8f67640f8c1603c0d9331f0541",
         "affectsGlobalScope": false
@@ -3634,7 +3634,7 @@
         "../../node_modules/@types/node/util.d.ts",
         "./src/store/index.ts"
       ],
-      "./src/store/contactsslice.ts": [
+      "./src/store/custodiansslice.ts": [
         "../../node_modules/@reduxjs/toolkit/dist/typings.d.ts",
         "../../node_modules/@types/graceful-fs/index.d.ts",
         "../../node_modules/@types/node/fs.d.ts",
@@ -3683,7 +3683,7 @@
         "../../node_modules/@types/node/ts3.2/util.d.ts",
         "../../node_modules/@types/node/util.d.ts",
         "./src/store/appsettingsslice.ts",
-        "./src/store/contactsslice.ts",
+        "./src/store/custodiansslice.ts",
         "./src/store/emailsentslice.ts",
         "./src/store/emailslice.ts",
         "./src/store/queryslice.ts",
@@ -6075,7 +6075,7 @@
         "../../node_modules/redux/index.d.ts",
         "./src/store/index.ts"
       ],
-      "./src/store/contactsslice.ts": [
+      "./src/store/custodiansslice.ts": [
         "../../node_modules/@reduxjs/toolkit/dist/typings.d.ts",
         "../../node_modules/redux/index.d.ts",
         "./src/store/index.ts",
@@ -6098,7 +6098,7 @@
         "../../node_modules/redux-thunk/index.d.ts",
         "../../node_modules/redux/index.d.ts",
         "./src/store/appsettingsslice.ts",
-        "./src/store/contactsslice.ts",
+        "./src/store/custodiansslice.ts",
         "./src/store/emailsentslice.ts",
         "./src/store/emailslice.ts",
         "./src/store/queryslice.ts",
@@ -6341,7 +6341,7 @@
       "./src/img/png.d.ts",
       "./src/index.ts",
       "./src/store/appsettingsslice.ts",
-      "./src/store/contactsslice.ts",
+      "./src/store/custodiansslice.ts",
       "./src/store/emailsentslice.ts",
       "./src/store/emailslice.ts",
       "./src/store/index.ts",

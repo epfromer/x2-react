@@ -22,14 +22,14 @@ export default function HomeView({ navigation }: Props) {
         navigation={navigation}
         image={PIE as any}
         title="Pie"
-        description="Pie chart of email volume of Enron key contacts."
+        description="Pie chart of email volume of Enron key custodians."
         link="PieView"
       />
       <HomeCard
         navigation={navigation}
         image={BARCHART as any}
         title="Bar"
-        description="Bar chart of email volume of Enron key contacts."
+        description="Bar chart of email volume of Enron key custodians."
         link="BarView"
       />
       <HomeCard
@@ -43,21 +43,21 @@ export default function HomeView({ navigation }: Props) {
         navigation={navigation}
         image={NETWORKGRAPH as any}
         title="Network Graph"
-        description="Network graph of Enron key contact communication."
+        description="Network graph of Enron key custodian communication."
         link="NetworkGraphView"
       />
       <HomeCard
         navigation={navigation}
         image={TREEMAP as any}
         title="Tree Map"
-        description="Tree map of email volume of Enron key contacts."
+        description="Tree map of email volume of Enron key custodians."
         link="TreeMapView"
       />
       <HomeCard
         navigation={navigation}
         image={POLAR as any}
         title="Polar"
-        description="Polar chart of email volume of Enron key contacts."
+        description="Polar chart of email volume of Enron key custodians."
         link="PolarView"
       />
       <HomeCard

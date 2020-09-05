@@ -1,8 +1,8 @@
 import {
   clearSearch,
   getEmailAsync,
-  selectContacts,
-  selectContactsLoading,
+  selectCustodians,
+  selectCustodiansLoading,
   selectEmailReceivers,
   selectEmailSenders,
   setFrom,
@@ -22,8 +22,8 @@ import PieVictory from '../components/Victory/PieVictory'
 export default function PieView() {
   const dispatch = useDispatch()
   const history = useHistory()
-  const contactsLoading = useSelector(selectContactsLoading)
-  const contacts = useSelector(selectContacts)
+  const custodiansLoading = useSelector(selectCustodiansLoading)
+  const custodians = useSelector(selectCustodians)
   const emailSenders = useSelector(selectEmailSenders)
   const emailReceivers = useSelector(selectEmailReceivers)
 
@@ -40,8 +40,8 @@ export default function PieView() {
 
   return (
     <div>
-      {contactsLoading && <LinearProgress />}
-      {contacts && (
+      {custodiansLoading && <LinearProgress />}
+      {custodians && (
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <Typography variant="h5">Highcharts</Typography>

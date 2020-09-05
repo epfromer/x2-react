@@ -1,8 +1,8 @@
 import {
   clearSearch,
   getEmailAsync,
-  selectContacts,
-  selectContactsLoading,
+  selectCustodians,
+  selectCustodiansLoading,
   selectDarkMode,
   selectEmailReceivers,
   selectEmailSenders,
@@ -25,8 +25,8 @@ export default function TreeMapView({ navigation }: Props) {
   const darkMode = useSelector(selectDarkMode)
   const [isSenders, setIsSenders] = useState(true)
   const [chartLib, setChartLib] = useState('ECharts')
-  const contactsLoading = useSelector(selectContactsLoading)
-  const contacts = useSelector(selectContacts)
+  const custodiansLoading = useSelector(selectCustodiansLoading)
+  const custodians = useSelector(selectCustodians)
   const emailSenders = useSelector(selectEmailSenders)
   const emailReceivers = useSelector(selectEmailReceivers)
 
@@ -83,8 +83,8 @@ export default function TreeMapView({ navigation }: Props) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Spinner visible={contactsLoading} textContent={'Loading...'} />
-      {contacts && isSenders && (
+      <Spinner visible={custodiansLoading} textContent={'Loading...'} />
+      {custodians && isSenders && (
         <TreeMapECharts
           title="Senders"
           search="from"
@@ -92,7 +92,7 @@ export default function TreeMapView({ navigation }: Props) {
           handleClick={handleClick}
         />
       )}
-      {contacts && !isSenders && (
+      {custodians && !isSenders && (
         <TreeMapECharts
           title="Receivers"
           search="to"

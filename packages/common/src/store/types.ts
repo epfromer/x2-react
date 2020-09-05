@@ -1,3 +1,17 @@
+export interface Email {
+  id: string
+  sent: string
+  sentShort: string
+  from: string
+  fromCustodian: string
+  to: string
+  toCustodian: string
+  cc: string
+  bcc: string
+  subject: string
+  body: string
+}
+
 export interface EmailSent {
   id: string
   to: Array<string>
@@ -16,12 +30,12 @@ export interface EmailReceived {
   sent: string
 }
 
-export interface Contact {
-  _id: string
+export interface Custodian {
+  id: string
   senderTotal: number
   receiverTotal: number
-  asSender: Array<EmailSent>
-  asReceiver: Array<EmailReceived>
+  toCustodians: Array<EmailSent>
+  fromCustodians: Array<EmailReceived>
   name: string
   title: string
   color: string
@@ -29,30 +43,15 @@ export interface Contact {
 }
 
 export interface WordCloudTag {
-  _id: string
+  id: string
   tag: string
   weight: number
 }
 
 export interface EmailSentByDay {
-  _id: string
-  sent: string
-  ids: Array<string>
-}
-
-export interface Email {
-  _id: string
   id: string
   sent: string
-  sentShort: string
-  from: string
-  fromContact: string
-  to: string
-  toContact: string
-  cc: string
-  bcc: string
-  subject: string
-  body: string
+  ids: Array<string>
 }
 
 export interface EmailList {
@@ -63,7 +62,7 @@ export interface EmailList {
 export interface EmailXferedDatum {
   name: string // name of sender/receiver
   value: number // number of emails sent/received
-  color: string // color of contact
+  color: string // color of custodian
 }
 
 export interface TotalEmailSentDatum {

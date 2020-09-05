@@ -1,8 +1,8 @@
 import {
-  getContactsAsync,
-  selectContacts,
-  selectContactsLoading,
-  Contact,
+  getCustodiansAsync,
+  selectCustodians,
+  selectCustodiansLoading,
+  Custodian,
 } from '@klonzo/common'
 import Button from '@material-ui/core/Button'
 import LinearProgress from '@material-ui/core/LinearProgress'
@@ -17,25 +17,25 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import ColorPickerDlg from './ColorPickerDlg'
 
-export default function ContactSettings() {
+export default function CustodianSettings() {
   const [openColorPicker, setOpenColorPicker] = useState(false)
   const [pickedColor, setPickedColor] = useState('')
-  const [contactId, setContactId] = useState('')
-  const contactsLoading = useSelector(selectContactsLoading)
-  const contacts = useSelector(selectContacts)
+  const [custodianId, setCustodianId] = useState('')
+  const custodiansLoading = useSelector(selectCustodiansLoading)
+  const custodians = useSelector(selectCustodians)
 
   function handleColorChosen(color: string) {
     setOpenColorPicker(false)
     if (!color) return
-    const url = `${process.env.REACT_APP_emailServer}/contacts/${contactId}`
+    const url = `${process.env.REACT_APP_emailServer}/custodians/${custodianId}`
     const payload = {
       method: 'PUT',
       body: JSON.stringify({ color }),
       headers: { 'Content-type': 'application/json; charset=UTF-8' },
     }
     fetch(url, payload)
-      .then(() => getContactsAsync())
-      .catch((error) => console.error('ContactSettings', error))
+      .then(() => getCustodiansAsync())
+      .catch((error) => console.error('CustodianSettings', error))
   }
 
   return (
@@ -45,12 +45,12 @@ export default function ContactSettings() {
         defaultColor={pickedColor}
         onClose={(color) => handleColorChosen(color)}
       />
-      {contactsLoading && <LinearProgress />}
+      {custodiansLoading && <LinearProgress />}
       <TableContainer component={Paper}>
-        <Table size="small" aria-label="contacts">
+        <Table size="small" aria-label="custodians">
           <TableHead>
             <TableRow>
-              <TableCell>Contact</TableCell>
+              <TableCell>Custodian</TableCell>
               <TableCell>Title</TableCell>
               <TableCell align="right">Sent</TableCell>
               <TableCell align="right">Received</TableCell>
@@ -58,7 +58,7 @@ export default function ContactSettings() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {contacts?.map((c: Contact) => (
+            {custodians?.map((c: Custodian) => (
               <TableRow key={c.name}>
                 <TableCell component="th" scope="row">
                   {c.name}
@@ -69,11 +69,11 @@ export default function ContactSettings() {
                 <TableCell align="left">
                   <Button
                     onClick={() => {
-                      setContactId(c._id)
+                      setCustodianId(c.id)
                       setPickedColor(c.color)
                       setOpenColorPicker(true)
                     }}
-                    data-testid={c._id}
+                    data-testid={c.id}
                     style={{ color: c.color }}
                   >
                     {c.color}

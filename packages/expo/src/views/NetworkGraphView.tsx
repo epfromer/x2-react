@@ -1,10 +1,10 @@
 import {
   clearSearch,
   getEmailAsync,
-  selectContacts,
-  selectContactsLoading,
+  selectCustodians,
+  selectCustodiansLoading,
   selectDarkMode,
-  selectEmailSentByContact,
+  selectEmailSentByCustodian,
   setFrom,
   setTo,
 } from '@klonzo/common'
@@ -23,9 +23,9 @@ export default function NetworkGraphView({ navigation }: Props) {
   const dispatch = useDispatch()
   const darkMode = useSelector(selectDarkMode)
   const [chartLib, setChartLib] = useState('ECharts')
-  const emailSentByContact = useSelector(selectEmailSentByContact)
-  const contactsLoading = useSelector(selectContactsLoading)
-  const contacts = useSelector(selectContacts)
+  const emailSentByCustodian = useSelector(selectEmailSentByCustodian)
+  const custodiansLoading = useSelector(selectCustodiansLoading)
+  const custodians = useSelector(selectCustodians)
 
   const styles = StyleSheet.create({
     container: {
@@ -82,14 +82,14 @@ export default function NetworkGraphView({ navigation }: Props) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Spinner visible={contactsLoading} textContent={'Loading...'} />
-      {contacts && (
+      <Spinner visible={custodiansLoading} textContent={'Loading...'} />
+      {custodians && (
         <>
           {chartLib === 'ECharts' && (
             <NetworkGraphECharts
               title="Email Senders to Receivers"
-              data={emailSentByContact.data}
-              nodes={emailSentByContact.nodes}
+              data={emailSentByCustodian.data}
+              nodes={emailSentByCustodian.nodes}
               handleClick={handleClick}
             />
           )}

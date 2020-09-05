@@ -94,14 +94,14 @@ export default function EmailDetailView() {
             {displayText(
               `From: ${email.from}
           ${
-            email.fromContact
-              ? ' (named contact: ' + email.fromContact + ')'
+            email.fromCustodian
+              ? ' (named custodian: ' + email.fromCustodian + ')'
               : ''
           }`
             )}
             {displayText(
               `To: ${email.to}
-          ${email.toContact ? ' (named contact: ' + email.toContact + ')' : ''}`
+          ${email.toCustodian ? ' (named custodian: ' + email.toCustodian + ')' : ''}`
             )}
             {displayText(`CC: ${email.cc}`)}
             {displayText(`BCC: ${email.bcc}`)}
