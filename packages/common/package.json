@@ -10,8 +10,8 @@
   "scripts": {
     "build": "run-s clean compile copy-assets",
     "clean": "rimraf dist",
-    "compile": "tsc -p tsconfig.build.json",
-    "compile:watch": "tsc -w -p tsconfig.build.json",
+    "compile": "tsc --project tsconfig.build.json",
+    "compile:watch": "tsc --watch --project tsconfig.build.json",
     "copy-assets": "copyfiles -u 1 src/img/*.png dist/",
     "coverage": "jest --verbose --coverage",
     "test": "run-s build coverage",

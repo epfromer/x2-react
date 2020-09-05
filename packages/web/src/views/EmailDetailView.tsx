@@ -1,5 +1,6 @@
 import {
   Email,
+  emailServer,
   getEmailById,
   selectAllText,
   selectBody,
@@ -47,8 +48,8 @@ export default function EmailDetailView() {
 
   function doFetch() {
     setLoading(true)
-    const url = `${process.env.REACT_APP_emailServer}/email/${id}`
-    // console.log(url)
+    const url = `${emailServer}/email/${id}`
+    console.log(url)
     fetch(url)
       .then((resp) => resp.json())
       .then((json) => setEmail(json))
