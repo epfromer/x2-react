@@ -7,7 +7,7 @@ import { createMemoryHistory } from 'history'
 test('back-to-list', async () => {
   const history = createMemoryHistory()
   const { getByTestId } = renderComp(
-    <EmailCardActions id="5f12fbcdab4d2f1a58edd10b" />,
+    <EmailCardActions id="dd8b6148-aea3-4d3a-bbda-e539f6c01820" />,
     history
   )
   const button = getByTestId('back-to-list')
@@ -18,7 +18,7 @@ test('back-to-list', async () => {
 test('previous-email', async () => {
   const history = createMemoryHistory()
   const { getByTestId } = renderComp(
-    <EmailCardActions id="5f12fbcdab4d2f1a58edd10b" />,
+    <EmailCardActions id="dd8b6148-aea3-4d3a-bbda-e539f6c01820" />,
     history
   )
   const button = getByTestId('previous-email')
@@ -31,7 +31,7 @@ test('previous-email', async () => {
 test('next-email', async () => {
   const history = createMemoryHistory()
   const { getByTestId } = renderComp(
-    <EmailCardActions id="5f12fbcdab4d2f1a58edd10b" />,
+    <EmailCardActions id="dd8b6148-aea3-4d3a-bbda-e539f6c01820" />,
     history
   )
   const button = getByTestId('next-email')

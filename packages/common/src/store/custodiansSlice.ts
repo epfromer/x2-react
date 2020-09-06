@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Custodian, EmailSentStat, EmailXferedDatum } from './types'
+import { Custodian, EmailSentDatum, EmailXferedDatum } from './types'
 
 export interface CustodiansState {
   custodiansLoading: boolean
@@ -20,6 +20,7 @@ export const custodiansSlice = createSlice({
     },
     setCustodians: (state, action: PayloadAction<Array<Custodian>>) => {
       state.custodians = action.payload
+      console.log(state.custodians)
     },
   },
 })
@@ -101,7 +102,7 @@ export function selectEmailSentByCustodian(state) {
     }
   })
 
-  const nodes: Array<EmailSentStat> = []
+  const nodes: Array<EmailSentDatum> = []
   if (custodians) {
     custodians.forEach((custodian) => {
       nodes.push({

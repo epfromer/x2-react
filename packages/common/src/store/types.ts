@@ -54,8 +54,7 @@ export interface EmailList {
   emails: Array<Email>
 }
 
-// TODO ?
-export interface EmailSentStat {
+export interface EmailSentDatum {
   id: string
   color: string
   emailTotal: number
