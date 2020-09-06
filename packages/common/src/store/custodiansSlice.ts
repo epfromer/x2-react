@@ -31,9 +31,10 @@ export const selectCustodiansLoading = (state) =>
   state.custodians.custodiansLoading
 export const selectCustodians = (state) => state.custodians.custodians
 export function selectEmailSenders(state) {
+  const custodians = state.custodians.custodians
   const data: Array<EmailXferedDatum> = []
-  if (state.custodians.custodians) {
-    state.custodians.custodians.forEach((custodian) => {
+  if (custodians) {
+    custodians.forEach((custodian) => {
       if (custodian.senderTotal) {
         data.push({
           name: custodian.name,
@@ -46,9 +47,10 @@ export function selectEmailSenders(state) {
   return data
 }
 export function selectEmailReceivers(state) {
+  const custodians = state.custodians.custodians
   const data: Array<EmailXferedDatum> = []
-  if (state.custodians.custodians) {
-    state.custodians.custodians.forEach((custodian) => {
+  if (custodians) {
+    custodians.forEach((custodian) => {
       if (custodian.senderTotal) {
         data.push({
           name: custodian.name,
@@ -62,16 +64,18 @@ export function selectEmailReceivers(state) {
 }
 export function selectEmailSentByCustodian(state) {
   //  create array of [from, to, number sent]
+  const custodians = state.custodians.custodians
   const data: Array<[string, string, number]> = []
-  if (state.custodians.custodians) {
-    state.custodians.custodians.forEach((custodian) => {
+  if (custodians) {
+    custodians.forEach((custodian) => {
       const sent = new Map()
       custodian.toCustodians.forEach((email) => {
-        email.to.forEach((recipient) => {
-          if (sent.has(recipient)) {
-            sent.set(recipient, sent.get(recipient) + 1)
+        email.custodianIds.forEach((recipient) => {
+          const name = custodians.find((c) => c.id === recipient).name
+          if (sent.has(name)) {
+            sent.set(name, sent.get(name) + 1)
           } else {
-            sent.set(recipient, 1)
+            sent.set(name, 1)
           }
         })
       })
@@ -98,8 +102,8 @@ export function selectEmailSentByCustodian(state) {
   })
 
   const nodes: Array<EmailSentStat> = []
-  if (state.custodians.custodians) {
-    state.custodians.custodians.forEach((custodian) => {
+  if (custodians) {
+    custodians.forEach((custodian) => {
       nodes.push({
         id: custodian.name,
         color: custodian.color,

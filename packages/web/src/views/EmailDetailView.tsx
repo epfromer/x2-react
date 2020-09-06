@@ -82,8 +82,6 @@ export default function EmailDetailView() {
     )
   }
 
-  // TODO - toCustodians
-
   return (
     <Card className={classes.root} data-testid="emailcard">
       {loading && <LinearProgress />}
@@ -97,18 +95,18 @@ export default function EmailDetailView() {
               `From: ${email.from}
           ${
             email.fromCustodian
-              ? ' (named custodian: ' + email.fromCustodian + ')'
+              ? ' (custodian: ' + email.fromCustodian + ')'
               : ''
           }`
             )}
-            {/* {displayText(
+            {displayText(
               `To: ${email.to}
           ${
-            email.toCustodian
-              ? ' (named custodian: ' + email.toCustodian + ')'
+            email.toCustodians
+              ? ' (custodians: ' + email.toCustodians + ')'
               : ''
           }`
-            )} */}
+            )}
             {displayText(`CC: ${email.cc}`)}
             {displayText(`BCC: ${email.bcc}`)}
             {displayText(email.body?.replace(/\n/g, '<br />'))}
