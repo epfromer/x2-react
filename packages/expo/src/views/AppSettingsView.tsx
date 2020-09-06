@@ -93,7 +93,11 @@ export default function AppSettingsView() {
         <View>
           <Button
             buttonStyle={
-              { backgroundColor: custodian.color, width: 100, height: 30 } as any
+              {
+                backgroundColor: custodian.color,
+                width: 100,
+                height: 30,
+              } as any
             }
             onPress={() => chooseColor(custodian.id, custodian.color)}
             testID={custodian.id}
@@ -125,7 +129,8 @@ export default function AppSettingsView() {
         <ScrollView>
           <DarkModeSwitch />
           <Spinner visible={custodiansLoading} textContent={'Loading...'} />
-          {custodians && custodians.map((custodian) => renderCustodian(custodian))}
+          {custodians &&
+            custodians.map((custodian) => renderCustodian(custodian))}
         </ScrollView>
       </SafeAreaView>
     </>

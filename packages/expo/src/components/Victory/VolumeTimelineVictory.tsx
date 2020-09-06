@@ -1,4 +1,4 @@
-import { selectDarkMode, TotalEmailSentDatum } from '@klonzo/common'
+import { EmailSentByDayDatum, selectDarkMode } from '@klonzo/common'
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { useSelector } from 'react-redux'
@@ -13,7 +13,7 @@ import {
 
 interface Props {
   title: string
-  data: Array<TotalEmailSentDatum>
+  data: Array<EmailSentByDayDatum>
   handleClick: (date: string) => void
 }
 

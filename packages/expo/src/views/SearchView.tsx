@@ -1,7 +1,7 @@
 import {
   emailListPageLength,
   getEmailAsync,
-  MAX_FROM_LENGTH,
+  maxFromLength,
   selectAllText,
   selectDarkMode,
   selectEmail,
@@ -285,7 +285,7 @@ export default function SearchView({ navigation }: Props) {
         <View style={styles.spaceBetweenRow}>
           <View>
             <Text numberOfLines={1} style={styles.bold}>
-              {maxString(item.from, MAX_FROM_LENGTH)}
+              {maxString(item.from, maxFromLength)}
             </Text>
           </View>
           <View>
@@ -303,8 +303,7 @@ export default function SearchView({ navigation }: Props) {
     </TouchableOpacity>
   )
 
-  const hasMore = () =>
-    (emailListPage + 1) * emailListPageLength < totalEmails
+  const hasMore = () => (emailListPage + 1) * emailListPageLength < totalEmails
 
   const handleLoadMore = () => {
     if (hasMore()) {

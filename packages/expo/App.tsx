@@ -1,7 +1,7 @@
 import {
   getCustodiansAsync,
   getEmailAsync,
-  getEmailSentAsync,
+  getEmailSentByDayAsync,
   getWordCloudAsync,
   loadAppSettingsAsync,
   store,
@@ -13,7 +13,7 @@ import RouteSwitch from './src/router/RouteSwitch'
 
 getCustodiansAsync()
 getWordCloudAsync()
-getEmailSentAsync()
+getEmailSentByDayAsync()
 getEmailAsync()
 loadAppSettingsAsync()
 

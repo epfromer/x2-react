@@ -1,7 +1,7 @@
 import {
   EmailXferedDatum,
   getPolarEChartsConfig,
-  selectDarkMode
+  selectDarkMode,
 } from '@klonzo/common'
 import React from 'react'
 import { ECharts } from 'react-native-echarts-wrapper'

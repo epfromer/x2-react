@@ -1,20 +1,20 @@
 import {
   clearSearch,
+  EmailSentByDayDatum,
   getEmailAsync,
   selectDarkMode,
-  selectEmailSent,
-  selectEmailSentLoading,
+  selectEmailSentByDay,
+  selectEmailSentByDayLoading,
   setSent,
-  TotalEmailSentDatum,
 } from '@klonzo/common'
 import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
+import RNPickerSelect from 'react-native-picker-select'
 import { useDispatch, useSelector } from 'react-redux'
 import VolumeTimelineECharts from '../components/ECharts/VolumeTimelineECharts'
 import VolumeTimelineHighcharts from '../components/Highcharts/VolumeTimelineHighcharts'
 import VolumeTimelineVictory from '../components/Victory/VolumeTimelineVictory'
-import RNPickerSelect from 'react-native-picker-select'
 
 interface Props {
   route: any
@@ -24,8 +24,8 @@ export default function VolumeTimelineView({ navigation }: Props) {
   const dispatch = useDispatch()
   const darkMode = useSelector(selectDarkMode)
   const [chartLib, setChartLib] = useState('ECharts')
-  const emailSentLoading = useSelector(selectEmailSentLoading)
-  const emailSent = useSelector(selectEmailSent)
+  const emailSentLoading = useSelector(selectEmailSentByDayLoading)
+  const emailSent = useSelector(selectEmailSentByDay)
 
   function handleClick(date: string) {
     dispatch(clearSearch())
@@ -34,7 +34,7 @@ export default function VolumeTimelineView({ navigation }: Props) {
     navigation.navigate('SearchView')
   }
 
-  let data: Array<TotalEmailSentDatum> = []
+  let data: Array<EmailSentByDayDatum> = []
   if (emailSent) {
     data = emailSent.map((stat: any) => ({
       sent: stat.sent,

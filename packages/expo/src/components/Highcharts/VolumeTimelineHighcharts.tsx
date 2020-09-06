@@ -2,7 +2,7 @@ import HighchartsReactNative from '@highcharts/highcharts-react-native'
 import {
   getVolumeTimeHighchartsConfig,
   selectDarkMode,
-  TotalEmailSentDatum,
+  EmailSentByDayDatum,
 } from '@klonzo/common'
 import React from 'react'
 import { StyleSheet } from 'react-native'
@@ -13,7 +13,7 @@ import { useSelector } from 'react-redux'
 
 interface Props {
   title: string
-  data: Array<TotalEmailSentDatum>
+  data: Array<EmailSentByDayDatum>
   handleClick: (date: string) => void
 }
 export default function VolumeTimelineHighcharts({
