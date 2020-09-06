@@ -2,6 +2,7 @@ import {
   getCustodiansAsync,
   selectCustodians,
   selectCustodiansLoading,
+  emailServer,
   Custodian,
 } from '@klonzo/common'
 import Button from '@material-ui/core/Button'
@@ -27,7 +28,7 @@ export default function CustodianSettings() {
   function handleColorChosen(color: string) {
     setOpenColorPicker(false)
     if (!color) return
-    const url = `${process.env.REACT_APP_emailServer}/custodians/${custodianId}`
+    const url = `${emailServer}/custodians/${custodianId}`
     const payload = {
       method: 'PUT',
       body: JSON.stringify({ color }),
