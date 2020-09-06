@@ -23,8 +23,6 @@ export default function TimelineView() {
   const emailSentLoading = useSelector(selectEmailSentByDayLoading)
   const emailSent = useSelector(selectEmailSentByDay)
 
-  console.log(emailSent)
-
   function handleClick(date: string) {
     dispatch(clearSearch())
     dispatch(setSent(date))

@@ -27,11 +27,8 @@ export default function TreeMapView() {
 
   function handleClick(search: string, value: string) {
     dispatch(clearSearch())
-    if (search === 'from') {
-      dispatch(setFrom(`(${value})`))
-    } else {
-      dispatch(setTo(`(${value})`))
-    }
+    const name = value.slice(0, value.search(/,/))
+    dispatch(search === 'from' ? setFrom(name) : setTo(name))
     getEmailAsync()
     history.push('/SearchView')
   }
