@@ -7,8 +7,8 @@ import {
   setDarkMode,
   setEmail,
   setEmailLoading,
-  setEmailSent,
-  setEmailSentLoading,
+  setEmailSentByDay,
+  setEmailSentByDayLoading,
   setEmailTotal,
   setWordCloud,
   setWordCloudLoading,
@@ -17,7 +17,7 @@ import {
 
 export async function getWordCloudAsync() {
   store.dispatch(setWordCloudLoading(true))
-  fetch(`${emailServer}/wordCloud`)
+  fetch(`${emailServer}/wordcloud`)
     .then((resp) => resp.json())
     .then((json) => store.dispatch(setWordCloud(json)))
     .then(() => store.dispatch(setWordCloudLoading(false)))
@@ -50,13 +50,13 @@ export async function getCustodiansAsync() {
     .catch((error) => console.error('getCustodiansAsync: ', error))
 }
 
-export async function getEmailSentAsync() {
-  store.dispatch(setEmailSentLoading(true))
-  fetch(`${emailServer}/emailSent`)
+export async function getEmailSentByDayAsync() {
+  store.dispatch(setEmailSentByDayLoading(true))
+  fetch(`${emailServer}/emailsentbyday`)
     .then((resp) => resp.json())
-    .then((json) => store.dispatch(setEmailSent(json)))
-    .then(() => store.dispatch(setEmailSentLoading(false)))
-    .catch((error) => console.error('getEmailSentAsync: ', error))
+    .then((json) => store.dispatch(setEmailSentByDay(json)))
+    .then(() => store.dispatch(setEmailSentByDayLoading(false)))
+    .catch((error) => console.error('getEmailSentByDayAsync: ', error))
 }
 
 function makeQueryObj(): any {

@@ -1,62 +1,59 @@
 export interface Email {
   id: string
-  sent: string
+  sent: Date
   sentShort: string
   from: string
-  fromCustodian: string
+  fromCustodian?: string
   to: string
-  toCustodian: string
+  toCustodians?: string[]
   cc: string
   bcc: string
   subject: string
   body: string
 }
 
-export interface EmailSent {
-  id: string
-  to: Array<string>
-  sent: string
+export interface EmailSentByDay {
+  sent: Date
+  emailIds: string[]
 }
 
-export interface EmailSentStat {
-  id: string
-  color: string
-  emailTotal: number
+export interface EmailSentToCustodians {
+  emailId: string
+  custodianIds: string[]
 }
 
-export interface EmailReceived {
-  id: string
-  from: string
-  sent: string
+export interface EmailReceivedFromCustodians {
+  emailId: string
+  custodianId: string
 }
 
 export interface Custodian {
   id: string
-  senderTotal: number
-  receiverTotal: number
-  toCustodians: Array<EmailSent>
-  fromCustodians: Array<EmailReceived>
   name: string
+  aliases: string[]
   title: string
   color: string
-  aliases: Array<string>
+  senderTotal: number
+  receiverTotal: number
+  toCustodians: EmailSentToCustodians[]
+  fromCustodians: EmailReceivedFromCustodians[]
 }
 
 export interface WordCloudTag {
-  id: string
   tag: string
   weight: number
-}
-
-export interface EmailSentByDay {
-  id: string
-  sent: string
-  ids: Array<string>
 }
 
 export interface EmailList {
   total: number
   emails: Array<Email>
+}
+
+// TODO ?
+export interface EmailSentStat {
+  id: string
+  color: string
+  emailTotal: number
 }
 
 export interface EmailXferedDatum {

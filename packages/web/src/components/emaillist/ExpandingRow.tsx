@@ -35,7 +35,7 @@ export default function ExpandingRow({ email, lastRowRef }: Props) {
         >
           <ExpandMoreFunc />
         </TableCell>
-        <LinkedTableCell field={email.sent} id={email.id} />
+        <LinkedTableCell field={email.sentShort} id={email.id} />
         <LinkedTableCell field={email.from} id={email.id} />
         <LinkedTableCell field={email.to} id={email.id} />
         <LinkedTableCell field={email.subject} id={email.id} />

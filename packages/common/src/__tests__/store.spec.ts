@@ -7,7 +7,7 @@ import {
   getEmailAsync,
   getEmailById,
   getEmailIndex,
-  getEmailSentAsync,
+  getEmailSentByDayAsync,
   getNextEmailId,
   getPreviousEmailId,
   getWordCloudAsync,
@@ -29,7 +29,7 @@ import {
   setBody,
   setCustodians,
   setEmail,
-  setEmailSent,
+  setEmailSentByDay,
   setFrom,
   setSubject,
   setTo,
@@ -45,9 +45,8 @@ const custodians = [
     receiverTotal: 34,
     toCustodians: [
       {
-        id: '6711b456-d02f-4433-b97f-d06a725846ff',
-        to: ['Whalley, Greg', 'Lay, Kenneth'],
-        sent: '2001-10-24T22:02:54.000Z',
+        emailId: '6711b456-d02f-4433-b97f-d06a725846ff',
+        custodianIds: ['Whalley, Greg', 'Lay, Kenneth'],
       },
     ],
     fromCustodians: [],
@@ -63,29 +62,24 @@ const custodians = [
     toCustodians: [],
     fromCustodians: [
       {
-        id: 'e2c95722-16d8-49e7-8bf3-44cc8352fba9',
-        from: 'Skilling, Jeff',
-        sent: '2001-08-02T02:25:58.000Z',
+        emailId: 'e2c95722-16d8-49e7-8bf3-44cc8352fba9',
+        custodianId: 'Skilling, Jeff',
       },
       {
-        id: 'e2c95722-16d8-49e7-8bf3-44cc8352fba9',
-        from: 'Skilling, Jeff',
-        sent: '2001-08-02T02:25:58.000Z',
+        emailId: 'e2c95722-16d8-49e7-8bf3-44cc8352fba9',
+        custodianId: 'Skilling, Jeff',
       },
       {
-        id: '64aa8fe6-43ca-4325-b218-9e8b2d1d2054',
-        from: 'Skilling, Jeff',
-        sent: '2001-08-02T03:21:03.000Z',
+        emailId: '64aa8fe6-43ca-4325-b218-9e8b2d1d2054',
+        custodianId: 'Skilling, Jeff',
       },
       {
-        id: '64aa8fe6-43ca-4325-b218-9e8b2d1d2054',
-        from: 'Skilling, Jeff',
-        sent: '2001-08-02T03:21:03.000Z',
+        emailId: '64aa8fe6-43ca-4325-b218-9e8b2d1d2054',
+        custodianId: 'Skilling, Jeff',
       },
       {
-        id: '6711b456-d02f-4433-b97f-d06a725846ff',
-        from: 'Fastow, Andrew',
-        sent: '2001-10-24T22:02:54.000Z',
+        emailId: '6711b456-d02f-4433-b97f-d06a725846ff',
+        custodianId: 'Fastow, Andrew',
       },
     ],
     name: 'Lay, Kenneth',
@@ -97,43 +91,38 @@ const custodians = [
 store.dispatch(setCustodians(custodians))
 const wordCloud = [
   {
-    id: '5f1301b1ab4d2f1a58ee5d90',
     tag: 'avici',
     weight: 29,
   },
   {
-    id: '5f1301b1ab4d2f1a58ee5d91',
     tag: 'azurix',
     weight: 490,
   },
 ]
 store.dispatch(setWordCloud(wordCloud))
-const emailSent = [
+const emailSentByDay = [
   {
-    id: '5f1301b1ab4d2f1a58ee5d21',
-    sent: '1999-01-06',
-    ids: ['5f3ca4f5-d3fb-48dd-b2e8-e0dbaab4753f'],
+    sent: new Date('1999-01-06'),
+    emailIds: ['5f3ca4f5-d3fb-48dd-b2e8-e0dbaab4753f'],
   },
   {
-    id: '5f1301b1ab4d2f1a58ee5d23',
-    sent: '1999-01-08',
-    ids: [
+    sent: new Date('1999-01-08'),
+    emailIds: [
       'bb15e4d9-9f28-4bcc-8cdf-9694033e8e59',
       '2bb04817-3737-46f3-ad9a-3c7cb5af2e35',
     ],
   },
 ]
-store.dispatch(setEmailSent(emailSent))
+store.dispatch(setEmailSentByDay(emailSentByDay))
 const email = [
   {
     id: '5f12fbcdab4d2f1a58edd105',
-    id: 'fedd603d-9f25-43ef-9906-ac7023a7d6e3',
-    sent: '2001-08-28T14:36:52.000Z',
+    sent: new Date('2001-08-28T14:36:52.000Z'),
     sentShort: '2001-08-28',
     from: 'Symes  Kate',
     fromCustodian: '',
     to: 'DL-Portland Real Time Shift',
-    toCustodian: '',
+    toCustodians: [],
     cc: '',
     bcc: '',
     subject: 'New SWOASIS Login',
@@ -141,13 +130,12 @@ const email = [
   },
   {
     id: '5f12fbcdab4d2f1a58edd10b',
-    id: '41cf2a86-6c81-4441-8704-b54e2da03f20',
-    sent: '2001-10-28T22:00:13.000Z',
+    sent: new Date('2001-10-28T22:00:13.000Z'),
     sentShort: '2001-10-28',
     from: 'Slinger',
     fromCustodian: '',
     to: 'meyers; Bert',
-    toCustodian: '',
+    toCustodians: [],
     cc: '',
     bcc: '',
     subject: 'FW: websites',
@@ -155,13 +143,12 @@ const email = [
   },
   {
     id: '4f12fbcdab4d2f1a58edd10b',
-    id: '41cf2a86-6c81-4441-8704-bc4e2da03f20',
-    sent: '2001-10-28T22:00:13.000Z',
+    sent: new Date('2001-10-28T22:00:13.000Z'),
     sentShort: '2001-10-28',
     from: 'Slinger',
     fromCustodian: '',
     to: 'meyers; Bert',
-    toCustodian: '',
+    toCustodians: [],
     cc: '',
     bcc: '',
     subject: 'FW: websites',
@@ -209,9 +196,9 @@ test('loadAppSettingsAsync', async () => {
 })
 
 test('getEmailSentAsync', async () => {
-  fetchMock.mockResponseOnce(JSON.stringify(emailSent))
-  await getEmailSentAsync()
-  expect(store.getState().emailSent.emailSent).toEqual(emailSent)
+  fetchMock.mockResponseOnce(JSON.stringify(emailSentByDay))
+  await getEmailSentByDayAsync()
+  expect(store.getState().emailSent.emailSentByDay).toEqual(emailSentByDay)
 })
 
 test('getEmailAsync', async () => {

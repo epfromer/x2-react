@@ -1,7 +1,7 @@
 import {
   getCustodiansAsync,
   getEmailAsync,
-  getEmailSentAsync,
+  getEmailSentByDayAsync,
   getWordCloudAsync,
   loadAppSettingsAsync,
   selectDarkMode,
@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
 
 getCustodiansAsync()
 getWordCloudAsync()
-getEmailSentAsync()
+getEmailSentByDayAsync()
 getEmailAsync()
 loadAppSettingsAsync()
 

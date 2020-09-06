@@ -125,8 +125,7 @@ export default function PieView() {
         hidden
         onClick={() => handleClick('foo', 'bar')}
         data-testid="handle-click"
-      >
-      </button>
+      ></button>
     </div>
   )
 }
