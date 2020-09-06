@@ -74,8 +74,8 @@ export default function NetworkGraphView({ navigation }: Props) {
   function handleClick(to: string, from: string) {
     if (!from || !to) return
     dispatch(clearSearch())
-    dispatch(setFrom(`(${from})`))
-    dispatch(setTo(`(${to})`))
+    dispatch(setFrom(from.slice(0, from.search(/,/))))
+    dispatch(setTo(to.slice(0, to.search(/,/))))
     getEmailAsync()
     navigation.navigate('SearchView')
   }

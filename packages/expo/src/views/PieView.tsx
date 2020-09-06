@@ -78,7 +78,8 @@ export default function PieView({ navigation }: Props) {
 
   function handleClick(search: string, value: string) {
     dispatch(clearSearch())
-    dispatch(search === 'from' ? setFrom(`(${value})`) : setTo(`(${value})`))
+    const name = value.slice(0, value.search(/,/))
+    dispatch(search === 'from' ? setFrom(name) : setTo(name))
     getEmailAsync()
     navigation.navigate('SearchView')
   }
