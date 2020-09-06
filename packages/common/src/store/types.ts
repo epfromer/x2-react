@@ -1,6 +1,6 @@
 export interface Email {
   id: string
-  sent: Date
+  sent: Date | string
   sentShort: string
   from: string
   fromCustodian?: string
@@ -13,12 +13,12 @@ export interface Email {
 }
 
 export interface EmailSentByDay {
-  sent: Date
+  sent: Date | string
   emailIds: string[]
 }
 
 export interface EmailSentByDayDatum {
-  sent: Date // send date
+  sent: Date | string
   value: number // number of emails sent
 }
 

@@ -3,6 +3,8 @@ import '@testing-library/jest-dom/extend-expect'
 import fetchMock from 'jest-fetch-mock'
 import {
   clearSearch,
+  Email,
+  EmailSentByDay,
   getCustodiansAsync,
   getEmailAsync,
   getEmailById,
@@ -35,61 +37,46 @@ import {
   setTo,
   setWordCloud,
   store,
+  WordCloudTag,
 } from '../index'
 jest.mock('@react-native-community/async-storage', () => mockAsyncStorage)
 
 const custodians = [
   {
-    id: '5f1301b1ab4d2f1a58ee5999',
-    senderTotal: 5,
-    receiverTotal: 34,
+    id: 'causey',
+    name: 'Causey, Richard',
+    aliases: [],
+    title: 'Executive Vice President and Chief Accounting Officer',
+    color: '#673ab7',
+    senderTotal: 17,
+    receiverTotal: 272,
     toCustodians: [
       {
-        emailId: '6711b456-d02f-4433-b97f-d06a725846ff',
-        custodianIds: ['Whalley, Greg', 'Lay, Kenneth'],
+        emailId: 'dd8b6148-aea3-4d3a-bbda-e539f6c01820',
+        custodianIds: ['whalley'],
       },
     ],
     fromCustodians: [],
-    name: 'Fastow, Andrew',
-    title: 'Chief Financial Officer',
-    color: '#e91e63',
-    aliases: [],
   },
   {
-    id: '5f1301b1ab4d2f1a58ee599b',
-    senderTotal: 40,
-    receiverTotal: 2745,
+    id: 'whalley',
+    name: 'Whalley, Greg',
+    aliases: [],
+    title: 'President',
+    color: '#3f51b5',
+    senderTotal: 19,
+    receiverTotal: 466,
     toCustodians: [],
     fromCustodians: [
       {
-        emailId: 'e2c95722-16d8-49e7-8bf3-44cc8352fba9',
-        custodianId: 'Skilling, Jeff',
-      },
-      {
-        emailId: 'e2c95722-16d8-49e7-8bf3-44cc8352fba9',
-        custodianId: 'Skilling, Jeff',
-      },
-      {
-        emailId: '64aa8fe6-43ca-4325-b218-9e8b2d1d2054',
-        custodianId: 'Skilling, Jeff',
-      },
-      {
-        emailId: '64aa8fe6-43ca-4325-b218-9e8b2d1d2054',
-        custodianId: 'Skilling, Jeff',
-      },
-      {
-        emailId: '6711b456-d02f-4433-b97f-d06a725846ff',
-        custodianId: 'Fastow, Andrew',
+        emailId: 'dd8b6148-aea3-4d3a-bbda-e539f6c01820',
+        custodianId: 'causey',
       },
     ],
-    name: 'Lay, Kenneth',
-    title: 'Founder, CEO and Chairman',
-    color: '#ff9800',
-    aliases: [],
   },
 ]
 store.dispatch(setCustodians(custodians))
-const wordCloud = [
+const wordCloud: Array<WordCloudTag> = [
   {
     tag: 'avici',
     weight: 29,
@@ -100,24 +87,25 @@ const wordCloud = [
   },
 ]
 store.dispatch(setWordCloud(wordCloud))
-const emailSentByDay = [
+const emailSentByDay: Array<EmailSentByDay> = [
   {
-    sent: new Date('1999-01-06'),
-    emailIds: ['5f3ca4f5-d3fb-48dd-b2e8-e0dbaab4753f'],
+    sent: '2001-08-28T14:36:52.000Z',
+    emailIds: ['5f12fbcdab4d2f1a58edd105'],
   },
   {
-    sent: new Date('1999-01-08'),
-    emailIds: [
-      'bb15e4d9-9f28-4bcc-8cdf-9694033e8e59',
-      '2bb04817-3737-46f3-ad9a-3c7cb5af2e35',
-    ],
+    sent: '2001-08-23T15:52:44.000Z',
+    emailIds: ['dd8b6148-aea3-4d3a-bbda-e539f6c01820'],
+  },
+  {
+    sent: '2001-10-28T22:00:13.000Z',
+    emailIds: ['4f12fbcdab4d2f1a58edd10b'],
   },
 ]
 store.dispatch(setEmailSentByDay(emailSentByDay))
-const email = [
+const email: Array<Email> = [
   {
     id: '5f12fbcdab4d2f1a58edd105',
-    sent: new Date('2001-08-28T14:36:52.000Z'),
+    sent: '2001-08-28T14:36:52.000Z',
     sentShort: '2001-08-28',
     from: 'Symes  Kate',
     fromCustodian: '',
@@ -129,22 +117,22 @@ const email = [
     body: 'body 1',
   },
   {
-    id: '5f12fbcdab4d2f1a58edd10b',
-    sent: new Date('2001-10-28T22:00:13.000Z'),
-    sentShort: '2001-10-28',
-    from: 'Slinger',
-    fromCustodian: '',
-    to: 'meyers; Bert',
-    toCustodians: [],
-    cc: '',
+    id: 'dd8b6148-aea3-4d3a-bbda-e539f6c01820',
+    sent: '2001-08-23T15:52:44.000Z',
+    sentShort: '2001-08-23',
+    from: 'Causey  Richard',
+    fromCustodian: 'causey',
+    to: 'Whalley  Greg; Delainey  David',
+    toCustodians: ['whalley'],
+    cc: 'Lavorato  John; Buy  Rick',
     bcc: '',
-    subject: 'FW: websites',
+    subject: 'RE: NewPower',
     body: 'body 2',
   },
   {
     id: '4f12fbcdab4d2f1a58edd10b',
-    sent: new Date('2001-10-28T22:00:13.000Z'),
-    sentShort: '2001-10-28',
+    sent: '2001-10-28T22:00:13.000Z',
+    sentShort: '2001-08-28',
     from: 'Slinger',
     fromCustodian: '',
     to: 'meyers; Bert',
@@ -163,19 +151,21 @@ store.dispatch(setSubject('body'))
 store.dispatch(setBody('body'))
 
 test('getEmailById', () => {
-  expect(getEmailById('5f12fbcdab4d2f1a58edd10b')).toBeTruthy()
+  expect(getEmailById('dd8b6148-aea3-4d3a-bbda-e539f6c01820')).toBeTruthy()
 })
 
 test('getNextEmailId', () => {
-  expect(getNextEmailId('5f12fbcdab4d2f1a58edd10b')).toBeTruthy()
+  expect(getNextEmailId('dd8b6148-aea3-4d3a-bbda-e539f6c01820')).toBeTruthy()
 })
 
 test('getPreviousEmailId', () => {
-  expect(getPreviousEmailId('5f12fbcdab4d2f1a58edd10b')).toBeTruthy()
+  expect(
+    getPreviousEmailId('dd8b6148-aea3-4d3a-bbda-e539f6c01820')
+  ).toBeTruthy()
 })
 
 test('getEmailIndex', () => {
-  expect(getEmailIndex('5f12fbcdab4d2f1a58edd10b')).toBeTruthy()
+  expect(getEmailIndex('dd8b6148-aea3-4d3a-bbda-e539f6c01820')).toBeTruthy()
 })
 
 test('getWordCloudAsync', async () => {

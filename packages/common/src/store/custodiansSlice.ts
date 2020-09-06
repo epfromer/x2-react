@@ -20,7 +20,6 @@ export const custodiansSlice = createSlice({
     },
     setCustodians: (state, action: PayloadAction<Array<Custodian>>) => {
       state.custodians = action.payload
-      console.log(state.custodians)
     },
   },
 })
