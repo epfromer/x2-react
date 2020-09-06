@@ -24,7 +24,7 @@ export default function VolumeTimelineChartJS({
   const darkMode = useSelector(selectDarkMode)
 
   interface Datum {
-    time: Date
+    time: Date | string
     value: number
   }
   const dailyTotals: Array<Datum> = data.map((stat) => ({
