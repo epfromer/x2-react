@@ -1,10 +1,11 @@
 import {
   clearSearch,
+  EmailSentByDay,
+  EmailSentByDayDatum,
   getEmailAsync,
   selectEmailSentByDay,
   selectEmailSentByDayLoading,
   setSent,
-  TotalEmailSentDatum,
 } from '@klonzo/common'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Typography from '@material-ui/core/Typography'
@@ -22,6 +23,8 @@ export default function TimelineView() {
   const emailSentLoading = useSelector(selectEmailSentByDayLoading)
   const emailSent = useSelector(selectEmailSentByDay)
 
+  console.log(emailSent)
+
   function handleClick(date: string) {
     dispatch(clearSearch())
     dispatch(setSent(date))
@@ -29,11 +32,11 @@ export default function TimelineView() {
     history.push('/SearchView')
   }
 
-  let data: Array<TotalEmailSentDatum> = []
+  let data: Array<EmailSentByDayDatum> = []
   if (emailSent) {
-    data = emailSent.map((stat: any) => ({
+    data = emailSent.map((stat: EmailSentByDay) => ({
       sent: stat.sent,
-      value: stat.ids.length,
+      value: stat.emailIds.length,
     }))
   }
 

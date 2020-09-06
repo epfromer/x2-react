@@ -1,9 +1,9 @@
-import { TotalEmailSentDatum } from '../store/types'
+import { EmailSentByDayDatum } from '../store/types'
 
 export function getVolumeTimelineEChartsConfig(
   darkMode: boolean,
   title: string,
-  data: Array<TotalEmailSentDatum>
+  data: Array<EmailSentByDayDatum>
 ) {
   return {
     title: {

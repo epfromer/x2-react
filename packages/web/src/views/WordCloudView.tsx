@@ -4,6 +4,7 @@ import {
   selectWordCloud,
   selectWordCloudLoading,
   setAllText,
+  WordCloudTag,
 } from '@klonzo/common'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Typography from '@material-ui/core/Typography'
@@ -27,7 +28,7 @@ export default function WordCloudView() {
   }
 
   const data: any = []
-  wordCloud?.forEach((word: any) =>
+  wordCloud?.forEach((word: WordCloudTag) =>
     data.push({ name: word.tag, weight: word.weight })
   )
 

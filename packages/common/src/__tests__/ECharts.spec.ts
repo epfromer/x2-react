@@ -1,4 +1,5 @@
 import {
+  EmailSentByDayDatum,
   EmailXferedDatum,
   getBarEChartsConfig,
   getNetworkGraphEChartsConfig,
@@ -6,7 +7,6 @@ import {
   getPolarEChartsConfig,
   getTreeMapEChartsConfig,
   getVolumeTimelineEChartsConfig,
-  TotalEmailSentDatum,
 } from '../index'
 
 const emailXfered: Array<EmailXferedDatum> = [
@@ -31,9 +31,9 @@ const networkNodes = [
   { id: 'Whalley, Greg', color: '#6dff4d', emailTotal: 3 },
 ]
 
-const emailSentData: Array<TotalEmailSentDatum> = [
-  { sent: '01/01/2000', value: 1 },
-  { sent: '01/02/2000', value: 1 },
+const emailSentData: Array<EmailSentByDayDatum> = [
+  { sent: new Date('01/01/2000'), value: 1 },
+  { sent: new Date('01/02/2000'), value: 1 },
 ]
 
 test('getBarEChartsConfig', () => {

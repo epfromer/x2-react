@@ -1,4 +1,4 @@
-import { selectDarkMode, TotalEmailSentDatum } from '@klonzo/common'
+import { selectDarkMode, EmailSentByDayDatum } from '@klonzo/common'
 import { Chart } from 'chart.js'
 import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
@@ -10,7 +10,7 @@ const chartHeight = '400'
 
 interface Props {
   title: string
-  data: Array<TotalEmailSentDatum>
+  data: Array<EmailSentByDayDatum>
   handleClick: (date: string) => void
 }
 
@@ -24,7 +24,7 @@ export default function VolumeTimelineChartJS({
   const darkMode = useSelector(selectDarkMode)
 
   interface Datum {
-    time: string
+    time: Date
     value: number
   }
   const dailyTotals: Array<Datum> = data.map((stat) => ({

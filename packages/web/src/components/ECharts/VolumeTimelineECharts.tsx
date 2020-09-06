@@ -1,7 +1,7 @@
 import {
   getVolumeTimelineEChartsConfig,
   selectDarkMode,
-  TotalEmailSentDatum,
+  EmailSentByDayDatum,
 } from '@klonzo/common'
 import ReactEcharts from 'echarts-for-react'
 import React from 'react'
@@ -14,7 +14,7 @@ const chartWidth = '100%'
 
 interface Props {
   title: string
-  data: Array<TotalEmailSentDatum>
+  data: Array<EmailSentByDayDatum>
   handleClick: (date: string) => void
 }
 export default function VolumeTimelineECharts({

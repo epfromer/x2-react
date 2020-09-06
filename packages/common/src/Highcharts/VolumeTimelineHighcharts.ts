@@ -1,9 +1,9 @@
-import { TotalEmailSentDatum } from '../store/types'
+import { EmailSentByDayDatum } from '../store/types'
 
 export function getVolumeTimeHighchartsConfig(
   darkMode: boolean,
   title: string,
-  data: Array<TotalEmailSentDatum>,
+  data: Array<EmailSentByDayDatum>,
   backgroundColor: string,
   handleClick: (date: string) => void
 ) {
