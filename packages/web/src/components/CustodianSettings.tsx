@@ -55,7 +55,7 @@ export default function CustodianSettings() {
               <TableCell>Title</TableCell>
               <TableCell align="right">Sent</TableCell>
               <TableCell align="right">Received</TableCell>
-              <TableCell align="left">Color</TableCell>
+              <TableCell align="center">Color</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -67,18 +67,17 @@ export default function CustodianSettings() {
                 <TableCell>{c.title}</TableCell>
                 <TableCell align="right">{c.senderTotal}</TableCell>
                 <TableCell align="right">{c.receiverTotal}</TableCell>
-                <TableCell align="left">
+                <TableCell align="center">
                   <Button
+                    variant="contained"
                     onClick={() => {
                       setCustodianId(c.id)
                       setPickedColor(c.color)
                       setOpenColorPicker(true)
                     }}
                     data-testid={c.id}
-                    style={{ color: c.color }}
-                  >
-                    {c.color}
-                  </Button>
+                    style={{ backgroundColor: c.color }}
+                  ></Button>
                 </TableCell>
               </TableRow>
             ))}
