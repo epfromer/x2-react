@@ -16,7 +16,7 @@ import {
   store,
 } from './index'
 
-export async function getWordCloudAsync() {
+export function getWordCloudAsync() {
   store.dispatch(setWordCloudLoading(true))
   fetch(`${emailServer}/wordcloud`)
     .then((resp) => resp.json())
@@ -42,7 +42,7 @@ export async function loadAppSettingsAsync() {
   }
 }
 
-export async function getCustodiansAsync() {
+export function getCustodiansAsync() {
   store.dispatch(setCustodiansLoading(true))
   fetch(`${emailServer}/custodians`)
     .then((resp) => resp.json())
@@ -51,7 +51,7 @@ export async function getCustodiansAsync() {
     .catch((err) => console.error('getCustodiansAsync: ', err))
 }
 
-export async function getEmailSentByDayAsync() {
+export function getEmailSentByDayAsync() {
   store.dispatch(setEmailSentByDayLoading(true))
   fetch(`${emailServer}/emailsentbyday`)
     .then((resp) => resp.json())
@@ -97,7 +97,7 @@ function encodeQuery() {
   return queryString
 }
 
-export async function getEmailAsync(append: boolean = false) {
+export function getEmailAsync(append: boolean = false) {
   const query = `${emailServer}/${encodeQuery()}`
   // console.log(query)
   store.dispatch(setEmailLoading(true))
@@ -122,7 +122,7 @@ function getImportStatusInterval() {
     .then((json) => store.dispatch(setImportLog(json)))
     .catch((err) => console.error('getImportStatusInterval: ', err))
 }
-export async function getImportStatus() {
+export function getImportStatus() {
   if (importTimer) return
   importTimer = setInterval(getImportStatusInterval, 2000)
 }
