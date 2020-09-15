@@ -71,3 +71,9 @@ export interface EChartsDatum {
   name: string
   itemStyle: any
 }
+
+export interface ImportLogEntry {
+  id: string
+  timestamp: string
+  entry: string
+}

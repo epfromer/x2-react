@@ -10,6 +10,7 @@ import {
   setEmailSentByDay,
   setEmailSentByDayLoading,
   setEmailTotal,
+  setImportLog,
   setWordCloud,
   setWordCloudLoading,
   store,
@@ -21,7 +22,7 @@ export async function getWordCloudAsync() {
     .then((resp) => resp.json())
     .then((json) => store.dispatch(setWordCloud(json)))
     .then(() => store.dispatch(setWordCloudLoading(false)))
-    .catch((error) => console.error('getWordCloudAsync: ', error))
+    .catch((err) => console.error('getWordCloudAsync: ', err))
 }
 
 export async function loadAppSettingsAsync() {
@@ -47,7 +48,7 @@ export async function getCustodiansAsync() {
     .then((resp) => resp.json())
     .then((json) => store.dispatch(setCustodians(json)))
     .then(() => store.dispatch(setCustodiansLoading(false)))
-    .catch((error) => console.error('getCustodiansAsync: ', error))
+    .catch((err) => console.error('getCustodiansAsync: ', err))
 }
 
 export async function getEmailSentByDayAsync() {
@@ -56,7 +57,7 @@ export async function getEmailSentByDayAsync() {
     .then((resp) => resp.json())
     .then((json) => store.dispatch(setEmailSentByDay(json)))
     .then(() => store.dispatch(setEmailSentByDayLoading(false)))
-    .catch((error) => console.error('getEmailSentByDayAsync: ', error))
+    .catch((err) => console.error('getEmailSentByDayAsync: ', err))
 }
 
 function makeQueryObj(): any {
@@ -98,7 +99,7 @@ function encodeQuery() {
 
 export async function getEmailAsync(append: boolean = false) {
   const query = `${emailServer}/${encodeQuery()}`
-  console.log(query)
+  // console.log(query)
   store.dispatch(setEmailLoading(true))
   fetch(query)
     .then((resp) => resp.json())
@@ -111,5 +112,22 @@ export async function getEmailAsync(append: boolean = false) {
       store.dispatch(setEmailTotal(json.total))
     })
     .then(() => store.dispatch(setEmailLoading(false)))
-    .catch((error) => console.error('getEmailAsync: ', error))
+    .catch((err) => console.error('getEmailAsync: ', err))
+}
+
+let importTimer
+function getImportStatusInterval() {
+  fetch(`${emailServer}/importstatus/`)
+    .then((resp) => resp.json())
+    .then((json) => store.dispatch(setImportLog(json)))
+    .catch((err) => console.error('getImportStatusInterval: ', err))
+}
+export async function getImportStatus() {
+  if (importTimer) return
+  importTimer = setInterval(getImportStatusInterval, 2000)
+}
+export function stopImportStatusInterval() {
+  if (!importTimer) return
+  clearInterval(importTimer)
+  importTimer = undefined
 }
