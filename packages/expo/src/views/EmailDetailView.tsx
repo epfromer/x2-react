@@ -1,6 +1,5 @@
 import {
   Email,
-  emailServer,
   getEmailById,
   getEmailIndex,
   getNextEmailId,
@@ -34,7 +33,7 @@ export default function EmailDetailView({ route, navigation }: Props) {
   const from = useSelector(selectFrom)
   const subject = useSelector(selectSubject)
   const body = useSelector(selectBody)
-  const totalEmails = useSelector(selectEmail)?.length
+  const totalEmails = useSelector(selectEmail).length
   const emailIndex = getEmailIndex(route.params.id)
   const previousEmailId = getPreviousEmailId(route.params.id)
   const nextEmailId = getNextEmailId(route.params.id)
@@ -100,15 +99,16 @@ export default function EmailDetailView({ route, navigation }: Props) {
   })
 
   const highlightedTerms: Array<string> = []
-  if (allText) highlightedTerms.push(allText)
-  if (to) highlightedTerms.push(to)
-  if (from) highlightedTerms.push(from)
-  if (subject) highlightedTerms.push(subject)
-  if (body) highlightedTerms.push(body)
+  if (allText) highlightedTerms.push(allText as string)
+  if (to) highlightedTerms.push(to as string)
+  if (from) highlightedTerms.push(from as string)
+  if (subject) highlightedTerms.push(subject as string)
+  if (body) highlightedTerms.push(body as string)
 
   function doFetch() {
     setLoading(true)
-    const url = `${emailServer}/email/${route.params.id}`
+    const server = process.env.REACT_APP_X2_SERVER
+    const url = `${server}/email/${route.params.id}`
     console.log(url)
     fetch(url)
       .then((resp) => resp.json())

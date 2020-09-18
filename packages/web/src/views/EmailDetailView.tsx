@@ -1,6 +1,5 @@
 import {
   Email,
-  emailServer,
   getEmailById,
   selectAllText,
   selectBody,
@@ -47,8 +46,9 @@ export default function EmailDetailView() {
   if (body) highlightedTerms.push(body)
 
   function doFetch() {
+    const server = process.env.REACT_APP_X2_SERVER
     setLoading(true)
-    const url = `${emailServer}/email/${id}`
+    const url = `${server}/email/${id}`
     console.log(url)
     fetch(url)
       .then((resp) => resp.json())

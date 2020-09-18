@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-community/async-storage'
-import { emailListPageLength, emailServer } from '../constants'
+import { emailListPageLength } from '../constants'
 import {
   appendEmail,
   setCustodians,
@@ -18,7 +18,8 @@ import {
 
 export function getWordCloudAsync() {
   store.dispatch(setWordCloudLoading(true))
-  fetch(`${emailServer}/wordcloud`)
+  const server = process.env.REACT_APP_X2_SERVER
+  fetch(`${server}/wordcloud`)
     .then((resp) => resp.json())
     .then((json) => store.dispatch(setWordCloud(json)))
     .then(() => store.dispatch(setWordCloudLoading(false)))
@@ -44,7 +45,8 @@ export async function loadAppSettingsAsync() {
 
 export function getCustodiansAsync() {
   store.dispatch(setCustodiansLoading(true))
-  fetch(`${emailServer}/custodians`)
+  const server = process.env.REACT_APP_X2_SERVER
+  fetch(`${server}/custodians`)
     .then((resp) => resp.json())
     .then((json) => store.dispatch(setCustodians(json)))
     .then(() => store.dispatch(setCustodiansLoading(false)))
@@ -53,7 +55,8 @@ export function getCustodiansAsync() {
 
 export function getEmailSentByDayAsync() {
   store.dispatch(setEmailSentByDayLoading(true))
-  fetch(`${emailServer}/emailsentbyday`)
+  const server = process.env.REACT_APP_X2_SERVER
+  fetch(`${server}/emailsentbyday`)
     .then((resp) => resp.json())
     .then((json) => store.dispatch(setEmailSentByDay(json)))
     .then(() => store.dispatch(setEmailSentByDayLoading(false)))
@@ -98,7 +101,8 @@ function encodeQuery() {
 }
 
 export function getEmailAsync(append: boolean = false) {
-  const query = `${emailServer}/${encodeQuery()}`
+  const server = process.env.REACT_APP_X2_SERVER
+  const query = `${server}/${encodeQuery()}`
   // console.log(query)
   store.dispatch(setEmailLoading(true))
   fetch(query)
@@ -117,7 +121,8 @@ export function getEmailAsync(append: boolean = false) {
 
 let importTimer
 function getImportStatusInterval() {
-  fetch(`${emailServer}/importstatus/`)
+  const server = process.env.REACT_APP_X2_SERVER
+  fetch(`${server}/importstatus/`)
     .then((resp) => resp.json())
     .then((json) => store.dispatch(setImportLog(json)))
     .catch((err) => console.error('getImportStatusInterval: ', err))
