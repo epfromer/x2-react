@@ -1,4 +1,5 @@
 import {
+  getDateStr,
   getEmailAsync,
   selectAllText,
   selectFrom,
@@ -30,8 +31,6 @@ import debounce from 'lodash/debounce'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import FilterDate from './FilterDate'
-
-var moment = require('moment')
 
 const DEBOUNCE_MS = 1000
 const FILTER_DATE = '2000-10-04'
@@ -87,7 +86,7 @@ const EmailTableHead: React.FC = () => {
 
   const onDateClose = (date: string, span: number) => {
     setDatePickerOpen(false)
-    dispatch(setSent(moment(date).format().slice(0, 10)))
+    dispatch(setSent(getDateStr(new Date(date))))
     dispatch(setTimeSpan(span))
     getEmailAsync()
   }

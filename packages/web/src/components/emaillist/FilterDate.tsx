@@ -1,11 +1,10 @@
-import DateMomentUtils from '@date-io/moment'
+import DateFnsUtils from '@date-io/date-fns'
 import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 import TextField from '@material-ui/core/TextField'
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers/'
 import React, { useState } from 'react'
-var moment = require('moment')
 
 interface Props {
   date: string
@@ -21,7 +20,7 @@ export default function FilterDate({
   span,
   open,
 }: Props) {
-  const [filterDate, setFilterDate] = useState(new Date(moment(date)))
+  const [filterDate, setFilterDate] = useState(new Date(date))
   const [filterSpan, setFilterSpan] = useState(span)
 
   // https://material-ui-pickers.dev/demo/datepicker
@@ -30,7 +29,7 @@ export default function FilterDate({
 
   return (
     <Dialog aria-labelledby="filter-date" open={open}>
-      <MuiPickersUtilsProvider utils={DateMomentUtils}>
+      <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <DatePicker
           autoOk
           orientation="portrait"

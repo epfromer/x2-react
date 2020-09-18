@@ -1,5 +1,6 @@
 import {
   emailListPageLength,
+  getDateStr,
   getEmailAsync,
   maxFromLength,
   selectAllText,
@@ -33,7 +34,6 @@ import Spinner from 'react-native-loading-spinner-overlay'
 import Modal from 'react-native-modal'
 import DateTimePickerModal from 'react-native-modal-datetime-picker'
 import { useDispatch, useSelector } from 'react-redux'
-var moment = require('moment')
 
 const FILTER_DATE = '2000-10-04'
 
@@ -144,7 +144,7 @@ export default function SearchView({ navigation }: Props) {
           mode="date"
           onConfirm={(date: Date) => {
             setDatePickerOpen(false)
-            setNewSent(moment(date).format().slice(0, 10))
+            setNewSent(getDateStr(date))
           }}
           onCancel={() => {
             setDatePickerOpen(false)
