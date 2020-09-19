@@ -6,6 +6,7 @@ import {
   selectFrom,
   selectSubject,
   selectTo,
+  x2Server,
 } from '@klonzo/common'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
@@ -47,6 +48,8 @@ export default function EmailDetailView() {
 
   function doFetch() {
     const server = process.env.REACT_APP_X2_SERVER
+      ? process.env.REACT_APP_X2_SERVER
+      : x2Server
     setLoading(true)
     const url = `${server}/email/${id}`
     console.log(url)

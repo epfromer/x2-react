@@ -3,6 +3,7 @@ import {
   ImportLogEntry,
   selectImportLog,
   stopImportStatusInterval,
+  x2Server
 } from '@klonzo/common'
 import Button from '@material-ui/core/Button'
 import Paper from '@material-ui/core/Paper'
@@ -34,6 +35,8 @@ export default function ImportLog() {
   const startImport = () => {
     // TODO status that server is importing, disable this fn if so
     const server = process.env.REACT_APP_X2_SERVER
+      ? process.env.REACT_APP_X2_SERVER
+      : x2Server
     fetch(`${server}/importpst/`).catch((err) =>
       console.error('startImport: ', err)
     )

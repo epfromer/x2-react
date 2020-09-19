@@ -3,6 +3,7 @@ import {
   getCustodiansAsync,
   selectCustodians,
   selectCustodiansLoading,
+  x2Server,
 } from '@klonzo/common'
 import Button from '@material-ui/core/Button'
 import LinearProgress from '@material-ui/core/LinearProgress'
@@ -28,6 +29,8 @@ export default function CustodianSettings() {
     setOpenColorPicker(false)
     if (!color) return
     const server = process.env.REACT_APP_X2_SERVER
+      ? process.env.REACT_APP_X2_SERVER
+      : x2Server
     const url = `${server}/custodians/${custodianId}`
     const payload = {
       method: 'PUT',

@@ -11,6 +11,7 @@ import {
   selectFrom,
   selectSubject,
   selectTo,
+  x2Server,
 } from '@klonzo/common'
 import React, { useEffect, useState } from 'react'
 import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
@@ -108,6 +109,8 @@ export default function EmailDetailView({ route, navigation }: Props) {
   function doFetch() {
     setLoading(true)
     const server = process.env.REACT_APP_X2_SERVER
+      ? process.env.REACT_APP_X2_SERVER
+      : x2Server
     const url = `${server}/email/${route.params.id}`
     console.log(url)
     fetch(url)

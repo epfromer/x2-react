@@ -1,11 +1,11 @@
 import {
   Custodian,
-  emailServer,
   getCustodiansAsync,
   selectCustodians,
   selectCustodiansLoading,
   selectDarkMode,
   setDarkMode,
+  x2Server,
 } from '@klonzo/common'
 import React, { useState } from 'react'
 import {
@@ -67,7 +67,10 @@ export default function AppSettingsView() {
 
   const handleColorChosen = (color: string) => {
     setColorPickerDlgOpen(false)
-    const url = `${emailServer}/custodians/${colorPickerItem}`
+    const server = process.env.REACT_APP_X2_SERVER
+      ? process.env.REACT_APP_X2_SERVER
+      : x2Server
+    const url = `${server}/custodians/${colorPickerItem}`
     const payload = {
       method: 'PUT',
       body: JSON.stringify({ color }),
