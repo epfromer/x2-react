@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-community/async-storage'
-import { emailListPageLength } from '../constants'
+import { emailListPageLength, x2Server } from '../constants'
 import {
   appendEmail,
   setCustodians,
@@ -19,6 +19,8 @@ import {
 export function getWordCloudAsync() {
   store.dispatch(setWordCloudLoading(true))
   const server = process.env.REACT_APP_X2_SERVER
+    ? process.env.REACT_APP_X2_SERVER
+    : x2Server
   fetch(`${server}/wordcloud`)
     .then((resp) => resp.json())
     .then((json) => store.dispatch(setWordCloud(json)))
@@ -46,6 +48,8 @@ export async function loadAppSettingsAsync() {
 export function getCustodiansAsync() {
   store.dispatch(setCustodiansLoading(true))
   const server = process.env.REACT_APP_X2_SERVER
+    ? process.env.REACT_APP_X2_SERVER
+    : x2Server
   fetch(`${server}/custodians`)
     .then((resp) => resp.json())
     .then((json) => store.dispatch(setCustodians(json)))
@@ -56,6 +60,8 @@ export function getCustodiansAsync() {
 export function getEmailSentByDayAsync() {
   store.dispatch(setEmailSentByDayLoading(true))
   const server = process.env.REACT_APP_X2_SERVER
+    ? process.env.REACT_APP_X2_SERVER
+    : x2Server
   fetch(`${server}/emailsentbyday`)
     .then((resp) => resp.json())
     .then((json) => store.dispatch(setEmailSentByDay(json)))
@@ -102,6 +108,8 @@ function encodeQuery() {
 
 export function getEmailAsync(append: boolean = false) {
   const server = process.env.REACT_APP_X2_SERVER
+    ? process.env.REACT_APP_X2_SERVER
+    : x2Server
   const query = `${server}/${encodeQuery()}`
   // console.log(query)
   store.dispatch(setEmailLoading(true))
@@ -122,6 +130,8 @@ export function getEmailAsync(append: boolean = false) {
 let importTimer
 function getImportStatusInterval() {
   const server = process.env.REACT_APP_X2_SERVER
+    ? process.env.REACT_APP_X2_SERVER
+    : x2Server
   fetch(`${server}/importstatus/`)
     .then((resp) => resp.json())
     .then((json) => store.dispatch(setImportLog(json)))
