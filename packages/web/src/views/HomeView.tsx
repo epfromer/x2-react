@@ -1,18 +1,16 @@
 import Grid from '@material-ui/core/Grid'
-import {
-  BARCHART,
-  CHORD,
-  EVENTTIMELINE,
-  NETWORKGRAPH,
-  PIE,
-  POLAR,
-  SEARCH,
-  TREEMAP,
-  VOLUMETIMELINE,
-  WORDCLOUD,
-} from '@klonzo/common'
 import React from 'react'
 import HomeCard from '../components/HomeCard'
+import pie from './img/pie.png'
+import barchart from './img/barchart.png'
+import chord from './img/chord.png'
+import wordcloud from './img/wordcloud.png'
+import volumetimeline from './img/volumetimeline.png'
+import networkgraph from './img/networkgraph.png'
+import treemap from './img/treemap.png'
+import eventTimeline from './img/eventTimeline.png'
+import polar from './img/polar.png'
+import search from './img/search.png'
 
 export default function HomeView() {
   const makeCard = (
@@ -36,61 +34,61 @@ export default function HomeView() {
   return (
     <Grid container spacing={3}>
       {makeCard(
-        PIE,
+        pie,
         'Pie',
         'Pie chart of email volume of Enron key custodians.',
         '/PieView'
       )}
       {makeCard(
-        BARCHART,
+        barchart,
         'Bar',
         'Bar chart of email volume of Enron key custodians.',
         '/BarView'
       )}
       {makeCard(
-        CHORD,
+        chord,
         'Chord',
         'Chord diagram of Enron key custodian communication.',
         '/ChordView'
       )}
       {makeCard(
-        WORDCLOUD,
+        wordcloud,
         'Word Cloud',
         'Word cloud of fraudulent project names.',
         '/WordCloudView'
       )}
       {makeCard(
-        VOLUMETIMELINE,
+        volumetimeline,
         'Volume Timeline',
         'XY timeline of Enron email per day with drill down.',
         '/VolumeTimelineView'
       )}
       {makeCard(
-        NETWORKGRAPH,
+        networkgraph,
         'Network Graph',
         'Network graph of Enron key custodian communication.',
         '/NetworkGraphView'
       )}
       {makeCard(
-        TREEMAP,
+        treemap,
         'Tree Map',
         'Tree map of email volume of Enron key custodians.',
         '/TreeMapView'
       )}
       {makeCard(
-        EVENTTIMELINE,
+        eventTimeline,
         'Event Timeline',
         'Event timeline of Enron fraud and litigation.',
         '/EventTimelineView'
       )}
       {makeCard(
-        POLAR,
+        polar,
         'Polar',
         'Polar chart of email volume of Enron key custodians.',
         '/PolarView'
       )}
       {makeCard(
-        SEARCH,
+        search,
         'Search',
         'Full text search with field filtering and hit highlighting.',
         '/SearchView'

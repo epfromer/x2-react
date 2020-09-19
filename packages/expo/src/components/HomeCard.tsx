@@ -1,20 +1,13 @@
 import { selectDarkMode } from '@klonzo/common'
 import React from 'react'
-import {
-  Image,
-  ImageSourcePropType,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { useSelector } from 'react-redux'
 
 // https://docs.nativebase.io/Components.html#card-headfoot-headref
 
 interface Props {
   navigation: any
-  image: ImageSourcePropType
+  image: any
   title: string
   description: string
   link: string
@@ -52,7 +45,6 @@ export default function HomeCard({
   })
 
   const Separator = () => <View style={styles.separator} />
-
   return (
     <TouchableOpacity onPress={() => navigation.navigate(link)}>
       <Text style={styles.title}>{title}</Text>

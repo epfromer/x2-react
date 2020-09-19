@@ -8,11 +8,10 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "run-s clean compile copy-assets",
+    "build": "run-s clean compile",
     "clean": "rimraf dist",
     "compile": "tsc --project tsconfig.build.json",
     "compile:watch": "tsc --watch --project tsconfig.build.json",
-    "copy-assets": "copyfiles -u 1 src/img/*.png dist/",
     "coverage": "jest --verbose --coverage",
     "test": "run-s build coverage",
     "watch": "run-s build compile:watch"
@@ -28,7 +27,6 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
-    "copyfiles": "^2.3.0",
     "eslint": "^7.9.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-config-react-app": "^5.2.1",
