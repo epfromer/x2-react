@@ -4,7 +4,7 @@ import {
   setBody,
   setCustodians,
   setEmail,
-  setEmailSent,
+  setEmailSentByDay,
   setFrom,
   setSubject,
   setTo,
@@ -17,129 +17,114 @@ import { Provider } from 'react-redux'
 
 const custodians = [
   {
-    id: '5f1301b1ab4d2f1a58ee5999',
+    id: 'fastow',
+    name: 'Fastow, Andrew',
+    title: 'Chief Financial Officer',
+    color: '#e91e63',
     senderTotal: 5,
     receiverTotal: 34,
     toCustodians: [
       {
-        id: '6711b456-d02f-4433-b97f-d06a725846ff',
-        to: ['Whalley, Greg', 'Lay, Kenneth'],
-        sent: '2001-10-24T22:02:54.000Z',
+        emailId: 'e9ffa816-c8e9-45d4-8b59-b3f8f64a0f98',
+        custodianIds: ['lay'],
       },
     ],
-    fromCustodians: [],
-    name: 'Fastow, Andrew',
-    title: 'Chief Financial Officer',
-    color: '#e91e63',
-    aliases: [],
-  },
-  {
-    id: '5f1301b1ab4d2f1a58ee599b',
-    senderTotal: 40,
-    receiverTotal: 2745,
-    toCustodians: [],
     fromCustodians: [
       {
-        id: 'e2c95722-16d8-49e7-8bf3-44cc8352fba9',
-        from: 'Skilling, Jeff',
-        sent: '2001-08-02T02:25:58.000Z',
-      },
-      {
-        id: 'e2c95722-16d8-49e7-8bf3-44cc8352fba9',
-        from: 'Skilling, Jeff',
-        sent: '2001-08-02T02:25:58.000Z',
-      },
-      {
-        id: '64aa8fe6-43ca-4325-b218-9e8b2d1d2054',
-        from: 'Skilling, Jeff',
-        sent: '2001-08-02T03:21:03.000Z',
-      },
-      {
-        id: '64aa8fe6-43ca-4325-b218-9e8b2d1d2054',
-        from: 'Skilling, Jeff',
-        sent: '2001-08-02T03:21:03.000Z',
-      },
-      {
-        id: '6711b456-d02f-4433-b97f-d06a725846ff',
-        from: 'Fastow, Andrew',
-        sent: '2001-10-24T22:02:54.000Z',
+        emailId: '6d55bb5e-e8d7-43d4-95b5-ad6ab1c8b8dc',
+        custodianId: 'fastow',
       },
     ],
+  },
+  {
+    id: 'lay',
     name: 'Lay, Kenneth',
     title: 'Founder, CEO and Chairman',
-    color: '#ff9800',
-    aliases: [],
+    color: '#ffff00',
+    senderTotal: 40,
+    receiverTotal: 2690,
+    toCustodians: [
+      {
+        emailId: '6d55bb5e-e8d7-43d4-95b5-ad6ab1c8b8dc',
+        custodianIds: ['fastow'],
+      },
+    ],
+    fromCustodians: [
+      {
+        emailId: 'e9ffa816-c8e9-45d4-8b59-b3f8f64a0f98',
+        custodianId: 'fastow',
+      },
+    ],
   },
 ]
 store.dispatch(setCustodians(custodians))
 const wordCloud = [
   {
-    id: '5f1301b1ab4d2f1a58ee5d90',
     tag: 'avici',
     weight: 29,
   },
   {
-    id: '5f1301b1ab4d2f1a58ee5d91',
     tag: 'azurix',
     weight: 490,
   },
 ]
 store.dispatch(setWordCloud(wordCloud))
-const emailSent = [
+const emailSentByDay = [
   {
-    id: '5f1301b1ab4d2f1a58ee5d21',
     sent: '1999-01-06',
-    ids: ['5f3ca4f5-d3fb-48dd-b2e8-e0dbaab4753f'],
+    emailIds: ['156f2431-d496-4c5f-832c-c2ea8af75d1c'],
   },
   {
-    id: '5f1301b1ab4d2f1a58ee5d23',
     sent: '1999-01-08',
-    ids: [
-      'bb15e4d9-9f28-4bcc-8cdf-9694033e8e59',
-      '2bb04817-3737-46f3-ad9a-3c7cb5af2e35',
+    emailIds: [
+      'bcb82244-1113-4d31-a992-e790c37b6e97',
+      'e545749b-4f9f-43ef-8781-592e06aeb69e',
     ],
   },
+  {
+    sent: '1999-01-09',
+    emailIds: ['a5880429-906f-4cd4-8a22-849722e44445'],
+  },
 ]
-store.dispatch(setEmailSent(emailSent))
+store.dispatch(setEmailSentByDay(emailSentByDay))
 const email = [
   {
-    id: '5f12fbcdab4d2f1a58edd105',
-    id: 'fedd603d-9f25-43ef-9906-ac7023a7d6e3',
-    sent: '2001-08-28T14:36:52.000Z',
-    from: 'Symes  Kate',
-    fromCustodian: '',
-    to: 'DL-Portland Real Time Shift',
-    toCustodian: '',
-    cc: '',
+    id: '692fbb3b-1a4d-4c5b-b8c2-42034586cc56',
+    sent: '2001-08-02T02:25:58.000Z',
+    sentShort: '2001-08-02',
+    from: 'Skilling',
+    fromCustodian: 'skilling',
+    to: 'allen; Phillip K.; bay; Frank',
+    toCustodians: ['lay'],
+    cc: 'lay; Kenneth; patrick; Christie',
     bcc: '',
-    subject: 'New SWOASIS Login',
+    subject: 'Please Plan to Attend',
     body: 'body 1',
   },
   {
-    id: '5f12fbcdab4d2f1a58edd10b',
-    id: '41cf2a86-6c81-4441-8704-b54e2da03f20',
-    sent: '2001-10-28T22:00:13.000Z',
-    from: 'Slinger',
-    fromCustodian: '',
-    to: 'meyers; Bert',
-    toCustodian: '',
-    cc: '',
+    id: 'f3281cc4-90a9-4dcb-86bd-d705fc847985',
+    sent: '2001-08-02T03:21:03.000Z',
+    sentShort: '2001-08-02',
+    from: 'Skilling',
+    fromCustodian: 'skilling',
+    to: 'skilling; Jeff; allen; phillip k.',
+    toCustodians: ['skilling', 'lay'],
+    cc: 'lay; Kenneth; patrick; Christie',
     bcc: '',
-    subject: 'FW: websites',
     body: 'body 2',
   },
   {
-    id: '4f12fbcdab4d2f1a58edd10b',
-    id: '41cf2a86-6c81-4441-8704-c54e2da03f20',
-    sent: '2001-10-28T22:00:13.000Z',
-    from: 'Slinger',
-    fromCustodian: '',
-    to: 'meyers; Bert',
-    toCustodian: '',
+    id: '5cac6ca4-01e7-4de5-a1d4-806b860e104d',
+    sent: '2001-10-12T20:05:56.000Z',
+    sentShort: '2001-10-12',
+    from: 'Fleming',
+    fromCustodian: 'fleming',
+    to: 'lay; Kenneth; Amy Taylor (E-mail)',
+    toCustodians: ['lay'],
     cc: '',
     bcc: '',
-    subject: 'FW: websites',
-    body: 'body 2',
+    subject: 'Check out this cool game!',
+    body: 'body 3',
   },
 ]
 store.dispatch(setEmail(email))

@@ -16363,10 +16363,10 @@ react-native-canvas@^0.1.34:
   dependencies:
     ctx-polyfill "^1.1.4"
 
-react-native-color-picker@^0.5.2:
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/react-native-color-picker/-/react-native-color-picker-0.5.3.tgz#6bc710d0ae78762e9e743da006cf702ed62a495d"
-  integrity sha512-dlSyoSCIRudLN3IeRsDJTjUyaj755Z8CWjEjEV0cgNC+YWlEhh3dLwG/R+Bj+XJrg+qFSlhoAsl0ecA7HZcMbw==
+react-native-color-picker@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/react-native-color-picker/-/react-native-color-picker-0.6.0.tgz#3b06eaaa0dfa9d90b45bf37bbb13776625c1fd2b"
+  integrity sha512-CptAssfTEGww97ev5GfaGTwu3IMBbBFi9ZDai1fgYRurQ7oQTcDp00lOoFIgLXr/acHNME2PjL7Ks/c+leVKFg==
   dependencies:
     prop-types "^15.5.10"
     tinycolor2 "^1.4.1"
@@ -16376,7 +16376,7 @@ react-native-echarts-wrapper@^2.0.0:
   resolved "https://registry.yarnpkg.com/react-native-echarts-wrapper/-/react-native-echarts-wrapper-2.0.0.tgz#87c539841418ef900bc3e07efa8aae135d231b1d"
   integrity sha512-1PwWBuzr4lQJxiu1VtK/WNEnmmEJW2Q6uB9WOUCG4Ftua0MNQXKngeT+M1Zxlui4uHIwPGWNX5KXXEkDgO4rSw==
 
-react-native-elements@^2.2.1:
+react-native-elements@^2.3.2:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/react-native-elements/-/react-native-elements-2.3.2.tgz#f6b974127a3484bb46ebd98fbc012fb2208decd7"
   integrity sha512-HygYYmq8JYjk/YYiUwr/64qT64H2xlPBz0JnkGTQwvnnyXZrfkHFopw8rLWCupv3iLLPDzVohvPs0Z5HLdonSQ==
@@ -16500,7 +16500,7 @@ react-native-unimodules@^0.10.1:
     unimodules-sensors-interface "~5.2.1"
     unimodules-task-manager-interface "~5.2.1"
 
-react-native-vector-icons@^7.0.0:
+react-native-vector-icons@^7.1.0:
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-7.1.0.tgz#145487d617b2a81d395d2cf64e6e065fcab3a454"
   integrity sha512-V2a1zJ4i+kS8O4j183gIwX14St9AxxXabxwYpFBgRhvr2NDXyFcjHDEAgrOYYlt2W57e20aN1tBDU/I+wn9WtQ==

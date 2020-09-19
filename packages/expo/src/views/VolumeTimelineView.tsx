@@ -38,7 +38,7 @@ export default function VolumeTimelineView({ navigation }: Props) {
   if (emailSent) {
     data = emailSent.map((stat: any) => ({
       sent: stat.sent,
-      value: stat.ids.length,
+      value: stat.emailIds.length,
     }))
   }
 
