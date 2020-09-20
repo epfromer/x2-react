@@ -4,6 +4,7 @@ import {
   getEmailSentByDayAsync,
   getWordCloudAsync,
   loadAppSettingsAsync,
+  getInitialDataAsync,
   selectDarkMode,
 } from '@klonzo/common'
 import AppBar from '@material-ui/core/AppBar'
@@ -39,8 +40,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
+getInitialDataAsync()
+
 // getCustodiansAsync()
-getWordCloudAsync()
 // getEmailSentByDayAsync()
 // getEmailAsync()
 // loadAppSettingsAsync()

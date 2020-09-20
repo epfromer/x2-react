@@ -17,6 +17,36 @@ import {
   store,
 } from './index'
 
+export function getInitialDataAsync() {
+  store.dispatch(setWordCloudLoading(true))
+  store.dispatch(setEmailSentByDayLoading(true))
+  const server = process.env.REACT_APP_X2_SERVER
+    ? process.env.REACT_APP_X2_SERVER
+    : x2Server
+  const query = gql`
+    {
+      wordcloud {
+        tag
+        weight
+      }
+      emailsentbyday {
+        emailIds
+        sent
+      }
+    }
+  `
+  request(`${server}/graphql/`, query)
+    .then((data) => {
+      store.dispatch(setWordCloud(data.wordcloud))
+      store.dispatch(setEmailSentByDay(data.emailsentbyday))
+    })
+    .then(() => {
+      store.dispatch(setWordCloudLoading(false))
+      store.dispatch(setEmailSentByDayLoading(false))
+    })
+    .catch((err) => console.error('getInitialDataAsync: ', err))
+}
+
 export function getWordCloudAsync() {
   store.dispatch(setWordCloudLoading(true))
   const server = process.env.REACT_APP_X2_SERVER
