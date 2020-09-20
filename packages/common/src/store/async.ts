@@ -20,6 +20,7 @@ import {
 export function getInitialDataAsync() {
   store.dispatch(setWordCloudLoading(true))
   store.dispatch(setEmailSentByDayLoading(true))
+  store.dispatch(setCustodiansLoading(true))
   const server = process.env.REACT_APP_X2_SERVER
     ? process.env.REACT_APP_X2_SERVER
     : x2Server
@@ -33,37 +34,35 @@ export function getInitialDataAsync() {
         emailIds
         sent
       }
+      custodians {
+        id
+        name
+        title
+        color
+        senderTotal
+        receiverTotal
+        toCustodians {
+          emailId
+        }
+        fromCustodians {
+          emailId
+          custodianId
+        }
+      }
     }
   `
   request(`${server}/graphql/`, query)
     .then((data) => {
       store.dispatch(setWordCloud(data.wordcloud))
       store.dispatch(setEmailSentByDay(data.emailsentbyday))
+      store.dispatch(setCustodians(data.custodians))
     })
     .then(() => {
       store.dispatch(setWordCloudLoading(false))
       store.dispatch(setEmailSentByDayLoading(false))
+      store.dispatch(setCustodiansLoading(false))
     })
     .catch((err) => console.error('getInitialDataAsync: ', err))
-}
-
-export function getWordCloudAsync() {
-  store.dispatch(setWordCloudLoading(true))
-  const server = process.env.REACT_APP_X2_SERVER
-    ? process.env.REACT_APP_X2_SERVER
-    : x2Server
-  const query = gql`
-    {
-      wordcloud {
-        tag
-        weight
-      }
-    }
-  `
-  request(`${server}/graphql/`, query)
-    .then((data) => store.dispatch(setWordCloud(data.wordcloud)))
-    .then(() => store.dispatch(setWordCloudLoading(false)))
-    .catch((err) => console.error('getWordCloudAsync: ', err))
 }
 
 export async function loadAppSettingsAsync() {
@@ -93,18 +92,6 @@ export function getCustodiansAsync() {
     .then((json) => store.dispatch(setCustodians(json)))
     .then(() => store.dispatch(setCustodiansLoading(false)))
     .catch((err) => console.error('getCustodiansAsync: ', err))
-}
-
-export function getEmailSentByDayAsync() {
-  store.dispatch(setEmailSentByDayLoading(true))
-  const server = process.env.REACT_APP_X2_SERVER
-    ? process.env.REACT_APP_X2_SERVER
-    : x2Server
-  fetch(`${server}/emailsentbyday`)
-    .then((resp) => resp.json())
-    .then((json) => store.dispatch(setEmailSentByDay(json)))
-    .then(() => store.dispatch(setEmailSentByDayLoading(false)))
-    .catch((err) => console.error('getEmailSentByDayAsync: ', err))
 }
 
 function makeQueryObj(): any {

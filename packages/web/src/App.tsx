@@ -1,10 +1,6 @@
 import {
-  getCustodiansAsync,
-  getEmailAsync,
-  getEmailSentByDayAsync,
-  getWordCloudAsync,
-  loadAppSettingsAsync,
   getInitialDataAsync,
+  loadAppSettingsAsync,
   selectDarkMode,
 } from '@klonzo/common'
 import AppBar from '@material-ui/core/AppBar'
@@ -41,11 +37,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 getInitialDataAsync()
-
-// getCustodiansAsync()
-// getEmailSentByDayAsync()
-// getEmailAsync()
-// loadAppSettingsAsync()
+loadAppSettingsAsync()
 
 export default function App() {
   const classes = useStyles()
