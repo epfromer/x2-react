@@ -15,6 +15,8 @@ import { render } from '@testing-library/react-native'
 import React from 'react'
 import { Provider } from 'react-redux'
 
+// TODO - put this into common and share, eliminate dupe from web
+
 const custodians = [
   {
     id: 'fastow',
@@ -90,7 +92,7 @@ store.dispatch(setEmailSentByDay(emailSentByDay))
 const email = [
   {
     id: '692fbb3b-1a4d-4c5b-b8c2-42034586cc56',
-    sent: '2001-08-02T02:25:58.000Z',
+    sent: new Date('2001-08-02T02:25:58.000Z'),
     sentShort: '2001-08-02',
     from: 'Skilling',
     fromCustodian: 'skilling',
@@ -103,19 +105,20 @@ const email = [
   },
   {
     id: 'f3281cc4-90a9-4dcb-86bd-d705fc847985',
-    sent: '2001-08-02T03:21:03.000Z',
+    sent: new Date('2001-08-02T03:21:03.000Z'),
     sentShort: '2001-08-02',
     from: 'Skilling',
     fromCustodian: 'skilling',
     to: 'skilling; Jeff; allen; phillip k.',
     toCustodians: ['skilling', 'lay'],
     cc: 'lay; Kenneth; patrick; Christie',
+    subject: 'Check out this cool game!',
     bcc: '',
     body: 'body 2',
   },
   {
     id: '5cac6ca4-01e7-4de5-a1d4-806b860e104d',
-    sent: '2001-10-12T20:05:56.000Z',
+    sent: new Date('2001-10-12T20:05:56.000Z'),
     sentShort: '2001-10-12',
     from: 'Fleming',
     fromCustodian: 'fleming',

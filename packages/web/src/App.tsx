@@ -39,11 +39,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-getCustodiansAsync()
+// getCustodiansAsync()
 getWordCloudAsync()
-getEmailSentByDayAsync()
-getEmailAsync()
-loadAppSettingsAsync()
+// getEmailSentByDayAsync()
+// getEmailAsync()
+// loadAppSettingsAsync()
 
 export default function App() {
   const classes = useStyles()

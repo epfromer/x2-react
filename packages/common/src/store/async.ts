@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-community/async-storage'
 import { emailListPageLength, x2Server } from '../constants'
+import { request, gql } from 'graphql-request'
 import {
   appendEmail,
   setCustodians,
@@ -21,9 +22,16 @@ export function getWordCloudAsync() {
   const server = process.env.REACT_APP_X2_SERVER
     ? process.env.REACT_APP_X2_SERVER
     : x2Server
-  fetch(`${server}/wordcloud`)
-    .then((resp) => resp.json())
-    .then((json) => store.dispatch(setWordCloud(json)))
+  const query = gql`
+    {
+      wordcloud {
+        tag
+        weight
+      }
+    }
+  `
+  request(`${server}/graphql/`, query)
+    .then((data) => store.dispatch(setWordCloud(data.wordcloud)))
     .then(() => store.dispatch(setWordCloudLoading(false)))
     .catch((err) => console.error('getWordCloudAsync: ', err))
 }
