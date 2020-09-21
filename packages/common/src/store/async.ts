@@ -87,9 +87,27 @@ export function getCustodiansAsync() {
   const server = process.env.REACT_APP_X2_SERVER
     ? process.env.REACT_APP_X2_SERVER
     : x2Server
-  fetch(`${server}/custodians`)
-    .then((resp) => resp.json())
-    .then((json) => store.dispatch(setCustodians(json)))
+  const query = gql`
+    {
+      custodians {
+        id
+        name
+        title
+        color
+        senderTotal
+        receiverTotal
+        toCustodians {
+          emailId
+        }
+        fromCustodians {
+          emailId
+          custodianId
+        }
+      }
+    }
+  `
+  request(`${server}/graphql/`, query)
+    .then((data) => store.dispatch(setCustodians(data.custodians)))
     .then(() => store.dispatch(setCustodiansLoading(false)))
     .catch((err) => console.error('getCustodiansAsync: ', err))
 }
