@@ -53,6 +53,9 @@ export function getInitialDataAsync() {
   `
   request(`${server}/graphql/`, query)
     .then((data) => {
+      if (!data.wordcloud || !data.emailsentbyday || !data.custodians) {
+        console.error('x2 server returns null data')
+      }
       store.dispatch(setWordCloud(data.wordcloud))
       store.dispatch(setEmailSentByDay(data.emailsentbyday))
       store.dispatch(setCustodians(data.custodians))
@@ -107,7 +110,10 @@ export function getCustodiansAsync() {
     }
   `
   request(`${server}/graphql/`, query)
-    .then((data) => store.dispatch(setCustodians(data.custodians)))
+    .then((data) => {
+      if (!data.custodians) console.error('x2 server returns null data')
+      store.dispatch(setCustodians(data.custodians))
+    })
     .then(() => store.dispatch(setCustodiansLoading(false)))
     .catch((err) => console.error('getCustodiansAsync: ', err))
 }
@@ -150,21 +156,40 @@ function encodeQuery() {
 }
 
 export function getEmailAsync(append: boolean = false) {
+  store.dispatch(setEmailLoading(true))
   const server = process.env.REACT_APP_X2_SERVER
     ? process.env.REACT_APP_X2_SERVER
     : x2Server
-  const query = `${server}/${encodeQuery()}`
+  // const query = `${server}/${encodeQuery()}`
   // console.log(query)
-  store.dispatch(setEmailLoading(true))
-  fetch(query)
-    .then((resp) => resp.json())
-    .then((json) => {
-      if (append) {
-        store.dispatch(appendEmail(json.emails))
-      } else {
-        store.dispatch(setEmail(json.emails))
+  const query = gql`
+    {
+      email(skip: 1, limit: 1) {
+        emails {
+          id
+          sent
+          sentShort
+          from
+          fromCustodian
+          to
+          toCustodians
+          cc
+          bcc
+          subject
+          body
+        }
+        total
       }
-      store.dispatch(setEmailTotal(json.total))
+    }
+  `
+  request(`${server}/graphql/`, query)
+    .then((data) => {
+      if (append) {
+        store.dispatch(appendEmail(data.email.emails))
+      } else {
+        store.dispatch(setEmail(data.email.emails))
+      }
+      store.dispatch(setEmailTotal(data.email.total))
     })
     .then(() => store.dispatch(setEmailLoading(false)))
     .catch((err) => console.error('getEmailAsync: ', err))

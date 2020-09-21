@@ -9,10 +9,8 @@ import {
   getEmailAsync,
   getEmailById,
   getEmailIndex,
-  getEmailSentByDayAsync,
   getNextEmailId,
   getPreviousEmailId,
-  getWordCloudAsync,
   loadAppSettingsAsync,
   selectAllText,
   selectBody,
@@ -169,12 +167,6 @@ test('getEmailIndex', () => {
 })
 
 test('getWordCloudAsync', async () => {
-  fetchMock.mockResponseOnce(JSON.stringify(wordCloud))
-  await getWordCloudAsync()
-  expect(store.getState().wordCloud.wordCloud).toEqual(wordCloud)
-})
-
-test('getWordCloudAsync', async () => {
   fetchMock.mockResponseOnce(JSON.stringify(custodians))
   await getCustodiansAsync()
   expect(store.getState().custodians.custodians).toEqual(custodians)
@@ -183,12 +175,6 @@ test('getWordCloudAsync', async () => {
 test('loadAppSettingsAsync', async () => {
   await loadAppSettingsAsync()
   expect(store.getState().appSettings.darkMode).toEqual(false)
-})
-
-test('getEmailSentAsync', async () => {
-  fetchMock.mockResponseOnce(JSON.stringify(emailSentByDay))
-  await getEmailSentByDayAsync()
-  expect(store.getState().emailSent.emailSentByDay).toEqual(emailSentByDay)
 })
 
 test('getEmailAsync', async () => {

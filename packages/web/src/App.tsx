@@ -1,4 +1,5 @@
 import {
+  getEmailAsync,
   getInitialDataAsync,
   loadAppSettingsAsync,
   selectDarkMode,
@@ -37,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 getInitialDataAsync()
+getEmailAsync()
 loadAppSettingsAsync()
 
 export default function App() {
