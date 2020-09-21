@@ -26,15 +26,15 @@ export function getInitialDataAsync() {
     : x2Server
   const query = gql`
     {
-      wordcloud {
+      getWordCloud {
         tag
         weight
       }
-      emailsentbyday {
+      getEmailSentByDay {
         emailIds
         sent
       }
-      custodians {
+      getCustodians {
         id
         name
         title
@@ -53,12 +53,16 @@ export function getInitialDataAsync() {
   `
   request(`${server}/graphql/`, query)
     .then((data) => {
-      if (!data.wordcloud || !data.emailsentbyday || !data.custodians) {
+      if (
+        !data.getWordCloud ||
+        !data.getEmailSentByDay ||
+        !data.getCustodians
+      ) {
         console.error('x2 server returns null data')
       }
-      store.dispatch(setWordCloud(data.wordcloud))
-      store.dispatch(setEmailSentByDay(data.emailsentbyday))
-      store.dispatch(setCustodians(data.custodians))
+      store.dispatch(setWordCloud(data.getWordCloud))
+      store.dispatch(setEmailSentByDay(data.getEmailSentByDay))
+      store.dispatch(setCustodians(data.getCustodians))
     })
     .then(() => {
       store.dispatch(setWordCloudLoading(false))
@@ -92,7 +96,7 @@ export function getCustodiansAsync() {
     : x2Server
   const query = gql`
     {
-      custodians {
+      getCustodians {
         id
         name
         title
@@ -111,8 +115,8 @@ export function getCustodiansAsync() {
   `
   request(`${server}/graphql/`, query)
     .then((data) => {
-      if (!data.custodians) console.error('x2 server returns null data')
-      store.dispatch(setCustodians(data.custodians))
+      if (!data.getCustodians) console.error('x2 server returns null data')
+      store.dispatch(setCustodians(data.getCustodians))
     })
     .then(() => store.dispatch(setCustodiansLoading(false)))
     .catch((err) => console.error('getCustodiansAsync: ', err))
@@ -136,35 +140,15 @@ function makeQueryObj(): any {
   return query
 }
 
-function encodeQuery() {
-  // encode query for URL
-  let queryString = ''
-  const query = makeQueryObj()
-
-  // encode into URL friendly string
-  let params = ''
-  Object.keys(query).forEach((key) => {
-    if (
-      (typeof query[key] === 'string' && query[key]) ||
-      typeof query[key] === 'number'
-    ) {
-      params += '&' + key + '=' + encodeURIComponent(query[key])
-    }
-  })
-  queryString = 'email/?' + params.slice(1)
-  return queryString
-}
-
 export function getEmailAsync(append: boolean = false) {
   store.dispatch(setEmailLoading(true))
   const server = process.env.REACT_APP_X2_SERVER
     ? process.env.REACT_APP_X2_SERVER
     : x2Server
-  // const query = `${server}/${encodeQuery()}`
   // console.log(query)
   const query = gql`
-    {
-      email(skip: 1, limit: 1) {
+    query getEmail($sort: String, $order: Int) {
+      getEmail(sort: $sort, order: $order) {
         emails {
           id
           sent
@@ -182,14 +166,14 @@ export function getEmailAsync(append: boolean = false) {
       }
     }
   `
-  request(`${server}/graphql/`, query)
+  request(`${server}/graphql/`, query, makeQueryObj())
     .then((data) => {
       if (append) {
-        store.dispatch(appendEmail(data.email.emails))
+        store.dispatch(appendEmail(data.getEmail.emails))
       } else {
-        store.dispatch(setEmail(data.email.emails))
+        store.dispatch(setEmail(data.getEmail.emails))
       }
-      store.dispatch(setEmailTotal(data.email.total))
+      store.dispatch(setEmailTotal(data.getEmail.total))
     })
     .then(() => store.dispatch(setEmailLoading(false)))
     .catch((err) => console.error('getEmailAsync: ', err))
