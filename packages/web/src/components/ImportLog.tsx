@@ -3,7 +3,7 @@ import {
   ImportLogEntry,
   selectImportLog,
   stopImportStatusInterval,
-  x2Server
+  x2Server,
 } from '@klonzo/common'
 import Button from '@material-ui/core/Button'
 import Paper from '@material-ui/core/Paper'
@@ -16,6 +16,7 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import { request, gql } from 'graphql-request'
 
 const useStyles = makeStyles((theme) => ({
   root: { width: '100%', marginTop: theme.spacing(2) },
@@ -33,13 +34,15 @@ export default function ImportLog() {
   getImportStatus()
 
   const startImport = () => {
-    // TODO status that server is importing, disable this fn if so
     const server = process.env.REACT_APP_X2_SERVER
       ? process.env.REACT_APP_X2_SERVER
       : x2Server
-    fetch(`${server}/importpst/`).catch((err) =>
-      console.error('startImport: ', err)
-    )
+    const query = gql`
+      {
+        importPST
+      }
+    `
+    request(`${server}/graphql/`, query)
   }
 
   return (

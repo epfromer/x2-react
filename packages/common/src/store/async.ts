@@ -208,9 +208,22 @@ function getImportStatusInterval() {
   const server = process.env.REACT_APP_X2_SERVER
     ? process.env.REACT_APP_X2_SERVER
     : x2Server
-  fetch(`${server}/importstatus/`)
-    .then((resp) => resp.json())
-    .then((json) => store.dispatch(setImportLog(json)))
+  const query = gql`
+    {
+      getImportStatus {
+        id
+        timestamp
+        entry
+      }
+    }
+  `
+  request(`${server}/graphql/`, query)
+    .then((data) => {
+      if (!data.getImportStatus) {
+        console.error('getImportStatusInterval: x2 server returns null data')
+      }
+      store.dispatch(setImportLog(data.getImportStatus))
+    })
     .catch((err) => console.error('getImportStatusInterval: ', err))
 }
 export function getImportStatus() {
