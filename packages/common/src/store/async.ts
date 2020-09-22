@@ -145,7 +145,7 @@ export function getEmailAsync(append: boolean = false) {
   const server = process.env.REACT_APP_X2_SERVER
     ? process.env.REACT_APP_X2_SERVER
     : x2Server
-  // console.log(query)
+  // console.log(server)
   const query = gql`
     query getEmail(
       $skip: Int

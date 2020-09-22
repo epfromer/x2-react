@@ -17,6 +17,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import EmailCardActions from '../components/emaillist/EmailCardActions'
+import { request, gql } from 'graphql-request'
 
 const useStyles = makeStyles((theme) => ({
   root: { width: '100%' },
@@ -51,11 +52,28 @@ export default function EmailDetailView() {
       ? process.env.REACT_APP_X2_SERVER
       : x2Server
     setLoading(true)
-    const url = `${server}/email/${id}`
-    console.log(url)
-    fetch(url)
-      .then((resp) => resp.json())
-      .then((json) => setEmail(json))
+    const query = gql`
+      query getEmail($id: ID) {
+        getEmail(id: $id) {
+          emails {
+            id
+            sent
+            sentShort
+            from
+            fromCustodian
+            to
+            toCustodians
+            cc
+            bcc
+            subject
+            body
+          }
+          total
+        }
+      }
+    `
+    request(`${server}/graphql/`, query, { id })
+      .then((data) => setEmail(data.getEmail.emails[0]))
       .catch((err) => console.error('fetch error', err))
       .then(() => setLoading(false))
   }
