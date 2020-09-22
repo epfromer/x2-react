@@ -147,8 +147,32 @@ export function getEmailAsync(append: boolean = false) {
     : x2Server
   // console.log(query)
   const query = gql`
-    query getEmail($sort: String, $order: Int) {
-      getEmail(sort: $sort, order: $order) {
+    query getEmail(
+      $skip: Int
+      $limit: Int
+      $sort: String
+      $order: Int
+      $sent: String
+      $timeSpan: Int
+      $from: String
+      $to: String
+      $subject: String
+      $allText: String
+      $body: String
+    ) {
+      getEmail(
+        skip: $skip
+        limit: $limit
+        sort: $sort
+        order: $order
+        sent: $sent
+        timeSpan: $timeSpan
+        from: $from
+        to: $to
+        subject: $subject
+        allText: $allText
+        body: $body
+      ) {
         emails {
           id
           sent

@@ -87,7 +87,7 @@ const EmailTableHead: React.FC = () => {
   const onDateClose = (date: string, span: number) => {
     setDatePickerOpen(false)
     dispatch(setSent(getDateStr(new Date(date))))
-    dispatch(setTimeSpan(span))
+    dispatch(setTimeSpan(Number(span)))
     getEmailAsync()
   }
 
