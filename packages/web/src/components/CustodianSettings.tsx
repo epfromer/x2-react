@@ -1,8 +1,8 @@
 import {
   Custodian,
-  getCustodiansAsync,
   selectCustodians,
   selectCustodiansLoading,
+  setCustodians,
   x2Server,
 } from '@klonzo/common'
 import Button from '@material-ui/core/Button'
@@ -14,11 +14,13 @@ import TableCell from '@material-ui/core/TableCell'
 import TableContainer from '@material-ui/core/TableContainer'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
+import { gql, request } from 'graphql-request'
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import ColorPickerDlg from './ColorPickerDlg'
 
 export default function CustodianSettings() {
+  const dispatch = useDispatch()
   const [openColorPicker, setOpenColorPicker] = useState(false)
   const [pickedColor, setPickedColor] = useState('')
   const [custodianId, setCustodianId] = useState('')
@@ -31,14 +33,27 @@ export default function CustodianSettings() {
     const server = process.env.REACT_APP_X2_SERVER
       ? process.env.REACT_APP_X2_SERVER
       : x2Server
-    const url = `${server}/custodians/${custodianId}`
-    const payload = {
-      method: 'PUT',
-      body: JSON.stringify({ color }),
-      headers: { 'Content-type': 'application/json; charset=UTF-8' },
-    }
-    fetch(url, payload)
-      .then(() => getCustodiansAsync())
+    const mutation = gql`
+      mutation setCustodianColor($id: ID, $color: String) {
+        setCustodianColor(id: $id, color: $color) {
+          id
+          name
+          title
+          color
+          senderTotal
+          receiverTotal
+          toCustodians {
+            emailId
+          }
+          fromCustodians {
+            emailId
+            custodianId
+          }
+        }
+      }
+    `
+    request(`${server}/graphql/`, mutation, { id: custodianId, color })
+      .then((data) => dispatch(setCustodians(data.setCustodianColor)))
       .catch((error) => console.error('CustodianSettings', error))
   }
 

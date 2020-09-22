@@ -37,12 +37,12 @@ export default function ImportLog() {
     const server = process.env.REACT_APP_X2_SERVER
       ? process.env.REACT_APP_X2_SERVER
       : x2Server
-    const query = gql`
-      {
-        importPST
+    const mutation = gql`
+      mutation importPST($loc: String) {
+        importPST(loc: $loc)
       }
     `
-    request(`${server}/graphql/`, query)
+    request(`${server}/graphql/`, mutation, { loc: 'foo location' })
   }
 
   return (
