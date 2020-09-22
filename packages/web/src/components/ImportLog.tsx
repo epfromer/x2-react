@@ -1,5 +1,6 @@
 import {
   getImportStatus,
+  importLoc,
   ImportLogEntry,
   selectImportLog,
   stopImportStatusInterval,
@@ -14,9 +15,9 @@ import TableCell from '@material-ui/core/TableCell'
 import TableContainer from '@material-ui/core/TableContainer'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
+import { gql, request } from 'graphql-request'
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { request, gql } from 'graphql-request'
 
 const useStyles = makeStyles((theme) => ({
   root: { width: '100%', marginTop: theme.spacing(2) },
@@ -42,7 +43,7 @@ export default function ImportLog() {
         importPST(loc: $loc)
       }
     `
-    request(`${server}/graphql/`, mutation, { loc: 'foo location' })
+    request(`${server}/graphql/`, mutation, { loc: importLoc })
   }
 
   return (
