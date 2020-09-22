@@ -1,5 +1,5 @@
 import {
-  emailListPageLength,
+  defaultLimit,
   selectEmail,
   selectEmailListPage,
   selectEmailLoading,
@@ -39,7 +39,7 @@ export default function SearchView() {
   const totalEmails = useSelector(selectEmailTotal)
   const emailListPage = useSelector(selectEmailListPage)
 
-  const hasMore = () => (emailListPage + 1) * emailListPageLength < totalEmails
+  const hasMore = () => (emailListPage + 1) * defaultLimit < totalEmails
 
   const observer: any = useRef()
   const lastRowRef = useCallback(

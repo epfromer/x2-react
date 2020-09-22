@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-community/async-storage'
-import { emailListPageLength, x2Server } from '../constants'
+import { defaultLimit, x2Server } from '../constants'
 import { request, gql } from 'graphql-request'
 import {
   appendEmail,
@@ -125,8 +125,8 @@ export function getCustodiansAsync() {
 function makeQueryObj(): any {
   const state = store.getState()
   const query: any = {
-    skip: state.query.emailListPage * emailListPageLength,
-    limit: emailListPageLength,
+    skip: state.query.emailListPage * defaultLimit,
+    limit: defaultLimit,
     sort: state.query.querySort,
     order: state.query.queryOrder,
   }
