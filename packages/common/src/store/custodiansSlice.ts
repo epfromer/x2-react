@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Custodian, EmailSentDatum, EmailXferedDatum } from './types'
+import { Custodian, EmailXferedDatum } from './types'
 
 export interface CustodiansState {
   custodiansLoading: boolean
@@ -63,17 +63,17 @@ export function selectEmailReceivers(state) {
   return data
 }
 
+interface IDColorKey {
+  id: string
+  color: string
+}
+
 export function selectEmailSentByCustodian(state) {
   const custodianNameFromId = (id: string) =>
     state.custodians.custodians.find((c) => c.id === id).name
 
   const custodians = state.custodians.custodians
   const data: Array<[string, string, number]> = []
-
-  interface IDColorKey {
-    id: string
-    color: string
-  }
   const nodes: Array<IDColorKey> = []
 
   if (custodians) {

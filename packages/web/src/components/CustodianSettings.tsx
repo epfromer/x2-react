@@ -43,11 +43,8 @@ export default function CustodianSettings() {
           senderTotal
           receiverTotal
           toCustodians {
-            emailId
-          }
-          fromCustodians {
-            emailId
             custodianId
+            total
           }
         }
       }

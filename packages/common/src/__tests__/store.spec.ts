@@ -3,8 +3,6 @@ import '@testing-library/jest-dom/extend-expect'
 import fetchMock from 'jest-fetch-mock'
 import {
   clearSearch,
-  Email,
-  EmailSentByDay,
   getCustodiansAsync,
   getEmailAsync,
   getEmailById,
@@ -35,103 +33,17 @@ import {
   setTo,
   setWordCloud,
   store,
-  WordCloudTag,
+  testCustodians,
+  testEmail,
+  testEmailSentByDay,
+  testWordCloud,
 } from '../index'
 jest.mock('@react-native-community/async-storage', () => mockAsyncStorage)
 
-const custodians = [
-  {
-    id: 'causey',
-    name: 'Causey, Richard',
-    aliases: [],
-    title: 'Executive Vice President and Chief Accounting Officer',
-    color: '#673ab7',
-    senderTotal: 17,
-    receiverTotal: 272,
-    toCustodians: [{ custodianId: 'lay', total: 1 }],
-    fromCustodians: [{ custodianId: 'fastow', total: 1 }],
-  },
-  {
-    id: 'whalley',
-    name: 'Whalley, Greg',
-    aliases: [],
-    title: 'President',
-    color: '#3f51b5',
-    senderTotal: 19,
-    receiverTotal: 466,
-    toCustodians: [{ custodianId: 'lay', total: 1 }],
-    fromCustodians: [{ custodianId: 'fastow', total: 1 }],
-  },
-]
-store.dispatch(setCustodians(custodians))
-const wordCloud: Array<WordCloudTag> = [
-  {
-    tag: 'avici',
-    weight: 29,
-  },
-  {
-    tag: 'azurix',
-    weight: 490,
-  },
-]
-store.dispatch(setWordCloud(wordCloud))
-const emailSentByDay: Array<EmailSentByDay> = [
-  {
-    sent: '2001-08-28T14:36:52.000Z',
-    emailIds: ['5f12fbcdab4d2f1a58edd105'],
-  },
-  {
-    sent: '2001-08-23T15:52:44.000Z',
-    emailIds: ['dd8b6148-aea3-4d3a-bbda-e539f6c01820'],
-  },
-  {
-    sent: '2001-10-28T22:00:13.000Z',
-    emailIds: ['4f12fbcdab4d2f1a58edd10b'],
-  },
-]
-store.dispatch(setEmailSentByDay(emailSentByDay))
-const email: Array<Email> = [
-  {
-    id: '5f12fbcdab4d2f1a58edd105',
-    sent: '2001-08-28T14:36:52.000Z',
-    sentShort: '2001-08-28',
-    from: 'Symes  Kate',
-    fromCustodian: '',
-    to: 'DL-Portland Real Time Shift',
-    toCustodians: [],
-    cc: '',
-    bcc: '',
-    subject: 'New SWOASIS Login',
-    body: 'body 1',
-  },
-  {
-    id: 'dd8b6148-aea3-4d3a-bbda-e539f6c01820',
-    sent: '2001-08-23T15:52:44.000Z',
-    sentShort: '2001-08-23',
-    from: 'Causey  Richard',
-    fromCustodian: 'causey',
-    to: 'Whalley  Greg; Delainey  David',
-    toCustodians: ['whalley'],
-    cc: 'Lavorato  John; Buy  Rick',
-    bcc: '',
-    subject: 'RE: NewPower',
-    body: 'body 2',
-  },
-  {
-    id: '4f12fbcdab4d2f1a58edd10b',
-    sent: '2001-10-28T22:00:13.000Z',
-    sentShort: '2001-08-28',
-    from: 'Slinger',
-    fromCustodian: '',
-    to: 'meyers; Bert',
-    toCustodians: [],
-    cc: '',
-    bcc: '',
-    subject: 'FW: websites',
-    body: 'body 2',
-  },
-]
-store.dispatch(setEmail(email))
+store.dispatch(setWordCloud(testWordCloud))
+store.dispatch(setCustodians(testCustodians))
+store.dispatch(setEmailSentByDay(testEmailSentByDay))
+store.dispatch(setEmail(testEmail))
 store.dispatch(setAllText('body'))
 store.dispatch(setTo('body'))
 store.dispatch(setFrom('body'))
@@ -157,9 +69,9 @@ test('getEmailIndex', () => {
 })
 
 test('getWordCloudAsync', async () => {
-  fetchMock.mockResponseOnce(JSON.stringify(custodians))
+  fetchMock.mockResponseOnce(JSON.stringify(testCustodians))
   await getCustodiansAsync()
-  expect(store.getState().custodians.custodians).toEqual(custodians)
+  expect(store.getState().custodians.custodians).toEqual(testCustodians)
 })
 
 test('loadAppSettingsAsync', async () => {
@@ -168,9 +80,9 @@ test('loadAppSettingsAsync', async () => {
 })
 
 test('getEmailAsync', async () => {
-  fetchMock.mockResponseOnce(JSON.stringify(email))
+  fetchMock.mockResponseOnce(JSON.stringify(testEmail))
   await getEmailAsync()
-  expect(store.getState().email.email).toEqual(email)
+  expect(store.getState().email.email).toEqual(testEmail)
 })
 
 test('getEmailIndex', () => {
