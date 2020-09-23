@@ -48,13 +48,8 @@ const custodians = [
     color: '#673ab7',
     senderTotal: 17,
     receiverTotal: 272,
-    toCustodians: [
-      {
-        emailId: 'dd8b6148-aea3-4d3a-bbda-e539f6c01820',
-        custodianIds: ['whalley'],
-      },
-    ],
-    fromCustodians: [],
+    toCustodians: [{ custodianId: 'lay', total: 1 }],
+    fromCustodians: [{ custodianId: 'fastow', total: 1 }],
   },
   {
     id: 'whalley',
@@ -64,13 +59,8 @@ const custodians = [
     color: '#3f51b5',
     senderTotal: 19,
     receiverTotal: 466,
-    toCustodians: [],
-    fromCustodians: [
-      {
-        emailId: 'dd8b6148-aea3-4d3a-bbda-e539f6c01820',
-        custodianId: 'causey',
-      },
-    ],
+    toCustodians: [{ custodianId: 'lay', total: 1 }],
+    fromCustodians: [{ custodianId: 'fastow', total: 1 }],
   },
 ]
 store.dispatch(setCustodians(custodians))

@@ -14,34 +14,22 @@ export interface Email {
 
 export interface EmailSentByDay {
   sent: Date | string
-  emailIds: string[]
+  total: number
 }
 
-export interface EmailSentByDayDatum {
-  sent: Date | string
-  value: number // number of emails sent
-}
-
-export interface EmailSentToCustodians {
-  emailId: string
-  custodianIds: string[]
-}
-
-export interface EmailReceivedFromCustodians {
-  emailId: string
+export interface CustodianInteractions {
   custodianId: string
+  total: number
 }
 
 export interface Custodian {
   id: string
   name: string
-  aliases: string[]
   title: string
   color: string
   senderTotal: number
   receiverTotal: number
-  toCustodians: EmailSentToCustodians[]
-  fromCustodians: EmailReceivedFromCustodians[]
+  toCustodians: CustodianInteractions[]
 }
 
 export interface WordCloudTag {

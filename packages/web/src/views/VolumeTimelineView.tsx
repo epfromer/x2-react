@@ -1,7 +1,6 @@
 import {
   clearSearch,
   EmailSentByDay,
-  EmailSentByDayDatum,
   getEmailAsync,
   selectEmailSentByDay,
   selectEmailSentByDayLoading,
@@ -30,11 +29,11 @@ export default function TimelineView() {
     history.push('/SearchView')
   }
 
-  let data: Array<EmailSentByDayDatum> = []
+  let data: Array<EmailSentByDay> = []
   if (emailSent) {
     data = emailSent.map((stat: EmailSentByDay) => ({
       sent: stat.sent,
-      value: stat.emailIds.length,
+      total: stat.total,
     }))
   }
 

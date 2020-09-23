@@ -31,8 +31,8 @@ export function getInitialDataAsync() {
         weight
       }
       getEmailSentByDay {
-        emailIds
         sent
+        total
       }
       getCustodians {
         id
@@ -42,11 +42,8 @@ export function getInitialDataAsync() {
         senderTotal
         receiverTotal
         toCustodians {
-          emailId
-        }
-        fromCustodians {
-          emailId
           custodianId
+          total
         }
       }
     }
@@ -104,11 +101,8 @@ export function getCustodiansAsync() {
         senderTotal
         receiverTotal
         toCustodians {
-          emailId
-        }
-        fromCustodians {
-          emailId
           custodianId
+          total
         }
       }
     }

@@ -62,53 +62,34 @@ export function selectEmailReceivers(state) {
   }
   return data
 }
+
 export function selectEmailSentByCustodian(state) {
-  //  create array of [from, to, number sent]
+  const custodianNameFromId = (id: string) =>
+    state.custodians.custodians.find((c) => c.id === id).name
+
   const custodians = state.custodians.custodians
   const data: Array<[string, string, number]> = []
+
+  interface IDColorKey {
+    id: string
+    color: string
+  }
+  const nodes: Array<IDColorKey> = []
+
   if (custodians) {
-    custodians.forEach((custodian) => {
-      const sent = new Map()
-      custodian.toCustodians.forEach((email) => {
-        email.custodianIds.forEach((recipient) => {
-          const name = custodians.find((c) => c.id === recipient).name
-          if (sent.has(name)) {
-            sent.set(name, sent.get(name) + 1)
-          } else {
-            sent.set(name, 1)
-          }
-        })
-      })
-      sent.forEach((v, k) => {
-        if (custodian.name !== k) {
-          data.push([custodian.name, k, v])
-        }
+    //  create array of [from, to, number sent]
+    custodians.forEach((fromCustodian) => {
+      fromCustodian.toCustodians.forEach((toCustodian) => {
+        data.push([
+          fromCustodian.name,
+          custodianNameFromId(toCustodian.custodianId),
+          toCustodian.total,
+        ])
       })
     })
-  }
-
-  const emailTotal = new Map()
-  data.forEach((custodian) => {
-    if (emailTotal.has(custodian[0])) {
-      emailTotal.set(custodian[0], emailTotal.get(custodian[0]) + custodian[2])
-    } else {
-      emailTotal.set(custodian[0], custodian[2])
-    }
-    if (emailTotal.has(custodian[1])) {
-      emailTotal.set(custodian[1], emailTotal.get(custodian[1]) + custodian[2])
-    } else {
-      emailTotal.set(custodian[1], custodian[2])
-    }
-  })
-
-  const nodes: Array<EmailSentDatum> = []
-  if (custodians) {
+    // and array of color keys
     custodians.forEach((custodian) => {
-      nodes.push({
-        id: custodian.name,
-        color: custodian.color,
-        emailTotal: emailTotal.get(custodian.name),
-      })
+      nodes.push({ id: custodian.name, color: custodian.color })
     })
   }
 

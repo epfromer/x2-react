@@ -28,6 +28,8 @@ export default function ChordHighcharts({
   const [config, setConfig] = useState<any>(null)
   const darkMode = useSelector(selectDarkMode)
 
+  console.log(data, nodes)
+
   function createChart() {
     setConfig({
       chart: {
@@ -47,10 +49,7 @@ export default function ChordHighcharts({
         series: {
           cursor: 'pointer',
           events: {
-            click: (e: any) => {
-              console.log(e)
-              handleClick(e.point.from, e.point.to)
-            },
+            click: (e: any) => handleClick(e.point.from, e.point.to),
           },
         },
       },
