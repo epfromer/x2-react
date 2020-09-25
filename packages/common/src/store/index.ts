@@ -6,6 +6,7 @@ import {
 } from '@reduxjs/toolkit'
 // import logger from 'redux-logger'
 import appSettingsReducer from './appSettingsSlice'
+import authenticationReducer from './authenticationSlice'
 import custodiansReducer from './custodiansSlice'
 import emailSentReducer from './emailSentByDaySlice'
 import emailReducer from './emailSlice'
@@ -36,6 +37,7 @@ const serializableMiddleware = createSerializableStateInvariantMiddleware({
 export const store = configureStore({
   reducer: {
     appSettings: appSettingsReducer,
+    authentication: authenticationReducer,
     custodians: custodiansReducer,
     email: emailReducer,
     emailSent: emailSentReducer,

@@ -6,7 +6,7 @@ import Tooltip from '@material-ui/core/Tooltip'
 import Typography from '@material-ui/core/Typography'
 import Brightness4 from '@material-ui/icons/Brightness4'
 import Brightness7 from '@material-ui/icons/Brightness7'
-import DashboardIcon from '@material-ui/icons/Dashboard'
+import HomeIcon from '@material-ui/icons/Home'
 import MenuIcon from '@material-ui/icons/Menu'
 import Settings from '@material-ui/icons/Settings'
 import clsx from 'clsx'
@@ -100,7 +100,7 @@ export default function AppToolbar({ drawerOpen, setDrawerOpen }: Props) {
       </Tooltip>
       <Tooltip title="x2 Home" aria-label="x2 Home">
         <IconButton color="inherit" onClick={() => history.push('/')}>
-          <DashboardIcon />
+          <HomeIcon />
         </IconButton>
       </Tooltip>
     </Toolbar>

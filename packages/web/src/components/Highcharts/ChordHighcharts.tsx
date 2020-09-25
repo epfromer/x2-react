@@ -28,8 +28,6 @@ export default function ChordHighcharts({
   const [config, setConfig] = useState<any>(null)
   const darkMode = useSelector(selectDarkMode)
 
-  console.log(data, nodes)
-
   function createChart() {
     setConfig({
       chart: {

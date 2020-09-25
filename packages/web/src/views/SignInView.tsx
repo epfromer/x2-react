@@ -36,7 +36,7 @@ export default function SignInView() {
         <div className={classes.input}>
           <TextField
             fullWidth
-            id="filled-password-input"
+            autoFocus
             label="Username or email address"
             variant="filled"
           />
@@ -44,10 +44,8 @@ export default function SignInView() {
         <div className={classes.input}>
           <TextField
             fullWidth
-            id="filled-password-input"
             label="Password"
             type="password"
-            autoComplete="current-password"
             variant="filled"
           />
         </div>
@@ -56,7 +54,6 @@ export default function SignInView() {
             fullWidth
             variant="contained"
             onClick={() => console.log('foo')}
-            data-testid="clear-date-picker"
             color="primary"
           >
             Sign In
