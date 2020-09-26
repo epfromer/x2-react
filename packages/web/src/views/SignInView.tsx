@@ -11,6 +11,7 @@ import CloseIcon from '@material-ui/icons/Close'
 import IconButton from '@material-ui/core/IconButton'
 import Alert from '@material-ui/lab/Alert'
 import Collapse from '@material-ui/core/Collapse'
+import ClearIcon from '@material-ui/icons/Clear'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -79,18 +80,34 @@ export default function SignInView() {
           <TextField
             fullWidth
             autoFocus
+            value={username}
             label="Username or email address"
             variant="filled"
             onChange={(e) => setUsername(e.target.value)}
+            InputProps={{
+              endAdornment: (
+                <IconButton onClick={() => setUsername('')}>
+                  <ClearIcon />
+                </IconButton>
+              ),
+            }}
           />
         </div>
         <div className={classes.input}>
           <TextField
             fullWidth
+            value={password}
             label="Password"
             type="password"
             variant="filled"
             onChange={(e) => setPassword(e.target.value)}
+            InputProps={{
+              endAdornment: (
+                <IconButton onClick={() => setPassword('')}>
+                  <ClearIcon />
+                </IconButton>
+              ),
+            }}
           />
         </div>
         <div className={classes.input}>
