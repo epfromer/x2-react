@@ -7,6 +7,10 @@ import Typography from '@material-ui/core/Typography'
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import CloseIcon from '@material-ui/icons/Close'
+import IconButton from '@material-ui/core/IconButton'
+import Alert from '@material-ui/lab/Alert'
+import Collapse from '@material-ui/core/Collapse'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,6 +36,7 @@ export default function SignInView() {
   const history = useHistory()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [authFailAlert, setAuthFailAlert] = useState(false)
 
   const authenticate = () => {
     const isAuthenticated = username === 'foo' && password === 'foo'
@@ -39,8 +44,7 @@ export default function SignInView() {
       dispatch(setAuthenticated(true))
       history.push('/AppSettingsView')
     } else {
-      // Incorrect username or password.
-      // https://material-ui.com/components/snackbars/
+      setAuthFailAlert(true)
     }
   }
 
@@ -51,6 +55,25 @@ export default function SignInView() {
           <Typography gutterBottom variant="h5" component="h2">
             Sign in to x2
           </Typography>
+        </div>
+        <div className={classes.input}>
+          <Collapse in={authFailAlert}>
+            <Alert
+              severity="error"
+              action={
+                <IconButton
+                  aria-label="close"
+                  color="inherit"
+                  size="small"
+                  onClick={() => setAuthFailAlert(false)}
+                >
+                  <CloseIcon fontSize="inherit" />
+                </IconButton>
+              }
+            >
+              Incorrect username or password.
+            </Alert>
+          </Collapse>
         </div>
         <div className={classes.input}>
           <TextField
