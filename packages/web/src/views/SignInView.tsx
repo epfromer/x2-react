@@ -1,19 +1,21 @@
 import { setAuthenticated } from '@klonzo/common/src'
+import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/Button'
+import Collapse from '@material-ui/core/Collapse'
+import IconButton from '@material-ui/core/IconButton'
 import Paper from '@material-ui/core/Paper'
 import { makeStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography'
+import ClearIcon from '@material-ui/icons/Clear'
+import CloseIcon from '@material-ui/icons/Close'
+import Alert from '@material-ui/lab/Alert'
 import React, { useState } from 'react'
+import Gravatar from 'react-gravatar'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import CloseIcon from '@material-ui/icons/Close'
-import IconButton from '@material-ui/core/IconButton'
-import Alert from '@material-ui/lab/Alert'
-import Collapse from '@material-ui/core/Collapse'
-import ClearIcon from '@material-ui/icons/Clear'
-import Gravatar from 'react-gravatar'
-import Avatar from '@material-ui/core/Avatar'
+import MUIGravatar from '../components/MUIGravatar'
+import MUIGravatar2 from '../components/MUIGravatar2'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -59,6 +61,12 @@ export default function SignInView() {
             Sign in to x2
           </Typography>
         </div>
+        <div className={classes.input}>
+          <MUIGravatar email="epfromer@gmail.com" />
+        </div>
+        {/* <div className={classes.input}>
+          <MUIGravatar2 email="epfromer@gmail.com" />
+        </div> */}
         <div className={classes.input}>
           <Gravatar email="epfromer@gmail.com" />
         </div>
