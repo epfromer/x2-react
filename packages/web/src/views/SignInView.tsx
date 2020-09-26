@@ -15,7 +15,6 @@ import Gravatar from 'react-gravatar'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import MUIGravatar from '../components/MUIGravatar'
-import MUIGravatar2 from '../components/MUIGravatar2'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,11 +63,11 @@ export default function SignInView() {
         <div className={classes.input}>
           <MUIGravatar email="epfromer@gmail.com" />
         </div>
-        {/* <div className={classes.input}>
-          <MUIGravatar2 email="epfromer@gmail.com" />
-        </div> */}
         <div className={classes.input}>
           <Gravatar email="epfromer@gmail.com" />
+        </div>
+        <div className={classes.input}>
+          <Avatar src="http://www.gravatar.com/avatar/b6616eb062441e6e632de6a9248b8578?d=retro&r=g&s=50" />
         </div>
         <div className={classes.input}>
           <Avatar src="/x2.png" />

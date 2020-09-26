@@ -81,7 +81,9 @@ export default class MUIGravatar extends React.Component {
     delete rest.style
     delete rest.className
     delete rest.default
+
     if (!modernBrowser && isRetina()) {
+      console.log(retinaSrc)
       return (
         <img
           alt={
@@ -98,6 +100,7 @@ export default class MUIGravatar extends React.Component {
         />
       )
     }
+    console.log(src)
     return (
       <img
         alt={`MUIGravatar for ${formattedEmail}`}
