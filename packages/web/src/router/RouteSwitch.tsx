@@ -1,5 +1,7 @@
+import { selectAuthentication } from '@klonzo/common'
 import React from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { Redirect, Route, Switch } from 'react-router-dom'
 import AppSettingsView from '../views/AppSettingsView'
 import BarView from '../views/BarView'
 import ChordView from '../views/ChordView'
@@ -15,14 +17,27 @@ import TreeMapView from '../views/TreeMapView'
 import VolumeTimelineView from '../views/VolumeTimelineView'
 import WordCloudView from '../views/WordCloudView'
 
+const GuardedRoute = ({ component: Component, auth, ...rest }: any) => (
+  <Route
+    {...rest}
+    render={(props) =>
+      auth === true ? <Component {...props} /> : <Redirect to="/SignInView" />
+    }
+  />
+)
+
 export default function RouteSwitch() {
+  const authenticated = useSelector(selectAuthentication)
+
   return (
     <Switch>
-      <Route path="/AppSettingsView">
-        <AppSettingsView data-testid="switch" />
-      </Route>
+      <GuardedRoute
+        path="/AppSettingsView"
+        component={AppSettingsView}
+        auth={authenticated}
+      />
       <Route path="/SearchView">
-        <SearchView />
+        <SearchView data-testid="switch" />
       </Route>
       <Route path="/EmailDetailView/:id">
         <EmailDetailView />

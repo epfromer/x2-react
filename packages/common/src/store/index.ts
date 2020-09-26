@@ -14,6 +14,7 @@ import queryReducer from './querySlice'
 import wordCloudReducer from './wordCloudSlice'
 
 export * from './appSettingsSlice'
+export * from './authenticationSlice'
 export * from './custodiansSlice'
 export * from './emailSentByDaySlice'
 export * from './emailSlice'
