@@ -12,6 +12,8 @@ import IconButton from '@material-ui/core/IconButton'
 import Alert from '@material-ui/lab/Alert'
 import Collapse from '@material-ui/core/Collapse'
 import ClearIcon from '@material-ui/icons/Clear'
+import Gravatar from 'react-gravatar'
+import Avatar from '@material-ui/core/Avatar'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,7 +42,7 @@ export default function SignInView() {
   const [authFailAlert, setAuthFailAlert] = useState(false)
 
   const authenticate = () => {
-    const isAuthenticated = username === 'foo' && password === 'foo'
+    const isAuthenticated = password === 'foo'
     if (isAuthenticated) {
       dispatch(setAuthenticated(true))
       history.push('/AppSettingsView')
@@ -56,6 +58,12 @@ export default function SignInView() {
           <Typography gutterBottom variant="h5" component="h2">
             Sign in to x2
           </Typography>
+        </div>
+        <div className={classes.input}>
+          <Gravatar email="epfromer@gmail.com" />
+        </div>
+        <div className={classes.input}>
+          <Avatar src="/x2.png" />
         </div>
         <div className={classes.input}>
           <Collapse in={authFailAlert}>
