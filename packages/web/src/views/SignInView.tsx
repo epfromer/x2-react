@@ -13,7 +13,6 @@ import Alert from '@material-ui/lab/Alert'
 import React, { useState } from 'react'
 import Gravatar from 'react-gravatar'
 import { useHistory } from 'react-router-dom'
-import MUIGravatar from '../components/MUIGravatar'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,9 +54,6 @@ export default function SignInView() {
           <Typography gutterBottom variant="h5" component="h2">
             Sign in to x2
           </Typography>
-        </div>
-        <div className={classes.input}>
-          <MUIGravatar email="epfromer@gmail.com" />
         </div>
         <div className={classes.input}>
           <Gravatar email="epfromer@gmail.com" />

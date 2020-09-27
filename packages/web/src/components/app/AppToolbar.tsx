@@ -17,7 +17,7 @@ import clsx from 'clsx'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import MUIGravatar from '../MUIGravatar'
+import Gravatar from '../Gravatar'
 
 // https://material-ui.com/components/material-icons/
 
@@ -55,7 +55,7 @@ export default function AppToolbar({ drawerOpen, setDrawerOpen }: Props) {
       return (
         <Tooltip title="Settings" aria-label="Settings">
           <IconButton color="inherit" onClick={() => console.log('goo')}>
-            <MUIGravatar email="epfromer@gmail.com" />
+            <Gravatar email="epfromer@gmail.com" />
           </IconButton>
         </Tooltip>
       )
