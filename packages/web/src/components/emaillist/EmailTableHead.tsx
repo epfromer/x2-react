@@ -102,8 +102,6 @@ const EmailTableHead: React.FC = () => {
     getEmailAsync()
   }
 
-  // TODO - bug, date doesn't show in input field when set
-
   return (
     <>
       <FilterDate
@@ -156,6 +154,7 @@ const EmailTableHead: React.FC = () => {
                 variant="filled"
                 tabIndex={c.tabIndex}
                 defaultValue={c.defaultValue}
+                value={c.defaultValue}
                 onChange={(e) => debouncedSearch(c.action, e.target.value)}
               />
             </TableCell>
