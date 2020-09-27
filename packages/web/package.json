@@ -19,6 +19,7 @@
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
     "@material-ui/pickers": "^3.2.10",
+    "@types/md5": "^2.2.0",
     "@types/react-virtualized": "^9.21.10",
     "chart.js": "^2.9.3",
     "clsx": "^1.1.1",

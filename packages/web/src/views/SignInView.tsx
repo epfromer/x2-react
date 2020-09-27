@@ -1,5 +1,4 @@
 import { authenticate } from '@klonzo/common/src'
-import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/Button'
 import Collapse from '@material-ui/core/Collapse'
 import IconButton from '@material-ui/core/IconButton'
@@ -11,7 +10,6 @@ import ClearIcon from '@material-ui/icons/Clear'
 import CloseIcon from '@material-ui/icons/Close'
 import Alert from '@material-ui/lab/Alert'
 import React, { useState } from 'react'
-import Gravatar from 'react-gravatar'
 import { useHistory } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
@@ -54,15 +52,6 @@ export default function SignInView() {
           <Typography gutterBottom variant="h5" component="h2">
             Sign in to x2
           </Typography>
-        </div>
-        <div className={classes.input}>
-          <Gravatar email="epfromer@gmail.com" />
-        </div>
-        <div className={classes.input}>
-          <Avatar src="http://www.gravatar.com/avatar/b6616eb062441e6e632de6a9248b8578?d=retro&r=g&s=50" />
-        </div>
-        <div className={classes.input}>
-          <Avatar src="/x2.png" />
         </div>
         <div className={classes.input}>
           <Collapse in={authFailAlert}>
