@@ -1,8 +1,9 @@
-import React from 'react'
-import md5 from 'md5'
-import querystring from 'query-string'
+import Avatar from '@material-ui/core/Avatar'
 import isRetina from 'is-retina'
+import md5 from 'md5'
 import PropTypes from 'prop-types'
+import querystring from 'query-string'
+import React from 'react'
 
 export default class MUIGravatar extends React.Component {
   static displayName = 'Gravatar'
@@ -50,7 +51,7 @@ export default class MUIGravatar extends React.Component {
       hash = md5(formattedEmail, { encoding: 'binary' })
     } else {
       console.warn(
-        'MUIGravatar image can not be fetched. Either the "email" or "md5" prop must be specified.'
+        'Gravatar image can not be fetched. Either the "email" or "md5" prop must be specified.'
       )
       return <script />
     }
@@ -83,14 +84,9 @@ export default class MUIGravatar extends React.Component {
     delete rest.default
 
     if (!modernBrowser && isRetina()) {
-      console.log(retinaSrc)
       return (
-        <img
-          alt={
-            this.props.email
-              ? `MUIGravatar for ${formattedEmail}`
-              : `MUIGravatar`
-          }
+        <Avatar
+          alt={this.props.email ? `Gravatar for ${formattedEmail}` : `Gravatar`}
           style={this.props.style}
           src={retinaSrc}
           height={this.props.size}
@@ -100,10 +96,9 @@ export default class MUIGravatar extends React.Component {
         />
       )
     }
-    console.log(src)
     return (
-      <img
-        alt={`MUIGravatar for ${formattedEmail}`}
+      <Avatar
+        alt={`Gravatar for ${formattedEmail}`}
         style={this.props.style}
         src={src}
         srcSet={`${retinaSrc} 2x`}

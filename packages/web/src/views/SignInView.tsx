@@ -1,4 +1,4 @@
-import { setAuthenticated } from '@klonzo/common/src'
+import { authenticate } from '@klonzo/common/src'
 import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/Button'
 import Collapse from '@material-ui/core/Collapse'
@@ -12,7 +12,6 @@ import CloseIcon from '@material-ui/icons/Close'
 import Alert from '@material-ui/lab/Alert'
 import React, { useState } from 'react'
 import Gravatar from 'react-gravatar'
-import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import MUIGravatar from '../components/MUIGravatar'
 
@@ -36,16 +35,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignInView() {
   const classes = useStyles()
-  const dispatch = useDispatch()
   const history = useHistory()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [authFailAlert, setAuthFailAlert] = useState(false)
 
-  const authenticate = () => {
-    const isAuthenticated = password === 'foo'
-    if (isAuthenticated) {
-      dispatch(setAuthenticated(true))
+  const doAuthenticate = () => {
+    if (authenticate(username, password)) {
       history.push('/AppSettingsView')
     } else {
       setAuthFailAlert(true)
@@ -130,7 +126,7 @@ export default function SignInView() {
             fullWidth
             variant="contained"
             color="primary"
-            onClick={authenticate}
+            onClick={doAuthenticate}
             disabled={username === '' || password === ''}
           >
             Sign In

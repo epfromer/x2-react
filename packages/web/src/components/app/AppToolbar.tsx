@@ -1,4 +1,8 @@
-import { selectDarkMode, setDarkMode } from '@klonzo/common'
+import {
+  selectAuthenticated,
+  selectDarkMode,
+  setDarkMode,
+} from '@klonzo/common'
 import IconButton from '@material-ui/core/IconButton'
 import { makeStyles } from '@material-ui/core/styles'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -13,6 +17,7 @@ import clsx from 'clsx'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import MUIGravatar from '../MUIGravatar'
 
 // https://material-ui.com/components/material-icons/
 
@@ -43,6 +48,29 @@ export default function AppToolbar({ drawerOpen, setDrawerOpen }: Props) {
   const history = useHistory()
   const dispatch = useDispatch()
   const darkMode = useSelector(selectDarkMode)
+  const authenticated = useSelector(selectAuthenticated)
+
+  const SettingsButton = () => {
+    if (authenticated) {
+      return (
+        <Tooltip title="Settings" aria-label="Settings">
+          <IconButton color="inherit" onClick={() => console.log('goo')}>
+            <MUIGravatar email="epfromer@gmail.com" />
+          </IconButton>
+        </Tooltip>
+      )
+    }
+    return (
+      <Tooltip title="Settings" aria-label="Settings">
+        <IconButton
+          color="inherit"
+          onClick={() => history.push('/AppSettingsView')}
+        >
+          <Settings />
+        </IconButton>
+      </Tooltip>
+    )
+  }
 
   return (
     <Toolbar className={classes.toolbar}>
@@ -90,14 +118,7 @@ export default function AppToolbar({ drawerOpen, setDrawerOpen }: Props) {
           </IconButton>
         )}
       </Tooltip>
-      <Tooltip title="Settings" aria-label="Settings">
-        <IconButton
-          color="inherit"
-          onClick={() => history.push('/AppSettingsView')}
-        >
-          <Settings />
-        </IconButton>
-      </Tooltip>
+      <SettingsButton />
       <Tooltip title="x2 Home" aria-label="x2 Home">
         <IconButton color="inherit" onClick={() => history.push('/')}>
           <HomeIcon />

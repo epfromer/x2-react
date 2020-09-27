@@ -1,8 +1,9 @@
 import AsyncStorage from '@react-native-community/async-storage'
+import { gql, request } from 'graphql-request'
 import { defaultLimit, x2Server } from '../constants'
-import { request, gql } from 'graphql-request'
 import {
   appendEmail,
+  setAuthenticated,
   setCustodians,
   setCustodiansLoading,
   setDarkMode,
@@ -12,6 +13,7 @@ import {
   setEmailSentByDayLoading,
   setEmailTotal,
   setImportLog,
+  setUsername,
   setWordCloud,
   setWordCloudLoading,
   store,
@@ -228,4 +230,14 @@ export function stopImportStatusInterval() {
   if (!importTimer) return
   clearInterval(importTimer)
   importTimer = undefined
+}
+
+export function authenticate(username: string, password: string): boolean {
+  // connect to some authentication service?
+  const isAuthenticated = password === 'foo'
+  if (isAuthenticated) {
+    store.dispatch(setAuthenticated(true))
+    store.dispatch(setUsername(username))
+  }
+  return isAuthenticated
 }

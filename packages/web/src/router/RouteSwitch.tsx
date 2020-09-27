@@ -1,4 +1,4 @@
-import { selectAuthentication } from '@klonzo/common'
+import { selectAuthenticated } from '@klonzo/common'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Redirect, Route, Switch } from 'react-router-dom'
@@ -27,7 +27,7 @@ const GuardedRoute = ({ component: Component, auth, ...rest }: any) => (
 )
 
 export default function RouteSwitch() {
-  const authenticated = useSelector(selectAuthentication)
+  const authenticated = useSelector(selectAuthenticated)
 
   return (
     <Switch>
