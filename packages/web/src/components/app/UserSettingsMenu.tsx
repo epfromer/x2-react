@@ -1,3 +1,5 @@
+import { selectUsername, signOut } from '@klonzo/common/src'
+import Divider from '@material-ui/core/Divider'
 import IconButton from '@material-ui/core/IconButton'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
@@ -5,17 +7,12 @@ import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import { withStyles } from '@material-ui/core/styles'
 import Tooltip from '@material-ui/core/Tooltip'
-import DraftsIcon from '@material-ui/icons/Drafts'
-import InboxIcon from '@material-ui/icons/MoveToInbox'
-import SendIcon from '@material-ui/icons/Send'
-import React from 'react'
-import { useHistory } from 'react-router-dom'
-import Gravatar from '../Gravatar'
-import Divider from '@material-ui/core/Divider'
-import { useSelector } from 'react-redux'
-import { selectUsername } from '@klonzo/common/src'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 import SearchIcon from '@material-ui/icons/Search'
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import Gravatar from '../Gravatar'
 
 const StyledMenuItem = withStyles((theme) => ({
   root: {
@@ -33,12 +30,19 @@ export default function CustomizedMenus() {
   const username = useSelector(selectUsername)
   const history = useHistory()
 
-  const handleClick = (event: any) => {
-    setAnchorEl(event.currentTarget)
+  const handleClick = (event: any) => setAnchorEl(event.currentTarget)
+
+  const handleClose = () => setAnchorEl(null)
+
+  const doSignOut = () => {
+    handleClose()
+    signOut()
+    history.push('/')
   }
 
-  const handleClose = () => {
-    setAnchorEl(null)
+  const searchHistory = () => {
+    handleClose()
+    history.push('/SearchHistoryView')
   }
 
   return (
@@ -68,13 +72,13 @@ export default function CustomizedMenus() {
           <ListItemText primary={username} />
         </StyledMenuItem>
         <Divider />
-        <StyledMenuItem>
+        <StyledMenuItem onClick={searchHistory}>
           <ListItemIcon>
             <SearchIcon fontSize="small" />
           </ListItemIcon>
           <ListItemText primary="Search History" />
         </StyledMenuItem>
-        <StyledMenuItem>
+        <StyledMenuItem onClick={doSignOut}>
           <ListItemIcon>
             <ExitToAppIcon fontSize="small" />
           </ListItemIcon>

@@ -241,3 +241,8 @@ export function authenticate(username: string, password: string): boolean {
   }
   return isAuthenticated
 }
+
+export function signOut() {
+  store.dispatch(setAuthenticated(false))
+  store.dispatch(setUsername(''))
+}

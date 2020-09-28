@@ -11,6 +11,7 @@ import HomeView from '../views/HomeView'
 import NetworkGraphView from '../views/NetworkGraphView'
 import PieView from '../views/PieView'
 import PolarView from '../views/PolarView'
+import SearchHistoryView from '../views/SearchHistoryView'
 import SearchView from '../views/SearchView'
 import SignInView from '../views/SignInView'
 import TreeMapView from '../views/TreeMapView'
@@ -36,6 +37,9 @@ export default function RouteSwitch() {
         component={AppSettingsView}
         auth={authenticated}
       />
+      <Route path="/SearchHistoryView">
+        <SearchHistoryView />
+      </Route>
       <Route path="/SearchView">
         <SearchView data-testid="switch" />
       </Route>
