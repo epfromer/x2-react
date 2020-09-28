@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Custodian, EmailXferedDatum } from './types'
+import { Custodian, EmailXferedDatum } from '../types'
 
 export interface CustodiansState {
   custodiansLoading: boolean

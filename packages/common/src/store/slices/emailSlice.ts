@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Email } from './types'
+import { Email } from '../types'
 
 export interface EmailState {
   emailLoading: boolean

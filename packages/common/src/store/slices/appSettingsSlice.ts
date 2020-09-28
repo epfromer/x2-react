@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-community/async-storage'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { ImportLogEntry } from './types'
+import { ImportLogEntry } from '../types'
 
 export interface AppSettingsState {
   darkMode: boolean

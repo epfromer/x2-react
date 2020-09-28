@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { EmailSentByDay } from './types'
+import { EmailSentByDay } from '../types'
 
 export interface EmailSentByDayState {
   emailSentByDayLoading: boolean

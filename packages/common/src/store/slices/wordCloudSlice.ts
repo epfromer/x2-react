@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { WordCloudTag } from './types'
+import { WordCloudTag } from '../types'
 
 export interface WordCloudState {
   wordCloudLoading: boolean
