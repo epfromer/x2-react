@@ -43,18 +43,9 @@ export function getInitialDataAsync() {
   `
   request(`${server}/graphql/`, query)
     .then((data) => {
-      if (
-        !data.getWordCloud ||
-        !data.getEmailSentByDay ||
-        !data.getCustodians
-      ) {
-        console.error('x2 server returns null data')
-      }
       store.dispatch(setWordCloud(data.getWordCloud))
       store.dispatch(setEmailSentByDay(data.getEmailSentByDay))
       store.dispatch(setCustodians(data.getCustodians))
-    })
-    .then(() => {
       store.dispatch(setWordCloudLoading(false))
       store.dispatch(setEmailSentByDayLoading(false))
       store.dispatch(setCustodiansLoading(false))

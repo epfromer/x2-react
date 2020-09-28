@@ -25,9 +25,8 @@ export function getCustodiansAsync() {
   `
   request(`${server}/graphql/`, query)
     .then((data) => {
-      if (!data.getCustodians) console.error('x2 server returns null data')
       store.dispatch(setCustodians(data.getCustodians))
+      store.dispatch(setCustodiansLoading(false))
     })
-    .then(() => store.dispatch(setCustodiansLoading(false)))
     .catch((err) => console.error('getCustodiansAsync: ', err))
 }

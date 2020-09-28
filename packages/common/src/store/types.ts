@@ -65,3 +65,9 @@ export interface ImportLogEntry {
   timestamp: string
   entry: string
 }
+
+export interface SearchHistoryEntry {
+  id: string
+  timestamp: string
+  entry: string
+}

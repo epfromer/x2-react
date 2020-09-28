@@ -17,12 +17,7 @@ function getImportStatusInterval() {
     }
   `
   request(`${server}/graphql/`, query)
-    .then((data) => {
-      if (!data.getImportStatus) {
-        console.error('getImportStatusInterval: x2 server returns null data')
-      }
-      store.dispatch(setImportLog(data.getImportStatus))
-    })
+    .then((data) => store.dispatch(setImportLog(data.getImportStatus)))
     .catch((err) => console.error('getImportStatusInterval: ', err))
 }
 export function getImportStatus() {

@@ -84,7 +84,7 @@ export function getEmailAsync(append: boolean = false) {
         store.dispatch(setEmail(data.getEmail.emails))
       }
       store.dispatch(setEmailTotal(data.getEmail.total))
+      store.dispatch(setEmailLoading(false))
     })
-    .then(() => store.dispatch(setEmailLoading(false)))
     .catch((err) => console.error('getEmailAsync: ', err))
 }

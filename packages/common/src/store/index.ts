@@ -11,6 +11,7 @@ import custodiansReducer from './slices/custodiansSlice'
 import emailSentReducer from './slices/emailSentByDaySlice'
 import emailReducer from './slices/emailSlice'
 import queryReducer from './slices/querySlice'
+import searchHistoryReducer from './slices/searchHistorySlice'
 import wordCloudReducer from './slices/wordCloudSlice'
 
 export * from './slices/appSettingsSlice'
@@ -19,6 +20,7 @@ export * from './slices/custodiansSlice'
 export * from './slices/emailSentByDaySlice'
 export * from './slices/emailSlice'
 export * from './slices/querySlice'
+export * from './slices/searchHistorySlice'
 export * from './slices/wordCloudSlice'
 
 export type RootState = ReturnType<typeof store.getState>
@@ -43,6 +45,7 @@ export const store = configureStore({
     email: emailReducer,
     emailSent: emailSentReducer,
     query: queryReducer,
+    searchHistory: searchHistoryReducer,
     wordCloud: wordCloudReducer,
   },
   middleware: [serializableMiddleware],
