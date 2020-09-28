@@ -11,6 +11,11 @@ import SendIcon from '@material-ui/icons/Send'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import Gravatar from '../Gravatar'
+import Divider from '@material-ui/core/Divider'
+import { useSelector } from 'react-redux'
+import { selectUsername } from '@klonzo/common/src'
+import ExitToAppIcon from '@material-ui/icons/ExitToApp'
+import SearchIcon from '@material-ui/icons/Search'
 
 const StyledMenuItem = withStyles((theme) => ({
   root: {
@@ -25,6 +30,7 @@ const StyledMenuItem = withStyles((theme) => ({
 
 export default function CustomizedMenus() {
   const [anchorEl, setAnchorEl] = React.useState(null)
+  const username = useSelector(selectUsername)
   const history = useHistory()
 
   const handleClick = (event: any) => {
@@ -59,22 +65,20 @@ export default function CustomizedMenus() {
         onClose={handleClose}
       >
         <StyledMenuItem>
+          <ListItemText primary={username} />
+        </StyledMenuItem>
+        <Divider />
+        <StyledMenuItem>
           <ListItemIcon>
-            <SendIcon fontSize="small" />
+            <SearchIcon fontSize="small" />
           </ListItemIcon>
-          <ListItemText primary="Sent mail" />
+          <ListItemText primary="Search History" />
         </StyledMenuItem>
         <StyledMenuItem>
           <ListItemIcon>
-            <DraftsIcon fontSize="small" />
+            <ExitToAppIcon fontSize="small" />
           </ListItemIcon>
-          <ListItemText primary="Drafts" />
-        </StyledMenuItem>
-        <StyledMenuItem>
-          <ListItemIcon>
-            <InboxIcon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Inbox" />
+          <ListItemText primary="Sign Out" />
         </StyledMenuItem>
       </Menu>
     </div>
