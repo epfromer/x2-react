@@ -17,7 +17,7 @@ import clsx from 'clsx'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import Gravatar from '../Gravatar'
+import UserSettingsMenu from './UserSettingsMenu'
 
 // https://material-ui.com/components/material-icons/
 
@@ -51,16 +51,9 @@ export default function AppToolbar({ drawerOpen, setDrawerOpen }: Props) {
   const authenticated = useSelector(selectAuthenticated)
 
   const SettingsButton = () => {
-    if (authenticated) {
-      return (
-        <Tooltip title="Settings" aria-label="Settings">
-          <IconButton color="inherit" onClick={() => console.log('goo')}>
-            <Gravatar email="epfromer@gmail.com" />
-          </IconButton>
-        </Tooltip>
-      )
-    }
-    return (
+    return authenticated ? (
+      <UserSettingsMenu />
+    ) : (
       <Tooltip title="Settings" aria-label="Settings">
         <IconButton
           color="inherit"
