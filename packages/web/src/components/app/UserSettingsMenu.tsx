@@ -48,16 +48,10 @@ export default function CustomizedMenus() {
         </IconButton>
       </Tooltip>
       <Menu
-        elevation={0}
+        elevation={10}
         getContentAnchorEl={null}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'center',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'center',
-        }}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'center' }}
         id="customized-menu"
         anchorEl={anchorEl}
         keepMounted
