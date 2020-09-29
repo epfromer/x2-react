@@ -1,5 +1,6 @@
 import { gql, request } from 'graphql-request'
 import { defaultLimit, x2Server } from '../constants'
+import { getSearchHistoryAsync } from './searchHistory'
 import {
   appendEmail,
   setEmail,
@@ -85,6 +86,7 @@ export function getEmailAsync(append: boolean = false) {
       }
       store.dispatch(setEmailTotal(data.getEmail.total))
       store.dispatch(setEmailLoading(false))
+      getSearchHistoryAsync()
     })
     .catch((err) => console.error('getEmailAsync: ', err))
 }

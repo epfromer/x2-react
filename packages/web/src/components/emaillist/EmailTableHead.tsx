@@ -51,13 +51,13 @@ const EmailTableHead: React.FC = () => {
     label: string,
     field: string,
     action: ActionCreatorWithPayload<string, string>,
-    defaultValue: string,
+    value: string,
     tabIndex: number
   ) => ({
     label,
     field,
     action,
-    defaultValue,
+    value,
     tabIndex,
   })
 
@@ -130,7 +130,7 @@ const EmailTableHead: React.FC = () => {
               variant="filled"
               type="search"
               tabIndex={1}
-              defaultValue={allText}
+              value={allText}
               data-testid="all-text"
               onChange={(e) => debouncedSearch(setAllText, e.target.value)}
             />
@@ -153,8 +153,7 @@ const EmailTableHead: React.FC = () => {
                 type="search"
                 variant="filled"
                 tabIndex={c.tabIndex}
-                defaultValue={c.defaultValue}
-                value={c.defaultValue}
+                defaultValue={c.value}
                 onChange={(e) => debouncedSearch(c.action, e.target.value)}
               />
             </TableCell>
