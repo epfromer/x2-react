@@ -13,11 +13,11 @@ import CardContent from '@material-ui/core/CardContent'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
+import { gql, request } from 'graphql-request'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import EmailCardActions from '../components/emaillist/EmailCardActions'
-import { request, gql } from 'graphql-request'
 
 const useStyles = makeStyles((theme) => ({
   root: { width: '100%' },

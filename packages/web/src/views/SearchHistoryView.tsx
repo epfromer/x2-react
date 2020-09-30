@@ -2,6 +2,8 @@ import {
   searchHistoryExecute,
   selectSearchHistory,
   selectSearchHistoryLoading,
+  getSearchHistoryAsync,
+  x2Server,
 } from '@klonzo/common'
 import Button from '@material-ui/core/Button'
 import LinearProgress from '@material-ui/core/LinearProgress'
@@ -10,15 +12,14 @@ import { ColDef, DataGrid, RowParams } from '@material-ui/data-grid'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import { request, gql } from 'graphql-request'
 
 const useStyles = makeStyles((theme) => ({
   root: { width: '100%', marginTop: theme.spacing(2) },
-  paper: { width: '100%', marginBottom: theme.spacing(2) },
-  table: { minWidth: 350 },
+  table: { height: 500, width: '100%' },
   button: { margin: 15 },
 }))
 
-// TODO clear history
 // TODO protected route
 
 export default function SearchHistoryView() {
@@ -27,7 +28,19 @@ export default function SearchHistoryView() {
   const history = useHistory()
   const classes = useStyles()
 
-  const onClearHistory = () => {}
+  const onClearHistory = () => {
+    const server = process.env.REACT_APP_X2_SERVER
+      ? process.env.REACT_APP_X2_SERVER
+      : x2Server
+    const mutation = gql`
+      mutation {
+        clearSearchHistory
+      }
+    `
+    request(`${server}/graphql/`, mutation)
+      .then(() => getSearchHistoryAsync())
+      .catch((error) => console.error('CustodianSettings', error))
+  }
 
   const onSearchHistory = (row: RowParams) => {
     searchHistoryExecute(row.data.entry)
@@ -51,7 +64,7 @@ export default function SearchHistoryView() {
         Clear History
       </Button>
       {searchHistory && (
-        <div style={{ height: 500, width: '100%' }}>
+        <div className={classes.table}>
           <DataGrid
             autoPageSize
             onRowClick={onSearchHistory}
