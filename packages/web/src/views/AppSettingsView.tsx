@@ -11,7 +11,6 @@ export default function AppSettingsView() {
       </Typography>
       <CustodianSettings />
       <ImportLog />
-      <button hidden data-testid="save-setting"></button>
     </div>
   )
 }

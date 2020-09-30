@@ -49,7 +49,7 @@ export const testEmailSentByDay: Array<EmailSentByDay> = [
 export const testEmail: Array<Email> = [
   {
     id: '692fbb3b-1a4d-4c5b-b8c2-42034586cc56',
-    sent: new Date('2001-08-02T02:25:58.000Z'),
+    sent: '2001-08-02T02:25:58.000Z',
     sentShort: '2001-08-02',
     from: 'Skilling',
     fromCustodian: 'skilling',
@@ -62,7 +62,7 @@ export const testEmail: Array<Email> = [
   },
   {
     id: 'f3281cc4-90a9-4dcb-86bd-d705fc847985',
-    sent: new Date('2001-08-02T03:21:03.000Z'),
+    sent: '2001-08-02T03:21:03.000Z',
     sentShort: '2001-08-02',
     from: 'Skilling',
     fromCustodian: 'skilling',
@@ -75,7 +75,7 @@ export const testEmail: Array<Email> = [
   },
   {
     id: '5cac6ca4-01e7-4de5-a1d4-806b860e104d',
-    sent: new Date('2001-10-12T20:05:56.000Z'),
+    sent: '2001-10-12T20:05:56.000Z',
     sentShort: '2001-10-12',
     from: 'Fleming',
     fromCustodian: 'fleming',

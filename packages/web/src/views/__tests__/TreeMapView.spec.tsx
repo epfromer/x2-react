@@ -4,6 +4,9 @@ import React from 'react'
 import { renderComp } from '../../setupTests'
 import TreeMapView from '../TreeMapView'
 
+beforeAll(() => jest.useFakeTimers())
+afterAll(() => jest.useRealTimers())
+
 test('renders', async () => {
   const history = createMemoryHistory()
   const { getByTestId } = renderComp(<TreeMapView />, history)

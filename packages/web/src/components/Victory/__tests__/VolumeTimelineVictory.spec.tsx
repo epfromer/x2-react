@@ -4,10 +4,10 @@ import { renderComp } from '../../../setupTests'
 import VolumeTimelineVictory from '../VolumeTimelineVictory'
 
 const data = [
-  { sent: '1999-08-16', value: 9 },
-  { sent: '1999-08-17', value: 2 },
-  { sent: '1999-08-18', value: 3 },
-  { sent: '1999-08-19', value: 3 },
+  { sent: '1999-08-16', total: 9 },
+  { sent: '1999-08-17', total: 2 },
+  { sent: '1999-08-18', total: 3 },
+  { sent: '1999-08-19', total: 3 },
 ]
 
 test('volume-timeline-victory', async () => {

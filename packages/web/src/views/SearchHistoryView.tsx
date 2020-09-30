@@ -20,8 +20,6 @@ const useStyles = makeStyles((theme) => ({
   button: { margin: 15 },
 }))
 
-// TODO protected route
-
 export default function SearchHistoryView() {
   const searchHistory = useSelector(selectSearchHistory)
   const searchHistoryLoading = useSelector(selectSearchHistoryLoading)

@@ -47,39 +47,49 @@ export default function EmailDetailView() {
   if (subject) highlightedTerms.push(subject)
   if (body) highlightedTerms.push(body)
 
-  function doFetch() {
-    const server = process.env.REACT_APP_X2_SERVER
-      ? process.env.REACT_APP_X2_SERVER
-      : x2Server
-    setLoading(true)
-    const query = gql`
-      query getEmail($id: ID) {
-        getEmail(id: $id) {
-          emails {
-            id
-            sent
-            sentShort
-            from
-            fromCustodian
-            to
-            toCustodians
-            cc
-            bcc
-            subject
-            body
-          }
-          total
-        }
-      }
-    `
-    request(`${server}/graphql/`, query, { id })
-      .then((data) => setEmail(data.getEmail.emails[0]))
-      .catch((err) => console.error('fetch error', err))
-      .then(() => setLoading(false))
-  }
-
   useEffect(() => {
-    cachedEmail ? setEmail(cachedEmail) : doFetch()
+    let isSubscribed = true
+    if (cachedEmail) {
+      setEmail(cachedEmail)
+    } else {
+      const server = process.env.REACT_APP_X2_SERVER
+        ? process.env.REACT_APP_X2_SERVER
+        : x2Server
+      setLoading(true)
+      const query = gql`
+        query getEmail($id: ID) {
+          getEmail(id: $id) {
+            emails {
+              id
+              sent
+              sentShort
+              from
+              fromCustodian
+              to
+              toCustodians
+              cc
+              bcc
+              subject
+              body
+            }
+            total
+          }
+        }
+      `
+      request(`${server}/graphql/`, query, { id })
+        .then((data) => {
+          // prevents update if component destroyed before request/fetch completes
+          if (isSubscribed) {
+            setEmail(data.getEmail.emails[0])
+            setLoading(false)
+          }
+        })
+        .catch((err) => console.error('fetch error', err))
+    }
+    return () => {
+      // prevents update if component destroyed before request/fetch completes
+      isSubscribed = false
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cachedEmail])
 

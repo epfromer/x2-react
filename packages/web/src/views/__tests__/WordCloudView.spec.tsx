@@ -4,7 +4,10 @@ import React from 'react'
 import { renderComp } from '../../setupTests'
 import WordCloudView from '../WordCloudView'
 
-test('handleClick', async () => {
+beforeAll(() => jest.useFakeTimers())
+afterAll(() => jest.useRealTimers())
+
+test('renders', async () => {
   const history = createMemoryHistory()
   const { getByTestId } = renderComp(<WordCloudView />, history)
   const button = getByTestId('handle-click')
