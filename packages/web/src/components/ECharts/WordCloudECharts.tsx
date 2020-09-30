@@ -10,7 +10,7 @@ const chartHeight = '500px'
 
 interface Props {
   title: string
-  words: Array<[string]>
+  words: Array<string>
   handleClick: (word: string) => void
 }
 

@@ -10,7 +10,7 @@ const chartWidth = '100%'
 
 interface Props {
   title: string
-  data: Array<[string, string, number]>
+  data: Array<any>
   nodes: Array<any>
   handleClick: (to: string, from: string) => void
 }

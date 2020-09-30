@@ -10,7 +10,7 @@ const chartHeight = '900px'
 
 interface Props {
   title: string
-  data: Array<[string, string, number]>
+  data: Array<any>
   nodes: Array<any>
   handleClick: (from: string, to: string) => void
 }

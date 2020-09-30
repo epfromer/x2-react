@@ -73,7 +73,7 @@ export function selectEmailSentByCustodian(state) {
     state.custodians.custodians.find((c) => c.id === id).name
 
   const custodians = state.custodians.custodians
-  const data: Array<[string, string, number]> = []
+  const data: Array<any> = []
   const nodes: Array<IDColorKey> = []
 
   if (custodians) {

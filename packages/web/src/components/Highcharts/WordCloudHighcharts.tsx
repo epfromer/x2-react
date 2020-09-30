@@ -20,10 +20,9 @@ Highcharts.seriesTypes.wordcloud.prototype.deriveFontSize = function (
 
 interface Props {
   title: string
-  words: Array<[string]>
+  words: Array<string>
   handleClick: (word: string) => void
 }
-
 export default function WordCloudHighcharts({
   title,
   words,

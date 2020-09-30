@@ -73,7 +73,7 @@ export default function PieHighcharts({
     },
     series: [
       {
-        name: 'Brands',
+        name: 'Custodians',
         colorByPoint: true,
         data: custodians,
       },
