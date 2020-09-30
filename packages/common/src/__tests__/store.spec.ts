@@ -17,8 +17,8 @@ import {
   selectEmailSenders,
   selectEmailSentByCustodian,
   selectFrom,
-  selectQueryOrder,
-  selectQuerySort,
+  selectOrder,
+  selectSort,
   selectSent,
   selectSubject,
   selectTimeSpan,
@@ -91,8 +91,8 @@ test('getEmailIndex', () => {
   expect(selectBody(store.getState())).toEqual('')
   expect(selectEmailListPage(store.getState())).toEqual(0)
   expect(selectFrom(store.getState())).toEqual('')
-  expect(selectQueryOrder(store.getState())).toEqual(1)
-  expect(selectQuerySort(store.getState())).toEqual('sent')
+  expect(selectOrder(store.getState())).toEqual(1)
+  expect(selectSort(store.getState())).toEqual('sent')
   expect(selectSent(store.getState())).toEqual('')
   expect(selectSubject(store.getState())).toEqual('')
   expect(selectTimeSpan(store.getState())).toEqual(0)

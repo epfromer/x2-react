@@ -14,8 +14,8 @@ function makeQueryObj(): any {
   const query: any = {
     skip: state.query.emailListPage * defaultLimit,
     limit: defaultLimit,
-    sort: state.query.querySort,
-    order: state.query.queryOrder,
+    sort: state.query.sort,
+    order: state.query.order,
   }
   if (state.query.sent) query.sent = state.query.sent
   if (state.query.timeSpan) query.timeSpan = state.query.timeSpan

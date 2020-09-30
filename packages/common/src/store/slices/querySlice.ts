@@ -2,8 +2,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '../index'
 
 export interface QueryState {
-  querySort: string
-  queryOrder: number
+  sort: string
+  order: number
   sent: string
   timeSpan: number
   from: string
@@ -15,8 +15,8 @@ export interface QueryState {
 }
 
 const initialState: QueryState = {
-  querySort: 'sent',
-  queryOrder: 1,
+  sort: 'sent',
+  order: 1,
   sent: '',
   timeSpan: 0,
   from: '',
@@ -31,11 +31,11 @@ export const querySlice = createSlice({
   name: 'query',
   initialState,
   reducers: {
-    setQuerySort: (state, action: PayloadAction<string>) => {
-      state.querySort = action.payload
+    setSort: (state, action: PayloadAction<string>) => {
+      state.sort = action.payload
     },
-    setQueryOrder: (state, action: PayloadAction<number>) => {
-      state.queryOrder = action.payload
+    setOrder: (state, action: PayloadAction<number>) => {
+      state.order = action.payload
     },
     setSent: (state, action: PayloadAction<string>) => {
       state.sent = action.payload
@@ -66,8 +66,8 @@ export const querySlice = createSlice({
       state.body = ''
       state.emailListPage = 0
       state.from = ''
-      state.queryOrder = 1
-      state.querySort = 'sent'
+      state.order = 1
+      state.sort = 'sent'
       state.sent = ''
       state.subject = ''
       state.timeSpan = 0
@@ -82,8 +82,8 @@ export const {
   setBody,
   setEmailListPage,
   setFrom,
-  setQueryOrder,
-  setQuerySort,
+  setOrder,
+  setSort,
   setSent,
   setSubject,
   setTimeSpan,
@@ -96,8 +96,8 @@ export const selectBody = (state: RootState) => state.query.body
 export const selectEmailListPage = (state: RootState) =>
   state.query.emailListPage
 export const selectFrom = (state: RootState) => state.query.from
-export const selectQueryOrder = (state: RootState) => state.query.queryOrder
-export const selectQuerySort = (state: RootState) => state.query.querySort
+export const selectOrder = (state: RootState) => state.query.order
+export const selectSort = (state: RootState) => state.query.sort
 export const selectSent = (state: RootState) => state.query.sent
 export const selectSubject = (state: RootState) => state.query.subject
 export const selectTimeSpan = (state: RootState) => state.query.timeSpan

@@ -3,8 +3,8 @@ import {
   getEmailAsync,
   selectAllText,
   selectFrom,
-  selectQueryOrder,
-  selectQuerySort,
+  selectOrder,
+  selectSort,
   selectSent,
   selectSubject,
   selectTimeSpan,
@@ -12,8 +12,8 @@ import {
   setAllText,
   setEmailListPage,
   setFrom,
-  setQueryOrder,
-  setQuerySort,
+  setOrder,
+  setSort,
   setSent,
   setSubject,
   setTimeSpan,
@@ -38,8 +38,8 @@ const FILTER_DATE = '2000-10-04'
 const EmailTableHead: React.FC = () => {
   const dispatch = useDispatch()
   const [datePickerOpen, setDatePickerOpen] = useState(false)
-  const querySort = useSelector(selectQuerySort)
-  const queryOrder = useSelector(selectQueryOrder)
+  const sort = useSelector(selectSort)
+  const order = useSelector(selectOrder)
   const from = useSelector(selectFrom)
   const to = useSelector(selectTo)
   const subject = useSelector(selectSubject)
@@ -93,12 +93,12 @@ const EmailTableHead: React.FC = () => {
 
   const onSort = (field: string) => {
     dispatch(setEmailListPage(0))
-    if (querySort === field) {
-      dispatch(setQueryOrder(queryOrder === 1 ? -1 : 1))
+    if (sort === field) {
+      dispatch(setOrder(order === 1 ? -1 : 1))
     } else {
-      dispatch(setQueryOrder(1))
+      dispatch(setOrder(1))
     }
-    dispatch(setQuerySort(field))
+    dispatch(setSort(field))
     getEmailAsync()
   }
 
@@ -130,7 +130,7 @@ const EmailTableHead: React.FC = () => {
               variant="filled"
               type="search"
               tabIndex={1}
-              value={allText}
+              defaultValue={allText}
               data-testid="all-text"
               onChange={(e) => debouncedSearch(setAllText, e.target.value)}
             />
@@ -164,14 +164,10 @@ const EmailTableHead: React.FC = () => {
           {headCells.map((c) => (
             <TableCell key={c.label}>
               <TableSortLabel
-                active={querySort === c.field}
+                active={sort === c.field}
                 data-testid={`${c.field}-sort`}
                 direction={
-                  querySort === c.field
-                    ? queryOrder === 1
-                      ? 'asc'
-                      : 'desc'
-                    : 'asc'
+                  sort === c.field ? (order === 1 ? 'asc' : 'desc') : 'asc'
                 }
                 onClick={() => onSort(c.field)}
               >

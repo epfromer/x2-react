@@ -1,10 +1,15 @@
-import { selectSearchHistory, selectSearchHistoryLoading } from '@klonzo/common'
+import {
+  searchHistoryExecute,
+  selectSearchHistory,
+  selectSearchHistoryLoading,
+} from '@klonzo/common'
 import Button from '@material-ui/core/Button'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import { makeStyles } from '@material-ui/core/styles'
 import { ColDef, DataGrid, RowParams } from '@material-ui/data-grid'
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   root: { width: '100%', marginTop: theme.spacing(2) },
@@ -14,15 +19,20 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 // TODO clear history
-// TODO parse and execute clicked search
 // TODO protected route
 
 export default function SearchHistoryView() {
   const searchHistory = useSelector(selectSearchHistory)
   const searchHistoryLoading = useSelector(selectSearchHistoryLoading)
+  const history = useHistory()
   const classes = useStyles()
 
-  const clearHistory = () => {}
+  const onClearHistory = () => {}
+
+  const onSearchHistory = (row: RowParams) => {
+    searchHistoryExecute(row.data.entry)
+    history.push('/SearchView')
+  }
 
   const columns: ColDef[] = [
     { field: 'id', hide: true },
@@ -36,16 +46,15 @@ export default function SearchHistoryView() {
       <Button
         variant="contained"
         className={classes.button}
-        onClick={clearHistory}
+        onClick={onClearHistory}
       >
         Clear History
       </Button>
       {searchHistory && (
         <div style={{ height: 500, width: '100%' }}>
           <DataGrid
-            autoHeight
             autoPageSize
-            onRowClick={(row: RowParams) => console.log(row)}
+            onRowClick={onSearchHistory}
             rows={searchHistory}
             columns={columns}
           />
