@@ -1,23 +1,25 @@
 import {
+  getSearchHistoryAsync,
   searchHistoryExecute,
   selectSearchHistory,
   selectSearchHistoryLoading,
-  getSearchHistoryAsync,
   x2Server,
 } from '@klonzo/common'
 import Button from '@material-ui/core/Button'
 import LinearProgress from '@material-ui/core/LinearProgress'
+import Paper from '@material-ui/core/Paper'
 import { makeStyles } from '@material-ui/core/styles'
 import { ColDef, DataGrid, RowParams } from '@material-ui/data-grid'
+import { gql, request } from 'graphql-request'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { request, gql } from 'graphql-request'
 
 const useStyles = makeStyles((theme) => ({
   root: { width: '100%', marginTop: theme.spacing(2) },
   table: { height: 500, width: '100%' },
   button: { margin: 15 },
+  text: { padding: 15 },
 }))
 
 export default function SearchHistoryView() {
@@ -53,24 +55,29 @@ export default function SearchHistoryView() {
 
   return (
     <div className={classes.root}>
-      {searchHistoryLoading && <LinearProgress />}
-      <Button
-        variant="contained"
-        className={classes.button}
-        onClick={onClearHistory}
-      >
-        Clear History
-      </Button>
-      {searchHistory && (
-        <div className={classes.table}>
-          <DataGrid
-            autoPageSize
-            onRowClick={onSearchHistory}
-            rows={searchHistory}
-            columns={columns}
-          />
-        </div>
-      )}
+      <Paper>
+        {searchHistoryLoading && <LinearProgress />}
+        <Button
+          variant="contained"
+          className={classes.button}
+          onClick={onClearHistory}
+        >
+          Clear History
+        </Button>
+        {!searchHistory && (
+          <div className={classes.text}>No searches found.</div>
+        )}
+        {searchHistory && (
+          <div className={classes.table}>
+            <DataGrid
+              autoPageSize
+              onRowClick={onSearchHistory}
+              rows={searchHistory}
+              columns={columns}
+            />
+          </div>
+        )}
+      </Paper>
     </div>
   )
 }

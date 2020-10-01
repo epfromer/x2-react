@@ -9,6 +9,7 @@ import { withStyles } from '@material-ui/core/styles'
 import Tooltip from '@material-ui/core/Tooltip'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 import SearchIcon from '@material-ui/icons/Search'
+import Settings from '@material-ui/icons/Settings'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
@@ -40,9 +41,9 @@ export default function CustomizedMenus() {
     history.push('/')
   }
 
-  const searchHistory = () => {
+  const navTo = (loc: string) => {
     handleClose()
-    history.push('/SearchHistoryView')
+    history.push(loc)
   }
 
   return (
@@ -72,7 +73,13 @@ export default function CustomizedMenus() {
           <ListItemText primary={username} />
         </StyledMenuItem>
         <Divider />
-        <StyledMenuItem onClick={searchHistory}>
+        <StyledMenuItem onClick={() => navTo('/AppSettingsView')}>
+          <ListItemIcon>
+            <Settings fontSize="small" />
+          </ListItemIcon>
+          <ListItemText primary="Settings" />
+        </StyledMenuItem>
+        <StyledMenuItem onClick={() => navTo('/SearchHistoryView')}>
           <ListItemIcon>
             <SearchIcon fontSize="small" />
           </ListItemIcon>
