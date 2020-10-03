@@ -1,5 +1,5 @@
 import {
-  emailListPageLength,
+  defaultLimit,
   getDateStr,
   getEmailAsync,
   maxFromLength,
@@ -93,11 +93,7 @@ export default function SearchView({ navigation }: Props) {
       fontSize: 15,
     },
     loading: {
-      position: 'absolute',
-      left: 0,
-      right: 0,
-      top: 0,
-      bottom: 0,
+      marginTop: 50,
       alignItems: 'center',
       justifyContent: 'center',
     },
@@ -119,8 +115,8 @@ export default function SearchView({ navigation }: Props) {
       if (newTo !== to) dispatch(setTo(newTo))
       if (newSubject !== subject) dispatch(setSubject(newSubject))
       if (newSent !== sent) dispatch(setSent(newSent))
-      getEmailAsync()
       setDlgOpen(false)
+      getEmailAsync()
     }
 
     const clearFields = () => {
@@ -303,7 +299,7 @@ export default function SearchView({ navigation }: Props) {
     </TouchableOpacity>
   )
 
-  const hasMore = () => (emailListPage + 1) * emailListPageLength < totalEmails
+  const hasMore = () => (emailListPage + 1) * defaultLimit < totalEmails
 
   const handleLoadMore = () => {
     if (hasMore()) {
@@ -333,19 +329,19 @@ export default function SearchView({ navigation }: Props) {
         title={filterList()}
       />
       <Spinner visible={emailsLoading} textContent={'Loading...'} />
-      {emails && (
+      {emails && emails.length !== 0 && (
         <FlatList
           data={emails}
           renderItem={renderItem}
           keyExtractor={(item) => item.id}
           onEndReached={handleLoadMore}
           onEndReachedThreshold={0.5}
-          initialNumToRender={emailListPageLength}
+          initialNumToRender={defaultLimit}
         />
       )}
       {emails && emails.length === 0 && !emailsLoading && (
         <View style={styles.loading}>
-          <Text>Nothing found</Text>
+          <Text style={styles.text}>Nothing found</Text>
         </View>
       )}
     </SafeAreaView>
