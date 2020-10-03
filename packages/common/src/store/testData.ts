@@ -1,4 +1,10 @@
-import { Custodian, Email, EmailSentByDay, WordCloudTag } from './types'
+import {
+  Custodian,
+  Email,
+  EmailSentByDay,
+  SearchHistoryEntry,
+  WordCloudTag,
+} from './types'
 
 export const testWordCloud: Array<WordCloudTag> = [
   {
@@ -85,5 +91,18 @@ export const testEmail: Array<Email> = [
     bcc: '',
     subject: 'Check out this cool game!',
     body: 'body 3',
+  },
+]
+
+export const testSearchHistory: Array<SearchHistoryEntry> = [
+  {
+    id: '862ee9ba-fdd3-4f6c-83d2-c9ffc310277f',
+    timestamp: '2020-10-03T13:23:54.955Z',
+    entry: '{"skip":0,"limit":50,"sort":"sent","order":1,"to":"ba"}',
+  },
+  {
+    id: 'bdf5571f-ec6a-499b-a0b9-5153a065b04f',
+    timestamp: '2020-10-03T13:23:54.516Z',
+    entry: '{"skip":0,"limit":50,"sort":"sent","order":1,"to":"ba"}',
   },
 ]

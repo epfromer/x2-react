@@ -99,7 +99,10 @@ export default function SignInView() {
             onChange={(e) => setPassword(e.target.value)}
             InputProps={{
               endAdornment: (
-                <IconButton onClick={() => setPassword('')}>
+                <IconButton
+                  onClick={() => setPassword('')}
+                  data-testid="clear-password"
+                >
                   <ClearIcon />
                 </IconButton>
               ),

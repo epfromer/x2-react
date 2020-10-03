@@ -1,4 +1,5 @@
 import {
+  getEmailAsync,
   getSearchHistoryAsync,
   searchHistoryExecute,
   selectSearchHistory,
@@ -62,6 +63,7 @@ export default function SearchHistoryView() {
           variant="contained"
           className={classes.button}
           onClick={onClearHistory}
+          data-testid="clear-history"
         >
           Clear History
         </Button>

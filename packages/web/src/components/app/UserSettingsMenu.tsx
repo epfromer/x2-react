@@ -26,7 +26,7 @@ const StyledMenuItem = withStyles((theme) => ({
   },
 }))(MenuItem)
 
-export default function CustomizedMenus() {
+export default function UserSettingsMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null)
   const username = useSelector(selectUsername)
   const history = useHistory()
@@ -79,13 +79,16 @@ export default function CustomizedMenus() {
           </ListItemIcon>
           <ListItemText primary="Settings" />
         </StyledMenuItem>
-        <StyledMenuItem onClick={() => navTo('/SearchHistoryView')}>
+        <StyledMenuItem
+          onClick={() => navTo('/SearchHistoryView')}
+          data-testid="nav-to-search-history"
+        >
           <ListItemIcon>
             <SearchIcon fontSize="small" />
           </ListItemIcon>
           <ListItemText primary="Search History" />
         </StyledMenuItem>
-        <StyledMenuItem onClick={doSignOut}>
+        <StyledMenuItem onClick={doSignOut} data-testid="sign-out">
           <ListItemIcon>
             <ExitToAppIcon fontSize="small" />
           </ListItemIcon>

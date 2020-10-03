@@ -12,7 +12,7 @@ interface Props {
   domain?: string
 }
 
-export default function MUIGravatar({
+export default function Gravatar({
   email,
   size = 50,
   rating = 'g',
@@ -31,5 +31,5 @@ export default function MUIGravatar({
   const formattedEmail = ('' + email).trim().toLowerCase()
   let hash = md5(formattedEmail, { encoding: 'binary' })
   const src = `${base}${hash}?${query}`
-  return <Avatar src={src} />
+  return <Avatar data-testid="gravatar" src={src} />
 }

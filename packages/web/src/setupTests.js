@@ -5,6 +5,7 @@ import {
   setEmail,
   setEmailSentByDay,
   setFrom,
+  setSearchHistory,
   setSubject,
   setTo,
   setWordCloud,
@@ -12,6 +13,7 @@ import {
   testCustodians,
   testEmail,
   testEmailSentByDay,
+  testSearchHistory,
   testWordCloud,
 } from '@klonzo/common'
 import '@testing-library/jest-dom/extend-expect'
@@ -30,6 +32,7 @@ store.dispatch(setWordCloud(testWordCloud))
 store.dispatch(setCustodians(testCustodians))
 store.dispatch(setEmailSentByDay(testEmailSentByDay))
 store.dispatch(setEmail(testEmail))
+store.dispatch(setSearchHistory(testSearchHistory))
 store.dispatch(setAllText('body'))
 store.dispatch(setTo('body'))
 store.dispatch(setFrom('body'))
