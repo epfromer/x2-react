@@ -1,8 +1,6 @@
 import {
-  getCustodiansAsync,
   getEmailAsync,
-  getEmailSentByDayAsync,
-  getWordCloudAsync,
+  getInitialDataAsync,
   loadAppSettingsAsync,
   store,
 } from '@klonzo/common'
@@ -11,9 +9,7 @@ import 'react-native-gesture-handler'
 import { Provider } from 'react-redux'
 import RouteSwitch from './src/router/RouteSwitch'
 
-getCustodiansAsync()
-getWordCloudAsync()
-getEmailSentByDayAsync()
+getInitialDataAsync()
 getEmailAsync()
 loadAppSettingsAsync()
 

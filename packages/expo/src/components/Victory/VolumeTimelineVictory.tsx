@@ -1,4 +1,4 @@
-import { EmailSentByDayDatum, selectDarkMode } from '@klonzo/common'
+import { EmailSentByDay, selectDarkMode } from '@klonzo/common'
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { useSelector } from 'react-redux'
@@ -13,7 +13,7 @@ import {
 
 interface Props {
   title: string
-  data: Array<EmailSentByDayDatum>
+  data: Array<EmailSentByDay>
   handleClick: (date: string) => void
 }
 
@@ -34,7 +34,7 @@ export default function VolumeTimelineVictory({ data }: Props) {
   }
   const chartData: Array<Datum> = data.map((datum) => ({
     sent: new Date(datum.sent).getTime(),
-    value: datum.value,
+    value: datum.total,
   }))
 
   return (

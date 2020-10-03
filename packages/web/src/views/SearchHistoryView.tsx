@@ -44,6 +44,7 @@ export default function SearchHistoryView() {
 
   const onSearchHistory = (row: RowParams) => {
     searchHistoryExecute(row.data.entry)
+    getEmailAsync()
     history.push('/SearchView')
   }
 

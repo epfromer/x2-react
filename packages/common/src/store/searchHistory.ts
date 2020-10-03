@@ -1,6 +1,5 @@
 import { gql, request } from 'graphql-request'
 import { x2Server } from '../constants'
-import { getEmailAsync } from './email'
 import {
   clearSearch,
   setAllText,
@@ -51,5 +50,4 @@ export function searchHistoryExecute(search: string) {
   if (o.hasOwnProperty('subject')) store.dispatch(setSubject(o.subject))
   if (o.hasOwnProperty('allText')) store.dispatch(setAllText(o.allText))
   if (o.hasOwnProperty('body')) store.dispatch(setBody(o.body))
-  getEmailAsync()
 }

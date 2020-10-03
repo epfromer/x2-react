@@ -1,7 +1,7 @@
 import {
   getVolumeTimelineEChartsConfig,
   selectDarkMode,
-  EmailSentByDayDatum,
+  EmailSentByDay,
 } from '@klonzo/common'
 import React from 'react'
 import { ECharts } from 'react-native-echarts-wrapper'
@@ -12,7 +12,7 @@ import { useSelector } from 'react-redux'
 
 interface Props {
   title: string
-  data: Array<EmailSentByDayDatum>
+  data: Array<EmailSentByDay>
   handleClick: (date: string) => void
 }
 export default function VolumeTimelineECharts({ title, data }: Props) {

@@ -1,6 +1,6 @@
 import {
   clearSearch,
-  EmailSentByDayDatum,
+  EmailSentByDay,
   getEmailAsync,
   selectDarkMode,
   selectEmailSentByDay,
@@ -34,11 +34,11 @@ export default function VolumeTimelineView({ navigation }: Props) {
     navigation.navigate('SearchView')
   }
 
-  let data: Array<EmailSentByDayDatum> = []
+  let data: Array<EmailSentByDay> = []
   if (emailSent) {
     data = emailSent.map((stat: any) => ({
       sent: stat.sent,
-      value: stat.emailIds.length,
+      value: stat.total,
     }))
   }
 
