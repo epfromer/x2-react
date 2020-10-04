@@ -62,6 +62,9 @@ export default function SearchView({ navigation }: Props) {
       padding: 5,
       height: 60,
     },
+    historyButton: {
+      padding: 10,
+    },
     dlgContainer: {
       flex: 1,
       justifyContent: 'space-between',
@@ -93,7 +96,7 @@ export default function SearchView({ navigation }: Props) {
       fontSize: 15,
     },
     loading: {
-      marginTop: 50,
+      margin: 50,
       alignItems: 'center',
       justifyContent: 'center',
     },
@@ -344,6 +347,11 @@ export default function SearchView({ navigation }: Props) {
           <Text style={styles.text}>Nothing found</Text>
         </View>
       )}
+      <Button
+        buttonStyle={styles.historyButton}
+        onPress={() => navigation.navigate('SearchHistoryView')}
+        title="Search History"
+      />
     </SafeAreaView>
   )
 }

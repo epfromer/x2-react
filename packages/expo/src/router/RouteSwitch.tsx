@@ -17,6 +17,7 @@ import HomeView from '../views/HomeView'
 import NetworkGraphView from '../views/NetworkGraphView'
 import PieView from '../views/PieView'
 import PolarView from '../views/PolarView'
+import SearchHistoryView from '../views/SearchHistoryView'
 import SearchView from '../views/SearchView'
 import SignInView from '../views/SignInView'
 import TreeMapView from '../views/TreeMapView'
@@ -79,6 +80,11 @@ const SearchStackNavi = () => (
       name="SearchView"
       component={SearchView}
       options={{ title: 'Search' }}
+    />
+    <SearchStack.Screen
+      name="SearchHistoryView"
+      component={SearchHistoryView}
+      options={{ title: 'Search History' }}
     />
     <SearchStack.Screen
       name="EmailDetail"
