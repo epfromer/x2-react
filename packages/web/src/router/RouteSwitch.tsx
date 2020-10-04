@@ -37,6 +37,9 @@ export default function RouteSwitch() {
         component={AppSettingsView}
         auth={authenticated}
       />
+      <Route path="/SignInView">
+        <SignInView />
+      </Route>
       <GuardedRoute
         path="/SearchHistoryView"
         component={SearchHistoryView}
@@ -45,38 +48,35 @@ export default function RouteSwitch() {
       <Route path="/SearchView">
         <SearchView data-testid="switch" />
       </Route>
-      <Route path="/EmailDetailView/:id">
-        <EmailDetailView />
-      </Route>
       <Route path="/ChordView">
         <ChordView />
-      </Route>
-      <Route path="/NetworkGraphView">
-        <NetworkGraphView />
       </Route>
       <Route path="/WordCloudView">
         <WordCloudView />
       </Route>
-      <Route path="/VolumeTimelineView">
-        <VolumeTimelineView />
-      </Route>
-      <Route path="/TreeMapView">
-        <TreeMapView />
-      </Route>
       <Route path="/EventTimelineView">
         <EventTimelineView />
-      </Route>
-      <Route path="/BarView">
-        <BarView />
-      </Route>
-      <Route path="/PolarView">
-        <PolarView />
       </Route>
       <Route path="/PieView">
         <PieView />
       </Route>
-      <Route path="/SignInView">
-        <SignInView />
+      <Route path="/BarView">
+        <BarView />
+      </Route>
+      <Route path="/NetworkGraphView">
+        <NetworkGraphView />
+      </Route>
+      <Route path="/PolarView">
+        <PolarView />
+      </Route>
+      <Route path="/TreeMapView">
+        <TreeMapView />
+      </Route>
+      <Route path="/VolumeTimelineView">
+        <VolumeTimelineView />
+      </Route>
+      <Route path="/EmailDetailView/:id">
+        <EmailDetailView />
       </Route>
       <Route path="/">
         <HomeView />

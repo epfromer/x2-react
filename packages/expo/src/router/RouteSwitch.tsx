@@ -1,4 +1,5 @@
 import { selectDarkMode } from '@klonzo/common'
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
 import {
   DarkTheme,
   DefaultTheme,
@@ -6,6 +7,8 @@ import {
 } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import React from 'react'
+import { StyleSheet, Text, View } from 'react-native'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { useSelector } from 'react-redux'
 import AppSettingsView from '../views/AppSettingsView'
 import BarView from '../views/BarView'
@@ -15,68 +18,140 @@ import NetworkGraphView from '../views/NetworkGraphView'
 import PieView from '../views/PieView'
 import PolarView from '../views/PolarView'
 import SearchView from '../views/SearchView'
+import SignInView from '../views/SignInView'
 import TreeMapView from '../views/TreeMapView'
 import VolumeTimelineView from '../views/VolumeTimelineView'
 
-const Stack = createStackNavigator()
+// const GuardedRoute = ({ component: Component, auth, ...rest }: any) => (
+//   <Route
+//     {...rest}
+//     render={(props) =>
+//       auth === true ? <Component {...props} /> : <Redirect to="/SignInView" />
+//     }
+//   />
+// )
+
+const HomeStack = createStackNavigator()
+const HomeStackNavi = () => (
+  <HomeStack.Navigator initialRouteName="Home">
+    <HomeStack.Screen
+      name="AppSettingsView"
+      component={AppSettingsView}
+      options={{ title: 'Settings' }}
+    />
+    <HomeStack.Screen
+      name="SearchView"
+      component={SearchView}
+      options={{ title: 'Search' }}
+    />
+    <HomeStack.Screen
+      name="PieView"
+      component={PieView}
+      options={{ title: 'Pie' }}
+    />
+    <HomeStack.Screen
+      name="BarView"
+      component={BarView}
+      options={{ title: 'Bar' }}
+    />
+    <HomeStack.Screen
+      name="NetworkGraphView"
+      component={NetworkGraphView}
+      options={{ title: 'Network Graph' }}
+    />
+    <HomeStack.Screen
+      name="PolarView"
+      component={PolarView}
+      options={{ title: 'Polar' }}
+    />
+    <HomeStack.Screen
+      name="TreeMapView"
+      component={TreeMapView}
+      options={{ title: 'Tree Map' }}
+    />
+    <HomeStack.Screen
+      name="VolumeTimelineView"
+      component={VolumeTimelineView}
+      options={{ title: 'Volume Timeline' }}
+    />
+    <HomeStack.Screen
+      name="EmailDetail"
+      component={EmailDetailView}
+      options={{ title: 'Email Detail' }}
+    />
+    <HomeStack.Screen
+      name="Home"
+      component={HomeView}
+      options={{ title: 'x2 Home' }}
+    />
+  </HomeStack.Navigator>
+)
+
+const FooView1 = () => {
+  return (
+    <View
+      style={{ flex: 1, justifyContent: 'center', alignItems: 'center' } as any}
+    >
+      <Text>FooView1</Text>
+    </View>
+  )
+}
+
+const SettingsStack = createStackNavigator()
+const SettingsStackNavi = () => (
+  <SettingsStack.Navigator initialRouteName="SignInView">
+    <SettingsStack.Screen
+      name="SignInView"
+      component={SignInView}
+      options={{ title: 'Sign In' }}
+    />
+    <SettingsStack.Screen
+      name="FooView1"
+      component={FooView1}
+      options={{ title: 'FooView1' }}
+    />
+  </SettingsStack.Navigator>
+)
+
+const TabNavi = createMaterialBottomTabNavigator()
 
 export default function RouteSwitch() {
   const darkMode = useSelector(selectDarkMode)
 
+  const styles = StyleSheet.create({
+    bottomTab: {
+      backgroundColor: darkMode ? 'black' : 'white',
+    },
+  })
+
   return (
     <NavigationContainer theme={darkMode ? DarkTheme : DefaultTheme}>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen
+      <TabNavi.Navigator
+        barStyle={styles.bottomTab}
+        activeColor="#2196f3"
+        shifting
+      >
+        <TabNavi.Screen
           name="Home"
-          component={HomeView}
-          options={{ title: 'x2 Home' }}
+          component={HomeStackNavi}
+          options={{
+            tabBarLabel: 'Home',
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="home" color={color} size={26} />
+            ),
+          }}
         />
-        <Stack.Screen
-          name="AppSettingsView"
-          component={AppSettingsView}
-          options={{ title: 'Settings' }}
+        <TabNavi.Screen
+          name="Settings"
+          component={SettingsStackNavi}
+          options={{
+            tabBarLabel: 'Settings',
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="settings" color={color} size={26} />
+            ),
+          }}
         />
-        <Stack.Screen
-          name="SearchView"
-          component={SearchView}
-          options={{ title: 'Search' }}
-        />
-        <Stack.Screen
-          name="PieView"
-          component={PieView}
-          options={{ title: 'Pie' }}
-        />
-        <Stack.Screen
-          name="BarView"
-          component={BarView}
-          options={{ title: 'Bar' }}
-        />
-        <Stack.Screen
-          name="NetworkGraphView"
-          component={NetworkGraphView}
-          options={{ title: 'Network Graph' }}
-        />
-        <Stack.Screen
-          name="PolarView"
-          component={PolarView}
-          options={{ title: 'Polar' }}
-        />
-        <Stack.Screen
-          name="TreeMapView"
-          component={TreeMapView}
-          options={{ title: 'Tree Map' }}
-        />
-        <Stack.Screen
-          name="VolumeTimelineView"
-          component={VolumeTimelineView}
-          options={{ title: 'Volume Timeline' }}
-        />
-        <Stack.Screen
-          name="EmailDetail"
-          component={EmailDetailView}
-          options={{ title: 'Email Detail' }}
-        />
-      </Stack.Navigator>
+      </TabNavi.Navigator>
     </NavigationContainer>
   )
 }
