@@ -7,7 +7,7 @@ import {
 } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { useSelector } from 'react-redux'
 import AppSettingsView from '../views/AppSettingsView'
@@ -34,16 +34,6 @@ import VolumeTimelineView from '../views/VolumeTimelineView'
 const HomeStack = createStackNavigator()
 const HomeStackNavi = () => (
   <HomeStack.Navigator initialRouteName="Home">
-    <HomeStack.Screen
-      name="AppSettingsView"
-      component={AppSettingsView}
-      options={{ title: 'Settings' }}
-    />
-    <HomeStack.Screen
-      name="SearchView"
-      component={SearchView}
-      options={{ title: 'Search' }}
-    />
     <HomeStack.Screen
       name="PieView"
       component={PieView}
@@ -75,11 +65,6 @@ const HomeStackNavi = () => (
       options={{ title: 'Volume Timeline' }}
     />
     <HomeStack.Screen
-      name="EmailDetail"
-      component={EmailDetailView}
-      options={{ title: 'Email Detail' }}
-    />
-    <HomeStack.Screen
       name="Home"
       component={HomeView}
       options={{ title: 'x2 Home' }}
@@ -87,15 +72,21 @@ const HomeStackNavi = () => (
   </HomeStack.Navigator>
 )
 
-const FooView1 = () => {
-  return (
-    <View
-      style={{ flex: 1, justifyContent: 'center', alignItems: 'center' } as any}
-    >
-      <Text>FooView1</Text>
-    </View>
-  )
-}
+const SearchStack = createStackNavigator()
+const SearchStackNavi = () => (
+  <SearchStack.Navigator initialRouteName="SearchView">
+    <SearchStack.Screen
+      name="SearchView"
+      component={SearchView}
+      options={{ title: 'Search' }}
+    />
+    <SearchStack.Screen
+      name="EmailDetail"
+      component={EmailDetailView}
+      options={{ title: 'Email Detail' }}
+    />
+  </SearchStack.Navigator>
+)
 
 const SettingsStack = createStackNavigator()
 const SettingsStackNavi = () => (
@@ -106,9 +97,9 @@ const SettingsStackNavi = () => (
       options={{ title: 'Sign In' }}
     />
     <SettingsStack.Screen
-      name="FooView1"
-      component={FooView1}
-      options={{ title: 'FooView1' }}
+      name="AppSettingsView"
+      component={AppSettingsView}
+      options={{ title: 'Settings' }}
     />
   </SettingsStack.Navigator>
 )
@@ -117,7 +108,6 @@ const TabNavi = createMaterialBottomTabNavigator()
 
 export default function RouteSwitch() {
   const darkMode = useSelector(selectDarkMode)
-
   const styles = StyleSheet.create({
     bottomTab: {
       backgroundColor: darkMode ? 'black' : 'white',
@@ -138,6 +128,16 @@ export default function RouteSwitch() {
             tabBarLabel: 'Home',
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="home" color={color} size={26} />
+            ),
+          }}
+        />
+        <TabNavi.Screen
+          name="Search"
+          component={SearchStackNavi}
+          options={{
+            tabBarLabel: 'Search',
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="magnify" color={color} size={26} />
             ),
           }}
         />

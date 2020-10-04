@@ -50,20 +50,6 @@ export default function HomeView({ navigation }: Props) {
         description="Polar chart of email volume of Enron key custodians."
         link="PolarView"
       />
-      <HomeCard
-        navigation={navigation}
-        image={require('./img/search.png')}
-        title="Search"
-        description="Full text search with field filtering and hit highlighting."
-        link="SearchView"
-      />
-      <HomeCard
-        navigation={navigation}
-        image={require('./img/settings.png')}
-        title="Settings"
-        description="Application settings."
-        link="AppSettingsView"
-      />
     </ScrollView>
   )
 }
