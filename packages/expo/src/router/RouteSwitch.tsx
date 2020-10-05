@@ -70,6 +70,16 @@ const HomeStackNavi = () => (
       component={HomeView}
       options={{ title: 'x2 Home' }}
     />
+    <HomeStack.Screen
+      name="SearchView"
+      component={SearchView}
+      options={{ title: 'Search' }}
+    />
+    <HomeStack.Screen
+      name="EmailDetail"
+      component={EmailDetailView}
+      options={{ title: 'Email Detail' }}
+    />
   </HomeStack.Navigator>
 )
 

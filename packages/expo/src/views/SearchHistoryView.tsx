@@ -1,10 +1,12 @@
 import {
   getEmailAsync,
+  getSearchHistoryAsync,
   searchHistoryExecute,
   selectDarkMode,
   selectSearchHistory,
-  selectSearchHistoryLoading,
+  x2Server,
 } from '@klonzo/common'
+import { gql, request } from 'graphql-request'
 import React from 'react'
 import {
   FlatList,
@@ -14,7 +16,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
-import Spinner from 'react-native-loading-spinner-overlay'
+import { Button } from 'react-native-elements'
 import { useSelector } from 'react-redux'
 
 interface Props {
@@ -23,7 +25,6 @@ interface Props {
 export default function SearchHistoryView({ navigation }: Props) {
   const darkMode = useSelector(selectDarkMode)
   const searchHistory = useSelector(selectSearchHistory)
-  const searchHistoryLoading = useSelector(selectSearchHistoryLoading)
 
   const styles = StyleSheet.create({
     bold: {
@@ -33,6 +34,9 @@ export default function SearchHistoryView({ navigation }: Props) {
     },
     container: {
       flex: 1,
+    },
+    historyButton: {
+      padding: 10,
     },
     itemContainer: {
       margin: 5,
@@ -47,14 +51,28 @@ export default function SearchHistoryView({ navigation }: Props) {
     },
   })
 
-  function handleClick(entry: string) {
+  const onClearHistory = () => {
+    const server = process.env.REACT_APP_X2_SERVER
+      ? process.env.REACT_APP_X2_SERVER
+      : x2Server
+    const mutation = gql`
+      mutation {
+        clearSearchHistory
+      }
+    `
+    request(`${server}/graphql/`, mutation)
+      .then(() => getSearchHistoryAsync())
+      .catch((error) => console.error('CustodianSettings', error))
+  }
+
+  const onSearchHistory = (entry: string) => {
     searchHistoryExecute(entry)
     getEmailAsync()
     navigation.navigate('SearchView')
   }
 
   const renderItem = ({ item }: any) => (
-    <TouchableOpacity onPress={() => handleClick(item.entry)}>
+    <TouchableOpacity onPress={() => onSearchHistory(item.entry)}>
       <View style={styles.itemContainer}>
         <View style={styles.spaceBetweenRow}>
           <Text numberOfLines={4} style={styles.text}>
@@ -74,6 +92,11 @@ export default function SearchHistoryView({ navigation }: Props) {
           keyExtractor={(item) => item.id}
         />
       )}
+      <Button
+        buttonStyle={styles.historyButton}
+        onPress={onClearHistory}
+        title="Clear History"
+      />
     </SafeAreaView>
   )
 }
