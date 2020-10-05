@@ -21,14 +21,14 @@ import ColorPickerDlg from './ColorPickerDlg'
 
 export default function CustodianSettings() {
   const dispatch = useDispatch()
-  const [openColorPicker, setOpenColorPicker] = useState(false)
+  const [colorPickerDlgOpen, setColorPickerDlgOpen] = useState(false)
   const [pickedColor, setPickedColor] = useState('')
   const [custodianId, setCustodianId] = useState('')
   const custodiansLoading = useSelector(selectCustodiansLoading)
   const custodians = useSelector(selectCustodians)
 
-  function handleColorChosen(color: string) {
-    setOpenColorPicker(false)
+  const handleColorChosen = (color: string) => {
+    setColorPickerDlgOpen(false)
     if (!color) return
     const server = process.env.REACT_APP_X2_SERVER
       ? process.env.REACT_APP_X2_SERVER
@@ -54,10 +54,33 @@ export default function CustodianSettings() {
       .catch((error) => console.error('CustodianSettings', error))
   }
 
+  const renderCustodian = (custodian: Custodian) => (
+    <TableRow key={custodian.name}>
+      <TableCell component="th" scope="row">
+        {custodian.name}
+      </TableCell>
+      <TableCell>{custodian.title}</TableCell>
+      <TableCell align="right">{custodian.senderTotal}</TableCell>
+      <TableCell align="right">{custodian.receiverTotal}</TableCell>
+      <TableCell align="center">
+        <Button
+          variant="contained"
+          onClick={() => {
+            setCustodianId(custodian.id)
+            setPickedColor(custodian.color)
+            setColorPickerDlgOpen(true)
+          }}
+          data-testid={custodian.id}
+          style={{ backgroundColor: custodian.color }}
+        ></Button>
+      </TableCell>
+    </TableRow>
+  )
+
   return (
     <>
       <ColorPickerDlg
-        open={openColorPicker}
+        open={colorPickerDlgOpen}
         defaultColor={pickedColor}
         onClose={(color) => handleColorChosen(color)}
       />
@@ -74,28 +97,9 @@ export default function CustodianSettings() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {custodians?.map((c: Custodian) => (
-              <TableRow key={c.name}>
-                <TableCell component="th" scope="row">
-                  {c.name}
-                </TableCell>
-                <TableCell>{c.title}</TableCell>
-                <TableCell align="right">{c.senderTotal}</TableCell>
-                <TableCell align="right">{c.receiverTotal}</TableCell>
-                <TableCell align="center">
-                  <Button
-                    variant="contained"
-                    onClick={() => {
-                      setCustodianId(c.id)
-                      setPickedColor(c.color)
-                      setOpenColorPicker(true)
-                    }}
-                    data-testid={c.id}
-                    style={{ backgroundColor: c.color }}
-                  ></Button>
-                </TableCell>
-              </TableRow>
-            ))}
+            {custodians?.map((custodian: Custodian) =>
+              renderCustodian(custodian)
+            )}
           </TableBody>
         </Table>
       </TableContainer>
