@@ -19,6 +19,7 @@ import { Button, Icon } from 'react-native-elements'
 import Highlighter from 'react-native-highlight-words'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { useSelector } from 'react-redux'
+import { gql, request } from 'graphql-request'
 
 interface Props {
   route: any
@@ -106,22 +107,49 @@ export default function EmailDetailView({ route, navigation }: Props) {
   if (subject) highlightedTerms.push(subject as string)
   if (body) highlightedTerms.push(body as string)
 
-  function doFetch() {
-    setLoading(true)
-    const server = process.env.REACT_APP_X2_SERVER
-      ? process.env.REACT_APP_X2_SERVER
-      : x2Server
-    const url = `${server}/email/${route.params.id}`
-    console.log(url)
-    fetch(url)
-      .then((resp) => resp.json())
-      .then((json) => setEmail(json))
-      .catch((err) => console.error('fetch error', err))
-      .then(() => setLoading(false))
-  }
-
   useEffect(() => {
-    cachedEmail ? setEmail(cachedEmail) : doFetch()
+    let isSubscribed = true
+    if (cachedEmail) {
+      setEmail(cachedEmail)
+    } else {
+      const server = process.env.REACT_APP_X2_SERVER
+        ? process.env.REACT_APP_X2_SERVER
+        : x2Server
+      setLoading(true)
+      const query = gql`
+        query getEmail($id: ID) {
+          getEmail(id: $id) {
+            emails {
+              id
+              sent
+              sentShort
+              from
+              fromCustodian
+              to
+              toCustodians
+              cc
+              bcc
+              subject
+              body
+            }
+            total
+          }
+        }
+      `
+      request(`${server}/graphql/`, query, { id: route.params.id })
+        .then((data) => {
+          // prevents update if component destroyed before request/fetch completes
+          if (isSubscribed) {
+            setEmail(data.getEmail.emails[0])
+            setLoading(false)
+          }
+        })
+        .catch((err) => console.error('fetch error', err))
+    }
+    return () => {
+      // prevents update if component destroyed before request/fetch completes
+      isSubscribed = false
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cachedEmail])
 
