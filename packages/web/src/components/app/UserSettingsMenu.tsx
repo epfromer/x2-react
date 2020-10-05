@@ -32,7 +32,6 @@ export default function UserSettingsMenu() {
   const history = useHistory()
 
   const handleClick = (event: any) => setAnchorEl(event.currentTarget)
-
   const handleClose = () => setAnchorEl(null)
 
   const doSignOut = () => {
@@ -55,7 +54,7 @@ export default function UserSettingsMenu() {
           color="inherit"
           onClick={handleClick}
         >
-          <Gravatar email="epfromer@gmail.com" />
+          <Gravatar email={username} />
         </IconButton>
       </Tooltip>
       <Menu

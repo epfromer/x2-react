@@ -15,7 +15,6 @@
     "clean": "lerna clean",
     "build": "lerna run build",
     "postinstall": "cd ./packages/expo && expo-yarn-workspaces postinstall",
-    "watch": "lerna run --parallel watch --stream",
     "yarn": "yarn"
   },
   "devDependencies": {
