@@ -77,7 +77,7 @@ export default function SignInView() {
             fullWidth
             autoFocus
             value={username}
-            label="Username or email address"
+            label="Email address"
             variant="filled"
             onChange={(e) => setUsername(e.target.value)}
             InputProps={{

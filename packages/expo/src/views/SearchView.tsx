@@ -23,6 +23,8 @@ import {
 import React, { useState } from 'react'
 import {
   FlatList,
+  KeyboardAvoidingView,
+  Platform,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -65,11 +67,6 @@ export default function SearchView({ navigation }: Props) {
     historyButton: {
       padding: 10,
     },
-    dlgContainer: {
-      flex: 1,
-      justifyContent: 'space-between',
-      flexDirection: 'column',
-    },
     button: {
       width: 80,
     },
@@ -80,20 +77,17 @@ export default function SearchView({ navigation }: Props) {
       flexDirection: 'row',
       justifyContent: 'space-between',
     },
-    spaceBetweenColumn: {
-      flexDirection: 'column',
-      justifyContent: 'space-between',
-    },
     bold: {
       fontSize: 15,
       fontWeight: 'bold',
       color: darkMode ? 'white' : 'black',
     },
-    text: {
+    topField: {
+      marginTop: 15,
       color: darkMode ? 'white' : 'black',
     },
-    title: {
-      fontSize: 15,
+    text: {
+      color: darkMode ? 'white' : 'black',
     },
     loading: {
       margin: 50,
@@ -159,111 +153,112 @@ export default function SearchView({ navigation }: Props) {
         backdropColor={darkMode ? 'black' : 'white'}
         supportedOrientations={['portrait', 'landscape']}
       >
-        <SafeAreaView>
-          <SentDatePicker />
-          <View style={styles.spaceBetweenColumn}>
-            <Input
-              label="Filter (all text fields)"
-              labelStyle={styles.text}
-              inputStyle={styles.text}
-              value={newAllText}
-              testID="set-all-text"
-              onChangeText={(s) => setNewAllText(s)}
-              rightIcon={
-                <Icon
-                  testID="close-all-text"
-                  name="close"
-                  iconStyle={styles.text}
-                  onPress={() => setNewAllText('')}
-                />
-              }
-            />
-            <Input
-              label="Filter Sent"
-              labelStyle={styles.text}
-              inputStyle={styles.text}
-              value={newSent}
-              testID="set-sent"
-              onChangeText={(s) => setNewSent(s)}
-              rightIcon={
-                <Icon
-                  testID="close-sent"
-                  name="date-range"
-                  iconStyle={styles.text}
-                  onPress={() => setDatePickerOpen(true)}
-                />
-              }
-            />
-            <Input
-              label="Filter From"
-              labelStyle={styles.text}
-              inputStyle={styles.text}
-              value={newFrom}
-              testID="set-from"
-              onChangeText={(s) => setNewFrom(s)}
-              rightIcon={
-                <Icon
-                  testID="close-from"
-                  name="close"
-                  iconStyle={styles.text}
-                  onPress={() => setNewFrom('')}
-                />
-              }
-            />
-            <Input
-              label="Filter To"
-              labelStyle={styles.text}
-              inputStyle={styles.text}
-              value={newTo}
-              testID="set-to"
-              onChangeText={(s) => setNewTo(s)}
-              rightIcon={
-                <Icon
-                  testID="close-to"
-                  name="close"
-                  iconStyle={styles.text}
-                  onPress={() => setNewTo('')}
-                />
-              }
-            />
-            <Input
-              label="Filter Subject"
-              labelStyle={styles.text}
-              inputStyle={styles.text}
-              value={newSubject}
-              testID="set-subject"
-              onChangeText={(s) => setNewSubject(s)}
-              rightIcon={
-                <Icon
-                  testID="close-subject"
-                  name="close"
-                  iconStyle={styles.text}
-                  onPress={() => setNewSubject('')}
-                />
-              }
-            />
-            <View style={styles.spaceBetweenRow}>
-              <Button
-                testID="cancel-dialog"
-                buttonStyle={styles.button}
-                onPress={() => setDlgOpen(false)}
-                title="Cancel"
+        <SentDatePicker />
+        <KeyboardAvoidingView
+          style={styles.container}
+          behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+        >
+          <Input
+            label="Filter (all text fields)"
+            labelStyle={styles.topField}
+            inputStyle={styles.text}
+            value={newAllText}
+            testID="set-all-text"
+            onChangeText={(s) => setNewAllText(s)}
+            rightIcon={
+              <Icon
+                testID="close-all-text"
+                name="close"
+                iconStyle={styles.text}
+                onPress={() => setNewAllText('')}
               />
-              <Button
-                testID="clear-fields"
-                buttonStyle={styles.button}
-                onPress={() => clearFields()}
-                title="Clear"
+            }
+          />
+          <Input
+            label="Filter Sent"
+            labelStyle={styles.text}
+            inputStyle={styles.text}
+            value={newSent}
+            testID="set-sent"
+            onChangeText={(s) => setNewSent(s)}
+            rightIcon={
+              <Icon
+                testID="close-sent"
+                name="date-range"
+                iconStyle={styles.text}
+                onPress={() => setDatePickerOpen(true)}
               />
-              <Button
-                testID="do-query"
-                buttonStyle={styles.button}
-                onPress={() => doQuery()}
-                title="Search"
+            }
+          />
+          <Input
+            label="Filter From"
+            labelStyle={styles.text}
+            inputStyle={styles.text}
+            value={newFrom}
+            testID="set-from"
+            onChangeText={(s) => setNewFrom(s)}
+            rightIcon={
+              <Icon
+                testID="close-from"
+                name="close"
+                iconStyle={styles.text}
+                onPress={() => setNewFrom('')}
               />
-            </View>
+            }
+          />
+          <Input
+            label="Filter To"
+            labelStyle={styles.text}
+            inputStyle={styles.text}
+            value={newTo}
+            testID="set-to"
+            onChangeText={(s) => setNewTo(s)}
+            rightIcon={
+              <Icon
+                testID="close-to"
+                name="close"
+                iconStyle={styles.text}
+                onPress={() => setNewTo('')}
+              />
+            }
+          />
+          <Input
+            label="Filter Subject"
+            labelStyle={styles.text}
+            inputStyle={styles.text}
+            value={newSubject}
+            testID="set-subject"
+            onChangeText={(s) => setNewSubject(s)}
+            rightIcon={
+              <Icon
+                testID="close-subject"
+                name="close"
+                iconStyle={styles.text}
+                onPress={() => setNewSubject('')}
+              />
+            }
+          />
+          <View style={styles.spaceBetweenRow}>
+            <Button
+              testID="cancel-dialog"
+              buttonStyle={styles.button}
+              onPress={() => setDlgOpen(false)}
+              title="Cancel"
+            />
+            <Button
+              testID="clear-fields"
+              buttonStyle={styles.button}
+              onPress={() => clearFields()}
+              title="Clear"
+            />
+            <Button
+              testID="do-query"
+              buttonStyle={styles.button}
+              onPress={() => doQuery()}
+              title="Search"
+            />
           </View>
-        </SafeAreaView>
+        </KeyboardAvoidingView>
       </Modal>
     )
   }
