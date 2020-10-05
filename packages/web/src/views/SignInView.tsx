@@ -50,7 +50,7 @@ export default function SignInView() {
       <Paper className={classes.paper}>
         <div className={classes.input}>
           <Typography gutterBottom variant="h5" component="h2">
-            Sign in to x2
+            Sign In
           </Typography>
         </div>
         <div className={classes.input}>

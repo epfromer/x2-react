@@ -1,4 +1,4 @@
-import { selectDarkMode } from '@klonzo/common'
+import { selectDarkMode, authenticate } from '@klonzo/common'
 import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import { Button, Icon, Input } from 'react-native-elements'
@@ -8,7 +8,7 @@ interface Props {
   navigation: any
 }
 export default function HomeView({ navigation }: Props) {
-  const [username, setUsername] = useState('')
+  const [username, setUsername] = useState('epfromer@gmail.com')
   const [password, setPassword] = useState('')
   const [authFailAlert, setAuthFailAlert] = useState(false)
   const darkMode = useSelector(selectDarkMode)
@@ -28,29 +28,42 @@ export default function HomeView({ navigation }: Props) {
     text: {
       color: darkMode ? 'white' : 'black',
     },
+    errorText: {
+      color: 'red',
+    },
   })
 
   const doAuthenticate = () => {
-    console.log('authenticate')
-    // if (authenticate(username, password)) {
-    //   history.push('/AppSettingsView')
-    // } else {
-    //   setAuthFailAlert(true)
-    // }
+    if (authenticate(username, password)) {
+      navigation.navigate('AppSettingsView')
+    } else {
+      setAuthFailAlert(true)
+    }
   }
+
+  // https://reactnativeelements.com/docs/input/
+  // https://reactnative.dev/docs/textinput.html
 
   return (
     <SafeAreaView>
       <Input
         label="Email address"
+        keyboardType="email-address"
+        textContentType="emailAddress"
         labelStyle={styles.topField}
         inputStyle={styles.text}
         value={username}
+        autoCompleteType="email"
+        autoCapitalize="none"
+        autoFocus
         testID="email"
         onChangeText={(s) => setUsername(s)}
+        leftIcon={<Icon name="email" iconStyle={styles.text} />}
+        errorStyle={styles.errorText}
+        errorMessage={authFailAlert ? 'Incorrect username or password.' : ''}
         rightIcon={
           <Icon
-            testID="close-all-text"
+            testID="close-email"
             name="close"
             iconStyle={styles.text}
             onPress={() => setUsername('')}
@@ -59,13 +72,21 @@ export default function HomeView({ navigation }: Props) {
       />
       <Input
         label="Password"
+        textContentType="password"
         labelStyle={styles.label}
         inputStyle={styles.text}
         value={password}
+        autoCompleteType="password"
+        autoCapitalize="none"
         testID="password"
+        secureTextEntry={true}
         onChangeText={(s) => setPassword(s)}
+        leftIcon={<Icon name="lock" iconStyle={styles.text} />}
+        errorStyle={styles.errorText}
+        errorMessage={authFailAlert ? 'Incorrect username or password.' : ''}
         rightIcon={
           <Icon
+            testID="close-password"
             name="close"
             iconStyle={styles.text}
             onPress={() => setPassword('')}
@@ -74,7 +95,6 @@ export default function HomeView({ navigation }: Props) {
       />
       <Button
         testID="authenticate"
-        buttonStyle={styles.button}
         disabled={username === '' || password === ''}
         onPress={doAuthenticate}
         title="Sign In"
