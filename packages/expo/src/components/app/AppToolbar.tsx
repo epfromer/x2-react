@@ -8,27 +8,15 @@ export default function AppToolbar() {
 
   const GoBackIconButton = () => (
     <Button
-      icon={
-        <Icon
-          name="navigate-before"
-          size={25}
-          color="white"
-          onPress={() => history.goBack()}
-        />
-      }
+      onPress={() => history.goBack()}
+      icon={<Icon name="navigate-before" size={25} color="white" />}
     />
   )
 
   const HomeIconButton = () => (
     <Button
-      icon={
-        <Icon
-          name="home"
-          size={25}
-          color="white"
-          onPress={() => history.push('/')}
-        />
-      }
+      onPress={() => history.push('/')}
+      icon={<Icon name="home" size={25} color="white" />}
     />
   )
 

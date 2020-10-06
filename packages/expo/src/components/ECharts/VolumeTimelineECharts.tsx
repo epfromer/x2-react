@@ -21,6 +21,8 @@ export default function VolumeTimelineECharts({ title, data }: Props) {
   //   // data[0].handleClick(search, name)
   // }
 
+  console.log(data[0])
+
   return (
     <ECharts
       onData={() => console.log('foo')}
