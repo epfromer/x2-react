@@ -21,6 +21,20 @@ import SearchHistoryView from '../views/SearchHistoryView'
 //   />
 // )
 
+export const routeNames = {
+  '/AppSettingsView': 'Settings',
+  '/SignInView': 'Sign In',
+  '/SearchView': 'Search',
+  '/PieView': 'Pie',
+  '/BarView': 'Bar',
+  '/NetworkGraphView': 'Network Graph',
+  '/PolarView': 'Polar',
+  '/TreeMapView': 'Tree Map',
+  '/VolumeTimelineView': 'Volume Timeline',
+  '/EmailDetailView': 'Email Detail',
+  '/': 'Home',
+}
+
 export default function RouteSwitch() {
   // const authenticated = useSelector(selectAuthenticated)
 

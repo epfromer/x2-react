@@ -1,6 +1,7 @@
 import React from 'react'
 import { Header, Button, Icon } from 'react-native-elements'
 import { useLocation, useHistory } from 'react-router-native'
+import { routeNames } from '../../router/RouteSwitch'
 
 export default function AppToolbar() {
   const location = useLocation()
@@ -27,7 +28,10 @@ export default function AppToolbar() {
     <Header
       placement="center"
       leftComponent={<GoBackIconButton />}
-      centerComponent={{ text: 'MY TITLE', style: { color: 'white' } }}
+      centerComponent={{
+        text: routeNames[location.pathname],
+        style: { color: 'white' },
+      }}
       rightComponent={<HomeIconButton />}
     />
   )

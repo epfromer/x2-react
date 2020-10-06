@@ -5,13 +5,12 @@ import {
   store,
 } from '@klonzo/common'
 import React from 'react'
+import { ThemeProvider } from 'react-native-elements'
 import 'react-native-gesture-handler'
 import { Provider } from 'react-redux'
-import { NativeRouter as Router } from 'react-router-native'
-import RouteSwitch from './src/router/RouteSwitch'
+import { BackButton, NativeRouter as Router } from 'react-router-native'
 import AppToolbar from './src/components/app/AppToolbar'
-import { Appearance } from 'react-native'
-import { ThemeProvider } from 'react-native-elements'
+import RouteSwitch from './src/router/RouteSwitch'
 
 getInitialDataAsync()
 getEmailAsync()
@@ -21,7 +20,9 @@ loadAppSettingsAsync()
 // TODO
 // console.log(Appearance.getColorScheme())
 
-{/* <ThemeProvider useDark={Appearance.getColorScheme() === 'dark'}> */}
+{
+  /* <ThemeProvider useDark={Appearance.getColorScheme() === 'dark'}> */
+}
 
 export default function App() {
   return (
@@ -29,6 +30,7 @@ export default function App() {
       <ThemeProvider useDark={true}>
         <Router>
           <AppToolbar />
+          <BackButton />
           <RouteSwitch />
         </Router>
       </ThemeProvider>
