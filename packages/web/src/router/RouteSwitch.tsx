@@ -78,7 +78,7 @@ export default function RouteSwitch() {
       <Route path="/EmailDetailView/:id">
         <EmailDetailView />
       </Route>
-      <Route path="/">
+      <Route exact path="/">
         <HomeView />
       </Route>
     </Switch>

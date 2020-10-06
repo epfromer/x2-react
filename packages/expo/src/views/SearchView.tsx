@@ -39,11 +39,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 const FILTER_DATE = '2000-10-04'
 
-interface Props {
-  route: any
-  navigation: any
-}
-export default function SearchView({ navigation }: Props) {
+export default function SearchView() {
   const dispatch = useDispatch()
   const darkMode = useSelector(selectDarkMode)
   const allText = useSelector(selectAllText)

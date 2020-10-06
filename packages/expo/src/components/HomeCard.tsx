@@ -2,24 +2,19 @@ import { selectDarkMode } from '@klonzo/common'
 import React from 'react'
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { useSelector } from 'react-redux'
+import { useHistory } from 'react-router-native'
 
 // https://docs.nativebase.io/Components.html#card-headfoot-headref
 
 interface Props {
-  navigation: any
   image: any
   title: string
   description: string
   link: string
 }
-export default function HomeCard({
-  navigation,
-  image,
-  title,
-  description,
-  link,
-}: Props) {
+export default function HomeCard({ image, title, description, link }: Props) {
   const darkMode = useSelector(selectDarkMode)
+  const history = useHistory()
   const styles = StyleSheet.create({
     title: {
       fontSize: 20,
@@ -46,7 +41,7 @@ export default function HomeCard({
 
   const Separator = () => <View style={styles.separator} />
   return (
-    <TouchableOpacity onPress={() => navigation.navigate(link)}>
+    <TouchableOpacity onPress={() => history.push(link)}>
       <Text style={styles.title}>{title}</Text>
       <Image source={image} style={styles.image} />
       <Text style={styles.text}>{description}</Text>

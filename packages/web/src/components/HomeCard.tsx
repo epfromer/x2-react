@@ -22,12 +22,9 @@ interface Props {
 export default function HomeCard({ image, title, description, link }: Props) {
   const classes = useStyles()
   const history = useHistory()
-
-  const handleClick = (loc: string) => history.push(loc)
-
   return (
     <Card>
-      <CardActionArea onClick={() => handleClick(link)}>
+      <CardActionArea onClick={() => history.push(link)}>
         <CardMedia className={classes.cardImage} image={image} title={title} />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">

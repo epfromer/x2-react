@@ -17,13 +17,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import PieECharts from '../components/ECharts/PieECharts'
 import PieHighcharts from '../components/Highcharts/PieHighcharts'
 import PieVictory from '../components/Victory/PieVictory'
+import { useHistory } from 'react-router-native'
 
-interface Props {
-  route: any
-  navigation: any
-}
-export default function PieView({ navigation }: Props) {
+export default function PieView() {
   const dispatch = useDispatch()
+  const history = useHistory()
   const darkMode = useSelector(selectDarkMode)
   const [isSenders, setIsSenders] = useState(true)
   const [chartLib, setChartLib] = useState('ECharts')
@@ -81,7 +79,7 @@ export default function PieView({ navigation }: Props) {
     const name = value.slice(0, value.search(/,/))
     dispatch(search === 'from' ? setFrom(name) : setTo(name))
     getEmailAsync()
-    navigation.navigate('SearchView')
+    history.push('/SearchView')
   }
 
   return (
