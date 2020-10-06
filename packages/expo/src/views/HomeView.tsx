@@ -1,10 +1,19 @@
+import { selectDarkMode } from '@klonzo/common'
 import React from 'react'
-import { ScrollView } from 'react-native'
+import { ScrollView, StyleSheet } from 'react-native'
+import { useSelector } from 'react-redux'
 import HomeCard from '../components/HomeCard'
 
 export default function HomeView() {
+  const darkMode = useSelector(selectDarkMode)
+  const styles = StyleSheet.create({
+    container: {
+      backgroundColor: darkMode ? '#222222' : 'white',
+    },
+  })
+
   return (
-    <ScrollView>
+    <ScrollView style={styles.container}>
       <HomeCard
         image={require('./img/pie.png')}
         title="Pie"

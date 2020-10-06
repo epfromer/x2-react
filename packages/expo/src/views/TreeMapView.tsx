@@ -14,14 +14,12 @@ import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
 import RNPickerSelect from 'react-native-picker-select'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-native'
 import TreeMapECharts from '../components/ECharts/TreeMapECharts'
 
-interface Props {
-  route: any
-  navigation: any
-}
-export default function TreeMapView({ navigation }: Props) {
+export default function TreeMapView() {
   const dispatch = useDispatch()
+  const history = useHistory()
   const darkMode = useSelector(selectDarkMode)
   const [isSenders, setIsSenders] = useState(true)
   const [chartLib, setChartLib] = useState('ECharts')
@@ -79,7 +77,7 @@ export default function TreeMapView({ navigation }: Props) {
     const name = value.slice(0, value.search(/,/))
     dispatch(search === 'from' ? setFrom(name) : setTo(name))
     getEmailAsync()
-    navigation.navigate('SearchView')
+    history.push('/SearchView')
   }
 
   return (

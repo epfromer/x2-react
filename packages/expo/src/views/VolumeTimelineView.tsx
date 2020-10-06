@@ -12,6 +12,7 @@ import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
 import RNPickerSelect from 'react-native-picker-select'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-native'
 import VolumeTimelineECharts from '../components/ECharts/VolumeTimelineECharts'
 import VolumeTimelineHighcharts from '../components/Highcharts/VolumeTimelineHighcharts'
 import VolumeTimelineVictory from '../components/Victory/VolumeTimelineVictory'
@@ -20,8 +21,9 @@ interface Props {
   route: any
   navigation: any
 }
-export default function VolumeTimelineView({ navigation }: Props) {
+export default function VolumeTimelineView() {
   const dispatch = useDispatch()
+  const history = useHistory()
   const darkMode = useSelector(selectDarkMode)
   const [chartLib, setChartLib] = useState('ECharts')
   const emailSentLoading = useSelector(selectEmailSentByDayLoading)
@@ -31,7 +33,7 @@ export default function VolumeTimelineView({ navigation }: Props) {
     dispatch(clearSearch())
     dispatch(setSent(date))
     getEmailAsync()
-    navigation.navigate('SearchView')
+    history.push('/SearchView')
   }
 
   let data: Array<EmailSentByDay> = []

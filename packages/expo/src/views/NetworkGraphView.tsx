@@ -13,14 +13,12 @@ import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
 import RNPickerSelect from 'react-native-picker-select'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-native'
 import NetworkGraphECharts from '../components/ECharts/NetworkGraphECharts'
 
-interface Props {
-  route: any
-  navigation: any
-}
-export default function NetworkGraphView({ navigation }: Props) {
+export default function NetworkGraphView() {
   const dispatch = useDispatch()
+  const history = useHistory()
   const darkMode = useSelector(selectDarkMode)
   const [chartLib, setChartLib] = useState('ECharts')
   const emailSentByCustodian = useSelector(selectEmailSentByCustodian)
@@ -77,7 +75,7 @@ export default function NetworkGraphView({ navigation }: Props) {
     dispatch(setFrom(from.slice(0, from.search(/,/))))
     dispatch(setTo(to.slice(0, to.search(/,/))))
     getEmailAsync()
-    navigation.navigate('SearchView')
+    history.push('/SearchView')
   }
 
   return (

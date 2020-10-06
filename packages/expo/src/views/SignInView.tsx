@@ -1,17 +1,16 @@
-import { selectDarkMode, authenticate } from '@klonzo/common'
+import { authenticate, selectDarkMode } from '@klonzo/common'
 import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import { Button, Icon, Input } from 'react-native-elements'
 import { useSelector } from 'react-redux'
+import { useHistory } from 'react-router-native'
 
-interface Props {
-  navigation: any
-}
-export default function HomeView({ navigation }: Props) {
+export default function HomeView() {
+  const history = useHistory()
+  const darkMode = useSelector(selectDarkMode)
   const [username, setUsername] = useState('epfromer@gmail.com')
   const [password, setPassword] = useState('')
   const [authFailAlert, setAuthFailAlert] = useState(false)
-  const darkMode = useSelector(selectDarkMode)
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -35,7 +34,7 @@ export default function HomeView({ navigation }: Props) {
 
   const doAuthenticate = () => {
     if (authenticate(username, password)) {
-      navigation.navigate('AppSettingsView')
+      history.push('/AppSettingsView')
     } else {
       setAuthFailAlert(true)
     }

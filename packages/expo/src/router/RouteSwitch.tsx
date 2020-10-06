@@ -10,6 +10,7 @@ import SearchView from '../views/SearchView'
 import SignInView from '../views/SignInView'
 import TreeMapView from '../views/TreeMapView'
 import VolumeTimelineView from '../views/VolumeTimelineView'
+import SearchHistoryView from '../views/SearchHistoryView'
 
 // const GuardedRoute = ({ component: Component, auth, ...rest }: any) => (
 //   <Route
@@ -33,22 +34,11 @@ export default function RouteSwitch() {
       <Route path="/SignInView">
         <SignInView />
       </Route>
-      {/* <GuardedRoute
-        path="/SearchHistoryView"
-        component={SearchHistoryView}
-        auth={authenticated}
-      /> */}
+      <Route path="/SearchHistoryView">
+        <SearchHistoryView />
+      </Route>
       <Route path="/SearchView">
         <SearchView data-testid="switch" />
-      </Route>
-      {/* <Route path="/ChordView">
-        <ChordView />
-      </Route>
-      <Route path="/WordCloudView">
-        <WordCloudView />
-      </Route>
-      <Route path="/EventTimelineView">
-        <EventTimelineView />
       </Route>
       <Route path="/PieView">
         <PieView />
@@ -73,18 +63,10 @@ export default function RouteSwitch() {
       </Route>
       <Route exact path="/">
         <HomeView />
-      </Route> */}
+      </Route>
     </Switch>
   )
 }
-// const GuardedRoute = ({ component: Component, auth, ...rest }: any) => (
-//   <Route
-//     {...rest}
-//     render={(props) =>
-//       auth === true ? <Component {...props} /> : <Redirect to="/SignInView" />
-//     }
-//   />
-// )
 
 // const HomeStack = createStackNavigator()
 // const HomeStackNavi = () => (

@@ -14,6 +14,7 @@ import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
 import RNPickerSelect from 'react-native-picker-select'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-native'
 import PolarECharts from '../components/ECharts/PolarECharts'
 import PolarVictory from '../components/Victory/PolarVictory'
 
@@ -21,8 +22,9 @@ interface Props {
   route: any
   navigation: any
 }
-export default function PolarView({ navigation }: Props) {
+export default function PolarView() {
   const dispatch = useDispatch()
+  const history = useHistory()
   const darkMode = useSelector(selectDarkMode)
   const [isSenders, setIsSenders] = useState(true)
   const [chartLib, setChartLib] = useState('ECharts')
@@ -80,7 +82,7 @@ export default function PolarView({ navigation }: Props) {
     const name = value.slice(0, value.search(/,/))
     dispatch(search === 'from' ? setFrom(name) : setTo(name))
     getEmailAsync()
-    navigation.navigate('SearchView')
+    history.push('/SearchView')
   }
 
   return (

@@ -23,9 +23,9 @@ export default function HomeCard({ image, title, description, link }: Props) {
       color: darkMode ? 'white' : 'black',
     },
     text: {
-      color: darkMode ? 'white' : 'black',
       marginLeft: 10,
       marginBottom: 10,
+      color: darkMode ? 'white' : 'black',
     },
     image: {
       width: '90%',
@@ -39,13 +39,14 @@ export default function HomeCard({ image, title, description, link }: Props) {
     },
   })
 
-  const Separator = () => <View style={styles.separator} />
   return (
     <TouchableOpacity onPress={() => history.push(link)}>
-      <Text style={styles.title}>{title}</Text>
-      <Image source={image} style={styles.image} />
-      <Text style={styles.text}>{description}</Text>
-      <Separator />
+      <View>
+        <Text style={styles.title}>{title}</Text>
+        <Image source={image} style={styles.image} />
+        <Text style={styles.text}>{description}</Text>
+        <View style={styles.separator} />
+      </View>
     </TouchableOpacity>
   )
 }

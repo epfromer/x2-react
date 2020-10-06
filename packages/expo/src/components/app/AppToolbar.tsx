@@ -32,8 +32,8 @@ export default function AppToolbar() {
     />
   )
 
-  console.log(location)
-  // map of pathname to string to display, import from router
+  console.log(location.pathname)
+  // TODO map of pathname to string to display, import from router
 
   return (
     <Header

@@ -20,25 +20,24 @@ import Highlighter from 'react-native-highlight-words'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { useSelector } from 'react-redux'
 import { gql, request } from 'graphql-request'
+import { useHistory, useParams } from 'react-router-native'
 
-interface Props {
-  route: any
-  navigation: any
-}
-export default function EmailDetailView({ route, navigation }: Props) {
+export default function EmailDetailView() {
   const darkMode = useSelector(selectDarkMode)
+  const history = useHistory()
+  const { id } = useParams()
   const [loading, setLoading] = useState(false)
   const [email, setEmail] = useState<Email | null>(null)
-  const cachedEmail = getEmailById(route.params.id)
+  const cachedEmail = getEmailById(id)
   const allText = useSelector(selectAllText)
   const to = useSelector(selectTo)
   const from = useSelector(selectFrom)
   const subject = useSelector(selectSubject)
   const body = useSelector(selectBody)
   const totalEmails = useSelector(selectEmail).length
-  const emailIndex = getEmailIndex(route.params.id)
-  const previousEmailId = getPreviousEmailId(route.params.id)
-  const nextEmailId = getNextEmailId(route.params.id)
+  const emailIndex = getEmailIndex(id)
+  const previousEmailId = getPreviousEmailId(id)
+  const nextEmailId = getNextEmailId(id)
 
   const styles = StyleSheet.create({
     container: {
@@ -136,7 +135,7 @@ export default function EmailDetailView({ route, navigation }: Props) {
           }
         }
       `
-      request(`${server}/graphql/`, query, { id: route.params.id })
+      request(`${server}/graphql/`, query, { id })
         .then((data) => {
           // prevents update if component destroyed before request/fetch completes
           if (isSubscribed) {
@@ -174,7 +173,7 @@ export default function EmailDetailView({ route, navigation }: Props) {
           icon={<Icon name="arrow-back" />}
           onPress={() => {
             previousEmailId &&
-              navigation.navigate('EmailDetail', { id: previousEmailId })
+              history.push('/EmailDetail', { id: previousEmailId })
           }}
         />
         <Text style={styles.text}>
@@ -185,8 +184,7 @@ export default function EmailDetailView({ route, navigation }: Props) {
           disabled={!nextEmailId}
           icon={<Icon name="arrow-forward" />}
           onPress={() => {
-            nextEmailId &&
-              navigation.navigate('EmailDetail', { id: nextEmailId })
+            nextEmailId && history.push('/EmailDetail', { id: nextEmailId })
           }}
         />
       </View>

@@ -18,11 +18,10 @@ import {
 } from 'react-native'
 import { Button } from 'react-native-elements'
 import { useSelector } from 'react-redux'
+import { useHistory } from 'react-router-native'
 
-interface Props {
-  navigation: any
-}
-export default function SearchHistoryView({ navigation }: Props) {
+export default function SearchHistoryView() {
+  const history = useHistory()
   const darkMode = useSelector(selectDarkMode)
   const searchHistory = useSelector(selectSearchHistory)
 
@@ -68,7 +67,7 @@ export default function SearchHistoryView({ navigation }: Props) {
   const onSearchHistory = (entry: string) => {
     searchHistoryExecute(entry)
     getEmailAsync()
-    navigation.navigate('SearchView')
+    history.push('/SearchView')
   }
 
   const renderItem = ({ item }: any) => (

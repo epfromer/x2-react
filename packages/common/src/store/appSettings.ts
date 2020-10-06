@@ -1,6 +1,9 @@
 import AsyncStorage from '@react-native-community/async-storage'
 import { setDarkMode, store } from './index'
 
+// TODO - get dark mode from OS
+// do in expo, web and store in redux so don't include lib here
+
 export async function loadAppSettingsAsync() {
   try {
     let darkMode = false

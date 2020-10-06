@@ -12,18 +12,17 @@ import {
 import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
-import RNPickerSelect from 'react-native-picker-select'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-native'
+import ChartPicker from '../components/ChartPicker'
 import BarECharts from '../components/ECharts/BarECharts'
 import BarHighcharts from '../components/Highcharts/BarHighcharts'
 import BarVictory from '../components/Victory/BarVictory'
+import XmitTypePicker from '../components/XmitTypePicker'
 
-interface Props {
-  route: any
-  navigation: any
-}
-export default function BarView({ navigation }: Props) {
+export default function BarView() {
   const dispatch = useDispatch()
+  const history = useHistory()
   const darkMode = useSelector(selectDarkMode)
   const [isSenders, setIsSenders] = useState(true)
   const [chartLib, setChartLib] = useState('ECharts')
@@ -53,35 +52,12 @@ export default function BarView({ navigation }: Props) {
     },
   })
 
-  const pickerSelectStyles = StyleSheet.create({
-    inputIOS: {
-      fontSize: 16,
-      paddingVertical: 12,
-      paddingHorizontal: 10,
-      borderWidth: 1,
-      borderColor: 'gray',
-      borderRadius: 4,
-      color: darkMode ? 'white' : 'black',
-      paddingRight: 30, // to ensure the text is never behind the icon
-    },
-    inputAndroid: {
-      fontSize: 16,
-      paddingHorizontal: 10,
-      paddingVertical: 8,
-      borderWidth: 0.5,
-      borderColor: 'purple',
-      borderRadius: 8,
-      color: darkMode ? 'white' : 'black',
-      paddingRight: 30, // to ensure the text is never behind the icon
-    },
-  })
-
   function handleClick(search: string, value: string) {
     dispatch(clearSearch())
     const name = value.slice(0, value.search(/,/))
     dispatch(search === 'from' ? setFrom(name) : setTo(name))
     getEmailAsync()
-    navigation.navigate('SearchView')
+    history.push('/SearchView')
   }
 
   return (
@@ -151,27 +127,8 @@ export default function BarView({ navigation }: Props) {
           )}
         </>
       )}
-      <RNPickerSelect
-        value={isSenders ? 'Senders' : 'Receivers'}
-        touchableWrapperProps={{ testID: 'xmit-picker' }}
-        style={pickerSelectStyles}
-        onValueChange={(value) => setIsSenders(value === 'Senders')}
-        items={[
-          { label: 'Senders', value: 'Senders' },
-          { label: 'Receivers', value: 'Receivers' },
-        ]}
-      />
-      <RNPickerSelect
-        value={chartLib}
-        touchableWrapperProps={{ testID: 'chartlib-picker' }}
-        style={pickerSelectStyles}
-        onValueChange={(value) => setChartLib(value)}
-        items={[
-          { label: 'ECharts', value: 'ECharts' },
-          { label: 'Highcharts', value: 'Highcharts' },
-          { label: 'Victory', value: 'Victory' },
-        ]}
-      />
+      <XmitTypePicker onChange={(value) => setIsSenders(value === 'Senders')} />
+      <ChartPicker onChange={(value) => setChartLib(value)} />
     </SafeAreaView>
   )
 }

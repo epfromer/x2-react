@@ -36,11 +36,13 @@ import Spinner from 'react-native-loading-spinner-overlay'
 import Modal from 'react-native-modal'
 import DateTimePickerModal from 'react-native-modal-datetime-picker'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-native'
 
 const FILTER_DATE = '2000-10-04'
 
 export default function SearchView() {
   const dispatch = useDispatch()
+  const history = useHistory()
   const darkMode = useSelector(selectDarkMode)
   const allText = useSelector(selectAllText)
   const from = useSelector(selectFrom)
@@ -269,7 +271,7 @@ export default function SearchView() {
 
   const renderItem = ({ item }: any) => (
     <TouchableOpacity
-      onPress={() => navigation.navigate('EmailDetail', { id: item.id })}
+      onPress={() => history.push('EmailDetail', { id: item.id })}
     >
       <View style={styles.itemContainer}>
         <View style={styles.spaceBetweenRow}>
@@ -340,7 +342,7 @@ export default function SearchView() {
       )}
       <Button
         buttonStyle={styles.historyButton}
-        onPress={() => navigation.navigate('SearchHistoryView')}
+        onPress={() => history.push('/SearchHistoryView')}
         title="Search History"
       />
     </SafeAreaView>

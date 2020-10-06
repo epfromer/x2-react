@@ -12,12 +12,13 @@ import {
 import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
-import RNPickerSelect from 'react-native-picker-select'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-native'
+import ChartPicker from '../components/ChartPicker'
 import PieECharts from '../components/ECharts/PieECharts'
 import PieHighcharts from '../components/Highcharts/PieHighcharts'
 import PieVictory from '../components/Victory/PieVictory'
-import { useHistory } from 'react-router-native'
+import XmitTypePicker from '../components/XmitTypePicker'
 
 export default function PieView() {
   const dispatch = useDispatch()
@@ -33,6 +34,7 @@ export default function PieView() {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
+      backgroundColor: darkMode ? '#222222' : 'white',
     },
     loading: {
       position: 'absolute',
@@ -48,29 +50,6 @@ export default function PieView() {
     },
     itemStyle: {
       color: darkMode ? 'white' : 'black',
-    },
-  })
-
-  const pickerSelectStyles = StyleSheet.create({
-    inputIOS: {
-      fontSize: 16,
-      paddingVertical: 12,
-      paddingHorizontal: 10,
-      borderWidth: 1,
-      borderColor: 'gray',
-      borderRadius: 4,
-      color: darkMode ? 'white' : 'black',
-      paddingRight: 30, // to ensure the text is never behind the icon
-    },
-    inputAndroid: {
-      fontSize: 16,
-      paddingHorizontal: 10,
-      paddingVertical: 8,
-      borderWidth: 0.5,
-      borderColor: 'purple',
-      borderRadius: 8,
-      color: darkMode ? 'white' : 'black',
-      paddingRight: 30, // to ensure the text is never behind the icon
     },
   })
 
@@ -149,27 +128,8 @@ export default function PieView() {
           )}
         </>
       )}
-      <RNPickerSelect
-        value={isSenders ? 'Senders' : 'Receivers'}
-        touchableWrapperProps={{ testID: 'xmit-picker' }}
-        style={pickerSelectStyles}
-        onValueChange={(value) => setIsSenders(value === 'Senders')}
-        items={[
-          { label: 'Senders', value: 'Senders' },
-          { label: 'Receivers', value: 'Receivers' },
-        ]}
-      />
-      <RNPickerSelect
-        value={chartLib}
-        touchableWrapperProps={{ testID: 'chartlib-picker' }}
-        style={pickerSelectStyles}
-        onValueChange={(value) => setChartLib(value)}
-        items={[
-          { label: 'ECharts', value: 'ECharts' },
-          { label: 'Highcharts', value: 'Highcharts' },
-          { label: 'Victory', value: 'Victory' },
-        ]}
-      />
+      <XmitTypePicker onChange={(value) => setIsSenders(value === 'Senders')} />
+      <ChartPicker onChange={(value) => setChartLib(value)} />
     </SafeAreaView>
   )
 }
