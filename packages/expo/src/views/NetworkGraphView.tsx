@@ -11,9 +11,9 @@ import {
 import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import Spinner from 'react-native-loading-spinner-overlay'
-import RNPickerSelect from 'react-native-picker-select'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-native'
+import ChartPicker from '../components/ChartPicker'
 import NetworkGraphECharts from '../components/ECharts/NetworkGraphECharts'
 
 export default function NetworkGraphView() {
@@ -28,44 +28,7 @@ export default function NetworkGraphView() {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-    },
-    loading: {
-      position: 'absolute',
-      left: 0,
-      right: 0,
-      top: 0,
-      bottom: 0,
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    picker: {
-      height: 150,
-    },
-    itemStyle: {
-      color: darkMode ? 'white' : 'black',
-    },
-  })
-
-  const pickerSelectStyles = StyleSheet.create({
-    inputIOS: {
-      fontSize: 16,
-      paddingVertical: 12,
-      paddingHorizontal: 10,
-      borderWidth: 1,
-      borderColor: 'gray',
-      borderRadius: 4,
-      color: darkMode ? 'white' : 'black',
-      paddingRight: 30, // to ensure the text is never behind the icon
-    },
-    inputAndroid: {
-      fontSize: 16,
-      paddingHorizontal: 10,
-      paddingVertical: 8,
-      borderWidth: 0.5,
-      borderColor: 'purple',
-      borderRadius: 8,
-      color: darkMode ? 'white' : 'black',
-      paddingRight: 30, // to ensure the text is never behind the icon
+      backgroundColor: darkMode ? '#222222' : 'white',
     },
   })
 
@@ -93,12 +56,9 @@ export default function NetworkGraphView() {
           )}
         </>
       )}
-      <RNPickerSelect
-        value={chartLib}
-        touchableWrapperProps={{ testID: 'chartlib-picker' }}
-        style={pickerSelectStyles}
-        onValueChange={(value) => setChartLib(value)}
-        items={[{ label: 'ECharts', value: 'ECharts' }]}
+      <ChartPicker
+        onChange={(value) => setChartLib(value)}
+        chartNames={['ECharts']}
       />
     </SafeAreaView>
   )
