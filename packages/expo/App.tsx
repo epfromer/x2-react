@@ -5,13 +5,14 @@ import {
   store,
 } from '@klonzo/common'
 import React from 'react'
-import { ThemeProvider } from 'react-native-elements'
+import { Button, ThemeProvider } from 'react-native-elements'
 import 'react-native-gesture-handler'
 import { Provider } from 'react-redux'
 import { BackButton, NativeRouter as Router } from 'react-router-native'
 import AppTopToolbar from './src/components/app/AppTopToolbar'
 import AppBottomToolbar from './src/components/app/AppBottomToolbar'
 import RouteSwitch from './src/router/RouteSwitch'
+import { Appearance } from 'react-native'
 
 getInitialDataAsync()
 getEmailAsync()
@@ -21,6 +22,25 @@ loadAppSettingsAsync()
 // TODO
 // console.log(Appearance.getColorScheme())
 
+const theme = {
+  // https://reactnativeelements.com/docs/button
+  Button: {
+    titleStyle: {
+      color: 'black',
+      backgroundColor: 'red',
+    },
+    buttonStyle: {
+      backgroundColor: 'purple',
+    },
+  },
+  // https://reactnativeelements.com/docs/header
+  Header: {
+    containerStyle: {
+      backgroundColor: 'orange',
+    },
+  },
+}
+
 {
   /* <ThemeProvider useDark={Appearance.getColorScheme() === 'dark'}> */
 }
@@ -28,9 +48,10 @@ loadAppSettingsAsync()
 export default function App() {
   return (
     <Provider store={store}>
-      <ThemeProvider useDark={true}>
+      <ThemeProvider theme={theme}>
         <Router>
           <AppTopToolbar />
+          <Button title="My Button" />
           <BackButton />
           <RouteSwitch />
           <AppBottomToolbar />

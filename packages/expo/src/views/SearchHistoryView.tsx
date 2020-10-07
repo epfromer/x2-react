@@ -78,7 +78,7 @@ export default function SearchHistoryView() {
       <View style={styles.itemContainer}>
         <View style={styles.spaceBetweenRow}>
           <Text numberOfLines={4} style={styles.text}>
-            {item.timestamp} {item.entry}
+            {item.timestamp.substring(0, 10)} {item.entry}
           </Text>
         </View>
       </View>
