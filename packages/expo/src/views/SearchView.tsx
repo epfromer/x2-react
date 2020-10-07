@@ -61,10 +61,12 @@ export default function SearchView() {
     },
     filterButton: {
       padding: 5,
+      margin: 1,
       height: 60,
     },
     historyButton: {
       padding: 10,
+      margin: 1,
     },
     button: {
       width: 80,

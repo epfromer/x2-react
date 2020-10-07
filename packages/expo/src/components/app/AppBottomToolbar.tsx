@@ -3,7 +3,9 @@ import { Icon } from 'react-native-elements'
 import BottomNavigation, {
   FullTab,
 } from 'react-native-material-bottom-navigation'
-import { useHistory, useLocation } from 'react-router-native'
+import { useHistory } from 'react-router-native'
+
+// https://www.npmjs.com/package/react-native-material-bottom-navigation
 
 export default function AppBottomToolbar() {
   const history = useHistory()
@@ -35,23 +37,22 @@ export default function AppBottomToolbar() {
     },
   ]
 
-  const renderIcon = (icon) => () => (
-    <Icon size={24} color="white" name={icon} />
-  )
-
   const renderTab = ({ tab, isActive }) => (
     <FullTab
       isActive={isActive}
       key={tab.key}
       label={tab.label}
-      renderIcon={renderIcon(tab.icon)}
+      renderIcon={() => <Icon size={24} color="white" name={tab.icon} />}
     />
   )
 
   return (
     <BottomNavigation
       activeTab={activeTab}
-      onTabPress={(tab: any) => history.push(tab.route)}
+      onTabPress={(tab: any) => {
+        history.push(tab.route)
+        setActiveTab(tab.key)
+      }}
       renderTab={renderTab}
       tabs={tabs}
     />

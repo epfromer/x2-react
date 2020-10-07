@@ -1,5 +1,7 @@
+import { selectAuthenticated } from '@klonzo/common'
 import React from 'react'
-import { Route, Switch } from 'react-router-native'
+import { useSelector } from 'react-redux'
+import { Redirect, Route, Switch } from 'react-router-native'
 import AppSettingsView from '../views/AppSettingsView'
 import BarView from '../views/BarView'
 import EmailDetailView from '../views/EmailDetailView'
@@ -13,14 +15,16 @@ import SignInView from '../views/SignInView'
 import TreeMapView from '../views/TreeMapView'
 import VolumeTimelineView from '../views/VolumeTimelineView'
 
-// const GuardedRoute = ({ component: Component, auth, ...rest }: any) => (
-//   <Route
-//     {...rest}
-//     render={(props) =>
-//       auth === true ? <Component {...props} /> : <Redirect to="/SignInView" />
-//     }
-//   />
-// )
+// https://reactrouter.com/native/guides/quick-start
+
+const GuardedRoute = ({ component: Component, auth, ...rest }: any) => (
+  <Route
+    {...rest}
+    render={(props) =>
+      auth === true ? <Component {...props} /> : <Redirect to="/SignInView" />
+    }
+  />
+)
 
 export const routeNames = {
   '/AppSettingsView': 'Settings',
@@ -37,18 +41,15 @@ export const routeNames = {
 }
 
 export default function RouteSwitch() {
-  // const authenticated = useSelector(selectAuthenticated)
+  const authenticated = useSelector(selectAuthenticated)
 
   return (
     <Switch>
-      {/* <GuardedRoute
+      <GuardedRoute
         path="/AppSettingsView"
         component={AppSettingsView}
         auth={authenticated}
-      /> */}
-      <Route path="/AppSettingsView">
-        <AppSettingsView />
-      </Route>
+      />
       <Route path="/SignInView">
         <SignInView />
       </Route>

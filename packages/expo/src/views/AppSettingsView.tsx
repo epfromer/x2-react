@@ -6,12 +6,14 @@ import {
 } from '@klonzo/common'
 import React from 'react'
 import { SafeAreaView, StyleSheet, Switch, Text, View } from 'react-native'
+import { Button } from 'react-native-elements'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-native'
 import CustodianSettings from '../components/CustodianSettings'
 import Gravatar from '../components/Gravatar'
-import { Button } from 'react-native-elements'
 
 export default function AppSettingsView() {
+  const history = useHistory()
   const dispatch = useDispatch()
   const darkMode = useSelector(selectDarkMode)
   const username = useSelector(selectUsername)
@@ -19,6 +21,7 @@ export default function AppSettingsView() {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
+      backgroundColor: darkMode ? '#222222' : 'white',
     },
     text: {
       marginTop: 5,
@@ -50,7 +53,7 @@ export default function AppSettingsView() {
         testID="sign-out"
         onPress={() => {
           signOut()
-          // navigation.navigate('HomeView')
+          history.push('/')
         }}
         title="Sign Out"
       />

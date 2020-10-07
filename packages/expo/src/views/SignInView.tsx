@@ -14,8 +14,7 @@ export default function HomeView() {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      flexDirection: 'row',
-      justifyContent: 'space-between',
+      backgroundColor: darkMode ? '#222222' : 'white',
     },
     label: {
       color: darkMode ? 'white' : 'black',
@@ -44,7 +43,7 @@ export default function HomeView() {
   // https://reactnative.dev/docs/textinput.html
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <Input
         label="Email address"
         keyboardType="email-address"

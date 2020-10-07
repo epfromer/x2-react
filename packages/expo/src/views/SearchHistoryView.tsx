@@ -26,15 +26,18 @@ export default function SearchHistoryView() {
   const searchHistory = useSelector(selectSearchHistory)
 
   const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: darkMode ? '#222222' : 'white',
+    },
     bold: {
       fontSize: 15,
       fontWeight: 'bold',
       color: darkMode ? 'white' : 'black',
     },
-    container: {
-      flex: 1,
-    },
+
     historyButton: {
+      margin: 1,
       padding: 10,
     },
     itemContainer: {
