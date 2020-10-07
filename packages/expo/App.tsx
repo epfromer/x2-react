@@ -48,10 +48,9 @@ const theme = {
 export default function App() {
   return (
     <Provider store={store}>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme} useDark={true}>
         <Router>
           <AppTopToolbar />
-          <Button title="My Button" />
           <BackButton />
           <RouteSwitch />
           <AppBottomToolbar />

@@ -54,6 +54,7 @@ export default function SearchView() {
   const emails = useSelector(selectEmail)
   const totalEmails = useSelector(selectEmailTotal)
   const emailListPage = useSelector(selectEmailListPage)
+
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -63,6 +64,7 @@ export default function SearchView() {
       padding: 5,
       margin: 1,
       height: 60,
+      fooColor: '#080808',
     },
     historyButton: {
       padding: 10,
