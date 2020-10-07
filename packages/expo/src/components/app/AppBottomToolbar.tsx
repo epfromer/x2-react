@@ -30,7 +30,7 @@ export default function AppBottomToolbar() {
       icon: 'settings',
       label: 'Settings',
       barColor: '#2196f3',
-      route: '/',
+      route: '/AppSettingsView',
       pressColor: 'rgba(255, 255, 255, 0.16)',
     },
   ]
@@ -51,7 +51,7 @@ export default function AppBottomToolbar() {
   return (
     <BottomNavigation
       activeTab={activeTab}
-      onTabPress={(tab) => console.log(tab)}
+      onTabPress={(tab: any) => history.push(tab.route)}
       renderTab={renderTab}
       tabs={tabs}
     />
