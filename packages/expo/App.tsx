@@ -9,7 +9,8 @@ import { ThemeProvider } from 'react-native-elements'
 import 'react-native-gesture-handler'
 import { Provider } from 'react-redux'
 import { BackButton, NativeRouter as Router } from 'react-router-native'
-import AppToolbar from './src/components/app/AppToolbar'
+import AppTopToolbar from './src/components/app/AppTopToolbar'
+import AppBottomToolbar from './src/components/app/AppBottomToolbar'
 import RouteSwitch from './src/router/RouteSwitch'
 
 getInitialDataAsync()
@@ -29,9 +30,10 @@ export default function App() {
     <Provider store={store}>
       <ThemeProvider useDark={true}>
         <Router>
-          <AppToolbar />
+          <AppTopToolbar />
           <BackButton />
           <RouteSwitch />
+          <AppBottomToolbar />
         </Router>
       </ThemeProvider>
     </Provider>

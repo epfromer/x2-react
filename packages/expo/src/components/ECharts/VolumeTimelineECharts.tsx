@@ -16,17 +16,10 @@ interface Props {
   handleClick: (date: string) => void
 }
 export default function VolumeTimelineECharts({ title, data }: Props) {
-  // function onData(name: string) {
-  //   console.log(name)
-  //   // data[0].handleClick(search, name)
-  // }
-
-  console.log(data[0])
-
   return (
     <ECharts
-      onData={() => console.log('foo')}
-      additionalCode={`chart.on('click', p => sendData(p));`}
+      onData={(p) => console.log(p)}
+      additionalCode={`chart.on('click', p => sendData(p.data.name));`}
       backgroundColor={useSelector(selectDarkMode) ? 'black' : 'white'}
       option={getVolumeTimelineEChartsConfig(
         useSelector(selectDarkMode),

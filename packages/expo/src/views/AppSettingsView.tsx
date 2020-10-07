@@ -11,11 +11,7 @@ import CustodianSettings from '../components/CustodianSettings'
 import Gravatar from '../components/Gravatar'
 import { Button } from 'react-native-elements'
 
-interface Props {
-  route: any
-  navigation: any
-}
-export default function AppSettingsView({ navigation }: Props) {
+export default function AppSettingsView() {
   const dispatch = useDispatch()
   const darkMode = useSelector(selectDarkMode)
   const username = useSelector(selectUsername)
@@ -54,7 +50,7 @@ export default function AppSettingsView({ navigation }: Props) {
         testID="sign-out"
         onPress={() => {
           signOut()
-          navigation.navigate('HomeView')
+          // navigation.navigate('HomeView')
         }}
         title="Sign Out"
       />

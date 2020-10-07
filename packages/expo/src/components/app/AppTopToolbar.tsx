@@ -1,9 +1,9 @@
 import React from 'react'
-import { Header, Button, Icon } from 'react-native-elements'
-import { useLocation, useHistory } from 'react-router-native'
+import { Button, Header, Icon } from 'react-native-elements'
+import { useHistory, useLocation } from 'react-router-native'
 import { routeNames } from '../../router/RouteSwitch'
 
-export default function AppToolbar() {
+export default function AppTopToolbar() {
   const location = useLocation()
   const history = useHistory()
 
@@ -21,8 +21,7 @@ export default function AppToolbar() {
     />
   )
 
-  console.log(location.pathname)
-  // TODO map of pathname to string to display, import from router
+  // console.log(location.pathname)
 
   return (
     <Header
@@ -30,7 +29,7 @@ export default function AppToolbar() {
       leftComponent={<GoBackIconButton />}
       centerComponent={{
         text: routeNames[location.pathname],
-        style: { color: 'white' },
+        style: { color: 'white', fontSize: 20 },
       }}
       rightComponent={<HomeIconButton />}
     />

@@ -1,16 +1,17 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-native'
+import AppSettingsView from '../views/AppSettingsView'
 import BarView from '../views/BarView'
 import EmailDetailView from '../views/EmailDetailView'
 import HomeView from '../views/HomeView'
 import NetworkGraphView from '../views/NetworkGraphView'
 import PieView from '../views/PieView'
 import PolarView from '../views/PolarView'
+import SearchHistoryView from '../views/SearchHistoryView'
 import SearchView from '../views/SearchView'
 import SignInView from '../views/SignInView'
 import TreeMapView from '../views/TreeMapView'
 import VolumeTimelineView from '../views/VolumeTimelineView'
-import SearchHistoryView from '../views/SearchHistoryView'
 
 // const GuardedRoute = ({ component: Component, auth, ...rest }: any) => (
 //   <Route
@@ -45,6 +46,9 @@ export default function RouteSwitch() {
         component={AppSettingsView}
         auth={authenticated}
       /> */}
+      <Route path="/AppSettingsView">
+        <AppSettingsView />
+      </Route>
       <Route path="/SignInView">
         <SignInView />
       </Route>
@@ -81,57 +85,6 @@ export default function RouteSwitch() {
     </Switch>
   )
 }
-
-// const HomeStack = createStackNavigator()
-// const HomeStackNavi = () => (
-//   <HomeStack.Navigator initialRouteName="Home">
-//     <HomeStack.Screen
-//       name="PieView"
-//       component={PieView}
-//       options={{ title: 'Pie' }}
-//     />
-//     <HomeStack.Screen
-//       name="BarView"
-//       component={BarView}
-//       options={{ title: 'Bar' }}
-//     />
-//     <HomeStack.Screen
-//       name="NetworkGraphView"
-//       component={NetworkGraphView}
-//       options={{ title: 'Network Graph' }}
-//     />
-//     <HomeStack.Screen
-//       name="PolarView"
-//       component={PolarView}
-//       options={{ title: 'Polar' }}
-//     />
-//     <HomeStack.Screen
-//       name="TreeMapView"
-//       component={TreeMapView}
-//       options={{ title: 'Tree Map' }}
-//     />
-//     <HomeStack.Screen
-//       name="VolumeTimelineView"
-//       component={VolumeTimelineView}
-//       options={{ title: 'Volume Timeline' }}
-//     />
-//     <HomeStack.Screen
-//       name="Home"
-//       component={HomeView}
-//       options={{ title: 'x2 Home' }}
-//     />
-//     <HomeStack.Screen
-//       name="SearchView"
-//       component={SearchView}
-//       options={{ title: 'Search' }}
-//     />
-//     <HomeStack.Screen
-//       name="EmailDetail"
-//       component={EmailDetailView}
-//       options={{ title: 'Email Detail' }}
-//     />
-//   </HomeStack.Navigator>
-// )
 
 // const SearchStack = createStackNavigator()
 // const SearchStackNavi = () => (
