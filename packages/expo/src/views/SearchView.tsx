@@ -57,6 +57,7 @@ export default function SearchView() {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
+      backgroundColor: darkMode ? '#222222' : 'white',
     },
     filterButton: {
       padding: 5,
@@ -154,7 +155,7 @@ export default function SearchView() {
         <SentDatePicker />
         <KeyboardAvoidingView
           style={styles.container}
-          behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         >
           <Input
             label="Filter (all text fields)"
@@ -271,7 +272,7 @@ export default function SearchView() {
 
   const renderItem = ({ item }: any) => (
     <TouchableOpacity
-      onPress={() => history.push('EmailDetail', { id: item.id })}
+      onPress={() => history.push(`/EmailDetailView/${item.id}`)}
     >
       <View style={styles.itemContainer}>
         <View style={styles.spaceBetweenRow}>
