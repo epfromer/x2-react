@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Icon } from 'react-native-elements'
+import React, { useContext, useState } from 'react'
+import { Icon, ThemeContext } from 'react-native-elements'
 import BottomNavigation, {
   FullTab,
 } from 'react-native-material-bottom-navigation'
@@ -10,12 +10,15 @@ import { useHistory } from 'react-router-native'
 export default function AppBottomToolbar() {
   const history = useHistory()
   const [activeTab, setActiveTab] = useState('home')
+  const { theme }: any = useContext(ThemeContext)
+  const barColor = theme.Header.containerStyle.backgroundColor
+
   const tabs = [
     {
       key: 'home',
       icon: 'home',
       label: 'Home',
-      barColor: '#2196f3',
+      barColor,
       route: '/',
       pressColor: 'rgba(255, 255, 255, 0.16)',
     },
@@ -23,7 +26,7 @@ export default function AppBottomToolbar() {
       key: 'search',
       icon: 'search',
       label: 'Search',
-      barColor: '#2196f3',
+      barColor,
       route: '/SearchView',
       pressColor: 'rgba(255, 255, 255, 0.16)',
     },
@@ -31,7 +34,7 @@ export default function AppBottomToolbar() {
       key: 'settings',
       icon: 'settings',
       label: 'Settings',
-      barColor: '#2196f3',
+      barColor,
       route: '/AppSettingsView',
       pressColor: 'rgba(255, 255, 255, 0.16)',
     },

@@ -39,7 +39,6 @@ export default function CustodianSettings() {
       justifyContent: 'space-between',
       marginLeft: 10,
       marginRight: 10,
-      marginTop: 10,
     },
   })
 

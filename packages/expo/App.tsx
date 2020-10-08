@@ -2,60 +2,64 @@ import {
   getEmailAsync,
   getInitialDataAsync,
   loadAppSettingsAsync,
+  selectDarkMode,
   store,
 } from '@klonzo/common'
 import React from 'react'
-import { Button, ThemeProvider } from 'react-native-elements'
+import { ThemeProvider } from 'react-native-elements'
 import 'react-native-gesture-handler'
-import { Provider } from 'react-redux'
+import { Provider, useSelector } from 'react-redux'
 import { BackButton, NativeRouter as Router } from 'react-router-native'
-import AppTopToolbar from './src/components/app/AppTopToolbar'
 import AppBottomToolbar from './src/components/app/AppBottomToolbar'
+import AppTopToolbar from './src/components/app/AppTopToolbar'
 import RouteSwitch from './src/router/RouteSwitch'
-import { Appearance } from 'react-native'
 
 getInitialDataAsync()
 getEmailAsync()
-// TODO - get dark mode from OS
+// TODO - get initial dark mode from OS
 loadAppSettingsAsync()
 
-// TODO
-// console.log(Appearance.getColorScheme())
+// TODO 1. clean up all references to color to reference theme
+// TODO 2. create a few themes, theme chooser in settings as in web (checkboxes)
+// TODO 3. do same in web
 
-const theme = {
+const purple = {
   // https://reactnativeelements.com/docs/button
   Button: {
-    titleStyle: {
-      color: 'black',
-      backgroundColor: 'red',
-    },
     buttonStyle: {
-      backgroundColor: 'purple',
+      backgroundColor: '#6a1b9a',
     },
   },
   // https://reactnativeelements.com/docs/header
   Header: {
     containerStyle: {
-      backgroundColor: 'orange',
+      backgroundColor: '#38006b',
     },
   },
 }
 
-{
-  /* <ThemeProvider useDark={Appearance.getColorScheme() === 'dark'}> */
+/* <ThemeProvider useDark={Appearance.getColorScheme() === 'dark'}> */
+
+// TODO - change dark mode doesn't update theme; fixed in 3.0
+
+function ThemedApp() {
+  console.log(useSelector(selectDarkMode))
+  return (
+    <ThemeProvider theme={purple} useDark={useSelector(selectDarkMode)}>
+      <Router>
+        <AppTopToolbar />
+        <BackButton />
+        <RouteSwitch />
+        <AppBottomToolbar />
+      </Router>
+    </ThemeProvider>
+  )
 }
 
 export default function App() {
   return (
     <Provider store={store}>
-      <ThemeProvider theme={theme} useDark={true}>
-        <Router>
-          <AppTopToolbar />
-          <BackButton />
-          <RouteSwitch />
-          <AppBottomToolbar />
-        </Router>
-      </ThemeProvider>
+      <ThemedApp />
     </Provider>
   )
 }

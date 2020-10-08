@@ -64,7 +64,6 @@ export default function SearchView() {
       padding: 5,
       margin: 1,
       height: 60,
-      fooColor: '#080808',
     },
     historyButton: {
       padding: 10,

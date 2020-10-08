@@ -5,7 +5,7 @@ import {
   signOut,
 } from '@klonzo/common'
 import React from 'react'
-import { SafeAreaView, StyleSheet, Switch, Text, View } from 'react-native'
+import { SafeAreaView, ScrollView, StyleSheet, Switch, Text, View } from 'react-native'
 import { Button } from 'react-native-elements'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-native'
@@ -32,6 +32,10 @@ export default function AppSettingsView() {
       justifyContent: 'space-between',
       alignItems: 'center',
       margin: 10,
+    },
+    header: {
+      marginLeft: 10,
+      fontSize: 20,
     },
   })
 
@@ -61,10 +65,12 @@ export default function AppSettingsView() {
   )
 
   return (
-    <SafeAreaView style={styles.container}>
+    <ScrollView style={styles.container}>
       <SignOutButton />
       <DarkModeSwitch />
+      <Text style={styles.header}>Custodian Colors</Text>
       <CustodianSettings />
-    </SafeAreaView>
+      <Text style={styles.header}>App Theme Colors</Text>
+    </ScrollView>
   )
 }
