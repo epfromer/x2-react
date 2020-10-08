@@ -1,7 +1,7 @@
 import { EmailSentByDay } from '../store/types'
 
 export function getVolumeTimeHighchartsConfig(
-  darkMode: boolean,
+  textColor = 'black',
   title: string,
   data: Array<EmailSentByDay>,
   backgroundColor: string,
@@ -20,14 +20,14 @@ export function getVolumeTimeHighchartsConfig(
     title: {
       text: title,
       style: {
-        color: darkMode ? 'white' : 'black',
+        color: textColor,
       },
     },
     xAxis: {
       labels: {
         overflow: 'justify',
         style: {
-          color: darkMode ? 'white' : 'black',
+          color: textColor,
         },
       },
       type: 'datetime',
@@ -36,7 +36,7 @@ export function getVolumeTimeHighchartsConfig(
       labels: {
         overflow: 'justify',
         style: {
-          color: darkMode ? 'white' : 'black',
+          color: textColor,
         },
       },
       title: {

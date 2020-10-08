@@ -37,29 +37,29 @@ const emailSentData: Array<EmailSentByDay> = [
 ]
 
 test('getBarEChartsConfig', () => {
-  expect(getBarEChartsConfig(true, 'foo', emailXfered, {})).toBeTruthy()
+  expect(getBarEChartsConfig('black', 'foo', emailXfered, {})).toBeTruthy()
 })
 
 test('getNetworkGraphEChartsConfig', () => {
   expect(
-    getNetworkGraphEChartsConfig(true, 'foo', networkData, networkNodes)
+    getNetworkGraphEChartsConfig('black', 'foo', networkData, networkNodes)
   ).toBeTruthy()
 })
 
 test('getPieEChartsConfig', () => {
-  expect(getPieEChartsConfig(true, 'foo', emailXfered)).toBeTruthy()
+  expect(getPieEChartsConfig('black', 'foo', emailXfered)).toBeTruthy()
 })
 
 test('getPolarEChartsConfig', () => {
-  expect(getPolarEChartsConfig(true, 'foo', emailXfered)).toBeTruthy()
+  expect(getPolarEChartsConfig('black', 'foo', emailXfered)).toBeTruthy()
 })
 
 test('getTreeMapEChartsConfig', () => {
-  expect(getTreeMapEChartsConfig(true, 'foo', emailXfered)).toBeTruthy()
+  expect(getTreeMapEChartsConfig('black', 'foo', emailXfered)).toBeTruthy()
 })
 
 test('getVolumeTimelineEChartsConfig', () => {
   expect(
-    getVolumeTimelineEChartsConfig(true, 'foo', emailSentData)
+    getVolumeTimelineEChartsConfig('black', 'foo', emailSentData)
   ).toBeTruthy()
 })

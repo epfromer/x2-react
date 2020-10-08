@@ -1,7 +1,6 @@
-import { selectDarkMode } from '@klonzo/common'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { ThemeContext } from 'react-native-elements'
 import RNPickerSelect from 'react-native-picker-select'
-import { useSelector } from 'react-redux'
 import getPickerStyles from '../common/pickerStyles'
 
 interface Props {
@@ -14,8 +13,12 @@ export default function ChartPicker({
   onChange,
   chartNames = ['ECharts', 'Highcharts', 'Victory'],
 }: Props) {
-  const darkMode = useSelector(selectDarkMode)
-  const pickerStyles = getPickerStyles(darkMode)
+  const { theme }: any = useContext(ThemeContext)
+  const pickerStyles = getPickerStyles(
+    theme.colors.black,
+    theme.Button.buttonStyle.backgroundColor,
+    theme.colors.gray
+  )
   const [chartLib, setChartLib] = useState(initialValue)
 
   return (

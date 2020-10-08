@@ -1,5 +1,5 @@
 export function getNetworkGraphEChartsConfig(
-  darkMode: boolean,
+  textColor = 'black',
   title: string,
   data: Array<[string, string, number]>,
   nodes: Array<any>
@@ -37,7 +37,7 @@ export function getNetworkGraphEChartsConfig(
       top: 20,
       left: 'center',
       textStyle: {
-        color: darkMode ? 'white' : 'black',
+        color: textColor,
       },
     },
     tooltip: {},
@@ -46,7 +46,7 @@ export function getNetworkGraphEChartsConfig(
         bottom: 0,
         data: chartNodes.map((a) => a.name),
         textStyle: {
-          color: darkMode ? 'white' : 'black',
+          color: textColor,
         },
       },
     ],

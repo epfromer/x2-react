@@ -1,11 +1,9 @@
-import { selectDarkMode } from '@klonzo/common'
 import Slider from '@react-native-community/slider'
-import React from 'react'
+import React, { useContext } from 'react'
 import { StyleSheet } from 'react-native'
 import { ColorPicker } from 'react-native-color-picker'
-import { Button } from 'react-native-elements'
+import { Button, ThemeContext } from 'react-native-elements'
 import Modal from 'react-native-modal'
-import { useSelector } from 'react-redux'
 
 interface Props {
   open: boolean
@@ -19,7 +17,7 @@ export default function ColorPickerDlg({
   onClose,
   onCancel,
 }: Props) {
-  const darkMode = useSelector(selectDarkMode)
+  const { theme }: any = useContext(ThemeContext)
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -34,11 +32,9 @@ export default function ColorPickerDlg({
     <Modal
       isVisible={open}
       backdropOpacity={0.95}
-      backdropColor={darkMode ? 'black' : 'white'}
+      backdropColor={theme.colors.white}
       supportedOrientations={['portrait', 'landscape']}
     >
-      {/* 
-  // @ts-ignore */}
       <ColorPicker
         onColorSelected={(color: string) => onClose(color)}
         defaultColor={defaultColor}

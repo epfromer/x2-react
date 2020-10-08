@@ -1,15 +1,18 @@
-import { selectDarkMode } from '@klonzo/common'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { ThemeContext } from 'react-native-elements'
 import RNPickerSelect from 'react-native-picker-select'
-import { useSelector } from 'react-redux'
 import getPickerStyles from '../common/pickerStyles'
 
 interface Props {
   onChange: (value: string) => void
 }
 export default function ChartPicker({ onChange }: Props) {
-  const darkMode = useSelector(selectDarkMode)
-  const pickerStyles = getPickerStyles(darkMode)
+  const { theme }: any = useContext(ThemeContext)
+  const pickerStyles = getPickerStyles(
+    theme.colors.black,
+    theme.Button.buttonStyle.backgroundColor,
+    theme.colors.gray
+  )
   const [isSenders, setIsSenders] = useState(true)
 
   return (

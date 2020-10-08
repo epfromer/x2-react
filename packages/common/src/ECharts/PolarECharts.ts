@@ -1,7 +1,7 @@
 import { EmailXferedDatum } from '../store/types'
 
 export function getPolarEChartsConfig(
-  darkMode: boolean,
+  textColor = 'black',
   title: string,
   data: Array<EmailXferedDatum>
 ) {
@@ -18,7 +18,7 @@ export function getPolarEChartsConfig(
       text: title,
       left: 'center',
       textStyle: {
-        color: darkMode ? 'white' : 'black',
+        color: textColor,
       },
     },
     tooltip: {
@@ -29,7 +29,7 @@ export function getPolarEChartsConfig(
       show: true,
       bottom: 0,
       textStyle: {
-        color: darkMode ? 'white' : 'black',
+        color: textColor,
       },
     },
     series: [
@@ -38,11 +38,11 @@ export function getPolarEChartsConfig(
         data: chartData,
         roseType: 'radius',
         label: {
-          color: 'rgba(255, 255, 255, 0.3)',
+          color: textColor,
         },
         labelLine: {
           lineStyle: {
-            color: 'rgba(255, 255, 255, 0.3)',
+            color: textColor,
           },
           smooth: 0.2,
           length: 10,

@@ -6,7 +6,6 @@ import {
   getPreviousEmailId,
   selectAllText,
   selectBody,
-  selectDarkMode,
   selectEmail,
   selectFrom,
   selectSubject,
@@ -14,16 +13,15 @@ import {
   x2Server,
 } from '@klonzo/common'
 import { gql, request } from 'graphql-request'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
-import { Button, Icon } from 'react-native-elements'
+import { Button, Icon, ThemeContext } from 'react-native-elements'
 import Highlighter from 'react-native-highlight-words'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-native'
 
 export default function EmailDetailView() {
-  const darkMode = useSelector(selectDarkMode)
   const history = useHistory()
   const { id } = useParams()
   const [loading, setLoading] = useState(false)
@@ -38,11 +36,12 @@ export default function EmailDetailView() {
   const emailIndex = getEmailIndex(id)
   const previousEmailId = getPreviousEmailId(id)
   const nextEmailId = getNextEmailId(id)
+  const { theme }: any = useContext(ThemeContext)
 
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: darkMode ? '#222222' : 'white',
+      backgroundColor: theme.colors.white,
     },
     emailHeader: {
       justifyContent: 'space-between',
@@ -61,33 +60,33 @@ export default function EmailDetailView() {
       flexDirection: 'row',
     },
     text: {
-      color: darkMode ? 'white' : 'black',
+      color: theme.colors.black,
     },
     title: {
       fontSize: 20,
       paddingLeft: 10,
-      color: darkMode ? 'white' : 'black',
+      color: theme.colors.black,
     },
     fields: {
       fontSize: 15,
       paddingLeft: 10,
       paddingRight: 10,
       fontWeight: 'normal',
-      color: darkMode ? 'white' : 'black',
+      color: theme.colors.black,
     },
     fieldBold: {
       fontSize: 15,
       paddingLeft: 10,
       paddingRight: 10,
       fontWeight: 'bold',
-      color: darkMode ? 'white' : 'black',
+      color: theme.colors.black,
     },
     body: {
       fontSize: 15,
       paddingTop: 10,
       paddingLeft: 10,
       paddingRight: 10,
-      color: darkMode ? 'white' : 'black',
+      color: theme.colors.black,
     },
     loading: {
       position: 'absolute',

@@ -1,7 +1,7 @@
-import { EmailXferedDatum, selectDarkMode } from '@klonzo/common'
-import React from 'react'
+import { EmailXferedDatum } from '@klonzo/common'
+import React, { useContext } from 'react'
 import { StyleSheet, View } from 'react-native'
-import { useSelector } from 'react-redux'
+import { ThemeContext } from 'react-native-elements'
 import {
   VictoryBar,
   VictoryChart,
@@ -17,9 +17,8 @@ interface Props {
   data: Array<EmailXferedDatum>
   handleClick: (search: string, name: string) => void
 }
-
 export default function PolarVictory({ data }: Props) {
-  const darkMode = useSelector(selectDarkMode)
+  const { theme }: any = useContext(ThemeContext)
 
   interface Datum {
     x: string
@@ -42,7 +41,7 @@ export default function PolarVictory({ data }: Props) {
           dependentAxis
           style={{
             tickLabels: {
-              fill: darkMode ? 'white' : 'black',
+              fill: theme.colors.black,
               fontSize: 15,
               padding: 1,
             },
@@ -52,7 +51,7 @@ export default function PolarVictory({ data }: Props) {
           labelPlacement="perpendicular"
           style={{
             tickLabels: {
-              fill: darkMode ? 'white' : 'black',
+              fill: theme.colors.black,
               fontSize: 15,
               padding: 1,
             },

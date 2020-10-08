@@ -2,26 +2,25 @@ import {
   Custodian,
   selectCustodians,
   selectCustodiansLoading,
-  selectDarkMode,
   setCustodians,
   x2Server,
 } from '@klonzo/common'
 import { gql, request } from 'graphql-request'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
-import { Button } from 'react-native-elements'
+import { Button, ThemeContext } from 'react-native-elements'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { useDispatch, useSelector } from 'react-redux'
 import ColorPickerDlg from '../components/ColorPickerDlg'
 
 export default function CustodianSettings() {
   const dispatch = useDispatch()
-  const darkMode = useSelector(selectDarkMode)
   const [colorPickerDlgOpen, setColorPickerDlgOpen] = useState(false)
   const [pickedColor, setPickedColor] = useState('')
   const [custodianId, setCustodianId] = useState('')
   const custodiansLoading = useSelector(selectCustodiansLoading)
   const custodians = useSelector(selectCustodians)
+  const { theme }: any = useContext(ThemeContext)
 
   const styles = StyleSheet.create({
     container: {
@@ -32,7 +31,7 @@ export default function CustodianSettings() {
     },
     text: {
       marginTop: 5,
-      color: darkMode ? 'white' : 'black',
+      color: theme.colors.black,
     },
     itemRow: {
       flexDirection: 'row',

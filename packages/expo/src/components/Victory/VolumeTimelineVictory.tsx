@@ -1,7 +1,7 @@
-import { EmailSentByDay, selectDarkMode } from '@klonzo/common'
-import React, { useState } from 'react'
+import { EmailSentByDay } from '@klonzo/common'
+import React, { useContext, useState } from 'react'
 import { StyleSheet, View } from 'react-native'
-import { useSelector } from 'react-redux'
+import { ThemeContext } from 'react-native-elements'
 import {
   VictoryAxis,
   VictoryChart,
@@ -18,7 +18,7 @@ interface Props {
 }
 
 export default function VolumeTimelineVictory({ data }: Props) {
-  const darkMode = useSelector(selectDarkMode)
+  const { theme }: any = useContext(ThemeContext)
   const [orientation, setOrientation] = useState('portrait')
   const [zoomDomain, setZoomDomain] = useState({
     x: [new Date(1999, 1, 1), new Date(2002, 3, 1)],
@@ -36,6 +36,8 @@ export default function VolumeTimelineVictory({ data }: Props) {
     sent: new Date(datum.sent).getTime(),
     value: datum.total,
   }))
+
+  console.log(theme)
 
   return (
     <View
@@ -66,7 +68,7 @@ export default function VolumeTimelineVictory({ data }: Props) {
         <VictoryAxis
           style={{
             tickLabels: {
-              fill: darkMode ? 'white' : 'black',
+              fill: theme.colors.black,
               fontSize: 8,
               padding: 1,
             },
@@ -76,7 +78,7 @@ export default function VolumeTimelineVictory({ data }: Props) {
           dependentAxis
           style={{
             tickLabels: {
-              fill: darkMode ? 'white' : 'black',
+              fill: theme.colors.black,
               fontSize: 8,
               padding: 1,
             },
@@ -87,7 +89,7 @@ export default function VolumeTimelineVictory({ data }: Props) {
             data: { stroke: '#c43a31' },
             labels: {
               fontSize: 15,
-              fill: darkMode ? 'white' : 'black',
+              fill: theme.colors.black,
             },
           }}
           animate={{

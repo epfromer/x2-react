@@ -1,7 +1,7 @@
 import { EmailXferedDatum } from '../store/types'
 
 export function getTreeMapEChartsConfig(
-  darkMode: boolean,
+  textColor = 'black',
   title: string,
   data: Array<EmailXferedDatum>
 ) {
@@ -18,7 +18,7 @@ export function getTreeMapEChartsConfig(
       text: title,
       left: 'center',
       textStyle: {
-        color: darkMode ? 'white' : 'black',
+        color: textColor,
       },
     },
     tooltip: {

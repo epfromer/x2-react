@@ -1,7 +1,7 @@
 import { EChartsDatum, EmailXferedDatum } from '../store/types'
 
 export function getBarEChartsConfig(
-  darkMode: boolean,
+  textColor = 'black',
   title: string,
   data: Array<EmailXferedDatum>,
   gridConfig: any
@@ -31,7 +31,7 @@ export function getBarEChartsConfig(
       top: 20,
       left: 'center',
       textStyle: {
-        color: darkMode ? 'white' : 'black',
+        color: textColor,
       },
     },
     tooltip: {
@@ -43,13 +43,13 @@ export function getBarEChartsConfig(
     grid: gridConfig,
     xAxis: {
       axisLabel: {
-        color: darkMode ? 'white' : 'black',
+        color: textColor,
       },
     },
     yAxis: {
       data: data.map((datum) => datum.name),
       axisLabel: {
-        color: darkMode ? 'white' : 'black',
+        color: textColor,
       },
     },
     series: [

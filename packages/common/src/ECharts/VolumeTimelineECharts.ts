@@ -1,7 +1,7 @@
 import { EmailSentByDay } from '../store/types'
 
 export function getVolumeTimelineEChartsConfig(
-  darkMode: boolean,
+  textColor = 'black',
   title: string,
   data: Array<EmailSentByDay>
 ) {
@@ -10,7 +10,7 @@ export function getVolumeTimelineEChartsConfig(
       text: title,
       left: 'center',
       textStyle: {
-        color: darkMode ? 'white' : 'black',
+        color: textColor,
       },
     },
     tooltip: {
@@ -40,7 +40,7 @@ export function getVolumeTimelineEChartsConfig(
         show: false,
       },
       axisLabel: {
-        color: darkMode ? 'white' : 'black',
+        color: textColor,
       },
     },
     yAxis: {
@@ -48,7 +48,7 @@ export function getVolumeTimelineEChartsConfig(
         show: false,
       },
       axisLabel: {
-        color: darkMode ? 'white' : 'black',
+        color: textColor,
       },
     },
     series: [

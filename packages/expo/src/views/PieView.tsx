@@ -3,14 +3,14 @@ import {
   getEmailAsync,
   selectCustodians,
   selectCustodiansLoading,
-  selectDarkMode,
   selectEmailReceivers,
   selectEmailSenders,
   setFrom,
   setTo,
 } from '@klonzo/common'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
+import { ThemeContext } from 'react-native-elements'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-native'
@@ -23,18 +23,18 @@ import XmitTypePicker from '../components/XmitTypePicker'
 export default function PieView() {
   const dispatch = useDispatch()
   const history = useHistory()
-  const darkMode = useSelector(selectDarkMode)
   const [isSenders, setIsSenders] = useState(true)
   const [chartLib, setChartLib] = useState('ECharts')
   const custodiansLoading = useSelector(selectCustodiansLoading)
   const custodians = useSelector(selectCustodians)
   const emailSenders = useSelector(selectEmailSenders)
   const emailReceivers = useSelector(selectEmailReceivers)
+  const { theme }: any = useContext(ThemeContext)
 
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: darkMode ? '#222222' : 'white',
+      backgroundColor: theme.colors.white,
     },
   })
 

@@ -1,7 +1,7 @@
 import { EChartsDatum, EmailXferedDatum } from '../store/types'
 
 export function getPieEChartsConfig(
-  darkMode: boolean,
+  textColor = 'black',
   title: string,
   data: Array<EmailXferedDatum>
 ) {
@@ -30,7 +30,7 @@ export function getPieEChartsConfig(
       top: 20,
       left: 'center',
       textStyle: {
-        color: darkMode ? 'white' : 'black',
+        color: textColor,
       },
     },
     tooltip: {

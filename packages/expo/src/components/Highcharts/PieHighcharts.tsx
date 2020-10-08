@@ -1,12 +1,8 @@
 import HighchartsReactNative from '@highcharts/highcharts-react-native'
-import {
-  EmailXferedDatum,
-  selectDarkMode,
-  getPieHighchartsConfig,
-} from '@klonzo/common'
-import React from 'react'
+import { EmailXferedDatum, getPieHighchartsConfig } from '@klonzo/common'
+import React, { useContext } from 'react'
 import { StyleSheet } from 'react-native'
-import { useSelector } from 'react-redux'
+import { ThemeContext } from 'react-native-elements'
 
 // https://www.npmjs.com/package/react-native-echarts-wrapper
 // https://echarts.apache.org/examples/en/index.html#chart-type-pie
@@ -23,16 +19,16 @@ export default function PieHighcharts({
   data,
   handleClick,
 }: Props) {
-  const darkMode = useSelector(selectDarkMode)
+  const { theme }: any = useContext(ThemeContext)
   return (
     <HighchartsReactNative
       styles={styles.container}
       options={getPieHighchartsConfig(
-        darkMode,
+        theme.colors.black,
         title,
         search,
         data,
-        darkMode ? 'black' : 'white',
+        theme.colors.white,
         handleClick
       )}
     />

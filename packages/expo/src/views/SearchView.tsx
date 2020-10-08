@@ -20,7 +20,7 @@ import {
   setSubject,
   setTo,
 } from '@klonzo/common'
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import {
   FlatList,
   KeyboardAvoidingView,
@@ -31,7 +31,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
-import { Button, Icon, Input } from 'react-native-elements'
+import { Button, Icon, Input, ThemeContext } from 'react-native-elements'
 import Spinner from 'react-native-loading-spinner-overlay'
 import Modal from 'react-native-modal'
 import DateTimePickerModal from 'react-native-modal-datetime-picker'
@@ -43,7 +43,7 @@ const FILTER_DATE = '2000-10-04'
 export default function SearchView() {
   const dispatch = useDispatch()
   const history = useHistory()
-  const darkMode = useSelector(selectDarkMode)
+  const { theme }: any = useContext(ThemeContext)
   const allText = useSelector(selectAllText)
   const from = useSelector(selectFrom)
   const to = useSelector(selectTo)
@@ -58,7 +58,7 @@ export default function SearchView() {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: darkMode ? '#222222' : 'white',
+      backgroundColor: theme.colors.white,
     },
     filterButton: {
       padding: 5,
@@ -82,14 +82,14 @@ export default function SearchView() {
     bold: {
       fontSize: 15,
       fontWeight: 'bold',
-      color: darkMode ? 'white' : 'black',
+      color: theme.colors.black,
     },
     topField: {
       marginTop: 15,
-      color: darkMode ? 'white' : 'black',
+      color: theme.colors.black,
     },
     text: {
-      color: darkMode ? 'white' : 'black',
+      color: theme.colors.black,
     },
     loading: {
       margin: 50,
@@ -134,7 +134,7 @@ export default function SearchView() {
       return (
         <DateTimePickerModal
           isVisible={datePickerOpen}
-          isDarkModeEnabled={darkMode}
+          isDarkModeEnabled={useSelector(selectDarkMode)}
           date={initialDate}
           mode="date"
           onConfirm={(date: Date) => {
@@ -152,7 +152,7 @@ export default function SearchView() {
       <Modal
         isVisible={dlgOpen}
         backdropOpacity={0.95}
-        backdropColor={darkMode ? 'black' : 'white'}
+        backdropColor={theme.colors.white}
         supportedOrientations={['portrait', 'landscape']}
       >
         <SentDatePicker />

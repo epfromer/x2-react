@@ -8,7 +8,7 @@ interface HighChartsDatum {
 }
 
 export function getPieHighchartsConfig(
-  darkMode: boolean,
+  textColor = 'black',
   title: string,
   search: string,
   data: Array<EmailXferedDatum>,
@@ -35,7 +35,7 @@ export function getPieHighchartsConfig(
     title: {
       text: title,
       style: {
-        color: darkMode ? 'white' : 'black',
+        color: textColor,
       },
     },
     tooltip: {

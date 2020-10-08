@@ -35,7 +35,7 @@ const emailSentData: Array<EmailSentByDay> = [
 
 test('getBarHighchartsConfig', () => {
   expect(
-    getBarHighchartsConfig(true, 'foo', 'foo', emailXfered, 'red', () =>
+    getBarHighchartsConfig('black', 'foo', 'foo', emailXfered, 'red', () =>
       console.log('foo')
     )
   ).toBeTruthy()
@@ -43,7 +43,7 @@ test('getBarHighchartsConfig', () => {
 
 test('getPieEChartsConfig', () => {
   expect(
-    getPieHighchartsConfig(true, 'foo', 'foo', emailXfered, 'red', () =>
+    getPieHighchartsConfig('black', 'foo', 'foo', emailXfered, 'red', () =>
       console.log('foo')
     )
   ).toBeTruthy()
@@ -51,7 +51,7 @@ test('getPieEChartsConfig', () => {
 
 test('getVolumeTimeHighchartsConfig', () => {
   expect(
-    getVolumeTimeHighchartsConfig(true, 'foo', emailSentData, 'red', () =>
+    getVolumeTimeHighchartsConfig('black', 'foo', emailSentData, 'red', () =>
       console.log('foo')
     )
   ).toBeTruthy()

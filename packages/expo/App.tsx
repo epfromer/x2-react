@@ -43,7 +43,6 @@ const purple = {
 // TODO - change dark mode doesn't update theme; fixed in 3.0
 
 function ThemedApp() {
-  console.log(useSelector(selectDarkMode))
   return (
     <ThemeProvider theme={purple} useDark={useSelector(selectDarkMode)}>
       <Router>

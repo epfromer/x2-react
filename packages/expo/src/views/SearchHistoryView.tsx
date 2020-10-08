@@ -2,12 +2,11 @@ import {
   getEmailAsync,
   getSearchHistoryAsync,
   searchHistoryExecute,
-  selectDarkMode,
   selectSearchHistory,
   x2Server,
 } from '@klonzo/common'
 import { gql, request } from 'graphql-request'
-import React from 'react'
+import React, { useContext } from 'react'
 import {
   FlatList,
   SafeAreaView,
@@ -16,24 +15,24 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
-import { Button } from 'react-native-elements'
+import { Button, ThemeContext } from 'react-native-elements'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-native'
 
 export default function SearchHistoryView() {
   const history = useHistory()
-  const darkMode = useSelector(selectDarkMode)
+  const { theme }: any = useContext(ThemeContext)
   const searchHistory = useSelector(selectSearchHistory)
 
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: darkMode ? '#222222' : 'white',
+      backgroundColor: theme.colors.white,
     },
     bold: {
       fontSize: 15,
       fontWeight: 'bold',
-      color: darkMode ? 'white' : 'black',
+      color: theme.colors.black,
     },
 
     historyButton: {
@@ -48,7 +47,7 @@ export default function SearchHistoryView() {
       justifyContent: 'space-between',
     },
     text: {
-      color: darkMode ? 'white' : 'black',
+      color: theme.colors.black,
       marginBottom: 10,
     },
   })

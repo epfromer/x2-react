@@ -4,9 +4,9 @@ import {
   setDarkMode,
   signOut,
 } from '@klonzo/common'
-import React from 'react'
-import { SafeAreaView, ScrollView, StyleSheet, Switch, Text, View } from 'react-native'
-import { Button } from 'react-native-elements'
+import React, { useContext } from 'react'
+import { ScrollView, StyleSheet, Switch, Text, View } from 'react-native'
+import { Button, ThemeContext } from 'react-native-elements'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-native'
 import CustodianSettings from '../components/CustodianSettings'
@@ -15,17 +15,18 @@ import Gravatar from '../components/Gravatar'
 export default function AppSettingsView() {
   const history = useHistory()
   const dispatch = useDispatch()
+  const { theme }: any = useContext(ThemeContext)
   const darkMode = useSelector(selectDarkMode)
   const username = useSelector(selectUsername)
 
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: darkMode ? '#222222' : 'white',
+      backgroundColor: theme.colors.white,
     },
     text: {
       marginTop: 5,
-      color: darkMode ? 'white' : 'black',
+      color: theme.colors.black,
     },
     itemRow: {
       flexDirection: 'row',
@@ -34,6 +35,7 @@ export default function AppSettingsView() {
       margin: 10,
     },
     header: {
+      color: theme.colors.black,
       marginLeft: 10,
       fontSize: 20,
     },

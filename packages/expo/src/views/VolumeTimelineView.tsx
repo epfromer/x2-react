@@ -2,13 +2,13 @@ import {
   clearSearch,
   EmailSentByDay,
   getEmailAsync,
-  selectDarkMode,
   selectEmailSentByDay,
   selectEmailSentByDayLoading,
   setSent,
 } from '@klonzo/common'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
+import { ThemeContext } from 'react-native-elements'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-native'
@@ -20,7 +20,7 @@ import VolumeTimelineVictory from '../components/Victory/VolumeTimelineVictory'
 export default function VolumeTimelineView() {
   const dispatch = useDispatch()
   const history = useHistory()
-  const darkMode = useSelector(selectDarkMode)
+  const { theme }: any = useContext(ThemeContext)
   const [chartLib, setChartLib] = useState('ECharts')
   const emailSentLoading = useSelector(selectEmailSentByDayLoading)
   const emailSent = useSelector(selectEmailSentByDay)
@@ -43,7 +43,7 @@ export default function VolumeTimelineView() {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: darkMode ? '#222222' : 'white',
+      backgroundColor: theme.colors.white,
     },
   })
 

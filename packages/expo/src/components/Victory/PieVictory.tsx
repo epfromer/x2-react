@@ -1,7 +1,7 @@
-import { EmailXferedDatum, selectDarkMode } from '@klonzo/common'
-import React from 'react'
+import { EmailXferedDatum } from '@klonzo/common'
+import React, { useContext } from 'react'
 import { StyleSheet, View } from 'react-native'
-import { useSelector } from 'react-redux'
+import { ThemeContext } from 'react-native-elements'
 import { VictoryPie } from 'victory-native'
 
 // https://formidable.com/open-source/victory/docs/victory-pie
@@ -13,9 +13,8 @@ interface Props {
   data: Array<EmailXferedDatum>
   handleClick: (search: string, name: string) => void
 }
-
 export default function PieVictory({ data }: Props) {
-  const darkMode = useSelector(selectDarkMode)
+  const { theme }: any = useContext(ThemeContext)
 
   interface Datum {
     x: string
@@ -41,7 +40,7 @@ export default function PieVictory({ data }: Props) {
             fill: ({ datum }: any) => datum.color,
           },
           labels: {
-            fill: darkMode ? 'white' : 'black',
+            fill: theme.colors.black,
             fontSize: 10,
           },
         }}

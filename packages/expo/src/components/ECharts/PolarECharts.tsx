@@ -1,11 +1,7 @@
-import {
-  EmailXferedDatum,
-  getPolarEChartsConfig,
-  selectDarkMode,
-} from '@klonzo/common'
-import React from 'react'
+import { EmailXferedDatum, getPolarEChartsConfig } from '@klonzo/common'
+import React, { useContext } from 'react'
 import { ECharts } from 'react-native-echarts-wrapper'
-import { useSelector } from 'react-redux'
+import { ThemeContext } from 'react-native-elements'
 
 // https://www.npmjs.com/package/react-native-echarts-wrapper
 // https://echarts.apache.org/examples/en/index.html#chart-type-bar
@@ -22,12 +18,13 @@ export default function PolarECharts({
   data,
   handleClick,
 }: Props) {
+  const { theme }: any = useContext(ThemeContext)
   return (
     <ECharts
       onData={(name: string) => handleClick(search, name)}
       additionalCode={`chart.on('click', p => sendData(p.data.name));`}
-      backgroundColor={useSelector(selectDarkMode) ? 'black' : 'white'}
-      option={getPolarEChartsConfig(useSelector(selectDarkMode), title, data)}
+      backgroundColor={theme.colors.white}
+      option={getPolarEChartsConfig(theme.colors.black, title, data)}
     />
   )
 }

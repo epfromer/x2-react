@@ -1,15 +1,20 @@
 import { StyleSheet } from 'react-native'
 
-export default function getPickerStyles(darkMode: boolean) {
+export default function getPickerStyles(
+  textColor: string,
+  backgroundColor: string,
+  borderColor: string
+) {
   return StyleSheet.create({
     inputIOS: {
       fontSize: 16,
       paddingVertical: 12,
       paddingHorizontal: 10,
       borderWidth: 1,
-      borderColor: 'gray',
+      borderColor,
       borderRadius: 4,
-      color: darkMode ? 'white' : 'black',
+      backgroundColor,
+      color: textColor,
       paddingRight: 30, // to ensure the text is never behind the icon
     },
     inputAndroid: {
@@ -17,9 +22,9 @@ export default function getPickerStyles(darkMode: boolean) {
       paddingHorizontal: 10,
       paddingVertical: 8,
       borderWidth: 0.5,
-      borderColor: 'gray',
+      borderColor,
       borderRadius: 8,
-      color: darkMode ? 'white' : 'black',
+      color: textColor,
       paddingRight: 30, // to ensure the text is never behind the icon
     },
   })

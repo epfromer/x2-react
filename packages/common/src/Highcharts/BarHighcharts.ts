@@ -1,7 +1,7 @@
 import { EmailXferedDatum } from '../store/types'
 
 export function getBarHighchartsConfig(
-  darkMode: boolean,
+  textColor = 'black',
   title: string,
   search: string,
   data: Array<EmailXferedDatum>,
@@ -16,7 +16,7 @@ export function getBarHighchartsConfig(
     title: {
       text: title,
       style: {
-        color: darkMode ? 'white' : 'black',
+        color: textColor,
       },
     },
     xAxis: {
@@ -26,7 +26,7 @@ export function getBarHighchartsConfig(
       },
       labels: {
         style: {
-          color: darkMode ? 'white' : 'black',
+          color: textColor,
         },
       },
     },
@@ -34,7 +34,7 @@ export function getBarHighchartsConfig(
       labels: {
         overflow: 'justify',
         style: {
-          color: darkMode ? 'white' : 'black',
+          color: textColor,
         },
       },
       title: {
