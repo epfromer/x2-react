@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-native'
 import CustodianSettings from '../components/CustodianSettings'
 import Gravatar from '../components/Gravatar'
+import ThemePicker from '../components/ThemePicker'
 
 export default function AppSettingsView() {
   const history = useHistory()
@@ -36,6 +37,7 @@ export default function AppSettingsView() {
     },
     header: {
       color: theme.colors.black,
+      marginTop: 5,
       marginLeft: 10,
       fontSize: 20,
     },
@@ -61,6 +63,11 @@ export default function AppSettingsView() {
           signOut()
           history.push('/')
         }}
+        buttonStyle={
+          {
+            width: 100,
+          } as any
+        }
         title="Sign Out"
       />
     </View>
@@ -69,10 +76,13 @@ export default function AppSettingsView() {
   return (
     <ScrollView style={styles.container}>
       <SignOutButton />
+
+      <Text style={styles.header}>App Theme</Text>
       <DarkModeSwitch />
+      <ThemePicker />
+
       <Text style={styles.header}>Custodian Colors</Text>
       <CustodianSettings />
-      <Text style={styles.header}>App Theme Colors</Text>
     </ScrollView>
   )
 }

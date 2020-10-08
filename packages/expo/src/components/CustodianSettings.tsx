@@ -1,15 +1,13 @@
 import {
   Custodian,
   selectCustodians,
-  selectCustodiansLoading,
   setCustodians,
   x2Server,
 } from '@klonzo/common'
 import { gql, request } from 'graphql-request'
 import React, { useContext, useState } from 'react'
-import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import { Button, ThemeContext } from 'react-native-elements'
-import Spinner from 'react-native-loading-spinner-overlay'
 import { useDispatch, useSelector } from 'react-redux'
 import ColorPickerDlg from '../components/ColorPickerDlg'
 
@@ -18,7 +16,6 @@ export default function CustodianSettings() {
   const [colorPickerDlgOpen, setColorPickerDlgOpen] = useState(false)
   const [pickedColor, setPickedColor] = useState('')
   const [custodianId, setCustodianId] = useState('')
-  const custodiansLoading = useSelector(selectCustodiansLoading)
   const custodians = useSelector(selectCustodians)
   const { theme }: any = useContext(ThemeContext)
 
@@ -80,7 +77,6 @@ export default function CustodianSettings() {
               {
                 backgroundColor: custodian.color,
                 width: 100,
-                height: 30,
               } as any
             }
             onPress={() => {
@@ -96,17 +92,14 @@ export default function CustodianSettings() {
   )
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <ColorPickerDlg
         open={colorPickerDlgOpen}
         defaultColor={pickedColor}
         onClose={handleColorChosen}
         onCancel={() => setColorPickerDlgOpen(false)}
       />
-      <ScrollView>
-        <Spinner visible={custodiansLoading} textContent={'Loading...'} />
-        {custodians?.map((custodian) => renderCustodian(custodian))}
-      </ScrollView>
-    </SafeAreaView>
+      {custodians?.map((custodian) => renderCustodian(custodian))}
+    </View>
   )
 }
