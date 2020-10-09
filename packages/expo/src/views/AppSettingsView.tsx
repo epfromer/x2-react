@@ -2,11 +2,11 @@ import {
   selectDarkMode,
   selectUsername,
   setDarkMode,
-  signOut
+  signOut,
 } from '@klonzo/common'
 import React, { useContext } from 'react'
 import { ScrollView, StyleSheet, Switch, Text, View } from 'react-native'
-import { Button, ThemeContext } from 'react-native-elements'
+import { Button, ThemeContext, CheckBox } from 'react-native-elements'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-native'
 import { textColor } from '../common/appThemes'
@@ -50,9 +50,10 @@ export default function AppSettingsView() {
   const DarkModeSwitch = () => (
     <View style={styles.itemRow}>
       <Text style={styles.text}>Dark mode {darkMode ? 'on' : 'off'}</Text>
-      <Switch
-        value={darkMode}
-        onValueChange={() => dispatch(setDarkMode(darkMode ? false : true))}
+      <CheckBox
+        checked={darkMode}
+        checkedColor={theme.colors.black}
+        onPress={() => dispatch(setDarkMode(darkMode ? false : true))}
       />
     </View>
   )

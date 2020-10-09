@@ -4,11 +4,9 @@ interface AppTheme {
   name: string
   Button: any
   Header: any
+  CheckBox?: any
   colors?: any
 }
-
-// TODO 2. create a few themes, theme chooser in settings as in web (checkboxes)
-// TODO 3. do same in web
 
 // https://reactnativeelements.com/docs/button
 // https://reactnativeelements.com/docs/header
