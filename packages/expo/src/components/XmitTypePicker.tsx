@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { ThemeContext } from 'react-native-elements'
 import RNPickerSelect from 'react-native-picker-select'
+import { textColor } from '../common/appThemes'
 import getPickerStyles from '../common/pickerStyles'
 
 interface Props {
@@ -9,7 +10,7 @@ interface Props {
 export default function ChartPicker({ onChange }: Props) {
   const { theme }: any = useContext(ThemeContext)
   const pickerStyles = getPickerStyles(
-    theme.colors.black,
+    textColor(theme),
     theme.Button.buttonStyle.backgroundColor,
     theme.colors.gray
   )

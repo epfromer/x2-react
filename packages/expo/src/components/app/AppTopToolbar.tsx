@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { StyleSheet } from 'react-native'
 import { Button, Header, Icon, ThemeContext } from 'react-native-elements'
 import { useHistory, useLocation } from 'react-router-native'
+import { textColor } from '../../common/appThemes'
 import { routeNames } from '../../router/RouteSwitch'
 
 export default function AppTopToolbar() {
@@ -11,7 +12,7 @@ export default function AppTopToolbar() {
 
   const styles = StyleSheet.create({
     header: {
-      color: 'white',
+      color: textColor(theme),
       fontSize: 20,
     },
     button: {
@@ -23,7 +24,7 @@ export default function AppTopToolbar() {
     <Button
       onPress={() => history.goBack()}
       buttonStyle={styles.button}
-      icon={<Icon name="navigate-before" size={25} color="white" />}
+      icon={<Icon name="navigate-before" size={25} color={textColor(theme)} />}
     />
   )
 
@@ -31,7 +32,7 @@ export default function AppTopToolbar() {
     <Button
       onPress={() => history.push('/')}
       buttonStyle={styles.button}
-      icon={<Icon name="home" size={25} color="white" />}
+      icon={<Icon name="home" size={25} color={textColor(theme)} />}
     />
   )
 

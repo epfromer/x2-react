@@ -20,6 +20,7 @@ import Highlighter from 'react-native-highlight-words'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-native'
+import { textColor } from '../common/appThemes'
 
 export default function EmailDetailView() {
   const history = useHistory()
@@ -47,6 +48,9 @@ export default function EmailDetailView() {
       justifyContent: 'space-between',
       alignItems: 'center',
       flexDirection: 'row',
+    },
+    buttonText: {
+      color: textColor(theme),
     },
     button: {
       margin: 10,
@@ -168,8 +172,9 @@ export default function EmailDetailView() {
     <View style={styles.emailHeader}>
       <Button
         buttonStyle={styles.button}
+        titleStyle={styles.buttonText}
         disabled={!previousEmailId}
-        icon={<Icon name="arrow-back" />}
+        icon={<Icon name="arrow-back" color={textColor(theme)} />}
         onPress={() => {
           previousEmailId && history.push(`/EmailDetailView/${previousEmailId}`)
         }}
@@ -179,8 +184,9 @@ export default function EmailDetailView() {
       </Text>
       <Button
         buttonStyle={styles.button}
+        titleStyle={styles.buttonText}
         disabled={!nextEmailId}
-        icon={<Icon name="arrow-forward" />}
+        icon={<Icon name="arrow-forward" color={textColor(theme)} />}
         onPress={() => {
           nextEmailId && history.push(`/EmailDetailView/${nextEmailId}`)
         }}

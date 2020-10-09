@@ -77,6 +77,7 @@ export default function CustodianSettings() {
               {
                 backgroundColor: custodian.color,
                 width: 100,
+                height: 30,
               } as any
             }
             onPress={() => {

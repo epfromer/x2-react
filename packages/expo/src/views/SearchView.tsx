@@ -20,7 +20,7 @@ import {
   setSubject,
   setTo,
 } from '@klonzo/common'
-import React, { useState, useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import {
   FlatList,
   KeyboardAvoidingView,
@@ -37,6 +37,7 @@ import Modal from 'react-native-modal'
 import DateTimePickerModal from 'react-native-modal-datetime-picker'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-native'
+import { textColor } from '../common/appThemes'
 
 const FILTER_DATE = '2000-10-04'
 
@@ -64,10 +65,14 @@ export default function SearchView() {
       padding: 5,
       margin: 1,
       height: 60,
+      color: textColor(theme),
     },
     historyButton: {
       padding: 10,
       margin: 1,
+    },
+    buttonText: {
+      color: textColor(theme),
     },
     button: {
       width: 80,
@@ -244,18 +249,21 @@ export default function SearchView() {
             <Button
               testID="cancel-dialog"
               buttonStyle={styles.button}
+              titleStyle={styles.buttonText}
               onPress={() => setDlgOpen(false)}
               title="Cancel"
             />
             <Button
               testID="clear-fields"
               buttonStyle={styles.button}
+              titleStyle={styles.buttonText}
               onPress={() => clearFields()}
               title="Clear"
             />
             <Button
               testID="do-query"
               buttonStyle={styles.button}
+              titleStyle={styles.buttonText}
               onPress={() => doQuery()}
               title="Search"
             />
@@ -325,6 +333,7 @@ export default function SearchView() {
       <Button
         testID="open-dialog"
         buttonStyle={styles.filterButton}
+        titleStyle={styles.buttonText}
         onPress={() => setDlgOpen(true)}
         title={filterList()}
       />
@@ -350,6 +359,7 @@ export default function SearchView() {
       )}
       <Button
         buttonStyle={styles.historyButton}
+        titleStyle={styles.buttonText}
         onPress={() => history.push('/SearchHistoryView')}
         title="Search History"
       />

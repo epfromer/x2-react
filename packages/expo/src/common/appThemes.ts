@@ -1,7 +1,10 @@
+import bestContrast from 'get-best-contrast-color'
+
 interface AppTheme {
   name: string
   Button: any
   Header: any
+  colors?: any
 }
 
 // TODO 2. create a few themes, theme chooser in settings as in web (checkboxes)
@@ -23,8 +26,45 @@ export const appThemes: Array<AppTheme> = [
     Header: { containerStyle: { backgroundColor: '#38006b' } },
     Button: { buttonStyle: { backgroundColor: '#6a1b9a' } },
   },
+  {
+    // https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=283593
+    name: 'Blue',
+    Header: { containerStyle: { backgroundColor: '#003c8f' } },
+    Button: { buttonStyle: { backgroundColor: '#1565c0' } },
+  },
+  {
+    // https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=2E7D32
+    name: 'Green',
+    Header: { containerStyle: { backgroundColor: '#005005' } },
+    Button: { buttonStyle: { backgroundColor: '#2e7d32' } },
+  },
+  {
+    // https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=FFFF00
+    name: 'Yellow',
+    Header: { containerStyle: { backgroundColor: '#c7cc00' } },
+    Button: { buttonStyle: { backgroundColor: '#ffff00' } },
+  },
+  {
+    // https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=F57C00
+    name: 'Orange',
+    Header: { containerStyle: { backgroundColor: '#bb4d00' } },
+    Button: { buttonStyle: { backgroundColor: '#f57c00' } },
+  },
+  {
+    // https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=5D4037
+    name: 'Brown',
+    Header: { containerStyle: { backgroundColor: '#321911' } },
+    Button: { buttonStyle: { backgroundColor: '#5d4037' } },
+  },
 ]
 
 export function getTheme(themeName) {
   return appThemes.find((t) => t.name === themeName)
+}
+
+export function textColor(theme: AppTheme) {
+  return bestContrast(theme.Header.containerStyle.backgroundColor, [
+    theme.colors.white,
+    theme.colors.black,
+  ])
 }

@@ -3,6 +3,7 @@ import React, { useContext } from 'react'
 import { StyleSheet } from 'react-native'
 import { ColorPicker } from 'react-native-color-picker'
 import { Button, ThemeContext } from 'react-native-elements'
+import { textColor } from '../common/appThemes'
 import Modal from 'react-native-modal'
 
 interface Props {
@@ -21,6 +22,9 @@ export default function ColorPickerDlg({
   const styles = StyleSheet.create({
     container: {
       flex: 1,
+    },
+    buttonText: {
+      color: textColor(theme),
     },
     button: {
       marginTop: 30,
@@ -43,6 +47,7 @@ export default function ColorPickerDlg({
       />
       <Button
         buttonStyle={styles.button}
+        titleStyle={styles.buttonText}
         onPress={() => onCancel()}
         title="Cancel"
       />

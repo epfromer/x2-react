@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import { Button, Icon, Input, ThemeContext } from 'react-native-elements'
 import { useHistory } from 'react-router-native'
+import { textColor } from '../common/appThemes'
 
 export default function HomeView() {
   const history = useHistory()
@@ -17,6 +18,9 @@ export default function HomeView() {
     },
     label: {
       color: theme.colors.black,
+    },
+    buttonText: {
+      color: textColor(theme),
     },
     topField: {
       marginTop: 15,
@@ -92,6 +96,7 @@ export default function HomeView() {
       />
       <Button
         testID="authenticate"
+        titleStyle={styles.buttonText}
         disabled={username === '' || password === ''}
         onPress={doAuthenticate}
         title="Sign In"

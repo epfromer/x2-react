@@ -4,6 +4,7 @@ import BottomNavigation, {
   FullTab,
 } from 'react-native-material-bottom-navigation'
 import { useHistory } from 'react-router-native'
+import { textColor } from '../../common/appThemes'
 
 // https://www.npmjs.com/package/react-native-material-bottom-navigation
 
@@ -45,7 +46,10 @@ export default function AppBottomToolbar() {
       isActive={isActive}
       key={tab.key}
       label={tab.label}
-      renderIcon={() => <Icon size={24} color="white" name={tab.icon} />}
+      labelStyle={{ color: textColor(theme) }}
+      renderIcon={() => (
+        <Icon size={24} color={textColor(theme)} name={tab.icon} />
+      )}
     />
   )
 

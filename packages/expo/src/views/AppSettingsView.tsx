@@ -2,13 +2,14 @@ import {
   selectDarkMode,
   selectUsername,
   setDarkMode,
-  signOut,
+  signOut
 } from '@klonzo/common'
 import React, { useContext } from 'react'
 import { ScrollView, StyleSheet, Switch, Text, View } from 'react-native'
 import { Button, ThemeContext } from 'react-native-elements'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-native'
+import { textColor } from '../common/appThemes'
 import CustodianSettings from '../components/CustodianSettings'
 import Gravatar from '../components/Gravatar'
 import ThemePicker from '../components/ThemePicker'
@@ -28,6 +29,9 @@ export default function AppSettingsView() {
     text: {
       marginTop: 5,
       color: theme.colors.black,
+    },
+    buttonText: {
+      color: textColor(theme),
     },
     itemRow: {
       flexDirection: 'row',
@@ -59,6 +63,7 @@ export default function AppSettingsView() {
       <Gravatar email={username} />
       <Button
         testID="sign-out"
+        titleStyle={styles.buttonText}
         onPress={() => {
           signOut()
           history.push('/')
