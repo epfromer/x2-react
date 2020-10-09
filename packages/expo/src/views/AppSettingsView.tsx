@@ -5,8 +5,8 @@ import {
   signOut,
 } from '@klonzo/common'
 import React, { useContext } from 'react'
-import { ScrollView, StyleSheet, Switch, Text, View } from 'react-native'
-import { Button, ThemeContext, CheckBox } from 'react-native-elements'
+import { ScrollView, StyleSheet, Text, View } from 'react-native'
+import { Button, CheckBox, ThemeContext } from 'react-native-elements'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-native'
 import { textColor } from '../common/appThemes'

@@ -2,6 +2,7 @@ import mockAsyncStorage from '@react-native-community/async-storage/jest/async-s
 import '@testing-library/jest-dom/extend-expect'
 import fetchMock from 'jest-fetch-mock'
 import {
+  authenticate,
   clearSearch,
   getCustodiansAsync,
   getEmailAsync,
@@ -18,11 +19,12 @@ import {
   selectEmailSentByCustodian,
   selectFrom,
   selectOrder,
-  selectSort,
   selectSent,
+  selectSort,
   selectSubject,
   selectTimeSpan,
   selectTo,
+  selectUsername,
   setAllText,
   setBody,
   setCustodians,
@@ -32,11 +34,15 @@ import {
   setSubject,
   setTo,
   setWordCloud,
+  signOut,
   store,
   testCustodians,
   testEmail,
   testEmailSentByDay,
   testWordCloud,
+  getImportStatus,
+  stopImportStatusInterval,
+  getImportStatusTimer,
 } from '../index'
 jest.mock('@react-native-community/async-storage', () => mockAsyncStorage)
 
@@ -51,21 +57,21 @@ store.dispatch(setSubject('body'))
 store.dispatch(setBody('body'))
 
 test('getEmailById', () => {
-  expect(getEmailById('dd8b6148-aea3-4d3a-bbda-e539f6c01820')).toBeTruthy()
+  expect(getEmailById('f3281cc4-90a9-4dcb-86bd-d705fc847985')).toBeTruthy()
 })
 
 test('getNextEmailId', () => {
-  expect(getNextEmailId('dd8b6148-aea3-4d3a-bbda-e539f6c01820')).toBeTruthy()
+  expect(getNextEmailId('f3281cc4-90a9-4dcb-86bd-d705fc847985')).toBeTruthy()
 })
 
 test('getPreviousEmailId', () => {
   expect(
-    getPreviousEmailId('dd8b6148-aea3-4d3a-bbda-e539f6c01820')
+    getPreviousEmailId('f3281cc4-90a9-4dcb-86bd-d705fc847985')
   ).toBeTruthy()
 })
 
 test('getEmailIndex', () => {
-  expect(getEmailIndex('dd8b6148-aea3-4d3a-bbda-e539f6c01820')).toBeTruthy()
+  expect(getEmailIndex('f3281cc4-90a9-4dcb-86bd-d705fc847985')).toBeTruthy()
 })
 
 test('getWordCloudAsync', async () => {
@@ -109,4 +115,23 @@ test('selectEmailReceivers', () => {
 
 test('selectEmailSentByCustodian', () => {
   expect(selectEmailSentByCustodian(store.getState())).toBeTruthy()
+})
+
+test('authenticate', () => {
+  expect(authenticate('foo', 'foo')).toBeTruthy()
+  signOut()
+  expect(selectUsername(store.getState())).toEqual('')
+})
+
+test('authenticate', () => {
+  expect(authenticate('foo', 'foo')).toBeTruthy()
+  signOut()
+  expect(selectUsername(store.getState())).toEqual('')
+})
+
+test('import status', () => {
+  getImportStatus()
+  expect(getImportStatusTimer()).toBeTruthy()
+  stopImportStatusInterval()
+  expect(getImportStatusTimer()).not.toBeTruthy()
 })

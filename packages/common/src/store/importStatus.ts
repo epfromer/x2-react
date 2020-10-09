@@ -29,3 +29,6 @@ export function stopImportStatusInterval() {
   clearInterval(importTimer)
   importTimer = undefined
 }
+export function getImportStatusTimer() {
+  return importTimer
+}
