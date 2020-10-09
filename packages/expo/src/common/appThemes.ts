@@ -12,11 +12,13 @@ interface AppTheme {
 
 export const appThemes: Array<AppTheme> = [
   {
+    // https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=C62828
     name: 'Red',
     Header: { containerStyle: { backgroundColor: '#8e0000' } },
     Button: { buttonStyle: { backgroundColor: '#c62828' } },
   },
   {
+    // https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=6A1B9A
     name: 'Purple',
     Header: { containerStyle: { backgroundColor: '#38006b' } },
     Button: { buttonStyle: { backgroundColor: '#6a1b9a' } },
