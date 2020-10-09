@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { Button, ThemeContext, Icon } from 'react-native-elements'
+import { appThemes } from '../common/appThemes'
 
 export default function ThemePicker() {
   const { theme }: any = useContext(ThemeContext)
@@ -26,18 +27,18 @@ export default function ThemePicker() {
     },
   })
 
-  const renderTheme = (themeName) => (
-    <View style={styles.themeContainer} key={themeName}>
+  const renderTheme = (t) => (
+    <View style={styles.themeContainer} key={t.name}>
       <View style={styles.itemRow}>
         <View>
-          <Text style={styles.text}>{themeName}</Text>
+          <Text style={styles.text}>{t.name}</Text>
         </View>
         <View>
           <Button
             icon={<Icon name="check" size={15} color="white" />}
             buttonStyle={
               {
-                backgroundColor: themeName,
+                backgroundColor: t.Header.containerStyle.backgroundColor,
                 width: 100,
               } as any
             }
@@ -54,7 +55,7 @@ export default function ThemePicker() {
 
   return (
     <View style={styles.container}>
-      {themes?.map((custodian) => renderTheme(custodian))}
+      {appThemes?.map((t) => renderTheme(t))}
     </View>
   )
 }

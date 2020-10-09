@@ -6,11 +6,13 @@ export interface AppSettingsState {
   darkMode: boolean
   orientation: string
   importLog: Array<ImportLogEntry>
+  themeName: string
 }
 const initialState: AppSettingsState = {
   darkMode: false,
   orientation: 'portrait',
   importLog: undefined,
+  themeName: 'Purple',
 }
 
 export const appSettingsSlice = createSlice({
@@ -28,11 +30,24 @@ export const appSettingsSlice = createSlice({
     setImportLog: (state, action: PayloadAction<Array<ImportLogEntry>>) => {
       state.importLog = action.payload
     },
+    setThemeName: (state, action: PayloadAction<string>) => {
+      state.themeName = action.payload
+      if (typeof Storage !== 'undefined') {
+        localStorage.setItem('themeName', state.themeName)
+      } else {
+        AsyncStorage.setItem('themeName', state.themeName)
+      }
+    },
   },
 })
 export default appSettingsSlice.reducer
-export const { setDarkMode, setImportLog } = appSettingsSlice.actions
+export const {
+  setDarkMode,
+  setImportLog,
+  setThemeName,
+} = appSettingsSlice.actions
 
 // Selectors
 export const selectDarkMode = (state) => state.appSettings.darkMode
 export const selectImportLog = (state) => state.appSettings.importLog
+export const selectThemeName = (state) => state.appSettings.themeName
