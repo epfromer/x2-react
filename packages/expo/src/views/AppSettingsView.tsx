@@ -5,14 +5,14 @@ import {
   signOut,
 } from '@klonzo/common'
 import React, { useContext } from 'react'
-import { ScrollView, StyleSheet, Text, View } from 'react-native'
-import { Button, CheckBox, ThemeContext } from 'react-native-elements'
+import { ScrollView, StyleSheet, Switch, Text, View } from 'react-native'
+import { Button, ThemeContext } from 'react-native-elements'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-native'
 import { textColor } from '../components/appThemes'
 import CustodianSettings from '../components/CustodianSettings'
 import Gravatar from '../components/Gravatar'
-import ThemePicker from '../components/ThemePicker'
+// import ThemePicker from '../components/ThemePicker'
 
 export default function AppSettingsView() {
   const history = useHistory()
@@ -50,10 +50,9 @@ export default function AppSettingsView() {
   const DarkModeSwitch = () => (
     <View style={styles.itemRow}>
       <Text style={styles.text}>Dark mode {darkMode ? 'on' : 'off'}</Text>
-      <CheckBox
-        checked={darkMode}
-        checkedColor={theme.colors.black}
-        onPress={() => dispatch(setDarkMode(darkMode ? false : true))}
+      <Switch
+        value={darkMode}
+        onValueChange={() => dispatch(setDarkMode(darkMode ? false : true))}
       />
     </View>
   )
@@ -85,7 +84,7 @@ export default function AppSettingsView() {
 
       <Text style={styles.header}>App Theme</Text>
       <DarkModeSwitch />
-      <ThemePicker />
+      {/* <ThemePicker /> */}
 
       <Text style={styles.header}>Custodian Colors</Text>
       <CustodianSettings />

@@ -8,6 +8,7 @@ import {
   setFrom,
   setSearchHistory,
   setSubject,
+  setThemeName,
   setTo,
   setWordCloud,
   store,
@@ -38,6 +39,7 @@ store.dispatch(setTo('body'))
 store.dispatch(setFrom('body'))
 store.dispatch(setSubject('body'))
 store.dispatch(setBody('body'))
+store.dispatch(setThemeName(appThemes[0].name))
 
 export function renderComp(comp, history = createMemoryHistory()) {
   return render(
