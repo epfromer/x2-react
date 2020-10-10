@@ -37,8 +37,6 @@ export default function VolumeTimelineVictory({ data }: Props) {
     value: datum.total,
   }))
 
-  console.log(theme)
-
   return (
     <View
       style={styles.container}
