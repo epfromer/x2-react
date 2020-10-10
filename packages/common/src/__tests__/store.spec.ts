@@ -43,6 +43,9 @@ import {
   getImportStatus,
   stopImportStatusInterval,
   getImportStatusTimer,
+  getSearchHistoryAsync,
+  searchHistoryExecute,
+  getInitialDataAsync
 } from '../index'
 jest.mock('@react-native-community/async-storage', () => mockAsyncStorage)
 
@@ -135,3 +138,19 @@ test('import status', () => {
   stopImportStatusInterval()
   expect(getImportStatusTimer()).not.toBeTruthy()
 })
+
+test('search history', () => {
+  getSearchHistoryAsync()
+  searchHistoryExecute(
+    `{"sort":"sent","order":1,"from":"foo","to":"foo","subject":"foo","allText":"foo"}`
+  )
+  expect(selectFrom(store.getState())).toEqual('foo')
+  expect(selectTo(store.getState())).toEqual('foo')
+  expect(selectSubject(store.getState())).toEqual('foo')
+  expect(selectAllText(store.getState())).toEqual('foo')
+})
+
+test('initial data', () => {
+  getInitialDataAsync()
+})
+
