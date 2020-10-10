@@ -8,9 +8,14 @@ import {
   getEmailAsync,
   getEmailById,
   getEmailIndex,
+  getImportStatus,
+  getImportStatusTimer,
+  getInitialDataAsync,
   getNextEmailId,
   getPreviousEmailId,
+  getSearchHistoryAsync,
   loadAppSettingsAsync,
+  searchHistoryExecute,
   selectAllText,
   selectBody,
   selectEmailListPage,
@@ -35,17 +40,12 @@ import {
   setTo,
   setWordCloud,
   signOut,
+  stopImportStatusInterval,
   store,
   testCustodians,
   testEmail,
   testEmailSentByDay,
   testWordCloud,
-  getImportStatus,
-  stopImportStatusInterval,
-  getImportStatusTimer,
-  getSearchHistoryAsync,
-  searchHistoryExecute,
-  getInitialDataAsync
 } from '../index'
 jest.mock('@react-native-community/async-storage', () => mockAsyncStorage)
 
@@ -153,4 +153,3 @@ test('search history', () => {
 test('initial data', () => {
   getInitialDataAsync()
 })
-

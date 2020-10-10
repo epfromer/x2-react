@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-export default function getPickerStyles(
+export function getPickerStyles(
   textColor: string,
   backgroundColor: string,
   borderColor: string

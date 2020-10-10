@@ -16,13 +16,13 @@ export default function HomeView() {
       <HomeCard
         image={require('./img/pie.png')}
         title="Pie"
-        description="Pie chart of email volume of Enron key custodians."
+        description="Pie chart of email volume of Enron custodians."
         link="PieView"
       />
       <HomeCard
         image={require('./img/barchart.png')}
         title="Bar"
-        description="Bar chart of email volume of Enron key custodians."
+        description="Bar chart of email volume of Enron custodians."
         link="BarView"
       />
       <HomeCard
@@ -34,19 +34,19 @@ export default function HomeView() {
       <HomeCard
         image={require('./img/networkgraph.png')}
         title="Network Graph"
-        description="Network graph of Enron key custodian communication."
+        description="Network graph of Enron custodian communication."
         link="NetworkGraphView"
       />
       <HomeCard
         image={require('./img/treemap.png')}
         title="Tree Map"
-        description="Tree map of email volume of Enron key custodians."
+        description="Tree map of email volume of Enron custodians."
         link="TreeMapView"
       />
       <HomeCard
         image={require('./img/polar.png')}
         title="Polar"
-        description="Polar chart of email volume of Enron key custodians."
+        description="Polar chart of email volume of Enron custodians."
         link="PolarView"
       />
     </ScrollView>

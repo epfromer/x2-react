@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { StyleSheet } from 'react-native'
 import { Button, Header, Icon, ThemeContext } from 'react-native-elements'
 import { useHistory, useLocation } from 'react-router-native'
-import { textColor } from '../../common/appThemes'
+import { textColor } from '../appThemes'
 import { routeNames } from '../../router/RouteSwitch'
 
 export default function AppTopToolbar() {

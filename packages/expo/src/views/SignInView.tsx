@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import { Button, Icon, Input, ThemeContext } from 'react-native-elements'
 import { useHistory } from 'react-router-native'
-import { textColor } from '../common/appThemes'
+import { textColor } from '../components/appThemes'
 
 export default function HomeView() {
   const history = useHistory()

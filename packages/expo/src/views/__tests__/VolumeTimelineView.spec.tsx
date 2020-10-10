@@ -4,10 +4,7 @@ import { renderComp } from '../../setupTests'
 import VolumeTimelineView from '../VolumeTimelineView'
 
 test('VolumeTimelineView', async () => {
-  const navigation = { navigate: jest.fn() }
-  const { getByTestId } = renderComp(
-    <VolumeTimelineView navigation={navigation} route="foo" />
-  )
+  const { getByTestId } = renderComp(<VolumeTimelineView />)
 
   const chartLibPicker = getByTestId('chartlib-picker')
   expect(chartLibPicker).not.toBeNull()

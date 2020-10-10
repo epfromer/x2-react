@@ -3,7 +3,7 @@ import React, { useContext } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { Button, Icon, ThemeContext } from 'react-native-elements'
 import { useDispatch, useSelector } from 'react-redux'
-import { appThemes } from '../common/appThemes'
+import { appThemes } from './appThemes'
 
 export default function ThemePicker() {
   const { theme }: any = useContext(ThemeContext)
