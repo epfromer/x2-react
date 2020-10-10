@@ -25,6 +25,7 @@ import { Router } from 'react-router-native'
 import { ThemeProvider } from 'react-native-elements'
 import { appThemes } from './components/appThemes'
 
+// eslint-disable-next-line no-undef
 jest.mock('@react-native-community/async-storage', () => mockAsyncStorage)
 
 store.dispatch(setWordCloud(testWordCloud))
