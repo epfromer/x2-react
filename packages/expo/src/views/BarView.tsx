@@ -2,7 +2,6 @@ import {
   clearSearch,
   getEmailAsync,
   selectCustodians,
-  selectCustodiansLoading,
   selectEmailReceivers,
   selectEmailSenders,
   setFrom,
@@ -10,8 +9,7 @@ import {
 } from '@klonzo/common'
 import React, { useContext, useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
-import { ThemeContext } from 'react-native-elements'
-import Spinner from 'react-native-loading-spinner-overlay'
+import { Button, ThemeContext } from 'react-native-elements'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-native'
 import ChartPicker from '../components/ChartPicker'
@@ -25,7 +23,6 @@ export default function BarView() {
   const history = useHistory()
   const [isSenders, setIsSenders] = useState(true)
   const [chartLib, setChartLib] = useState('ECharts')
-  const custodiansLoading = useSelector(selectCustodiansLoading)
   const custodians = useSelector(selectCustodians)
   const emailSenders = useSelector(selectEmailSenders)
   const emailReceivers = useSelector(selectEmailReceivers)
@@ -48,7 +45,6 @@ export default function BarView() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Spinner visible={custodiansLoading} textContent={'Loading...'} />
       {custodians && (
         <>
           {chartLib === 'ECharts' && (
@@ -115,6 +111,12 @@ export default function BarView() {
       )}
       <XmitTypePicker onChange={(value) => setIsSenders(value === 'Senders')} />
       <ChartPicker onChange={(value) => setChartLib(value)} />
+      {process.env.NODE_ENV === 'test' && (
+        <Button
+          onPress={() => handleClick('from', 'foo')}
+          testID="test-click"
+        />
+      )}
     </SafeAreaView>
   )
 }

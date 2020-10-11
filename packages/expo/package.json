@@ -4,7 +4,7 @@
   "private": true,
   "main": "__generated__/AppEntry.js",
   "scripts": {
-    "test": "jest --verbose --coverage --runInBand --detectOpenHandles",
+    "test": "jest --watchAll --verbose --coverage --runInBand --detectOpenHandles",
     "watch": "expo start -c"
   },
   "dependencies": {
