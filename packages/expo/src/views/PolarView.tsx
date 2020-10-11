@@ -10,7 +10,7 @@ import {
 } from '@klonzo/common'
 import React, { useContext, useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
-import { ThemeContext } from 'react-native-elements'
+import { Button, ThemeContext } from 'react-native-elements'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-native'
@@ -97,6 +97,12 @@ export default function PolarView() {
         onChange={(value) => setChartLib(value)}
         chartNames={['ECharts', 'Victory']}
       />
+      {process.env.NODE_ENV === 'test' && (
+        <Button
+          onPress={() => handleClick('from', 'foo')}
+          testID="test-click"
+        />
+      )}
     </SafeAreaView>
   )
 }
