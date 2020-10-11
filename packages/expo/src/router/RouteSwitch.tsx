@@ -49,6 +49,7 @@ export default function RouteSwitch() {
         path="/AppSettingsView"
         component={AppSettingsView}
         auth={authenticated}
+        testID="app-settings"
       />
       <Route path="/SignInView">
         <SignInView />
