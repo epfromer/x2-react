@@ -5,7 +5,7 @@ import { Button, Icon, Input, ThemeContext } from 'react-native-elements'
 import { useHistory } from 'react-router-native'
 import { textColor } from '../components/appThemes'
 
-export default function HomeView() {
+export default function SignInView() {
   const history = useHistory()
   const { theme }: any = useContext(ThemeContext)
   const [username, setUsername] = useState('epfromer@gmail.com')
@@ -64,7 +64,7 @@ export default function HomeView() {
         errorMessage={authFailAlert ? 'Incorrect username or password.' : ''}
         rightIcon={
           <Icon
-            testID="close-email"
+            testID="set-username"
             name="close"
             iconStyle={styles.text}
             onPress={() => setUsername('')}
@@ -87,7 +87,7 @@ export default function HomeView() {
         errorMessage={authFailAlert ? 'Incorrect username or password.' : ''}
         rightIcon={
           <Icon
-            testID="close-password"
+            testID="set-password"
             name="close"
             iconStyle={styles.text}
             onPress={() => setPassword('')}
