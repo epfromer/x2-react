@@ -12,7 +12,7 @@ import { useHistory } from 'react-router-native'
 import { textColor } from '../components/appThemes'
 import CustodianSettings from '../components/CustodianSettings'
 import Gravatar from '../components/Gravatar'
-// import ThemePicker from '../components/ThemePicker'
+import ThemePicker from '../components/ThemePicker'
 
 export default function AppSettingsView() {
   const history = useHistory()
@@ -57,6 +57,11 @@ export default function AppSettingsView() {
     </View>
   )
 
+  const doSignOut = () => {
+    signOut()
+    history.push('/')
+  }
+
   const SignOutButton = () => (
     <View style={styles.itemRow}>
       <Text style={styles.text}>{username}</Text>
@@ -64,10 +69,7 @@ export default function AppSettingsView() {
       <Button
         testID="sign-out"
         titleStyle={styles.buttonText}
-        onPress={() => {
-          signOut()
-          history.push('/')
-        }}
+        onPress={doSignOut}
         buttonStyle={
           {
             width: 100,
@@ -84,7 +86,7 @@ export default function AppSettingsView() {
 
       <Text style={styles.header}>App Theme</Text>
       <DarkModeSwitch />
-      {/* <ThemePicker /> */}
+      <ThemePicker />
 
       <Text style={styles.header}>Custodian Colors</Text>
       <CustodianSettings />
