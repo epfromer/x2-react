@@ -96,8 +96,15 @@ export default function SearchHistoryView() {
       <Button
         buttonStyle={styles.historyButton}
         onPress={onClearHistory}
+        testID="clear-history"
         title="Clear History"
       />
+      {process.env.NODE_ENV === 'test' && (
+        <Button
+          onPress={() => onSearchHistory('{"to":"ba"}')}
+          testID="test-click"
+        />
+      )}
     </SafeAreaView>
   )
 }
