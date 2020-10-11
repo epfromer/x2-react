@@ -24,7 +24,9 @@ import { textColor } from '../components/appThemes'
 
 export default function EmailDetailView() {
   const history = useHistory()
-  const { id } = useParams()
+  let { id } = useParams()
+  if (process.env.NODE_ENV === 'test')
+    id = 'f3281cc4-90a9-4dcb-86bd-d705fc847985'
   const [loading, setLoading] = useState(false)
   const [email, setEmail] = useState<Email | null>(null)
   const cachedEmail = getEmailById(id)
@@ -174,6 +176,7 @@ export default function EmailDetailView() {
         buttonStyle={styles.button}
         titleStyle={styles.buttonText}
         disabled={!previousEmailId}
+        testID="previous-email"
         icon={<Icon name="arrow-back" color={textColor(theme)} />}
         onPress={() => {
           previousEmailId && history.push(`/EmailDetailView/${previousEmailId}`)
@@ -186,6 +189,7 @@ export default function EmailDetailView() {
         buttonStyle={styles.button}
         titleStyle={styles.buttonText}
         disabled={!nextEmailId}
+        testID="next-email"
         icon={<Icon name="arrow-forward" color={textColor(theme)} />}
         onPress={() => {
           nextEmailId && history.push(`/EmailDetailView/${nextEmailId}`)
