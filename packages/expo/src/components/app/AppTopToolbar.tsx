@@ -33,6 +33,7 @@ export default function AppTopToolbar() {
       onPress={() => history.push('/')}
       buttonStyle={styles.button}
       icon={<Icon name="home" size={25} color={textColor(theme)} />}
+      testID="home-button"
     />
   )
 
