@@ -40,11 +40,9 @@ export default function RouteSwitch() {
       <Route path="/SignInView">
         <SignInView />
       </Route>
-      <GuardedRoute
-        path="/SearchHistoryView"
-        component={SearchHistoryView}
-        auth={authenticated}
-      />
+      <Route path="/SearchHistoryView">
+        <SearchHistoryView />
+      </Route>
       <Route path="/SearchView">
         <SearchView data-testid="switch" />
       </Route>

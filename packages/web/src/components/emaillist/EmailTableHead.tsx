@@ -4,8 +4,8 @@ import {
   selectAllText,
   selectFrom,
   selectOrder,
-  selectSort,
   selectSent,
+  selectSort,
   selectSubject,
   selectTimeSpan,
   selectTo,
@@ -13,12 +13,13 @@ import {
   setEmailListPage,
   setFrom,
   setOrder,
-  setSort,
   setSent,
+  setSort,
   setSubject,
   setTimeSpan,
   setTo,
 } from '@klonzo/common'
+import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
@@ -30,6 +31,7 @@ import { ActionCreatorWithPayload } from '@reduxjs/toolkit'
 import debounce from 'lodash/debounce'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import FilterDate from './FilterDate'
 
 const DEBOUNCE_MS = 1000
@@ -37,6 +39,7 @@ const FILTER_DATE = '2000-10-04'
 
 const EmailTableHead: React.FC = () => {
   const dispatch = useDispatch()
+  const history = useHistory()
   const [datePickerOpen, setDatePickerOpen] = useState(false)
   const sort = useSelector(selectSort)
   const order = useSelector(selectOrder)
@@ -113,7 +116,15 @@ const EmailTableHead: React.FC = () => {
       />
       <TableHead>
         <TableRow>
-          <TableCell colSpan={5}>
+          <TableCell>
+            <Button
+              variant="contained"
+              onClick={() => history.push('/SearchHistoryView')}
+            >
+              History
+            </Button>
+          </TableCell>
+          <TableCell colSpan={4}>
             <button
               hidden
               onClick={onDateClear}
