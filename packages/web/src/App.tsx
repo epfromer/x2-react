@@ -49,7 +49,7 @@ export default function App() {
   const darkMode = useSelector(selectDarkMode)
   // const palette: any = getTheme(useSelector(selectThemeName))
 
-  // console.log(useSelector(selectThemeName))
+  console.log(useSelector(selectThemeName))
 
   const palette: any = {
     primary: {

@@ -1,7 +1,7 @@
 import {
   selectAuthenticated,
   selectDarkMode,
-  setDarkMode,
+  setDarkModeAsync,
 } from '@klonzo/common'
 import IconButton from '@material-ui/core/IconButton'
 import { makeStyles } from '@material-ui/core/styles'
@@ -16,7 +16,7 @@ import SearchIcon from '@material-ui/icons/Search'
 import Settings from '@material-ui/icons/Settings'
 import clsx from 'clsx'
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import UserSettingsMenu from './UserSettingsMenu'
 
@@ -47,7 +47,6 @@ interface Props {
 export default function AppToolbar({ drawerOpen, setDrawerOpen }: Props) {
   const classes = useStyles()
   const history = useHistory()
-  const dispatch = useDispatch()
   const darkMode = useSelector(selectDarkMode)
   const authenticated = useSelector(selectAuthenticated)
 
@@ -98,7 +97,7 @@ export default function AppToolbar({ drawerOpen, setDrawerOpen }: Props) {
           <IconButton
             color="inherit"
             data-testid="dark-mode"
-            onClick={() => dispatch(setDarkMode(false))}
+            onClick={() => setDarkModeAsync(false)}
           >
             <Brightness7 />
           </IconButton>
@@ -106,7 +105,7 @@ export default function AppToolbar({ drawerOpen, setDrawerOpen }: Props) {
           <IconButton
             color="inherit"
             data-testid="dark-mode"
-            onClick={() => dispatch(setDarkMode(true))}
+            onClick={() => setDarkModeAsync(true)}
           >
             <Brightness4 />
           </IconButton>

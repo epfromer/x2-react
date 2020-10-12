@@ -1,7 +1,7 @@
 import {
   selectDarkMode,
   selectUsername,
-  setDarkMode,
+  setDarkModeAsync,
   signOut,
 } from '@klonzo/common'
 import React, { useContext } from 'react'
@@ -52,7 +52,7 @@ export default function AppSettingsView() {
       <Text style={styles.text}>Dark mode {darkMode ? 'on' : 'off'}</Text>
       <Switch
         value={darkMode}
-        onValueChange={() => dispatch(setDarkMode(darkMode ? false : true))}
+        onValueChange={() => setDarkModeAsync(darkMode ? false : true)}
       />
     </View>
   )

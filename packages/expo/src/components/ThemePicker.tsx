@@ -1,4 +1,4 @@
-import { selectThemeName, setThemeName } from '@klonzo/common'
+import { selectThemeName, setThemeNameAsync } from '@klonzo/common'
 import React, { useContext } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { Button, Icon, ThemeContext } from 'react-native-elements'
@@ -52,7 +52,7 @@ export default function ThemePicker() {
           ) : (
             <Button
               buttonStyle={getButtonStyle(t)}
-              onPress={() => dispatch(setThemeName(t.name))}
+              onPress={() => setThemeNameAsync(t.name)}
             />
           )}
         </View>

@@ -29,22 +29,12 @@ export const appSettingsSlice = createSlice({
     builder
       .addCase(setDarkMode, (state, action) => {
         state.darkMode = action.payload
-        if (typeof Storage !== 'undefined') {
-          localStorage.setItem('darkMode', String(state.darkMode))
-        } else {
-          AsyncStorage.setItem('darkMode', String(state.darkMode))
-        }
       })
       .addCase(setImportLog, (state, action) => {
         state.importLog = action.payload
       })
       .addCase(setThemeName, (state, action) => {
         state.themeName = action.payload
-        if (typeof Storage !== 'undefined') {
-          localStorage.setItem('themeName', state.themeName)
-        } else {
-          AsyncStorage.setItem('themeName', state.themeName)
-        }
       })
   },
 })
