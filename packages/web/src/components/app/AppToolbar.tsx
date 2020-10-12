@@ -12,6 +12,7 @@ import Brightness4 from '@material-ui/icons/Brightness4'
 import Brightness7 from '@material-ui/icons/Brightness7'
 import HomeIcon from '@material-ui/icons/Home'
 import MenuIcon from '@material-ui/icons/Menu'
+import SearchIcon from '@material-ui/icons/Search'
 import Settings from '@material-ui/icons/Settings'
 import clsx from 'clsx'
 import React from 'react'
@@ -112,6 +113,11 @@ export default function AppToolbar({ drawerOpen, setDrawerOpen }: Props) {
         )}
       </Tooltip>
       <SettingsButton />
+      <Tooltip title="Search" aria-label="Search">
+        <IconButton color="inherit" onClick={() => history.push('/SearchView')}>
+          <SearchIcon />
+        </IconButton>
+      </Tooltip>
       <Tooltip title="x2 Home" aria-label="x2 Home">
         <IconButton color="inherit" onClick={() => history.push('/')}>
           <HomeIcon />
