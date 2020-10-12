@@ -1,4 +1,3 @@
-import { fireEvent } from '@testing-library/react-native'
 import { createMemoryHistory } from 'history'
 import React from 'react'
 import { renderComp } from '../../../setupTests'
