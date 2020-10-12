@@ -1,30 +1,37 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createAction, createSlice } from '@reduxjs/toolkit'
 import { Custodian, EmailXferedDatum } from '../types'
 
 export interface CustodiansState {
   custodiansLoading: boolean
   custodians: Array<Custodian> | undefined
 }
-
 const initialState: CustodiansState = {
   custodiansLoading: false,
   custodians: undefined,
 }
 
+export const setCustodiansLoading = createAction<boolean>(
+  'custodians/setCustodiansLoading'
+)
+export const setCustodians = createAction<Array<Custodian>>(
+  'custodians/setCustodians'
+)
+
 export const custodiansSlice = createSlice({
   name: 'custodians',
   initialState,
-  reducers: {
-    setCustodiansLoading: (state, action: PayloadAction<boolean>) => {
-      state.custodiansLoading = action.payload
-    },
-    setCustodians: (state, action: PayloadAction<Array<Custodian>>) => {
-      state.custodians = action.payload
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(setCustodiansLoading, (state, action) => {
+        state.custodiansLoading = action.payload
+      })
+      .addCase(setCustodians, (state, action) => {
+        state.custodians = action.payload
+      })
   },
 })
 export default custodiansSlice.reducer
-export const { setCustodiansLoading, setCustodians } = custodiansSlice.actions
 
 // Selectors
 export const selectCustodiansLoading = (state) =>

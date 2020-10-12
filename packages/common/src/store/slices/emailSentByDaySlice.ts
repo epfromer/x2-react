@@ -1,36 +1,37 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createAction, createSlice } from '@reduxjs/toolkit'
 import { EmailSentByDay } from '../types'
 
 export interface EmailSentByDayState {
   emailSentByDayLoading: boolean
   emailSentByDay: Array<EmailSentByDay> | undefined
 }
-
 const initialState: EmailSentByDayState = {
   emailSentByDayLoading: false,
   emailSentByDay: undefined,
 }
 
+export const setEmailSentByDayLoading = createAction<boolean>(
+  'emailSentByDay/setEmailSentByDayLoading'
+)
+export const setEmailSentByDay = createAction<Array<EmailSentByDay>>(
+  'emailSentByDay/setEmailSentByDay'
+)
+
 export const emailSentByDaySlice = createSlice({
   name: 'emailSentByDay',
   initialState,
-  reducers: {
-    setEmailSentByDayLoading: (state, action: PayloadAction<boolean>) => {
-      state.emailSentByDayLoading = action.payload
-    },
-    setEmailSentByDay: (
-      state,
-      action: PayloadAction<Array<EmailSentByDay>>
-    ) => {
-      state.emailSentByDay = action.payload
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(setEmailSentByDayLoading, (state, action) => {
+        state.emailSentByDayLoading = action.payload
+      })
+      .addCase(setEmailSentByDay, (state, action) => {
+        state.emailSentByDay = action.payload
+      })
   },
 })
 export default emailSentByDaySlice.reducer
-export const {
-  setEmailSentByDayLoading,
-  setEmailSentByDay,
-} = emailSentByDaySlice.actions
 
 // Selectors
 export const selectEmailSentByDayLoading = (state) =>

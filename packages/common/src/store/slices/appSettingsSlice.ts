@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-community/async-storage'
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createAction, createSlice } from '@reduxjs/toolkit'
 import { ImportLogEntry } from '../types'
 
 export interface AppSettingsState {
@@ -15,37 +15,40 @@ const initialState: AppSettingsState = {
   themeName: 'Purple',
 }
 
+export const setDarkMode = createAction<boolean>('appSettings/setDarkMode')
+export const setImportLog = createAction<Array<ImportLogEntry>>(
+  'appSettings/setImportLog'
+)
+export const setThemeName = createAction<string>('appSettings/setThemeName')
+
 export const appSettingsSlice = createSlice({
   name: 'appSettings',
   initialState,
-  reducers: {
-    setDarkMode: (state, action: PayloadAction<boolean>) => {
-      state.darkMode = action.payload
-      if (typeof Storage !== 'undefined') {
-        localStorage.setItem('darkMode', String(state.darkMode))
-      } else {
-        AsyncStorage.setItem('darkMode', String(state.darkMode))
-      }
-    },
-    setImportLog: (state, action: PayloadAction<Array<ImportLogEntry>>) => {
-      state.importLog = action.payload
-    },
-    setThemeName: (state, action: PayloadAction<string>) => {
-      state.themeName = action.payload
-      if (typeof Storage !== 'undefined') {
-        localStorage.setItem('themeName', state.themeName)
-      } else {
-        AsyncStorage.setItem('themeName', state.themeName)
-      }
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(setDarkMode, (state, action) => {
+        state.darkMode = action.payload
+        if (typeof Storage !== 'undefined') {
+          localStorage.setItem('darkMode', String(state.darkMode))
+        } else {
+          AsyncStorage.setItem('darkMode', String(state.darkMode))
+        }
+      })
+      .addCase(setImportLog, (state, action) => {
+        state.importLog = action.payload
+      })
+      .addCase(setThemeName, (state, action) => {
+        state.themeName = action.payload
+        if (typeof Storage !== 'undefined') {
+          localStorage.setItem('themeName', state.themeName)
+        } else {
+          AsyncStorage.setItem('themeName', state.themeName)
+        }
+      })
   },
 })
 export default appSettingsSlice.reducer
-export const {
-  setDarkMode,
-  setImportLog,
-  setThemeName,
-} = appSettingsSlice.actions
 
 // Selectors
 export const selectDarkMode = (state) => state.appSettings.darkMode

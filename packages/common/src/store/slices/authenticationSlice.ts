@@ -1,29 +1,34 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createAction, createSlice } from '@reduxjs/toolkit'
 
 export interface AuthenticationState {
   authenticated: boolean
   username: string
 }
-
 const initialState: AuthenticationState = {
   authenticated: false,
   username: '',
 }
 
+export const setAuthenticated = createAction<boolean>(
+  'authentication/setAuthenticated'
+)
+export const setUsername = createAction<string>('authentication/setUsername')
+
 export const authenticationSlice = createSlice({
   name: 'authentication',
   initialState,
-  reducers: {
-    setAuthenticated: (state, action: PayloadAction<boolean>) => {
-      state.authenticated = action.payload
-    },
-    setUsername: (state, action: PayloadAction<string>) => {
-      state.username = action.payload
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(setAuthenticated, (state, action) => {
+        state.authenticated = action.payload
+      })
+      .addCase(setUsername, (state, action) => {
+        state.username = action.payload
+      })
   },
 })
 export default authenticationSlice.reducer
-export const { setAuthenticated, setUsername } = authenticationSlice.actions
 
 // Selectors
 export const selectAuthenticated = (state) => state.authentication.authenticated

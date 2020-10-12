@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createAction, createSlice } from '@reduxjs/toolkit'
 import { RootState } from '../index'
 
 export interface QueryState {
@@ -13,7 +13,6 @@ export interface QueryState {
   body: string
   emailListPage: number
 }
-
 const initialState: QueryState = {
   sort: 'sent',
   order: 1,
@@ -27,68 +26,69 @@ const initialState: QueryState = {
   emailListPage: 0,
 }
 
+export const setSort = createAction<string>('query/setSort')
+export const setOrder = createAction<number>('query/setOrder')
+export const setSent = createAction<string>('query/setSent')
+export const setTimeSpan = createAction<number>('query/setTimeSpan')
+export const setFrom = createAction<string>('query/setFrom')
+export const setTo = createAction<string>('query/setTo')
+export const setSubject = createAction<string>('query/setSubject')
+export const setAllText = createAction<string>('query/setAllText')
+export const setBody = createAction<string>('query/setBody')
+export const setEmailListPage = createAction<number>('query/setEmailListPage')
+export const clearSearch = createAction<void>('query/clearSearch')
+
 export const querySlice = createSlice({
   name: 'query',
   initialState,
-  reducers: {
-    setSort: (state, action: PayloadAction<string>) => {
-      state.sort = action.payload
-    },
-    setOrder: (state, action: PayloadAction<number>) => {
-      state.order = action.payload
-    },
-    setSent: (state, action: PayloadAction<string>) => {
-      state.sent = action.payload
-    },
-    setTimeSpan: (state, action: PayloadAction<number>) => {
-      state.timeSpan = action.payload
-    },
-    setFrom: (state, action: PayloadAction<string>) => {
-      state.from = action.payload
-    },
-    setTo: (state, action: PayloadAction<string>) => {
-      state.to = action.payload
-    },
-    setSubject: (state, action: PayloadAction<string>) => {
-      state.subject = action.payload
-    },
-    setAllText: (state, action: PayloadAction<string>) => {
-      state.allText = action.payload
-    },
-    setBody: (state, action: PayloadAction<string>) => {
-      state.body = action.payload
-    },
-    setEmailListPage: (state, action: PayloadAction<number>) => {
-      state.emailListPage = action.payload
-    },
-    clearSearch: (state) => {
-      state.allText = ''
-      state.body = ''
-      state.emailListPage = 0
-      state.from = ''
-      state.order = 1
-      state.sort = 'sent'
-      state.sent = ''
-      state.subject = ''
-      state.timeSpan = 0
-      state.to = ''
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(setSort, (state, action) => {
+        state.sort = action.payload
+      })
+      .addCase(setOrder, (state, action) => {
+        state.order = action.payload
+      })
+      .addCase(setSent, (state, action) => {
+        state.sent = action.payload
+      })
+      .addCase(setTimeSpan, (state, action) => {
+        state.timeSpan = action.payload
+      })
+      .addCase(setFrom, (state, action) => {
+        state.from = action.payload
+      })
+      .addCase(setTo, (state, action) => {
+        state.to = action.payload
+      })
+      .addCase(setSubject, (state, action) => {
+        state.subject = action.payload
+      })
+      .addCase(setAllText, (state, action) => {
+        state.allText = action.payload
+      })
+      .addCase(setBody, (state, action) => {
+        state.body = action.payload
+      })
+      .addCase(setEmailListPage, (state, action) => {
+        state.emailListPage = action.payload
+      })
+      .addCase(clearSearch, (state, action) => {
+        state.allText = ''
+        state.body = ''
+        state.emailListPage = 0
+        state.from = ''
+        state.order = 1
+        state.sort = 'sent'
+        state.sent = ''
+        state.subject = ''
+        state.timeSpan = 0
+        state.to = ''
+      })
   },
 })
 export default querySlice.reducer
-export const {
-  clearSearch,
-  setAllText,
-  setBody,
-  setEmailListPage,
-  setFrom,
-  setOrder,
-  setSort,
-  setSent,
-  setSubject,
-  setTimeSpan,
-  setTo,
-} = querySlice.actions
 
 // Selectors
 export const selectAllText = (state: RootState) => state.query.allText

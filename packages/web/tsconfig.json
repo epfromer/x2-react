@@ -18,7 +18,7 @@
     "moduleResolution": "node",
     "noEmit": true,
     "resolveJsonModule": true,
-    "strict": true,
-    "target": "es5"
+    "target": "es5",
+    "strict": true
   }
 }

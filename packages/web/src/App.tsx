@@ -2,6 +2,7 @@ import {
   getEmailAsync,
   getInitialDataAsync,
   loadAppSettingsAsync,
+  selectThemeName,
   selectDarkMode,
 } from '@klonzo/common'
 import AppBar from '@material-ui/core/AppBar'
@@ -20,6 +21,7 @@ import AppDrawer from './components/app/AppDrawer'
 import AppFooter from './components/app/AppFooter'
 import AppToolbar from './components/app/AppToolbar'
 import RouteSwitch from './router/RouteSwitch'
+import { getTheme } from './components/appThemes'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -45,8 +47,18 @@ export default function App() {
   const classes = useStyles()
   const [drawerOpen, setDrawerOpen] = React.useState(false)
   const darkMode = useSelector(selectDarkMode)
+  // const palette: any = getTheme(useSelector(selectThemeName))
 
-  const palette: any = {}
+  // console.log(useSelector(selectThemeName))
+
+  const palette: any = {
+    primary: {
+      main: '#8e0000',
+    },
+    secondary: {
+      main: '#c62828',
+    },
+  }
   if (darkMode) palette.type = 'dark'
   const customTheme = createMuiTheme({ palette })
 

@@ -56,7 +56,7 @@ export const appThemes: Array<AppTheme> = [
   },
 ]
 
-export function getTheme(themeName) {
+export function getTheme(themeName: string) {
   return appThemes.find((t) => t.name === themeName)
 }
 

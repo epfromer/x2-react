@@ -1,36 +1,37 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createAction, createSlice } from '@reduxjs/toolkit'
 import { SearchHistoryEntry } from '../types'
 
 export interface searchHistoryState {
   searchHistoryLoading: boolean
   searchHistory: Array<SearchHistoryEntry> | undefined
 }
-
 const initialState: searchHistoryState = {
   searchHistoryLoading: false,
   searchHistory: undefined,
 }
 
+export const setSearchHistoryLoading = createAction<boolean>(
+  'searchHistory/setSearchHistoryLoading'
+)
+export const setSearchHistory = createAction<Array<SearchHistoryEntry>>(
+  'searchHistory/setSearchHistory'
+)
+
 export const searchHistorySlice = createSlice({
   name: 'searchHistory',
   initialState,
-  reducers: {
-    setSearchHistoryLoading: (state, action: PayloadAction<boolean>) => {
-      state.searchHistoryLoading = action.payload
-    },
-    setSearchHistory: (
-      state,
-      action: PayloadAction<Array<SearchHistoryEntry>>
-    ) => {
-      state.searchHistory = action.payload
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(setSearchHistoryLoading, (state, action) => {
+        state.searchHistoryLoading = action.payload
+      })
+      .addCase(setSearchHistory, (state, action) => {
+        state.searchHistory = action.payload
+      })
   },
 })
 export default searchHistorySlice.reducer
-export const {
-  setSearchHistoryLoading,
-  setSearchHistory,
-} = searchHistorySlice.actions
 
 // Selectors
 export const selectSearchHistoryLoading = (state) =>
