@@ -119,6 +119,7 @@ const EmailTableHead: React.FC = () => {
           <TableCell>
             <Button
               variant="contained"
+              color="secondary"
               onClick={() => history.push('/SearchHistoryView')}
             >
               History

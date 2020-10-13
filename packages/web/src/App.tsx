@@ -47,19 +47,9 @@ export default function App() {
   const classes = useStyles()
   const [drawerOpen, setDrawerOpen] = React.useState(false)
   const darkMode = useSelector(selectDarkMode)
-  // const palette: any = getTheme(useSelector(selectThemeName))
+  const palette: any = getTheme(useSelector(selectThemeName))
+  palette.type = darkMode ? 'dark' : 'light'
 
-  console.log(useSelector(selectThemeName))
-
-  const palette: any = {
-    primary: {
-      main: '#8e0000',
-    },
-    secondary: {
-      main: '#c62828',
-    },
-  }
-  if (darkMode) palette.type = 'dark'
   const customTheme = createMuiTheme({ palette })
 
   return (

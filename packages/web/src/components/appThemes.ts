@@ -1,6 +1,6 @@
 // import bestContrast from 'get-best-contrast-color'
 
-interface AppTheme {
+export interface AppTheme {
   name: string
   type?: string
   primary: any

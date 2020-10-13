@@ -7,7 +7,7 @@ import {
 import React, { useContext } from 'react'
 import { ScrollView, StyleSheet, Switch, Text, View } from 'react-native'
 import { Button, ThemeContext } from 'react-native-elements'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-native'
 import { textColor } from '../components/appThemes'
 import CustodianSettings from '../components/CustodianSettings'
@@ -16,7 +16,6 @@ import ThemePicker from '../components/ThemePicker'
 
 export default function AppSettingsView() {
   const history = useHistory()
-  const dispatch = useDispatch()
   const { theme }: any = useContext(ThemeContext)
   const darkMode = useSelector(selectDarkMode)
   const username = useSelector(selectUsername)

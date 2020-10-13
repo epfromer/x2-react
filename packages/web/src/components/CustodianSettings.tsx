@@ -60,8 +60,6 @@ export default function CustodianSettings() {
         {custodian.name}
       </TableCell>
       <TableCell>{custodian.title}</TableCell>
-      <TableCell align="right">{custodian.senderTotal}</TableCell>
-      <TableCell align="right">{custodian.receiverTotal}</TableCell>
       <TableCell align="center">
         <Button
           variant="contained"
@@ -71,7 +69,7 @@ export default function CustodianSettings() {
             setColorPickerDlgOpen(true)
           }}
           data-testid={custodian.id}
-          style={{ backgroundColor: custodian.color }}
+          style={{ backgroundColor: custodian.color, height: 30 }}
         ></Button>
       </TableCell>
     </TableRow>
@@ -91,8 +89,6 @@ export default function CustodianSettings() {
             <TableRow>
               <TableCell>Custodian</TableCell>
               <TableCell>Title</TableCell>
-              <TableCell align="right">Sent</TableCell>
-              <TableCell align="right">Received</TableCell>
               <TableCell align="center">Color</TableCell>
             </TableRow>
           </TableHead>

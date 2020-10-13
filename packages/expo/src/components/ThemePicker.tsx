@@ -2,13 +2,12 @@ import { selectThemeName, setThemeNameAsync } from '@klonzo/common'
 import React, { useContext } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { Button, Icon, ThemeContext } from 'react-native-elements'
-import { useDispatch, useSelector } from 'react-redux'
-import { appThemes } from './appThemes'
+import { useSelector } from 'react-redux'
+import { appThemes, AppTheme } from './appThemes'
 
 export default function ThemePicker() {
   const { theme }: any = useContext(ThemeContext)
   const themeName = useSelector(selectThemeName)
-  const dispatch = useDispatch()
 
   const styles = StyleSheet.create({
     container: {
@@ -30,13 +29,13 @@ export default function ThemePicker() {
     },
   })
 
-  const getButtonStyle = (t) => ({
+  const getButtonStyle = (t: AppTheme) => ({
     backgroundColor: t.Header.containerStyle.backgroundColor,
     width: 100,
     height: 30,
   })
 
-  const renderTheme = (t) => (
+  const renderTheme = (t: AppTheme) => (
     <View style={styles.themeContainer} key={t.name}>
       <View style={styles.itemRow}>
         <View>

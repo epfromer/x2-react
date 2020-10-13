@@ -61,6 +61,7 @@ export default function SearchHistoryView() {
         {searchHistoryLoading && <LinearProgress />}
         <Button
           variant="contained"
+          color="secondary"
           className={classes.button}
           onClick={onClearHistory}
           data-testid="clear-history"

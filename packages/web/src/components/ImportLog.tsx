@@ -51,6 +51,7 @@ export default function ImportLog() {
       <Paper>
         <Button
           variant="contained"
+          color="secondary"
           className={classes.button}
           onClick={startImport}
         >
