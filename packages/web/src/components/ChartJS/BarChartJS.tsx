@@ -1,4 +1,5 @@
 import { EmailXferedDatum, selectDarkMode } from '@klonzo/common'
+import { useTheme } from '@material-ui/core/styles'
 import { Chart } from 'chart.js'
 import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
@@ -23,6 +24,7 @@ export default function BarChartJS({
   const chartContainer: any = useRef(null)
   const [, setChartInstance] = useState<any>(null)
   const darkMode = useSelector(selectDarkMode)
+  const theme = useTheme()
 
   const config: any = {
     type: 'horizontalBar',
@@ -30,7 +32,7 @@ export default function BarChartJS({
       maintainAspectRatio: false,
       title: {
         display: true,
-        fontColor: darkMode ? 'white' : 'black',
+        fontColor: theme.palette.text.primary,
         fontSize: 16,
         padding: 10,
         text: title,
@@ -44,7 +46,7 @@ export default function BarChartJS({
         xAxes: [
           {
             ticks: {
-              fontColor: darkMode ? 'white' : 'black',
+              fontColor: theme.palette.text.primary,
             },
           },
         ],
@@ -52,7 +54,7 @@ export default function BarChartJS({
           {
             ticks: {
               min: 0,
-              fontColor: darkMode ? 'white' : 'black',
+              fontColor: theme.palette.text.primary,
             },
           },
         ],

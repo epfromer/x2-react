@@ -1,6 +1,6 @@
-import { EmailXferedDatum, selectDarkMode } from '@klonzo/common'
+import { EmailXferedDatum } from '@klonzo/common'
+import { useTheme } from '@material-ui/core/styles'
 import React from 'react'
-import { useSelector } from 'react-redux'
 import { VictoryAxis, VictoryBar, VictoryChart, VictoryLabel } from 'victory'
 
 // https://formidable.com/open-source/victory/docs/victory-bar
@@ -19,7 +19,7 @@ export default function BarVictory({
   data,
   handleClick,
 }: Props) {
-  const darkMode = useSelector(selectDarkMode)
+  const theme = useTheme()
 
   const onClick = () => {
     return [
@@ -40,12 +40,12 @@ export default function BarVictory({
           x={225}
           y={30}
           textAnchor="middle"
-          style={[{ fill: darkMode ? 'white' : 'black', fontSize: 10 }]}
+          style={[{ fill: theme.palette.text.primary, fontSize: 10 }]}
         />
         <VictoryAxis
           style={{
             tickLabels: {
-              fill: darkMode ? 'white' : 'black',
+              fill: theme.palette.text.primary,
               fontSize: 5,
               padding: 1,
             },
@@ -55,7 +55,7 @@ export default function BarVictory({
           dependentAxis
           style={{
             tickLabels: {
-              fill: darkMode ? 'white' : 'black',
+              fill: theme.palette.text.primary,
               fontSize: 5,
               padding: 1,
             },
