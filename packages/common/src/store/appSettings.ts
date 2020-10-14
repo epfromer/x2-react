@@ -20,6 +20,7 @@ export async function loadAppSettingsAsync() {
         localStorage.getItem('themeName') &&
         localStorage.getItem('themeName') !== 'null'
       ) {
+        // @ts-ignore
         themeName = localStorage.getItem('themeName')
       }
     } else {

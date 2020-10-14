@@ -1,3 +1,4 @@
+// @ts-ignore
 import mockAsyncStorage from '@react-native-community/async-storage/jest/async-storage-mock'
 import '@testing-library/jest-dom/extend-expect'
 import fetchMock from 'jest-fetch-mock'

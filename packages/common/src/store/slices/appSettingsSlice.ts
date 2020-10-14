@@ -5,7 +5,7 @@ import { ImportLogEntry } from '../types'
 export interface AppSettingsState {
   darkMode: boolean
   orientation: string
-  importLog: Array<ImportLogEntry>
+  importLog: Array<ImportLogEntry> | undefined
   themeName: string
 }
 const initialState: AppSettingsState = {
@@ -41,6 +41,6 @@ export const appSettingsSlice = createSlice({
 export default appSettingsSlice.reducer
 
 // Selectors
-export const selectDarkMode = (state) => state.appSettings.darkMode
-export const selectImportLog = (state) => state.appSettings.importLog
-export const selectThemeName = (state) => state.appSettings.themeName
+export const selectDarkMode = (state: any) => state.appSettings.darkMode
+export const selectImportLog = (state: any) => state.appSettings.importLog
+export const selectThemeName = (state: any) => state.appSettings.themeName

@@ -4,21 +4,12 @@
     "src/**/*"
   ],
   "compilerOptions": {
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
+    "baseUrl": ".",
     "jsx": "react",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "module": "esnext",
-    "moduleResolution": "node",
     "noEmit": true,
-    "resolveJsonModule": true,
-    "target": "es5",
-    "strict": true
+    "rootDir": "src",
+    "strict": true,
+    "module": "esnext",
+    "resolveJsonModule": true
   }
 }
