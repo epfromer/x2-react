@@ -4,13 +4,13 @@ import {
   getEmailAsync,
   selectCustodians,
   selectCustodiansLoading,
-  selectDarkMode,
   setAllText,
   setFrom,
   setTo,
 } from '@klonzo/common'
 import IconButton from '@material-ui/core/IconButton'
 import LinearProgress from '@material-ui/core/LinearProgress'
+import { useTheme } from '@material-ui/core/styles'
 import Tooltip from '@material-ui/core/Tooltip'
 import SwapHorizontalCircleIcon from '@material-ui/icons/SwapHorizontalCircle'
 import SwapVerticalCircleIcon from '@material-ui/icons/SwapVerticalCircle'
@@ -30,11 +30,11 @@ HighchartTimeline(Highcharts)
 // https://www.econcrises.org/2016/12/07/enron-corporation-2001/
 
 export default function EventTimelineView() {
+  const theme = useTheme()
   const dispatch = useDispatch()
   const history = useHistory()
   const custodiansLoading = useSelector(selectCustodiansLoading)
   const custodians = useSelector(selectCustodians)
-  const darkMode = useSelector(selectDarkMode)
   const [vertical, setVertical] = useState(true)
 
   const getCustodianColor = (name: string) => {
@@ -66,7 +66,7 @@ export default function EventTimelineView() {
       inverted: vertical ? true : false,
       height: vertical ? '90%' : '30%',
       zoomType: 'x',
-      backgroundColor: darkMode ? '#303030' : '#FAFAFA',
+      backgroundColor: theme.palette.background.default,
     },
     title: {
       text: '',
