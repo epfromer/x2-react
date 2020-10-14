@@ -1,11 +1,7 @@
-import {
-  getVolumeTimelineEChartsConfig,
-  selectDarkMode,
-  EmailSentByDay,
-} from '@klonzo/common'
+import { EmailSentByDay, getVolumeTimelineEChartsConfig } from '@klonzo/common'
+import { useTheme } from '@material-ui/core/styles'
 import ReactEcharts from 'echarts-for-react'
 import React from 'react'
-import { useSelector } from 'react-redux'
 
 // https://echarts.apache.org/examples/en/index.html#chart-type-bar
 
@@ -22,6 +18,7 @@ export default function VolumeTimelineECharts({
   data,
   handleClick,
 }: Props) {
+  const theme = useTheme()
   const onClick = (e: any) => handleClick(e.name)
 
   return (
@@ -30,7 +27,7 @@ export default function VolumeTimelineECharts({
         style={{ height: chartHeight, width: chartWidth }}
         onEvents={{ click: onClick }}
         option={getVolumeTimelineEChartsConfig(
-          useSelector(selectDarkMode),
+          theme.palette.text.primary,
           title,
           data
         )}

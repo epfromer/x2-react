@@ -1,8 +1,8 @@
-import { EmailXferedDatum, selectDarkMode } from '@klonzo/common'
+import { EmailXferedDatum } from '@klonzo/common'
+import { useTheme } from '@material-ui/core/styles'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import React from 'react'
-import { useSelector } from 'react-redux'
 
 // https://www.highcharts.com/demo/pie-basic
 
@@ -18,7 +18,7 @@ export default function PieHighcharts({
   data,
   handleClick,
 }: Props) {
-  const darkMode = useSelector(selectDarkMode)
+  const theme = useTheme()
 
   interface HighChartsDatum {
     name: string
@@ -26,7 +26,6 @@ export default function PieHighcharts({
     color: string
     events: any
   }
-
   const custodians: Array<HighChartsDatum> = []
   data.forEach((datum) => {
     custodians.push({
@@ -45,12 +44,12 @@ export default function PieHighcharts({
       plotBorderWidth: null,
       plotShadow: false,
       type: 'pie',
-      backgroundColor: darkMode ? '#303030' : '#FAFAFA',
+      backgroundColor: theme.palette.background.default,
     },
     title: {
       text: title,
       style: {
-        color: darkMode ? 'white' : 'black',
+        color: theme.palette.text.primary,
       },
     },
     tooltip: {

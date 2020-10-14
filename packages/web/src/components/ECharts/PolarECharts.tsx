@@ -1,11 +1,7 @@
-import {
-  EmailXferedDatum,
-  getPolarEChartsConfig,
-  selectDarkMode,
-} from '@klonzo/common'
+import { EmailXferedDatum, getPolarEChartsConfig } from '@klonzo/common'
+import { useTheme } from '@material-ui/core/styles'
 import ReactEcharts from 'echarts-for-react'
 import React from 'react'
-import { useSelector } from 'react-redux'
 
 // https://echarts.apache.org/examples/en/index.html#chart-type-pie
 
@@ -24,6 +20,7 @@ export default function PolarECharts({
   data,
   handleClick,
 }: Props) {
+  const theme = useTheme()
   const onClick = (e: any) => handleClick(search, e.name)
 
   return (
@@ -31,7 +28,7 @@ export default function PolarECharts({
       <ReactEcharts
         style={{ height: chartHeight, width: chartWidth }}
         onEvents={{ click: onClick }}
-        option={getPolarEChartsConfig(useSelector(selectDarkMode), title, data)}
+        option={getPolarEChartsConfig(theme.palette.text.primary, title, data)}
       />
       <button hidden onClick={onClick} data-testid="polar-echarts"></button>
     </div>

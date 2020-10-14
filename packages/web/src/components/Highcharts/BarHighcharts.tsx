@@ -19,7 +19,6 @@ export default function BarHighcharts({
   handleClick,
 }: Props) {
   const theme = useTheme()
-  console.log(theme.palette.background.default)
   return (
     <HighchartsReact
       highcharts={Highcharts}

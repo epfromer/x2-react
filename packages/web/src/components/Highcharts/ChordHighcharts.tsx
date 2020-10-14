@@ -1,4 +1,5 @@
 import { selectDarkMode } from '@klonzo/common'
+import { useTheme } from '@material-ui/core/styles'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import HighchartsWheel from 'highcharts/modules/dependency-wheel'
@@ -27,17 +28,18 @@ export default function ChordHighcharts({
 }: Props) {
   const [config, setConfig] = useState<any>(null)
   const darkMode = useSelector(selectDarkMode)
+  const theme = useTheme()
 
   function createChart() {
     setConfig({
       chart: {
         height: chartHeight,
-        backgroundColor: darkMode ? '#303030' : '#FAFAFA',
+        backgroundColor: theme.palette.background.default,
       },
       title: {
         text: title,
         style: {
-          color: darkMode ? 'white' : 'black',
+          color: theme.palette.text.primary,
         },
       },
       plotOptions: {
@@ -62,11 +64,7 @@ export default function ChordHighcharts({
   }
 
   useEffect(() => {
-    // TODO - this is done to delay the render as there's a bug
-    // which will result in animation object undefined with multiple renders
-    if (!config) {
-      createChart()
-    }
+    if (!config) createChart()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [config])
 

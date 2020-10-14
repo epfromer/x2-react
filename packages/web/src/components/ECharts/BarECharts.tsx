@@ -1,11 +1,7 @@
-import {
-  EmailXferedDatum,
-  getBarEChartsConfig,
-  selectDarkMode,
-} from '@klonzo/common'
+import { EmailXferedDatum, getBarEChartsConfig } from '@klonzo/common'
+import { useTheme } from '@material-ui/core/styles'
 import ReactEcharts from 'echarts-for-react'
 import React from 'react'
-import { useSelector } from 'react-redux'
 
 // https://echarts.apache.org/examples/en/index.html#chart-type-bar
 
@@ -24,6 +20,7 @@ export default function BarECharts({
   data,
   handleClick,
 }: Props) {
+  const theme = useTheme()
   const onClick = (e: any) => handleClick(search, e.name)
 
   return (
@@ -32,7 +29,7 @@ export default function BarECharts({
         style={{ height: chartHeight, width: chartWidth }}
         onEvents={{ click: onClick }}
         option={getBarEChartsConfig(
-          useSelector(selectDarkMode),
+          theme.palette.text.primary,
           title,
           data.map((datum) => datum).reverse(),
           {}

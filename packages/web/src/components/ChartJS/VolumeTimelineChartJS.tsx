@@ -1,4 +1,5 @@
-import { selectDarkMode, EmailSentByDay } from '@klonzo/common'
+import { EmailSentByDay, selectDarkMode } from '@klonzo/common'
+import { useTheme } from '@material-ui/core/styles'
 import { Chart } from 'chart.js'
 import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
@@ -22,6 +23,7 @@ export default function VolumeTimelineChartJS({
   const chartContainer: any = useRef(null)
   const [, setChartInstance] = useState<any>(null)
   const darkMode = useSelector(selectDarkMode)
+  const theme = useTheme()
 
   interface Datum {
     time: Date | string
@@ -53,7 +55,7 @@ export default function VolumeTimelineChartJS({
               unit: 'month',
             },
             ticks: {
-              fontColor: darkMode ? 'white' : 'black',
+              fontColor: theme.palette.text.primary,
             },
           },
         ],
@@ -61,7 +63,7 @@ export default function VolumeTimelineChartJS({
           {
             ticks: {
               min: 0,
-              fontColor: darkMode ? 'white' : 'black',
+              fontColor: theme.palette.text.primary,
             },
           },
         ],

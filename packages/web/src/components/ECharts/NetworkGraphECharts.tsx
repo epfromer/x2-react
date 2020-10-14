@@ -1,7 +1,7 @@
-import { getNetworkGraphEChartsConfig, selectDarkMode } from '@klonzo/common'
+import { getNetworkGraphEChartsConfig } from '@klonzo/common'
+import { useTheme } from '@material-ui/core/styles'
 import ReactEcharts from 'echarts-for-react'
 import React from 'react'
-import { useSelector } from 'react-redux'
 
 // https://echarts.apache.org/examples/en/editor.html?c=graph
 
@@ -20,12 +20,13 @@ export default function NetworkGraphECharts({
   nodes,
   handleClick,
 }: Props) {
+  const theme = useTheme()
   return (
     <div>
       <ReactEcharts
         style={{ height: chartHeight, width: chartWidth }}
         option={getNetworkGraphEChartsConfig(
-          useSelector(selectDarkMode),
+          theme.palette.text.primary,
           title,
           data,
           nodes

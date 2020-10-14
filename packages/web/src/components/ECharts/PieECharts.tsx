@@ -1,11 +1,7 @@
-import {
-  EmailXferedDatum,
-  getPieEChartsConfig,
-  selectDarkMode,
-} from '@klonzo/common'
+import { EmailXferedDatum, getPieEChartsConfig } from '@klonzo/common'
+import { useTheme } from '@material-ui/core/styles'
 import ReactEcharts from 'echarts-for-react'
 import React from 'react'
-import { useSelector } from 'react-redux'
 
 // https://echarts.apache.org/examples/en/index.html#chart-type-pie
 
@@ -24,6 +20,7 @@ export default function PieECharts({
   data,
   handleClick,
 }: Props) {
+  const theme = useTheme()
   const onClick = (e: any) => handleClick(search, e.name)
 
   return (
@@ -31,7 +28,7 @@ export default function PieECharts({
       <ReactEcharts
         style={{ height: chartHeight }}
         onEvents={{ click: onClick }}
-        option={getPieEChartsConfig(useSelector(selectDarkMode), title, data)}
+        option={getPieEChartsConfig(theme.palette.text.primary, title, data)}
       />
       <button hidden onClick={onClick} data-testid="pie-echarts"></button>
     </div>

@@ -1,7 +1,6 @@
-import { selectDarkMode } from '@klonzo/common'
+import { useTheme } from '@material-ui/core/styles'
 import ReactEcharts from 'echarts-for-react'
 import React from 'react'
-import { useSelector } from 'react-redux'
 require('echarts-wordcloud')
 
 // https://www.npmjs.com/package/echarts-wordcloud
@@ -15,6 +14,7 @@ interface Props {
 }
 
 export default function WordCloudECharts({ title, words, handleClick }: Props) {
+  const theme = useTheme()
   const wordCloud: Array<any> = words.map((word: any) => ({
     name: word.name,
     value: word.weight,
@@ -31,7 +31,7 @@ export default function WordCloudECharts({ title, words, handleClick }: Props) {
           top: 20,
           left: 'center',
           textStyle: {
-            color: useSelector(selectDarkMode) ? 'white' : 'black',
+            color: theme.palette.text.primary,
           },
         },
         series: [

@@ -1,7 +1,7 @@
-import { getTreeMapEChartsConfig, selectDarkMode } from '@klonzo/common'
+import { getTreeMapEChartsConfig } from '@klonzo/common'
+import { useTheme } from '@material-ui/core/styles'
 import ReactEcharts from 'echarts-for-react'
 import React from 'react'
-import { useSelector } from 'react-redux'
 
 // https://echarts.apache.org/examples/en/index.html#chart-type-treemap
 
@@ -19,6 +19,7 @@ export default function TreeMapECharts({
   data,
   handleClick,
 }: Props) {
+  const theme = useTheme()
   const onClick = (e: any) => handleClick(search, e.name)
 
   return (
@@ -27,7 +28,7 @@ export default function TreeMapECharts({
         style={{ height: chartHeight }}
         onEvents={{ click: onClick }}
         option={getTreeMapEChartsConfig(
-          useSelector(selectDarkMode),
+          theme.palette.text.primary,
           title,
           data
         )}

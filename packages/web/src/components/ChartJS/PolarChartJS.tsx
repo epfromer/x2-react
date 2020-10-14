@@ -2,6 +2,7 @@ import { EmailXferedDatum, selectDarkMode } from '@klonzo/common'
 import { Chart } from 'chart.js'
 import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { useTheme } from '@material-ui/core/styles'
 
 // https://www.chartjs.org/docs/latest/charts/polar.html
 
@@ -23,13 +24,14 @@ export default function PolarChartJS({
   const chartContainer: any = useRef(null)
   const [, setChartInstance] = useState<any>(null)
   const darkMode = useSelector(selectDarkMode)
+  const theme = useTheme()
 
   const config: any = {
     type: 'polarArea',
     options: {
       title: {
         display: true,
-        fontColor: darkMode ? 'white' : 'black',
+        fontColor: theme.palette.text.primary,
         fontSize: 16,
         padding: 10,
         text: title,

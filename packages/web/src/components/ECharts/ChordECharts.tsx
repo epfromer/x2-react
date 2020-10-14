@@ -1,7 +1,6 @@
-import { selectDarkMode } from '@klonzo/common'
+import { useTheme } from '@material-ui/core/styles'
 import ReactEcharts from 'echarts-for-react'
 import React from 'react'
-import { useSelector } from 'react-redux'
 require('echarts-wordcloud')
 
 // https://echarts.apache.org/examples/en/index.html#chart-type-graph
@@ -21,7 +20,7 @@ export default function ChordECharts({
   nodes,
   handleClick,
 }: Props) {
-  const darkMode = useSelector(selectDarkMode)
+  const theme = useTheme()
   const maxSent = nodes.reduce(
     (maxVal, cur) => (cur.emailTotal > maxVal.emailTotal ? cur : maxVal),
     0
@@ -57,7 +56,7 @@ export default function ChordECharts({
           text: title,
           left: 'center',
           textStyle: {
-            color: darkMode ? 'white' : 'black',
+            color: theme.palette.text.primary,
           },
         },
         tooltip: {},
@@ -65,7 +64,7 @@ export default function ChordECharts({
           {
             top: 40,
             textStyle: {
-              color: darkMode ? 'white' : 'black',
+              color: theme.palette.text.primary,
             },
             data: chartNodes.map((a) => a.name),
           },

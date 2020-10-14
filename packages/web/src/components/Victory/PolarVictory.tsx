@@ -1,6 +1,6 @@
-import { EmailXferedDatum, selectDarkMode } from '@klonzo/common'
+import { EmailXferedDatum } from '@klonzo/common'
+import { useTheme } from '@material-ui/core/styles'
 import React from 'react'
-import { useSelector } from 'react-redux'
 import {
   VictoryBar,
   VictoryChart,
@@ -25,15 +25,13 @@ export default function PolarVictory({
   data,
   handleClick,
 }: Props) {
-  const darkMode = useSelector(selectDarkMode)
+  const theme = useTheme()
 
-  const onClick = () => {
-    return [
-      {
-        mutation: (props: any) => handleClick(search, props.datum.xName),
-      },
-    ]
-  }
+  const onClick = () => [
+    {
+      mutation: (props: any) => handleClick(search, props.datum.xName),
+    },
+  ]
 
   return (
     <div>
@@ -47,7 +45,7 @@ export default function PolarVictory({
           x={180}
           y={30}
           textAnchor="middle"
-          style={[{ fill: darkMode ? 'white' : 'black', fontSize: 15 }]}
+          style={[{ fill: theme.palette.text.primary, fontSize: 15 }]}
         />
         <VictoryPolarAxis
           dependentAxis
@@ -63,7 +61,7 @@ export default function PolarVictory({
           labelPlacement="vertical"
           style={{
             tickLabels: {
-              fill: darkMode ? 'white' : 'black',
+              fill: theme.palette.text.primary,
               fontSize: 10,
               padding: 1,
             },

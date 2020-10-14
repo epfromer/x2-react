@@ -1,9 +1,8 @@
-import { selectDarkMode } from '@klonzo/common'
+import { useTheme } from '@material-ui/core/styles'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import HighchartWordCloud from 'highcharts/modules/wordcloud'
 import React from 'react'
-import { useSelector } from 'react-redux'
 
 HighchartWordCloud(Highcharts)
 
@@ -28,17 +27,17 @@ export default function WordCloudHighcharts({
   words,
   handleClick,
 }: Props) {
-  const darkMode = useSelector(selectDarkMode)
+  const theme = useTheme()
 
   const config = {
     chart: {
       height: chartHeight,
-      backgroundColor: darkMode ? '#303030' : '#FAFAFA',
+      backgroundColor: theme.palette.background.default,
     },
     title: {
       text: title,
       style: {
-        color: darkMode ? 'white' : 'black',
+        color: theme.palette.text.primary,
       },
     },
     plotOptions: {

@@ -1,9 +1,9 @@
-import { EmailXferedDatum, selectDarkMode } from '@klonzo/common'
+import { EmailXferedDatum } from '@klonzo/common'
+import { useTheme } from '@material-ui/core/styles'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import HighchartPolar from 'highcharts/highcharts-more'
 import React from 'react'
-import { useSelector } from 'react-redux'
 
 HighchartPolar(Highcharts)
 
@@ -22,7 +22,7 @@ export default function PolarHighcharts({
   data,
   handleClick,
 }: Props) {
-  const darkMode = useSelector(selectDarkMode)
+  const theme = useTheme()
 
   interface Datum {
     name: string
@@ -45,12 +45,12 @@ export default function PolarHighcharts({
     chart: {
       polar: true,
       height: '100%',
-      backgroundColor: darkMode ? '#303030' : '#FAFAFA',
+      backgroundColor: theme.palette.background.default,
     },
     title: {
       text: title,
       style: {
-        color: darkMode ? 'white' : 'black',
+        color: theme.palette.text.primary,
       },
     },
     xAxis: {
@@ -60,7 +60,7 @@ export default function PolarHighcharts({
     },
     legend: {
       itemStyle: {
-        color: darkMode ? 'white' : 'black',
+        color: theme.palette.text.primary,
       },
     },
     plotOptions: {

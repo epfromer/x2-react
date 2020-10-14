@@ -1,8 +1,10 @@
 import { selectDarkMode } from '@klonzo/common'
+import { useTheme } from '@material-ui/core/styles'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+
 require('highcharts/modules/treemap')(Highcharts)
 
 // https://www.highcharts.com/demo/treemap-coloraxis
@@ -20,8 +22,9 @@ export default function TreeMapHighcharts({
   title,
   handleClick,
 }: Props) {
-  const [config, setConfig] = useState({})
+  const [config, setConfig] = useState<any>(null)
   const darkMode = useSelector(selectDarkMode)
+  const theme = useTheme()
 
   function createChart() {
     // https://www.highcharts.com/docs/chart-and-series-types/treemap
@@ -29,12 +32,12 @@ export default function TreeMapHighcharts({
     setConfig({
       chart: {
         height: '70%',
-        backgroundColor: darkMode ? '#303030' : '#FAFAFA',
+        backgroundColor: theme.palette.background.default,
       },
       title: {
         text: title,
         style: {
-          color: darkMode ? 'white' : 'black',
+          color: theme.palette.text.primary,
         },
       },
       plotOptions: {
@@ -73,9 +76,22 @@ export default function TreeMapHighcharts({
   }
 
   useEffect(() => {
+    if (!config) createChart()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [config])
+
+  useEffect(() => {
+    setConfig(null)
+  }, [darkMode])
+
+  useEffect(() => {
     createChart()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data])
+  }, [])
 
-  return <HighchartsReact highcharts={Highcharts} options={config} />
+  return (
+    <div>
+      {config && <HighchartsReact highcharts={Highcharts} options={config} />}
+    </div>
+  )
 }

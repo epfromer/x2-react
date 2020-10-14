@@ -21,13 +21,11 @@ export default function BarVictory({
 }: Props) {
   const theme = useTheme()
 
-  const onClick = () => {
-    return [
-      {
-        mutation: (props: any) => handleClick(search, props.datum.xName),
-      },
-    ]
-  }
+  const onClick = () => [
+    {
+      mutation: (props: any) => handleClick(search, props.datum.xName),
+    },
+  ]
 
   return (
     <div>

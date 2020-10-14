@@ -1,12 +1,8 @@
-import {
-  getVolumeTimeHighchartsConfig,
-  selectDarkMode,
-  EmailSentByDay,
-} from '@klonzo/common'
+import { EmailSentByDay, getVolumeTimeHighchartsConfig } from '@klonzo/common'
+import { useTheme } from '@material-ui/core/styles'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import React from 'react'
-import { useSelector } from 'react-redux'
 
 // https://www.highcharts.com/demo/line-time-series
 
@@ -20,15 +16,15 @@ export default function VolumeTimelineHighcharts({
   data,
   handleClick,
 }: Props) {
-  const darkMode = useSelector(selectDarkMode)
+  const theme = useTheme()
   return (
     <HighchartsReact
       highcharts={Highcharts}
       options={getVolumeTimeHighchartsConfig(
-        darkMode,
+        theme.palette.text.primary,
         title,
         data,
-        darkMode ? '#303030' : '#FAFAFA',
+        theme.palette.background.default,
         handleClick
       )}
     />

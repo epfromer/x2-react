@@ -1,4 +1,5 @@
 import { EmailXferedDatum, selectDarkMode } from '@klonzo/common'
+import { useTheme } from '@material-ui/core/styles'
 import { Chart } from 'chart.js'
 import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
@@ -22,6 +23,7 @@ export default function PieChartJS({
   const chartContainer: any = useRef(null)
   const [, setChartInstance] = useState<any>(null)
   const darkMode = useSelector(selectDarkMode)
+  const theme = useTheme()
 
   const config: any = {
     type: 'pie',
@@ -37,7 +39,7 @@ export default function PieChartJS({
     options: {
       title: {
         display: true,
-        fontColor: darkMode ? '#FFFFFF' : '#666',
+        fontColor: theme.palette.text.primary,
         fontSize: 16,
         padding: 10,
         text: title,

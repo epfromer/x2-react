@@ -1,6 +1,6 @@
-import { selectDarkMode, EmailSentByDay } from '@klonzo/common'
+import { EmailSentByDay } from '@klonzo/common'
+import { useTheme } from '@material-ui/core/styles'
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
 import {
   VictoryAxis,
   VictoryBrushContainer,
@@ -23,7 +23,7 @@ export default function VolumeTimelineVictory({
   data,
   handleClick,
 }: Props) {
-  const darkMode = useSelector(selectDarkMode)
+  const theme = useTheme()
   const [zoomDomain, setZoomDomain] = useState({
     x: [new Date(1999, 1, 1), new Date(2002, 3, 1)],
   })
@@ -55,7 +55,7 @@ export default function VolumeTimelineVictory({
         <VictoryAxis
           style={{
             tickLabels: {
-              fill: darkMode ? 'white' : 'black',
+              fill: theme.palette.text.primary,
               fontSize: 8,
               padding: 1,
             },
@@ -65,7 +65,7 @@ export default function VolumeTimelineVictory({
           dependentAxis
           style={{
             tickLabels: {
-              fill: darkMode ? 'white' : 'black',
+              fill: theme.palette.text.primary,
               fontSize: 8,
               padding: 1,
             },
@@ -76,7 +76,7 @@ export default function VolumeTimelineVictory({
             data: { stroke: '#c43a31' },
             labels: {
               fontSize: 15,
-              fill: darkMode ? 'white' : 'black',
+              fill: theme.palette.text.primary,
             },
           }}
           animate={{
@@ -105,7 +105,7 @@ export default function VolumeTimelineVictory({
           tickFormat={(x) => new Date(x).getFullYear()}
           style={{
             tickLabels: {
-              fill: darkMode ? 'white' : 'black',
+              fill: theme.palette.text.primary,
               fontSize: 10,
               padding: 1,
             },
@@ -116,7 +116,7 @@ export default function VolumeTimelineVictory({
             data: { stroke: '#c43a31' },
             labels: {
               fontSize: 15,
-              fill: darkMode ? 'white' : 'black',
+              fill: theme.palette.text.primary,
             },
           }}
           animate={{

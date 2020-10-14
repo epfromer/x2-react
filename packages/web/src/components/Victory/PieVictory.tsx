@@ -1,6 +1,6 @@
-import { EmailXferedDatum, selectDarkMode } from '@klonzo/common'
+import { EmailXferedDatum } from '@klonzo/common'
+import { useTheme } from '@material-ui/core/styles'
 import React from 'react'
-import { useSelector } from 'react-redux'
 import { VictoryPie } from 'victory'
 
 // https://formidable.com/open-source/victory/docs/victory-pie/
@@ -19,7 +19,7 @@ export default function PieVictory({
   data,
   handleClick,
 }: Props) {
-  const darkMode = useSelector(selectDarkMode)
+  const theme = useTheme()
 
   const onClick = () => {
     return [
@@ -42,7 +42,7 @@ export default function PieVictory({
             fill: ({ datum }) => datum.color,
           },
           labels: {
-            fill: darkMode ? 'white' : 'black',
+            fill: theme.palette.text.primary,
             fontSize: 10,
           },
         }}
