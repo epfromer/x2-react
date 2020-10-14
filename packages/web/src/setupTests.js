@@ -7,6 +7,7 @@ import {
   setFrom,
   setSearchHistory,
   setSubject,
+  setThemeName,
   setTo,
   setWordCloud,
   store,
@@ -23,6 +24,7 @@ import 'jest-canvas-mock'
 import React from 'react'
 import { Provider } from 'react-redux'
 import { Router } from 'react-router'
+import { appThemes } from './components/appThemes'
 
 require('jest-fetch-mock').enableMocks()
 
@@ -38,6 +40,7 @@ store.dispatch(setTo('body'))
 store.dispatch(setFrom('body'))
 store.dispatch(setSubject('body'))
 store.dispatch(setBody('body'))
+store.dispatch(setThemeName(appThemes[0].name))
 
 export function renderComp(comp, history = createMemoryHistory()) {
   return render(

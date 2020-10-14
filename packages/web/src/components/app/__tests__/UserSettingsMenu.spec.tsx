@@ -8,7 +8,4 @@ test('renders', async () => {
   let button = getByTestId('sign-out')
   await fireEvent.click(button)
   expect(button).toBeInTheDocument()
-  button = getByTestId('nav-to-search-history')
-  await fireEvent.click(button)
-  expect(button).toBeInTheDocument()
 })

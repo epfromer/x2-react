@@ -1,5 +1,5 @@
-import AsyncStorage from '@react-native-community/async-storage'
 import { createAction, createSlice } from '@reduxjs/toolkit'
+import { defaultThemeName } from '../../constants'
 import { ImportLogEntry } from '../types'
 
 export interface AppSettingsState {
@@ -12,7 +12,7 @@ const initialState: AppSettingsState = {
   darkMode: false,
   orientation: 'portrait',
   importLog: undefined,
-  themeName: 'Purple',
+  themeName: defaultThemeName,
 }
 
 export const setDarkMode = createAction<boolean>('appSettings/setDarkMode')

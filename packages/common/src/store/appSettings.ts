@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-community/async-storage'
 import { setDarkMode, setThemeName, store } from './index'
+import { defaultThemeName } from '../constants'
 
 // TODO - get dark mode from OS
 // do in expo, web and store in redux so don't include lib here
@@ -7,12 +8,18 @@ import { setDarkMode, setThemeName, store } from './index'
 export async function loadAppSettingsAsync() {
   try {
     let darkMode = false
-    let themeName = 'Purple'
+    let themeName = defaultThemeName
     if (typeof Storage !== 'undefined') {
-      if (localStorage.getItem('darkMode') === 'true') {
+      if (
+        localStorage.getItem('darkMode') &&
+        localStorage.getItem('darkMode') === 'true'
+      ) {
         darkMode = true
       }
-      if (localStorage.getItem('themeName') !== 'null') {
+      if (
+        localStorage.getItem('themeName') &&
+        localStorage.getItem('themeName') !== 'null'
+      ) {
         themeName = localStorage.getItem('themeName')
       }
     } else {
