@@ -34,6 +34,7 @@ export const searchHistorySlice = createSlice({
 export default searchHistorySlice.reducer
 
 // Selectors
-export const selectSearchHistoryLoading = (state) =>
+export const selectSearchHistoryLoading = (state: any) =>
   state.searchHistory.searchHistoryLoading
-export const selectSearchHistory = (state) => state.searchHistory.searchHistory
+export const selectSearchHistory = (state: any) =>
+  state.searchHistory.searchHistory

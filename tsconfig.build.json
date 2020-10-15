@@ -1,9 +1,22 @@
 {
   "exclude": ["node_modules", "dist"],
   "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true,
+    "isolatedModules": true,
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ],
     "module": "commonjs",
-    "sourceMap": true,
+    "moduleResolution": "node",
     "skipLibCheck": true,
-    "target": "es5"
+    "sourceMap": true,
+    "strict": true,
+    "target": "esnext"
   }
 }

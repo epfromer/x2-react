@@ -2,7 +2,7 @@ import { gql, request } from 'graphql-request'
 import { x2Server } from '../constants'
 import { setImportLog, store } from './index'
 
-let importTimer
+let importTimer: number | undefined
 function getImportStatusInterval() {
   const server = process.env.REACT_APP_X2_SERVER
     ? process.env.REACT_APP_X2_SERVER

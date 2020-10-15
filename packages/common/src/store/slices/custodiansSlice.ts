@@ -34,14 +34,14 @@ export const custodiansSlice = createSlice({
 export default custodiansSlice.reducer
 
 // Selectors
-export const selectCustodiansLoading = (state) =>
+export const selectCustodiansLoading = (state: any) =>
   state.custodians.custodiansLoading
-export const selectCustodians = (state) => state.custodians.custodians
-export function selectEmailSenders(state) {
+export const selectCustodians = (state: any) => state.custodians.custodians
+export function selectEmailSenders(state: any) {
   const custodians = state.custodians.custodians
   const data: Array<EmailXferedDatum> = []
   if (custodians) {
-    custodians.forEach((custodian) => {
+    custodians.forEach((custodian: Custodian) => {
       if (custodian.senderTotal) {
         data.push({
           name: custodian.name,
@@ -53,11 +53,11 @@ export function selectEmailSenders(state) {
   }
   return data
 }
-export function selectEmailReceivers(state) {
+export function selectEmailReceivers(state: any) {
   const custodians = state.custodians.custodians
   const data: Array<EmailXferedDatum> = []
   if (custodians) {
-    custodians.forEach((custodian) => {
+    custodians.forEach((custodian: Custodian) => {
       if (custodian.senderTotal) {
         data.push({
           name: custodian.name,
@@ -75,9 +75,9 @@ interface IDColorKey {
   color: string
 }
 
-export function selectEmailSentByCustodian(state) {
+export function selectEmailSentByCustodian(state: any) {
   const custodianNameFromId = (id: string) =>
-    state.custodians.custodians.find((c) => c.id === id).name
+    state.custodians.custodians.find((c: Custodian) => c.id === id).name
 
   const custodians = state.custodians.custodians
   const data: Array<any> = []
@@ -85,7 +85,7 @@ export function selectEmailSentByCustodian(state) {
 
   if (custodians) {
     //  create array of [from, to, number sent]
-    custodians.forEach((fromCustodian) => {
+    custodians.forEach((fromCustodian: Custodian) => {
       fromCustodian.toCustodians.forEach((toCustodian) => {
         data.push([
           fromCustodian.name,
@@ -95,7 +95,7 @@ export function selectEmailSentByCustodian(state) {
       })
     })
     // and array of color keys
-    custodians.forEach((custodian) => {
+    custodians.forEach((custodian: Custodian) => {
       nodes.push({ id: custodian.name, color: custodian.color })
     })
   }
