@@ -12,8 +12,8 @@
     "yarn": ">= 1"
   },
   "scripts": {
-    "clean": "lerna clean",
     "build": "lerna run build",
+    "clean": "lerna clean",
     "postinstall": "cd ./packages/expo && expo-yarn-workspaces postinstall",
     "yarn": "yarn"
   },
