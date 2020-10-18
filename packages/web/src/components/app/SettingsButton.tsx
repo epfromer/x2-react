@@ -12,7 +12,14 @@ export default function SettingsButton() {
     <SettingsMenu />
   ) : (
     <Tooltip title="Settings" aria-label="Settings">
-      <IconButton color="inherit" onClick={() => loginWithRedirect()}>
+      <IconButton
+        color="inherit"
+        onClick={() =>
+          loginWithRedirect({
+            redirectUri: window.location.origin + '/AppSettingsView',
+          })
+        }
+      >
         <BuildIcon />
       </IconButton>
     </Tooltip>
