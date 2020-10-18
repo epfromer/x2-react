@@ -1,5 +1,4 @@
 import { useAuth0 } from '@auth0/auth0-react'
-import { signOut } from '@klonzo/common/src'
 import Avatar from '@material-ui/core/Avatar'
 import Divider from '@material-ui/core/Divider'
 import IconButton from '@material-ui/core/IconButton'
@@ -28,7 +27,7 @@ const StyledMenuItem = withStyles((theme) => ({
 export default function SettingsMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null)
   const history = useHistory()
-  const { user } = useAuth0()
+  const { user, logout } = useAuth0()
   const { name, picture } = user
 
   const handleClick = (event: any) => setAnchorEl(event.currentTarget)
@@ -36,8 +35,7 @@ export default function SettingsMenu() {
 
   const doSignOut = () => {
     handleClose()
-    signOut()
-    history.push('/')
+    logout({ returnTo: window.location.origin })
   }
 
   const navTo = (loc: string) => {

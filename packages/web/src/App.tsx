@@ -68,16 +68,13 @@ const WithAuth0 = () => {
   const domain = process.env.REACT_APP_AUTH0_DOMAIN
   const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID
   const history = useHistory()
-  const onRedirectCallback = (appState: any) => {
-    console.log('WithAuth0 history push', appState)
-    history.push(appState?.returnTo || '/AppSettingsView')
-  }
+
   return (
     <Auth0Provider
       domain={domain as string}
       clientId={clientId as string}
       redirectUri={window.location.origin}
-      onRedirectCallback={onRedirectCallback}
+      onRedirectCallback={() => history.push('/AppSettingsView')}
     >
       <CoreApp />
     </Auth0Provider>
