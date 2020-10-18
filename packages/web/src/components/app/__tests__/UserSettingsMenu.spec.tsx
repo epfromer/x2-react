@@ -1,10 +1,10 @@
 import { fireEvent } from '@testing-library/react'
 import React from 'react'
 import { renderComp } from '../../../setupTests'
-import UserSettingsMenu from '../UserSettingsMenu'
+import SettingsMenu from '../SettingsMenu'
 
 test('renders', async () => {
-  const { getByTestId } = renderComp(<UserSettingsMenu />)
+  const { getByTestId } = renderComp(<SettingsMenu />)
   let button = getByTestId('sign-out')
   await fireEvent.click(button)
   expect(button).toBeInTheDocument()

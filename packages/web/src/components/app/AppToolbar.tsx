@@ -1,8 +1,4 @@
-import {
-  selectAuthenticated,
-  selectDarkMode,
-  setDarkModeAsync,
-} from '@klonzo/common'
+import { selectDarkMode, setDarkModeAsync } from '@klonzo/common'
 import IconButton from '@material-ui/core/IconButton'
 import { makeStyles } from '@material-ui/core/styles'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -10,7 +6,6 @@ import Tooltip from '@material-ui/core/Tooltip'
 import Typography from '@material-ui/core/Typography'
 import Brightness4 from '@material-ui/icons/Brightness4'
 import Brightness7 from '@material-ui/icons/Brightness7'
-import BuildIcon from '@material-ui/icons/Build'
 import HomeIcon from '@material-ui/icons/Home'
 import MenuIcon from '@material-ui/icons/Menu'
 import SearchIcon from '@material-ui/icons/Search'
@@ -18,7 +13,7 @@ import clsx from 'clsx'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import UserSettingsMenu from './UserSettingsMenu'
+import SettingsButton from './SettingsButton'
 
 // https://material-ui.com/components/material-icons/
 
@@ -35,27 +30,10 @@ interface Props {
   drawerOpen: boolean
   setDrawerOpen: (s: boolean) => void
 }
-
 export default function AppToolbar({ drawerOpen, setDrawerOpen }: Props) {
   const classes = useStyles()
   const history = useHistory()
   const darkMode = useSelector(selectDarkMode)
-  const authenticated = useSelector(selectAuthenticated)
-
-  const SettingsButton = () => {
-    return authenticated ? (
-      <UserSettingsMenu />
-    ) : (
-      <Tooltip title="Settings" aria-label="Settings">
-        <IconButton
-          color="inherit"
-          onClick={() => history.push('/AppSettingsView')}
-        >
-          <BuildIcon />
-        </IconButton>
-      </Tooltip>
-    )
-  }
 
   return (
     <Toolbar className={classes.toolbar}>

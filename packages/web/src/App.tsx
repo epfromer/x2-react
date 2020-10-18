@@ -43,7 +43,7 @@ getInitialDataAsync()
 getEmailAsync()
 loadAppSettingsAsync()
 
-function CoreApp() {
+const CoreApp = () => {
   const classes = useStyles()
   const [drawerOpen, setDrawerOpen] = React.useState(false)
   return (
@@ -69,8 +69,10 @@ const WithAuth0 = () => {
   const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID
   const history = useHistory()
   const onRedirectCallback = (appState: any) => {
-    history.push(appState?.returnTo || '/')
+    console.log('WithAuth0 history push', appState)
+    history.push(appState?.returnTo || '/AppSettingsView')
   }
+  console.log(domain, clientId)
   return (
     <Auth0Provider
       domain={domain as string}

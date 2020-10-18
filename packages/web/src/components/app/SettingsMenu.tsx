@@ -25,7 +25,7 @@ const StyledMenuItem = withStyles((theme) => ({
   },
 }))(MenuItem)
 
-export default function UserSettingsMenu() {
+export default function SettingsMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null)
   const username = useSelector(selectUsername)
   const history = useHistory()

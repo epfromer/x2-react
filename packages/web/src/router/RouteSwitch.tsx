@@ -18,25 +18,23 @@ import TreeMapView from '../views/TreeMapView'
 import VolumeTimelineView from '../views/VolumeTimelineView'
 import WordCloudView from '../views/WordCloudView'
 
-const GuardedRoute = ({ component: Component, auth, ...rest }: any) => (
-  <Route
-    {...rest}
-    render={(props) =>
-      auth === true ? <Component {...props} /> : <Redirect to="/SignInView" />
-    }
-  />
-)
+// const GuardedRoute = ({ component: Component, auth, ...rest }: any) => (
+//   <Route
+//     {...rest}
+//     render={(props) =>
+//       auth === true ? <Component {...props} /> : <Redirect to="/SignInView" />
+//     }
+//   />
+// )
 
 export default function RouteSwitch() {
   const authenticated = useSelector(selectAuthenticated)
 
   return (
     <Switch>
-      <GuardedRoute
-        path="/AppSettingsView"
-        component={AppSettingsView}
-        auth={authenticated}
-      />
+      <Route path="/AppSettingsView">
+        <AppSettingsView />
+      </Route>
       <Route path="/SignInView">
         <SignInView />
       </Route>

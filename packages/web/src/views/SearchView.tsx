@@ -20,8 +20,6 @@ import ExpandingRow from '../components/emaillist/ExpandingRow'
 
 // https://github.com/WebDevSimplified/React-Infinite-Scrolling
 
-// TODO filter sent not showing
-
 const useStyles = makeStyles((theme) => ({
   root: { width: '100%' },
   paper: {
