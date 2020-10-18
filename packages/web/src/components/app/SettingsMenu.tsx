@@ -1,4 +1,6 @@
-import { selectUsername, signOut } from '@klonzo/common/src'
+import { useAuth0 } from '@auth0/auth0-react'
+import { signOut } from '@klonzo/common/src'
+import Avatar from '@material-ui/core/Avatar'
 import Divider from '@material-ui/core/Divider'
 import IconButton from '@material-ui/core/IconButton'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
@@ -10,9 +12,7 @@ import Tooltip from '@material-ui/core/Tooltip'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 import Settings from '@material-ui/icons/Settings'
 import React from 'react'
-import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import Gravatar from '../Gravatar'
 
 const StyledMenuItem = withStyles((theme) => ({
   root: {
@@ -27,8 +27,9 @@ const StyledMenuItem = withStyles((theme) => ({
 
 export default function SettingsMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null)
-  const username = useSelector(selectUsername)
   const history = useHistory()
+  const { user } = useAuth0()
+  const { name, picture } = user
 
   const handleClick = (event: any) => setAnchorEl(event.currentTarget)
   const handleClose = () => setAnchorEl(null)
@@ -53,7 +54,7 @@ export default function SettingsMenu() {
           color="inherit"
           onClick={handleClick}
         >
-          <Gravatar email={username} />
+          <Avatar data-testid="gravatar" src={picture} />
         </IconButton>
       </Tooltip>
       <Menu
@@ -68,7 +69,7 @@ export default function SettingsMenu() {
         onClose={handleClose}
       >
         <StyledMenuItem>
-          <ListItemText primary={username} />
+          <ListItemText primary={name} />
         </StyledMenuItem>
         <Divider />
         <StyledMenuItem onClick={() => navTo('/AppSettingsView')}>

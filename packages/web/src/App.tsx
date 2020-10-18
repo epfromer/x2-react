@@ -72,7 +72,6 @@ const WithAuth0 = () => {
     console.log('WithAuth0 history push', appState)
     history.push(appState?.returnTo || '/AppSettingsView')
   }
-  console.log(domain, clientId)
   return (
     <Auth0Provider
       domain={domain as string}

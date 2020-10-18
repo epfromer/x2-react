@@ -1,7 +1,5 @@
-import { selectAuthenticated } from '@klonzo/common'
 import React from 'react'
-import { useSelector } from 'react-redux'
-import { Redirect, Route, Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import AppSettingsView from '../views/AppSettingsView'
 import BarView from '../views/BarView'
 import ChordView from '../views/ChordView'
@@ -28,8 +26,6 @@ import WordCloudView from '../views/WordCloudView'
 // )
 
 export default function RouteSwitch() {
-  const authenticated = useSelector(selectAuthenticated)
-
   return (
     <Switch>
       <Route path="/AppSettingsView">
