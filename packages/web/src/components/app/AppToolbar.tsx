@@ -10,10 +10,10 @@ import Tooltip from '@material-ui/core/Tooltip'
 import Typography from '@material-ui/core/Typography'
 import Brightness4 from '@material-ui/icons/Brightness4'
 import Brightness7 from '@material-ui/icons/Brightness7'
+import BuildIcon from '@material-ui/icons/Build'
 import HomeIcon from '@material-ui/icons/Home'
 import MenuIcon from '@material-ui/icons/Menu'
 import SearchIcon from '@material-ui/icons/Search'
-import Settings from '@material-ui/icons/Settings'
 import clsx from 'clsx'
 import React from 'react'
 import { useSelector } from 'react-redux'
@@ -23,18 +23,10 @@ import UserSettingsMenu from './UserSettingsMenu'
 // https://material-ui.com/components/material-icons/
 
 const useStyles = makeStyles(() => ({
-  toolbar: {
-    paddingRight: 24, // keep right padding when drawer closed
-  },
-  title: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: 36,
-  },
-  menuButtonHidden: {
-    display: 'none',
-  },
+  toolbar: { paddingRight: 24 },
+  title: { flexGrow: 1 },
+  menuButton: { marginRight: 36 },
+  menuButtonHidden: { display: 'none' },
 }))
 
 const APP_NAME = 'x2 React'
@@ -59,7 +51,7 @@ export default function AppToolbar({ drawerOpen, setDrawerOpen }: Props) {
           color="inherit"
           onClick={() => history.push('/AppSettingsView')}
         >
-          <Settings />
+          <BuildIcon />
         </IconButton>
       </Tooltip>
     )

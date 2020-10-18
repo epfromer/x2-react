@@ -8,9 +8,7 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 
 const useStyles = makeStyles(() => ({
-  cardImage: {
-    height: 340,
-  },
+  cardImage: { height: 340 },
 }))
 
 interface Props {
