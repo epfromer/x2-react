@@ -18,22 +18,10 @@ export const appThemes: Array<AppTheme> = [
     secondary: { main: '#c62828' },
   },
   {
-    // https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=6A1B9A
-    name: 'Purple',
-    primary: { main: '#38006b' },
-    secondary: { main: '#6a1b9a' },
-  },
-  {
-    // https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=283593
-    name: 'Blue',
-    primary: { main: '#003c8f' },
-    secondary: { main: '#1565c0' },
-  },
-  {
-    // https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=2E7D32
-    name: 'Green',
-    primary: { main: '#005005' },
-    secondary: { main: '#2e7d32' },
+    // https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=F57C00
+    name: 'Orange',
+    primary: { main: '#bb4d00' },
+    secondary: { main: '#f57c00' },
   },
   {
     // https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=FFFF00
@@ -42,10 +30,22 @@ export const appThemes: Array<AppTheme> = [
     secondary: { main: '#ffff00' },
   },
   {
-    // https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=F57C00
-    name: 'Orange',
-    primary: { main: '#bb4d00' },
-    secondary: { main: '#f57c00' },
+    // https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=2E7D32
+    name: 'Green',
+    primary: { main: '#005005' },
+    secondary: { main: '#2e7d32' },
+  },
+  {
+    // https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=283593
+    name: 'Blue',
+    primary: { main: '#003c8f' },
+    secondary: { main: '#1565c0' },
+  },
+  {
+    // https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=6A1B9A
+    name: 'Purple',
+    primary: { main: '#38006b' },
+    secondary: { main: '#6a1b9a' },
   },
   {
     // https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=5D4037
