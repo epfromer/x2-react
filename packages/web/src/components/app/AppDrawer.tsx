@@ -25,7 +25,6 @@ export default function AppDrawer({ open, setOpen }: Props) {
   const mainListItems = [
     { icon: <HomeIcon />, name: 'x2 Home', route: '/' },
     { icon: <SearchIcon />, name: 'Search', route: '/SearchView' },
-    { icon: <ExitToAppIcon />, name: 'Sign In', route: '/SignInView' },
   ]
 
   const secondaryListItems = [

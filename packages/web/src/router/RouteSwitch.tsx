@@ -11,7 +11,6 @@ import PieView from '../views/PieView'
 import PolarView from '../views/PolarView'
 import SearchHistoryView from '../views/SearchHistoryView'
 import SearchView from '../views/SearchView'
-import SignInView from '../views/SignInView'
 import TreeMapView from '../views/TreeMapView'
 import VolumeTimelineView from '../views/VolumeTimelineView'
 import WordCloudView from '../views/WordCloudView'
@@ -30,9 +29,6 @@ export default function RouteSwitch() {
     <Switch>
       <Route path="/AppSettingsView">
         <AppSettingsView />
-      </Route>
-      <Route path="/SignInView">
-        <SignInView />
       </Route>
       <Route path="/SearchHistoryView">
         <SearchHistoryView />
