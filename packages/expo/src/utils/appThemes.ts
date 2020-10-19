@@ -1,3 +1,4 @@
+// @ts-ignore
 import bestContrast from 'get-best-contrast-color'
 
 export interface AppTheme {
@@ -19,22 +20,10 @@ export const appThemes: Array<AppTheme> = [
     Button: { buttonStyle: { backgroundColor: '#c62828' } },
   },
   {
-    // https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=6A1B9A
-    name: 'Purple',
-    Header: { containerStyle: { backgroundColor: '#38006b' } },
-    Button: { buttonStyle: { backgroundColor: '#6a1b9a' } },
-  },
-  {
-    // https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=283593
-    name: 'Blue',
-    Header: { containerStyle: { backgroundColor: '#003c8f' } },
-    Button: { buttonStyle: { backgroundColor: '#1565c0' } },
-  },
-  {
-    // https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=2E7D32
-    name: 'Green',
-    Header: { containerStyle: { backgroundColor: '#005005' } },
-    Button: { buttonStyle: { backgroundColor: '#2e7d32' } },
+    // https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=F57C00
+    name: 'Orange',
+    Header: { containerStyle: { backgroundColor: '#bb4d00' } },
+    Button: { buttonStyle: { backgroundColor: '#f57c00' } },
   },
   {
     // https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=FFFF00
@@ -43,10 +32,22 @@ export const appThemes: Array<AppTheme> = [
     Button: { buttonStyle: { backgroundColor: '#ffff00' } },
   },
   {
-    // https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=F57C00
-    name: 'Orange',
-    Header: { containerStyle: { backgroundColor: '#bb4d00' } },
-    Button: { buttonStyle: { backgroundColor: '#f57c00' } },
+    // https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=2E7D32
+    name: 'Green',
+    Header: { containerStyle: { backgroundColor: '#005005' } },
+    Button: { buttonStyle: { backgroundColor: '#2e7d32' } },
+  },
+  {
+    // https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=283593
+    name: 'Blue',
+    Header: { containerStyle: { backgroundColor: '#003c8f' } },
+    Button: { buttonStyle: { backgroundColor: '#1565c0' } },
+  },
+  {
+    // https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=6A1B9A
+    name: 'Purple',
+    Header: { containerStyle: { backgroundColor: '#38006b' } },
+    Button: { buttonStyle: { backgroundColor: '#6a1b9a' } },
   },
   {
     // https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=5D4037

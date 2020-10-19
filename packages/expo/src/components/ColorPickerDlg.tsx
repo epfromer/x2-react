@@ -3,7 +3,7 @@ import React, { useContext } from 'react'
 import { StyleSheet } from 'react-native'
 import { ColorPicker } from 'react-native-color-picker'
 import { Button, ThemeContext } from 'react-native-elements'
-import { textColor } from './appThemes'
+import { textColor } from '../utils/appThemes'
 import Modal from 'react-native-modal'
 
 interface Props {

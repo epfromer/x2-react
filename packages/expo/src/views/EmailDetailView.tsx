@@ -20,7 +20,7 @@ import Highlighter from 'react-native-highlight-words'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-native'
-import { textColor } from '../components/appThemes'
+import { textColor } from '../utils/appThemes'
 
 export default function EmailDetailView() {
   const history = useHistory()

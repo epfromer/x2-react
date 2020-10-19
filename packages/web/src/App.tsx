@@ -22,7 +22,7 @@ import './App.css'
 import AppDrawer from './components/app/AppDrawer'
 import AppFooter from './components/app/AppFooter'
 import AppToolbar from './components/app/AppToolbar'
-import { getTheme } from './components/appThemes'
+import { getTheme } from '../utils/appThemes'
 import RouteSwitch from './router/RouteSwitch'
 
 const useStyles = makeStyles((theme) => ({

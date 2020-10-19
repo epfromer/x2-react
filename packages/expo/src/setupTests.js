@@ -24,7 +24,7 @@ import React from 'react'
 import { Provider } from 'react-redux'
 import { Router } from 'react-router-native'
 import { ThemeProvider } from 'react-native-elements'
-import { appThemes } from './components/appThemes'
+import { appThemes } from './utils/appThemes'
 
 // eslint-disable-next-line no-undef
 jest.mock('@react-native-community/async-storage', () => mockAsyncStorage)

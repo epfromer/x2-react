@@ -1,3 +1,6 @@
+coverage
+config
+
 # Xcode
 !**/*.xcodeproj
 !**/*.pbxproj
@@ -20,8 +23,6 @@ DerivedData
 *.ipa
 *.xcuserstate
 project.xcworkspace
-
-coverage
 
 # Gradle
 /build/

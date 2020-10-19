@@ -4,7 +4,7 @@ import BottomNavigation, {
   FullTab,
 } from 'react-native-material-bottom-navigation'
 import { useHistory } from 'react-router-native'
-import { textColor } from '../appThemes'
+import { textColor } from '../../utils/appThemes'
 
 // https://www.npmjs.com/package/react-native-material-bottom-navigation
 

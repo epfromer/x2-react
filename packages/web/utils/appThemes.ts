@@ -1,5 +1,3 @@
-// import bestContrast from 'get-best-contrast-color'
-
 export interface AppTheme {
   name: string
   type?: string
@@ -58,10 +56,3 @@ export const appThemes: Array<AppTheme> = [
 export function getTheme(themeName: string) {
   return appThemes.find((t) => t.name === themeName)
 }
-
-// export function textColor(theme: AppTheme) {
-//   return bestContrast(theme.Header.containerStyle.backgroundColor, [
-//     theme.colors.white,
-//     theme.colors.black,
-//   ])
-// }

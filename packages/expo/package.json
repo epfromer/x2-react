@@ -15,9 +15,10 @@
     "@react-native-community/picker": "^1.8.1",
     "@react-native-community/slider": "^3.0.3",
     "expo": "~39.0.3",
+    "expo-auth-session": "^2.0.0",
     "get-best-contrast-color": "^0.3.1",
     "graphql": "^15.3.0",
-    "graphql-request": "^3.1.0",
+    "graphql-request": "^3.2.0",
     "highcharts": "^8.2.0",
     "metro-config": "^0.63.0",
     "react": "~16.13.1",
@@ -43,19 +44,20 @@
     "react-native-webview": "^10.8.0",
     "react-native-word-cloud": "^1.0.7",
     "react-redux": "^7.2.1",
-    "react-router-native": "^5.2.0",
+    "react-router-native": "^5.1.0",
     "redux": "^4.0.5",
     "victory-native": "^35.0.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.11.6",
+    "@babel/core": "^7.12.3",
     "@react-native-community/eslint-config": "^2.0.0",
     "@testing-library/jest-native": "^3.4.3",
     "@testing-library/react-native": "^7.0.2",
+    "@types/react-router-native": "^5.1.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-preset-expo": "~8.3.0",
     "eslint": "^7.11.0",
-    "eslint-config-prettier": "^6.12.0",
+    "eslint-config-prettier": "^6.13.0",
     "eslint-config-react-app": "^5.2.1",
     "eslint-plugin-flowtype": "^5.2.0",
     "eslint-plugin-import": "^2.22.1",
@@ -66,7 +68,7 @@
     "jest-expo": "~39.0.0",
     "prettier": "^2.1.2",
     "prop-types": "^15.7.2",
-    "react-test-renderer": "^16.13.1",
+    "react-test-renderer": "^16.14.0",
     "typescript": "^4.0.3"
   },
   "eslintConfig": {
@@ -99,8 +101,7 @@
     "setupFiles": [
       "./src/setupTests.js"
     ],
-    "transformIgnorePatterns": [
-    ],
+    "transformIgnorePatterns": [],
     "moduleFileExtensions": [
       "ts",
       "tsx",

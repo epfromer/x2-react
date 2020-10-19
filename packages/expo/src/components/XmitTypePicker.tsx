@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react'
 import { ThemeContext } from 'react-native-elements'
 import RNPickerSelect from 'react-native-picker-select'
-import { textColor } from './appThemes'
-import { getPickerStyles } from './pickerStyles'
+import { textColor } from '../utils/appThemes'
+import { getPickerStyles } from '../utils/pickerStyles'
 
 interface Props {
   onChange: (value: string) => void

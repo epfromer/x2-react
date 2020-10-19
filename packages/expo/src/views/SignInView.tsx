@@ -3,7 +3,9 @@ import React, { useContext, useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import { Button, Icon, Input, ThemeContext } from 'react-native-elements'
 import { useHistory } from 'react-router-native'
-import { textColor } from '../components/appThemes'
+import { textColor } from '../utils/appThemes'
+import ENV from '../../env'
+import * as AuthSessionNew from 'expo-auth-session'
 
 export default function SignInView() {
   const history = useHistory()
@@ -12,26 +14,12 @@ export default function SignInView() {
   const [password, setPassword] = useState('')
   const [authFailAlert, setAuthFailAlert] = useState(false)
   const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: theme.colors.white,
-    },
-    label: {
-      color: theme.colors.black,
-    },
-    buttonText: {
-      color: textColor(theme),
-    },
-    topField: {
-      marginTop: 15,
-      color: theme.colors.black,
-    },
-    text: {
-      color: theme.colors.black,
-    },
-    errorText: {
-      color: 'red',
-    },
+    container: { flex: 1, backgroundColor: theme.colors.white },
+    label: { color: theme.colors.black },
+    buttonText: { color: textColor(theme) },
+    topField: { marginTop: 15, color: theme.colors.black },
+    text: { color: theme.colors.black },
+    errorText: { color: 'red' },
   })
 
   const doAuthenticate = () => {
@@ -42,8 +30,45 @@ export default function SignInView() {
     }
   }
 
+  const toQueryString = (params: any) =>
+    '?' +
+    Object.entries(params)
+      .map(
+        //@ts-ignore
+        ([key, value]) =>
+          //@ts-ignore
+          `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
+      )
+      .join('&')
+
   // https://reactnativeelements.com/docs/input/
   // https://reactnative.dev/docs/textinput.html
+
+  const handleLoginResponse = (response: any) => {
+    console.log(response)
+  }
+
+  const doLogin = async () => {
+    const params = {
+      client_id: ENV.auth0ClientId,
+      redirect_uri: AuthSessionNew.makeRedirectUri({ useProxy: true }),
+      // response_type:
+      // id_token will return a JWT token with the profile as described on the scope
+      // token will return access_token to use with further api calls
+      response_type: 'token id_token',
+      nonce: 'nonce', // ideally, this will be a random value
+      rememberLastLogin: true,
+    }
+    const queryParams = toQueryString(params)
+    const authUrl = `https://${ENV.auth0Domain}/authorize${queryParams}`
+    const response = await AuthSessionNew.startAsync({
+      authUrl,
+      showInRecents: true,
+    })
+    return handleLoginResponse(response)
+  }
+
+  doLogin()
 
   return (
     <SafeAreaView style={styles.container}>

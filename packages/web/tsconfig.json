@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "include": [
-    "src/**/*"
+    "src/**/*", "utils/appThemes.ts"
   ],
   "compilerOptions": {
     "baseUrl": ".",

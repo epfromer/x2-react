@@ -37,7 +37,7 @@ import Modal from 'react-native-modal'
 import DateTimePickerModal from 'react-native-modal-datetime-picker'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-native'
-import { textColor } from '../components/appThemes'
+import { textColor } from '../utils/appThemes'
 
 const FILTER_DATE = '2000-10-04'
 
