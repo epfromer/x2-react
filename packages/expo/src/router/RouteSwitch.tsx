@@ -14,15 +14,6 @@ import VolumeTimelineView from '../views/VolumeTimelineView'
 
 // https://reactrouter.com/native/guides/quick-start
 
-// const GuardedRoute = ({ component: Component, auth, ...rest }: any) => (
-//   <Route
-//     {...rest}
-//     render={(props) =>
-//       auth === true ? <Component {...props} /> : <Redirect to="/SignInView" />
-//     }
-//   />
-// )
-
 export const routeNames = {
   '/AppSettingsView': 'Settings',
   '/SearchView': 'Search',
@@ -37,18 +28,16 @@ export const routeNames = {
 }
 
 export default function RouteSwitch() {
-  // const authenticated = useSelector(selectAuthenticated)
-
   return (
     <Switch>
-      <Route path="/AppSettingsView" testID="app-settings">
+      <Route path="/AppSettingsView">
         <AppSettingsView />
       </Route>
       <Route path="/SearchHistoryView">
         <SearchHistoryView />
       </Route>
       <Route path="/SearchView">
-        <SearchView data-testid="switch" />
+        <SearchView />
       </Route>
       <Route path="/PieView">
         <PieView />
