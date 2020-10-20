@@ -1,7 +1,5 @@
-import { selectAuthenticated } from '@klonzo/common'
 import React from 'react'
-import { useSelector } from 'react-redux'
-import { Redirect, Route, Switch } from 'react-router-native'
+import { Route, Switch } from 'react-router-native'
 import AppSettingsView from '../views/AppSettingsView'
 import BarView from '../views/BarView'
 import EmailDetailView from '../views/EmailDetailView'
@@ -11,24 +9,22 @@ import PieView from '../views/PieView'
 import PolarView from '../views/PolarView'
 import SearchHistoryView from '../views/SearchHistoryView'
 import SearchView from '../views/SearchView'
-import SignInView from '../views/SignInView'
 import TreeMapView from '../views/TreeMapView'
 import VolumeTimelineView from '../views/VolumeTimelineView'
 
 // https://reactrouter.com/native/guides/quick-start
 
-const GuardedRoute = ({ component: Component, auth, ...rest }: any) => (
-  <Route
-    {...rest}
-    render={(props) =>
-      auth === true ? <Component {...props} /> : <Redirect to="/SignInView" />
-    }
-  />
-)
+// const GuardedRoute = ({ component: Component, auth, ...rest }: any) => (
+//   <Route
+//     {...rest}
+//     render={(props) =>
+//       auth === true ? <Component {...props} /> : <Redirect to="/SignInView" />
+//     }
+//   />
+// )
 
 export const routeNames = {
   '/AppSettingsView': 'Settings',
-  '/SignInView': 'Sign In',
   '/SearchView': 'Search',
   '/PieView': 'Pie',
   '/BarView': 'Bar',
@@ -41,18 +37,12 @@ export const routeNames = {
 }
 
 export default function RouteSwitch() {
-  const authenticated = useSelector(selectAuthenticated)
+  // const authenticated = useSelector(selectAuthenticated)
 
   return (
     <Switch>
-      <GuardedRoute
-        path="/AppSettingsView"
-        component={AppSettingsView}
-        auth={authenticated}
-        testID="app-settings"
-      />
-      <Route path="/SignInView">
-        <SignInView />
+      <Route path="/AppSettingsView" testID="app-settings">
+        <AppSettingsView />
       </Route>
       <Route path="/SearchHistoryView">
         <SearchHistoryView />
