@@ -32,7 +32,7 @@ export default function AppBottomToolbar() {
       .join('&')
 
   const handleLoginResponse = (response: any) => {
-    const decoded = jwtDecode(response.params.id_token)
+    const decoded: any = jwtDecode(response.params.id_token)
     if (response.type === 'success') {
       dispatch(setAuthenticated(true))
       dispatch(setUsername(decoded.email))
