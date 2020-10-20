@@ -10,7 +10,7 @@ import TableRow from '@material-ui/core/TableRow'
 import CheckIcon from '@material-ui/icons/Check'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { AppTheme, appThemes } from '../../utils/appThemes'
+import { AppTheme, appThemes } from '../utils/appThemes'
 
 export default function ThemePicker() {
   const themeName = useSelector(selectThemeName)
