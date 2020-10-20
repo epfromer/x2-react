@@ -21,10 +21,7 @@ import EmailCardActions from '../components/emaillist/EmailCardActions'
 
 const useStyles = makeStyles((theme) => ({
   root: { width: '100%' },
-  paper: {
-    width: '100%',
-    marginBottom: theme.spacing(2),
-  },
+  paper: { width: '100%', marginBottom: theme.spacing(2) },
   title: { fontSize: 27 },
 }))
 

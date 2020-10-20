@@ -13,7 +13,6 @@ interface Props {
   nodes: Array<any>
   handleClick: (from: string, to: string) => void
 }
-
 export default function ChordECharts({
   title,
   data,

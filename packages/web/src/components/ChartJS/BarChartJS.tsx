@@ -14,7 +14,6 @@ interface Props {
   data: Array<EmailXferedDatum>
   handleClick: (key: string, value: string) => void
 }
-
 export default function BarChartJS({
   title,
   search,

@@ -15,7 +15,6 @@ interface Props {
   search: string
   handleClick: (search: string, name: string) => void
 }
-
 export default function TreeMapHighcharts({
   data,
   search,

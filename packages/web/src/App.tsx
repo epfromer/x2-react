@@ -28,15 +28,8 @@ import RouteSwitch from './router/RouteSwitch'
 const useStyles = makeStyles((theme) => ({
   root: { display: 'flex' },
   appBarSpacer: theme.mixins.toolbar,
-  content: {
-    flexGrow: 1,
-    height: '98vh',
-    overflow: 'auto',
-  },
-  container: {
-    paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(4),
-  },
+  content: { flexGrow: 1, height: '98vh', overflow: 'auto' },
+  container: { paddingTop: theme.spacing(1), paddingBottom: theme.spacing(4) },
 }))
 
 getInitialDataAsync()

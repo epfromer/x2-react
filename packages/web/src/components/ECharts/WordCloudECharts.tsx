@@ -12,7 +12,6 @@ interface Props {
   words: Array<string>
   handleClick: (word: string) => void
 }
-
 export default function WordCloudECharts({ title, words, handleClick }: Props) {
   const theme = useTheme()
   const wordCloud: Array<any> = words.map((word: any) => ({

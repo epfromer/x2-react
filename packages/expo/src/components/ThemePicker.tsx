@@ -10,17 +10,9 @@ export default function ThemePicker() {
   const themeName = useSelector(selectThemeName)
 
   const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: theme.colors.white,
-    },
-    themeContainer: {
-      marginTop: 10,
-    },
-    text: {
-      marginTop: 5,
-      color: theme.colors.black,
-    },
+    container: { flex: 1, backgroundColor: theme.colors.white },
+    themeContainer: { marginTop: 10 },
+    text: { marginTop: 5, color: theme.colors.black },
     itemRow: {
       flexDirection: 'row',
       justifyContent: 'space-between',

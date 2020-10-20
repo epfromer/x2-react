@@ -12,7 +12,6 @@ interface Props {
   email: Email
   lastRowRef?: any
 }
-
 export default function ExpandingRow({ email, lastRowRef }: Props) {
   const [open, setOpen] = React.useState(false)
   const history = useHistory()

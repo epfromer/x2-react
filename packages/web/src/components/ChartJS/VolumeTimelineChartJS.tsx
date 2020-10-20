@@ -14,7 +14,6 @@ interface Props {
   data: Array<EmailSentByDay>
   handleClick: (date: string) => void
 }
-
 export default function VolumeTimelineChartJS({
   title,
   data,

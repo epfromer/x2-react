@@ -7,9 +7,7 @@ import ThemePicker from '../components/ThemePicker'
 import Grid from '@material-ui/core/Grid'
 
 const useStyles = makeStyles(() => ({
-  header: {
-    marginTop: 15,
-  },
+  header: { marginTop: 15 },
 }))
 
 export default function AppSettingsView() {

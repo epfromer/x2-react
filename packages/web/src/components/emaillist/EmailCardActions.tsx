@@ -18,7 +18,6 @@ import { useHistory } from 'react-router-dom'
 interface Props {
   id: string
 }
-
 export default function EmailCardActions({ id }: Props) {
   const history = useHistory()
   const totalEmails = useSelector(selectEmail)?.length

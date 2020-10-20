@@ -18,7 +18,6 @@ interface Props {
   nodes: Array<any>
   handleClick: (to: string, from: string) => void
 }
-
 export default function NetworkGraphHighcharts({
   title,
   data,
