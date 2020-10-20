@@ -14,22 +14,12 @@ import SearchView from '../views/SearchView'
 import TreeMapView from '../views/TreeMapView'
 import VolumeTimelineView from '../views/VolumeTimelineView'
 import WordCloudView from '../views/WordCloudView'
-
-// const GuardedRoute = ({ component: Component, auth, ...rest }: any) => (
-//   <Route
-//     {...rest}
-//     render={(props) =>
-//       auth === true ? <Component {...props} /> : <Redirect to="/SignInView" />
-//     }
-//   />
-// )
+import ProtectedRoute from './ProtectedRoute'
 
 export default function RouteSwitch() {
   return (
     <Switch>
-      <Route path="/AppSettingsView">
-        <AppSettingsView />
-      </Route>
+      <ProtectedRoute path="/AppSettingsView" component={AppSettingsView} />
       <Route path="/SearchHistoryView">
         <SearchHistoryView />
       </Route>
