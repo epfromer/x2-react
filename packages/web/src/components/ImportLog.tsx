@@ -20,7 +20,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     marginTop: theme.spacing(2),
-    // position: 'relative',
     overflow: 'auto',
     maxHeight: 300,
   },
@@ -34,9 +33,7 @@ export default function ImportLog() {
 
   useEffect(() => stopImportStatusInterval, [])
 
-  useEffect(() => {
-    if (lastRow) lastRow.scrollIntoView({ behavior: 'smooth' })
-  })
+  useEffect(() => lastRow?.scrollIntoView({ behavior: 'smooth' }))
 
   getImportStatus()
 
