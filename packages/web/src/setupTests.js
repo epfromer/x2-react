@@ -24,7 +24,7 @@ import 'jest-canvas-mock'
 import React from 'react'
 import { Provider } from 'react-redux'
 import { Router } from 'react-router'
-import { appThemes } from '../utils/appThemes'
+import { appThemes } from './utils/appThemes'
 
 require('jest-fetch-mock').enableMocks()
 
