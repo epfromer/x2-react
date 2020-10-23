@@ -37,19 +37,21 @@ export default function AppToolbar({ drawerOpen, setDrawerOpen }: Props) {
 
   return (
     <Toolbar className={classes.toolbar}>
-      <IconButton
-        edge="start"
-        color="inherit"
-        aria-label="open drawer"
-        data-testid="open-drawer"
-        onClick={() => setDrawerOpen(true)}
-        className={clsx(
-          classes.menuButton,
-          drawerOpen && classes.menuButtonHidden
-        )}
-      >
-        <MenuIcon />
-      </IconButton>
+      <Tooltip title="Open drawer" aria-label="Open drawer">
+        <IconButton
+          edge="start"
+          color="inherit"
+          aria-label="open drawer"
+          data-testid="open-drawer"
+          onClick={() => setDrawerOpen(true)}
+          className={clsx(
+            classes.menuButton,
+            drawerOpen && classes.menuButtonHidden
+          )}
+        >
+          <MenuIcon />
+        </IconButton>
+      </Tooltip>
       <Typography
         component="h1"
         variant="h6"

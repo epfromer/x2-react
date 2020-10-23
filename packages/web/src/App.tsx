@@ -20,7 +20,6 @@ import { Provider, useSelector } from 'react-redux'
 import { BrowserRouter as Router, useHistory } from 'react-router-dom'
 import './App.css'
 import AppDrawer from './components/app/AppDrawer'
-import AppFooter from './components/app/AppFooter'
 import AppToolbar from './components/app/AppToolbar'
 import { getTheme } from './utils/appThemes'
 import RouteSwitch from './router/RouteSwitch'
@@ -52,7 +51,6 @@ const CoreApp = () => {
           <RouteSwitch />
         </Container>
       </main>
-      <AppFooter />
     </div>
   )
 }
