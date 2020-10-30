@@ -36,7 +36,9 @@ export default custodiansSlice.reducer
 // Selectors
 export const selectCustodiansLoading = (state: any) =>
   state.custodians.custodiansLoading
+
 export const selectCustodians = (state: any) => state.custodians.custodians
+
 export function selectEmailSenders(state: any) {
   const custodians = state.custodians.custodians
   const data: Array<EmailXferedDatum> = []
@@ -53,12 +55,13 @@ export function selectEmailSenders(state: any) {
   }
   return data
 }
+
 export function selectEmailReceivers(state: any) {
   const custodians = state.custodians.custodians
   const data: Array<EmailXferedDatum> = []
   if (custodians) {
     custodians.forEach((custodian: Custodian) => {
-      if (custodian.senderTotal) {
+      if (custodian.receiverTotal) {
         data.push({
           name: custodian.name,
           value: custodian.receiverTotal,
@@ -74,7 +77,6 @@ interface IDColorKey {
   id: string
   color: string
 }
-
 export function selectEmailSentByCustodian(state: any) {
   const custodianNameFromId = (id: string) =>
     state.custodians.custodians.find((c: Custodian) => c.id === id).name
