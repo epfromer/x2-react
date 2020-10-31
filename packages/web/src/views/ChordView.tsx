@@ -36,14 +36,14 @@ export default function ChordView() {
         <div>
           <Typography variant="h5">Highcharts</Typography>
           <ChordHighcharts
-            title="Email Senders to Receivers"
+            title="Custodian Interaction"
             data={emailSentByCustodian.data}
             nodes={emailSentByCustodian.nodes}
             handleClick={handleClick}
           />
           <Typography variant="h5">ECharts</Typography>
           <ChordECharts
-            title="Email Senders to Receivers"
+            title="Custodian Interaction"
             data={emailSentByCustodian.data}
             nodes={emailSentByCustodian.nodes}
             handleClick={handleClick}
