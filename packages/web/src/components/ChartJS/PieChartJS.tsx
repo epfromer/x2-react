@@ -46,6 +46,9 @@ export default function PieChartJS({
       },
       legend: {
         position: 'bottom',
+        labels: {
+          fontColor: theme.palette.text.primary,
+        },
       },
       onClick: (e: any, item: any) => {
         if (item && item.length > 0) {

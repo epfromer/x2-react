@@ -20,15 +20,10 @@ export default function ChordECharts({
   handleClick,
 }: Props) {
   const theme = useTheme()
-  const maxSent = nodes.reduce(
-    (maxVal, cur) => (cur.emailTotal > maxVal.emailTotal ? cur : maxVal),
-    0
-  ).emailTotal
   const chartNodes: Array<any> = nodes.map((node) => ({
     id: node.id,
     name: node.id,
     category: node.id,
-    symbolSize: (node.emailTotal / maxSent) * 40 + 10,
     itemStyle: {
       color: node.color,
     },
@@ -61,7 +56,10 @@ export default function ChordECharts({
         tooltip: {},
         legend: [
           {
-            top: 40,
+            orient: 'vertical',
+            x: 'left',
+            y: 'center',
+            padding: [0, 0, 0, 0],
             textStyle: {
               color: theme.palette.text.primary,
             },
