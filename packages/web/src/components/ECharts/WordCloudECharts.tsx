@@ -1,5 +1,6 @@
 import { useTheme } from '@material-ui/core/styles'
 import ReactEcharts from 'echarts-for-react'
+import { WordCloudTag } from '@klonzo/common'
 import React from 'react'
 require('echarts-wordcloud')
 
@@ -9,15 +10,11 @@ const chartHeight = '500px'
 
 interface Props {
   title: string
-  words: Array<string>
+  data: Array<WordCloudTag>
   handleClick: (word: string) => void
 }
-export default function WordCloudECharts({ title, words, handleClick }: Props) {
+export default function WordCloudECharts({ title, data, handleClick }: Props) {
   const theme = useTheme()
-  const wordCloud: Array<any> = words.map((word: any) => ({
-    name: word.name,
-    value: word.weight,
-  }))
   return (
     <ReactEcharts
       style={{ height: chartHeight, width: '100%' }}
@@ -71,7 +68,10 @@ export default function WordCloudECharts({ title, words, handleClick }: Props) {
                 shadowColor: '#333',
               },
             },
-            data: wordCloud,
+            data: data.map((word) => ({
+              name: word.tag,
+              value: word.weight,
+            })),
           },
         ],
       }}

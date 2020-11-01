@@ -27,11 +27,6 @@ export default function WordCloudView() {
     history.push('/SearchView')
   }
 
-  const data: any = []
-  wordCloud?.forEach((word: WordCloudTag) =>
-    data.push({ name: word.tag, weight: word.weight })
-  )
-
   return (
     <div>
       {wordCloudLoading && <LinearProgress />}
@@ -40,13 +35,13 @@ export default function WordCloudView() {
           <Typography variant="h5">Highcharts</Typography>
           <WordCloudHighcharts
             title="Enron Project Names"
-            words={data}
+            data={wordCloud}
             handleClick={handleClick}
           />
           <Typography variant="h5">ECharts</Typography>
           <WordCloudECharts
             title="Enron Project Names"
-            words={data}
+            data={wordCloud}
             handleClick={handleClick}
           />
         </div>

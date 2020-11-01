@@ -1,3 +1,4 @@
+import { WordCloudTag } from '@klonzo/common'
 import { useTheme } from '@material-ui/core/styles'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
@@ -8,23 +9,14 @@ HighchartWordCloud(Highcharts)
 
 const chartHeight = '500px'
 
-// @ts-ignore
-Highcharts.seriesTypes.wordcloud.prototype.deriveFontSize = function (
-  relativeWeight: number
-) {
-  const minFontSize = 10
-  const maxFontSize = 25
-  return Math.floor(minFontSize + (maxFontSize - minFontSize) * relativeWeight)
-}
-
 interface Props {
   title: string
-  words: Array<string>
+  data: Array<WordCloudTag>
   handleClick: (word: string) => void
 }
 export default function WordCloudHighcharts({
   title,
-  words,
+  data,
   handleClick,
 }: Props) {
   const theme = useTheme()
@@ -52,7 +44,10 @@ export default function WordCloudHighcharts({
       {
         type: 'wordcloud',
         name: 'Occurrences',
-        data: words,
+        data: data.map((word) => ({
+          name: word.tag,
+          weight: word.weight,
+        })),
       },
     ],
   }
