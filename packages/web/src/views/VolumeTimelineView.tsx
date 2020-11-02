@@ -44,25 +44,25 @@ export default function TimelineView() {
         <div>
           <Typography variant="h5">Highcharts</Typography>
           <VolumeTimelineHighcharts
-            title="Senders / Receivers"
+            title="Email Volume per Day"
             data={data}
             handleClick={handleClick}
           />
           <Typography variant="h5">ChartJS</Typography>
           <VolumeTimelineChartJS
-            title="Senders / Receivers"
+            title="Email Volume per Day"
             data={data}
             handleClick={handleClick}
           />
           <Typography variant="h5">ECharts</Typography>
           <VolumeTimelineECharts
-            title="Senders / Receivers"
+            title="Email Volume per Day"
             data={data}
             handleClick={handleClick}
           />
           <Typography variant="h5">Victory</Typography>
           <VolumeTimelineVictory
-            title="Senders / Receivers"
+            title="Email Volume per Day"
             data={data}
             handleClick={handleClick}
           />

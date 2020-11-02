@@ -54,21 +54,21 @@ export default function VolumeTimelineView() {
         <>
           {chartLib === 'ECharts' && (
             <VolumeTimelineECharts
-              title="Senders / Receivers"
+              title="Email Volume per Day"
               data={data}
               handleClick={handleClick}
             />
           )}
           {chartLib === 'Victory' && (
             <VolumeTimelineVictory
-              title="Senders / Receivers"
+              title="Email Volume per Day"
               data={data}
               handleClick={handleClick}
             />
           )}
           {chartLib === 'Highcharts' && (
             <VolumeTimelineHighcharts
-              title="Senders / Receivers"
+              title="Email Volume per Day"
               data={data}
               handleClick={handleClick}
             />
