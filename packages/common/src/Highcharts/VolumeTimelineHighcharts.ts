@@ -7,11 +7,6 @@ export function getVolumeTimeHighchartsConfig(
   backgroundColor: string,
   handleClick: (date: string) => void
 ) {
-  const dailyTotals: Array<[number, number]> = data.map((stat) => [
-    new Date(stat.sent).getTime(),
-    stat.total,
-  ])
-
   return {
     chart: {
       zoomType: 'x',
@@ -59,7 +54,7 @@ export function getVolumeTimeHighchartsConfig(
       {
         type: 'area',
         name: '# emails sent',
-        data: dailyTotals,
+        data: data.map((stat) => [new Date(stat.sent).getTime(), stat.total]),
       },
     ],
   }
