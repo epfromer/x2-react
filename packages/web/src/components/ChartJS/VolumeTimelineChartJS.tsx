@@ -37,6 +37,16 @@ export default function VolumeTimelineChartJS({
     type: 'bar',
     options: {
       maintainAspectRatio: false,
+      legend: {
+        display: false,
+      },
+      title: {
+        display: true,
+        fontColor: theme.palette.text.primary,
+        fontSize: 16,
+        padding: 10,
+        text: title,
+      },
       onClick: (e: any, item: any) => {
         if (item && item.length > 0) {
           handleClick(
