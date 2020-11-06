@@ -4,7 +4,6 @@ import {
   selectWordCloud,
   selectWordCloudLoading,
   setAllText,
-  WordCloudTag,
 } from '@klonzo/common'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Typography from '@material-ui/core/Typography'

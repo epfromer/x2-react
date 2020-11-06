@@ -27,8 +27,6 @@ export default function PieView() {
   const emailSenders = useSelector(selectEmailSenders)
   const emailReceivers = useSelector(selectEmailReceivers)
 
-  console.log(emailSenders, emailReceivers)
-
   function handleClick(search: string, value: string) {
     dispatch(clearSearch())
     const name = value.slice(0, value.search(/,/))

@@ -28,7 +28,6 @@ export default function PolarHighcharts({
     value: number
     color: string
   }
-
   const series: Array<any> = data.map((datum) => ({
     type: 'column',
     name: datum.name,
