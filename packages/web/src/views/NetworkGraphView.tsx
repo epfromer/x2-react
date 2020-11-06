@@ -36,14 +36,14 @@ export default function NetworkGraphView() {
         <div>
           <Typography variant="h5">Highcharts</Typography>
           <NetworkGraphHighcharts
-            title="Email Senders to Receivers"
+            title="Custodian Interaction"
             data={emailSentByCustodian.data}
             nodes={emailSentByCustodian.nodes}
             handleClick={handleClick}
           />
           <Typography variant="h5">ECharts</Typography>
           <NetworkGraphECharts
-            title="Email Senders to Receivers"
+            title="Custodian Interaction"
             data={emailSentByCustodian.data}
             nodes={emailSentByCustodian.nodes}
             handleClick={handleClick}

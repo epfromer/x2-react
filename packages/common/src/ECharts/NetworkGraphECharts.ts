@@ -15,7 +15,7 @@ export function getNetworkGraphEChartsConfig(
     x: null,
     y: null,
     draggable: true,
-    symbolSize: (node.emailTotal / maxSent) * 40 + 10,
+    symbolSize: 100,
     itemStyle: {
       color: node.color,
     },
@@ -69,7 +69,7 @@ export function getNetworkGraphEChartsConfig(
           formatter: '{b}',
         },
         force: {
-          repulsion: 2700,
+          repulsion: 1000,
         },
       },
     ],

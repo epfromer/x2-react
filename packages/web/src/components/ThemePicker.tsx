@@ -29,13 +29,13 @@ export default function ThemePicker() {
             style={{ backgroundColor: t.primary.main, height: 30 }}
           ></Button>
         ) : (
-          <Button
-            variant="contained"
-            onClick={() => setThemeNameAsync(t.name)}
-            data-testid={t.name}
-            style={{ backgroundColor: t.primary.main, height: 30 }}
-          ></Button>
-        )}
+            <Button
+              variant="contained"
+              onClick={() => setThemeNameAsync(t.name)}
+              data-testid={t.name}
+              style={{ backgroundColor: t.primary.main, height: 30 }}
+            ></Button>
+          )}
       </TableCell>
     </TableRow>
   )
