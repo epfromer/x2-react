@@ -36,25 +36,25 @@ export default function HomeView() {
       {makeCard(
         pie,
         'Pie',
-        'Pie chart of email volume of Enron key custodians.',
+        'Pie chart of email volume of Enron custodians.',
         '/PieView'
       )}
       {makeCard(
         barchart,
         'Bar',
-        'Bar chart of email volume of Enron key custodians.',
+        'Bar chart of email volume of Enron custodians.',
         '/BarView'
       )}
       {makeCard(
         chord,
         'Chord',
-        'Chord diagram of Enron key custodian communication.',
+        'Chord diagram of Enron custodian communication.',
         '/ChordView'
       )}
       {makeCard(
         wordcloud,
         'Word Cloud',
-        'Word cloud of fraudulent project names.',
+        'Word cloud of mentions of fraudulent project names.',
         '/WordCloudView'
       )}
       {makeCard(
@@ -66,13 +66,13 @@ export default function HomeView() {
       {makeCard(
         networkgraph,
         'Network Graph',
-        'Network graph of Enron key custodian communication.',
+        'Network graph of Enron custodian communication.',
         '/NetworkGraphView'
       )}
       {makeCard(
         treemap,
         'Tree Map',
-        'Tree map of email volume of Enron key custodians.',
+        'Tree map of email volume of Enron custodians.',
         '/TreeMapView'
       )}
       {makeCard(
@@ -84,7 +84,7 @@ export default function HomeView() {
       {makeCard(
         polar,
         'Polar',
-        'Polar chart of email volume of Enron key custodians.',
+        'Polar chart of email volume of Enron custodians.',
         '/PolarView'
       )}
       {makeCard(

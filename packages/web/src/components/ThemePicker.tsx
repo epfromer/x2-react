@@ -21,22 +21,12 @@ export default function ThemePicker() {
         {t.name}
       </TableCell>
       <TableCell align="center">
-        {t.name === themeName && (
-          <Button
-            variant="contained"
-            startIcon={<CheckIcon />}
-            data-testid={t.name}
-            style={{ backgroundColor: t.primary.main, height: 30 }}
-          ></Button>
-        )}
-        {t.name !== themeName && (
-          <Button
-            variant="contained"
-            onClick={() => setThemeNameAsync(t.name)}
-            data-testid={t.name}
-            style={{ backgroundColor: t.primary.main, height: 30 }}
-          ></Button>
-        )}
+        <Button
+          variant="contained"
+          onClick={() => setThemeNameAsync(t.name)}
+          data-testid={t.name}
+          style={{ backgroundColor: t.primary.main, height: 30 }}
+        ></Button>
       </TableCell>
     </TableRow>
   )

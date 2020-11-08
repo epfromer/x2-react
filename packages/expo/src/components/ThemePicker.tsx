@@ -34,18 +34,10 @@ export default function ThemePicker() {
           <Text style={styles.text}>{t.name}</Text>
         </View>
         <View>
-          {t.name === themeName ? (
-            <Button
-              icon={<Icon name="check" size={15} color="white" />}
-              buttonStyle={getButtonStyle(t)}
-              onPress={() => {}}
-            />
-          ) : (
-            <Button
-              buttonStyle={getButtonStyle(t)}
-              onPress={() => setThemeNameAsync(t.name)}
-            />
-          )}
+          <Button
+            buttonStyle={getButtonStyle(t)}
+            onPress={() => setThemeNameAsync(t.name)}
+          />
         </View>
       </View>
     </View>
