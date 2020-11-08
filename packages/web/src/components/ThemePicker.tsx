@@ -1,4 +1,4 @@
-import { selectThemeName, setThemeNameAsync } from '@klonzo/common'
+import { setThemeNameAsync } from '@klonzo/common'
 import Button from '@material-ui/core/Button'
 import Paper from '@material-ui/core/Paper'
 import Table from '@material-ui/core/Table'
@@ -7,14 +7,10 @@ import TableCell from '@material-ui/core/TableCell'
 import TableContainer from '@material-ui/core/TableContainer'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
-import CheckIcon from '@material-ui/icons/Check'
 import React from 'react'
-import { useSelector } from 'react-redux'
 import { AppTheme, appThemes } from '../utils/appThemes'
 
 export default function ThemePicker() {
-  const themeName = useSelector(selectThemeName)
-
   const renderTheme = (t: AppTheme) => (
     <TableRow key={t.name}>
       <TableCell component="th" scope="row">
