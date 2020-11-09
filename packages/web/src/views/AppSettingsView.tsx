@@ -15,15 +15,15 @@ export default function AppSettingsView() {
   return (
     <div>
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={3}>
+        <Grid item sm={2}>
           <Typography variant="h5" className={classes.header} gutterBottom>
-            App Theme
+            Theme
           </Typography>
           <ThemePicker />
         </Grid>
-        <Grid item xs={12} sm={9}>
+        <Grid item sm={10}>
           <Typography variant="h5" className={classes.header} gutterBottom>
-            Custodian Colors
+            Custodians
           </Typography>
           <CustodianSettings />
         </Grid>

@@ -13,9 +13,6 @@ import { AppTheme, appThemes } from '../utils/appThemes'
 export default function ThemePicker() {
   const renderTheme = (t: AppTheme) => (
     <TableRow key={t.name}>
-      <TableCell component="th" scope="row">
-        {t.name}
-      </TableCell>
       <TableCell align="center">
         <Button
           variant="contained"
@@ -33,7 +30,6 @@ export default function ThemePicker() {
         <Table size="small" aria-label="custodians">
           <TableHead>
             <TableRow>
-              <TableCell>Theme</TableCell>
               <TableCell align="center">Color</TableCell>
             </TableRow>
           </TableHead>
