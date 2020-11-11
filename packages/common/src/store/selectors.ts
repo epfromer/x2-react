@@ -103,6 +103,13 @@ export function selectEmailSentByCustodian(
   return { data, nodes }
 }
 
+// emailSentByDay
+export const selectEmailSentByDayLoading = (state: RootState): boolean =>
+  state.emailSent.emailSentByDayLoading
+export const selectEmailSentByDay = (
+  state: RootState
+): Array<EmailSentByDay> | undefined => state.emailSent.emailSentByDay
+
 // emailSlice
 export const selectEmailLoading = (state: RootState): boolean =>
   state.email.emailLoading
@@ -110,13 +117,6 @@ export const selectEmail = (state: RootState): Array<Email> | undefined =>
   state.email.email
 export const selectEmailTotal = (state: RootState): number =>
   state.email.emailTotal
-
-// emailSentByDay
-export const selectEmailSentByDayLoading = (state: RootState): boolean =>
-  state.emailSent.emailSentByDayLoading
-export const selectEmailSentByDay = (
-  state: RootState
-): Array<EmailSentByDay> | undefined => state.emailSent.emailSentByDay
 
 // querySlice
 export const selectAllText = (state: RootState): string => state.query.allText
