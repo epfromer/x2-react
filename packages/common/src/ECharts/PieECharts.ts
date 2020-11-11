@@ -4,7 +4,7 @@ export function getPieEChartsConfig(
   textColor = 'black',
   title: string,
   data: Array<EmailXferedDatum>
-) {
+): unknown {
   const chartData: Array<EChartsDatum> = []
   data.forEach((datum) => {
     chartData.push({

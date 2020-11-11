@@ -4,8 +4,8 @@ export function getBarEChartsConfig(
   textColor = 'black',
   title: string,
   data: Array<EmailXferedDatum>,
-  gridConfig: any
-) {
+  gridConfig: unknown
+): unknown {
   const chartData: Array<EChartsDatum> = []
   data.forEach((datum) => {
     chartData.push({

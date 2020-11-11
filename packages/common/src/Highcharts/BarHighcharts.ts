@@ -7,7 +7,7 @@ export function getBarHighchartsConfig(
   data: Array<EmailXferedDatum>,
   backgroundColor: string,
   handleClick: (key: string, value: string) => void
-) {
+): unknown {
   return {
     chart: {
       type: 'bar',

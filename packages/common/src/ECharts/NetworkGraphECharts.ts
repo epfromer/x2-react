@@ -1,13 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export function getNetworkGraphEChartsConfig(
   textColor = 'black',
   title: string,
   data: Array<[string, string, number]>,
   nodes: Array<any>
-) {
-  const maxSent = nodes.reduce(
-    (maxVal, cur) => (cur.emailTotal > maxVal.emailTotal ? cur : maxVal),
-    { emailTotal: 0 }
-  ).emailTotal
+): unknown {
+  // const maxSent = nodes.reduce(
+  //   (maxVal, cur) => (cur.emailTotal > maxVal.emailTotal ? cur : maxVal),
+  //   { emailTotal: 0 }
+  // ).emailTotal
   const chartNodes: Array<any> = nodes.map((node) => ({
     id: node.id,
     name: node.id,

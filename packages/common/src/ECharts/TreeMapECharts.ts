@@ -4,8 +4,8 @@ export function getTreeMapEChartsConfig(
   textColor = 'black',
   title: string,
   data: Array<EmailXferedDatum>
-) {
-  const chartData: Array<any> = data.map((datum: any) => ({
+): unknown {
+  const chartData: Array<unknown> = data.map((datum) => ({
     name: datum.name,
     value: datum.value,
     itemStyle: {

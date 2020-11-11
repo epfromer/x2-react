@@ -4,7 +4,7 @@ interface HighChartsDatum {
   name: string
   y: number
   color: string
-  events: any
+  events: unknown
 }
 
 export function getPieHighchartsConfig(
@@ -14,7 +14,7 @@ export function getPieHighchartsConfig(
   data: Array<EmailXferedDatum>,
   backgroundColor: string,
   handleClick: (key: string, value: string) => void
-) {
+): unknown {
   const custodians: Array<HighChartsDatum> = []
   data.forEach((datum) => {
     custodians.push({
@@ -22,7 +22,7 @@ export function getPieHighchartsConfig(
       y: datum.value,
       color: datum.color,
       events: {
-        click: (e: any) => handleClick(search, datum.name),
+        click: (e: unknown) => handleClick(search, datum.name),
       },
     })
   })

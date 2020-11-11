@@ -4,8 +4,8 @@ export function getPolarEChartsConfig(
   textColor = 'black',
   title: string,
   data: Array<EmailXferedDatum>
-) {
-  const chartData: Array<any> = data.map((datum) => ({
+): unknown {
+  const chartData: Array<unknown> = data.map((datum) => ({
     value: datum.value,
     name: datum.name,
     itemStyle: {

@@ -4,7 +4,7 @@ export function getVolumeTimelineEChartsConfig(
   textColor = 'black',
   title: string,
   data: Array<EmailSentByDay>
-) {
+): unknown {
   return {
     title: {
       text: title,

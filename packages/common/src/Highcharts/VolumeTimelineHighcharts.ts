@@ -6,7 +6,7 @@ export function getVolumeTimeHighchartsConfig(
   data: Array<EmailSentByDay>,
   backgroundColor: string,
   handleClick: (date: string) => void
-) {
+): unknown {
   return {
     chart: {
       zoomType: 'x',
