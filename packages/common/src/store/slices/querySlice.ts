@@ -1,5 +1,4 @@
 import { createAction, createSlice } from '@reduxjs/toolkit'
-import { RootState } from '../index'
 
 export interface QueryState {
   sort: string
