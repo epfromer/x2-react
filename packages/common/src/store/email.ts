@@ -9,8 +9,9 @@ import {
   store,
 } from './index'
 
-function makeQueryObj(): any {
+function makeQueryObj(): unknown {
   const state = store.getState()
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const query: any = {
     skip: state.query.emailListPage * defaultLimit,
     limit: defaultLimit,
@@ -27,7 +28,7 @@ function makeQueryObj(): any {
   return query
 }
 
-export function getEmailAsync(append: boolean = false) {
+export function getEmailAsync(append = false): void {
   store.dispatch(setEmailLoading(true))
   const server = process.env.REACT_APP_X2_SERVER
     ? process.env.REACT_APP_X2_SERVER

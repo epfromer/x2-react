@@ -2,7 +2,7 @@ import { gql, request } from 'graphql-request'
 import { x2Server } from '../constants'
 import { setCustodians, setCustodiansLoading, store } from './index'
 
-export function getCustodiansAsync() {
+export function getCustodiansAsync(): void {
   store.dispatch(setCustodiansLoading(true))
   const server = process.env.REACT_APP_X2_SERVER
     ? process.env.REACT_APP_X2_SERVER

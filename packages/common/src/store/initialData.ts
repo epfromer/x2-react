@@ -10,7 +10,7 @@ import {
   store,
 } from './index'
 
-export function getInitialDataAsync() {
+export function getInitialDataAsync(): void {
   store.dispatch(setWordCloudLoading(true))
   store.dispatch(setEmailSentByDayLoading(true))
   store.dispatch(setCustodiansLoading(true))

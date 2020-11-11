@@ -16,7 +16,7 @@ import {
   store,
 } from './index'
 
-export function getSearchHistoryAsync() {
+export function getSearchHistoryAsync(): void {
   store.dispatch(setSearchHistoryLoading(true))
   const server = process.env.REACT_APP_X2_SERVER
     ? process.env.REACT_APP_X2_SERVER
@@ -38,7 +38,7 @@ export function getSearchHistoryAsync() {
     .catch((err) => console.error('getInitialDataAsync: ', err))
 }
 
-export function searchHistoryExecute(search: string) {
+export function searchHistoryExecute(search: string): void {
   const o = JSON.parse(search)
   store.dispatch(clearSearch())
   if (o.hasOwnProperty('sort')) store.dispatch(setSort(o.sort))

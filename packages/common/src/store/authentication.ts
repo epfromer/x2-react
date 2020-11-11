@@ -10,7 +10,7 @@ export function authenticate(username: string, password: string): boolean {
   return isAuthenticated
 }
 
-export function signOut() {
+export function signOut(): void {
   store.dispatch(setAuthenticated(false))
   store.dispatch(setUsername(''))
 }

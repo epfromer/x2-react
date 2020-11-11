@@ -20,15 +20,15 @@ function getImportStatusInterval() {
     .then((data) => store.dispatch(setImportLog(data.getImportStatus)))
     .catch((err) => console.error('getImportStatusInterval: ', err))
 }
-export function getImportStatus() {
+export function getImportStatus(): void {
   if (importTimer) return
   importTimer = setInterval(getImportStatusInterval, 2000)
 }
-export function stopImportStatusInterval() {
+export function stopImportStatusInterval(): void {
   if (!importTimer) return
   clearInterval(importTimer)
   importTimer = undefined
 }
-export function getImportStatusTimer() {
+export function getImportStatusTimer(): number | undefined {
   return importTimer
 }
