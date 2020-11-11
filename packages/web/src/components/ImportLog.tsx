@@ -1,10 +1,4 @@
-import {
-  importLoc,
-  selectImportLog,
-  setImportLog,
-  store,
-  x2Server,
-} from '@klonzo/common'
+import { importLoc, x2Server } from '@klonzo/common'
 import Button from '@material-ui/core/Button'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
@@ -13,7 +7,6 @@ import Paper from '@material-ui/core/Paper'
 import { makeStyles } from '@material-ui/core/styles'
 import { gql, request } from 'graphql-request'
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,10 +25,10 @@ interface ImportLogEntry {
 }
 
 export default function ImportLog() {
-  const log = useSelector(selectImportLog)
   const classes = useStyles()
   const [lastRow, setLastRow] = useState<HTMLDivElement | undefined | null>()
   let importTimer: number | undefined
+  const [log, setLog] = useState([])
 
   const getImportStatusInterval = () => {
     const server = process.env.REACT_APP_X2_SERVER
@@ -51,7 +44,7 @@ export default function ImportLog() {
       }
     `
     request(`${server}/graphql/`, query)
-      .then((data) => store.dispatch(setImportLog(data.getImportStatus)))
+      .then((data) => setLog(data.getImportStatus))
       .catch((err) => console.error('getImportStatusInterval: ', err))
   }
 
