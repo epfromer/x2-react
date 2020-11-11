@@ -5,13 +5,11 @@ import { ImportLogEntry } from '../types'
 export interface AppSettingsState {
   darkMode: boolean
   orientation: string
-  importLog: Array<ImportLogEntry> | undefined
   themeName: string
 }
 const initialState: AppSettingsState = {
   darkMode: false,
   orientation: 'portrait',
-  importLog: undefined,
   themeName: defaultThemeName,
 }
 
@@ -29,9 +27,6 @@ export const appSettingsSlice = createSlice({
     builder
       .addCase(setDarkMode, (state, action) => {
         state.darkMode = action.payload
-      })
-      .addCase(setImportLog, (state, action) => {
-        state.importLog = action.payload
       })
       .addCase(setThemeName, (state, action) => {
         state.themeName = action.payload
