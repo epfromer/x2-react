@@ -1,9 +1,9 @@
 import {
-  getImportStatus,
   importLoc,
   ImportLogEntry,
   selectImportLog,
-  stopImportStatusInterval,
+  setImportLog,
+  store,
   x2Server,
 } from '@klonzo/common'
 import Button from '@material-ui/core/Button'
@@ -30,12 +30,25 @@ export default function ImportLog() {
   const log = useSelector(selectImportLog)
   const classes = useStyles()
   const [lastRow, setLastRow] = useState<HTMLDivElement | undefined | null>()
+  let importTimer: number | undefined
 
-  useEffect(() => stopImportStatusInterval, [])
-
-  useEffect(() => lastRow?.scrollIntoView({ behavior: 'smooth' }))
-
-  getImportStatus()
+  const getImportStatusInterval = () => {
+    const server = process.env.REACT_APP_X2_SERVER
+      ? process.env.REACT_APP_X2_SERVER
+      : x2Server
+    const query = gql`
+      {
+        getImportStatus {
+          id
+          timestamp
+          entry
+        }
+      }
+    `
+    request(`${server}/graphql/`, query)
+      .then((data) => store.dispatch(setImportLog(data.getImportStatus)))
+      .catch((err) => console.error('getImportStatusInterval: ', err))
+  }
 
   const startImport = () => {
     const server = process.env.REACT_APP_X2_SERVER
@@ -48,6 +61,18 @@ export default function ImportLog() {
     `
     request(`${server}/graphql/`, mutation, { loc: importLoc })
   }
+
+  const stopImportStatusInterval = (): void => {
+    if (!importTimer) return
+    clearInterval(importTimer)
+    importTimer = undefined
+  }
+
+  if (!importTimer) importTimer = setInterval(getImportStatusInterval, 2000)
+
+  useEffect(() => stopImportStatusInterval)
+
+  useEffect(() => lastRow?.scrollIntoView({ behavior: 'smooth' }))
 
   return (
     <Paper>

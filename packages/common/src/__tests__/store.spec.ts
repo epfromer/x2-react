@@ -9,8 +9,6 @@ import {
   getEmailAsync,
   getEmailById,
   getEmailIndex,
-  getImportStatus,
-  getImportStatusTimer,
   getInitialDataAsync,
   getNextEmailId,
   getPreviousEmailId,
@@ -41,7 +39,6 @@ import {
   setTo,
   setWordCloud,
   signOut,
-  stopImportStatusInterval,
   store,
   testCustodians,
   testEmail,
@@ -131,13 +128,6 @@ test('authenticate', () => {
   expect(authenticate('foo', 'foo')).toBeTruthy()
   signOut()
   expect(selectUsername(store.getState())).toEqual('')
-})
-
-test('import status', () => {
-  getImportStatus()
-  expect(getImportStatusTimer()).toBeTruthy()
-  stopImportStatusInterval()
-  expect(getImportStatusTimer()).not.toBeTruthy()
 })
 
 test('search history', () => {

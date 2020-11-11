@@ -5,10 +5,6 @@ export function getNetworkGraphEChartsConfig(
   data: Array<[string, string, number]>,
   nodes: Array<any>
 ): unknown {
-  // const maxSent = nodes.reduce(
-  //   (maxVal, cur) => (cur.emailTotal > maxVal.emailTotal ? cur : maxVal),
-  //   { emailTotal: 0 }
-  // ).emailTotal
   const chartNodes: Array<any> = nodes.map((node) => ({
     id: node.id,
     name: node.id,
@@ -16,7 +12,7 @@ export function getNetworkGraphEChartsConfig(
     x: null,
     y: null,
     draggable: true,
-    symbolSize: 100,
+    symbolSize: 40,
     itemStyle: {
       color: node.color,
     },
