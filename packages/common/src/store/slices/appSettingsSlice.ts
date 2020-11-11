@@ -39,8 +39,3 @@ export const appSettingsSlice = createSlice({
   },
 })
 export default appSettingsSlice.reducer
-
-// Selectors
-export const selectDarkMode = (state: any) => state.appSettings.darkMode
-export const selectImportLog = (state: any) => state.appSettings.importLog
-export const selectThemeName = (state: any) => state.appSettings.themeName

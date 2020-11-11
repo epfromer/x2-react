@@ -45,8 +45,3 @@ export const emailSlice = createSlice({
   },
 })
 export default emailSlice.reducer
-
-// Selectors
-export const selectEmailLoading = (state: any) => state.email.emailLoading
-export const selectEmail = (state: any) => state.email.email
-export const selectEmailTotal = (state: any) => state.email.emailTotal

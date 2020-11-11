@@ -89,16 +89,3 @@ export const querySlice = createSlice({
   },
 })
 export default querySlice.reducer
-
-// Selectors
-export const selectAllText = (state: RootState) => state.query.allText
-export const selectBody = (state: RootState) => state.query.body
-export const selectEmailListPage = (state: RootState) =>
-  state.query.emailListPage
-export const selectFrom = (state: RootState) => state.query.from
-export const selectOrder = (state: RootState) => state.query.order
-export const selectSort = (state: RootState) => state.query.sort
-export const selectSent = (state: RootState) => state.query.sent
-export const selectSubject = (state: RootState) => state.query.subject
-export const selectTimeSpan = (state: RootState) => state.query.timeSpan
-export const selectTo = (state: RootState) => state.query.to

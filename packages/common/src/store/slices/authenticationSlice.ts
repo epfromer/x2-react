@@ -29,8 +29,3 @@ export const authenticationSlice = createSlice({
   },
 })
 export default authenticationSlice.reducer
-
-// Selectors
-export const selectAuthenticated = (state: any) =>
-  state.authentication.authenticated
-export const selectUsername = (state: any) => state.authentication.username

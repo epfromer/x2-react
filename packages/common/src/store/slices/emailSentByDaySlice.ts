@@ -32,9 +32,3 @@ export const emailSentByDaySlice = createSlice({
   },
 })
 export default emailSentByDaySlice.reducer
-
-// Selectors
-export const selectEmailSentByDayLoading = (state: any) =>
-  state.emailSent.emailSentByDayLoading
-export const selectEmailSentByDay = (state: any) =>
-  state.emailSent.emailSentByDay

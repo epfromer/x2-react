@@ -32,8 +32,3 @@ export const wordCloudSlice = createSlice({
   },
 })
 export default wordCloudSlice.reducer
-
-// Selectors
-export const selectWordCloudLoading = (state: any) =>
-  state.wordCloud.wordCloudLoading
-export const selectWordCloud = (state: any) => state.wordCloud.wordCloud

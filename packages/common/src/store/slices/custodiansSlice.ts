@@ -1,5 +1,5 @@
 import { createAction, createSlice } from '@reduxjs/toolkit'
-import { Custodian, EmailXferedDatum } from '../types'
+import { Custodian } from '../types'
 
 export interface CustodiansState {
   custodiansLoading: boolean
@@ -32,75 +32,3 @@ export const custodiansSlice = createSlice({
   },
 })
 export default custodiansSlice.reducer
-
-// Selectors
-export const selectCustodiansLoading = (state: any) =>
-  state.custodians.custodiansLoading
-
-export const selectCustodians = (state: any) => state.custodians.custodians
-
-export function selectEmailSenders(state: any) {
-  const custodians = state.custodians.custodians
-  const data: Array<EmailXferedDatum> = []
-  if (custodians) {
-    custodians.forEach((custodian: Custodian) => {
-      if (custodian.senderTotal) {
-        data.push({
-          name: custodian.name,
-          value: custodian.senderTotal,
-          color: custodian.color,
-        })
-      }
-    })
-  }
-  return data
-}
-
-export function selectEmailReceivers(state: any) {
-  const custodians = state.custodians.custodians
-  const data: Array<EmailXferedDatum> = []
-  if (custodians) {
-    custodians.forEach((custodian: Custodian) => {
-      if (custodian.receiverTotal) {
-        data.push({
-          name: custodian.name,
-          value: custodian.receiverTotal,
-          color: custodian.color,
-        })
-      }
-    })
-  }
-  return data
-}
-
-interface IDColorKey {
-  id: string
-  color: string
-}
-export function selectEmailSentByCustodian(state: any) {
-  const custodianNameFromId = (id: string) =>
-    state.custodians.custodians.find((c: Custodian) => c.id === id).name
-
-  const custodians = state.custodians.custodians
-  const data: Array<any> = []
-  const nodes: Array<IDColorKey> = []
-
-  if (custodians) {
-    //  create array of [from, to, number sent]
-    custodians.forEach((fromCustodian: Custodian) => {
-      fromCustodian.toCustodians.forEach((toCustodian) => {
-        data.push([
-          fromCustodian.name,
-          custodianNameFromId(toCustodian.custodianId),
-          toCustodian.total,
-        ])
-      })
-    })
-    // and array of color keys
-    custodians.forEach((custodian: Custodian) => {
-      nodes.push({ id: custodian.name, color: custodian.color })
-    })
-  }
-
-  return { data, nodes }
-}
