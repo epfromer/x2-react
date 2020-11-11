@@ -12,11 +12,13 @@ const initialState: EmailState = {
   emailTotal: 0,
 }
 
+// Actions
 export const setEmailLoading = createAction<boolean>('email/setEmailLoading')
 export const setEmail = createAction<Array<Email>>('email/setEmail')
 export const appendEmail = createAction<Array<Email>>('email/appendEmail')
 export const setEmailTotal = createAction<number>('email/setEmailTotal')
 
+// Reducer
 export const emailSlice = createSlice({
   name: 'email',
   initialState,

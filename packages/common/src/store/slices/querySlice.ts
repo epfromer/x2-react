@@ -25,6 +25,7 @@ const initialState: QueryState = {
   emailListPage: 0,
 }
 
+// Actions
 export const setSort = createAction<string>('query/setSort')
 export const setOrder = createAction<number>('query/setOrder')
 export const setSent = createAction<string>('query/setSent')
@@ -37,6 +38,7 @@ export const setBody = createAction<string>('query/setBody')
 export const setEmailListPage = createAction<number>('query/setEmailListPage')
 export const clearSearch = createAction<void>('query/clearSearch')
 
+// Reducer
 export const querySlice = createSlice({
   name: 'query',
   initialState,

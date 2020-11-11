@@ -4,7 +4,6 @@ import {
   Email,
   EmailSentByDay,
   EmailXferedDatum,
-  ImportLogEntry,
   SearchHistoryEntry,
   WordCloudTag,
 } from './types'
@@ -12,9 +11,6 @@ import {
 // appSettingsSlice
 export const selectDarkMode = (state: RootState): boolean =>
   state.appSettings.darkMode
-export const selectImportLog = (
-  state: RootState
-): Array<ImportLogEntry> | undefined => state.appSettings.importLog
 export const selectThemeName = (state: RootState): string =>
   state.appSettings.themeName
 

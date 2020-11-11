@@ -9,11 +9,13 @@ const initialState: AuthenticationState = {
   username: '',
 }
 
+// Actions
 export const setAuthenticated = createAction<boolean>(
   'authentication/setAuthenticated'
 )
 export const setUsername = createAction<string>('authentication/setUsername')
 
+// Reducer
 export const authenticationSlice = createSlice({
   name: 'authentication',
   initialState,

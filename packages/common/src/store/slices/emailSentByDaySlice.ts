@@ -10,6 +10,7 @@ const initialState: EmailSentByDayState = {
   emailSentByDay: undefined,
 }
 
+// Actions
 export const setEmailSentByDayLoading = createAction<boolean>(
   'emailSentByDay/setEmailSentByDayLoading'
 )
@@ -17,6 +18,7 @@ export const setEmailSentByDay = createAction<Array<EmailSentByDay>>(
   'emailSentByDay/setEmailSentByDay'
 )
 
+// Reducer
 export const emailSentByDaySlice = createSlice({
   name: 'emailSentByDay',
   initialState,

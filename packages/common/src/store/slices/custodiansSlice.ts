@@ -10,6 +10,7 @@ const initialState: CustodiansState = {
   custodians: undefined,
 }
 
+// Actions
 export const setCustodiansLoading = createAction<boolean>(
   'custodians/setCustodiansLoading'
 )
@@ -17,6 +18,7 @@ export const setCustodians = createAction<Array<Custodian>>(
   'custodians/setCustodians'
 )
 
+// Reducer
 export const custodiansSlice = createSlice({
   name: 'custodians',
   initialState,

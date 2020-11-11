@@ -10,6 +10,7 @@ const initialState: searchHistoryState = {
   searchHistory: undefined,
 }
 
+// Actions
 export const setSearchHistoryLoading = createAction<boolean>(
   'searchHistory/setSearchHistoryLoading'
 )
@@ -17,6 +18,7 @@ export const setSearchHistory = createAction<Array<SearchHistoryEntry>>(
   'searchHistory/setSearchHistory'
 )
 
+// Reducer
 export const searchHistorySlice = createSlice({
   name: 'searchHistory',
   initialState,

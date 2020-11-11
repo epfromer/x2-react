@@ -60,11 +60,6 @@ export interface EChartsDatum {
   itemStyle: any
 }
 
-export interface ImportLogEntry {
-  id: string
-  timestamp: string
-  entry: string
-}
 
 export interface SearchHistoryEntry {
   id: string

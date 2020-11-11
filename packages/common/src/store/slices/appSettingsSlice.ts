@@ -1,6 +1,5 @@
 import { createAction, createSlice } from '@reduxjs/toolkit'
 import { defaultThemeName } from '../../constants'
-import { ImportLogEntry } from '../types'
 
 export interface AppSettingsState {
   darkMode: boolean
@@ -13,12 +12,11 @@ const initialState: AppSettingsState = {
   themeName: defaultThemeName,
 }
 
+// Actions
 export const setDarkMode = createAction<boolean>('appSettings/setDarkMode')
-export const setImportLog = createAction<Array<ImportLogEntry>>(
-  'appSettings/setImportLog'
-)
 export const setThemeName = createAction<string>('appSettings/setThemeName')
 
+// Reducer
 export const appSettingsSlice = createSlice({
   name: 'appSettings',
   initialState,

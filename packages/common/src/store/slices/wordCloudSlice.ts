@@ -10,6 +10,7 @@ const initialState: WordCloudState = {
   wordCloud: undefined,
 }
 
+// Actions
 export const setWordCloudLoading = createAction<boolean>(
   'wordCloud/setWordCloudLoading'
 )
@@ -17,6 +18,7 @@ export const setWordCloud = createAction<Array<WordCloudTag>>(
   'wordCloud/setWordCloud'
 )
 
+// Reducer
 export const wordCloudSlice = createSlice({
   name: 'wordCloud',
   initialState,

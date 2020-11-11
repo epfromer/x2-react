@@ -1,6 +1,5 @@
 import {
   importLoc,
-  ImportLogEntry,
   selectImportLog,
   setImportLog,
   store,
@@ -25,6 +24,12 @@ const useStyles = makeStyles((theme) => ({
   },
   button: { margin: 15 },
 }))
+
+interface ImportLogEntry {
+  id: string
+  timestamp: string
+  entry: string
+}
 
 export default function ImportLog() {
   const log = useSelector(selectImportLog)
