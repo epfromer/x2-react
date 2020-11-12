@@ -19,14 +19,15 @@ import {
   setTimeSpan,
   setTo,
 } from '@klonzo/common'
-import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import TableSortLabel from '@material-ui/core/TableSortLabel'
 import TextField from '@material-ui/core/TextField'
+import Tooltip from '@material-ui/core/Tooltip'
 import DateRangeIcon from '@material-ui/icons/DateRange'
+import HistoryIcon from '@material-ui/icons/History'
 import { ActionCreatorWithPayload } from '@reduxjs/toolkit'
 import debounce from 'lodash/debounce'
 import React, { useState } from 'react'
@@ -117,13 +118,14 @@ const EmailTableHead: React.FC = () => {
       <TableHead>
         <TableRow>
           <TableCell>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={() => history.push('/SearchHistoryView')}
-            >
-              History
-            </Button>
+            <Tooltip title="Search History" aria-label="Search History">
+              <IconButton
+                aria-label="Search History"
+                onClick={() => history.push('/SearchHistoryView')}
+              >
+                <HistoryIcon />
+              </IconButton>
+            </Tooltip>
           </TableCell>
           <TableCell colSpan={4}>
             <button
@@ -150,13 +152,15 @@ const EmailTableHead: React.FC = () => {
         </TableRow>
         <TableRow>
           <TableCell>
-            <IconButton
-              aria-label="clear search"
-              data-testid="open-date-picker"
-              onClick={() => setDatePickerOpen(true)}
-            >
-              <DateRangeIcon />
-            </IconButton>
+            <Tooltip title="Select date range" aria-label="Select date range">
+              <IconButton
+                aria-label="Select date range"
+                data-testid="open-date-picker"
+                onClick={() => setDatePickerOpen(true)}
+              >
+                <DateRangeIcon />
+              </IconButton>
+            </Tooltip>
           </TableCell>
           {headCells.map((c) => (
             <TableCell key={c.label}>
