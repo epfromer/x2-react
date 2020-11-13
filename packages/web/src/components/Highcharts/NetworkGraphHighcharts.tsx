@@ -16,7 +16,7 @@ interface Props {
   title: string
   data: Array<any>
   nodes: Array<any>
-  handleClick: (to: string, from: string) => void
+  handleClick: (name: string) => void
 }
 export default function NetworkGraphHighcharts({
   title,
@@ -51,10 +51,7 @@ export default function NetworkGraphHighcharts({
             linkFormat: '{point.fromNode.name} \u2192 {point.toNode.name}',
           },
           events: {
-            click: (e: any) => {
-              // TODO - fix to have link click
-              handleClick(e.point.from, e.point.to)
-            },
+            click: (e: any) => handleClick(e.point.id),
           },
           marker: {
             radius: 20,
