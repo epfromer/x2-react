@@ -12,7 +12,6 @@ export function getNetworkGraphEChartsConfig(
     x: null,
     y: null,
     draggable: true,
-    symbolSize: 40,
     itemStyle: {
       color: node.color,
     },
