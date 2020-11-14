@@ -10,6 +10,8 @@ import {
   store,
 } from './index'
 
+// TODO roll into slice
+
 export function getInitialDataAsync(): void {
   store.dispatch(setWordCloudLoading(true))
   store.dispatch(setEmailSentByDayLoading(true))
