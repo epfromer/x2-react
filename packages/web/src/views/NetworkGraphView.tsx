@@ -20,11 +20,10 @@ export default function NetworkGraphView() {
   const emailSentByCustodian = useSelector(selectEmailSentByCustodian)
   const custodiansLoading = useSelector(selectCustodiansLoading)
 
-  function handleClick(to: string, from: string) {
-    if (!from || !to) return
+  function handleClick(name: string) {
+    if (!name) return
     dispatch(clearSearch())
-    dispatch(setFrom(from.slice(0, from.search(/,/))))
-    dispatch(setTo(to.slice(0, to.search(/,/))))
+    dispatch(setTo(name.slice(0, name.search(/,/))))
     getEmailAsync()
     history.push('/SearchView')
   }
@@ -52,7 +51,7 @@ export default function NetworkGraphView() {
       )}
       <button
         hidden
-        onClick={() => handleClick('foo', 'bar')}
+        onClick={() => handleClick('foo')}
         data-testid="handle-click"
       ></button>
     </div>
