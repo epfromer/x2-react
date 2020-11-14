@@ -3,7 +3,6 @@ import {
   getEmailAsync,
   selectCustodiansLoading,
   selectEmailSentByCustodian,
-  setFrom,
   setTo,
 } from '@klonzo/common'
 import LinearProgress from '@material-ui/core/LinearProgress'

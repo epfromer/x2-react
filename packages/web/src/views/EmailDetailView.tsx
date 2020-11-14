@@ -110,6 +110,19 @@ export default function EmailDetailView() {
     )
   }
 
+  const fromStr = () => {
+    let s = email?.from
+    if (email?.fromCustodian) s += ` (custodian: ${email.fromCustodian})`
+    return s
+  }
+
+  const toStr =() => {
+    let s = email?.to
+    if (email?.toCustodians?.length)
+      s += ` (custodians: ${email.toCustodians.join(', ')})`
+    return s
+  }
+
   return (
     <Card className={classes.root} data-testid="emailcard">
       {loading && <LinearProgress />}
@@ -119,22 +132,9 @@ export default function EmailDetailView() {
           <CardContent>
             {displayText(email.subject, classes.title)}
             {displayText(`Sent: ${email.sent}`)}
-            {displayText(
-              `From: ${email.from}
-          ${
-            email.fromCustodian
-              ? ' (custodian: ' + email.fromCustodian + ')'
-              : ''
-          }`
-            )}
-            {displayText(
-              `To: ${email.to}
-          ${
-            email.toCustodians
-              ? ' (custodians: ' + email.toCustodians + ')'
-              : ''
-          }`
-            )}
+            {/* // todo same for expo */}
+            {displayText(`From: ${fromStr()}`)}
+            {displayText(`To: ${toStr()}`)}
             {displayText(`CC: ${email.cc}`)}
             {displayText(`BCC: ${email.bcc}`)}
             {displayText(email.body?.replace(/\n/g, '<br />'))}
