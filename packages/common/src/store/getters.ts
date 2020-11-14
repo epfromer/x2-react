@@ -1,6 +1,8 @@
 import { store } from './index'
 import { Email } from './types'
 
+// TODO roll into slice
+
 export const getEmailById = (id: string): Email | undefined => {
   const state = store.getState()
   if (!state.email.email || !state.email.email.length) return undefined

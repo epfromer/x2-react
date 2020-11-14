@@ -9,6 +9,8 @@ import {
   store,
 } from './index'
 
+// TODO roll into slice
+
 function makeQueryObj(): unknown {
   const state = store.getState()
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
