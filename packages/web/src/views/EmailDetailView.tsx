@@ -116,7 +116,7 @@ export default function EmailDetailView() {
     return s
   }
 
-  const toStr =() => {
+  const toStr = () => {
     let s = email?.to
     if (email?.toCustodians?.length)
       s += ` (custodians: ${email.toCustodians.join(', ')})`
