@@ -30,5 +30,6 @@ export function getCustodiansAsync(): void {
       store.dispatch(setCustodians(data.getCustodians))
       store.dispatch(setCustodiansLoading(false))
     })
+    // TODO .catch((e) => console.error(e))
     .catch((err) => console.error('getCustodiansAsync: ', err))
 }
