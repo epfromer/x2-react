@@ -6,6 +6,8 @@ import TextField from '@material-ui/core/TextField'
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers/'
 import React, { useState } from 'react'
 
+// TODO - minDate: 1999-07-02, maxDate: 2002-01-30, no time span
+
 interface Props {
   date: string
   onClose: (date: string, span: number) => void

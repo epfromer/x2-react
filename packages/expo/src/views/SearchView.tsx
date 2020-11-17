@@ -136,6 +136,8 @@ export default function SearchView() {
 
       const initialDate = sent ? new Date(sent) : new Date(FILTER_DATE)
 
+      // TODO - minDate: 1999-07-02, maxDate: 2002-01-30, no time span
+
       return (
         <DateTimePickerModal
           isVisible={datePickerOpen}

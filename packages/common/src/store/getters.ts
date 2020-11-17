@@ -2,6 +2,7 @@ import { store } from './index'
 import { Email } from './types'
 
 // TODO roll into slice
+// TODO select -> get
 
 export const getEmailById = (id: string): Email | undefined => {
   const state = store.getState()
