@@ -1,7 +1,7 @@
 import { fireEvent } from '@testing-library/react'
 import React from 'react'
 import { renderComp } from '../../../setupTests'
-import FilterDate from '../FilterDate'
+import FilterDate from '../FilterDateDlg'
 
 test('ok-date-picker', async () => {
   const onClose = jest.fn()

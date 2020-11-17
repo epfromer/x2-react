@@ -33,7 +33,7 @@ import debounce from 'lodash/debounce'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import FilterDate from './FilterDate'
+import FilterDate from './FilterDateDlg'
 
 const DEBOUNCE_MS = 1000
 const FILTER_DATE = '2000-10-04'
