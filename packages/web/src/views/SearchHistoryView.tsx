@@ -40,6 +40,7 @@ export default function SearchHistoryView() {
     `
     request(`${server}/graphql/`, mutation)
       .then(() => getSearchHistoryAsync())
+      // TODO .catch((e) => console.error(e))
       .catch((error) => console.error('CustodianSettings', error))
   }
 
