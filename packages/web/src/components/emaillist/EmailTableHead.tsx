@@ -152,9 +152,9 @@ const EmailTableHead: React.FC = () => {
         </TableRow>
         <TableRow>
           <TableCell>
-            <Tooltip title="Select date range" aria-label="Select date range">
+            <Tooltip title="Select date" aria-label="Select date range">
               <IconButton
-                aria-label="Select date range"
+                aria-label="Select date"
                 data-testid="open-date-picker"
                 onClick={() => setDatePickerOpen(true)}
               >

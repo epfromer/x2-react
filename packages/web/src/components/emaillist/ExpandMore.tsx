@@ -1,5 +1,6 @@
 import IconButton from '@material-ui/core/IconButton'
 import { makeStyles } from '@material-ui/core/styles'
+import Tooltip from '@material-ui/core/Tooltip'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import React, { useState } from 'react'
 
@@ -22,17 +23,19 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function ExpandMoreFunc() {
-  const [rotate, setRotate] = useState(false)
+  const [open, setOpen] = useState(false)
   const classes = useStyles()
 
   return (
-    <IconButton
-      aria-label="expand more"
-      onClick={() => setRotate(!rotate)}
-      data-testid="expand-more-button"
-      className={rotate ? classes.open : classes.close}
-    >
-      <ExpandMoreIcon />
-    </IconButton>
+    <Tooltip title={open ? 'Close' : 'Open'} aria-label="Open / Close">
+      <IconButton
+        aria-label="expand more"
+        onClick={() => setOpen(!open)}
+        data-testid="expand-more-button"
+        className={open ? classes.open : classes.close}
+      >
+        <ExpandMoreIcon />
+      </IconButton>
+    </Tooltip>
   )
 }
