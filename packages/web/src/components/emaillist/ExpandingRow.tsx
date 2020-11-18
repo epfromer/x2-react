@@ -4,7 +4,7 @@ import TableCell from '@material-ui/core/TableCell'
 import TableRow from '@material-ui/core/TableRow'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import ExpandMoreFunc from './ExpandMore'
+import ExpandMoreButton from './ExpandMore'
 
 const EXPANDED_BODY_LENGTH = 1000
 
@@ -32,7 +32,7 @@ export default function ExpandingRow({ email, lastRowRef }: Props) {
           onClick={() => setOpen(!open)}
           data-testid={`expand-more-${email.id}`}
         >
-          <ExpandMoreFunc />
+          <ExpandMoreButton />
         </TableCell>
         <LinkedTableCell field={email.sentShort} id={email.id} />
         <LinkedTableCell field={email.from} id={email.id} />

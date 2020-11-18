@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function ExpandMoreFunc() {
+export default function ExpandMoreButton() {
   const [open, setOpen] = useState(false)
   const classes = useStyles()
 
