@@ -16,6 +16,8 @@ import {
   store,
 } from './index'
 
+// TODO - move this into history view
+
 export function getSearchHistoryAsync(): void {
   store.dispatch(setSearchHistoryLoading(true))
   const server = process.env.REACT_APP_X2_SERVER
