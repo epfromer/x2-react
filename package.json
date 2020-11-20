@@ -20,6 +20,6 @@
   "devDependencies": {
     "lerna": "latest",
     "serve": "^11.3.2",
-    "typescript": "^4.0.5"
+    "typescript": "^4.1.2"
   }
 }
