@@ -58,8 +58,8 @@ export default function CustodianSettings() {
     <TableRow key={custodian.name}>
       <TableCell>{custodian.name}</TableCell>
       <TableCell>{custodian.title}</TableCell>
-      <TableCell>{custodian.senderTotal}</TableCell>
-      <TableCell>{custodian.receiverTotal}</TableCell>
+      <TableCell align="right">{custodian.senderTotal}</TableCell>
+      <TableCell align="right">{custodian.receiverTotal}</TableCell>
       <TableCell align="center">
         <Button
           variant="contained"
@@ -89,8 +89,8 @@ export default function CustodianSettings() {
             <TableRow>
               <TableCell>Custodian</TableCell>
               <TableCell>Title</TableCell>
-              <TableCell>Sent</TableCell>
-              <TableCell>Received</TableCell>
+              <TableCell align="right">Sent</TableCell>
+              <TableCell align="right">Received</TableCell>
               <TableCell align="center">Color</TableCell>
             </TableRow>
           </TableHead>
