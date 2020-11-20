@@ -26,7 +26,6 @@ import {
   selectSent,
   selectSort,
   selectSubject,
-  selectTimeSpan,
   selectTo,
   selectUsername,
   setAllText,
@@ -102,7 +101,6 @@ test('getEmailIndex', () => {
   expect(selectSort(store.getState())).toEqual('sent')
   expect(selectSent(store.getState())).toEqual('')
   expect(selectSubject(store.getState())).toEqual('')
-  expect(selectTimeSpan(store.getState())).toEqual(0)
   expect(selectTo(store.getState())).toEqual('')
 })
 

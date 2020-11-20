@@ -56,10 +56,10 @@ export default function CustodianSettings() {
 
   const renderCustodian = (custodian: Custodian) => (
     <TableRow key={custodian.name}>
-      <TableCell component="th" scope="row">
-        {custodian.name}
-      </TableCell>
+      <TableCell>{custodian.name}</TableCell>
       <TableCell>{custodian.title}</TableCell>
+      <TableCell>{custodian.senderTotal}</TableCell>
+      <TableCell>{custodian.receiverTotal}</TableCell>
       <TableCell align="center">
         <Button
           variant="contained"
@@ -89,6 +89,8 @@ export default function CustodianSettings() {
             <TableRow>
               <TableCell>Custodian</TableCell>
               <TableCell>Title</TableCell>
+              <TableCell>Sent</TableCell>
+              <TableCell>Received</TableCell>
               <TableCell align="center">Color</TableCell>
             </TableRow>
           </TableHead>

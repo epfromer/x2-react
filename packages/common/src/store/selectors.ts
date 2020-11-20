@@ -128,7 +128,6 @@ export const selectOrder = (state: RootState): number => state.query.order
 export const selectSort = (state: RootState): string => state.query.sort
 export const selectSent = (state: RootState): string => state.query.sent
 export const selectSubject = (state: RootState): string => state.query.subject
-export const selectTimeSpan = (state: RootState): number => state.query.timeSpan
 export const selectTo = (state: RootState): string => state.query.to
 
 // searchHistorySlice

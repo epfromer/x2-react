@@ -21,7 +21,6 @@ function makeQueryObj(): unknown {
     order: state.query.order,
   }
   if (state.query.sent) query.sent = state.query.sent
-  if (state.query.timeSpan) query.timeSpan = state.query.timeSpan
   if (state.query.from) query.from = state.query.from
   if (state.query.to) query.to = state.query.to
   if (state.query.subject) query.subject = state.query.subject
@@ -43,7 +42,6 @@ export function getEmailAsync(append = false): void {
       $sort: String
       $order: Int
       $sent: String
-      $timeSpan: Int
       $from: String
       $to: String
       $subject: String
@@ -56,7 +54,6 @@ export function getEmailAsync(append = false): void {
         sort: $sort
         order: $order
         sent: $sent
-        timeSpan: $timeSpan
         from: $from
         to: $to
         subject: $subject

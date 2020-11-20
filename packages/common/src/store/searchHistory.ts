@@ -11,7 +11,6 @@ import {
   setSearchHistoryLoading,
   setSent,
   setSubject,
-  setTimeSpan,
   setTo,
   store,
 } from './index'
@@ -46,7 +45,6 @@ export function searchHistoryExecute(search: string): void {
   if (o.hasOwnProperty('sort')) store.dispatch(setSort(o.sort))
   if (o.hasOwnProperty('order')) store.dispatch(setOrder(o.order))
   if (o.hasOwnProperty('sent')) store.dispatch(setSent(o.sent))
-  if (o.hasOwnProperty('timeSpan')) store.dispatch(setTimeSpan(o.timeSpan))
   if (o.hasOwnProperty('from')) store.dispatch(setFrom(o.from))
   if (o.hasOwnProperty('to')) store.dispatch(setTo(o.to))
   if (o.hasOwnProperty('subject')) store.dispatch(setSubject(o.subject))

@@ -4,7 +4,6 @@ export interface QueryState {
   sort: string
   order: number
   sent: string
-  timeSpan: number
   from: string
   to: string
   subject: string
@@ -16,7 +15,6 @@ const initialState: QueryState = {
   sort: 'sent',
   order: 1,
   sent: '',
-  timeSpan: 0,
   from: '',
   to: '',
   subject: '',
@@ -29,7 +27,6 @@ const initialState: QueryState = {
 export const setSort = createAction<string>('query/setSort')
 export const setOrder = createAction<number>('query/setOrder')
 export const setSent = createAction<string>('query/setSent')
-export const setTimeSpan = createAction<number>('query/setTimeSpan')
 export const setFrom = createAction<string>('query/setFrom')
 export const setTo = createAction<string>('query/setTo')
 export const setSubject = createAction<string>('query/setSubject')
@@ -53,9 +50,6 @@ export const querySlice = createSlice({
       })
       .addCase(setSent, (state, action) => {
         state.sent = action.payload
-      })
-      .addCase(setTimeSpan, (state, action) => {
-        state.timeSpan = action.payload
       })
       .addCase(setFrom, (state, action) => {
         state.from = action.payload
@@ -84,7 +78,6 @@ export const querySlice = createSlice({
         state.sort = 'sent'
         state.sent = ''
         state.subject = ''
-        state.timeSpan = 0
         state.to = ''
       })
   },

@@ -2,28 +2,19 @@ import DateFnsUtils from '@date-io/date-fns'
 import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
-import TextField from '@material-ui/core/TextField'
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers/'
 import React, { useState } from 'react'
 
-// TODO - minDate: 1999-07-02, maxDate: 2002-01-30, no time span
+// TODO - minDate: 1999-07-02, maxDate: 2002-01-30
 
 interface Props {
   date: string
-  onClose: (date: string, span: number) => void
+  onClose: (date: string) => void
   onClear: () => void
-  span: number
   open: boolean
 }
-export default function FilterDate({
-  onClose,
-  onClear,
-  date,
-  span,
-  open,
-}: Props) {
+export default function FilterDate({ onClose, onClear, date, open }: Props) {
   const [filterDate, setFilterDate] = useState(new Date(date))
-  const [filterSpan, setFilterSpan] = useState(span)
 
   // https://material-ui-pickers.dev/demo/datepicker
   // https://material-ui.com/components/text-fields/
@@ -43,15 +34,6 @@ export default function FilterDate({
           animateYearScrolling
         />
       </MuiPickersUtilsProvider>
-      <TextField
-        label={'+/- days'}
-        type="number"
-        variant="filled"
-        defaultValue={filterSpan}
-        onChange={(e) => setFilterSpan((e.target.value as unknown) as number)}
-        helperText="Time span in number of days around date to include"
-        size="small"
-      />
       <DialogActions>
         <Button
           onClick={onClear}
@@ -61,12 +43,7 @@ export default function FilterDate({
           Clear
         </Button>
         <Button
-          onClick={() =>
-            onClose(
-              (filterDate as unknown) as string,
-              filterSpan > 0 ? filterSpan : -filterSpan
-            )
-          }
+          onClick={() => onClose((filterDate as unknown) as string)}
           data-testid="ok-date-picker"
           color="primary"
           autoFocus

@@ -7,7 +7,6 @@ import {
   selectSent,
   selectSort,
   selectSubject,
-  selectTimeSpan,
   selectTo,
   setAllText,
   setEmailListPage,
@@ -16,7 +15,6 @@ import {
   setSent,
   setSort,
   setSubject,
-  setTimeSpan,
   setTo,
 } from '@klonzo/common'
 import IconButton from '@material-ui/core/IconButton'
@@ -49,7 +47,6 @@ const EmailTableHead: React.FC = () => {
   const subject = useSelector(selectSubject)
   const sent = useSelector(selectSent)
   const allText = useSelector(selectAllText)
-  const timeSpan = useSelector(selectTimeSpan)
 
   const makeHeadCell = (
     label: string,
@@ -84,14 +81,12 @@ const EmailTableHead: React.FC = () => {
   const onDateClear = () => {
     setDatePickerOpen(false)
     dispatch(setSent(''))
-    dispatch(setTimeSpan(0))
     getEmailAsync()
   }
 
-  const onDateClose = (date: string, span: number) => {
+  const onDateClose = (date: string) => {
     setDatePickerOpen(false)
     dispatch(setSent(getDateStr(new Date(date))))
-    dispatch(setTimeSpan(Number(span)))
     getEmailAsync()
   }
 
@@ -111,9 +106,8 @@ const EmailTableHead: React.FC = () => {
       <FilterDate
         open={datePickerOpen}
         date={sent ? sent : FILTER_DATE}
-        span={timeSpan}
         onClear={onDateClear}
-        onClose={(date: string, span: number) => onDateClose(date, span)}
+        onClose={(date: string) => onDateClose(date)}
       />
       <TableHead>
         <TableRow>
@@ -135,7 +129,7 @@ const EmailTableHead: React.FC = () => {
             ></button>
             <button
               hidden
-              onClick={() => onDateClose('2001-10-28T22:00:13.000Z', 2)}
+              onClick={() => onDateClose('2001-10-28T22:00:13.000Z')}
               data-testid="onDateClose"
             ></button>
             <TextField
