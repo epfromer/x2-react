@@ -1,4 +1,4 @@
-import { createAction, createSlice } from '@reduxjs/toolkit'
+import { createAction, createSlice, Store } from '@reduxjs/toolkit'
 
 export interface AuthenticationState {
   authenticated: boolean
@@ -31,3 +31,9 @@ export const authenticationSlice = createSlice({
   },
 })
 export default authenticationSlice.reducer
+
+// selectors & getters
+export function signOut(store: Store): void {
+  store.dispatch(setAuthenticated(false))
+  store.dispatch(setUsername(''))
+}

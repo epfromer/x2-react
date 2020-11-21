@@ -3,7 +3,6 @@ import mockAsyncStorage from '@react-native-community/async-storage/jest/async-s
 import '@testing-library/jest-dom/extend-expect'
 import fetchMock from 'jest-fetch-mock'
 import {
-  authenticate,
   clearSearch,
   getCustodiansAsync,
   getEmailAsync,
@@ -114,18 +113,6 @@ test('selectEmailReceivers', () => {
 
 test('selectEmailSentByCustodian', () => {
   expect(selectEmailSentByCustodian(store.getState())).toBeTruthy()
-})
-
-test('authenticate', () => {
-  expect(authenticate('foo', 'foo')).toBeTruthy()
-  signOut()
-  expect(selectUsername(store.getState())).toEqual('')
-})
-
-test('authenticate', () => {
-  expect(authenticate('foo', 'foo')).toBeTruthy()
-  signOut()
-  expect(selectUsername(store.getState())).toEqual('')
 })
 
 test('search history', () => {

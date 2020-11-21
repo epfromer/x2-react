@@ -1,7 +1,6 @@
 export * from './constants'
 export * from './ECharts/index'
 export * from './Highcharts/index'
-export * from './store/authentication'
 export * from './store/custodians'
 export * from './store/email'
 export * from './store/getters'
