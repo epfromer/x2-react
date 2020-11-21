@@ -49,7 +49,7 @@
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.6",
-    "@testing-library/react": "^11.2.1",
+    "@testing-library/react": "^11.2.2",
     "@testing-library/react-hooks": "^3.4.2",
     "@testing-library/user-event": "^12.2.2",
     "@types/chart.js": "^2.9.28",
@@ -57,13 +57,13 @@
     "@types/lodash": "^4.14.165",
     "@types/material-ui": "^0.21.8",
     "@types/node": "^14.14.9",
-    "@types/react": "^16.14.0",
-    "@types/react-dom": "^16.9.9",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
     "@types/react-gravatar": "^2.6.8",
     "@types/react-redux": "^7.1.11",
     "@types/react-router-dom": "^5.1.6",
     "@types/redux": "^3.6.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-prettier": "^3.1.4",
@@ -80,6 +80,11 @@
     },
     "parserOptions": {
       "ecmaVersion": 2020
+    },
+    "rules": {
+      "no-use-before-define": "off",
+      "@typescript-eslint/no-use-before-define": "off",
+      "@typescript-eslint/no-redeclare": "off"
     },
     "extends": [
       "react-app",
