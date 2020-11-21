@@ -6,7 +6,7 @@ import ListItemText from '@material-ui/core/ListItemText'
 import Paper from '@material-ui/core/Paper'
 import { makeStyles } from '@material-ui/core/styles'
 import { gql, request } from 'graphql-request'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,7 +26,7 @@ interface ImportLogEntry {
 
 export default function ImportLog() {
   const classes = useStyles()
-  const [lastRow, setLastRow] = useState<HTMLDivElement | undefined | null>()
+  const lastRowRef = useRef(null)
   let importTimer: number | undefined
   const [log, setLog] = useState([])
 
@@ -45,7 +45,7 @@ export default function ImportLog() {
     `
     request(`${server}/graphql/`, query)
       .then((data) => setLog(data.getImportStatus))
-      .catch((err) => console.error('getImportStatusInterval: ', err))
+      .catch((e) => console.error(e))
   }
 
   const startImport = () => {
@@ -70,7 +70,12 @@ export default function ImportLog() {
 
   useEffect(() => stopImportStatusInterval)
 
-  useEffect(() => lastRow?.scrollIntoView({ behavior: 'smooth' }))
+  useEffect(() => {
+    if (lastRowRef && lastRowRef.current && log.length) {
+      // @ts-ignore
+      lastRowRef.current.scrollIntoView({ behavior: 'smooth' })
+    }
+  })
 
   return (
     <Paper>
@@ -92,10 +97,7 @@ export default function ImportLog() {
             </ListItem>
           )
         })}
-        <div
-          style={{ float: 'left', clear: 'both' }}
-          ref={(el) => setLastRow(el)}
-        ></div>
+        <div style={{ float: 'left', clear: 'both' }} ref={lastRowRef}></div>
       </List>
     </Paper>
   )
