@@ -19,7 +19,7 @@ import RouteSwitch from './src/router/RouteSwitch'
 getInitialDataAsync()
 getEmailAsync()
 // TODO - get initial dark mode from OS
-loadAppSettingsAsync()
+loadAppSettingsAsync(store)
 
 // TODO - change dark mode doesn't update theme; fixed in 3.0
 function ThemedApp() {

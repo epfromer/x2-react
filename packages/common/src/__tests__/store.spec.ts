@@ -81,7 +81,7 @@ test('getWordCloudAsync', async () => {
 })
 
 test('loadAppSettingsAsync', async () => {
-  await loadAppSettingsAsync()
+  await loadAppSettingsAsync(store)
   expect(store.getState().appSettings.darkMode).toEqual(false)
 })
 

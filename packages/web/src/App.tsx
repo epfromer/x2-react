@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 
 getInitialDataAsync()
 getEmailAsync()
-loadAppSettingsAsync()
+loadAppSettingsAsync(store)
 
 const CoreApp = () => {
   const classes = useStyles()

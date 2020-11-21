@@ -1,4 +1,4 @@
-import { setThemeNameAsync } from '@klonzo/common'
+import { setThemeNameAsync, store } from '@klonzo/common'
 import Button from '@material-ui/core/Button'
 import Paper from '@material-ui/core/Paper'
 import Table from '@material-ui/core/Table'
@@ -16,7 +16,7 @@ export default function ThemePicker() {
       <TableCell align="center">
         <Button
           variant="contained"
-          onClick={() => setThemeNameAsync(t.name)}
+          onClick={() => setThemeNameAsync(store, t.name)}
           data-testid={t.name}
           style={{ backgroundColor: t.primary.main, height: 30 }}
         ></Button>

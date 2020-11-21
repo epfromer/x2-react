@@ -1,4 +1,4 @@
-import { selectDarkMode, setDarkModeAsync } from '@klonzo/common'
+import { selectDarkMode, setDarkModeAsync, store } from '@klonzo/common'
 import IconButton from '@material-ui/core/IconButton'
 import { makeStyles } from '@material-ui/core/styles'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -69,7 +69,7 @@ export default function AppToolbar({ drawerOpen, setDrawerOpen }: Props) {
           <IconButton
             color="inherit"
             data-testid="dark-mode"
-            onClick={() => setDarkModeAsync(false)}
+            onClick={() => setDarkModeAsync(store, false)}
           >
             <Brightness7 />
           </IconButton>
@@ -77,7 +77,7 @@ export default function AppToolbar({ drawerOpen, setDrawerOpen }: Props) {
           <IconButton
             color="inherit"
             data-testid="dark-mode"
-            onClick={() => setDarkModeAsync(true)}
+            onClick={() => setDarkModeAsync(store, true)}
           >
             <Brightness4 />
           </IconButton>
