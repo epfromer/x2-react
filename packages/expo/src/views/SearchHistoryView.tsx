@@ -3,6 +3,7 @@ import {
   getSearchHistoryAsync,
   searchHistoryExecute,
   selectSearchHistory,
+  store,
   x2Server,
 } from '@klonzo/common'
 import { gql, request } from 'graphql-request'
@@ -62,13 +63,13 @@ export default function SearchHistoryView() {
       }
     `
     request(`${server}/graphql/`, mutation)
-      .then(() => getSearchHistoryAsync())
+      .then(() => getSearchHistoryAsync(store))
       .catch((error) => console.error('CustodianSettings', error))
   }
 
   const onSearchHistory = (entry: string) => {
-    searchHistoryExecute(entry)
-    getEmailAsync()
+    searchHistoryExecute(store, entry)
+    getEmailAsync(store)
     history.push('/SearchView')
   }
 

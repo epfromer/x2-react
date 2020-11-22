@@ -10,6 +10,7 @@ import {
   selectFrom,
   selectSubject,
   selectTo,
+  store,
   x2Server,
 } from '@klonzo/common'
 import { gql, request } from 'graphql-request'
@@ -29,16 +30,18 @@ export default function EmailDetailView() {
     id = 'f3281cc4-90a9-4dcb-86bd-d705fc847985'
   const [loading, setLoading] = useState(false)
   const [email, setEmail] = useState<Email | null>(null)
-  const cachedEmail = getEmailById(id)
+  const cachedEmail = getEmailById(store, id)
   const allText = useSelector(selectAllText)
   const to = useSelector(selectTo)
   const from = useSelector(selectFrom)
   const subject = useSelector(selectSubject)
   const body = useSelector(selectBody)
-  const totalEmails = useSelector(selectEmail).length
-  const emailIndex = getEmailIndex(id)
-  const previousEmailId = getPreviousEmailId(id)
-  const nextEmailId = getNextEmailId(id)
+  const totalEmails = useSelector(selectEmail)
+    ? useSelector(selectEmail).length
+    : 0
+  const emailIndex = getEmailIndex(store, id)
+  const previousEmailId = getPreviousEmailId(store, id)
+  const nextEmailId = getNextEmailId(store, id)
   const { theme }: any = useContext(ThemeContext)
 
   const styles = StyleSheet.create({
@@ -209,24 +212,26 @@ export default function EmailDetailView() {
             <Text style={styles.fieldBold}>
               Sent: <Text style={styles.fields}>{email.sent}</Text>
             </Text>
-            {email.fromCustodian ? (
+            {email.fromCustodian && (
               <Text style={styles.fieldBold}>
                 From: <Text style={styles.fields}>{highlight(email.from)}</Text>{' '}
                 (custodian:{' '}
                 <Text style={styles.fields}>{email.fromCustodian}</Text>)
               </Text>
-            ) : (
+            )}
+            {!email.fromCustodian && (
               <Text style={styles.fieldBold}>
                 From: <Text style={styles.fields}>{highlight(email.from)}</Text>
               </Text>
             )}
-            {email.toCustodians ? (
+            {email.toCustodians && (
               <Text style={styles.fieldBold}>
                 To: <Text style={styles.fields}>{highlight(email.to)}</Text>{' '}
                 (custodian:{' '}
                 <Text style={styles.fields}>{email.toCustodians}</Text>)
               </Text>
-            ) : (
+            )}
+            {!email.toCustodians && (
               <Text style={styles.fieldBold}>
                 To: <Text style={styles.fields}>{highlight(email.to)}</Text>
               </Text>

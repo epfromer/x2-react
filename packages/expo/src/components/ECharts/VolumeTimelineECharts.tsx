@@ -15,7 +15,7 @@ export default function VolumeTimelineECharts({ title, data }: Props) {
   const { theme }: any = useContext(ThemeContext)
   return (
     <ECharts
-      onData={(p) => console.log(p)}
+      // onData={(p: any) => console.log(p)}
       additionalCode={`chart.on('click', p => sendData(p.data.name));`}
       backgroundColor={theme.colors.white}
       option={getVolumeTimelineEChartsConfig(theme.colors.black, title, data)}

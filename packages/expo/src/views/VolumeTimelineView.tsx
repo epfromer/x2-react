@@ -5,6 +5,7 @@ import {
   selectEmailSentByDay,
   selectEmailSentByDayLoading,
   setSent,
+  store,
 } from '@klonzo/common'
 import React, { useContext, useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
@@ -28,7 +29,7 @@ export default function VolumeTimelineView() {
   function handleClick(date: string) {
     dispatch(clearSearch())
     dispatch(setSent(date))
-    getEmailAsync()
+    getEmailAsync(store)
     history.push('/SearchView')
   }
 

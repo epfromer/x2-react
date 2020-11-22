@@ -6,6 +6,7 @@ import {
   selectEmailSentByCustodian,
   setFrom,
   setTo,
+  store,
 } from '@klonzo/common'
 import React, { useContext, useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
@@ -37,7 +38,7 @@ export default function NetworkGraphView() {
     dispatch(clearSearch())
     dispatch(setFrom(from.slice(0, from.search(/,/))))
     dispatch(setTo(to.slice(0, to.search(/,/))))
-    getEmailAsync()
+    getEmailAsync(store)
     history.push('/SearchView')
   }
 

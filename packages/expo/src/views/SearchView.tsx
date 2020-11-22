@@ -19,6 +19,7 @@ import {
   setSent,
   setSubject,
   setTo,
+  store,
 } from '@klonzo/common'
 import React, { useContext, useState } from 'react'
 import {
@@ -120,7 +121,7 @@ export default function SearchView() {
       if (newSubject !== subject) dispatch(setSubject(newSubject))
       if (newSent !== sent) dispatch(setSent(newSent))
       setDlgOpen(false)
-      getEmailAsync()
+      getEmailAsync(store)
     }
 
     const clearFields = () => {
@@ -314,7 +315,7 @@ export default function SearchView() {
   const handleLoadMore = () => {
     if (hasMore()) {
       dispatch(setEmailListPage(emailListPage + 1))
-      getEmailAsync(true)
+      getEmailAsync(store, true)
     }
   }
 

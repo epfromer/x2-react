@@ -7,6 +7,7 @@ import {
   selectEmailSenders,
   setFrom,
   setTo,
+  store,
 } from '@klonzo/common'
 import React, { useContext, useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
@@ -42,7 +43,7 @@ export default function PieView() {
     dispatch(clearSearch())
     const name = value.slice(0, value.search(/,/))
     dispatch(search === 'from' ? setFrom(name) : setTo(name))
-    getEmailAsync()
+    getEmailAsync(store)
     history.push('/SearchView')
   }
 
