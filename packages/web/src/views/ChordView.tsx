@@ -5,6 +5,7 @@ import {
   selectEmailSentByCustodian,
   setFrom,
   setTo,
+  store,
 } from '@klonzo/common'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Typography from '@material-ui/core/Typography'
@@ -25,7 +26,7 @@ export default function ChordView() {
     dispatch(clearSearch())
     dispatch(setFrom(from.slice(0, from.search(/,/))))
     dispatch(setTo(to.slice(0, to.search(/,/))))
-    getEmailAsync()
+    getEmailAsync(store)
     history.push('/SearchView')
   }
 

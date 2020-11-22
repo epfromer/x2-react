@@ -5,6 +5,7 @@ import {
   selectEmailSentByDay,
   selectEmailSentByDayLoading,
   setSent,
+  store,
 } from '@klonzo/common'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Typography from '@material-ui/core/Typography'
@@ -25,7 +26,7 @@ export default function TimelineView() {
   function handleClick(date: string) {
     dispatch(clearSearch())
     dispatch(setSent(date))
-    getEmailAsync()
+    getEmailAsync(store)
     history.push('/SearchView')
   }
 

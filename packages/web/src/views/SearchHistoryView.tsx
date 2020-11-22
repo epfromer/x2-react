@@ -4,6 +4,7 @@ import {
   searchHistoryExecute,
   selectSearchHistory,
   selectSearchHistoryLoading,
+  store,
   x2Server,
 } from '@klonzo/common'
 import Button from '@material-ui/core/Button'
@@ -46,7 +47,7 @@ export default function SearchHistoryView() {
 
   const onSearchHistory = (row: RowParams) => {
     searchHistoryExecute(row.data.entry)
-    getEmailAsync()
+    getEmailAsync(store)
     history.push('/SearchView')
   }
 

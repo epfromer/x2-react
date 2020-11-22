@@ -1,7 +1,6 @@
 export * from './constants'
 export * from './ECharts/index'
 export * from './Highcharts/index'
-export * from './store/email'
 export * from './store/getters'
 export * from './store/index'
 export * from './store/initialData'

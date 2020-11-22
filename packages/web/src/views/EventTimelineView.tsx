@@ -7,6 +7,7 @@ import {
   setAllText,
   setFrom,
   setTo,
+  store,
 } from '@klonzo/common'
 import IconButton from '@material-ui/core/IconButton'
 import LinearProgress from '@material-ui/core/LinearProgress'
@@ -56,7 +57,7 @@ export default function EventTimelineView() {
     } else if (key === 'allText') {
       dispatch(setAllText(value))
     }
-    getEmailAsync()
+    getEmailAsync(store)
     history.push('/SearchView')
   }
 

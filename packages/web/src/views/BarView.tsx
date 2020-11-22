@@ -7,6 +7,7 @@ import {
   selectEmailSenders,
   setFrom,
   setTo,
+  store,
 } from '@klonzo/common'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Typography from '@material-ui/core/Typography'
@@ -30,7 +31,7 @@ export default function BarView() {
     dispatch(clearSearch())
     const name = value.slice(0, value.search(/,/))
     dispatch(search === 'from' ? setFrom(name) : setTo(name))
-    getEmailAsync()
+    getEmailAsync(store)
     history.push('/SearchView')
   }
 

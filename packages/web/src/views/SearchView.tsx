@@ -6,6 +6,7 @@ import {
   getEmailAsync,
   selectEmailTotal,
   setEmailListPage,
+  store,
 } from '@klonzo/common'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Paper from '@material-ui/core/Paper'
@@ -44,7 +45,7 @@ export default function SearchView() {
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && hasMore()) {
           dispatch(setEmailListPage(emailListPage + 1))
-          getEmailAsync(true)
+          getEmailAsync(store, true)
         }
       })
       if (node) observer.current.observe(node)

@@ -16,6 +16,7 @@ import {
   setSort,
   setSubject,
   setTo,
+  store,
 } from '@klonzo/common'
 import IconButton from '@material-ui/core/IconButton'
 import TableCell from '@material-ui/core/TableCell'
@@ -73,7 +74,7 @@ const EmailTableHead: React.FC = () => {
     (action: ActionCreatorWithPayload<string, string>, term: string) => {
       dispatch(setEmailListPage(0))
       dispatch(action(term))
-      getEmailAsync()
+      getEmailAsync(store)
     },
     DEBOUNCE_MS
   )
@@ -81,13 +82,13 @@ const EmailTableHead: React.FC = () => {
   const onDateClear = () => {
     setDatePickerOpen(false)
     dispatch(setSent(''))
-    getEmailAsync()
+    getEmailAsync(store)
   }
 
   const onDateClose = (date: string) => {
     setDatePickerOpen(false)
     dispatch(setSent(getDateStr(new Date(date))))
-    getEmailAsync()
+    getEmailAsync(store)
   }
 
   const onSort = (field: string) => {
@@ -98,7 +99,7 @@ const EmailTableHead: React.FC = () => {
       dispatch(setOrder(1))
     }
     dispatch(setSort(field))
-    getEmailAsync()
+    getEmailAsync(store)
   }
 
   return (

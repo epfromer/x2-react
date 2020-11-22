@@ -7,6 +7,7 @@ import {
   selectEmailSenders,
   setFrom,
   setTo,
+  store,
 } from '@klonzo/common'
 import Grid from '@material-ui/core/Grid'
 import LinearProgress from '@material-ui/core/LinearProgress'
@@ -29,7 +30,7 @@ export default function TreeMapView() {
     dispatch(clearSearch())
     const name = value.slice(0, value.search(/,/))
     dispatch(search === 'from' ? setFrom(name) : setTo(name))
-    getEmailAsync()
+    getEmailAsync(store)
     history.push('/SearchView')
   }
 

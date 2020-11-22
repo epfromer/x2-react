@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 getInitialDataAsync()
-getEmailAsync()
+getEmailAsync(store)
 loadAppSettingsAsync(store)
 
 const CoreApp = () => {

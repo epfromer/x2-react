@@ -4,6 +4,7 @@ import {
   selectCustodiansLoading,
   selectEmailSentByCustodian,
   setTo,
+  store,
 } from '@klonzo/common'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Typography from '@material-ui/core/Typography'
@@ -23,7 +24,7 @@ export default function NetworkGraphView() {
     if (!name) return
     dispatch(clearSearch())
     dispatch(setTo(name.slice(0, name.search(/,/))))
-    getEmailAsync()
+    getEmailAsync(store)
     history.push('/SearchView')
   }
 

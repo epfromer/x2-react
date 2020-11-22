@@ -86,7 +86,7 @@ test('loadAppSettingsAsync', async () => {
 
 test('getEmailAsync', async () => {
   fetchMock.mockResponseOnce(JSON.stringify(testEmail))
-  await getEmailAsync()
+  await getEmailAsync(store)
   expect(store.getState().email.email).toEqual(testEmail)
 })
 

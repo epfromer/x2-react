@@ -4,6 +4,7 @@ import {
   selectWordCloud,
   selectWordCloudLoading,
   setAllText,
+  store,
 } from '@klonzo/common'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Typography from '@material-ui/core/Typography'
@@ -22,7 +23,7 @@ export default function WordCloudView() {
   function handleClick(word: string) {
     dispatch(clearSearch())
     dispatch(setAllText(word))
-    getEmailAsync()
+    getEmailAsync(store)
     history.push('/SearchView')
   }
 
