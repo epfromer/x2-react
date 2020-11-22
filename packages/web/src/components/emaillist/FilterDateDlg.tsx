@@ -5,8 +5,6 @@ import DialogActions from '@material-ui/core/DialogActions'
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers/'
 import React, { useState } from 'react'
 
-// TODO - minDate: 1999-07-02, maxDate: 2002-01-30
-
 interface Props {
   date: string
   onClose: (date: string) => void
@@ -29,6 +27,8 @@ export default function FilterDate({ onClose, onClear, date, open }: Props) {
           variant="static"
           openTo="date"
           value={filterDate}
+          minDate={new Date('1999-07-02')}
+          maxDate={new Date('2002-01-30')}
           onChange={(d: any) => setFilterDate(d)}
           disableFuture
           animateYearScrolling

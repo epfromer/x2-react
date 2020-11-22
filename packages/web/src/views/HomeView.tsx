@@ -33,46 +33,36 @@ export default function HomeView() {
 
   return (
     <Grid container spacing={3}>
-      {makeCard(
-        pie,
-        'Pie',
-        'Pie chart of email volume of Enron custodians.',
-        '/PieView'
-      )}
+      {makeCard(pie, 'Pie', 'Email volume of Enron custodians.', '/PieView')}
       {makeCard(
         barchart,
         'Bar',
-        'Bar chart of email volume of Enron custodians.',
+        'Email volume of Enron custodians.',
         '/BarView'
       )}
-      {makeCard(
-        chord,
-        'Chord',
-        'Chord diagram of Enron custodian communication.',
-        '/ChordView'
-      )}
+      {makeCard(chord, 'Chord', 'Enron custodian communication.', '/ChordView')}
       {makeCard(
         wordcloud,
         'Word Cloud',
-        'Word cloud of mentions of fraudulent project names.',
+        'Mentions of fraudulent project names.',
         '/WordCloudView'
       )}
       {makeCard(
         volumetimeline,
         'Volume Timeline',
-        'XY timeline of Enron email per day with drill down.',
+        'Enron email per day with drill down.',
         '/VolumeTimelineView'
       )}
       {makeCard(
         networkgraph,
         'Network Graph',
-        'Network graph of Enron custodian communication.',
+        'Enron custodian communication.',
         '/NetworkGraphView'
       )}
       {makeCard(
         treemap,
         'Tree Map',
-        'Tree map of email volume of Enron custodians.',
+        'Email volume of Enron custodians.',
         '/TreeMapView'
       )}
       {makeCard(
@@ -84,13 +74,13 @@ export default function HomeView() {
       {makeCard(
         polar,
         'Polar',
-        'Polar chart of email volume of Enron custodians.',
+        'Email volume of Enron custodians.',
         '/PolarView'
       )}
       {makeCard(
         search,
         'Search',
-        'Full text search with field filtering and hit highlighting.',
+        'Full text search with hit highlighting.',
         '/SearchView'
       )}
     </Grid>
