@@ -1,9 +1,14 @@
 import {
+  clearSearch,
   getEmailAsync,
-  getSearchHistoryAsync,
-  searchHistoryExecute,
-  selectSearchHistory,
-  selectSearchHistoryLoading,
+  setAllText,
+  setBody,
+  setFrom,
+  setOrder,
+  setSent,
+  setSort,
+  setSubject,
+  setTo,
   store,
   x2Server,
 } from '@klonzo/common'
@@ -13,8 +18,7 @@ import Paper from '@material-ui/core/Paper'
 import { makeStyles } from '@material-ui/core/styles'
 import { ColDef, DataGrid, RowParams } from '@material-ui/data-grid'
 import { gql, request } from 'graphql-request'
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
@@ -25,10 +29,47 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function SearchHistoryView() {
-  const searchHistory = useSelector(selectSearchHistory)
-  const searchHistoryLoading = useSelector(selectSearchHistoryLoading)
   const history = useHistory()
   const classes = useStyles()
+  const [log, setLog] = useState([])
+  const [logLoading, setLogLoading] = useState(false)
+
+  const getSearchHistory = (): void => {
+    setLogLoading(true)
+    const server = process.env.REACT_APP_X2_SERVER
+      ? process.env.REACT_APP_X2_SERVER
+      : x2Server
+    const query = gql`
+      {
+        getSearchHistory {
+          id
+          timestamp
+          entry
+        }
+      }
+    `
+    request(`${server}/graphql/`, query)
+      .then((data) => {
+        setLog(data.getSearchHistory)
+        setLogLoading(false)
+      })
+      .catch((e) => console.error(e))
+  }
+
+  const onSearchHistory = (row: RowParams) => {
+    const o = JSON.parse(row.data.entry)
+    store.dispatch(clearSearch())
+    if (o.hasOwnProperty('sort')) store.dispatch(setSort(o.sort))
+    if (o.hasOwnProperty('order')) store.dispatch(setOrder(o.order))
+    if (o.hasOwnProperty('sent')) store.dispatch(setSent(o.sent))
+    if (o.hasOwnProperty('from')) store.dispatch(setFrom(o.from))
+    if (o.hasOwnProperty('to')) store.dispatch(setTo(o.to))
+    if (o.hasOwnProperty('subject')) store.dispatch(setSubject(o.subject))
+    if (o.hasOwnProperty('allText')) store.dispatch(setAllText(o.allText))
+    if (o.hasOwnProperty('body')) store.dispatch(setBody(o.body))
+    getEmailAsync(store)
+    history.push('/SearchView')
+  }
 
   const onClearHistory = () => {
     const server = process.env.REACT_APP_X2_SERVER
@@ -40,15 +81,14 @@ export default function SearchHistoryView() {
       }
     `
     request(`${server}/graphql/`, mutation)
-      .then(() => getSearchHistoryAsync(store))
+      .then(() => getSearchHistory())
       .catch((e) => console.error(e))
   }
 
-  const onSearchHistory = (row: RowParams) => {
-    searchHistoryExecute(store, row.data.entry)
-    getEmailAsync(store)
-    history.push('/SearchView')
-  }
+  useEffect(() => {
+    getSearchHistory()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const columns: ColDef[] = [
     { field: 'id', hide: true },
@@ -59,7 +99,7 @@ export default function SearchHistoryView() {
   return (
     <div className={classes.root}>
       <Paper>
-        {searchHistoryLoading && <LinearProgress />}
+        {logLoading && <LinearProgress />}
         <Button
           variant="contained"
           color="secondary"
@@ -69,15 +109,13 @@ export default function SearchHistoryView() {
         >
           Clear History
         </Button>
-        {!searchHistory && (
-          <div className={classes.text}>No searches found.</div>
-        )}
-        {searchHistory && (
+        {!log.length && <div className={classes.text}>No log entries.</div>}
+        {log.length !== 0 && (
           <div className={classes.table}>
             <DataGrid
               autoPageSize
               onRowClick={onSearchHistory}
-              rows={searchHistory}
+              rows={log}
               columns={columns}
             />
           </div>
