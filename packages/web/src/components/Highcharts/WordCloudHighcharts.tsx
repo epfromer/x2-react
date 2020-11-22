@@ -7,8 +7,6 @@ import React from 'react'
 
 HighchartWordCloud(Highcharts)
 
-const chartHeight = '500px'
-
 // @ts-ignore
 Highcharts.seriesTypes.wordcloud.prototype.deriveFontSize = function (
   relativeWeight: number
@@ -32,7 +30,6 @@ export default function WordCloudHighcharts({
 
   const config = {
     chart: {
-      height: chartHeight,
       backgroundColor: theme.palette.background.default,
     },
     title: {

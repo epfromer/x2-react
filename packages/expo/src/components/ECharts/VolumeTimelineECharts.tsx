@@ -4,7 +4,6 @@ import { ECharts } from 'react-native-echarts-wrapper'
 import { ThemeContext } from 'react-native-elements'
 
 // https://www.npmjs.com/package/react-native-echarts-wrapper
-// TODO fix click handler
 
 interface Props {
   title: string
@@ -15,7 +14,6 @@ export default function VolumeTimelineECharts({ title, data }: Props) {
   const { theme }: any = useContext(ThemeContext)
   return (
     <ECharts
-      // onData={(p: any) => console.log(p)}
       additionalCode={`chart.on('click', p => sendData(p.data.name));`}
       backgroundColor={theme.colors.white}
       option={getVolumeTimelineEChartsConfig(theme.colors.black, title, data)}

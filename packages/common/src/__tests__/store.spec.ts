@@ -1,32 +1,28 @@
-// @ts-ignore
 import mockAsyncStorage from '@react-native-community/async-storage/jest/async-storage-mock'
 import '@testing-library/jest-dom/extend-expect'
 import fetchMock from 'jest-fetch-mock'
 import {
   clearSearch,
+  getAllText,
+  getBody,
   getCustodiansAsync,
   getEmailAsync,
   getEmailById,
   getEmailIndex,
-  getInitialDataAsync,
-  getNextEmailId,
-  getPreviousEmailId,
-  getSearchHistoryAsync,
-  loadAppSettingsAsync,
-  searchHistoryExecute,
-  getAllText,
-  getBody,
   getEmailListPage,
   getEmailReceivers,
   getEmailSenders,
   getEmailSentByCustodian,
   getFrom,
+  getInitialDataAsync,
+  getNextEmailId,
   getOrder,
+  getPreviousEmailId,
   getSent,
   getSort,
   getSubject,
   getTo,
-  selectUsername,
+  loadAppSettingsAsync,
   setAllText,
   setBody,
   setCustodians,
@@ -36,7 +32,6 @@ import {
   setSubject,
   setTo,
   setWordCloud,
-  signOut,
   store,
   testCustodians,
   testEmail,
@@ -119,18 +114,6 @@ test('getEmailReceivers', () => {
 
 test('getEmailSentByCustodian', () => {
   expect(getEmailSentByCustodian(store.getState())).toBeTruthy()
-})
-
-test('search history', () => {
-  getSearchHistoryAsync(store)
-  searchHistoryExecute(
-    store,
-    `{"sort":"sent","order":1,"from":"foo","to":"foo","subject":"foo","allText":"foo"}`
-  )
-  expect(getFrom(store.getState())).toEqual('foo')
-  expect(getTo(store.getState())).toEqual('foo')
-  expect(getSubject(store.getState())).toEqual('foo')
-  expect(getAllText(store.getState())).toEqual('foo')
 })
 
 test('initial data', () => {

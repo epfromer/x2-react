@@ -3,7 +3,6 @@ import request, { gql } from 'graphql-request'
 import { RootState } from '..'
 import { defaultLimit, x2Server } from '../../constants'
 import { Email } from '../types'
-import { getSearchHistoryAsync } from './searchHistorySlice'
 
 export interface EmailState {
   emailLoading: boolean
@@ -136,7 +135,6 @@ export function getEmailAsync(store: Store, append = false): void {
       }
       store.dispatch(setEmailTotal(data.getEmail.total))
       store.dispatch(setEmailLoading(false))
-      getSearchHistoryAsync(store)
     })
     .catch((e) => console.error(e))
 }
