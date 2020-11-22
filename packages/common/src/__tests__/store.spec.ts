@@ -75,7 +75,7 @@ test('getEmailIndex', () => {
 
 test('getWordCloudAsync', async () => {
   fetchMock.mockResponseOnce(JSON.stringify(testCustodians))
-  await getCustodiansAsync()
+  await getCustodiansAsync(store)
   expect(store.getState().custodians.custodians).toEqual(testCustodians)
 })
 
