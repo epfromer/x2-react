@@ -17,9 +17,9 @@ import {
   selectAllText,
   selectBody,
   selectEmailListPage,
-  selectEmailReceivers,
-  selectEmailSenders,
-  selectEmailSentByCustodian,
+  getEmailReceivers,
+  getEmailSenders,
+  getEmailSentByCustodian,
   selectFrom,
   selectOrder,
   selectSent,
@@ -109,16 +109,16 @@ test('getEmailIndex', () => {
   expect(selectTo(store.getState())).toEqual('')
 })
 
-test('selectEmailSenders', () => {
-  expect(selectEmailSenders(store.getState())).toBeTruthy()
+test('getEmailSenders', () => {
+  expect(getEmailSenders(store.getState())).toBeTruthy()
 })
 
-test('selectEmailReceivers', () => {
-  expect(selectEmailReceivers(store.getState())).toBeTruthy()
+test('getEmailReceivers', () => {
+  expect(getEmailReceivers(store.getState())).toBeTruthy()
 })
 
-test('selectEmailSentByCustodian', () => {
-  expect(selectEmailSentByCustodian(store.getState())).toBeTruthy()
+test('getEmailSentByCustodian', () => {
+  expect(getEmailSentByCustodian(store.getState())).toBeTruthy()
 })
 
 test('search history', () => {

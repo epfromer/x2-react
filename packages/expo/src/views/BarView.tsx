@@ -2,8 +2,8 @@ import {
   clearSearch,
   getEmailAsync,
   getCustodians,
-  selectEmailReceivers,
-  selectEmailSenders,
+  getEmailReceivers,
+  getEmailSenders,
   setFrom,
   setTo,
   store,
@@ -25,8 +25,8 @@ export default function BarView() {
   const [isSenders, setIsSenders] = useState(true)
   const [chartLib, setChartLib] = useState('ECharts')
   const custodians = useSelector(getCustodians)
-  const emailSenders = useSelector(selectEmailSenders)
-  const emailReceivers = useSelector(selectEmailReceivers)
+  const emailSenders = useSelector(getEmailSenders)
+  const emailReceivers = useSelector(getEmailReceivers)
   const { theme }: any = useContext(ThemeContext)
 
   const styles = StyleSheet.create({

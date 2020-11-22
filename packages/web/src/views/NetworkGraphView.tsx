@@ -2,9 +2,10 @@ import {
   clearSearch,
   getEmailAsync,
   getCustodiansLoading,
-  selectEmailSentByCustodian,
+  getEmailSentByCustodian,
   setTo,
   store,
+  setFrom,
 } from '@klonzo/common'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Typography from '@material-ui/core/Typography'
@@ -17,13 +18,17 @@ import NetworkGraphHighcharts from '../components/Highcharts/NetworkGraphHighcha
 export default function NetworkGraphView() {
   const dispatch = useDispatch()
   const history = useHistory()
-  const emailSentByCustodian = useSelector(selectEmailSentByCustodian)
+  const emailSentByCustodian = useSelector(getEmailSentByCustodian)
   const custodiansLoading = useSelector(getCustodiansLoading)
 
-  function handleClick(name: string) {
-    if (!name) return
+  function handleClick(from: string, to: string) {
     dispatch(clearSearch())
-    dispatch(setTo(name.slice(0, name.search(/,/))))
+    if (from) {
+      dispatch(setFrom(from.slice(0, from.search(/,/))))
+    }
+    if (to) {
+      dispatch(setTo(to.slice(0, to.search(/,/))))
+    }
     getEmailAsync(store)
     history.push('/SearchView')
   }
@@ -51,7 +56,7 @@ export default function NetworkGraphView() {
       )}
       <button
         hidden
-        onClick={() => handleClick('foo')}
+        onClick={() => handleClick('foo', 'bar')}
         data-testid="handle-click"
       ></button>
     </div>

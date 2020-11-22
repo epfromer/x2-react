@@ -12,8 +12,6 @@ HighchartsWheel(Highcharts)
 
 // https://www.highcharts.com/docs/chart-and-series-types/dependency-wheel
 
-const chartHeight = '95%'
-
 interface Props {
   title: string
   data: Array<any>
@@ -31,9 +29,14 @@ export default function ChordHighcharts({
   const theme = useTheme()
 
   function createChart() {
+    const chartData = data.map((datum) => [
+      datum.source,
+      datum.target,
+      datum.value,
+    ])
+
     setConfig({
       chart: {
-        height: chartHeight,
         backgroundColor: theme.palette.background.default,
       },
       title: {
@@ -56,7 +59,7 @@ export default function ChordHighcharts({
       series: [
         {
           type: 'dependencywheel',
-          data,
+          data: chartData,
           nodes,
         },
       ],

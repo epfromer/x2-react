@@ -5,7 +5,7 @@ require('echarts-wordcloud')
 
 // https://echarts.apache.org/examples/en/index.html#chart-type-graph
 
-const chartHeight = '900px'
+const chartHeight = '400px'
 
 interface Props {
   title: string
@@ -33,15 +33,10 @@ export default function ChordECharts({
       },
     },
   }))
-  const links: Array<any> = data.map((datum) => ({
-    source: datum[0],
-    target: datum[1],
-    value: datum[2],
-  }))
 
   return (
     <ReactEcharts
-      style={{ height: chartHeight, width: '100%' }}
+      style={{ height: chartHeight }}
       onEvents={{
         click: (e: any) => handleClick(e.data.source, e.data.target),
       }}
@@ -77,7 +72,7 @@ export default function ChordECharts({
             type: 'graph',
             layout: 'circular',
             data: chartNodes,
-            links: links,
+            links: data,
             categories: chartNodes,
             roam: true,
             label: {

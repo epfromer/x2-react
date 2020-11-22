@@ -16,7 +16,7 @@ interface Props {
   title: string
   data: Array<any>
   nodes: Array<any>
-  handleClick: (name: string) => void
+  handleClick: (from: string, to: string) => void
 }
 export default function NetworkGraphHighcharts({
   title,
@@ -29,9 +29,14 @@ export default function NetworkGraphHighcharts({
   const theme = useTheme()
 
   function createChart() {
+    const chartData = data.map((datum) => [
+      datum.source,
+      datum.target,
+      datum.value,
+    ])
+
     setConfig({
       chart: {
-        height: chartHeight,
         backgroundColor: theme.palette.background.default,
       },
       title: {
@@ -51,7 +56,7 @@ export default function NetworkGraphHighcharts({
             linkFormat: '{point.fromNode.name} \u2192 {point.toNode.name}',
           },
           events: {
-            click: (e: any) => handleClick(e.point.id),
+            click: (e: any) => handleClick(e.point.id, ''),
           },
           marker: {
             radius: 20,
@@ -61,7 +66,7 @@ export default function NetworkGraphHighcharts({
       series: [
         {
           type: 'networkgraph',
-          data,
+          data: chartData,
           nodes,
         },
       ],

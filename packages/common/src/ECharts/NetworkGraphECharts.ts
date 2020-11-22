@@ -21,11 +21,6 @@ export function getNetworkGraphEChartsConfig(
       },
     },
   }))
-  const links: Array<any> = data.map((datum) => ({
-    source: datum[0],
-    target: datum[1],
-    value: datum[2],
-  }))
 
   return {
     title: {
@@ -46,7 +41,6 @@ export function getNetworkGraphEChartsConfig(
         },
       },
     ],
-    animation: false,
     series: [
       {
         name: title,
@@ -57,12 +51,16 @@ export function getNetworkGraphEChartsConfig(
         type: 'graph',
         layout: 'force',
         data: chartNodes,
-        links: links,
+        links: data,
         categories: chartNodes,
         roam: true,
         label: {
           position: 'bottom',
           formatter: '{b}',
+        },
+        lineStyle: {
+          color: 'source',
+          curveness: 0.3,
         },
         force: {
           repulsion: 1000,

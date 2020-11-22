@@ -2,7 +2,7 @@ import {
   clearSearch,
   getEmailAsync,
   getCustodiansLoading,
-  selectEmailSentByCustodian,
+  getEmailSentByCustodian,
   setFrom,
   setTo,
   store,
@@ -18,7 +18,7 @@ import ChordHighcharts from '../components/Highcharts/ChordHighcharts'
 export default function ChordView() {
   const dispatch = useDispatch()
   const history = useHistory()
-  const emailSentByCustodian = useSelector(selectEmailSentByCustodian)
+  const emailSentByCustodian = useSelector(getEmailSentByCustodian)
   const custodiansLoading = useSelector(getCustodiansLoading)
 
   function handleClick(from: string, to: string) {

@@ -5,8 +5,7 @@ import React from 'react'
 
 // https://echarts.apache.org/examples/en/editor.html?c=graph
 
-const chartHeight = '600px'
-const chartWidth = '100%'
+const chartHeight = '400px'
 
 interface Props {
   title: string
@@ -21,10 +20,15 @@ export default function NetworkGraphECharts({
   handleClick,
 }: Props) {
   const theme = useTheme()
+  const onClick = (e: any) => {
+    handleClick(e.data.source, e.data.target)
+  }
+
   return (
     <div>
       <ReactEcharts
-        style={{ height: chartHeight, width: chartWidth }}
+        style={{ height: chartHeight }}
+        onEvents={{ click: onClick }}
         option={getNetworkGraphEChartsConfig(
           theme.palette.text.primary,
           title,

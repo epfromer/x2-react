@@ -3,8 +3,8 @@ import {
   getEmailAsync,
   getCustodians,
   getCustodiansLoading,
-  selectEmailReceivers,
-  selectEmailSenders,
+  getEmailReceivers,
+  getEmailSenders,
   setFrom,
   setTo,
   store,
@@ -28,8 +28,8 @@ export default function PieView() {
   const [chartLib, setChartLib] = useState('ECharts')
   const custodiansLoading = useSelector(getCustodiansLoading)
   const custodians = useSelector(getCustodians)
-  const emailSenders = useSelector(selectEmailSenders)
-  const emailReceivers = useSelector(selectEmailReceivers)
+  const emailSenders = useSelector(getEmailSenders)
+  const emailReceivers = useSelector(getEmailReceivers)
   const { theme }: any = useContext(ThemeContext)
 
   const styles = StyleSheet.create({

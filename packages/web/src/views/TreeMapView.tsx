@@ -3,8 +3,8 @@ import {
   getEmailAsync,
   getCustodians,
   getCustodiansLoading,
-  selectEmailReceivers,
-  selectEmailSenders,
+  getEmailReceivers,
+  getEmailSenders,
   setFrom,
   setTo,
   store,
@@ -23,8 +23,8 @@ export default function TreeMapView() {
   const history = useHistory()
   const custodiansLoading = useSelector(getCustodiansLoading)
   const custodians = useSelector(getCustodians)
-  const emailSenders = useSelector(selectEmailSenders)
-  const emailReceivers = useSelector(selectEmailReceivers)
+  const emailSenders = useSelector(getEmailSenders)
+  const emailReceivers = useSelector(getEmailReceivers)
 
   function handleClick(search: string, value: string) {
     dispatch(clearSearch())
