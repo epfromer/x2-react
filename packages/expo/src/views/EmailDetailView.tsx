@@ -6,7 +6,7 @@ import {
   getPreviousEmailId,
   getAllText,
   getBody,
-  selectEmail,
+  getEmail,
   getFrom,
   getSubject,
   getTo,
@@ -25,7 +25,7 @@ import { textColor } from '../utils/appThemes'
 
 export default function EmailDetailView() {
   const history = useHistory()
-  let { id } = useParams()
+  let { id } = useParams<{ id: string }>()
   if (process.env.NODE_ENV === 'test')
     id = 'f3281cc4-90a9-4dcb-86bd-d705fc847985'
   const [loading, setLoading] = useState(false)
@@ -36,9 +36,8 @@ export default function EmailDetailView() {
   const from = useSelector(getFrom)
   const subject = useSelector(getSubject)
   const body = useSelector(getBody)
-  const totalEmails = useSelector(selectEmail)
-    ? useSelector(selectEmail).length
-    : 0
+  const cachedEmails = useSelector(getEmail)
+  const totalCachedEmails = cachedEmails ? cachedEmails.length : 0
   const emailIndex = getEmailIndex(store, id)
   const previousEmailId = getPreviousEmailId(store, id)
   const nextEmailId = getNextEmailId(store, id)
@@ -186,7 +185,7 @@ export default function EmailDetailView() {
         }}
       />
       <Text style={styles.text}>
-        {totalEmails ? `${emailIndex} of ${totalEmails}` : ''}
+        {totalCachedEmails ? `${emailIndex} of ${totalCachedEmails}` : ''}
       </Text>
       <Button
         buttonStyle={styles.button}

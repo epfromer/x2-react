@@ -1,10 +1,10 @@
 import {
   defaultLimit,
-  selectEmail,
+  getEmail,
   getEmailListPage,
-  selectEmailLoading,
+  getEmailLoading,
   getEmailAsync,
-  selectEmailTotal,
+  getEmailTotal,
   setEmailListPage,
   store,
 } from '@klonzo/common'
@@ -30,9 +30,9 @@ const useStyles = makeStyles((theme) => ({
 export default function SearchView() {
   const dispatch = useDispatch()
   const classes = useStyles()
-  const emailsLoading = useSelector(selectEmailLoading)
-  const emails = useSelector(selectEmail)
-  const totalEmails = useSelector(selectEmailTotal)
+  const emailsLoading = useSelector(getEmailLoading)
+  const emails = useSelector(getEmail)
+  const totalEmails = useSelector(getEmailTotal)
   const emailListPage = useSelector(getEmailListPage)
 
   const hasMore = () => (emailListPage + 1) * defaultLimit < totalEmails

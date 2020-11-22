@@ -3,6 +3,7 @@ import {
   selectUsername,
   setDarkModeAsync,
   signOut,
+  store,
 } from '@klonzo/common'
 import React, { useContext } from 'react'
 import { ScrollView, StyleSheet, Switch, Text, View } from 'react-native'
@@ -51,13 +52,13 @@ export default function AppSettingsView() {
       <Text style={styles.text}>Dark mode {darkMode ? 'on' : 'off'}</Text>
       <Switch
         value={darkMode}
-        onValueChange={() => setDarkModeAsync(darkMode ? false : true)}
+        onValueChange={() => setDarkModeAsync(store, darkMode ? false : true)}
       />
     </View>
   )
 
   const doSignOut = () => {
-    signOut()
+    signOut(store)
     history.push('/')
   }
 

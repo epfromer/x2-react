@@ -52,11 +52,11 @@ export const emailSlice = createSlice({
 export default emailSlice.reducer
 
 // selectors & getters
-export const selectEmailLoading = (state: RootState): boolean =>
+export const getEmailLoading = (state: RootState): boolean =>
   state.email.emailLoading
-export const selectEmail = (state: RootState): Array<Email> | undefined =>
+export const getEmail = (state: RootState): Array<Email> | undefined =>
   state.email.email
-export const selectEmailTotal = (state: RootState): number =>
+export const getEmailTotal = (state: RootState): number =>
   state.email.emailTotal
 
 // graphQl query

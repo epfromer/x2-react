@@ -33,11 +33,14 @@ export default function NetworkGraphView() {
     },
   })
 
-  function handleClick(to: string, from: string) {
-    if (!from || !to) return
+  function handleClick(from: string, to: string) {
     dispatch(clearSearch())
-    dispatch(setFrom(from.slice(0, from.search(/,/))))
-    dispatch(setTo(to.slice(0, to.search(/,/))))
+    if (from) {
+      dispatch(setFrom(from.slice(0, from.search(/,/))))
+    }
+    if (to) {
+      dispatch(setTo(to.slice(0, to.search(/,/))))
+    }
     getEmailAsync(store)
     history.push('/SearchView')
   }
@@ -49,7 +52,7 @@ export default function NetworkGraphView() {
         <>
           {chartLib === 'ECharts' && (
             <NetworkGraphECharts
-              title="Email Senders to Receivers"
+              title="Custodian Interaction"
               data={emailSentByCustodian.data}
               nodes={emailSentByCustodian.nodes}
               handleClick={handleClick}

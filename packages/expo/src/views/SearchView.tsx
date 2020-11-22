@@ -5,10 +5,10 @@ import {
   maxFromLength,
   getAllText,
   getDarkMode,
-  selectEmail,
+  getEmail,
   getEmailListPage,
-  selectEmailLoading,
-  selectEmailTotal,
+  getEmailLoading,
+  getEmailTotal,
   getFrom,
   getSent,
   getSubject,
@@ -52,9 +52,9 @@ export default function SearchView() {
   const subject = useSelector(getSubject)
   const sent = useSelector(getSent)
   const [dlgOpen, setDlgOpen] = useState(false)
-  const emailsLoading = useSelector(selectEmailLoading)
-  const emails = useSelector(selectEmail)
-  const totalEmails = useSelector(selectEmailTotal)
+  const emailsLoading = useSelector(getEmailLoading)
+  const emails = useSelector(getEmail)
+  const totalEmails = useSelector(getEmailTotal)
   const emailListPage = useSelector(getEmailListPage)
 
   const styles = StyleSheet.create({
