@@ -1,8 +1,8 @@
 import { createAction, createSlice, Store } from '@reduxjs/toolkit'
 import request, { gql } from 'graphql-request'
 import { defaultLimit, x2Server } from '../../constants'
-import { getSearchHistoryAsync } from '../searchHistory'
 import { Email } from '../types'
+import { getSearchHistoryAsync } from './searchHistorySlice'
 
 export interface EmailState {
   emailLoading: boolean
@@ -127,7 +127,7 @@ export function getEmailAsync(store: Store, append = false): void {
       }
       store.dispatch(setEmailTotal(data.getEmail.total))
       store.dispatch(setEmailLoading(false))
-      getSearchHistoryAsync()
+      getSearchHistoryAsync(store)
     })
     .catch((err) => console.error('getEmailAsync: ', err))
 }

@@ -40,13 +40,13 @@ export default function SearchHistoryView() {
       }
     `
     request(`${server}/graphql/`, mutation)
-      .then(() => getSearchHistoryAsync())
+      .then(() => getSearchHistoryAsync(store))
       // TODO .catch((e) => console.error(e))
       .catch((error) => console.error('CustodianSettings', error))
   }
 
   const onSearchHistory = (row: RowParams) => {
-    searchHistoryExecute(row.data.entry)
+    searchHistoryExecute(store, row.data.entry)
     getEmailAsync(store)
     history.push('/SearchView')
   }

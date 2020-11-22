@@ -1,6 +1,13 @@
 import AsyncStorage from '@react-native-community/async-storage'
 import { createAction, createSlice, Store } from '@reduxjs/toolkit'
-import { defaultThemeName } from '../../constants'
+import request, { gql } from 'graphql-request'
+import { defaultThemeName, x2Server } from '../../constants'
+import { setCustodians, setCustodiansLoading } from './custodiansSlice'
+import {
+  setEmailSentByDay,
+  setEmailSentByDayLoading,
+} from './emailSentByDaySlice'
+import { setWordCloud, setWordCloudLoading } from './wordCloudSlice'
 
 // do in expo, web and store in redux so don't include lib here
 
@@ -91,4 +98,47 @@ export async function setThemeNameAsync(
     await AsyncStorage.setItem('themeName', themeName)
   }
   store.dispatch(setThemeName(themeName))
+}
+
+export function getInitialDataAsync(store: Store): void {
+  store.dispatch(setWordCloudLoading(true))
+  store.dispatch(setEmailSentByDayLoading(true))
+  store.dispatch(setCustodiansLoading(true))
+  const server = process.env.REACT_APP_X2_SERVER
+    ? process.env.REACT_APP_X2_SERVER
+    : x2Server
+  const query = gql`
+    {
+      getWordCloud {
+        tag
+        weight
+      }
+      getEmailSentByDay {
+        sent
+        total
+      }
+      getCustodians {
+        id
+        name
+        title
+        color
+        senderTotal
+        receiverTotal
+        toCustodians {
+          custodianId
+          total
+        }
+      }
+    }
+  `
+  request(`${server}/graphql/`, query)
+    .then((data) => {
+      store.dispatch(setWordCloud(data.getWordCloud))
+      store.dispatch(setEmailSentByDay(data.getEmailSentByDay))
+      store.dispatch(setCustodians(data.getCustodians))
+      store.dispatch(setWordCloudLoading(false))
+      store.dispatch(setEmailSentByDayLoading(false))
+      store.dispatch(setCustodiansLoading(false))
+    })
+    .catch((err) => console.error('getInitialDataAsync: ', err))
 }

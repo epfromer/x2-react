@@ -122,8 +122,9 @@ test('selectEmailSentByCustodian', () => {
 })
 
 test('search history', () => {
-  getSearchHistoryAsync()
+  getSearchHistoryAsync(store)
   searchHistoryExecute(
+    store,
     `{"sort":"sent","order":1,"from":"foo","to":"foo","subject":"foo","allText":"foo"}`
   )
   expect(selectFrom(store.getState())).toEqual('foo')
@@ -133,5 +134,5 @@ test('search history', () => {
 })
 
 test('initial data', () => {
-  getInitialDataAsync()
+  getInitialDataAsync(store)
 })
