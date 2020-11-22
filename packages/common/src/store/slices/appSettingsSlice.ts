@@ -44,6 +44,13 @@ export const appSettingsSlice = createSlice({
 export default appSettingsSlice.reducer
 
 // selectors & getters
+export const selectDarkMode = (state: {
+  appSettings: { darkMode: boolean }
+}): boolean => state.appSettings.darkMode
+export const selectThemeName = (state: {
+  appSettings: { themeName: string }
+}): string => state.appSettings.themeName
+
 export async function loadAppSettingsAsync(store: Store): Promise<void> {
   try {
     let darkMode = false

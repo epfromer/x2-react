@@ -34,3 +34,11 @@ export const wordCloudSlice = createSlice({
   },
 })
 export default wordCloudSlice.reducer
+
+// selectors & getters
+export const selectWordCloudLoading = (state: {
+  wordCloud: { wordCloudLoading: boolean }
+}): boolean => state.wordCloud.wordCloudLoading
+export const selectWordCloud = (state: {
+  wordCloud: { wordCloud: WordCloudTag[] | undefined }
+}): Array<WordCloudTag> | undefined => state.wordCloud.wordCloud

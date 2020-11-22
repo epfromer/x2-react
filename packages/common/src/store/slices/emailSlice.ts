@@ -52,6 +52,16 @@ export const emailSlice = createSlice({
 export default emailSlice.reducer
 
 // selectors & getters
+export const selectEmailLoading = (state: {
+  email: { emailLoading: boolean }
+}): boolean => state.email.emailLoading
+export const selectEmail = (state: {
+  email: { email: Email[] | undefined }
+}): Array<Email> | undefined => state.email.email
+export const selectEmailTotal = (state: {
+  email: { emailTotal: number }
+}): number => state.email.emailTotal
+
 function makeQueryObj(store: Store): unknown {
   const state = store.getState()
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

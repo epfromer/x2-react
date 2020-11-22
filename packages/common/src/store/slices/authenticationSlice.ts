@@ -33,6 +33,13 @@ export const authenticationSlice = createSlice({
 export default authenticationSlice.reducer
 
 // selectors & getters
+export const selectAuthenticated = (state: {
+  authentication: { authenticated: boolean }
+}): boolean => state.authentication.authenticated
+export const selectUsername = (state: {
+  authentication: { username: string }
+}): string => state.authentication.username
+
 export function signOut(store: Store): void {
   store.dispatch(setAuthenticated(false))
   store.dispatch(setUsername(''))

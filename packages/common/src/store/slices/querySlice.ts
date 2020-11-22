@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createAction, createSlice } from '@reduxjs/toolkit'
 
 export interface QueryState {
@@ -83,3 +84,95 @@ export const querySlice = createSlice({
   },
 })
 export default querySlice.reducer
+
+// selectors & getters
+export const selectAllText = (state: {
+  appSettings?: any
+  authentication?: any
+  custodians?: any
+  email?: any
+  emailSent?: any
+  query: any
+  searchHistory?: any
+  wordCloud?: any
+}): string => state.query.allText
+export const selectBody = (state: {
+  appSettings?: any
+  authentication?: any
+  custodians?: any
+  email?: any
+  emailSent?: any
+  query: any
+  searchHistory?: any
+  wordCloud?: any
+}): string => state.query.body
+export const selectEmailListPage = (state: {
+  appSettings?: any
+  authentication?: any
+  custodians?: any
+  email?: any
+  emailSent?: any
+  query: any
+  searchHistory?: any
+  wordCloud?: any
+}): number => state.query.emailListPage
+export const selectFrom = (state: {
+  appSettings?: any
+  authentication?: any
+  custodians?: any
+  email?: any
+  emailSent?: any
+  query: any
+  searchHistory?: any
+  wordCloud?: any
+}): string => state.query.from
+export const selectOrder = (state: {
+  appSettings?: any
+  authentication?: any
+  custodians?: any
+  email?: any
+  emailSent?: any
+  query: any
+  searchHistory?: any
+  wordCloud?: any
+}): number => state.query.order
+export const selectSort = (state: {
+  appSettings?: any
+  authentication?: any
+  custodians?: any
+  email?: any
+  emailSent?: any
+  query: any
+  searchHistory?: any
+  wordCloud?: any
+}): string => state.query.sort
+export const selectSent = (state: {
+  appSettings?: any
+  authentication?: any
+  custodians?: any
+  email?: any
+  emailSent?: any
+  query: any
+  searchHistory?: any
+  wordCloud?: any
+}): string => state.query.sent
+export const selectSubject = (state: {
+  appSettings?: any
+  authentication?: any
+  custodians?: any
+  email?: any
+  emailSent?: any
+  query: any
+  searchHistory?: any
+  wordCloud?: any
+}): string => state.query.subject
+export const selectTo = (state: {
+  appSettings?: any
+  authentication?: any
+  custodians?: any
+  email?: any
+  emailSent?: any
+  query: any
+  searchHistory?: any
+  wordCloud?: any
+}): string => state.query.to

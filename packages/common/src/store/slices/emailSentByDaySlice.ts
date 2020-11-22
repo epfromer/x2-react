@@ -34,3 +34,11 @@ export const emailSentByDaySlice = createSlice({
   },
 })
 export default emailSentByDaySlice.reducer
+
+// selectors & getters
+export const selectEmailSentByDayLoading = (state: {
+  emailSent: { emailSentByDayLoading: boolean }
+}): boolean => state.emailSent.emailSentByDayLoading
+export const selectEmailSentByDay = (state: {
+  emailSent: { emailSentByDay: EmailSentByDay[] | undefined }
+}): Array<EmailSentByDay> | undefined => state.emailSent.emailSentByDay

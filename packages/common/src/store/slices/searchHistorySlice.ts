@@ -49,6 +49,13 @@ export const searchHistorySlice = createSlice({
 export default searchHistorySlice.reducer
 
 // selectors & getters
+export const selectSearchHistoryLoading = (state: {
+  searchHistory: { searchHistoryLoading: boolean }
+}): boolean => state.searchHistory.searchHistoryLoading
+export const selectSearchHistory = (state: {
+  searchHistory: { searchHistory: SearchHistoryEntry[] | undefined }
+}): Array<SearchHistoryEntry> | undefined => state.searchHistory.searchHistory
+
 export function getSearchHistoryAsync(store: Store): void {
   store.dispatch(setSearchHistoryLoading(true))
   const server = process.env.REACT_APP_X2_SERVER
