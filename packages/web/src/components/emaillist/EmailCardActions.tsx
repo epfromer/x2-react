@@ -3,6 +3,7 @@ import {
   getNextEmailId,
   getPreviousEmailId,
   selectEmail,
+  store,
 } from '@klonzo/common'
 import CardActions from '@material-ui/core/CardActions'
 import Grid from '@material-ui/core/Grid'
@@ -21,9 +22,9 @@ interface Props {
 export default function EmailCardActions({ id }: Props) {
   const history = useHistory()
   const totalEmails = useSelector(selectEmail)?.length
-  const emailIndex = getEmailIndex(id)
-  const previousEmailId = getPreviousEmailId(id)
-  const nextEmailId = getNextEmailId(id)
+  const emailIndex = getEmailIndex(store, id)
+  const previousEmailId = getPreviousEmailId(store, id)
+  const nextEmailId = getNextEmailId(store, id)
 
   return (
     <CardActions>

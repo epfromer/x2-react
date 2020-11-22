@@ -56,21 +56,27 @@ store.dispatch(setSubject('body'))
 store.dispatch(setBody('body'))
 
 test('getEmailById', () => {
-  expect(getEmailById('f3281cc4-90a9-4dcb-86bd-d705fc847985')).toBeTruthy()
+  expect(
+    getEmailById(store, 'f3281cc4-90a9-4dcb-86bd-d705fc847985')
+  ).toBeTruthy()
 })
 
 test('getNextEmailId', () => {
-  expect(getNextEmailId('f3281cc4-90a9-4dcb-86bd-d705fc847985')).toBeTruthy()
+  expect(
+    getNextEmailId(store, 'f3281cc4-90a9-4dcb-86bd-d705fc847985')
+  ).toBeTruthy()
 })
 
 test('getPreviousEmailId', () => {
   expect(
-    getPreviousEmailId('f3281cc4-90a9-4dcb-86bd-d705fc847985')
+    getPreviousEmailId(store, 'f3281cc4-90a9-4dcb-86bd-d705fc847985')
   ).toBeTruthy()
 })
 
 test('getEmailIndex', () => {
-  expect(getEmailIndex('f3281cc4-90a9-4dcb-86bd-d705fc847985')).toBeTruthy()
+  expect(
+    getEmailIndex(store, 'f3281cc4-90a9-4dcb-86bd-d705fc847985')
+  ).toBeTruthy()
 })
 
 test('getWordCloudAsync', async () => {

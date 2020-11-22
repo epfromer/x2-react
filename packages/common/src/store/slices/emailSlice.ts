@@ -131,3 +131,43 @@ export function getEmailAsync(store: Store, append = false): void {
     })
     .catch((err) => console.error('getEmailAsync: ', err))
 }
+
+export const getEmailById = (store: Store, id: string): Email | undefined => {
+  const state = store.getState()
+  if (!state.email.email || !state.email.email.length) return undefined
+  return state.email.email.find((e: Email) => e.id === id)
+}
+
+export const getNextEmailId = (
+  store: Store,
+  id: string
+): string | undefined => {
+  const state = store.getState()
+  if (!state.email.email || !state.email.email.length) return undefined
+  const i = state.email.email.findIndex((e: Email) => e.id === id)
+  return i < state.email.email.length - 1
+    ? state.email.email[i + 1].id
+    : undefined
+}
+
+export const getPreviousEmailId = (
+  store: Store,
+  id: string
+): string | undefined => {
+  const state = store.getState()
+  if (!state.email.email || !state.email.email.length) return undefined
+  const i = state.email.email.findIndex((e: Email) => e.id === id)
+  return i > 0 ? state.email.email[i - 1].id : undefined
+}
+
+export const getEmailIndex = (store: Store, id: string): number | undefined => {
+  const state = store.getState()
+  if (!state.email.email || !state.email.email.length) return undefined
+  return state.email.email.findIndex((e: Email) => e.id === id) + 1
+}
+
+export const getDateStr = (date: Date): string => {
+  const month = (date.getMonth() + 1 + '').padStart(2, '0')
+  const day = (date.getDate() + '').padStart(2, '0')
+  return `${date.getFullYear()}-${month}-${day}`
+}

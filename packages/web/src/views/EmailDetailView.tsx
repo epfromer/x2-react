@@ -6,6 +6,7 @@ import {
   selectFrom,
   selectSubject,
   selectTo,
+  store,
   x2Server,
 } from '@klonzo/common'
 import Card from '@material-ui/core/Card'
@@ -30,7 +31,7 @@ export default function EmailDetailView() {
   const { id } = useParams() as any
   const [loading, setLoading] = useState(false)
   const [email, setEmail] = useState<Email | null>(null)
-  const cachedEmail = getEmailById(id)
+  const cachedEmail = getEmailById(store, id)
   const allText = useSelector(selectAllText)
   const to = useSelector(selectTo)
   const from = useSelector(selectFrom)
