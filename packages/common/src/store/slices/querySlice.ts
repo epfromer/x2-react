@@ -87,13 +87,24 @@ export const querySlice = createSlice({
 export default querySlice.reducer
 
 // selectors & getters
-export const selectAllText = (state: RootState): string => state.query.allText
-export const selectBody = (state: RootState): string => state.query.body
-export const selectEmailListPage = (state: RootState): number =>
+export const getAllText = (state: RootState): string => state.query.allText
+export const getBody = (state: RootState): string => state.query.body
+export const getEmailListPage = (state: RootState): number =>
   state.query.emailListPage
-export const selectFrom = (state: RootState): string => state.query.from
-export const selectOrder = (state: RootState): number => state.query.order
-export const selectSort = (state: RootState): string => state.query.sort
-export const selectSent = (state: RootState): string => state.query.sent
-export const selectSubject = (state: RootState): string => state.query.subject
-export const selectTo = (state: RootState): string => state.query.to
+export const getFrom = (state: RootState): string => state.query.from
+export const getOrder = (state: RootState): number => state.query.order
+export const getSort = (state: RootState): string => state.query.sort
+export const getSent = (state: RootState): string => state.query.sent
+export const getSubject = (state: RootState): string => state.query.subject
+export const getTo = (state: RootState): string => state.query.to
+export const getQuery = (state: RootState): QueryState => ({
+  allText: state.query.allText,
+  body: state.query.body,
+  emailListPage: state.query.emailListPage,
+  from: state.query.from,
+  order: state.query.order,
+  sent: state.query.sent,
+  sort: state.query.sort,
+  subject: state.query.subject,
+  to: state.query.to,
+})

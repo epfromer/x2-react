@@ -1,7 +1,7 @@
 import {
   defaultLimit,
   selectEmail,
-  selectEmailListPage,
+  getEmailListPage,
   selectEmailLoading,
   getEmailAsync,
   selectEmailTotal,
@@ -33,7 +33,7 @@ export default function SearchView() {
   const emailsLoading = useSelector(selectEmailLoading)
   const emails = useSelector(selectEmail)
   const totalEmails = useSelector(selectEmailTotal)
-  const emailListPage = useSelector(selectEmailListPage)
+  const emailListPage = useSelector(getEmailListPage)
 
   const hasMore = () => (emailListPage + 1) * defaultLimit < totalEmails
 

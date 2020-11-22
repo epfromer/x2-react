@@ -2,8 +2,8 @@ import {
   clearSearch,
   EmailSentByDay,
   getEmailAsync,
-  selectEmailSentByDay,
-  selectEmailSentByDayLoading,
+  getEmailSentByDay,
+  getEmailSentByDayLoading,
   setSent,
   store,
 } from '@klonzo/common'
@@ -23,8 +23,8 @@ export default function VolumeTimelineView() {
   const history = useHistory()
   const { theme }: any = useContext(ThemeContext)
   const [chartLib, setChartLib] = useState('ECharts')
-  const emailSentLoading = useSelector(selectEmailSentByDayLoading)
-  const emailSent = useSelector(selectEmailSentByDay)
+  const emailSentLoading = useSelector(getEmailSentByDayLoading)
+  const emailSent = useSelector(getEmailSentByDay)
 
   function handleClick(date: string) {
     dispatch(clearSearch())

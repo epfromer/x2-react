@@ -1,13 +1,13 @@
 import {
   getDateStr,
   getEmailAsync,
-  selectAllText,
-  selectFrom,
-  selectOrder,
-  selectSent,
-  selectSort,
-  selectSubject,
-  selectTo,
+  getAllText,
+  getFrom,
+  getOrder,
+  getSent,
+  getSort,
+  getSubject,
+  getTo,
   setAllText,
   setEmailListPage,
   setFrom,
@@ -41,13 +41,13 @@ const EmailTableHead: React.FC = () => {
   const dispatch = useDispatch()
   const history = useHistory()
   const [datePickerOpen, setDatePickerOpen] = useState(false)
-  const sort = useSelector(selectSort)
-  const order = useSelector(selectOrder)
-  const from = useSelector(selectFrom)
-  const to = useSelector(selectTo)
-  const subject = useSelector(selectSubject)
-  const sent = useSelector(selectSent)
-  const allText = useSelector(selectAllText)
+  const sort = useSelector(getSort)
+  const order = useSelector(getOrder)
+  const from = useSelector(getFrom)
+  const to = useSelector(getTo)
+  const subject = useSelector(getSubject)
+  const sent = useSelector(getSent)
+  const allText = useSelector(getAllText)
 
   const makeHeadCell = (
     label: string,

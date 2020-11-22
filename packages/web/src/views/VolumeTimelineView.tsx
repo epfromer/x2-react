@@ -2,8 +2,8 @@ import {
   clearSearch,
   EmailSentByDay,
   getEmailAsync,
-  selectEmailSentByDay,
-  selectEmailSentByDayLoading,
+  getEmailSentByDay,
+  getEmailSentByDayLoading,
   setSent,
   store,
 } from '@klonzo/common'
@@ -20,8 +20,8 @@ import VolumeTimelineVictory from '../components/Victory/VolumeTimelineVictory'
 export default function TimelineView() {
   const dispatch = useDispatch()
   const history = useHistory()
-  const emailSentLoading = useSelector(selectEmailSentByDayLoading)
-  const emailSent = useSelector(selectEmailSentByDay)
+  const emailSentLoading = useSelector(getEmailSentByDayLoading)
+  const emailSent = useSelector(getEmailSentByDay)
 
   function handleClick(date: string) {
     dispatch(clearSearch())

@@ -1,11 +1,11 @@
 import {
   Email,
   getEmailById,
-  selectAllText,
-  selectBody,
-  selectFrom,
-  selectSubject,
-  selectTo,
+  getAllText,
+  getBody,
+  getFrom,
+  getSubject,
+  getTo,
   store,
   x2Server,
 } from '@klonzo/common'
@@ -32,11 +32,11 @@ export default function EmailDetailView() {
   const [loading, setLoading] = useState(false)
   const [email, setEmail] = useState<Email | null>(null)
   const cachedEmail = getEmailById(store, id)
-  const allText = useSelector(selectAllText)
-  const to = useSelector(selectTo)
-  const from = useSelector(selectFrom)
-  const subject = useSelector(selectSubject)
-  const body = useSelector(selectBody)
+  const allText = useSelector(getAllText)
+  const to = useSelector(getTo)
+  const from = useSelector(getFrom)
+  const subject = useSelector(getSubject)
+  const body = useSelector(getBody)
 
   const highlightedTerms: Array<string> = []
   if (allText) highlightedTerms.push(allText)

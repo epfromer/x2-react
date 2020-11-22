@@ -1,8 +1,8 @@
 import {
   clearSearch,
   getEmailAsync,
-  selectWordCloud,
-  selectWordCloudLoading,
+  getWordCloud,
+  getWordCloudLoading,
   setAllText,
   store,
 } from '@klonzo/common'
@@ -17,8 +17,8 @@ import WordCloudHighcharts from '../components/Highcharts/WordCloudHighcharts'
 export default function WordCloudView() {
   const dispatch = useDispatch()
   const history = useHistory()
-  const wordCloudLoading = useSelector(selectWordCloudLoading)
-  const wordCloud = useSelector(selectWordCloud)
+  const wordCloudLoading = useSelector(getWordCloudLoading)
+  const wordCloud = useSelector(getWordCloud)
 
   function handleClick(word: string) {
     dispatch(clearSearch())

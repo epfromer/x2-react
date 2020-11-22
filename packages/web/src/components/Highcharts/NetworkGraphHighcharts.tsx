@@ -10,8 +10,6 @@ HighchartNetworkGraph(Highcharts)
 
 // https://www.highcharts.com/docs/chart-and-series-types/network-graph
 
-const chartHeight = '50%'
-
 interface Props {
   title: string
   data: Array<any>

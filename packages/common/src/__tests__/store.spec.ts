@@ -14,18 +14,18 @@ import {
   getSearchHistoryAsync,
   loadAppSettingsAsync,
   searchHistoryExecute,
-  selectAllText,
-  selectBody,
-  selectEmailListPage,
+  getAllText,
+  getBody,
+  getEmailListPage,
   getEmailReceivers,
   getEmailSenders,
   getEmailSentByCustodian,
-  selectFrom,
-  selectOrder,
-  selectSent,
-  selectSort,
-  selectSubject,
-  selectTo,
+  getFrom,
+  getOrder,
+  getSent,
+  getSort,
+  getSubject,
+  getTo,
   selectUsername,
   setAllText,
   setBody,
@@ -98,15 +98,15 @@ test('getEmailAsync', async () => {
 
 test('getEmailIndex', () => {
   store.dispatch(clearSearch())
-  expect(selectAllText(store.getState())).toEqual('')
-  expect(selectBody(store.getState())).toEqual('')
-  expect(selectEmailListPage(store.getState())).toEqual(0)
-  expect(selectFrom(store.getState())).toEqual('')
-  expect(selectOrder(store.getState())).toEqual(1)
-  expect(selectSort(store.getState())).toEqual('sent')
-  expect(selectSent(store.getState())).toEqual('')
-  expect(selectSubject(store.getState())).toEqual('')
-  expect(selectTo(store.getState())).toEqual('')
+  expect(getAllText(store.getState())).toEqual('')
+  expect(getBody(store.getState())).toEqual('')
+  expect(getEmailListPage(store.getState())).toEqual(0)
+  expect(getFrom(store.getState())).toEqual('')
+  expect(getOrder(store.getState())).toEqual(1)
+  expect(getSort(store.getState())).toEqual('sent')
+  expect(getSent(store.getState())).toEqual('')
+  expect(getSubject(store.getState())).toEqual('')
+  expect(getTo(store.getState())).toEqual('')
 })
 
 test('getEmailSenders', () => {
@@ -127,10 +127,10 @@ test('search history', () => {
     store,
     `{"sort":"sent","order":1,"from":"foo","to":"foo","subject":"foo","allText":"foo"}`
   )
-  expect(selectFrom(store.getState())).toEqual('foo')
-  expect(selectTo(store.getState())).toEqual('foo')
-  expect(selectSubject(store.getState())).toEqual('foo')
-  expect(selectAllText(store.getState())).toEqual('foo')
+  expect(getFrom(store.getState())).toEqual('foo')
+  expect(getTo(store.getState())).toEqual('foo')
+  expect(getSubject(store.getState())).toEqual('foo')
+  expect(getAllText(store.getState())).toEqual('foo')
 })
 
 test('initial data', () => {

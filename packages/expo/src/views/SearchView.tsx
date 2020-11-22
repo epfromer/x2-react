@@ -3,16 +3,16 @@ import {
   getDateStr,
   getEmailAsync,
   maxFromLength,
-  selectAllText,
+  getAllText,
   getDarkMode,
   selectEmail,
-  selectEmailListPage,
+  getEmailListPage,
   selectEmailLoading,
   selectEmailTotal,
-  selectFrom,
-  selectSent,
-  selectSubject,
-  selectTo,
+  getFrom,
+  getSent,
+  getSubject,
+  getTo,
   setAllText,
   setEmailListPage,
   setFrom,
@@ -46,16 +46,16 @@ export default function SearchView() {
   const dispatch = useDispatch()
   const history = useHistory()
   const { theme }: any = useContext(ThemeContext)
-  const allText = useSelector(selectAllText)
-  const from = useSelector(selectFrom)
-  const to = useSelector(selectTo)
-  const subject = useSelector(selectSubject)
-  const sent = useSelector(selectSent)
+  const allText = useSelector(getAllText)
+  const from = useSelector(getFrom)
+  const to = useSelector(getTo)
+  const subject = useSelector(getSubject)
+  const sent = useSelector(getSent)
   const [dlgOpen, setDlgOpen] = useState(false)
   const emailsLoading = useSelector(selectEmailLoading)
   const emails = useSelector(selectEmail)
   const totalEmails = useSelector(selectEmailTotal)
-  const emailListPage = useSelector(selectEmailListPage)
+  const emailListPage = useSelector(getEmailListPage)
 
   const styles = StyleSheet.create({
     container: {

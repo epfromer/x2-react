@@ -37,8 +37,8 @@ export const emailSentByDaySlice = createSlice({
 export default emailSentByDaySlice.reducer
 
 // selectors & getters
-export const selectEmailSentByDayLoading = (state: RootState): boolean =>
+export const getEmailSentByDayLoading = (state: RootState): boolean =>
   state.emailSentByDay.emailSentByDayLoading
-export const selectEmailSentByDay = (
+export const getEmailSentByDay = (
   state: RootState
 ): Array<EmailSentByDay> | undefined => state.emailSentByDay.emailSentByDay
