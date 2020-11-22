@@ -1,4 +1,3 @@
-import mockAsyncStorage from '@react-native-community/async-storage/jest/async-storage-mock' // should come first, before store
 import {
   setAllText,
   setBody,
@@ -6,7 +5,6 @@ import {
   setEmail,
   setEmailSentByDay,
   setFrom,
-  setSearchHistory,
   setSubject,
   setThemeName,
   setTo,
@@ -15,15 +13,15 @@ import {
   testCustodians,
   testEmail,
   testEmailSentByDay,
-  testSearchHistory,
   testWordCloud,
 } from '@klonzo/common'
+import mockAsyncStorage from '@react-native-community/async-storage/jest/async-storage-mock' // should come first, before store
 import { render } from '@testing-library/react-native'
 import { createMemoryHistory } from 'history'
 import React from 'react'
+import { ThemeProvider } from 'react-native-elements'
 import { Provider } from 'react-redux'
 import { Router } from 'react-router-native'
-import { ThemeProvider } from 'react-native-elements'
 import { appThemes } from './utils/appThemes'
 
 // eslint-disable-next-line no-undef
@@ -33,7 +31,6 @@ store.dispatch(setWordCloud(testWordCloud))
 store.dispatch(setCustodians(testCustodians))
 store.dispatch(setEmailSentByDay(testEmailSentByDay))
 store.dispatch(setEmail(testEmail))
-store.dispatch(setSearchHistory(testSearchHistory))
 store.dispatch(setAllText('body'))
 store.dispatch(setTo('body'))
 store.dispatch(setFrom('body'))

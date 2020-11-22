@@ -4,6 +4,6 @@ import AppSettingsView from '../AppSettingsView'
 
 test('AppSettingsView', async () => {
   const { getByText } = renderComp(<AppSettingsView />)
-  const title = getByText(/App Theme/i)
+  const title = getByText(/Import Log/i)
   expect(title).toBeInTheDocument()
 })

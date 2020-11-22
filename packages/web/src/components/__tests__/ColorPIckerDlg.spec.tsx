@@ -1,5 +1,5 @@
 import React from 'react'
-import { renderComp } from '../../setupTests'
+import { renderComp } from 'src/setupTests'
 import ColorPickerDlg from '../ColorPickerDlg'
 
 test('renders', async () => {
