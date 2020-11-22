@@ -3,8 +3,8 @@ import {
   getEmailAsync,
   getInitialDataAsync,
   loadAppSettingsAsync,
-  selectDarkMode,
-  selectThemeName,
+  getDarkMode,
+  getThemeName,
   store,
 } from '@klonzo/common'
 import AppBar from '@material-ui/core/AppBar'
@@ -79,8 +79,8 @@ const WithRouter = () => (
 )
 
 const WithTheme = () => {
-  const darkMode = useSelector(selectDarkMode)
-  const palette: any = getTheme(useSelector(selectThemeName))
+  const darkMode = useSelector(getDarkMode)
+  const palette: any = getTheme(useSelector(getThemeName))
   palette.type = darkMode ? 'dark' : 'light'
   const customTheme = createMuiTheme({ palette })
   return (

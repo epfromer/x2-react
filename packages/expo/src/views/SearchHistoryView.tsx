@@ -64,7 +64,7 @@ export default function SearchHistoryView() {
     `
     request(`${server}/graphql/`, mutation)
       .then(() => getSearchHistoryAsync(store))
-      .catch((error) => console.error('CustodianSettings', error))
+      .catch((e) => console.error(e))
   }
 
   const onSearchHistory = (entry: string) => {

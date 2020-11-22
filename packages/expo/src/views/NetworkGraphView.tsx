@@ -1,8 +1,8 @@
 import {
   clearSearch,
   getEmailAsync,
-  selectCustodians,
-  selectCustodiansLoading,
+  getCustodians,
+  getCustodiansLoading,
   selectEmailSentByCustodian,
   setFrom,
   setTo,
@@ -23,8 +23,8 @@ export default function NetworkGraphView() {
   const { theme }: any = useContext(ThemeContext)
   const [chartLib, setChartLib] = useState('ECharts')
   const emailSentByCustodian = useSelector(selectEmailSentByCustodian)
-  const custodiansLoading = useSelector(selectCustodiansLoading)
-  const custodians = useSelector(selectCustodians)
+  const custodiansLoading = useSelector(getCustodiansLoading)
+  const custodians = useSelector(getCustodians)
 
   const styles = StyleSheet.create({
     container: {

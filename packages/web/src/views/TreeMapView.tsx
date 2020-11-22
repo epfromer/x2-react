@@ -1,8 +1,8 @@
 import {
   clearSearch,
   getEmailAsync,
-  selectCustodians,
-  selectCustodiansLoading,
+  getCustodians,
+  getCustodiansLoading,
   selectEmailReceivers,
   selectEmailSenders,
   setFrom,
@@ -21,8 +21,8 @@ import TreeMapHighcharts from '../components/Highcharts/TreeMapHighcharts'
 export default function TreeMapView() {
   const dispatch = useDispatch()
   const history = useHistory()
-  const custodiansLoading = useSelector(selectCustodiansLoading)
-  const custodians = useSelector(selectCustodians)
+  const custodiansLoading = useSelector(getCustodiansLoading)
+  const custodians = useSelector(getCustodians)
   const emailSenders = useSelector(selectEmailSenders)
   const emailReceivers = useSelector(selectEmailReceivers)
 

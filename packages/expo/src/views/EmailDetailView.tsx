@@ -152,7 +152,7 @@ export default function EmailDetailView() {
             setLoading(false)
           }
         })
-        .catch((err) => console.error('fetch error', err))
+        .catch((e) => console.error(e))
     }
     return () => {
       // prevents update if component destroyed before request/fetch completes

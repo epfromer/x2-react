@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createAction, createSlice, Store } from '@reduxjs/toolkit'
 import { gql, request } from 'graphql-request'
+import { RootState } from '..'
 import { x2Server } from '../../constants'
 import { Custodian, EmailXferedDatum } from '../types'
 
@@ -39,22 +40,13 @@ export const custodiansSlice = createSlice({
 export default custodiansSlice.reducer
 
 // selectors & getters
-export const selectCustodiansLoading = (state: {
+export const getCustodiansLoading = (state: {
   custodians: { custodiansLoading: boolean }
 }): boolean => state.custodians.custodiansLoading
-export const selectCustodians = (state: {
+export const getCustodians = (state: {
   custodians: { custodians: Custodian[] | undefined }
 }): Array<Custodian> | undefined => state.custodians.custodians
-export function selectEmailSenders(state: {
-  appSettings?: any
-  authentication?: any
-  custodians: any
-  email?: any
-  emailSent?: any
-  query?: any
-  searchHistory?: any
-  wordCloud?: any
-}): Array<EmailXferedDatum> {
+export function selectEmailSenders(state: RootState): Array<EmailXferedDatum> {
   const custodians = state.custodians.custodians
   const data: Array<EmailXferedDatum> = []
   if (custodians) {
@@ -70,16 +62,9 @@ export function selectEmailSenders(state: {
   }
   return data
 }
-export function selectEmailReceivers(state: {
-  appSettings?: any
-  authentication?: any
-  custodians: any
-  email?: any
-  emailSent?: any
-  query?: any
-  searchHistory?: any
-  wordCloud?: any
-}): Array<EmailXferedDatum> {
+export function selectEmailReceivers(
+  state: RootState
+): Array<EmailXferedDatum> {
   const custodians = state.custodians.custodians
   const data: Array<EmailXferedDatum> = []
   if (custodians) {
@@ -103,16 +88,9 @@ export interface EmailByCustodianDatum {
   data: Array<[string, string, number]>
   nodes: Array<IDColorKey>
 }
-export function selectEmailSentByCustodian(state: {
-  appSettings?: any
-  authentication?: any
-  custodians: any
-  email?: any
-  emailSent?: any
-  query?: any
-  searchHistory?: any
-  wordCloud?: any
-}): EmailByCustodianDatum {
+export function selectEmailSentByCustodian(
+  state: RootState
+): EmailByCustodianDatum {
   const custodianNameFromId = (id: string): string => {
     if (state.custodians && state.custodians.custodians) {
       const c = state.custodians.custodians.find((c: Custodian) => c.id === id)
@@ -171,6 +149,5 @@ export function getCustodiansAsync(store: Store): void {
       store.dispatch(setCustodians(data.getCustodians))
       store.dispatch(setCustodiansLoading(false))
     })
-    // TODO .catch((e) => console.error(e))
-    .catch((err) => console.error('getCustodiansAsync: ', err))
+    .catch((e) => console.error(e))
 }

@@ -4,7 +4,7 @@ import {
   getEmailAsync,
   maxFromLength,
   selectAllText,
-  selectDarkMode,
+  getDarkMode,
   selectEmail,
   selectEmailListPage,
   selectEmailLoading,
@@ -142,7 +142,7 @@ export default function SearchView() {
       return (
         <DateTimePickerModal
           isVisible={datePickerOpen}
-          isDarkModeEnabled={useSelector(selectDarkMode)}
+          isDarkModeEnabled={useSelector(getDarkMode)}
           date={initialDate}
           mode="date"
           onConfirm={(date: Date) => {

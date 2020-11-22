@@ -1,5 +1,6 @@
 import { createAction, createSlice, Store } from '@reduxjs/toolkit'
 import request, { gql } from 'graphql-request'
+import { RootState } from '..'
 import { x2Server } from '../../constants'
 import { SearchHistoryEntry } from '../types'
 import {
@@ -49,12 +50,11 @@ export const searchHistorySlice = createSlice({
 export default searchHistorySlice.reducer
 
 // selectors & getters
-export const selectSearchHistoryLoading = (state: {
-  searchHistory: { searchHistoryLoading: boolean }
-}): boolean => state.searchHistory.searchHistoryLoading
-export const selectSearchHistory = (state: {
-  searchHistory: { searchHistory: SearchHistoryEntry[] | undefined }
-}): Array<SearchHistoryEntry> | undefined => state.searchHistory.searchHistory
+export const selectSearchHistoryLoading = (state: RootState): boolean =>
+  state.searchHistory.searchHistoryLoading
+export const selectSearchHistory = (
+  state: RootState
+): Array<SearchHistoryEntry> | undefined => state.searchHistory.searchHistory
 
 export function getSearchHistoryAsync(store: Store): void {
   store.dispatch(setSearchHistoryLoading(true))
@@ -75,7 +75,7 @@ export function getSearchHistoryAsync(store: Store): void {
       store.dispatch(setSearchHistory(data.getSearchHistory))
       store.dispatch(setSearchHistoryLoading(false))
     })
-    .catch((err) => console.error('getInitialDataAsync: ', err))
+    .catch((e) => console.error(e))
 }
 
 export function searchHistoryExecute(store: Store, search: string): void {

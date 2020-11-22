@@ -1,7 +1,7 @@
 import {
   Custodian,
-  selectCustodians,
-  selectCustodiansLoading,
+  getCustodians,
+  getCustodiansLoading,
   setCustodians,
   x2Server,
 } from '@klonzo/common'
@@ -24,8 +24,8 @@ export default function CustodianSettings() {
   const [colorPickerDlgOpen, setColorPickerDlgOpen] = useState(false)
   const [pickedColor, setPickedColor] = useState('')
   const [custodianId, setCustodianId] = useState('')
-  const custodiansLoading = useSelector(selectCustodiansLoading)
-  const custodians = useSelector(selectCustodians)
+  const custodiansLoading = useSelector(getCustodiansLoading)
+  const custodians = useSelector(getCustodians)
 
   const handleColorChosen = (color: string) => {
     setColorPickerDlgOpen(false)
@@ -51,7 +51,7 @@ export default function CustodianSettings() {
     `
     request(`${server}/graphql/`, mutation, { id: custodianId, color })
       .then((data) => dispatch(setCustodians(data.setCustodianColor)))
-      .catch((error) => console.error('CustodianSettings', error))
+      .catch((e) => console.error(e))
   }
 
   const renderCustodian = (custodian: Custodian) => (

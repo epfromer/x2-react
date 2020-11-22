@@ -1,4 +1,5 @@
 import { createAction, createSlice } from '@reduxjs/toolkit'
+import { RootState } from '..'
 import { WordCloudTag } from '../types'
 
 export interface WordCloudState {
@@ -36,9 +37,8 @@ export const wordCloudSlice = createSlice({
 export default wordCloudSlice.reducer
 
 // selectors & getters
-export const selectWordCloudLoading = (state: {
-  wordCloud: { wordCloudLoading: boolean }
-}): boolean => state.wordCloud.wordCloudLoading
-export const selectWordCloud = (state: {
-  wordCloud: { wordCloud: WordCloudTag[] | undefined }
-}): Array<WordCloudTag> | undefined => state.wordCloud.wordCloud
+export const selectWordCloudLoading = (state: RootState): boolean =>
+  state.wordCloud.wordCloudLoading
+export const selectWordCloud = (
+  state: RootState
+): Array<WordCloudTag> | undefined => state.wordCloud.wordCloud

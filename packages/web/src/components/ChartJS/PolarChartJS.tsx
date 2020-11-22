@@ -1,4 +1,4 @@
-import { EmailXferedDatum, selectDarkMode } from '@klonzo/common'
+import { EmailXferedDatum, getDarkMode } from '@klonzo/common'
 import { Chart } from 'chart.js'
 import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
@@ -22,7 +22,7 @@ export default function PolarChartJS({
 }: Props) {
   const chartContainer: any = useRef(null)
   const [, setChartInstance] = useState<any>(null)
-  const darkMode = useSelector(selectDarkMode)
+  const darkMode = useSelector(getDarkMode)
   const theme = useTheme()
 
   const config: any = {

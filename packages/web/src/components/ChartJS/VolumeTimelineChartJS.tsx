@@ -1,4 +1,4 @@
-import { EmailSentByDay, selectDarkMode } from '@klonzo/common'
+import { EmailSentByDay, getDarkMode } from '@klonzo/common'
 import { useTheme } from '@material-ui/core/styles'
 import { Chart } from 'chart.js'
 import React, { useEffect, useRef, useState } from 'react'
@@ -21,7 +21,7 @@ export default function VolumeTimelineChartJS({
 }: Props) {
   const chartContainer: any = useRef(null)
   const [, setChartInstance] = useState<any>(null)
-  const darkMode = useSelector(selectDarkMode)
+  const darkMode = useSelector(getDarkMode)
   const theme = useTheme()
 
   interface Datum {

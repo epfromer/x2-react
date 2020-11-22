@@ -1,4 +1,4 @@
-import { selectDarkMode } from '@klonzo/common'
+import { getDarkMode } from '@klonzo/common'
 import { useTheme } from '@material-ui/core/styles'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
@@ -22,7 +22,7 @@ export default function TreeMapHighcharts({
   handleClick,
 }: Props) {
   const [config, setConfig] = useState<any>(null)
-  const darkMode = useSelector(selectDarkMode)
+  const darkMode = useSelector(getDarkMode)
   const theme = useTheme()
 
   function createChart() {

@@ -2,8 +2,8 @@ import {
   getEmailAsync,
   getInitialDataAsync,
   loadAppSettingsAsync,
-  selectDarkMode,
-  selectThemeName,
+  getDarkMode,
+  getThemeName,
   store,
 } from '@klonzo/common'
 import React from 'react'
@@ -25,8 +25,8 @@ loadAppSettingsAsync(store)
 function ThemedApp() {
   return (
     <ThemeProvider
-      theme={getTheme(useSelector(selectThemeName))}
-      useDark={useSelector(selectDarkMode)}
+      theme={getTheme(useSelector(getThemeName))}
+      useDark={useSelector(getDarkMode)}
     >
       <Router>
         <AppTopToolbar />

@@ -1,7 +1,7 @@
 import {
   clearSearch,
   getEmailAsync,
-  selectCustodiansLoading,
+  getCustodiansLoading,
   selectEmailSentByCustodian,
   setTo,
   store,
@@ -18,7 +18,7 @@ export default function NetworkGraphView() {
   const dispatch = useDispatch()
   const history = useHistory()
   const emailSentByCustodian = useSelector(selectEmailSentByCustodian)
-  const custodiansLoading = useSelector(selectCustodiansLoading)
+  const custodiansLoading = useSelector(getCustodiansLoading)
 
   function handleClick(name: string) {
     if (!name) return

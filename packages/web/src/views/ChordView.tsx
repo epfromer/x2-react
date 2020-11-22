@@ -1,7 +1,7 @@
 import {
   clearSearch,
   getEmailAsync,
-  selectCustodiansLoading,
+  getCustodiansLoading,
   selectEmailSentByCustodian,
   setFrom,
   setTo,
@@ -19,7 +19,7 @@ export default function ChordView() {
   const dispatch = useDispatch()
   const history = useHistory()
   const emailSentByCustodian = useSelector(selectEmailSentByCustodian)
-  const custodiansLoading = useSelector(selectCustodiansLoading)
+  const custodiansLoading = useSelector(getCustodiansLoading)
 
   function handleClick(from: string, to: string) {
     if (!from || !to) return

@@ -1,5 +1,5 @@
 import {
-  selectDarkMode,
+  getDarkMode,
   selectUsername,
   setDarkModeAsync,
   signOut,
@@ -17,7 +17,7 @@ import ThemePicker from '../components/ThemePicker'
 export default function AppSettingsView() {
   const history = useHistory()
   const { theme }: any = useContext(ThemeContext)
-  const darkMode = useSelector(selectDarkMode)
+  const darkMode = useSelector(getDarkMode)
   const username = useSelector(selectUsername)
 
   const styles = StyleSheet.create({

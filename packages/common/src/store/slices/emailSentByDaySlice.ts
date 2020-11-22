@@ -1,4 +1,5 @@
 import { createAction, createSlice } from '@reduxjs/toolkit'
+import { RootState } from '..'
 import { EmailSentByDay } from '../types'
 
 export interface EmailSentByDayState {
@@ -36,9 +37,8 @@ export const emailSentByDaySlice = createSlice({
 export default emailSentByDaySlice.reducer
 
 // selectors & getters
-export const selectEmailSentByDayLoading = (state: {
-  emailSentByDay: { emailSentByDayLoading: boolean }
-}): boolean => state.emailSentByDay.emailSentByDayLoading
-export const selectEmailSentByDay = (state: {
-  emailSentByDay: { emailSentByDay: EmailSentByDay[] | undefined }
-}): Array<EmailSentByDay> | undefined => state.emailSentByDay.emailSentByDay
+export const selectEmailSentByDayLoading = (state: RootState): boolean =>
+  state.emailSentByDay.emailSentByDayLoading
+export const selectEmailSentByDay = (
+  state: RootState
+): Array<EmailSentByDay> | undefined => state.emailSentByDay.emailSentByDay

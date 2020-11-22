@@ -2,8 +2,8 @@ import {
   clearSearch,
   Custodian,
   getEmailAsync,
-  selectCustodians,
-  selectCustodiansLoading,
+  getCustodians,
+  getCustodiansLoading,
   setAllText,
   setFrom,
   setTo,
@@ -34,8 +34,8 @@ export default function EventTimelineView() {
   const theme = useTheme()
   const dispatch = useDispatch()
   const history = useHistory()
-  const custodiansLoading = useSelector(selectCustodiansLoading)
-  const custodians = useSelector(selectCustodians)
+  const custodiansLoading = useSelector(getCustodiansLoading)
+  const custodians = useSelector(getCustodians)
   const [vertical, setVertical] = useState(true)
 
   const getCustodianColor = (name: string) => {

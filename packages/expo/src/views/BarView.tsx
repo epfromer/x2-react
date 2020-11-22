@@ -1,7 +1,7 @@
 import {
   clearSearch,
   getEmailAsync,
-  selectCustodians,
+  getCustodians,
   selectEmailReceivers,
   selectEmailSenders,
   setFrom,
@@ -24,7 +24,7 @@ export default function BarView() {
   const history = useHistory()
   const [isSenders, setIsSenders] = useState(true)
   const [chartLib, setChartLib] = useState('ECharts')
-  const custodians = useSelector(selectCustodians)
+  const custodians = useSelector(getCustodians)
   const emailSenders = useSelector(selectEmailSenders)
   const emailReceivers = useSelector(selectEmailReceivers)
   const { theme }: any = useContext(ThemeContext)

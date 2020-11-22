@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-community/async-storage'
 import { createAction, createSlice, Store } from '@reduxjs/toolkit'
 import request, { gql } from 'graphql-request'
+import { RootState } from '..'
 import { defaultThemeName, x2Server } from '../../constants'
 import { setCustodians, setCustodiansLoading } from './custodiansSlice'
 import {
@@ -8,8 +9,6 @@ import {
   setEmailSentByDayLoading,
 } from './emailSentByDaySlice'
 import { setWordCloud, setWordCloudLoading } from './wordCloudSlice'
-
-// do in expo, web and store in redux so don't include lib here
 
 export interface AppSettingsState {
   darkMode: boolean
@@ -44,12 +43,8 @@ export const appSettingsSlice = createSlice({
 export default appSettingsSlice.reducer
 
 // selectors & getters
-export const selectDarkMode = (state: {
-  appSettings: { darkMode: boolean }
-}): boolean => state.appSettings.darkMode
-export const selectThemeName = (state: {
-  appSettings: { themeName: string }
-}): string => state.appSettings.themeName
+export const getDarkMode = (state: RootState): boolean => state.appSettings.darkMode
+export const getThemeName = (state: RootState): string => state.appSettings.themeName
 
 export async function loadAppSettingsAsync(store: Store): Promise<void> {
   try {
@@ -107,6 +102,7 @@ export async function setThemeNameAsync(
   store.dispatch(setThemeName(themeName))
 }
 
+// graphQl query
 export function getInitialDataAsync(store: Store): void {
   store.dispatch(setWordCloudLoading(true))
   store.dispatch(setEmailSentByDayLoading(true))
@@ -147,5 +143,5 @@ export function getInitialDataAsync(store: Store): void {
       store.dispatch(setEmailSentByDayLoading(false))
       store.dispatch(setCustodiansLoading(false))
     })
-    .catch((err) => console.error('getInitialDataAsync: ', err))
+    .catch((e) => console.error(e))
 }

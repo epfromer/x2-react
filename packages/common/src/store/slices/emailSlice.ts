@@ -1,5 +1,6 @@
 import { createAction, createSlice, Store } from '@reduxjs/toolkit'
 import request, { gql } from 'graphql-request'
+import { RootState } from '..'
 import { defaultLimit, x2Server } from '../../constants'
 import { Email } from '../types'
 import { getSearchHistoryAsync } from './searchHistorySlice'
@@ -52,15 +53,12 @@ export const emailSlice = createSlice({
 export default emailSlice.reducer
 
 // selectors & getters
-export const selectEmailLoading = (state: {
-  email: { emailLoading: boolean }
-}): boolean => state.email.emailLoading
-export const selectEmail = (state: {
-  email: { email: Email[] | undefined }
-}): Array<Email> | undefined => state.email.email
-export const selectEmailTotal = (state: {
-  email: { emailTotal: number }
-}): number => state.email.emailTotal
+export const selectEmailLoading = (state: RootState): boolean =>
+  state.email.emailLoading
+export const selectEmail = (state: RootState): Array<Email> | undefined =>
+  state.email.email
+export const selectEmailTotal = (state: RootState): number =>
+  state.email.emailTotal
 
 function makeQueryObj(store: Store): unknown {
   const state = store.getState()
@@ -139,7 +137,7 @@ export function getEmailAsync(store: Store, append = false): void {
       store.dispatch(setEmailLoading(false))
       getSearchHistoryAsync(store)
     })
-    .catch((err) => console.error('getEmailAsync: ', err))
+    .catch((e) => console.error(e))
 }
 
 export const getEmailById = (store: Store, id: string): Email | undefined => {

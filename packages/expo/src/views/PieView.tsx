@@ -1,8 +1,8 @@
 import {
   clearSearch,
   getEmailAsync,
-  selectCustodians,
-  selectCustodiansLoading,
+  getCustodians,
+  getCustodiansLoading,
   selectEmailReceivers,
   selectEmailSenders,
   setFrom,
@@ -26,8 +26,8 @@ export default function PieView() {
   const history = useHistory()
   const [isSenders, setIsSenders] = useState(true)
   const [chartLib, setChartLib] = useState('ECharts')
-  const custodiansLoading = useSelector(selectCustodiansLoading)
-  const custodians = useSelector(selectCustodians)
+  const custodiansLoading = useSelector(getCustodiansLoading)
+  const custodians = useSelector(getCustodians)
   const emailSenders = useSelector(selectEmailSenders)
   const emailReceivers = useSelector(selectEmailReceivers)
   const { theme }: any = useContext(ThemeContext)
