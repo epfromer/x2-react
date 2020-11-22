@@ -8,7 +8,7 @@ import {
 import appSettingsReducer from './slices/appSettingsSlice'
 import authenticationReducer from './slices/authenticationSlice'
 import custodiansReducer from './slices/custodiansSlice'
-import emailSentReducer from './slices/emailSentByDaySlice'
+import emailSentByDayReducer from './slices/emailSentByDaySlice'
 import emailReducer from './slices/emailSlice'
 import queryReducer from './slices/querySlice'
 import searchHistoryReducer from './slices/searchHistorySlice'
@@ -43,7 +43,7 @@ export const store = configureStore({
     authentication: authenticationReducer,
     custodians: custodiansReducer,
     email: emailReducer,
-    emailSent: emailSentReducer,
+    emailSentByDay: emailSentByDayReducer,
     query: queryReducer,
     searchHistory: searchHistoryReducer,
     wordCloud: wordCloudReducer,
