@@ -1,13 +1,20 @@
 import {
+  clearSearch,
   getEmailAsync,
-  getSearchHistoryAsync,
-  searchHistoryExecute,
-  selectSearchHistory,
+  SearchHistoryEntry,
+  setAllText,
+  setBody,
+  setFrom,
+  setOrder,
+  setSent,
+  setSort,
+  setSubject,
+  setTo,
   store,
   x2Server,
 } from '@klonzo/common'
 import { gql, request } from 'graphql-request'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import {
   FlatList,
   SafeAreaView,
@@ -17,13 +24,14 @@ import {
   View,
 } from 'react-native'
 import { Button, ThemeContext } from 'react-native-elements'
-import { useSelector } from 'react-redux'
+import Spinner from 'react-native-loading-spinner-overlay'
 import { useHistory } from 'react-router-native'
 
 export default function SearchHistoryView() {
   const history = useHistory()
   const { theme }: any = useContext(ThemeContext)
-  const searchHistory = useSelector(selectSearchHistory)
+  const [log, setLog] = useState<SearchHistoryEntry[]>([])
+  const [logLoading, setLogLoading] = useState(false)
 
   const styles = StyleSheet.create({
     container: {
@@ -53,6 +61,43 @@ export default function SearchHistoryView() {
     },
   })
 
+  const getSearchHistory = (): void => {
+    setLogLoading(true)
+    const server = process.env.REACT_APP_X2_SERVER
+      ? process.env.REACT_APP_X2_SERVER
+      : x2Server
+    const query = gql`
+      {
+        getSearchHistory {
+          id
+          timestamp
+          entry
+        }
+      }
+    `
+    request(`${server}/graphql/`, query)
+      .then((data) => {
+        setLog(data.getSearchHistory)
+        setLogLoading(false)
+      })
+      .catch((e) => console.error(e))
+  }
+
+  const onSearchHistory = (entry: string) => {
+    const o = JSON.parse(entry)
+    store.dispatch(clearSearch())
+    if (o.hasOwnProperty('sort')) store.dispatch(setSort(o.sort))
+    if (o.hasOwnProperty('order')) store.dispatch(setOrder(o.order))
+    if (o.hasOwnProperty('sent')) store.dispatch(setSent(o.sent))
+    if (o.hasOwnProperty('from')) store.dispatch(setFrom(o.from))
+    if (o.hasOwnProperty('to')) store.dispatch(setTo(o.to))
+    if (o.hasOwnProperty('subject')) store.dispatch(setSubject(o.subject))
+    if (o.hasOwnProperty('allText')) store.dispatch(setAllText(o.allText))
+    if (o.hasOwnProperty('body')) store.dispatch(setBody(o.body))
+    getEmailAsync(store)
+    history.push('/SearchView')
+  }
+
   const onClearHistory = () => {
     const server = process.env.REACT_APP_X2_SERVER
       ? process.env.REACT_APP_X2_SERVER
@@ -63,14 +108,8 @@ export default function SearchHistoryView() {
       }
     `
     request(`${server}/graphql/`, mutation)
-      .then(() => getSearchHistoryAsync(store))
+      .then(() => getSearchHistory())
       .catch((e) => console.error(e))
-  }
-
-  const onSearchHistory = (entry: string) => {
-    searchHistoryExecute(store, entry)
-    getEmailAsync(store)
-    history.push('/SearchView')
   }
 
   const renderItem = ({ item }: any) => (
@@ -85,11 +124,17 @@ export default function SearchHistoryView() {
     </TouchableOpacity>
   )
 
+  useEffect(() => {
+    getSearchHistory()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <SafeAreaView style={styles.container}>
-      {searchHistory && searchHistory.length !== 0 && (
+      <Spinner visible={logLoading} textContent={'Loading...'} />
+      {log && log.length !== 0 && (
         <FlatList
-          data={searchHistory}
+          data={log}
           renderItem={renderItem}
           keyExtractor={(item) => item.id}
         />
