@@ -140,7 +140,7 @@ export function getInitialDataAsync(store: Store): void {
   `
   request(`${server}/graphql/`, query)
     .then(async (data) => {
-      await sleep(5000)
+      // await sleep(5000)
       store.dispatch(setWordCloud(data.getWordCloud))
       store.dispatch(setEmailSentByDay(data.getEmailSentByDay))
       store.dispatch(setCustodians(data.getCustodians))
