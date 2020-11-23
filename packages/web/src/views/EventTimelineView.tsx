@@ -1,16 +1,15 @@
 import {
   clearSearch,
   Custodian,
-  getEmailAsync,
   getCustodians,
   getCustodiansLoading,
+  getEmailAsync,
   setAllText,
   setFrom,
   setTo,
   store,
 } from '@klonzo/common'
 import IconButton from '@material-ui/core/IconButton'
-import LinearProgress from '@material-ui/core/LinearProgress'
 import { useTheme } from '@material-ui/core/styles'
 import Tooltip from '@material-ui/core/Tooltip'
 import SwapHorizontalCircleIcon from '@material-ui/icons/SwapHorizontalCircle'
@@ -21,6 +20,7 @@ import HighchartTimeline from 'highcharts/modules/timeline'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import LoadingIndicator from 'src/components/LoadingIndicator'
 
 HighchartTimeline(Highcharts)
 
@@ -40,7 +40,7 @@ export default function EventTimelineView() {
 
   const getCustodianColor = (name: string) => {
     const found = custodians?.find((c: Custodian) => c.name === name)
-    return found ? found.color : ''
+    return found ? found.color : 'black'
   }
 
   function toggleVertical() {
@@ -122,9 +122,9 @@ export default function EventTimelineView() {
             x: new Date('2001-08-22').getTime(),
             label: 'Watkins meeting',
             description: 'Watkins meets with Lay',
-            queryKey: 'from',
-            queryValue: '(Watkins, Sherron)',
-            color: getCustodianColor('Watkins, Sherron'),
+            queryKey: 'allText',
+            queryValue: 'Watkins',
+            color: 'red',
           },
           {
             x: new Date('2001-10-12').getTime(),
@@ -191,7 +191,7 @@ export default function EventTimelineView() {
             description:
               'Fastow indicted on charges of conspiracy, fraud, money laundering and other counts.',
             queryKey: 'from',
-            queryValue: '(Fastow, Andrew)',
+            queryValue: 'Fastow',
             color: getCustodianColor('Fastow, Andrew'),
           },
           {
@@ -200,7 +200,7 @@ export default function EventTimelineView() {
             description:
               'Fastow pleads guilty to two counts of conspiracy and agrees to serve 10 years in prison.',
             queryKey: 'from',
-            queryValue: '(Fastow, Andrew)',
+            queryValue: 'Fastow',
             color: getCustodianColor('Fastow, Andrew'),
           },
           {
@@ -208,7 +208,7 @@ export default function EventTimelineView() {
             label: 'Causey indicted',
             description: 'Causey indicted for wire fraud and conspiracy',
             queryKey: 'from',
-            queryValue: '(Causey, Richard)',
+            queryValue: 'Causey',
             color: getCustodianColor('Causey, Richard'),
           },
           {
@@ -217,7 +217,7 @@ export default function EventTimelineView() {
             description:
               'Skilling added to Causey indictment, pleads innocent to more than 30 counts.',
             queryKey: 'from',
-            queryValue: '(Skilling, Jeff)',
+            queryValue: 'Skilling',
             color: getCustodianColor('Skilling, Jeff'),
           },
           {
@@ -226,7 +226,7 @@ export default function EventTimelineView() {
             description:
               'Lay surrenders after being indicted. He pleads innocent.',
             queryKey: 'from',
-            queryValue: '(Lay, Kenneth)',
+            queryValue: 'Lay',
             color: getCustodianColor('Lay, Kenneth'),
           },
           {
@@ -235,7 +235,7 @@ export default function EventTimelineView() {
             description:
               'Causey pleads guilty, agrees to testify against Lay and Skilling',
             queryKey: 'from',
-            queryValue: '(Causey, Richard)',
+            queryValue: 'Causey',
             color: getCustodianColor('Causey, Richard'),
           },
           {
@@ -243,7 +243,7 @@ export default function EventTimelineView() {
             label: 'Lay dies',
             description: 'Lay dies of heart attack while vacationing in Aspen',
             queryKey: 'from',
-            queryValue: '(Lay, Kenneth)',
+            queryValue: 'Lay',
             color: getCustodianColor('Lay, Kenneth'),
           },
           {
@@ -251,7 +251,7 @@ export default function EventTimelineView() {
             label: 'Skilling sentenced',
             description: 'Skilling sentenced to 24 years in prison',
             queryKey: 'from',
-            queryValue: '(Skilling, Jeff)',
+            queryValue: 'Skilling',
             color: getCustodianColor('Skilling, Jeff'),
           },
         ],
@@ -261,19 +261,26 @@ export default function EventTimelineView() {
 
   return (
     <div>
-      {custodiansLoading && <LinearProgress />}
-      <Tooltip
-        title="Toggle Horitonal / Vertical"
-        aria-label="Toggle Horitonal / Vertical"
-      >
-        <IconButton
-          data-testid="toggle-vertical"
-          onClick={() => toggleVertical()}
-        >
-          {vertical ? <SwapVerticalCircleIcon /> : <SwapHorizontalCircleIcon />}
-        </IconButton>
-      </Tooltip>
-      {config && <HighchartsReact highcharts={Highcharts} options={config} />}
+      {custodiansLoading && <LoadingIndicator />}
+      {!custodiansLoading && (
+        <div>
+          <Tooltip
+            title="Toggle Horitonal / Vertical"
+            aria-label="Toggle Horitonal / Vertical"
+          >
+            <IconButton
+              data-testid="toggle-vertical"
+              onClick={() => toggleVertical()}
+            >
+              {vertical && <SwapVerticalCircleIcon />}
+              {!vertical && <SwapHorizontalCircleIcon />}
+            </IconButton>
+          </Tooltip>
+        </div>
+      )}
+      {!custodiansLoading && config && (
+        <HighchartsReact highcharts={Highcharts} options={config} />
+      )}
       <button
         hidden
         onClick={() => handleClick('to', 'foo')}

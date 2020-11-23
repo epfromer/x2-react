@@ -6,11 +6,11 @@ import {
   setAllText,
   store,
 } from '@klonzo/common'
-import LinearProgress from '@material-ui/core/LinearProgress'
 import Typography from '@material-ui/core/Typography'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import LoadingIndicator from 'src/components/LoadingIndicator'
 import WordCloudECharts from '../components/ECharts/WordCloudECharts'
 import WordCloudHighcharts from '../components/Highcharts/WordCloudHighcharts'
 
@@ -29,7 +29,7 @@ export default function WordCloudView() {
 
   return (
     <div>
-      {wordCloudLoading && <LinearProgress />}
+      {wordCloudLoading && <LoadingIndicator />}
       {wordCloud && (
         <div>
           <Typography variant="h5">Highcharts</Typography>

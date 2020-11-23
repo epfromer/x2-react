@@ -1,8 +1,8 @@
 import {
   clearSearch,
-  getEmailAsync,
   getCustodians,
   getCustodiansLoading,
+  getEmailAsync,
   getEmailReceivers,
   getEmailSenders,
   setFrom,
@@ -10,11 +10,11 @@ import {
   store,
 } from '@klonzo/common'
 import Grid from '@material-ui/core/Grid'
-import LinearProgress from '@material-ui/core/LinearProgress'
 import Typography from '@material-ui/core/Typography'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import LoadingIndicator from 'src/components/LoadingIndicator'
 import PolarChartJS from '../components/ChartJS/PolarChartJS'
 import PolarECharts from '../components/ECharts/PolarECharts'
 import PolarHighcharts from '../components/Highcharts/PolarHighcharts'
@@ -38,7 +38,7 @@ export default function PolarView() {
 
   return (
     <div>
-      {custodiansLoading && <LinearProgress />}
+      {custodiansLoading && <LoadingIndicator />}
       {custodians && (
         <Grid container spacing={2}>
           <Grid item xs={12}>

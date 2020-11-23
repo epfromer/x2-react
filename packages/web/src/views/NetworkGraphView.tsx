@@ -1,17 +1,17 @@
 import {
   clearSearch,
-  getEmailAsync,
   getCustodiansLoading,
+  getEmailAsync,
   getEmailSentByCustodian,
+  setFrom,
   setTo,
   store,
-  setFrom,
 } from '@klonzo/common'
-import LinearProgress from '@material-ui/core/LinearProgress'
 import Typography from '@material-ui/core/Typography'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import LoadingIndicator from 'src/components/LoadingIndicator'
 import NetworkGraphECharts from '../components/ECharts/NetworkGraphECharts'
 import NetworkGraphHighcharts from '../components/Highcharts/NetworkGraphHighcharts'
 
@@ -35,7 +35,7 @@ export default function NetworkGraphView() {
 
   return (
     <div>
-      {custodiansLoading && <LinearProgress />}
+      {custodiansLoading && <LoadingIndicator />}
       {!custodiansLoading && (
         <div>
           <Typography variant="h5">Highcharts</Typography>

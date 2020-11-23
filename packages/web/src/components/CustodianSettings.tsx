@@ -6,7 +6,6 @@ import {
   x2Server,
 } from '@klonzo/common'
 import Button from '@material-ui/core/Button'
-import LinearProgress from '@material-ui/core/LinearProgress'
 import Paper from '@material-ui/core/Paper'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -18,6 +17,7 @@ import { gql, request } from 'graphql-request'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ColorPickerDlg from './ColorPickerDlg'
+import LoadingIndicator from './LoadingIndicator'
 
 export default function CustodianSettings() {
   const dispatch = useDispatch()
@@ -82,7 +82,7 @@ export default function CustodianSettings() {
         defaultColor={pickedColor}
         onClose={(color) => handleColorChosen(color)}
       />
-      {custodiansLoading && <LinearProgress />}
+      {custodiansLoading && <LoadingIndicator />}
       <TableContainer component={Paper}>
         <Table size="small" aria-label="custodians">
           <TableHead>

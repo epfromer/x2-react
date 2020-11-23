@@ -1,8 +1,8 @@
 import {
   clearSearch,
-  getEmailAsync,
   getCustodians,
   getCustodiansLoading,
+  getEmailAsync,
   getEmailReceivers,
   getEmailSenders,
   setFrom,
@@ -10,11 +10,11 @@ import {
   store,
 } from '@klonzo/common'
 import Grid from '@material-ui/core/Grid'
-import LinearProgress from '@material-ui/core/LinearProgress'
 import Typography from '@material-ui/core/Typography'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import LoadingIndicator from 'src/components/LoadingIndicator'
 import TreeMapECharts from '../components/ECharts/TreeMapECharts'
 import TreeMapHighcharts from '../components/Highcharts/TreeMapHighcharts'
 
@@ -36,7 +36,7 @@ export default function TreeMapView() {
 
   return (
     <div>
-      {custodiansLoading && <LinearProgress />}
+      {custodiansLoading && <LoadingIndicator />}
       {custodians && (
         <Grid container spacing={2}>
           <Grid item xs={12}>

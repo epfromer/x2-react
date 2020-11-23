@@ -13,13 +13,13 @@ import {
   x2Server,
 } from '@klonzo/common'
 import Button from '@material-ui/core/Button'
-import LinearProgress from '@material-ui/core/LinearProgress'
 import Paper from '@material-ui/core/Paper'
 import { makeStyles } from '@material-ui/core/styles'
 import { ColDef, DataGrid, RowParams } from '@material-ui/data-grid'
 import { gql, request } from 'graphql-request'
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import LoadingIndicator from 'src/components/LoadingIndicator'
 
 const useStyles = makeStyles((theme) => ({
   root: { width: '100%', marginTop: theme.spacing(2) },
@@ -99,7 +99,7 @@ export default function SearchHistoryView() {
   return (
     <div className={classes.root}>
       <Paper>
-        {logLoading && <LinearProgress />}
+        {logLoading && <LoadingIndicator />}
         <Button
           variant="contained"
           color="secondary"

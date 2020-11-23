@@ -68,7 +68,7 @@ export default function HomeView() {
       {makeCard(
         eventTimeline,
         'Event Timeline',
-        'Event timeline of Enron fraud and litigation.',
+        'Enron fraud and litigation events.',
         '/EventTimelineView'
       )}
       {makeCard(

@@ -1,8 +1,8 @@
 import {
   Email,
-  getEmailById,
   getAllText,
   getBody,
+  getEmailById,
   getFrom,
   getSubject,
   getTo,
@@ -11,13 +11,13 @@ import {
 } from '@klonzo/common'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
-import LinearProgress from '@material-ui/core/LinearProgress'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import { gql, request } from 'graphql-request'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
+import LoadingIndicator from 'src/components/LoadingIndicator'
 import EmailCardActions from '../components/emaillist/EmailCardActions'
 
 const useStyles = makeStyles((theme) => ({
@@ -126,7 +126,7 @@ export default function EmailDetailView() {
 
   return (
     <Card className={classes.root} data-testid="emailcard">
-      {loading && <LinearProgress />}
+      {loading && <LoadingIndicator />}
       {email && (
         <>
           <EmailCardActions id={id} />

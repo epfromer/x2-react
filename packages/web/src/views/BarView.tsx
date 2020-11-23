@@ -1,19 +1,19 @@
 import {
   clearSearch,
-  getEmailAsync,
   getCustodians,
   getCustodiansLoading,
+  getEmailAsync,
   getEmailReceivers,
   getEmailSenders,
   setFrom,
   setTo,
   store,
 } from '@klonzo/common'
-import LinearProgress from '@material-ui/core/LinearProgress'
 import Typography from '@material-ui/core/Typography'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import LoadingIndicator from 'src/components/LoadingIndicator'
 import BarChartJS from '../components/ChartJS/BarChartJS'
 import BarECharts from '../components/ECharts/BarECharts'
 import BarHighcarts from '../components/Highcharts/BarHighcharts'
@@ -37,7 +37,7 @@ export default function BarView() {
 
   return (
     <div>
-      {custodiansLoading && <LinearProgress />}
+      {custodiansLoading && <LoadingIndicator />}
       {custodians && (
         <div>
           <Typography variant="h5">Victory</Typography>

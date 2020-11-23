@@ -7,11 +7,11 @@ import {
   setSent,
   store,
 } from '@klonzo/common'
-import LinearProgress from '@material-ui/core/LinearProgress'
 import Typography from '@material-ui/core/Typography'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import LoadingIndicator from 'src/components/LoadingIndicator'
 import VolumeTimelineChartJS from '../components/ChartJS/VolumeTimelineChartJS'
 import VolumeTimelineECharts from '../components/ECharts/VolumeTimelineECharts'
 import VolumeTimelineHighcharts from '../components/Highcharts/VolumeTimelineHighcharts'
@@ -40,7 +40,7 @@ export default function TimelineView() {
 
   return (
     <div>
-      {emailSentLoading && <LinearProgress />}
+      {emailSentLoading && <LoadingIndicator />}
       {emailSent && (
         <div>
           <Typography variant="h5">Highcharts</Typography>

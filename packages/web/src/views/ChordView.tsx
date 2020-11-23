@@ -1,17 +1,17 @@
 import {
   clearSearch,
-  getEmailAsync,
   getCustodiansLoading,
+  getEmailAsync,
   getEmailSentByCustodian,
   setFrom,
   setTo,
   store,
 } from '@klonzo/common'
-import LinearProgress from '@material-ui/core/LinearProgress'
 import Typography from '@material-ui/core/Typography'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import LoadingIndicator from 'src/components/LoadingIndicator'
 import ChordECharts from '../components/ECharts/ChordECharts'
 import ChordHighcharts from '../components/Highcharts/ChordHighcharts'
 
@@ -32,7 +32,7 @@ export default function ChordView() {
 
   return (
     <div>
-      {custodiansLoading && <LinearProgress />}
+      {custodiansLoading && <LoadingIndicator />}
       {!custodiansLoading && (
         <div>
           <Typography variant="h5">Highcharts</Typography>
