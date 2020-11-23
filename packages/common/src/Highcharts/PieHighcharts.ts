@@ -22,6 +22,7 @@ export function getPieHighchartsConfig(
       y: datum.value,
       color: datum.color,
       events: {
+        // note that events aren't supported in React Native
         click: (e: unknown) => handleClick(search, datum.name),
       },
     })
@@ -39,7 +40,7 @@ export function getPieHighchartsConfig(
       },
     },
     tooltip: {
-      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>',
+      pointFormat: '{point.percentage:.1f}%',
     },
     accessibility: {
       point: {
@@ -52,7 +53,7 @@ export function getPieHighchartsConfig(
         cursor: 'pointer',
         dataLabels: {
           enabled: true,
-          format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+          format: '{point.name}',
         },
       },
     },
