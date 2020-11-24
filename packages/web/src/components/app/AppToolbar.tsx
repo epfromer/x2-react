@@ -61,11 +61,12 @@ export default function AppToolbar({ drawerOpen, setDrawerOpen }: Props) {
       >
         {APP_NAME}
       </Typography>
-      <Tooltip
-        title="Toggle light/dark theme"
-        aria-label="Toggle light/dark theme"
-      >
-        {darkMode ? (
+
+      {darkMode && (
+        <Tooltip
+          title="Toggle light/dark theme"
+          aria-label="Toggle light/dark theme"
+        >
           <IconButton
             color="inherit"
             data-testid="dark-mode"
@@ -73,16 +74,22 @@ export default function AppToolbar({ drawerOpen, setDrawerOpen }: Props) {
           >
             <Brightness7 />
           </IconButton>
-        ) : (
-            <IconButton
-              color="inherit"
-              data-testid="dark-mode"
-              onClick={() => setDarkModeAsync(store, true)}
-            >
-              <Brightness4 />
-            </IconButton>
-          )}
-      </Tooltip>
+        </Tooltip>
+      )}
+      {!darkMode && (
+        <Tooltip
+          title="Toggle light/dark theme"
+          aria-label="Toggle light/dark theme"
+        >
+          <IconButton
+            color="inherit"
+            data-testid="dark-mode"
+            onClick={() => setDarkModeAsync(store, true)}
+          >
+            <Brightness4 />
+          </IconButton>
+        </Tooltip>
+      )}
       <SettingsButton />
       <Tooltip title="Search" aria-label="Search">
         <IconButton color="inherit" onClick={() => history.push('/SearchView')}>

@@ -33,7 +33,7 @@ export default function SettingsMenu() {
   const handleClick = (event: any) => setAnchorEl(event.currentTarget)
   const handleClose = () => setAnchorEl(null)
 
-  const doSignOut = () => {
+  const signOut = () => {
     handleClose()
     logout({ returnTo: window.location.origin })
   }
@@ -76,7 +76,7 @@ export default function SettingsMenu() {
           </ListItemIcon>
           <ListItemText primary="Settings" />
         </StyledMenuItem>
-        <StyledMenuItem onClick={doSignOut} data-testid="sign-out">
+        <StyledMenuItem onClick={signOut} data-testid="sign-out">
           <ListItemIcon>
             <ExitToAppIcon fontSize="small" />
           </ListItemIcon>

@@ -104,7 +104,7 @@ export async function setThemeNameAsync(
   store.dispatch(setThemeName(themeName))
 }
 
-const sleep = (ms = 0) => new Promise((r) => setTimeout(r, ms))
+// const sleep = (ms = 0) => new Promise((r) => setTimeout(r, ms))
 
 // graphQl query
 export function getInitialDataAsync(store: Store): void {
