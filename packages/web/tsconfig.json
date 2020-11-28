@@ -6,11 +6,6 @@
   "compilerOptions": {
     "isolatedModules": true,
     "jsx": "react",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "noEmit": true,
-    "resolveJsonModule": true,
-    "target": "es5",
-    "strict": true
+    "noEmit": true
   }
 }
