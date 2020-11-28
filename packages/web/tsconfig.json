@@ -1,11 +1,9 @@
 {
   "extends": "../../tsconfig.json",
   "include": [
-    "src/**/*",
-    "utils/appThemes.ts"
+    "src/**/*"
   ],
   "compilerOptions": {
-    "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "jsx": "react",
     "lib": [
