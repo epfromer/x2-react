@@ -14,7 +14,7 @@ import Typography from '@material-ui/core/Typography'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import LoadingIndicator from 'src/components/LoadingIndicator'
+import LoadingIndicator from '../components/LoadingIndicator'
 import TreeMapECharts from '../components/ECharts/TreeMapECharts'
 import TreeMapHighcharts from '../components/Highcharts/TreeMapHighcharts'
 

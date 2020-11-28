@@ -17,7 +17,7 @@ import { gql, request } from 'graphql-request'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import LoadingIndicator from 'src/components/LoadingIndicator'
+import LoadingIndicator from '../components/LoadingIndicator'
 import EmailCardActions from '../components/emaillist/EmailCardActions'
 
 const useStyles = makeStyles((theme) => ({

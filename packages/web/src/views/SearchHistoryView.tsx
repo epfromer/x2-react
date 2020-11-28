@@ -19,7 +19,7 @@ import { ColDef, DataGrid, RowParams } from '@material-ui/data-grid'
 import { gql, request } from 'graphql-request'
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import LoadingIndicator from 'src/components/LoadingIndicator'
+import LoadingIndicator from '../components/LoadingIndicator'
 
 const useStyles = makeStyles((theme) => ({
   root: { width: '100%', marginTop: theme.spacing(2) },

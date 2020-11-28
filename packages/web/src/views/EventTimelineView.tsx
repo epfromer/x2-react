@@ -20,7 +20,7 @@ import HighchartTimeline from 'highcharts/modules/timeline'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import LoadingIndicator from 'src/components/LoadingIndicator'
+import LoadingIndicator from '../components/LoadingIndicator'
 
 HighchartTimeline(Highcharts)
 

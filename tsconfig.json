@@ -3,6 +3,11 @@
   "compilerOptions": {
     "baseUrl": ".",
     "esModuleInterop": true,
-    "paths": {"@klonzo/*": ["packages/*/src"]}
+    "paths": {
+      "@klonzo/*": [
+        "packages/*/src"
+      ]
+    },
+    "skipLibCheck": true
   }
 }
