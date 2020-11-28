@@ -5,9 +5,9 @@
   ],
   "compilerOptions": {
     "allowJs": true,
+    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "module": "commonjs",
-    "jsx": "react",
     "sourceMap": true,
     "skipLibCheck": true,
     "target": "es5"

@@ -5,9 +5,9 @@
     "utils/appThemes.ts"
   ],
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
+    "jsx": "react",
     "lib": [
       "dom",
       "dom.iterable",
