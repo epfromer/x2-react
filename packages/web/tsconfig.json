@@ -6,11 +6,6 @@
   "compilerOptions": {
     "isolatedModules": true,
     "jsx": "react",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
     "module": "esnext",
     "moduleResolution": "node",
     "noEmit": true,

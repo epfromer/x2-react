@@ -4,9 +4,13 @@
     "dist"
   ],
   "compilerOptions": {
-    "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "module": "commonjs",
     "sourceMap": true,
     "skipLibCheck": true,
