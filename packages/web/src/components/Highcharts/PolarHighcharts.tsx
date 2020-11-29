@@ -23,11 +23,6 @@ export default function PolarHighcharts({
 }: Props) {
   const theme = useTheme()
 
-  interface Datum {
-    name: string
-    value: number
-    color: string
-  }
   const series: Array<any> = data.map((datum) => ({
     type: 'column',
     name: datum.name,
