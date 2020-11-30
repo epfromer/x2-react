@@ -5,6 +5,10 @@ import HighchartsReact from 'highcharts-react-official'
 import HighchartPolar from 'highcharts/highcharts-more'
 import React from 'react'
 
+require('highcharts/modules/exporting')(Highcharts)
+require('highcharts/modules/export-data')(Highcharts)
+require('highcharts/modules/accessibility')(Highcharts)
+
 HighchartPolar(Highcharts)
 
 // https://www.highcharts.com/demo/polar

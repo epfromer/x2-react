@@ -9,6 +9,9 @@ import { useSelector } from 'react-redux'
 
 HighchartSankey(Highcharts)
 HighchartsWheel(Highcharts)
+require('highcharts/modules/exporting')(Highcharts)
+require('highcharts/modules/export-data')(Highcharts)
+require('highcharts/modules/accessibility')(Highcharts)
 
 // https://www.highcharts.com/docs/chart-and-series-types/dependency-wheel
 

@@ -40,19 +40,6 @@ export default function BarView() {
       {custodiansLoading && <LoadingIndicator />}
       {custodians && (
         <div>
-          <Typography variant="h5">Victory</Typography>
-          <BarVictory
-            title="Senders"
-            search="from"
-            data={emailSenders}
-            handleClick={handleClick}
-          />
-          <BarVictory
-            title="Receivers"
-            search="to"
-            data={emailReceivers}
-            handleClick={handleClick}
-          />
           <Typography variant="h5">Highcharts</Typography>
           <BarHighcarts
             title="Senders"
@@ -87,6 +74,19 @@ export default function BarView() {
             handleClick={handleClick}
           />
           <BarECharts
+            title="Receivers"
+            search="to"
+            data={emailReceivers}
+            handleClick={handleClick}
+          />
+          <Typography variant="h5">Victory</Typography>
+          <BarVictory
+            title="Senders"
+            search="from"
+            data={emailSenders}
+            handleClick={handleClick}
+          />
+          <BarVictory
             title="Receivers"
             search="to"
             data={emailReceivers}

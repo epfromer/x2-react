@@ -5,6 +5,10 @@ import HighchartsReact from 'highcharts-react-official'
 import HighchartWordCloud from 'highcharts/modules/wordcloud'
 import React from 'react'
 
+require('highcharts/modules/exporting')(Highcharts)
+require('highcharts/modules/export-data')(Highcharts)
+require('highcharts/modules/accessibility')(Highcharts)
+
 // https://www.highcharts.com/docs/chart-and-series-types/word-cloud-series
 HighchartWordCloud(Highcharts)
 
