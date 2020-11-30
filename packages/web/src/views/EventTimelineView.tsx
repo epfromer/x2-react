@@ -24,6 +24,8 @@ import LoadingIndicator from '../components/LoadingIndicator'
 
 HighchartTimeline(Highcharts)
 
+// TODO - remove orientation button, put guts into components file
+
 // http://content.time.com/time/specials/packages/article/0,28804,2021097_2023262_2023247,00.html
 // https://www.tampabay.com/archive/2006/01/29/enron-a-timeline/
 // https://www.myplainview.com/news/article/A-chronology-of-Enron-Corp-8499449.php
