@@ -5,6 +5,10 @@ import HighchartsReact from 'highcharts-react-official'
 import HighchartPolar from 'highcharts/highcharts-more'
 import React from 'react'
 
+require('highcharts/modules/exporting')(Highcharts)
+require('highcharts/modules/export-data')(Highcharts)
+require('highcharts/modules/accessibility')(Highcharts)
+
 HighchartPolar(Highcharts)
 
 // https://www.highcharts.com/demo/polar
@@ -22,17 +26,6 @@ export default function PolarHighcharts({
   handleClick,
 }: Props) {
   const theme = useTheme()
-
-  const series: Array<any> = data.map((datum) => ({
-    type: 'column',
-    name: datum.name,
-    data: [datum.value],
-    color: datum.color,
-    pointPlacement: 'between',
-    events: {
-      click: () => handleClick(search, datum.name),
-    },
-  }))
 
   const config = {
     chart: {
@@ -66,7 +59,16 @@ export default function PolarHighcharts({
         groupPadding: 0,
       },
     },
-    series,
+    series: data.map((datum) => ({
+      type: 'column',
+      name: datum.name,
+      data: [datum.value],
+      color: datum.color,
+      pointPlacement: 'between',
+      events: {
+        click: () => handleClick(search, datum.name),
+      },
+    })),
   }
 
   return <HighchartsReact highcharts={Highcharts} options={config} />

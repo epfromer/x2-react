@@ -6,6 +6,9 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 require('highcharts/modules/treemap')(Highcharts)
+require('highcharts/modules/exporting')(Highcharts)
+require('highcharts/modules/export-data')(Highcharts)
+require('highcharts/modules/accessibility')(Highcharts)
 
 // https://www.highcharts.com/demo/treemap-coloraxis
 

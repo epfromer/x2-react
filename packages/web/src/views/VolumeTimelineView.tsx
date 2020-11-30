@@ -1,6 +1,5 @@
 import {
   clearSearch,
-  EmailSentByDay,
   getEmailAsync,
   getEmailSentByDay,
   getEmailSentByDayLoading,
@@ -11,17 +10,17 @@ import Typography from '@material-ui/core/Typography'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import LoadingIndicator from '../components/LoadingIndicator'
 import VolumeTimelineChartJS from '../components/ChartJS/VolumeTimelineChartJS'
 import VolumeTimelineECharts from '../components/ECharts/VolumeTimelineECharts'
 import VolumeTimelineHighcharts from '../components/Highcharts/VolumeTimelineHighcharts'
+import LoadingIndicator from '../components/LoadingIndicator'
 import VolumeTimelineVictory from '../components/Victory/VolumeTimelineVictory'
 
 export default function TimelineView() {
   const dispatch = useDispatch()
   const history = useHistory()
-  const emailSentLoading = useSelector(getEmailSentByDayLoading)
-  const emailSent = useSelector(getEmailSentByDay)
+  const emailSentByDayLoading = useSelector(getEmailSentByDayLoading)
+  const emailSentByDay = useSelector(getEmailSentByDay)
 
   function handleClick(date: string) {
     dispatch(clearSearch())
@@ -30,41 +29,33 @@ export default function TimelineView() {
     history.push('/SearchView')
   }
 
-  let data: Array<EmailSentByDay> = []
-  if (emailSent) {
-    data = emailSent.map((stat: EmailSentByDay) => ({
-      sent: stat.sent,
-      total: stat.total,
-    }))
-  }
-
   return (
     <div>
-      {emailSentLoading && <LoadingIndicator />}
-      {emailSent && (
+      {emailSentByDayLoading && <LoadingIndicator />}
+      {emailSentByDay && (
         <div>
           <Typography variant="h5">Highcharts</Typography>
           <VolumeTimelineHighcharts
             title="Email Volume per Day"
-            data={data}
+            data={emailSentByDay}
             handleClick={handleClick}
           />
           <Typography variant="h5">ChartJS</Typography>
           <VolumeTimelineChartJS
             title="Email Volume per Day"
-            data={data}
+            data={emailSentByDay}
             handleClick={handleClick}
           />
           <Typography variant="h5">ECharts</Typography>
           <VolumeTimelineECharts
             title="Email Volume per Day"
-            data={data}
+            data={emailSentByDay}
             handleClick={handleClick}
           />
           <Typography variant="h5">Victory</Typography>
           <VolumeTimelineVictory
             title="Email Volume per Day"
-            data={data}
+            data={emailSentByDay}
             handleClick={handleClick}
           />
         </div>

@@ -7,6 +7,9 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 HighchartNetworkGraph(Highcharts)
+require('highcharts/modules/exporting')(Highcharts)
+require('highcharts/modules/export-data')(Highcharts)
+require('highcharts/modules/accessibility')(Highcharts)
 
 // https://www.highcharts.com/docs/chart-and-series-types/network-graph
 
@@ -27,12 +30,6 @@ export default function NetworkGraphHighcharts({
   const theme = useTheme()
 
   function createChart() {
-    const chartData = data.map((datum) => [
-      datum.source,
-      datum.target,
-      datum.value,
-    ])
-
     setConfig({
       chart: {
         backgroundColor: theme.palette.background.default,
@@ -64,7 +61,7 @@ export default function NetworkGraphHighcharts({
       series: [
         {
           type: 'networkgraph',
-          data: chartData,
+          data: data.map((datum) => [datum.source, datum.target, datum.value]),
           nodes,
         },
       ],

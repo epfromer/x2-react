@@ -9,6 +9,9 @@ import { useSelector } from 'react-redux'
 
 HighchartSankey(Highcharts)
 HighchartsWheel(Highcharts)
+require('highcharts/modules/exporting')(Highcharts)
+require('highcharts/modules/export-data')(Highcharts)
+require('highcharts/modules/accessibility')(Highcharts)
 
 // https://www.highcharts.com/docs/chart-and-series-types/dependency-wheel
 
@@ -29,12 +32,6 @@ export default function ChordHighcharts({
   const theme = useTheme()
 
   function createChart() {
-    const chartData = data.map((datum) => [
-      datum.source,
-      datum.target,
-      datum.value,
-    ])
-
     setConfig({
       chart: {
         backgroundColor: theme.palette.background.default,
@@ -59,7 +56,7 @@ export default function ChordHighcharts({
       series: [
         {
           type: 'dependencywheel',
-          data: chartData,
+          data: data.map((datum) => [datum.source, datum.target, datum.value]),
           nodes,
         },
       ],
