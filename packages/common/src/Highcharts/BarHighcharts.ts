@@ -47,6 +47,7 @@ export function getBarHighchartsConfig(
     plotOptions: {
       bar: {
         events: {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           click: (e: any) => handleClick(search, e.point.category),
         },
       },

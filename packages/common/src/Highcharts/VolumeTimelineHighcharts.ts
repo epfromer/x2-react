@@ -45,6 +45,7 @@ export function getVolumeTimeHighchartsConfig(
       series: {
         cursor: 'pointer',
         events: {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           click: (e: any) =>
             handleClick(new Date(e.point.category).toISOString().slice(0, 10)),
         },

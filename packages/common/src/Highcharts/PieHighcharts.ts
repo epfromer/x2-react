@@ -1,12 +1,5 @@
 import { EmailXferedDatum } from '../store/types'
 
-interface HighChartsDatum {
-  name: string
-  y: number
-  color: string
-  events: unknown
-}
-
 export function getPieHighchartsConfig(
   textColor = 'black',
   title: string,
@@ -15,18 +8,14 @@ export function getPieHighchartsConfig(
   backgroundColor: string,
   handleClick: (key: string, value: string) => void
 ): unknown {
-  const custodians: Array<HighChartsDatum> = []
-  data.forEach((datum) => {
-    custodians.push({
-      name: datum.name,
-      y: datum.value,
-      color: datum.color,
-      events: {
-        // note that events aren't supported in React Native
-        click: (e: unknown) => handleClick(search, datum.name),
-      },
-    })
-  })
+  const custodians = data.map((datum) => ({
+    name: datum.name,
+    y: datum.value,
+    color: datum.color,
+    events: {
+      click: (e: unknown) => handleClick(search, datum.name),
+    },
+  }))
 
   return {
     chart: {
