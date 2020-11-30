@@ -27,12 +27,6 @@ export default function NetworkGraphHighcharts({
   const theme = useTheme()
 
   function createChart() {
-    const chartData = data.map((datum) => [
-      datum.source,
-      datum.target,
-      datum.value,
-    ])
-
     setConfig({
       chart: {
         backgroundColor: theme.palette.background.default,
@@ -64,7 +58,7 @@ export default function NetworkGraphHighcharts({
       series: [
         {
           type: 'networkgraph',
-          data: chartData,
+          data: data.map((datum) => [datum.source, datum.target, datum.value]),
           nodes,
         },
       ],

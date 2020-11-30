@@ -29,12 +29,6 @@ export default function ChordHighcharts({
   const theme = useTheme()
 
   function createChart() {
-    const chartData = data.map((datum) => [
-      datum.source,
-      datum.target,
-      datum.value,
-    ])
-
     setConfig({
       chart: {
         backgroundColor: theme.palette.background.default,
@@ -59,7 +53,7 @@ export default function ChordHighcharts({
       series: [
         {
           type: 'dependencywheel',
-          data: chartData,
+          data: data.map((datum) => [datum.source, datum.target, datum.value]),
           nodes,
         },
       ],

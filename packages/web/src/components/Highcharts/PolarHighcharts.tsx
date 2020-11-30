@@ -23,17 +23,6 @@ export default function PolarHighcharts({
 }: Props) {
   const theme = useTheme()
 
-  const series: Array<any> = data.map((datum) => ({
-    type: 'column',
-    name: datum.name,
-    data: [datum.value],
-    color: datum.color,
-    pointPlacement: 'between',
-    events: {
-      click: () => handleClick(search, datum.name),
-    },
-  }))
-
   const config = {
     chart: {
       polar: true,
@@ -66,7 +55,16 @@ export default function PolarHighcharts({
         groupPadding: 0,
       },
     },
-    series,
+    series: data.map((datum) => ({
+      type: 'column',
+      name: datum.name,
+      data: [datum.value],
+      color: datum.color,
+      pointPlacement: 'between',
+      events: {
+        click: () => handleClick(search, datum.name),
+      },
+    })),
   }
 
   return <HighchartsReact highcharts={Highcharts} options={config} />
