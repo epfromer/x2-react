@@ -1,6 +1,6 @@
 import {
   getDarkMode,
-  selectUsername,
+  getUsername,
   setDarkModeAsync,
   signOut,
   store,
@@ -19,7 +19,7 @@ export default function AppSettingsView() {
   const history = useHistory()
   const { theme }: any = useContext(ThemeContext)
   const darkMode = useSelector(getDarkMode)
-  const username = useSelector(selectUsername)
+  const username = useSelector(getUsername)
 
   const styles = StyleSheet.create({
     container: {
