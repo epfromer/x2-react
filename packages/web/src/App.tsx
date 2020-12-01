@@ -2,7 +2,7 @@ import { Auth0Provider } from '@auth0/auth0-react'
 import {
   getEmailAsync,
   getInitialDataAsync,
-  getAppSettingsAsync,
+  loadAppSettingsAsync,
   getDarkMode,
   getThemeName,
   store,
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 
 getInitialDataAsync(store)
 getEmailAsync(store)
-getAppSettingsAsync(store)
+loadAppSettingsAsync(store)
 
 const CoreApp = () => {
   const classes = useStyles()

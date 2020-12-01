@@ -48,7 +48,7 @@ export const getDarkMode = (state: RootState): boolean =>
 export const getThemeName = (state: RootState): string =>
   state.appSettings.themeName
 
-export async function getAppSettingsAsync(store: Store): Promise<void> {
+export async function loadAppSettingsAsync(store: Store): Promise<void> {
   try {
     let darkMode = false
     let themeName = defaultThemeName
@@ -68,7 +68,7 @@ export async function getAppSettingsAsync(store: Store): Promise<void> {
         themeName = localStorage.getItem('themeName')
       }
     } else {
-      const value = await AsyncStorage.getItem('darkMode')
+      let value = await AsyncStorage.getItem('darkMode')
       if (value === 'true') darkMode = true
       value = await AsyncStorage.getItem('themeName')
       if (value) themeName = value
