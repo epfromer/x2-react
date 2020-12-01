@@ -22,7 +22,7 @@ import {
   getSort,
   getSubject,
   getTo,
-  loadAppSettingsAsync,
+  getAppSettingsAsync,
   setAllText,
   setBody,
   setCustodians,
@@ -80,8 +80,8 @@ test('getWordCloudAsync', async () => {
   expect(store.getState().custodians.custodians).toEqual(testCustodians)
 })
 
-test('loadAppSettingsAsync', async () => {
-  await loadAppSettingsAsync(store)
+test('getAppSettingsAsync', async () => {
+  await getAppSettingsAsync(store)
   expect(store.getState().appSettings.darkMode).toEqual(false)
 })
 
