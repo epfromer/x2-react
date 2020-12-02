@@ -30,17 +30,17 @@ const useStyles = makeStyles((theme) => ({
 export default function SearchView() {
   const dispatch = useDispatch()
   const classes = useStyles()
-  const emailsLoading = useSelector(getEmailLoading)
-  const emails = useSelector(getEmail)
-  const totalEmails = useSelector(getEmailTotal)
+  const emailLoading = useSelector(getEmailLoading)
+  const email = useSelector(getEmail)
+  const emailTotal = useSelector(getEmailTotal)
   const emailListPage = useSelector(getEmailListPage)
 
-  const hasMore = () => (emailListPage + 1) * defaultLimit < totalEmails
+  const hasMore = () => (emailListPage + 1) * defaultLimit < emailTotal
 
   const observer: any = useRef()
   const lastRowRef = useCallback(
     (node) => {
-      if (emailsLoading) return
+      if (emailLoading) return
       if (observer.current) observer.current.disconnect()
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && hasMore()) {
@@ -51,15 +51,15 @@ export default function SearchView() {
       if (node) observer.current.observe(node)
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [emailsLoading]
+    [emailLoading]
   )
 
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
         <TableContainer component={Paper}>
-          {emailsLoading && <LinearProgress />}
-          {emails && (
+          {emailLoading && <LinearProgress />}
+          {email && (
             <Table
               className={classes.table}
               size="small"
@@ -68,8 +68,8 @@ export default function SearchView() {
             >
               <EmailTableHead />
               <TableBody>
-                {emails.map((email: any, index: any) => {
-                  if (emails.length === index + 1) {
+                {email.map((email: any, index: any) => {
+                  if (email.length === index + 1) {
                     return (
                       <ExpandingRow
                         lastRowRef={lastRowRef}

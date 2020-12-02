@@ -97,6 +97,7 @@ export const getSort = (state: RootState): string => state.query.sort
 export const getSent = (state: RootState): string => state.query.sent
 export const getSubject = (state: RootState): string => state.query.subject
 export const getTo = (state: RootState): string => state.query.to
+// TODO merge with getQueryObj
 export const getQuery = (state: RootState): QueryState => ({
   allText: state.query.allText,
   body: state.query.body,

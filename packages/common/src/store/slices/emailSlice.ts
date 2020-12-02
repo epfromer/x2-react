@@ -60,7 +60,7 @@ export const getEmailTotal = (state: RootState): number =>
   state.email.emailTotal
 
 // graphQl query
-function makeQueryObj(store: Store): unknown {
+function getQueryObj(store: Store): unknown {
   const state = store.getState()
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const query: any = {
@@ -126,7 +126,7 @@ export function getEmailAsync(store: Store, append = false): void {
       }
     }
   `
-  request(`${server}/graphql/`, query, makeQueryObj(store))
+  request(`${server}/graphql/`, query, getQueryObj(store))
     .then((data) => {
       if (append) {
         store.dispatch(appendEmail(data.getEmail.emails))
