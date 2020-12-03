@@ -23,7 +23,6 @@ import LoadingIndicator from '../components/LoadingIndicator'
 
 const useStyles = makeStyles((theme) => ({
   root: { width: '100%', marginTop: theme.spacing(2) },
-  table: { height: 500, width: '100%' },
   button: { margin: 15 },
   text: { padding: 15 },
 }))
@@ -111,13 +110,16 @@ export default function SearchHistoryView() {
         </Button>
         {!log.length && <div className={classes.text}>No log entries.</div>}
         {log.length !== 0 && (
-          <div className={classes.table}>
-            <DataGrid
-              autoPageSize
-              onRowClick={onSearchHistory}
-              rows={log}
-              columns={columns}
-            />
+          <div style={{ height: 600, width: '100%' }}>
+            <div style={{ display: 'flex', height: '100%' }}>
+              <div style={{ flexGrow: 1 }}>
+                <DataGrid
+                  onRowClick={onSearchHistory}
+                  rows={log}
+                  columns={columns}
+                />
+              </div>
+            </div>
           </div>
         )}
       </Paper>

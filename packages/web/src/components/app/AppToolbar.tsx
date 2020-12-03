@@ -78,8 +78,8 @@ export default function AppToolbar({ drawerOpen, setDrawerOpen }: Props) {
       )}
       {!darkMode && (
         <Tooltip
-          title="Toggle light/dark theme"
-          aria-label="Toggle light/dark theme"
+          title="Toggle light / dark theme"
+          aria-label="Toggle light / dark theme"
         >
           <IconButton
             color="inherit"
