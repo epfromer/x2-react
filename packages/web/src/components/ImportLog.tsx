@@ -1,4 +1,5 @@
 import { importLoc, x2Server } from '@klonzo/common'
+import { Checkbox, FormControlLabel } from '@material-ui/core'
 import Button from '@material-ui/core/Button'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
@@ -16,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
     maxHeight: 300,
   },
   button: { margin: 15 },
+  text: { marginLeft: 15, paddingBottom: 15 },
 }))
 
 interface ImportLogEntry {
@@ -27,10 +29,11 @@ interface ImportLogEntry {
 export default function ImportLog() {
   const classes = useStyles()
   const lastRowRef = useRef(null)
-  let importTimer: number | undefined
+  let importInterval: number | undefined
   const [log, setLog] = useState([])
+  const [scrollIntoView, setScrollIntoView] = useState(true)
 
-  const getImportStatusInterval = () => {
+  const getImportStatus = () => {
     const server = process.env.REACT_APP_X2_SERVER
       ? process.env.REACT_APP_X2_SERVER
       : x2Server
@@ -61,17 +64,21 @@ export default function ImportLog() {
   }
 
   const stopImportStatusInterval = (): void => {
-    if (!importTimer) return
-    clearInterval(importTimer)
-    importTimer = undefined
+    if (!importInterval) return
+    clearInterval(importInterval)
+    importInterval = undefined
   }
 
-  if (!importTimer) importTimer = setInterval(getImportStatusInterval, 2000)
+  if (!importInterval) importInterval = setInterval(getImportStatus, 2000)
+
+  const setScroll = (e: any) => {
+    setScrollIntoView(e.target.checked)
+  }
 
   useEffect(() => stopImportStatusInterval)
 
   useEffect(() => {
-    if (lastRowRef && lastRowRef.current && log.length) {
+    if (lastRowRef && lastRowRef.current && log.length && scrollIntoView) {
       // @ts-ignore
       lastRowRef.current.scrollIntoView({ behavior: 'smooth' })
     }
@@ -87,18 +94,25 @@ export default function ImportLog() {
       >
         Import Email
       </Button>
-      <List dense className={classes.root} aria-label="import-log">
-        {log?.map((logEntry: ImportLogEntry) => {
-          return (
-            <ListItem key={logEntry.id} alignItems="flex-start">
-              <ListItemText
-                primary={logEntry.timestamp + ' ' + logEntry.entry}
-              />
-            </ListItem>
-          )
-        })}
-        <div style={{ float: 'left', clear: 'both' }} ref={lastRowRef}></div>
-      </List>
+      <FormControlLabel
+        control={<Checkbox checked={scrollIntoView} onChange={setScroll} />}
+        label="Auto-scroll to latest entries"
+      />
+      {log.length === 0 && <div className={classes.text}>No log entries</div>}
+      {log.length !== 0 && (
+        <List dense className={classes.root} aria-label="import-log">
+          {log?.map((logEntry: ImportLogEntry) => {
+            return (
+              <ListItem key={logEntry.id} alignItems="flex-start">
+                <ListItemText
+                  primary={logEntry.timestamp + ' ' + logEntry.entry}
+                />
+              </ListItem>
+            )
+          })}
+          <div style={{ float: 'left', clear: 'both' }} ref={lastRowRef}></div>
+        </List>
+      )}
     </Paper>
   )
 }
