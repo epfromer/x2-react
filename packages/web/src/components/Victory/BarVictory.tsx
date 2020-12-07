@@ -5,7 +5,7 @@ import { VictoryAxis, VictoryBar, VictoryChart, VictoryLabel } from 'victory'
 
 // https://formidable.com/open-source/victory/docs/victory-bar
 
-const chartHeight = 100
+const chartHeight = 220
 
 interface Props {
   title: string
@@ -38,13 +38,13 @@ export default function BarVictory({
           x={225}
           y={30}
           textAnchor="middle"
-          style={[{ fill: theme.palette.text.primary, fontSize: 10 }]}
+          style={[{ fill: theme.palette.text.primary, fontSize: 18 }]}
         />
         <VictoryAxis
           style={{
             tickLabels: {
               fill: theme.palette.text.primary,
-              fontSize: 5,
+              fontSize: 10,
               padding: 1,
             },
           }}
@@ -54,7 +54,7 @@ export default function BarVictory({
           style={{
             tickLabels: {
               fill: theme.palette.text.primary,
-              fontSize: 5,
+              fontSize: 10,
               padding: 1,
             },
           }}
@@ -64,6 +64,7 @@ export default function BarVictory({
             duration: 2000,
             onLoad: { duration: 1000 },
           }}
+          barWidth={20}
           events={[
             {
               target: 'data',

@@ -29,6 +29,9 @@ export default function BarChartJS({
     type: 'horizontalBar',
     options: {
       maintainAspectRatio: false,
+      legend: {
+        display: false,
+      },
       title: {
         display: true,
         fontColor: theme.palette.text.primary,
