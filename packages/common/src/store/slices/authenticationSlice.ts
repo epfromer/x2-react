@@ -1,5 +1,6 @@
 import { createAction, createSlice, Store } from '@reduxjs/toolkit'
 
+// TODO - don't think this is needed with auth0
 export interface AuthenticationState {
   authenticated: boolean
   username: string

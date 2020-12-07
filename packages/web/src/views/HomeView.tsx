@@ -33,24 +33,19 @@ export default function HomeView() {
 
   return (
     <Grid container spacing={3}>
-      {makeCard(pie, 'Pie', 'Email volume of Enron custodians.', '/PieView')}
-      {makeCard(
-        barchart,
-        'Bar',
-        'Email volume of Enron custodians.',
-        '/BarView'
-      )}
+      {makeCard(pie, 'Pie', 'Enron custodian email volume.', '/PieView')}
+      {makeCard(barchart, 'Bar', 'Enron custodian email volume.', '/BarView')}
       {makeCard(chord, 'Chord', 'Enron custodian communication.', '/ChordView')}
       {makeCard(
         wordcloud,
         'Word Cloud',
-        'Mentions of fraudulent project names.',
+        'Fraudulent project names.',
         '/WordCloudView'
       )}
       {makeCard(
         volumetimeline,
         'Volume Timeline',
-        'Enron email per day with drill down.',
+        'Enron email per day.',
         '/VolumeTimelineView'
       )}
       {makeCard(
@@ -62,7 +57,7 @@ export default function HomeView() {
       {makeCard(
         treemap,
         'Tree Map',
-        'Email volume of Enron custodians.',
+        'Enron custodian email volume.',
         '/TreeMapView'
       )}
       {makeCard(
@@ -71,18 +66,8 @@ export default function HomeView() {
         'Enron fraud and litigation events.',
         '/EventTimelineView'
       )}
-      {makeCard(
-        polar,
-        'Polar',
-        'Email volume of Enron custodians.',
-        '/PolarView'
-      )}
-      {makeCard(
-        search,
-        'Search',
-        'Full text search with hit highlighting.',
-        '/SearchView'
-      )}
+      {makeCard(polar, 'Polar', 'Enron custodian email volume.', '/PolarView')}
+      {makeCard(search, 'Search', 'Full text search.', '/SearchView')}
     </Grid>
   )
 }

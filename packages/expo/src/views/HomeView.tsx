@@ -16,19 +16,19 @@ export default function HomeView() {
       <HomeCard
         image={require('./img/pie.png')}
         title="Pie"
-        description="Email volume of Enron custodians."
+        description="Enron custodian email volume."
         link="PieView"
       />
       <HomeCard
         image={require('./img/barchart.png')}
         title="Bar"
-        description="Email volume of Enron custodians."
+        description="Enron custodian email volume."
         link="BarView"
       />
       <HomeCard
         image={require('./img/volumetimeline.png')}
         title="Volume Timeline"
-        description="Enron email per day with drill down."
+        description="Enron email per day."
         link="VolumeTimelineView"
       />
       <HomeCard
@@ -40,13 +40,13 @@ export default function HomeView() {
       <HomeCard
         image={require('./img/treemap.png')}
         title="Tree Map"
-        description="Email volume of Enron custodians."
+        description="Enron custodian email volume."
         link="TreeMapView"
       />
       <HomeCard
         image={require('./img/polar.png')}
         title="Polar"
-        description="Email volume of Enron custodians."
+        description="Enron custodian email volume."
         link="PolarView"
       />
     </ScrollView>
