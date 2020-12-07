@@ -8,7 +8,7 @@ import wordcloud from './img/wordcloud.png'
 import volumetimeline from './img/volumetimeline.png'
 import networkgraph from './img/networkgraph.png'
 import treemap from './img/treemap.png'
-import eventTimeline from './img/eventTimeline.png'
+import eventtimeline from './img/eventtimeline.png'
 import polar from './img/polar.png'
 import search from './img/search.png'
 
@@ -61,7 +61,7 @@ export default function HomeView() {
         '/TreeMapView'
       )}
       {makeCard(
-        eventTimeline,
+        eventtimeline,
         'Event Timeline',
         'Enron fraud and litigation events.',
         '/EventTimelineView'
