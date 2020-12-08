@@ -4,7 +4,6 @@ import {
   getBarEChartsConfig,
   getNetworkGraphEChartsConfig,
   getPieEChartsConfig,
-  getPolarEChartsConfig,
   getTreeMapEChartsConfig,
   getVolumeTimelineEChartsConfig,
 } from '../index'
@@ -48,10 +47,6 @@ test('getNetworkGraphEChartsConfig', () => {
 
 test('getPieEChartsConfig', () => {
   expect(getPieEChartsConfig('black', 'foo', emailXfered)).toBeTruthy()
-})
-
-test('getPolarEChartsConfig', () => {
-  expect(getPolarEChartsConfig('black', 'foo', emailXfered)).toBeTruthy()
 })
 
 test('getTreeMapEChartsConfig', () => {

@@ -43,12 +43,6 @@ export default function HomeView() {
         description="Enron custodian email volume."
         link="TreeMapView"
       />
-      <HomeCard
-        image={require('./img/polar.png')}
-        title="Polar"
-        description="Enron custodian email volume."
-        link="PolarView"
-      />
     </ScrollView>
   )
 }

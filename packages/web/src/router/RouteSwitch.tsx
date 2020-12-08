@@ -8,7 +8,6 @@ import EventTimelineView from '../views/EventTimelineView'
 import HomeView from '../views/HomeView'
 import NetworkGraphView from '../views/NetworkGraphView'
 import PieView from '../views/PieView'
-import PolarView from '../views/PolarView'
 import SearchHistoryView from '../views/SearchHistoryView'
 import SearchView from '../views/SearchView'
 import TreeMapView from '../views/TreeMapView'
@@ -43,9 +42,6 @@ export default function RouteSwitch() {
       </Route>
       <Route path="/NetworkGraphView">
         <NetworkGraphView />
-      </Route>
-      <Route path="/PolarView">
-        <PolarView />
       </Route>
       <Route path="/TreeMapView">
         <TreeMapView />

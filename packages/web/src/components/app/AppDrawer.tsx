@@ -46,7 +46,6 @@ export default function AppDrawer({ open, setOpen }: Props) {
       route: '/EventTimelineView',
     },
     { icon: <BarChartIcon />, name: 'Bar', route: '/BarView' },
-    { icon: <PieChart />, name: 'Polar', route: '/PolarView' },
     { icon: <PieChart />, name: 'Pie', route: '/PieView' },
   ]
 

@@ -1,6 +1,5 @@
 export { getBarEChartsConfig } from './BarECharts'
 export { getNetworkGraphEChartsConfig } from './NetworkGraphECharts'
 export { getPieEChartsConfig } from './PieECharts'
-export { getPolarEChartsConfig } from './PolarECharts'
 export { getTreeMapEChartsConfig } from './TreeMapECharts'
 export { getVolumeTimelineEChartsConfig } from './VolumeTimelineECharts'

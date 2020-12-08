@@ -9,8 +9,6 @@ import volumetimeline from './img/volumetimeline.png'
 import networkgraph from './img/networkgraph.png'
 import treemap from './img/treemap.png'
 import eventtimeline from './img/eventtimeline.png'
-import polar from './img/polar.png'
-import search from './img/search.png'
 
 export default function HomeView() {
   const makeCard = (
@@ -66,8 +64,6 @@ export default function HomeView() {
         'Enron fraud and litigation events.',
         '/EventTimelineView'
       )}
-      {makeCard(polar, 'Polar', 'Enron custodian email volume.', '/PolarView')}
-      {makeCard(search, 'Search', 'Full text search.', '/SearchView')}
     </Grid>
   )
 }

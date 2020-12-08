@@ -6,7 +6,6 @@ import EmailDetailView from '../views/EmailDetailView'
 import HomeView from '../views/HomeView'
 import NetworkGraphView from '../views/NetworkGraphView'
 import PieView from '../views/PieView'
-import PolarView from '../views/PolarView'
 import SearchHistoryView from '../views/SearchHistoryView'
 import SearchView from '../views/SearchView'
 import TreeMapView from '../views/TreeMapView'
@@ -20,7 +19,6 @@ export const routeNames = {
   '/PieView': 'Pie',
   '/BarView': 'Bar',
   '/NetworkGraphView': 'Network Graph',
-  '/PolarView': 'Polar',
   '/TreeMapView': 'Tree Map',
   '/VolumeTimelineView': 'Volume Timeline',
   '/EmailDetailView': 'Email Detail',
@@ -47,9 +45,6 @@ export default function RouteSwitch() {
       </Route>
       <Route path="/NetworkGraphView">
         <NetworkGraphView />
-      </Route>
-      <Route path="/PolarView">
-        <PolarView />
       </Route>
       <Route path="/TreeMapView">
         <TreeMapView />
