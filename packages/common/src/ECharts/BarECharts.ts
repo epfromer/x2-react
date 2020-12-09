@@ -6,24 +6,21 @@ export function getBarEChartsConfig(
   data: Array<EmailXferedDatum>,
   gridConfig: unknown
 ): unknown {
-  const chartData: Array<EChartsDatum> = []
-  data.forEach((datum) => {
-    chartData.push({
-      name: datum.name,
-      value: datum.value,
-      itemStyle: {
-        normal: {
+  const chartData = data.map((datum) => ({
+    name: datum.name,
+    value: datum.value,
+    itemStyle: {
+      normal: {
+        color: datum.color,
+        lineStyle: {
           color: datum.color,
-          lineStyle: {
-            color: datum.color,
-          },
-          areaStyle: {
-            color: datum.color,
-          },
+        },
+        areaStyle: {
+          color: datum.color,
         },
       },
-    })
-  })
+    },
+  }))
 
   return {
     title: {

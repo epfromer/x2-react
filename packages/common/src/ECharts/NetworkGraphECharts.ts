@@ -5,7 +5,7 @@ export function getNetworkGraphEChartsConfig(
   data: Array<[string, string, number]>,
   nodes: Array<any>
 ): unknown {
-  const chartNodes: Array<any> = nodes.map((node) => ({
+  const chartNodes = nodes.map((node) => ({
     id: node.id,
     name: node.id,
     category: node.id,
