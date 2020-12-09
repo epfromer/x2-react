@@ -1,4 +1,4 @@
-import { EChartsDatum, EmailXferedDatum } from '../store/types'
+import { EmailXferedDatum } from '../store/types'
 
 export function getPieEChartsConfig(
   textColor = 'black',
