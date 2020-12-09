@@ -20,7 +20,7 @@ export default function TreeMapECharts({
   handleClick,
 }: Props) {
   const theme = useTheme()
-  const onClick = (e: any) => handleClick(search, e.name)
+  const onClick = (e: any) => (e.name ? handleClick(search, e.name) : '')
 
   return (
     <div>
