@@ -21,14 +21,13 @@ export function getTreeMapEChartsConfig(
         color: textColor,
       },
     },
-    tooltip: {
-      trigger: 'item',
-      formatter: '{b}: {c}',
-    },
     series: [
       {
         type: 'treemap',
         data: chartData,
+        animationEasing: 'quinticInOut',
+        animationDuration: 1500,
+        animationDelay: () => Math.random() * 200,
       },
     ],
   }
