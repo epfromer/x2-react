@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 import { Button, Header, Icon, ThemeContext } from 'react-native-elements'
 import { useHistory, useLocation } from 'react-router-native'
 import { textColor } from '../../utils/appThemes'
-import { routeNames } from '../../router/RouteSwitch'
+import { routeNames } from '../../router/AppRouting'
 
 export default function AppTopToolbar() {
   const location = useLocation()

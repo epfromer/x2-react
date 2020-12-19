@@ -1,8 +1,10 @@
 import React from 'react'
-import { Route, Switch } from 'react-router-native'
+import { Route, Switch } from 'react-router-dom'
 import AppSettingsView from '../views/AppSettingsView'
 import BarView from '../views/BarView'
+import ChordView from '../views/ChordView'
 import EmailDetailView from '../views/EmailDetailView'
+import EventTimelineView from '../views/EventTimelineView'
 import HomeView from '../views/HomeView'
 import NetworkGraphView from '../views/NetworkGraphView'
 import PieView from '../views/PieView'
@@ -10,32 +12,27 @@ import SearchHistoryView from '../views/SearchHistoryView'
 import SearchView from '../views/SearchView'
 import TreeMapView from '../views/TreeMapView'
 import VolumeTimelineView from '../views/VolumeTimelineView'
+import WordCloudView from '../views/WordCloudView'
+import ProtectedRoute from './ProtectedRoute'
 
-// https://reactrouter.com/native/guides/quick-start
-
-export const routeNames = {
-  '/AppSettingsView': 'Settings',
-  '/SearchView': 'Search',
-  '/PieView': 'Pie',
-  '/BarView': 'Bar',
-  '/NetworkGraphView': 'Network Graph',
-  '/TreeMapView': 'Tree Map',
-  '/VolumeTimelineView': 'Volume Timeline',
-  '/EmailDetailView': 'Email Detail',
-  '/': 'Home',
-}
-
-export default function RouteSwitch() {
+export default function AppRouting() {
   return (
     <Switch>
-      <Route path="/AppSettingsView">
-        <AppSettingsView />
-      </Route>
+      <ProtectedRoute path="/AppSettingsView" component={AppSettingsView} />
       <Route path="/SearchHistoryView">
         <SearchHistoryView />
       </Route>
       <Route path="/SearchView">
-        <SearchView />
+        <SearchView data-testid="switch" />
+      </Route>
+      <Route path="/ChordView">
+        <ChordView />
+      </Route>
+      <Route path="/WordCloudView">
+        <WordCloudView />
+      </Route>
+      <Route path="/EventTimelineView">
+        <EventTimelineView />
       </Route>
       <Route path="/PieView">
         <PieView />

@@ -1,9 +1,9 @@
 import React from 'react'
 import { renderComp } from '../../setupTests'
-import RouteSwitch from '../RouteSwitch'
+import AppRouting from '../AppRouting'
 
 test('renders', () => {
-  const { getByText } = renderComp(<RouteSwitch />)
+  const { getByText } = renderComp(<AppRouting />)
   const card = getByText('Volume Timeline')
   expect(card).toBeInTheDocument()
 })

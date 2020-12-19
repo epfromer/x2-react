@@ -22,7 +22,7 @@ import './App.css'
 import AppDrawer from './components/app/AppDrawer'
 import AppToolbar from './components/app/AppToolbar'
 import { getTheme } from './utils/appThemes'
-import RouteSwitch from './router/RouteSwitch'
+import AppRouting from './router/AppRouting'
 
 const useStyles = makeStyles((theme) => ({
   root: { display: 'flex' },
@@ -48,7 +48,7 @@ const CoreApp = () => {
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth={false} className={classes.container}>
-          <RouteSwitch />
+          <AppRouting />
         </Container>
       </main>
     </div>
