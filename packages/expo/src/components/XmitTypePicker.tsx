@@ -7,7 +7,7 @@ import { getPickerStyles } from '../utils/pickerStyles'
 interface Props {
   onChange: (value: string) => void
 }
-export default function ChartPicker({ onChange }: Props) {
+export default function XmitTypePicker({ onChange }: Props) {
   const { theme }: any = useContext(ThemeContext)
   const pickerStyles = getPickerStyles(
     textColor(theme),
