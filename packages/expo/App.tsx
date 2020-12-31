@@ -1,9 +1,9 @@
 import {
+  getDarkMode,
   getEmailAsync,
   getInitialDataAsync,
-  loadAppSettingsAsync,
-  getDarkMode,
   getThemeName,
+  loadAppSettingsAsync,
   store,
 } from '@klonzo/common'
 import React from 'react'
@@ -11,10 +11,10 @@ import { ThemeProvider } from 'react-native-elements'
 import 'react-native-gesture-handler'
 import { Provider, useSelector } from 'react-redux'
 import { BackButton, NativeRouter as Router } from 'react-router-native'
-import { getTheme } from './src/utils/appThemes'
 import AppBottomToolbar from './src/components/app/AppBottomToolbar'
 import AppTopToolbar from './src/components/app/AppTopToolbar'
-import RouteSwitch from './src/router/RouteSwitch'
+import AppRouting from './src/router/AppRouting'
+import { getTheme } from './src/utils/appThemes'
 
 getInitialDataAsync(store)
 getEmailAsync(store)
@@ -31,7 +31,7 @@ function ThemedApp() {
       <Router>
         <AppTopToolbar />
         <BackButton />
-        <RouteSwitch />
+        <AppRouting />
         <AppBottomToolbar />
       </Router>
     </ThemeProvider>
