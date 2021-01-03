@@ -71,6 +71,7 @@ export const querySlice = createSlice({
       .addCase(setEmailListPage, (state, action) => {
         state.emailListPage = action.payload
       })
+      // TODO convert clearsearch to basic fn
       .addCase(clearSearch, (state, action) => {
         state.allText = ''
         state.body = ''
