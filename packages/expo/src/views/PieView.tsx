@@ -39,6 +39,7 @@ export default function PieView() {
     },
   })
 
+  // TODO onClick (search for handle)
   function handleClick(search: string, value: string) {
     dispatch(clearSearch())
     const name = value.slice(0, value.search(/,/))
