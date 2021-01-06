@@ -52,9 +52,9 @@ export default function SearchView() {
   const subject = useSelector(getSubject)
   const sent = useSelector(getSent)
   const [dlgOpen, setDlgOpen] = useState(false)
-  const emailsLoading = useSelector(getEmailLoading)
-  const emails = useSelector(getEmail)
-  const totalEmails = useSelector(getEmailTotal)
+  const emailLoading = useSelector(getEmailLoading)
+  const email = useSelector(getEmail)
+  const emailTotal = useSelector(getEmailTotal)
   const emailListPage = useSelector(getEmailListPage)
 
   const styles = StyleSheet.create({
@@ -309,10 +309,10 @@ export default function SearchView() {
     </TouchableOpacity>
   )
 
-  const hasMore = () => (emailListPage + 1) * defaultLimit < totalEmails
+  const hasMore = () => (emailListPage + 1) * defaultLimit < emailTotal
 
   const handleLoadMore = () => {
-    if (hasMore()) {
+    if (hasMore() && !emailLoading) {
       dispatch(setEmailListPage(emailListPage + 1))
       getEmailAsync(store, true)
     }
@@ -340,13 +340,13 @@ export default function SearchView() {
         title={filterList()}
       />
       <Spinner
-        visible={emailsLoading}
+        visible={emailLoading}
         textContent={'Loading...'}
         textStyle={styles.text}
       />
-      {emails && emails.length !== 0 && (
+      {email && email.length !== 0 && (
         <FlatList
-          data={emails}
+          data={email}
           renderItem={renderItem}
           keyExtractor={(item) => item.id}
           onEndReached={handleLoadMore}
@@ -354,7 +354,7 @@ export default function SearchView() {
           initialNumToRender={defaultLimit}
         />
       )}
-      {emails && emails.length === 0 && !emailsLoading && (
+      {email && email.length === 0 && !emailLoading && (
         <View style={styles.loading}>
           <Text style={styles.text}>Nothing found</Text>
         </View>
