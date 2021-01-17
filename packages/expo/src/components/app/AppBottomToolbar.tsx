@@ -31,7 +31,7 @@ export default function AppBottomToolbar() {
       )
       .join('&')
 
-  const handleLoginResponse = (response: any) => {
+  const handleSignInResponse = (response: any) => {
     const decoded: any = jwtDecode(response.params.id_token)
     if (response.type === 'success') {
       dispatch(setAuthenticated(true))
@@ -57,7 +57,7 @@ export default function AppBottomToolbar() {
       authUrl,
       showInRecents: true,
     })
-    return handleLoginResponse(response)
+    return handleSignInResponse(response)
   }
 
   const tabs = [
