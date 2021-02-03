@@ -7,7 +7,7 @@ import HomeView from '../HomeView'
 test('HomeView', async () => {
   const history = createMemoryHistory()
   const { getByText } = renderComp(<HomeView />, history)
-  const button = getByText(/Enron email per day with drill down/i)
+  const button = getByText(/Enron email per day/i)
   await fireEvent.click(button)
   expect(history.location.pathname).toMatch('/VolumeTimelineView')
 })
