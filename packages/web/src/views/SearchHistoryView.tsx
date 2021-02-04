@@ -56,7 +56,7 @@ export default function SearchHistoryView() {
   }
 
   const onSearchHistory = (row: RowParams) => {
-    const o = JSON.parse(row.data.entry)
+    const o = JSON.parse(row.row.entry)
     store.dispatch(clearSearch())
     if (o.hasOwnProperty('sort')) store.dispatch(setSort(o.sort))
     if (o.hasOwnProperty('order')) store.dispatch(setOrder(o.order))
