@@ -38,7 +38,7 @@ export default function CustodianSettings() {
     },
   })
 
-  const handleColorChosen = (color: string) => {
+  const onColorPick = (color: string) => {
     setColorPickerDlgOpen(false)
     if (!color) return
     const server = process.env.REACT_APP_X2_SERVER
@@ -97,7 +97,7 @@ export default function CustodianSettings() {
       <ColorPickerDlg
         open={colorPickerDlgOpen}
         defaultColor={pickedColor}
-        onClose={handleColorChosen}
+        onClose={onColorPick}
         onCancel={() => setColorPickerDlgOpen(false)}
       />
       {custodians?.map((custodian) => renderCustodian(custodian))}
