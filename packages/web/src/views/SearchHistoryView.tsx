@@ -15,7 +15,7 @@ import {
 import Button from '@material-ui/core/Button'
 import Paper from '@material-ui/core/Paper'
 import { makeStyles } from '@material-ui/core/styles'
-import { ColDef, DataGrid, RowParams } from '@material-ui/data-grid'
+import { DataGrid } from '@material-ui/data-grid'
 import { gql, request } from 'graphql-request'
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
@@ -55,7 +55,7 @@ export default function SearchHistoryView() {
       .catch((e) => console.error(e))
   }
 
-  const onSearchHistory = (row: RowParams) => {
+  const onSearchHistory = (row: any) => {
     const o = JSON.parse(row.row.entry)
     store.dispatch(clearSearch())
     if (o.hasOwnProperty('sort')) store.dispatch(setSort(o.sort))
@@ -89,7 +89,7 @@ export default function SearchHistoryView() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const columns: ColDef[] = [
+  const columns = [
     { field: 'id', hide: true },
     { field: 'timestamp', headerName: 'Date', width: 250 },
     { field: 'entry', headerName: 'Search', width: 600 },

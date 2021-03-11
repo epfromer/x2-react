@@ -40,7 +40,6 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "react-virtualized": "^9.22.3",
-    "recharts": "^2.0.6",
     "redux": "^4.0.5",
     "serve": "^11.3.2",
     "victory": "^35.4.8"
