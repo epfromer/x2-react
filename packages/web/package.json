@@ -42,7 +42,7 @@
     "react-virtualized": "^9.22.3",
     "redux": "^4.0.5",
     "serve": "^11.3.2",
-    "victory": "^35.4.8"
+    "victory": "^35.4.11"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.9",
