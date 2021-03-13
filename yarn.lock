@@ -1423,7 +1423,7 @@
   resolved "https://registry.yarnpkg.com/@expo/config-types/-/config-types-40.0.0-beta.2.tgz#4fea4ef5654d02218b02b0b3772529a9ce5b0471"
   integrity sha512-t9pHCQMXOP4nwd7LGXuHkLlFy0JdfknRSCAeVF4Kw2/y+5OBbR9hW9ZVnetpBf0kORrekgiI7K/qDaa3hh5+Qg==
 
-"@expo/config@^3.2.3":
+"@expo/config@^3.2.3", "@expo/config@^3.3.18":
   version "3.3.31"
   resolved "https://registry.yarnpkg.com/@expo/config/-/config-3.3.31.tgz#6651a06230589bb93f031529537fd2b2b36e566e"
   integrity sha512-LRNWctdc9TI7C2BIrqShS97LT+Oe2TuazWh5uFdvxT1gMe7N4TslyLwaYHPiOgetukRtTAOP5+ekXXyc656VdA==
@@ -8774,18 +8774,25 @@ expo-asset@~8.2.0:
     path-browserify "^1.0.0"
     url-parse "^1.4.4"
 
-expo-auth-session@^2.0.0:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/expo-auth-session/-/expo-auth-session-2.0.3.tgz#a1ec7c408910b6d74eef301867e193e373641b00"
-  integrity sha512-BS3mLS7qid2XubzyE9+ip1TpTu7AjFTdPoDDpikG2k8swR4yyPKE4v6CsR5+iwgi71zkYTxxKZPZMmbdwE6deg==
+expo-auth-session@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/expo-auth-session/-/expo-auth-session-3.1.0.tgz#93826633227b590d599b6b22a8ffbf1b007f2f99"
+  integrity sha512-wmhbi2DER5KVTY+gMFr2WhuD8WEXvu9uSJDdYkPnxEVZaGXETu1c7H3ycXZIbiDCGXNLBKWnTWKrW9FpjyTtxQ==
   dependencies:
-    expo-constants "~9.2.0"
-    expo-crypto "~8.3.0"
-    expo-linking "1.0.7"
-    expo-random "~9.0.0"
-    expo-web-browser "~8.5.0"
+    expo-constants "^10.0.0"
+    expo-crypto "^9.0.0"
+    expo-linking "~2.1.0"
+    expo-web-browser "^9.0.0"
     invariant "^2.2.4"
     qs "6.9.1"
+
+expo-constants@^10.0.0, expo-constants@~10.0.0:
+  version "10.0.1"
+  resolved "https://registry.yarnpkg.com/expo-constants/-/expo-constants-10.0.1.tgz#a6cf6998c70ef6e1772a7c4096723482194c5828"
+  integrity sha512-SnMIX1PnTz3AgGcFd+paCb8Ur0WfEiBjEZ7TxCdwpk7XVQO4etCzn6auNutCd4PBc4YVNvmKF9e0WFgLxy4NRQ==
+  dependencies:
+    "@expo/config" "^3.3.18"
+    uuid "^3.3.2"
 
 expo-constants@~9.1.1:
   version "9.1.1"
@@ -8803,10 +8810,10 @@ expo-constants@~9.2.0:
     fbjs "1.0.0"
     uuid "^3.3.2"
 
-expo-crypto@~8.3.0:
-  version "8.3.0"
-  resolved "https://registry.yarnpkg.com/expo-crypto/-/expo-crypto-8.3.0.tgz#b46f09dd813f24b77edb367520b69149496db86e"
-  integrity sha512-PbfxihKJsAkAy5M6jfv5Eiv9pRHU1BjBa7jLcwKDH6aUiWiJNjUvfdwku/Odt/lpXDuNcyDASy4WrD/PZDHtLA==
+expo-crypto@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/expo-crypto/-/expo-crypto-9.0.0.tgz#480c280e81291be8daf6cc55dd990d0dd167b351"
+  integrity sha512-BzfopeSQFIZH4sIMTbbI+p8+c80YXjTtZPmAOM8TFhRI1B1+dZpB9vrpNx4irJIl2iw4YNNK4HgzQcxWcJ/riA==
 
 expo-error-recovery@~1.3.0:
   version "1.3.0"
@@ -8857,12 +8864,22 @@ expo-linear-gradient@~8.3.0:
   resolved "https://registry.yarnpkg.com/expo-linear-gradient/-/expo-linear-gradient-8.3.1.tgz#5dd3878c0700035d55241a4a453c5e224acc60ff"
   integrity sha512-zlWGua8vm7+af4otaSpJlzu0SYIr0aWbL0qICySCDUEKkqig6MqfuI69NYHC0w9ocWZuh2xyj6Rbfy01UqcVSg==
 
-expo-linking@1.0.7, expo-linking@~1.0.4:
+expo-linking@~1.0.4:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/expo-linking/-/expo-linking-1.0.7.tgz#fa5cbf84e65149997d4a3c883c678d44fcbb8245"
   integrity sha512-AhvntaU1PItf73Tm5J7tUVEgCjz/7SeuXg4vLCQgFsEywU0E4Z/jgfQ+30omrrvalBKL3L18cHG9Y4pWmROqgg==
   dependencies:
     expo-constants "~9.2.0"
+    qs "^6.5.0"
+    url-parse "^1.4.4"
+
+expo-linking@~2.1.0:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/expo-linking/-/expo-linking-2.1.1.tgz#90cdf6740f2af4507c5d977a0900e13b03a1ae6a"
+  integrity sha512-pY3d2/eZH0VPtD2f1kPzTuU2cfAVz6s6S4bb8lSTgp1jOmqY1KA2xslMi+vxRQKjqDWvHGsGMsYyUxJIKJzAmw==
+  dependencies:
+    expo-constants "~10.0.0"
+    invariant "^2.2.4"
     qs "^6.5.0"
     url-parse "^1.4.4"
 
@@ -8903,10 +8920,10 @@ expo-sqlite@~8.4.0:
     "@expo/websql" "^1.0.1"
     lodash "^4.17.15"
 
-expo-web-browser@~8.5.0:
-  version "8.5.0"
-  resolved "https://registry.yarnpkg.com/expo-web-browser/-/expo-web-browser-8.5.0.tgz#294fac01d9d7c8e496fddeb0ca7cf58d96a1f159"
-  integrity sha512-ysfGgTd16gjTAcxbywR/07Pye6XUZDoQsfeo+BEzP2kRgCWGJ5ll5WfCVNxcHInp9eo8G+n5nKqhd7Fv4gX7rg==
+expo-web-browser@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/expo-web-browser/-/expo-web-browser-9.0.0.tgz#9e12c0d08f19665cbae7b565a11e9c1b2e584cda"
+  integrity sha512-w9jd5U5Cvo9CbD0K/I7Ol+PCn4OZLqveRENoJ+CA9nP2G35XBwTx4zEd7y05MViYEOfJ1fViCER1/pWwJZYcNg==
   dependencies:
     compare-urls "^2.0.0"
 
@@ -14371,7 +14388,6 @@ minipass-fetch@^1.3.0, minipass-fetch@^1.3.2:
   resolved "https://registry.yarnpkg.com/minipass-fetch/-/minipass-fetch-1.3.3.tgz#34c7cea038c817a8658461bf35174551dce17a0a"
   integrity sha512-akCrLDWfbdAWkMLBxJEeWTdNsjML+dt5YgOI4gJ53vuO0vrmYQkUPxa6j6V65s9CcePIr2SSWqjT2EcrNseryQ==
   dependencies:
-    encoding "^0.1.12"
     minipass "^3.1.0"
     minipass-sized "^1.0.3"
     minizlib "^2.0.0"
@@ -17117,7 +17133,7 @@ react-native-material-bottom-navigation@^1.0.5:
   dependencies:
     prop-types "^15.6.1"
 
-react-native-modal-datetime-picker@^9.1.0:
+react-native-modal-datetime-picker@^9.2.0:
   version "9.2.0"
   resolved "https://registry.yarnpkg.com/react-native-modal-datetime-picker/-/react-native-modal-datetime-picker-9.2.0.tgz#6a5fe70dd0dc86e7f594b76c1c84bb2d9796619a"
   integrity sha512-8/AB4UJ56oytw9UwrUf/VouI4TNmLUEedKnvfdybi8Nse3nanCN8LagEUR6tuFxFT6aM6bCJyARiReznqDIwHA==
@@ -17141,7 +17157,7 @@ react-native-paper@^4.4.0:
     color "^3.1.2"
     react-native-iphone-x-helper "^1.3.1"
 
-react-native-picker-select@^8.0.3:
+react-native-picker-select@^8.0.4:
   version "8.0.4"
   resolved "https://registry.yarnpkg.com/react-native-picker-select/-/react-native-picker-select-8.0.4.tgz#3f7f1f42df69b06e7d2c10338288332a6c40fd10"
   integrity sha512-orBjPIwBkV5oipyVw263YNMI56f6Kj3p/ejabZoCYYNSG3AiLVVhC2RqsxMgDA7IayyURAW+AlV+mDJyVqLBkg==
