@@ -1,24 +1,17 @@
-import {
-  getDarkMode,
-  getUsername,
-  setDarkModeAsync,
-  signOut,
-  store,
-} from '@klonzo/common'
+import { getUsername, signOut, store } from '@klonzo/common'
 import React, { useContext } from 'react'
-import { ScrollView, StyleSheet, Switch, Text, View } from 'react-native'
+import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import { Button, ThemeContext } from 'react-native-elements'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-native'
-import { textColor } from '../utils/appThemes'
 import CustodianSettings from '../components/CustodianSettings'
 import Gravatar from '../components/Gravatar'
 import ThemePicker from '../components/ThemePicker'
+import { textColor } from '../utils/appThemes'
 
 export default function AppSettingsView() {
   const history = useHistory()
   const { theme }: any = useContext(ThemeContext)
-  const darkMode = useSelector(getDarkMode)
   const username = useSelector(getUsername)
 
   const styles = StyleSheet.create({
@@ -46,16 +39,6 @@ export default function AppSettingsView() {
       fontSize: 20,
     },
   })
-
-  const DarkModeSwitch = () => (
-    <View style={styles.itemRow}>
-      <Text style={styles.text}>Dark mode {darkMode ? 'on' : 'off'}</Text>
-      <Switch
-        value={darkMode}
-        onValueChange={() => setDarkModeAsync(store, darkMode ? false : true)}
-      />
-    </View>
-  )
 
   const doSignOut = () => {
     signOut(store)
@@ -85,7 +68,6 @@ export default function AppSettingsView() {
       <SignOutButton />
 
       <Text style={styles.header}>App Theme</Text>
-      <DarkModeSwitch />
       <ThemePicker />
 
       <Text style={styles.header}>Custodian Colors</Text>

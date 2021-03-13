@@ -16,7 +16,7 @@
     "@react-native-picker/picker": "^1.9.12",
     "expo": "~39.0.4",
     "expo-auth-session": "^3.1.0",
-    "expo-random": "~9.0.0",
+    "expo-random": "~11.0.0",
     "get-best-contrast-color": "^0.3.1",
     "graphql": "^15.5.0",
     "graphql-request": "^3.4.0",
