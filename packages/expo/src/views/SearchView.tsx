@@ -62,16 +62,6 @@ export default function SearchView() {
       flex: 1,
       backgroundColor: theme.colors.white,
     },
-    filterButton: {
-      padding: 5,
-      margin: 1,
-      height: 60,
-      color: textColor(theme),
-    },
-    historyButton: {
-      padding: 10,
-      margin: 1,
-    },
     buttonText: {
       color: textColor(theme),
     },
@@ -334,7 +324,6 @@ export default function SearchView() {
       <SearchDlg />
       <Button
         testID="open-dialog"
-        buttonStyle={styles.filterButton}
         titleStyle={styles.buttonText}
         onPress={() => setDlgOpen(true)}
         title={filterList()}
@@ -360,8 +349,6 @@ export default function SearchView() {
         </View>
       )}
       <Button
-        buttonStyle={styles.historyButton}
-        titleStyle={styles.buttonText}
         onPress={() => history.push('/SearchHistoryView')}
         title="Search History"
       />

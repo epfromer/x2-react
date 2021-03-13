@@ -77,7 +77,7 @@ export default function AppBottomToolbar() {
     },
     {
       key: 'settings',
-      icon: 'settings',
+      icon: 'build',
       label: 'Settings',
       barColor,
       action: () => signIn(),

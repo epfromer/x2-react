@@ -23,7 +23,6 @@ import LoadingIndicator from '../components/LoadingIndicator'
 
 const useStyles = makeStyles((theme) => ({
   root: { width: '100%', marginTop: theme.spacing(2) },
-  button: { margin: 15 },
   text: { padding: 15 },
 }))
 
@@ -99,13 +98,7 @@ export default function SearchHistoryView() {
     <div className={classes.root}>
       <Paper>
         {logLoading && <LoadingIndicator />}
-        <Button
-          variant="contained"
-          color="secondary"
-          className={classes.button}
-          onClick={onClearHistory}
-          data-testid="clear-history"
-        >
+        <Button onClick={onClearHistory} data-testid="clear-history">
           Clear History
         </Button>
         {!log.length && <div className={classes.text}>No log entries.</div>}

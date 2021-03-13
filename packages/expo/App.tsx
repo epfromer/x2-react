@@ -21,7 +21,6 @@ getEmailAsync(store)
 // TODO - get initial dark mode from OS
 loadAppSettingsAsync(store)
 
-// TODO - change dark mode doesn't update theme; fixed in 3.0
 function ThemedApp() {
   return (
     <ThemeProvider
