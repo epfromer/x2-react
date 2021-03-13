@@ -57,6 +57,7 @@ export default function AppBottomToolbar() {
       authUrl,
       showInRecents: true,
     })
+    console.log(response)
     return handleSignInResponse(response)
   }
 
