@@ -47,6 +47,11 @@ export default function AppBottomToolbar() {
       return
     }
 
+    // TODO fix auth0 for android
+    // as of 3/14/2021, auth0 doesn't seem to work with expo on Android, works fine on iPhone
+    // https://stackoverflow.com/questions/65099718/how-to-specify-the-redirect-uri-for-react-native-bare-workflow
+    // https://community.auth0.com/t/how-to-specify-the-redirect-uri-for-react-native-bare-workflow/54178
+
     const params = {
       client_id: ENV.auth0ClientId,
       redirect_uri: AuthSessionNew.makeRedirectUri({ useProxy: true }),
