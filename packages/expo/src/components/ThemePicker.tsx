@@ -2,10 +2,10 @@ import { setThemeNameAsync, store } from '@klonzo/common'
 import React, { useContext } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { Button, ThemeContext } from 'react-native-elements'
-import { AppTheme, appThemes } from '../utils/appThemes'
+import { AppTheme, appThemes, getTheme } from '../utils/appThemes'
 
 export default function ThemePicker() {
-  const { theme }: any = useContext(ThemeContext)
+  const { theme, replaceTheme }: any = useContext(ThemeContext)
 
   const styles = StyleSheet.create({
     container: { flex: 1, backgroundColor: theme.colors.white },
@@ -25,6 +25,11 @@ export default function ThemePicker() {
     height: 30,
   })
 
+  const setTheme = (themeName: string) => {
+    setThemeNameAsync(store, themeName)
+    replaceTheme(getTheme(themeName))
+  }
+
   const renderTheme = (t: AppTheme) => (
     <View style={styles.themeContainer} key={t.name}>
       <View style={styles.itemRow}>
@@ -34,7 +39,7 @@ export default function ThemePicker() {
         <View>
           <Button
             buttonStyle={getButtonStyle(t)}
-            onPress={() => setThemeNameAsync(store, t.name)}
+            onPress={() => setTheme(t.name)}
           />
         </View>
       </View>

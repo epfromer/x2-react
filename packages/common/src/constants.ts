@@ -1,5 +1,5 @@
 export const defaultLimit = 50
-export const defaultThemeName = 'Red'
+export const defaultThemeName = 'Blue'
 export const importLoc = 'c:/github/outlook/'
 export const maxFromLength = 25
 export const maxSubjectLength = 40

@@ -18,7 +18,6 @@ import { getTheme } from './src/utils/appThemes'
 
 getInitialDataAsync(store)
 getEmailAsync(store)
-// TODO - get initial dark mode from OS
 loadAppSettingsAsync(store)
 
 function ThemedApp() {
