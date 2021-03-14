@@ -1,4 +1,4 @@
-import { setAuthenticated, setUsername } from '@klonzo/common'
+import { getAuthenticated, setAuthenticated, setUsername } from '@klonzo/common'
 import * as AuthSessionNew from 'expo-auth-session'
 import jwtDecode from 'jwt-decode'
 import React, { useContext, useState } from 'react'
@@ -6,7 +6,7 @@ import { Icon, ThemeContext } from 'react-native-elements'
 import BottomNavigation, {
   FullTab,
 } from 'react-native-material-bottom-navigation'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-native'
 import ENV from '../../../env'
 import { textColor } from '../../utils/appThemes'
@@ -18,6 +18,7 @@ export default function AppBottomToolbar() {
   const history = useHistory()
   const [activeTab, setActiveTab] = useState('home')
   const { theme }: any = useContext(ThemeContext)
+  const authenticated = useSelector(getAuthenticated)
   const barColor = theme.Header.containerStyle.backgroundColor
 
   const toQueryString = (params: any) =>
@@ -41,24 +42,28 @@ export default function AppBottomToolbar() {
   }
 
   const signIn = async () => {
-    const params = {
-      client_id: ENV.auth0ClientId,
-      redirect_uri: AuthSessionNew.makeRedirectUri({ useProxy: true }),
-      // response_type:
-      // id_token will return a JWT token with the profile as described on the scope
-      // token will return access_token to use with further api calls
-      response_type: 'token id_token',
-      nonce: 'nonce', // ideally, this will be a random value
-      rememberLastLogin: true,
+    if (!authenticated) {
+      const params = {
+        client_id: ENV.auth0ClientId,
+        redirect_uri: AuthSessionNew.makeRedirectUri({ useProxy: true }),
+        // response_type:
+        // id_token will return a JWT token with the profile as described on the scope
+        // token will return access_token to use with further api calls
+        response_type: 'token id_token',
+        nonce: 'nonce', // ideally, this will be a random value
+        rememberLastLogin: true,
+      }
+      const queryParams = toQueryString(params)
+      const authUrl = `https://${ENV.auth0Domain}/authorize${queryParams}`
+      const response = await AuthSessionNew.startAsync({
+        authUrl,
+        showInRecents: true,
+      })
+      if (response.type === 'success') {
+        dispatch(setAuthenticated(true))
+        handleSignInResponse(response)
+      }
     }
-    const queryParams = toQueryString(params)
-    const authUrl = `https://${ENV.auth0Domain}/authorize${queryParams}`
-    const response = await AuthSessionNew.startAsync({
-      authUrl,
-      showInRecents: true,
-    })
-    console.log(response)
-    return handleSignInResponse(response)
   }
 
   const tabs = [
