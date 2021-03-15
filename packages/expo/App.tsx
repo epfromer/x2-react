@@ -20,6 +20,11 @@ getInitialDataAsync(store)
 getEmailAsync(store)
 loadAppSettingsAsync(store)
 
+// TODO fix RNE theme
+// RNE themeing is not truly dynamic.  If the theme for ThemeProvider changes,
+// the new theme isn't deployed.  Need to do an updateTheme.  However, since the
+// default theme is set first, then the user selected theme async  2nd, it never gets
+// updated.  Need to await loadAppSettingsAsync and then set the theme in ThemeProvider.
 function ThemedApp() {
   return (
     <ThemeProvider
