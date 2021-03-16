@@ -1,7 +1,12 @@
-import { EmailXferedDatum, getBarEChartsConfig } from '@klonzo/common'
-import React, { useContext } from 'react'
+import {
+  blackBackground,
+  EmailXferedDatum,
+  getBarEChartsConfig,
+  getDarkMode,
+} from '@klonzo/common'
+import React from 'react'
 import { ECharts } from 'react-native-echarts-wrapper'
-import { ThemeContext } from 'react-native-elements'
+import { useSelector } from 'react-redux'
 
 // https://www.npmjs.com/package/react-native-echarts-wrapper
 // https://echarts.apache.org/examples/en/index.html#chart-type-bar
@@ -18,14 +23,15 @@ export default function BarECharts({
   data,
   handleClick,
 }: Props) {
-  const { theme }: any = useContext(ThemeContext)
+  const darkMode = useSelector(getDarkMode)
+
   return (
     <ECharts
       onData={(o: any) => handleClick(search, o.name)}
       additionalCode={`chart.on('click', p => sendData(p.data));`}
-      backgroundColor={theme.colors.white}
+      backgroundColor={darkMode ? blackBackground : 'white'}
       option={getBarEChartsConfig(
-        theme.colors.black,
+        darkMode ? 'white' : 'black',
         title,
         data.map((datum) => datum).reverse(),
         { left: 100 }

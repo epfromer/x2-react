@@ -1,4 +1,5 @@
 import {
+  blackBackground,
   clearSearch,
   getCustodians,
   getCustodiansLoading,
@@ -37,7 +38,7 @@ export default function PieView() {
     container: {
       flex: 1,
       flexDirection: 'column',
-      backgroundColor: darkMode ? 'black' : 'white',
+      backgroundColor: darkMode ? blackBackground : 'white',
     },
     chart: {
       flex: 9,
@@ -45,7 +46,7 @@ export default function PieView() {
     selectRow: {
       flex: 1,
       flexDirection: 'row',
-      backgroundColor: darkMode ? 'black' : 'white',
+      backgroundColor: darkMode ? blackBackground : 'white',
       justifyContent: 'space-evenly',
     },
   })

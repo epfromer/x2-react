@@ -1,7 +1,12 @@
-import { EmailSentByDay, getVolumeTimelineEChartsConfig } from '@klonzo/common'
-import React, { useContext } from 'react'
+import {
+  blackBackground,
+  EmailSentByDay,
+  getDarkMode,
+  getVolumeTimelineEChartsConfig,
+} from '@klonzo/common'
+import React from 'react'
 import { ECharts } from 'react-native-echarts-wrapper'
-import { ThemeContext } from 'react-native-elements'
+import { useSelector } from 'react-redux'
 
 // https://www.npmjs.com/package/react-native-echarts-wrapper
 
@@ -11,12 +16,17 @@ interface Props {
   handleClick: (date: string) => void
 }
 export default function VolumeTimelineECharts({ title, data }: Props) {
-  const { theme }: any = useContext(ThemeContext)
+  const darkMode = useSelector(getDarkMode)
+
   return (
     <ECharts
       additionalCode={`chart.on('click', p => sendData(p.data.name));`}
-      backgroundColor={theme.colors.white}
-      option={getVolumeTimelineEChartsConfig(theme.colors.black, title, data)}
+      backgroundColor={darkMode ? blackBackground : 'white'}
+      option={getVolumeTimelineEChartsConfig(
+        darkMode ? 'white' : 'black',
+        title,
+        data
+      )}
     />
   )
 }

@@ -1,7 +1,11 @@
-import { getNetworkGraphEChartsConfig } from '@klonzo/common'
-import React, { useContext } from 'react'
+import {
+  blackBackground,
+  getDarkMode,
+  getNetworkGraphEChartsConfig,
+} from '@klonzo/common'
+import React from 'react'
 import { ECharts } from 'react-native-echarts-wrapper'
-import { ThemeContext } from 'react-native-elements'
+import { useSelector } from 'react-redux'
 
 // https://www.npmjs.com/package/react-native-echarts-wrapper
 // https://echarts.apache.org/examples/en/editor.html?c=graph
@@ -18,14 +22,15 @@ export default function NetworkGraphECharts({
   nodes,
   handleClick,
 }: Props) {
-  const { theme }: any = useContext(ThemeContext)
+  const darkMode = useSelector(getDarkMode)
+
   return (
     <ECharts
       onData={(o: any) => handleClick(o.target, o.source)}
       additionalCode={`chart.on('click', p => sendData(p.data));`}
-      backgroundColor={theme.colors.white}
+      backgroundColor={darkMode ? blackBackground : 'white'}
       option={getNetworkGraphEChartsConfig(
-        theme.colors.black,
+        darkMode ? 'white' : 'black',
         title,
         data,
         nodes
