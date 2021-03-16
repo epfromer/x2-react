@@ -1,16 +1,19 @@
 import {
   clearSearch,
-  getEmailAsync,
   getCustodians,
+  getCustodiansLoading,
+  getDarkMode,
+  getEmailAsync,
   getEmailReceivers,
   getEmailSenders,
   setFrom,
   setTo,
   store,
 } from '@klonzo/common'
-import React, { useContext, useState } from 'react'
-import { SafeAreaView, StyleSheet } from 'react-native'
-import { Button, ThemeContext } from 'react-native-elements'
+import React, { useState } from 'react'
+import { SafeAreaView, StyleSheet, View } from 'react-native'
+import { Button } from 'react-native-elements'
+import Spinner from 'react-native-loading-spinner-overlay'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-native'
 import ChartPicker from '../components/ChartPicker'
@@ -24,15 +27,26 @@ export default function BarView() {
   const history = useHistory()
   const [isSenders, setIsSenders] = useState(true)
   const [chartLib, setChartLib] = useState('ECharts')
+  const custodiansLoading = useSelector(getCustodiansLoading)
   const custodians = useSelector(getCustodians)
   const emailSenders = useSelector(getEmailSenders)
   const emailReceivers = useSelector(getEmailReceivers)
-  const { theme }: any = useContext(ThemeContext)
+  const darkMode = useSelector(getDarkMode)
 
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: theme.colors.white,
+      flexDirection: 'column',
+      backgroundColor: darkMode ? 'black' : 'white',
+    },
+    chart: {
+      flex: 9,
+    },
+    selectRow: {
+      flex: 1,
+      flexDirection: 'row',
+      backgroundColor: darkMode ? 'black' : 'white',
+      justifyContent: 'space-evenly',
     },
   })
 
@@ -46,72 +60,80 @@ export default function BarView() {
 
   return (
     <SafeAreaView style={styles.container}>
-      {custodians && (
-        <>
-          {chartLib === 'ECharts' && (
-            <>
-              {isSenders && (
-                <BarECharts
-                  title="Senders"
-                  search="from"
-                  data={emailSenders}
-                  handleClick={handleClick}
-                />
-              )}
-              {!isSenders && (
-                <BarECharts
-                  title="Receivers"
-                  search="to"
-                  data={emailReceivers}
-                  handleClick={handleClick}
-                />
-              )}
-            </>
-          )}
-          {chartLib === 'Victory' && (
-            <>
-              {isSenders && (
-                <BarVictory
-                  title="Senders"
-                  search="from"
-                  data={emailSenders}
-                  handleClick={handleClick}
-                />
-              )}
-              {!isSenders && (
-                <BarVictory
-                  title="Receivers"
-                  search="to"
-                  data={emailReceivers}
-                  handleClick={handleClick}
-                />
-              )}
-            </>
-          )}
-          {chartLib === 'Highcharts' && (
-            <>
-              {isSenders && (
-                <BarHighcharts
-                  title="Senders"
-                  search="from"
-                  data={emailSenders}
-                  handleClick={handleClick}
-                />
-              )}
-              {!isSenders && (
-                <BarHighcharts
-                  title="Receivers"
-                  search="to"
-                  data={emailReceivers}
-                  handleClick={handleClick}
-                />
-              )}
-            </>
-          )}
-        </>
-      )}
-      <XmitTypePicker onChange={(value) => setIsSenders(value === 'Senders')} />
-      <ChartPicker onChange={(value) => setChartLib(value)} />
+      <Spinner visible={custodiansLoading} textContent={'Loading...'} />
+      <View style={styles.chart}>
+        {custodians && (
+          <>
+            {chartLib === 'ECharts' && (
+              <>
+                {isSenders && (
+                  <BarECharts
+                    title="Senders"
+                    search="from"
+                    data={emailSenders}
+                    handleClick={handleClick}
+                  />
+                )}
+                {!isSenders && (
+                  <BarECharts
+                    title="Receivers"
+                    search="to"
+                    data={emailReceivers}
+                    handleClick={handleClick}
+                  />
+                )}
+              </>
+            )}
+            {chartLib === 'Victory' && (
+              <>
+                {isSenders && (
+                  <BarVictory
+                    title="Senders"
+                    search="from"
+                    data={emailSenders}
+                    handleClick={handleClick}
+                  />
+                )}
+                {!isSenders && (
+                  <BarVictory
+                    title="Receivers"
+                    search="to"
+                    data={emailReceivers}
+                    handleClick={handleClick}
+                  />
+                )}
+              </>
+            )}
+            {chartLib === 'Highcharts' && (
+              <>
+                {isSenders && (
+                  <BarHighcharts
+                    title="Senders"
+                    search="from"
+                    data={emailSenders}
+                    handleClick={handleClick}
+                  />
+                )}
+                {!isSenders && (
+                  <BarHighcharts
+                    title="Receivers"
+                    search="to"
+                    data={emailReceivers}
+                    handleClick={handleClick}
+                  />
+                )}
+              </>
+            )}
+          </>
+        )}
+      </View>
+      <View style={styles.selectRow}>
+        <XmitTypePicker
+          onChange={(value) => setIsSenders(value === 'Senders')}
+        />
+        <ChartPicker onChange={(value) => setChartLib(value)} />
+      </View>
+
       {process.env.NODE_ENV === 'test' && (
         <Button
           onPress={() => handleClick('from', 'foo')}
