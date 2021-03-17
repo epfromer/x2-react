@@ -5,9 +5,8 @@ import {
   getDarkMode,
   getPieHighchartsConfig,
 } from '@klonzo/common'
-import React, { useContext } from 'react'
+import React from 'react'
 import { StyleSheet } from 'react-native'
-import { ThemeContext } from 'react-native-elements'
 import { useSelector } from 'react-redux'
 
 // https://www.npmjs.com/package/react-native-echarts-wrapper
@@ -25,14 +24,13 @@ export default function PieHighcharts({
   data,
   handleClick,
 }: Props) {
-  const { theme }: any = useContext(ThemeContext)
   const darkMode = useSelector(getDarkMode)
 
   return (
     <HighchartsReactNative
       styles={styles.container}
       options={getPieHighchartsConfig(
-        theme.colors.black,
+        darkMode ? 'white' : 'black',
         title,
         search,
         data,

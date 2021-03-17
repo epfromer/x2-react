@@ -1,8 +1,13 @@
 import HighchartsReactNative from '@highcharts/highcharts-react-native'
-import { EmailXferedDatum, getBarHighchartsConfig } from '@klonzo/common'
-import React, { useContext } from 'react'
+import {
+  blackBackground,
+  EmailXferedDatum,
+  getBarHighchartsConfig,
+  getDarkMode,
+} from '@klonzo/common'
+import React from 'react'
 import { StyleSheet } from 'react-native'
-import { ThemeContext } from 'react-native-elements'
+import { useSelector } from 'react-redux'
 
 interface Props {
   title: string
@@ -16,16 +21,17 @@ export default function BarHighcharts({
   data,
   handleClick,
 }: Props) {
-  const { theme }: any = useContext(ThemeContext)
+  const darkMode = useSelector(getDarkMode)
+
   return (
     <HighchartsReactNative
       styles={styles.container}
       options={getBarHighchartsConfig(
-        theme.colors.black,
+        darkMode ? 'white' : 'black',
         title,
         search,
         data,
-        theme.colors.white,
+        darkMode ? blackBackground : 'white',
         handleClick
       )}
     />

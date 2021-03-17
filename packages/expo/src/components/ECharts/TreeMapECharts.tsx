@@ -1,7 +1,11 @@
-import { getTreeMapEChartsConfig } from '@klonzo/common'
-import React, { useContext } from 'react'
+import {
+  blackBackground,
+  getDarkMode,
+  getTreeMapEChartsConfig,
+} from '@klonzo/common'
+import React from 'react'
 import { ECharts } from 'react-native-echarts-wrapper'
-import { ThemeContext } from 'react-native-elements'
+import { useSelector } from 'react-redux'
 
 // https://www.npmjs.com/package/react-native-echarts-wrapper
 // https://echarts.apache.org/examples/en/index.html#chart-type-treemap
@@ -18,13 +22,18 @@ export default function TreeMapECharts({
   data,
   handleClick,
 }: Props) {
-  const { theme }: any = useContext(ThemeContext)
+  const darkMode = useSelector(getDarkMode)
+
   return (
     <ECharts
       onData={(name: string) => handleClick(search, name)}
       additionalCode={`chart.on('click', p => sendData(p.data.name));`}
-      backgroundColor={theme.colors.white}
-      option={getTreeMapEChartsConfig(theme.colors.black, title, data)}
+      backgroundColor={darkMode ? blackBackground : 'white'}
+      option={getTreeMapEChartsConfig(
+        darkMode ? 'white' : 'black',
+        title,
+        data
+      )}
     />
   )
 }

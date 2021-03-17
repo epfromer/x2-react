@@ -1,8 +1,13 @@
 import HighchartsReactNative from '@highcharts/highcharts-react-native'
-import { EmailSentByDay, getVolumeTimeHighchartsConfig } from '@klonzo/common'
-import React, { useContext } from 'react'
+import {
+  blackBackground,
+  EmailSentByDay,
+  getDarkMode,
+  getVolumeTimeHighchartsConfig,
+} from '@klonzo/common'
+import React from 'react'
 import { StyleSheet } from 'react-native'
-import { ThemeContext } from 'react-native-elements'
+import { useSelector } from 'react-redux'
 
 // https://www.npmjs.com/package/react-native-echarts-wrapper
 // https://www.highcharts.com/demo/line-time-series
@@ -17,15 +22,16 @@ export default function VolumeTimelineHighcharts({
   data,
   handleClick,
 }: Props) {
-  const { theme }: any = useContext(ThemeContext)
+  const darkMode = useSelector(getDarkMode)
+
   return (
     <HighchartsReactNative
       styles={styles.container}
       options={getVolumeTimeHighchartsConfig(
-        theme.colors.black,
+        darkMode ? 'white' : 'black',
         title,
         data,
-        theme.colors.white,
+        darkMode ? blackBackground : 'white',
         handleClick
       )}
     />
