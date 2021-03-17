@@ -51,7 +51,7 @@ export default function BarVictory({ data }: Props) {
         <VictoryAxis
           style={{
             tickLabels: {
-              fill: darkMode ? 'black' : 'white',
+              fill: darkMode ? 'white' : 'black',
               fontSize: 10,
             },
           }}
@@ -60,7 +60,7 @@ export default function BarVictory({ data }: Props) {
           dependentAxis
           style={{
             tickLabels: {
-              fill: darkMode ? 'black' : 'white',
+              fill: darkMode ? 'white' : 'black',
               fontSize: 10,
             },
           }}

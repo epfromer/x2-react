@@ -66,7 +66,7 @@ export default function VolumeTimelineVictory({ data }: Props) {
         <VictoryAxis
           style={{
             tickLabels: {
-              fill: darkMode ? 'black' : 'white',
+              fill: darkMode ? 'white' : 'black',
               fontSize: 8,
               padding: 1,
             },
@@ -76,7 +76,7 @@ export default function VolumeTimelineVictory({ data }: Props) {
           dependentAxis
           style={{
             tickLabels: {
-              fill: darkMode ? 'black' : 'white',
+              fill: darkMode ? 'white' : 'black',
               fontSize: 8,
               padding: 1,
             },
@@ -87,7 +87,7 @@ export default function VolumeTimelineVictory({ data }: Props) {
             data: { stroke: '#c43a31' },
             labels: {
               fontSize: 15,
-              fill: darkMode ? 'black' : 'white',
+              fill: darkMode ? 'white' : 'black',
             },
           }}
           animate={{

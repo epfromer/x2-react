@@ -40,7 +40,7 @@ export default function PieVictory({ data }: Props) {
             fill: ({ datum }: any) => datum.color,
           },
           labels: {
-            fill: darkMode ? 'black' : 'white',
+            fill: darkMode ? 'white' : 'black',
             fontSize: 10,
           },
         }}
