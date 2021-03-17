@@ -1,16 +1,26 @@
-import { setThemeNameAsync, store } from '@klonzo/common'
+import {
+  blackBackground,
+  getDarkMode,
+  setThemeNameAsync,
+  store,
+} from '@klonzo/common'
 import React, { useContext } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { Button, ThemeContext } from 'react-native-elements'
+import { useSelector } from 'react-redux'
 import { AppTheme, appThemes, getTheme } from '../utils/appThemes'
 
 export default function ThemePicker() {
-  const { theme, replaceTheme }: any = useContext(ThemeContext)
+  const { replaceTheme }: any = useContext(ThemeContext)
+  const darkMode = useSelector(getDarkMode)
 
   const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: theme.colors.white },
+    container: {
+      flex: 1,
+      backgroundColor: darkMode ? blackBackground : 'white',
+    },
     themeContainer: { marginTop: 10 },
-    text: { marginTop: 5, color: theme.colors.black },
+    text: { marginTop: 5, color: darkMode ? 'white' : 'black' },
     itemRow: {
       flexDirection: 'row',
       justifyContent: 'space-between',

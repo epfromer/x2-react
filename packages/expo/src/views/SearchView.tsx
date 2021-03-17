@@ -1,4 +1,5 @@
 import {
+  blackBackground,
   defaultLimit,
   getAllText,
   getDarkMode,
@@ -21,7 +22,7 @@ import {
   setTo,
   store,
 } from '@klonzo/common'
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import {
   FlatList,
   KeyboardAvoidingView,
@@ -32,20 +33,18 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
-import { Button, Icon, Input, ThemeContext } from 'react-native-elements'
+import { Button, Icon, Input } from 'react-native-elements'
 import Spinner from 'react-native-loading-spinner-overlay'
 import Modal from 'react-native-modal'
 import DateTimePickerModal from 'react-native-modal-datetime-picker'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-native'
-import { textColor } from '../utils/appThemes'
 
 const FILTER_DATE = '2000-10-04'
 
 export default function SearchView() {
   const dispatch = useDispatch()
   const history = useHistory()
-  const { theme }: any = useContext(ThemeContext)
   const allText = useSelector(getAllText)
   const from = useSelector(getFrom)
   const to = useSelector(getTo)
@@ -56,14 +55,15 @@ export default function SearchView() {
   const email = useSelector(getEmail)
   const emailTotal = useSelector(getEmailTotal)
   const emailListPage = useSelector(getEmailListPage)
+  const darkMode = useSelector(getDarkMode)
 
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: theme.colors.white,
+      backgroundColor: darkMode ? blackBackground : 'white',
     },
     buttonText: {
-      color: textColor(theme),
+      color: darkMode ? 'white' : 'black',
     },
     button: {
       width: 80,
@@ -78,14 +78,14 @@ export default function SearchView() {
     bold: {
       fontSize: 15,
       fontWeight: 'bold',
-      color: theme.colors.black,
+      color: darkMode ? 'white' : 'black',
     },
     topField: {
       marginTop: 15,
-      color: theme.colors.black,
+      color: darkMode ? 'white' : 'black',
     },
     text: {
-      color: theme.colors.black,
+      color: darkMode ? 'white' : 'black',
     },
     loading: {
       margin: 50,
@@ -149,7 +149,7 @@ export default function SearchView() {
       <Modal
         isVisible={dlgOpen}
         backdropOpacity={0.95}
-        backdropColor={theme.colors.white}
+        backdropColor={darkMode ? blackBackground : 'white'}
         supportedOrientations={['portrait', 'landscape']}
       >
         <SentDatePicker />
@@ -331,7 +331,7 @@ export default function SearchView() {
       <Spinner
         visible={emailLoading}
         textContent={'Loading...'}
-        textStyle={styles.text}
+        color={darkMode ? 'white' : 'black'}
       />
       {email && email.length !== 0 && (
         <FlatList

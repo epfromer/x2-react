@@ -1,5 +1,7 @@
 import {
+  blackBackground,
   clearSearch,
+  getDarkMode,
   getEmailAsync,
   SearchHistoryEntry,
   setAllText,
@@ -14,7 +16,7 @@ import {
   x2Server,
 } from '@klonzo/common'
 import { gql, request } from 'graphql-request'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   FlatList,
   SafeAreaView,
@@ -23,25 +25,26 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
-import { Button, ThemeContext } from 'react-native-elements'
+import { Button } from 'react-native-elements'
 import Spinner from 'react-native-loading-spinner-overlay'
+import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-native'
 
 export default function SearchHistoryView() {
   const history = useHistory()
-  const { theme }: any = useContext(ThemeContext)
   const [log, setLog] = useState<SearchHistoryEntry[]>([])
   const [logLoading, setLogLoading] = useState(false)
+  const darkMode = useSelector(getDarkMode)
 
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: theme.colors.white,
+      backgroundColor: darkMode ? blackBackground : 'white',
     },
     bold: {
       fontSize: 15,
       fontWeight: 'bold',
-      color: theme.colors.black,
+      color: darkMode ? 'white' : 'black',
     },
 
     historyButton: {
@@ -56,7 +59,7 @@ export default function SearchHistoryView() {
       justifyContent: 'space-between',
     },
     text: {
-      color: theme.colors.black,
+      color: darkMode ? 'white' : 'black',
       marginBottom: 10,
     },
   })
@@ -131,7 +134,11 @@ export default function SearchHistoryView() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Spinner visible={logLoading} textContent={'Loading...'} />
+      <Spinner
+        visible={logLoading}
+        color={darkMode ? 'white' : 'black'}
+        textContent={'Loading...'}
+      />
       {log && log.length !== 0 && (
         <FlatList
           data={log}

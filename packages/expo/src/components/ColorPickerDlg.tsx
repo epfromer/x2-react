@@ -5,6 +5,8 @@ import { ColorPicker } from 'react-native-color-picker'
 import { Button, ThemeContext } from 'react-native-elements'
 import { textColor } from '../utils/appThemes'
 import Modal from 'react-native-modal'
+import { useSelector } from 'react-redux'
+import { blackBackground, getDarkMode } from '@klonzo/common'
 
 interface Props {
   open: boolean
@@ -31,12 +33,13 @@ export default function ColorPickerDlg({
       height: 50,
     },
   })
+  const darkMode = useSelector(getDarkMode)
 
   return (
     <Modal
       isVisible={open}
       backdropOpacity={0.95}
-      backdropColor={theme.colors.white}
+      backdropColor={darkMode ? blackBackground : 'white'}
       supportedOrientations={['portrait', 'landscape']}
     >
       <ColorPicker

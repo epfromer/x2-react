@@ -1,7 +1,7 @@
-import { EmailXferedDatum } from '@klonzo/common'
-import React, { useContext, useState } from 'react'
+import { EmailXferedDatum, getDarkMode } from '@klonzo/common'
+import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
-import { ThemeContext } from 'react-native-elements'
+import { useSelector } from 'react-redux'
 import { VictoryAxis, VictoryBar, VictoryChart } from 'victory-native'
 
 // https://formidable.com/open-source/victory/docs/victory-bar
@@ -13,8 +13,8 @@ interface Props {
   handleClick: (search: string, name: string) => void
 }
 export default function BarVictory({ data }: Props) {
-  const { theme }: any = useContext(ThemeContext)
   const [orientation, setOrientation] = useState('portrait')
+  const darkMode = useSelector(getDarkMode)
 
   interface Datum {
     x: string
@@ -51,7 +51,7 @@ export default function BarVictory({ data }: Props) {
         <VictoryAxis
           style={{
             tickLabels: {
-              fill: theme.colors.black,
+              fill: darkMode ? 'black' : 'white',
               fontSize: 10,
             },
           }}
@@ -60,7 +60,7 @@ export default function BarVictory({ data }: Props) {
           dependentAxis
           style={{
             tickLabels: {
-              fill: theme.colors.black,
+              fill: darkMode ? 'black' : 'white',
               fontSize: 10,
             },
           }}

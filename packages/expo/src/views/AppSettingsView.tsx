@@ -1,4 +1,10 @@
-import { getUsername, signOut, store } from '@klonzo/common'
+import {
+  blackBackground,
+  getDarkMode,
+  getUsername,
+  signOut,
+  store,
+} from '@klonzo/common'
 import React, { useContext } from 'react'
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import { Button, ThemeContext } from 'react-native-elements'
@@ -13,15 +19,16 @@ export default function AppSettingsView() {
   const history = useHistory()
   const { theme }: any = useContext(ThemeContext)
   const username = useSelector(getUsername)
+  const darkMode = useSelector(getDarkMode)
 
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: theme.colors.white,
+      backgroundColor: darkMode ? blackBackground : 'white',
     },
     text: {
       marginTop: 5,
-      color: theme.colors.black,
+      backgroundColor: darkMode ? blackBackground : 'white',
     },
     buttonText: {
       color: textColor(theme),
@@ -33,7 +40,7 @@ export default function AppSettingsView() {
       margin: 10,
     },
     header: {
-      color: theme.colors.black,
+      color: darkMode ? 'white' : 'black',
       marginTop: 5,
       marginLeft: 10,
       fontSize: 20,

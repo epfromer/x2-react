@@ -62,7 +62,11 @@ export default function VolumeTimelineView() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Spinner visible={emailSentLoading} textContent={'Loading...'} />
+      <Spinner
+        visible={emailSentLoading}
+        textContent={'Loading...'}
+        color={darkMode ? 'white' : 'black'}
+      />
       <View style={styles.chart}>
         {emailSent && (
           <>

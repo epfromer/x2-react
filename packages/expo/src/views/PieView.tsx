@@ -61,7 +61,11 @@ export default function PieView() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Spinner visible={custodiansLoading} textContent={'Loading...'} />
+      <Spinner
+        visible={custodiansLoading}
+        color={darkMode ? 'white' : 'black'}
+        textContent={'Loading...'}
+      />
       <View style={styles.chart}>
         {custodians && (
           <>

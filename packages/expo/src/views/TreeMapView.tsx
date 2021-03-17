@@ -1,17 +1,19 @@
 import {
+  blackBackground,
   clearSearch,
-  getEmailAsync,
   getCustodians,
   getCustodiansLoading,
+  getDarkMode,
+  getEmailAsync,
   getEmailReceivers,
   getEmailSenders,
   setFrom,
   setTo,
   store,
 } from '@klonzo/common'
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
-import { Button, ThemeContext } from 'react-native-elements'
+import { Button } from 'react-native-elements'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-native'
@@ -22,18 +24,18 @@ import XmitTypePicker from '../components/XmitTypePicker'
 export default function TreeMapView() {
   const dispatch = useDispatch()
   const history = useHistory()
-  const { theme }: any = useContext(ThemeContext)
   const [isSenders, setIsSenders] = useState(true)
   const [chartLib, setChartLib] = useState('ECharts')
   const custodiansLoading = useSelector(getCustodiansLoading)
   const custodians = useSelector(getCustodians)
   const emailSenders = useSelector(getEmailSenders)
   const emailReceivers = useSelector(getEmailReceivers)
+  const darkMode = useSelector(getDarkMode)
 
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: theme.colors.white,
+      backgroundColor: darkMode ? blackBackground : 'white',
     },
   })
 
@@ -47,7 +49,11 @@ export default function TreeMapView() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Spinner visible={custodiansLoading} textContent={'Loading...'} />
+      <Spinner
+        visible={custodiansLoading}
+        color={darkMode ? 'white' : 'black'}
+        textContent={'Loading...'}
+      />
       {custodians && (
         <>
           {chartLib === 'ECharts' && (

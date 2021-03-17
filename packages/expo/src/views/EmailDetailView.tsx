@@ -12,6 +12,8 @@ import {
   getTo,
   store,
   x2Server,
+  getDarkMode,
+  blackBackground,
 } from '@klonzo/common'
 import { gql, request } from 'graphql-request'
 import React, { useContext, useEffect, useState } from 'react'
@@ -42,11 +44,12 @@ export default function EmailDetailView() {
   const previousEmailId = getPreviousEmailId(store, id)
   const nextEmailId = getNextEmailId(store, id)
   const { theme }: any = useContext(ThemeContext)
+  const darkMode = useSelector(getDarkMode)
 
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: theme.colors.white,
+      backgroundColor: darkMode ? blackBackground : 'white',
     },
     emailHeader: {
       justifyContent: 'space-between',
@@ -68,33 +71,33 @@ export default function EmailDetailView() {
       flexDirection: 'row',
     },
     text: {
-      color: theme.colors.black,
+      color: darkMode ? 'white' : 'black',
     },
     title: {
       fontSize: 20,
       paddingLeft: 10,
-      color: theme.colors.black,
+      color: darkMode ? 'white' : 'black',
     },
     fields: {
       fontSize: 15,
       paddingLeft: 10,
       paddingRight: 10,
       fontWeight: 'normal',
-      color: theme.colors.black,
+      color: darkMode ? 'white' : 'black',
     },
     fieldBold: {
       fontSize: 15,
       paddingLeft: 10,
       paddingRight: 10,
       fontWeight: 'bold',
-      color: theme.colors.black,
+      color: darkMode ? 'white' : 'black',
     },
     body: {
       fontSize: 15,
       paddingTop: 10,
       paddingLeft: 10,
       paddingRight: 10,
-      color: theme.colors.black,
+      color: darkMode ? 'white' : 'black',
     },
     loading: {
       position: 'absolute',
@@ -202,7 +205,11 @@ export default function EmailDetailView() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Spinner visible={loading} textContent={'Loading...'} />
+      <Spinner
+        visible={loading}
+        color={darkMode ? 'white' : 'black'}
+        textContent={'Loading...'}
+      />
       {email && (
         <View>
           <EmailHeader />

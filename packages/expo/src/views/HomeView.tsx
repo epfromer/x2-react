@@ -1,13 +1,14 @@
-import React, { useContext } from 'react'
+import { blackBackground, getDarkMode } from '@klonzo/common'
+import React from 'react'
 import { ScrollView, StyleSheet } from 'react-native'
-import { ThemeContext } from 'react-native-elements'
+import { useSelector } from 'react-redux'
 import HomeCard from '../components/HomeCard'
 
 export default function HomeView() {
-  const { theme }: any = useContext(ThemeContext)
+  const darkMode = useSelector(getDarkMode)
   const styles = StyleSheet.create({
     container: {
-      backgroundColor: theme.colors.white,
+      backgroundColor: darkMode ? blackBackground : 'white',
     },
   })
 
