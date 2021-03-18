@@ -2,6 +2,7 @@ import { getAuthenticated, setAuthenticated, setUsername } from '@klonzo/common'
 import * as AuthSessionNew from 'expo-auth-session'
 import jwtDecode from 'jwt-decode'
 import React, { useContext, useState } from 'react'
+import { Platform } from 'react-native'
 import { Icon, ThemeContext } from 'react-native-elements'
 import BottomNavigation, {
   FullTab,
@@ -42,15 +43,15 @@ export default function AppBottomToolbar() {
   }
 
   const signIn = async () => {
-    if (authenticated) {
-      history.push('/AppSettingsView')
-      return
-    }
-
     // TODO fix auth0 for android
     // as of 3/14/2021, auth0 doesn't seem to work with expo on Android, works fine on iPhone
     // https://stackoverflow.com/questions/65099718/how-to-specify-the-redirect-uri-for-react-native-bare-workflow
     // https://community.auth0.com/t/how-to-specify-the-redirect-uri-for-react-native-bare-workflow/54178
+
+    if (authenticated || Platform.OS !== 'ios') {
+      history.push('/AppSettingsView')
+      return
+    }
 
     const params = {
       client_id: ENV.auth0ClientId,

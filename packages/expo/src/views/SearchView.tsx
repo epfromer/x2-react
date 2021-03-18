@@ -328,11 +328,7 @@ export default function SearchView() {
         onPress={() => setDlgOpen(true)}
         title={filterList()}
       />
-      <Spinner
-        visible={emailLoading}
-        textContent={'Loading...'}
-        color={darkMode ? 'white' : 'black'}
-      />
+      <Spinner visible={emailLoading} color={darkMode ? 'white' : 'black'} />
       {email && email.length !== 0 && (
         <FlatList
           data={email}

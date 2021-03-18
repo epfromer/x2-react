@@ -12,7 +12,7 @@ import {
   store,
 } from '@klonzo/common'
 import React, { useState } from 'react'
-import { SafeAreaView, StyleSheet } from 'react-native'
+import { SafeAreaView, StyleSheet, View } from 'react-native'
 import { Button } from 'react-native-elements'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { useDispatch, useSelector } from 'react-redux'
@@ -35,7 +35,17 @@ export default function TreeMapView() {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
+      flexDirection: 'column',
       backgroundColor: darkMode ? blackBackground : 'white',
+    },
+    chart: {
+      flex: 9,
+    },
+    selectRow: {
+      flex: 1,
+      flexDirection: 'row',
+      backgroundColor: darkMode ? blackBackground : 'white',
+      justifyContent: 'space-evenly',
     },
   })
 
@@ -54,35 +64,41 @@ export default function TreeMapView() {
         color={darkMode ? 'white' : 'black'}
         textContent={'Loading...'}
       />
-      {custodians && (
-        <>
-          {chartLib === 'ECharts' && (
-            <>
-              {isSenders && (
-                <TreeMapECharts
-                  title="Senders"
-                  search="from"
-                  data={emailSenders}
-                  handleClick={handleClick}
-                />
-              )}
-              {!isSenders && (
-                <TreeMapECharts
-                  title="Receivers"
-                  search="to"
-                  data={emailReceivers}
-                  handleClick={handleClick}
-                />
-              )}
-            </>
-          )}
-        </>
-      )}
-      <XmitTypePicker onChange={(value) => setIsSenders(value === 'Senders')} />
-      <ChartPicker
-        onChange={(value) => setChartLib(value)}
-        chartNames={['ECharts']}
-      />
+      <View style={styles.chart}>
+        {custodians && (
+          <>
+            {chartLib === 'ECharts' && (
+              <>
+                {isSenders && (
+                  <TreeMapECharts
+                    title="Senders"
+                    search="from"
+                    data={emailSenders}
+                    handleClick={handleClick}
+                  />
+                )}
+                {!isSenders && (
+                  <TreeMapECharts
+                    title="Receivers"
+                    search="to"
+                    data={emailReceivers}
+                    handleClick={handleClick}
+                  />
+                )}
+              </>
+            )}
+          </>
+        )}
+      </View>
+      <View style={styles.selectRow}>
+        <XmitTypePicker
+          onChange={(value) => setIsSenders(value === 'Senders')}
+        />
+        <ChartPicker
+          onChange={(value) => setChartLib(value)}
+          chartNames={['ECharts']}
+        />
+      </View>
       {process.env.NODE_ENV === 'test' && (
         <Button
           onPress={() => handleClick('from', 'foo')}
