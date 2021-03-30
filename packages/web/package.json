@@ -20,7 +20,7 @@
     "@material-ui/data-grid": "4.0.0-alpha.22",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "4.0.0-alpha.57",
-    "@material-ui/pickers": "^3.2.10",
+    "@material-ui/pickers": "^3.3.10",
     "chart.js": "^2.9.4",
     "clsx": "^1.1.1",
     "date-fns": "^2.19.0",
@@ -42,7 +42,7 @@
     "react-virtualized": "^9.22.3",
     "redux": "^4.0.5",
     "serve": "^11.3.2",
-    "victory": "^35.4.11"
+    "victory": "^35.4.12"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.10",
