@@ -1569,10 +1569,10 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@highcharts/highcharts-react-native@^3.1.5":
-  version "3.1.5"
-  resolved "https://registry.yarnpkg.com/@highcharts/highcharts-react-native/-/highcharts-react-native-3.1.5.tgz#3848ce445eb00d14cc652d43157cb7161c47bd4c"
-  integrity sha512-rrtUCr/pWCT9QDlOfVhAswcjUl/MGyzS/rr1hI0ayFNlJXWBVbRJzZSptA5TTuJmPp0G4kz0OMwGsqHadOjtiw==
+"@highcharts/highcharts-react-native@^3.1.6":
+  version "3.1.6"
+  resolved "https://registry.yarnpkg.com/@highcharts/highcharts-react-native/-/highcharts-react-native-3.1.6.tgz#2f53d0ce6262e206c574a78f1ce4a9ab7bc79df2"
+  integrity sha512-8wLFvlgmb1E3lsZCMNCumPuCMK0emfoCSwl5fNyc46uHc6A/jTq3YBPnsuidDhodrn9C/Sca2Eb0WiunQzK4Vw==
   dependencies:
     metro-config "^0.60.0"
     react-native-unimodules "^0.10.1"
@@ -3707,7 +3707,7 @@
     filter-console "^0.1.1"
     react-error-boundary "^3.1.0"
 
-"@testing-library/react-native@^7.1.0":
+"@testing-library/react-native@^7.2.0":
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/@testing-library/react-native/-/react-native-7.2.0.tgz#e5ec5b0974e4e5f525f8057563417d1e9f820d96"
   integrity sha512-rDKzJjAAeGgyoJT0gFQiMsIL09chdWcwZyYx6WZHMgm2c5NDqY52hUuyTkzhqddMYWmSRklFphSg7B2HX+246Q==
@@ -11727,10 +11727,10 @@ jest-environment-node@^26.6.2:
     jest-mock "^26.6.2"
     jest-util "^26.6.2"
 
-jest-expo@~39.0.0:
-  version "39.0.0"
-  resolved "https://registry.yarnpkg.com/jest-expo/-/jest-expo-39.0.0.tgz#c25b6c8e48eda435a3568bf68cf26df2c7447475"
-  integrity sha512-3hkcAZJG5SNMUvhWyAc0yhw+xh0QZUHHMVQaI/ShBm6Wzu9mpqm267GEVGEfDXLRr83tx/kzQc3qOqdLegdVVQ==
+jest-expo@~40.0.2:
+  version "40.0.2"
+  resolved "https://registry.yarnpkg.com/jest-expo/-/jest-expo-40.0.2.tgz#f30cf1c260cea4d26998a742d1d8cd1f55f7ccd4"
+  integrity sha512-JTDOejimRu8MioZvOUe1tK0I3poLSgYXoFHxOar+u3RDh+pri1uRzQT5XXJMoW1tUOgH2ogYBOR5XBAhNae11w==
   dependencies:
     "@expo/config" "^3.2.3"
     babel-jest "^25.2.0"
@@ -17130,6 +17130,11 @@ react-is@^16.12.0, react-is@^16.13.1, react-is@^16.6.0, react-is@^16.7.0, react-
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"
   integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
 
+react-is@^17.0.2:
+  version "17.0.2"
+  resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
+  integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
+
 react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
@@ -17547,15 +17552,15 @@ react-shallow-renderer@^16.13.1:
     object-assign "^4.1.1"
     react-is "^16.12.0 || ^17.0.0"
 
-react-test-renderer@^17.0.1:
-  version "17.0.1"
-  resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-17.0.1.tgz#3187e636c3063e6ae498aedf21ecf972721574c7"
-  integrity sha512-/dRae3mj6aObwkjCcxZPlxDFh73XZLgvwhhyON2haZGUEhiaY5EjfAdw+d/rQmlcFwdTpMXCSGVk374QbCTlrA==
+react-test-renderer@^17.0.2:
+  version "17.0.2"
+  resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-17.0.2.tgz#4cd4ae5ef1ad5670fc0ef776e8cc7e1231d9866c"
+  integrity sha512-yaQ9cB89c17PUb0x6UfWRs7kQCorVdHlutU1boVPEsB8IDZH6n9tHxMacc3y0JoXOJUsZb/t/Mb8FUWMKaM7iQ==
   dependencies:
     object-assign "^4.1.1"
-    react-is "^17.0.1"
+    react-is "^17.0.2"
     react-shallow-renderer "^16.13.1"
-    scheduler "^0.20.1"
+    scheduler "^0.20.2"
 
 react-test-renderer@~16.11.0:
   version "16.11.0"
