@@ -1,19 +1,19 @@
 import {
+  blackBackground,
   Email,
-  getEmailById,
-  getEmailIndex,
-  getNextEmailId,
-  getPreviousEmailId,
   getAllText,
   getBody,
+  getDarkMode,
   getEmail,
+  getEmailById,
+  getEmailIndex,
   getFrom,
+  getNextEmailId,
+  getPreviousEmailId,
   getSubject,
   getTo,
   store,
   x2Server,
-  getDarkMode,
-  blackBackground,
 } from '@klonzo/common'
 import { gql, request } from 'graphql-request'
 import React, { useContext, useEffect, useState } from 'react'
@@ -23,6 +23,7 @@ import Highlighter from 'react-native-highlight-words'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-native'
+import ErrorBoundary from '../components/ErrorBoundary'
 import { textColor } from '../utils/appThemes'
 
 export default function EmailDetailView() {
@@ -211,46 +212,50 @@ export default function EmailDetailView() {
         textContent={'Loading...'}
       />
       {email && (
-        <View>
-          <EmailHeader />
-          <ScrollView>
-            <Text style={styles.title}>{highlight(email.subject)}</Text>
-            <Text style={styles.fieldBold}>
-              Sent: <Text style={styles.fields}>{email.sent}</Text>
-            </Text>
-            {email.fromCustodian && (
+        <ErrorBoundary>
+          <View>
+            <EmailHeader />
+            <ScrollView>
+              <Text style={styles.title}>{highlight(email.subject)}</Text>
               <Text style={styles.fieldBold}>
-                From: <Text style={styles.fields}>{highlight(email.from)}</Text>{' '}
-                (custodian:{' '}
-                <Text style={styles.fields}>{email.fromCustodian}</Text>)
+                Sent: <Text style={styles.fields}>{email.sent}</Text>
               </Text>
-            )}
-            {!email.fromCustodian && (
+              {email.fromCustodian && (
+                <Text style={styles.fieldBold}>
+                  From:{' '}
+                  <Text style={styles.fields}>{highlight(email.from)}</Text>{' '}
+                  (custodian:{' '}
+                  <Text style={styles.fields}>{email.fromCustodian}</Text>)
+                </Text>
+              )}
+              {!email.fromCustodian && (
+                <Text style={styles.fieldBold}>
+                  From:{' '}
+                  <Text style={styles.fields}>{highlight(email.from)}</Text>
+                </Text>
+              )}
+              {email.toCustodians && (
+                <Text style={styles.fieldBold}>
+                  To: <Text style={styles.fields}>{highlight(email.to)}</Text>{' '}
+                  (custodian:{' '}
+                  <Text style={styles.fields}>{email.toCustodians}</Text>)
+                </Text>
+              )}
+              {!email.toCustodians && (
+                <Text style={styles.fieldBold}>
+                  To: <Text style={styles.fields}>{highlight(email.to)}</Text>
+                </Text>
+              )}
               <Text style={styles.fieldBold}>
-                From: <Text style={styles.fields}>{highlight(email.from)}</Text>
+                CC: <Text style={styles.fields}>{highlight(email.cc)}</Text>
               </Text>
-            )}
-            {email.toCustodians && (
               <Text style={styles.fieldBold}>
-                To: <Text style={styles.fields}>{highlight(email.to)}</Text>{' '}
-                (custodian:{' '}
-                <Text style={styles.fields}>{email.toCustodians}</Text>)
+                BCC: <Text style={styles.fields}>{highlight(email.bcc)}</Text>
               </Text>
-            )}
-            {!email.toCustodians && (
-              <Text style={styles.fieldBold}>
-                To: <Text style={styles.fields}>{highlight(email.to)}</Text>
-              </Text>
-            )}
-            <Text style={styles.fieldBold}>
-              CC: <Text style={styles.fields}>{highlight(email.cc)}</Text>
-            </Text>
-            <Text style={styles.fieldBold}>
-              BCC: <Text style={styles.fields}>{highlight(email.bcc)}</Text>
-            </Text>
-            <Text style={styles.body}>{highlight(email.body)}</Text>
-          </ScrollView>
-        </View>
+              <Text style={styles.body}>{highlight(email.body)}</Text>
+            </ScrollView>
+          </View>
+        </ErrorBoundary>
       )}
     </SafeAreaView>
   )
