@@ -17261,7 +17261,7 @@ react-native-modal-datetime-picker@^9.2.0:
   dependencies:
     prop-types "^15.7.2"
 
-react-native-modal@^11.5.6:
+react-native-modal@^11.7.0:
   version "11.7.0"
   resolved "https://registry.yarnpkg.com/react-native-modal/-/react-native-modal-11.7.0.tgz#6637d757eeac6eda85f7017a9dfdee0c0fe3a34c"
   integrity sha512-0AeAugUrn12DaJK+k2XGmt8ZIUyWgl1nRdipfwHZDnzFSM8g1oqpf7rHxjOqhimHtmzSj4xJ//ZOn1DWe9aC5Q==
