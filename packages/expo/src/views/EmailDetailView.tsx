@@ -222,23 +222,31 @@ export default function EmailDetailView() {
               </Text>
               {email.fromCustodian && (
                 <Text style={styles.fieldBold}>
-                  From:{' '}
-                  <Text style={styles.fields}>{highlight(email.from)}</Text>{' '}
-                  (custodian:{' '}
-                  <Text style={styles.fields}>{email.fromCustodian}</Text>)
+                  From:
+                  <Text style={styles.fields}>
+                    {' ' + highlight(email.from) + ' '}
+                  </Text>
+                  (custodian:
+                  <Text style={styles.fields}>{' ' + email.fromCustodian}</Text>
+                  )
                 </Text>
               )}
               {!email.fromCustodian && (
                 <Text style={styles.fieldBold}>
-                  From:{' '}
-                  <Text style={styles.fields}>{highlight(email.from)}</Text>
+                  From:
+                  <Text style={styles.fields}>
+                    {' ' + highlight(email.from)}
+                  </Text>
                 </Text>
               )}
               {email.toCustodians && (
                 <Text style={styles.fieldBold}>
-                  To: <Text style={styles.fields}>{highlight(email.to)}</Text>{' '}
-                  (custodian:{' '}
-                  <Text style={styles.fields}>{email.toCustodians}</Text>)
+                  To:
+                  <Text style={styles.fields}>
+                    {' ' + highlight(email.to) + ' '}
+                  </Text>
+                  (custodian:
+                  <Text style={styles.fields}>{' ' + email.toCustodians}</Text>)
                 </Text>
               )}
               {!email.toCustodians && (
