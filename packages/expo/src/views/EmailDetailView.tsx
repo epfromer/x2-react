@@ -164,7 +164,7 @@ export default function EmailDetailView() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cachedEmail])
 
-  function highlight(str: string) {
+  function highlight(str?: string) {
     let s = str
     if (!s) return ''
     return (
@@ -204,6 +204,56 @@ export default function EmailDetailView() {
     </View>
   )
 
+  const From = () => {
+    if (!email?.fromCustodian || email?.fromCustodian === '')
+      return (
+        <Text style={styles.fieldBold}>
+          From: <Text style={styles.fields}>{highlight(email?.from)}</Text>
+        </Text>
+      )
+    return (
+      <Text style={styles.fieldBold}>
+        From: <Text style={styles.fields}>{highlight(email.from)}</Text>
+        (custodian: <Text style={styles.fields}>{email.fromCustodian}</Text>)
+      </Text>
+    )
+  }
+
+  const To = () => {
+    if (!email?.toCustodians || !email?.toCustodians.length)
+      return (
+        <Text style={styles.fieldBold}>
+          To: <Text style={styles.fields}>{highlight(email?.to)}</Text>
+        </Text>
+      )
+    return (
+      <Text style={styles.fieldBold}>
+        To: <Text style={styles.fields}>{highlight(email.to)}</Text>
+        (custodian: <Text style={styles.fields}>{email.toCustodians}</Text>)
+      </Text>
+    )
+  }
+
+  const CC = () => {
+    return (
+      <Text style={styles.fieldBold}>
+        CC: <Text style={styles.fields}>{highlight(email?.cc)}</Text>
+      </Text>
+    )
+  }
+
+  const BCC = () => {
+    return (
+      <Text style={styles.fieldBold}>
+        BCC: <Text style={styles.fields}>{highlight(email?.bcc)}</Text>
+      </Text>
+    )
+  }
+
+  const Body = () => {
+    return <Text style={styles.body}>{highlight(email?.body)}</Text>
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <Spinner
@@ -220,47 +270,11 @@ export default function EmailDetailView() {
               <Text style={styles.fieldBold}>
                 Sent: <Text style={styles.fields}>{email.sent}</Text>
               </Text>
-              {email.fromCustodian && (
-                <Text style={styles.fieldBold}>
-                  From:
-                  <Text style={styles.fields}>
-                    {' ' + highlight(email.from) + ' '}
-                  </Text>
-                  (custodian:
-                  <Text style={styles.fields}>{' ' + email.fromCustodian}</Text>
-                  )
-                </Text>
-              )}
-              {!email.fromCustodian && (
-                <Text style={styles.fieldBold}>
-                  From:
-                  <Text style={styles.fields}>
-                    {' ' + highlight(email.from)}
-                  </Text>
-                </Text>
-              )}
-              {email.toCustodians && (
-                <Text style={styles.fieldBold}>
-                  To:
-                  <Text style={styles.fields}>
-                    {' ' + highlight(email.to) + ' '}
-                  </Text>
-                  (custodian:
-                  <Text style={styles.fields}>{' ' + email.toCustodians}</Text>)
-                </Text>
-              )}
-              {!email.toCustodians && (
-                <Text style={styles.fieldBold}>
-                  To: <Text style={styles.fields}>{highlight(email.to)}</Text>
-                </Text>
-              )}
-              <Text style={styles.fieldBold}>
-                CC: <Text style={styles.fields}>{highlight(email.cc)}</Text>
-              </Text>
-              <Text style={styles.fieldBold}>
-                BCC: <Text style={styles.fields}>{highlight(email.bcc)}</Text>
-              </Text>
-              <Text style={styles.body}>{highlight(email.body)}</Text>
+              <From />
+              <To />
+              <CC />
+              <BCC />
+              <Body />
             </ScrollView>
           </View>
         </ErrorBoundary>
