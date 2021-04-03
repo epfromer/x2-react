@@ -15,7 +15,7 @@ import {
   testEmailSentByDay,
   testWordCloud,
 } from '@klonzo/common'
-import mockAsyncStorage from '@react-native-community/async-storage/jest/async-storage-mock' // should come first, before store
+import mockAsyncStorage from '@react-native-async-storage/async-storage/jest/async-storage-mock'
 import { render } from '@testing-library/react-native'
 import { createMemoryHistory } from 'history'
 import React from 'react'
@@ -25,7 +25,7 @@ import { Router } from 'react-router-native'
 import { appThemes } from './utils/appThemes'
 
 // eslint-disable-next-line no-undef
-jest.mock('@react-native-community/async-storage', () => mockAsyncStorage)
+jest.mock('@react-native-async-storage/async-storage', () => mockAsyncStorage)
 
 store.dispatch(setWordCloud(testWordCloud))
 store.dispatch(setCustodians(testCustodians))
