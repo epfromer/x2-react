@@ -1,4 +1,4 @@
-import mockAsyncStorage from '@react-native-community/async-storage/jest/async-storage-mock'
+import mockAsyncStorage from '@react-native-async-storage/async-storage/jest/async-storage-mock'
 import '@testing-library/jest-dom/extend-expect'
 import fetchMock from 'jest-fetch-mock'
 import {
@@ -38,7 +38,7 @@ import {
   testEmailSentByDay,
   testWordCloud,
 } from '../index'
-jest.mock('@react-native-community/async-storage', () => mockAsyncStorage)
+jest.mock('@react-native-async-storage/async-storage', () => mockAsyncStorage)
 
 store.dispatch(setWordCloud(testWordCloud))
 store.dispatch(setCustodians(testCustodians))

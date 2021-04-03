@@ -17,7 +17,7 @@
     "watch": "run-s build compile:watch"
   },
   "dependencies": {
-    "@react-native-community/async-storage": "^1.12.1",
+    "@react-native-async-storage/async-storage": "^1.15.1",
     "@reduxjs/toolkit": "^1.5.1",
     "graphql": "^15.5.0",
     "graphql-request": "^3.4.0",
