@@ -43,7 +43,7 @@
     "react-native-svg": "^12.1.0",
     "react-native-unimodules": "^0.12.0",
     "react-native-vector-icons": "^8.1.0",
-    "react-native-web": "~0.14.8",
+    "react-native-web": "~0.15.5",
     "react-native-webview": "^10.10.2",
     "react-native-word-cloud": "^1.0.7",
     "react-redux": "^7.2.2",
