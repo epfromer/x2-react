@@ -21,9 +21,9 @@ import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { Button, Icon, ThemeContext } from 'react-native-elements'
 import Highlighter from 'react-native-highlight-words'
 import Spinner from 'react-native-loading-spinner-overlay'
+import GestureRecognizer from 'react-native-swipe-gestures'
 import { useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-native'
-import ErrorBoundary from '../components/ErrorBoundary'
 import { textColor } from '../utils/appThemes'
 
 export default function EmailDetailView() {
@@ -176,6 +176,12 @@ export default function EmailDetailView() {
     )
   }
 
+  const onPrevious = () =>
+    previousEmailId && history.push(`/EmailDetailView/${previousEmailId}`)
+
+  const onNext = () =>
+    nextEmailId && history.push(`/EmailDetailView/${nextEmailId}`)
+
   const EmailHeader = () => (
     <View style={styles.emailHeader}>
       <Button
@@ -184,9 +190,7 @@ export default function EmailDetailView() {
         disabled={!previousEmailId}
         testID="previous-email"
         icon={<Icon name="arrow-back" color={textColor(theme)} />}
-        onPress={() => {
-          previousEmailId && history.push(`/EmailDetailView/${previousEmailId}`)
-        }}
+        onPress={onPrevious}
       />
       <Text style={styles.text}>
         {totalCachedEmails ? `${emailIndex} of ${totalCachedEmails}` : ''}
@@ -197,11 +201,19 @@ export default function EmailDetailView() {
         disabled={!nextEmailId}
         testID="next-email"
         icon={<Icon name="arrow-forward" color={textColor(theme)} />}
-        onPress={() => {
-          nextEmailId && history.push(`/EmailDetailView/${nextEmailId}`)
-        }}
+        onPress={onNext}
       />
     </View>
+  )
+
+  const Subject = () => (
+    <Text style={styles.title}>{highlight(email?.subject)}</Text>
+  )
+
+  const Sent = () => (
+    <Text style={styles.fieldBold}>
+      Sent: <Text style={styles.fields}>{email?.sent}</Text>
+    </Text>
   )
 
   const From = () => {
@@ -234,25 +246,19 @@ export default function EmailDetailView() {
     )
   }
 
-  const CC = () => {
-    return (
-      <Text style={styles.fieldBold}>
-        CC: <Text style={styles.fields}>{highlight(email?.cc)}</Text>
-      </Text>
-    )
-  }
+  const CC = () => (
+    <Text style={styles.fieldBold}>
+      CC: <Text style={styles.fields}>{highlight(email?.cc)}</Text>
+    </Text>
+  )
 
-  const BCC = () => {
-    return (
-      <Text style={styles.fieldBold}>
-        BCC: <Text style={styles.fields}>{highlight(email?.bcc)}</Text>
-      </Text>
-    )
-  }
+  const BCC = () => (
+    <Text style={styles.fieldBold}>
+      BCC: <Text style={styles.fields}>{highlight(email?.bcc)}</Text>
+    </Text>
+  )
 
-  const Body = () => {
-    return <Text style={styles.body}>{highlight(email?.body)}</Text>
-  }
+  const Body = () => <Text style={styles.body}>{highlight(email?.body)}</Text>
 
   return (
     <SafeAreaView style={styles.container}>
@@ -262,22 +268,20 @@ export default function EmailDetailView() {
         textContent={'Loading...'}
       />
       {email && (
-        <ErrorBoundary>
-          <View>
-            <EmailHeader />
-            <ScrollView>
-              <Text style={styles.title}>{highlight(email.subject)}</Text>
-              <Text style={styles.fieldBold}>
-                Sent: <Text style={styles.fields}>{email.sent}</Text>
-              </Text>
+        <View>
+          <EmailHeader />
+          <ScrollView>
+            <GestureRecognizer onSwipeLeft={onNext} onSwipeRight={onPrevious}>
+              <Subject />
+              <Sent />
               <From />
               <To />
               <CC />
               <BCC />
               <Body />
-            </ScrollView>
-          </View>
-        </ErrorBoundary>
+            </GestureRecognizer>
+          </ScrollView>
+        </View>
       )}
     </SafeAreaView>
   )
