@@ -27,8 +27,8 @@ const StyledMenuItem = withStyles((theme) => ({
 export default function SettingsMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null)
   const history = useHistory()
-  const { user, logout } = useAuth0()
-  const { name, picture } = user
+  const { user } = useAuth0<{ name: string; picture: string }>()
+  const { logout } = useAuth0()
 
   const handleClick = (event: any) => setAnchorEl(event.currentTarget)
   const handleClose = () => setAnchorEl(null)
@@ -52,7 +52,7 @@ export default function SettingsMenu() {
           color="inherit"
           onClick={handleClick}
         >
-          <Avatar data-testid="gravatar" src={picture} />
+          <Avatar data-testid="gravatar" src={user?.picture} />
         </IconButton>
       </Tooltip>
       <Menu
@@ -67,7 +67,7 @@ export default function SettingsMenu() {
         onClose={handleClose}
       >
         <StyledMenuItem>
-          <ListItemText primary={name} />
+          <ListItemText primary={user?.name} />
         </StyledMenuItem>
         <Divider />
         <StyledMenuItem onClick={() => navTo('/AppSettingsView')}>
