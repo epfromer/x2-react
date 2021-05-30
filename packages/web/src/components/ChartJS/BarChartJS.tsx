@@ -1,12 +1,27 @@
 import { EmailXferedDatum, getDarkMode } from '@klonzo/common'
 import { useTheme } from '@material-ui/core/styles'
-import { Chart } from 'chart.js'
+import {
+  BarController,
+  BarElement,
+  CategoryScale,
+  Chart,
+  LinearScale,
+  Title,
+  Tooltip,
+} from 'chart.js'
 import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 
-// https://www.chartjs.org/docs/latest/charts/bar.html
-
 const chartHeight = '220'
+
+Chart.register(
+  BarController,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+  Title,
+  Tooltip
+)
 
 interface Props {
   title: string
@@ -21,45 +36,42 @@ export default function BarChartJS({
   handleClick,
 }: Props) {
   const chartContainer: any = useRef(null)
-  const [, setChartInstance] = useState<any>(null)
+  const [getChartInstance, setChartInstance] = useState<any>(null)
   const darkMode = useSelector(getDarkMode)
   const theme = useTheme()
 
   const config: any = {
-    type: 'horizontalBar',
+    type: 'bar',
     options: {
-      maintainAspectRatio: false,
-      legend: {
-        display: false,
-      },
-      title: {
-        display: true,
-        fontColor: theme.palette.text.primary,
-        fontSize: 16,
-        padding: 10,
-        text: title,
+      indexAxis: 'y',
+      plugins: {
+        title: {
+          display: true,
+          padding: { bottom: 10 },
+          color: theme.palette.text.primary,
+          font: { size: 18 },
+          text: title,
+        },
+        legend: {
+          display: false,
+        },
       },
       onClick: (e: any, item: any) => {
         if (item && item.length > 0) {
-          handleClick(search, data[item[0]._index].name)
+          handleClick(search, data[item[0].index].name)
         }
       },
       scales: {
-        xAxes: [
-          {
-            ticks: {
-              fontColor: theme.palette.text.primary,
-            },
+        x: {
+          ticks: {
+            color: theme.palette.text.primary,
           },
-        ],
-        yAxes: [
-          {
-            ticks: {
-              min: 0,
-              fontColor: theme.palette.text.primary,
-            },
+        },
+        y: {
+          ticks: {
+            color: theme.palette.text.primary,
           },
-        ],
+        },
       },
     },
     data: {
@@ -76,6 +88,7 @@ export default function BarChartJS({
 
   useEffect(() => {
     if (chartContainer && chartContainer.current) {
+      if (getChartInstance) getChartInstance.destroy()
       const newChartInstance = new Chart(chartContainer.current, config)
       setChartInstance(newChartInstance)
     }

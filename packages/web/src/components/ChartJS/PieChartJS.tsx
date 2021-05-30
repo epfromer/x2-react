@@ -34,15 +34,6 @@ export default function PieChartJS({
 
   const config: any = {
     type: 'pie',
-    data: {
-      labels: data.map((datum) => datum.name),
-      datasets: [
-        {
-          data: data.map((datum) => datum.value),
-          backgroundColor: data.map((datum) => datum.color),
-        },
-      ],
-    },
     options: {
       plugins: {
         title: {
@@ -56,14 +47,23 @@ export default function PieChartJS({
       legend: {
         position: 'bottom',
         labels: {
-          fontColor: theme.palette.text.primary,
+          color: theme.palette.text.primary,
         },
       },
-      onClick: (e: any, item: any) => {
-        if (item && item.length > 0) {
-          handleClick(search, data[item[0].index].name)
-        }
-      },
+    },
+    onClick: (e: any, item: any) => {
+      if (item && item.length > 0) {
+        handleClick(search, data[item[0].index].name)
+      }
+    },
+    data: {
+      labels: data.map((datum) => datum.name),
+      datasets: [
+        {
+          backgroundColor: data.map((datum) => datum.color),
+          data: data.map((datum) => datum.value),
+        },
+      ],
     },
   }
 
