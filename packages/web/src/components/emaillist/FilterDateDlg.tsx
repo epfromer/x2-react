@@ -43,7 +43,7 @@ export default function FilterDate({ onClose, onClear, date, open }: Props) {
           Clear
         </Button>
         <Button
-          onClick={() => onClose((filterDate as unknown) as string)}
+          onClick={() => onClose(filterDate as unknown as string)}
           data-testid="ok-date-picker"
           color="primary"
           autoFocus

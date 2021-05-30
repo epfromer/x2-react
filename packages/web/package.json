@@ -3,14 +3,14 @@
   "version": "0.0.1",
   "private": true,
   "engines": {
-    "node": ">= 12",
+    "node": "14.x",
     "yarn": ">= 1"
   },
   "scripts": {
-    "build": "react-app-rewired build",
+    "build": "react-scripts build",
     "start": "serve -s build",
-    "test": "react-app-rewired test --coverage --watchAll",
-    "watch": "react-app-rewired start"
+    "test": "react-scripts test --coverage --watchAll",
+    "watch": "react-scripts start"
   },
   "dependencies": {
     "@auth0/auth0-react": "^1.5.0",
@@ -38,11 +38,12 @@
     "react-dom": "~17.0.2",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3",
+    "react-scripts": "4.0.3",
     "react-virtualized": "^9.22.3",
     "redux": "^4.1.0",
     "serve": "^11.3.2",
-    "victory": "^35.8.2"
+    "victory": "^35.8.2",
+    "web-vitals": "^1.1.2"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.12.0",
@@ -68,7 +69,6 @@
     "eslint-plugin-prettier": "^3.4.0",
     "jest-canvas-mock": "^2.3.1",
     "prettier": "^2.3.0",
-    "react-app-rewired": "~2.1.8",
     "tsconfig-paths-webpack-plugin": "~3.5.1",
     "typescript": "^4.3.2"
   },
@@ -87,6 +87,7 @@
     },
     "extends": [
       "react-app",
+      "react-app/jest",
       "plugin:prettier/recommended"
     ]
   },
