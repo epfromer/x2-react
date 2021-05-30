@@ -1,12 +1,19 @@
 import { EmailXferedDatum, getDarkMode } from '@klonzo/common'
 import { useTheme } from '@material-ui/core/styles'
-import { Chart } from 'chart.js'
+import {
+  ArcElement,
+  Chart,
+  Legend,
+  PieController,
+  Title,
+  Tooltip,
+} from 'chart.js'
 import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 
-// https://www.chartjs.org/docs/latest/charts/doughnut.html
-
 const chartHeight = '250'
+
+Chart.register(ArcElement, PieController, Legend, Title, Tooltip)
 
 interface Props {
   title: string
@@ -21,7 +28,7 @@ export default function PieChartJS({
   handleClick,
 }: Props) {
   const chartContainer: any = useRef(null)
-  const [, setChartInstance] = useState<any>(null)
+  const [getChartInstance, setChartInstance] = useState<any>(null)
   const darkMode = useSelector(getDarkMode)
   const theme = useTheme()
 
@@ -37,12 +44,13 @@ export default function PieChartJS({
       ],
     },
     options: {
-      title: {
-        display: true,
-        fontColor: theme.palette.text.primary,
-        fontSize: 16,
-        padding: 10,
-        text: title,
+      plugins: {
+        title: {
+          display: true,
+          padding: { top: 10 },
+          font: { size: 26, color: theme.palette.text.primary },
+          text: title,
+        },
       },
       legend: {
         position: 'bottom',
@@ -60,6 +68,7 @@ export default function PieChartJS({
 
   useEffect(() => {
     if (chartContainer && chartContainer.current) {
+      getChartInstance.destroy()
       const newChartInstance = new Chart(chartContainer.current, config)
       setChartInstance(newChartInstance)
     }
