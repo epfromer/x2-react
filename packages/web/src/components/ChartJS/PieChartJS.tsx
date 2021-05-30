@@ -47,8 +47,9 @@ export default function PieChartJS({
       plugins: {
         title: {
           display: true,
-          padding: { top: 10 },
-          font: { size: 26, color: theme.palette.text.primary },
+          padding: { bottom: 10 },
+          color: theme.palette.text.primary,
+          font: { size: 18 },
           text: title,
         },
       },
@@ -60,7 +61,7 @@ export default function PieChartJS({
       },
       onClick: (e: any, item: any) => {
         if (item && item.length > 0) {
-          handleClick(search, data[item[0]._index].name)
+          handleClick(search, data[item[0].index].name)
         }
       },
     },
@@ -68,7 +69,7 @@ export default function PieChartJS({
 
   useEffect(() => {
     if (chartContainer && chartContainer.current) {
-      getChartInstance.destroy()
+      if (getChartInstance) getChartInstance.destroy()
       const newChartInstance = new Chart(chartContainer.current, config)
       setChartInstance(newChartInstance)
     }
