@@ -17,7 +17,7 @@
     "watch": "run-s build compile:watch"
   },
   "dependencies": {
-    "@react-native-async-storage/async-storage": "^1.15.4",
+    "@react-native-async-storage/async-storage": "^1.15.5",
     "@reduxjs/toolkit": "^1.5.1",
     "graphql": "^15.5.0",
     "graphql-request": "^3.4.0",
@@ -29,8 +29,8 @@
   "devDependencies": {
     "@babel/helper-builder-react-jsx-experimental": "^7.12.11",
     "@types/redux-logger": "^3.0.8",
-    "@typescript-eslint/eslint-plugin": "^4.25.0",
-    "@typescript-eslint/parser": "^4.25.0",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.27.0",
     "eslint-config-prettier": "^8.3.0",
@@ -47,7 +47,7 @@
     "prettier": "^2.3.0",
     "prop-types": "^15.7.2",
     "rimraf": "^3.0.2",
-    "ts-jest": "^27.0.1",
+    "ts-jest": "^27.0.2",
     "typescript": "^4.3.2"
   },
   "eslintConfig": {
