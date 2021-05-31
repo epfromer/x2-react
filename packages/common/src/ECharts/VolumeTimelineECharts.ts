@@ -9,47 +9,26 @@ export function getVolumeTimelineEChartsConfig(
     title: {
       text: title,
       left: 'center',
-      textStyle: {
-        color: textColor,
-      },
+      textStyle: { color: textColor },
     },
     tooltip: {
       trigger: 'axis',
-      axisPointer: {
-        type: 'shadow',
-      },
+      axisPointer: { type: 'shadow' },
     },
     grid: {
       bottom: 90,
     },
-    dataZoom: [
-      {
-        type: 'inside',
-      },
-      {
-        type: 'slider',
-      },
-    ],
+    dataZoom: [{ type: 'inside' }, { type: 'slider' }],
     xAxis: {
       data: data.map((datum) => datum.sent),
       silent: false,
-      splitLine: {
-        show: false,
-      },
-      splitArea: {
-        show: false,
-      },
-      axisLabel: {
-        color: textColor,
-      },
+      splitLine: { show: false },
+      splitArea: { show: false },
+      axisLabel: { color: textColor },
     },
     yAxis: {
-      splitArea: {
-        show: false,
-      },
-      axisLabel: {
-        color: textColor,
-      },
+      splitArea: { show: false },
+      axisLabel: { color: textColor },
     },
     series: [
       {

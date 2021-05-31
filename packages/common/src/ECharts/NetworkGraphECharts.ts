@@ -12,14 +12,8 @@ export function getNetworkGraphEChartsConfig(
     x: null,
     y: null,
     draggable: true,
-    itemStyle: {
-      color: node.color,
-    },
-    label: {
-      normal: {
-        show: true,
-      },
-    },
+    itemStyle: { color: node.color },
+    label: { show: true },
   }))
 
   return {
@@ -27,18 +21,14 @@ export function getNetworkGraphEChartsConfig(
       text: title,
       top: 20,
       left: 'center',
-      textStyle: {
-        color: textColor,
-      },
+      textStyle: { color: textColor },
     },
     tooltip: {},
     legend: [
       {
         bottom: 0,
         data: chartNodes.map((a) => a.name),
-        textStyle: {
-          color: textColor,
-        },
+        textStyle: { color: textColor },
       },
     ],
     series: [
@@ -62,9 +52,7 @@ export function getNetworkGraphEChartsConfig(
           color: 'source',
           curveness: 0.3,
         },
-        force: {
-          repulsion: 1000,
-        },
+        force: { repulsion: 1000 },
       },
     ],
   }

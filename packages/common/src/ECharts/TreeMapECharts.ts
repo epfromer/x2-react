@@ -8,18 +8,14 @@ export function getTreeMapEChartsConfig(
   const chartData = data.map((datum) => ({
     name: datum.name,
     value: datum.value,
-    itemStyle: {
-      color: datum.color,
-    },
+    itemStyle: { color: datum.color },
   }))
 
   return {
     title: {
       text: title,
       left: 'center',
-      textStyle: {
-        color: textColor,
-      },
+      textStyle: { color: textColor },
     },
     series: [
       {

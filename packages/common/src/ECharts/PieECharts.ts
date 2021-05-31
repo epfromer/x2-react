@@ -9,15 +9,9 @@ export function getPieEChartsConfig(
     name: datum.name,
     value: datum.value,
     itemStyle: {
-      normal: {
-        color: datum.color,
-        lineStyle: {
-          color: datum.color,
-        },
-        areaStyle: {
-          color: datum.color,
-        },
-      },
+      color: datum.color,
+      lineStyle: { color: datum.color },
+      areaStyle: { color: datum.color },
     },
   }))
 

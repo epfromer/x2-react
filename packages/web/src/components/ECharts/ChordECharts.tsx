@@ -24,14 +24,8 @@ export default function ChordECharts({
     id: node.id,
     name: node.id,
     category: node.id,
-    itemStyle: {
-      color: node.color,
-    },
-    label: {
-      normal: {
-        show: true,
-      },
-    },
+    itemStyle: { color: node.color },
+    label: { show: true },
   }))
 
   return (

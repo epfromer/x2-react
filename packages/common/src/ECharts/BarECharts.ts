@@ -10,15 +10,9 @@ export function getBarEChartsConfig(
     name: datum.name,
     value: datum.value,
     itemStyle: {
-      normal: {
-        color: datum.color,
-        lineStyle: {
-          color: datum.color,
-        },
-        areaStyle: {
-          color: datum.color,
-        },
-      },
+      color: datum.color,
+      lineStyle: { color: datum.color },
+      areaStyle: { color: datum.color },
     },
   }))
 
@@ -27,27 +21,19 @@ export function getBarEChartsConfig(
       text: title,
       top: 20,
       left: 'center',
-      textStyle: {
-        color: textColor,
-      },
+      textStyle: { color: textColor },
     },
     tooltip: {
       trigger: 'axis',
-      axisPointer: {
-        type: 'shadow',
-      },
+      axisPointer: { type: 'shadow' },
     },
     grid: gridConfig,
     xAxis: {
-      axisLabel: {
-        color: textColor,
-      },
+      axisLabel: { color: textColor },
     },
     yAxis: {
       data: data.map((datum) => datum.name),
-      axisLabel: {
-        color: textColor,
-      },
+      axisLabel: { color: textColor },
     },
     series: [
       {
