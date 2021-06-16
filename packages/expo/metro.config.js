@@ -1,7 +1,4 @@
-const { createMetroConfiguration } = require('expo-yarn-workspaces')
+// Learn more https://docs.expo.io/guides/customizing-metro
+const { getDefaultConfig } = require('expo/metro-config');
 
-const config = createMetroConfiguration(__dirname)
-
-config.resolver.assetExts = [...config.resolver.assetExts, 'hcscript']
-
-module.exports = config
+module.exports = getDefaultConfig(__dirname);

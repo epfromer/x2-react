@@ -1,12 +1,6 @@
 {
-  "extends": "../../tsconfig.json",
-  "include": [
-    "src/**/*"
-  ],
+  "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "baseUrl": ".",
-    "jsx": "react-native",
-    "noEmit": true,
-    "rootDir": "src"
+    "strict": true
   }
 }
