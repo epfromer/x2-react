@@ -1,5 +1,8 @@
 {
-  "main": "index.js",
+  "name": "@klonzo/expo",
+  "version": "0.0.1",
+  "private": true,
+  "main": "__generated__/AppEntry.js",
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
@@ -9,27 +12,26 @@
   },
   "dependencies": {
     "expo": "~41.0.1",
-    "expo-updates": "~0.5.4",
+    "expo-updates": "~0.5.5",
     "expo-splash-screen": "~0.10.2",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "react-native": "~0.63.4",
-    "react-native-gesture-handler": "~1.10.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-native": "~0.64.2",
+    "react-native-gesture-handler": "~1.10.3",
     "react-native-reanimated": "~2.1.0",
     "react-native-screens": "~3.0.0",
     "react-native-unimodules": "~0.13.3",
     "react-native-web": "~0.13.12"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@types/react": "~16.9.35",
-    "@types/react-native": "~0.63.2",
+    "@babel/core": "^7.14.6",
+    "@types/react": "~17.0.11",
+    "@types/react-native": "~0.64.10",
     "babel-preset-expo": "~8.3.0",
     "jest-expo": "~41.0.0",
-    "typescript": "~4.0.0"
+    "typescript": "~4.3.4"
   },
   "jest": {
     "preset": "react-native"
-  },
-  "private": true
+  }
 }
