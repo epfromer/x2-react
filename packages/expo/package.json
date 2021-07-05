@@ -1,40 +1,68 @@
 {
   "name": "@klonzo/expo",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "main": "__generated__/AppEntry.js",
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
     "web": "expo start --web",
-    "start": "react-native start",
-    "test": "jest",
-    "watch": "expo start -c"
+    "eject": "expo eject",
+    "postinstall": "expo-yarn-workspaces postinstall"
   },
   "dependencies": {
-    "expo": "~41.0.1",
-    "expo-updates": "~0.5.5",
-    "expo-splash-screen": "~0.10.2",
-    "metro-config": "^0.66.0",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-native": "~0.64.2",
-    "react-native-gesture-handler": "~1.10.3",
-    "react-native-reanimated": "~2.1.0",
-    "react-native-screens": "~3.0.0",
-    "react-native-unimodules": "~0.13.3",
+    "expo": "~41.0.0",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-41.0.0.tar.gz",
     "react-native-web": "~0.13.12"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.6",
-    "@types/react": "~17.0.11",
-    "@types/react-native": "~0.64.10",
-    "babel-preset-expo": "~8.3.0",
-    "expo-yarn-workspaces": "^1.5.2",
-    "jest-expo": "~41.0.0",
-    "typescript": "~4.3.4"
+    "@babel/core": "~7.9.0",
+    "@types/react": "~16.9.35",
+    "@types/react-dom": "~16.9.8",
+    "@types/react-native": "~0.63.2",
+    "typescript": "~4.3.5"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 2020
+    },
+    "extends": [
+      "@react-native-community",
+      "plugin:prettier/recommended"
+    ]
+  },
+  "prettier": {
+    "semi": false,
+    "arrowParens": "always",
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "endOfLine": "auto"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "jest-expo",
+    "timers": "fake",
+    "testEnvironment": "jsdom",
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}"
+    ],
+    "setupFiles": [
+      "./src/setupTests.js"
+    ],
+    "transformIgnorePatterns": [],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   }
 }

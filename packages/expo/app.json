@@ -1,12 +1,41 @@
 {
-  "name": "expo",
-  "displayName": "expo",
   "expo": {
-    "name": "expo",
-    "slug": "expo",
+    "name": "x2 React Native",
+    "slug": "x2-React-Native",
+    "privacy": "public",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
     "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "scheme": "kbp",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "packagerOpts": {
+      "config": "metro.config.js"
+    },
+    "android": {
+      "package": "io.klonzo.test",
+      "icon": "./assets/icon.png",
+      "versionCode": 1,
+      "permissions": []
+    },
+    "description": "Data viz and searching of Enron email.  Interfaces to x2-server (https://github.com/epfromer/x2-server).",
+    "githubUrl": "https://github.com/epfromer/x2-react"
   }
 }
