@@ -4,7 +4,7 @@ import 'expo/build/Expo.fx';
 import { activateKeepAwake } from 'expo-keep-awake';
 import registerRootComponent from 'expo/build/launch/registerRootComponent';
 
-import App from '../App';
+import App from '..\..\..\node_modules\@klonzo\expo/App';
 
 if (__DEV__) {
   activateKeepAwake();
