@@ -29,7 +29,7 @@ interface ImportLogEntry {
 export default function ImportLog() {
   const classes = useStyles()
   const lastRowRef = useRef(null)
-  let importInterval: number | undefined
+  let importInterval: number | undefined | NodeJS.Timer
   const [log, setLog] = useState([])
   const [scrollIntoView, setScrollIntoView] = useState(true)
 
@@ -65,7 +65,7 @@ export default function ImportLog() {
 
   const stopImportStatusInterval = (): void => {
     if (!importInterval) return
-    clearInterval(importInterval)
+    clearInterval(importInterval as number)
     importInterval = undefined
   }
 
