@@ -1,17 +1,17 @@
 import { Auth0Provider } from '@auth0/auth0-react'
 import {
+  getDarkMode,
   getEmailAsync,
   getInitialDataAsync,
-  loadAppSettingsAsync,
-  getDarkMode,
   getThemeName,
+  loadAppSettingsAsync,
   store,
 } from '@klonzo/common'
 import AppBar from '@material-ui/core/AppBar'
 import Container from '@material-ui/core/Container'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import {
-  createMuiTheme,
+  createTheme,
   makeStyles,
   ThemeProvider,
 } from '@material-ui/core/styles'
@@ -21,8 +21,8 @@ import { BrowserRouter as Router, useHistory } from 'react-router-dom'
 import './App.css'
 import AppDrawer from './components/app/AppDrawer'
 import AppToolbar from './components/app/AppToolbar'
-import { getTheme } from './utils/appThemes'
 import AppRouting from './router/AppRouting'
+import { getTheme } from './utils/appThemes'
 
 const useStyles = makeStyles((theme) => ({
   root: { display: 'flex' },
@@ -82,7 +82,7 @@ const WithTheme = () => {
   const darkMode = useSelector(getDarkMode)
   const palette: any = getTheme(useSelector(getThemeName))
   palette.type = darkMode ? 'dark' : 'light'
-  const customTheme = createMuiTheme({ palette })
+  const customTheme = createTheme({ palette })
   return (
     <ThemeProvider theme={customTheme}>
       <WithRouter />
