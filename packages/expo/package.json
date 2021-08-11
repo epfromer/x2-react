@@ -8,6 +8,13 @@
     "postinstall": "expo-yarn-workspaces postinstall"
   },
   "dependencies": {
+    "@highcharts/highcharts-react-native": "^3.1.6",
+    "@klonzo/common": "*", 
+    "@react-native-async-storage/async-storage": "^1.15.1",
+    "@react-native-community/datetimepicker": "^3.4.3",
+    "@react-native-community/masked-view": "^0.1.10",
+    "@react-native-community/slider": "^3.0.3",
+    "@react-native-picker/picker": "^1.14.0",
     "expo": "~42.0.3",
     "react": "16.13.1",
     "react-dom": "16.13.1",
