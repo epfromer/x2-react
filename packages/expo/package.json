@@ -8,7 +8,7 @@
     "postinstall": "expo-yarn-workspaces postinstall"
   },
   "dependencies": {
-    "@highcharts/highcharts-react-native": "^3.1.6",
+    "@highcharts/highcharts-react-native": "^3.1.7",
     "@klonzo/common": "*",
     "@react-native-async-storage/async-storage": "^1.15.1",
     "@react-native-community/datetimepicker": "^3.4.3",
@@ -21,7 +21,7 @@
     "get-best-contrast-color": "^0.3.1",
     "graphql": "^15.5.0",
     "graphql-request": "^3.4.0",
-    "highcharts": "^9.0.1",
+    "highcharts": "^9.1.2",
     "jwt-decode": "^3.1.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
