@@ -132,7 +132,7 @@ export default function EmailDetailView() {
           <EmailCardActions id={id} />
           <CardContent>
             {displayText(email.subject, classes.title)}
-            {displayText(`Sent: ${email.sent}`)}
+            {displayText(`Sent: ${new Date(+email.sent).toUTCString()}`)}
             {/* // todo same for expo */}
             {displayText(`From: ${fromStr()}`)}
             {displayText(`To: ${toStr()}`)}
