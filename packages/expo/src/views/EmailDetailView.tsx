@@ -212,7 +212,10 @@ export default function EmailDetailView() {
 
   const Sent = () => (
     <Text style={styles.fieldBold}>
-      Sent: <Text style={styles.fields}>{email?.sent}</Text>
+      Sent:{' '}
+      <Text style={styles.fields}>
+        {email?.sent ? new Date(+email.sent).toUTCString() : 'unknown'}
+      </Text>
     </Text>
   )
 

@@ -286,7 +286,7 @@ export default function SearchView() {
           </View>
           <View>
             <Text numberOfLines={1} style={styles.text}>
-              {item.sent.substring(0, 10)}
+              {item.sentShort}
             </Text>
           </View>
         </View>
