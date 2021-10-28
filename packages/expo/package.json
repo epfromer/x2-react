@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --watchAll --verbose --coverage --runInBand --detectOpenHandles",
     "watch": "expo start",
-    "postinstall": "expo-yarn-workspaces postinstall"
+    "postinstall!": "expo-yarn-workspaces postinstall"
   },
   "dependencies": {
     "@highcharts/highcharts-react-native": "^3.1.7",

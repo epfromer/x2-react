@@ -1,0 +1,35 @@
+import { RootState } from '..';
+export interface QueryState {
+    sort: string;
+    order: number;
+    sent: string;
+    from: string;
+    to: string;
+    subject: string;
+    allText: string;
+    body: string;
+    emailListPage: number;
+}
+export declare const setSort: import("@reduxjs/toolkit").ActionCreatorWithPayload<string, string>;
+export declare const setOrder: import("@reduxjs/toolkit").ActionCreatorWithPayload<number, string>;
+export declare const setSent: import("@reduxjs/toolkit").ActionCreatorWithPayload<string, string>;
+export declare const setFrom: import("@reduxjs/toolkit").ActionCreatorWithPayload<string, string>;
+export declare const setTo: import("@reduxjs/toolkit").ActionCreatorWithPayload<string, string>;
+export declare const setSubject: import("@reduxjs/toolkit").ActionCreatorWithPayload<string, string>;
+export declare const setAllText: import("@reduxjs/toolkit").ActionCreatorWithPayload<string, string>;
+export declare const setBody: import("@reduxjs/toolkit").ActionCreatorWithPayload<string, string>;
+export declare const setEmailListPage: import("@reduxjs/toolkit").ActionCreatorWithPayload<number, string>;
+export declare const clearSearch: import("@reduxjs/toolkit").ActionCreatorWithoutPayload<string>;
+export declare const querySlice: import("@reduxjs/toolkit").Slice<QueryState, {}, "query">;
+declare const _default: import("redux").Reducer<QueryState, import("redux").AnyAction>;
+export default _default;
+export declare const getAllText: (state: RootState) => string;
+export declare const getBody: (state: RootState) => string;
+export declare const getEmailListPage: (state: RootState) => number;
+export declare const getFrom: (state: RootState) => string;
+export declare const getOrder: (state: RootState) => number;
+export declare const getSort: (state: RootState) => string;
+export declare const getSent: (state: RootState) => string;
+export declare const getSubject: (state: RootState) => string;
+export declare const getTo: (state: RootState) => string;
+export declare const getQuery: (state: RootState) => QueryState;
