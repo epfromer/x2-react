@@ -17,13 +17,13 @@
     "watch": "run-s build compile:watch"
   },
   "dependencies": {
-    "@react-native-async-storage/async-storage": "^1.15.8",
-    "@reduxjs/toolkit": "^1.6.1",
+    "@react-native-async-storage/async-storage": "^1.15.9",
+    "@reduxjs/toolkit": "^1.6.2",
     "graphql": "^15.6.0",
     "graphql-request": "^3.5.0",
     "react": "16.13.1",
-    "react-redux": "^7.2.5",
-    "redux": "^4.1.1",
+    "react-redux": "^7.2.6",
+    "redux": "^4.1.2",
     "redux-logger": "^3.0.6"
   },
   "devDependencies": {
