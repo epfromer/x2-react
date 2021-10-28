@@ -19,9 +19,9 @@
     "yarn": "yarn"
   },
   "devDependencies": {
-    "expo-yarn-workspaces": "^1.5.2",
+    "expo-yarn-workspaces": "^1.6.0",
     "lerna": "latest",
-    "serve": "^12.0.0",
-    "typescript": "^4.3.5"
+    "serve": "^12.0.1",
+    "typescript": "^4.4.4"
   }
 }
