@@ -40,7 +40,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createAction, createSlice } from '@reduxjs/toolkit';
-import request, { gql } from 'graphql-request';
+import { gql, GraphQLClient } from 'graphql-request';
 import { defaultThemeName, x2Server } from '../../constants';
 import { setCustodians, setCustodiansLoading } from './custodiansSlice';
 import { setEmailSentByDay, setEmailSentByDayLoading, } from './emailSentByDaySlice';
@@ -170,9 +170,18 @@ export function getInitialDataAsync(store) {
         ? process.env.REACT_APP_X2_SERVER
         : x2Server;
     var query = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n    {\n      getWordCloud {\n        tag\n        weight\n      }\n      getEmailSentByDay {\n        sent\n        total\n      }\n      getCustodians {\n        id\n        name\n        title\n        color\n        senderTotal\n        receiverTotal\n        toCustodians {\n          custodianId\n          total\n        }\n      }\n    }\n  "], ["\n    {\n      getWordCloud {\n        tag\n        weight\n      }\n      getEmailSentByDay {\n        sent\n        total\n      }\n      getCustodians {\n        id\n        name\n        title\n        color\n        senderTotal\n        receiverTotal\n        toCustodians {\n          custodianId\n          total\n        }\n      }\n    }\n  "])));
-    request(server + "/graphql/", query)
+    console.log('setting headers');
+    var endpoint = server + "/graphql/";
+    var graphQLClient = new GraphQLClient(endpoint, {
+        mode: 'no-cors',
+    });
+    graphQLClient.setHeader('Access-Control-Allow-Origin', '*');
+    console.log('calling client');
+    graphQLClient
+        .request(query)
         .then(function (data) { return __awaiter(_this, void 0, void 0, function () {
         return __generator(this, function (_a) {
+            console.log('got it!');
             // await sleep(5000)
             store.dispatch(setWordCloud(data.getWordCloud));
             store.dispatch(setEmailSentByDay(data.getEmailSentByDay));
@@ -183,7 +192,11 @@ export function getInitialDataAsync(store) {
             return [2 /*return*/];
         });
     }); })
-        .catch(function (e) { return console.error(e); });
+        .catch(function (e) {
+        console.log('got an error');
+        console.error(e);
+    });
+    console.log('returning from calling client');
 }
 var templateObject_1;
 //# sourceMappingURL=appSettingsSlice.js.map

@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { createAction, createSlice, Store } from '@reduxjs/toolkit'
-import request, { gql } from 'graphql-request'
+import request, { gql, GraphQLClient } from 'graphql-request'
 import { RootState } from '..'
 import { defaultThemeName, x2Server } from '../../constants'
 import { setCustodians, setCustodiansLoading } from './custodiansSlice'
@@ -138,8 +138,17 @@ export function getInitialDataAsync(store: Store): void {
       }
     }
   `
-  request(`${server}/graphql/`, query)
+  console.log('setting headers')
+  const endpoint = `${server}/graphql/`
+  const graphQLClient = new GraphQLClient(endpoint, {
+    mode: 'no-cors',
+  })
+  graphQLClient.setHeader('Access-Control-Allow-Origin', '*')
+  console.log('calling client')
+  graphQLClient
+    .request(query)
     .then(async (data) => {
+      console.log('got it!')
       // await sleep(5000)
       store.dispatch(setWordCloud(data.getWordCloud))
       store.dispatch(setEmailSentByDay(data.getEmailSentByDay))
@@ -148,5 +157,9 @@ export function getInitialDataAsync(store: Store): void {
       store.dispatch(setEmailSentByDayLoading(false))
       store.dispatch(setCustodiansLoading(false))
     })
-    .catch((e) => console.error(e))
+    .catch((e) => {
+      console.log('got an error')
+      console.error(e)
+    })
+  console.log('returning from calling client')
 }
