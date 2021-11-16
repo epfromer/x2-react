@@ -13,15 +13,14 @@
   "scripts": {
     "build": "lerna run build",
     "clean": "lerna clean",
-    "postinstall!": "cd ./packages/expo && expo-yarn-workspaces postinstall && expo-yarn-workspaces check-workspace-dependencies",
+    "postinstall": "cd ./packages/expo && expo-yarn-workspaces postinstall && expo-yarn-workspaces check-workspace-dependencies",
     "expo": "yarn workspace @klonzo/expo expo start",
-    "yarn": "yarn install"
+    "yarn": "yarn"
   },
   "devDependencies": {
     "expo-yarn-workspaces": "^1.6.0",
     "lerna": "^4.0.0",
     "serve": "^13.0.2",
     "typescript": "^4.4.4"
-  },
-  "packageManager": "yarn@3.1.0"
+  }
 }
