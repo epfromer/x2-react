@@ -50,7 +50,7 @@
     "react-redux": "^7.2.6",
     "react-router-native": "^5.2.1",
     "redux": "^4.1.2",
-    "victory-native": "^35.5.5"
+    "victory-native": "^36.2.0"
   },
   "devDependencies": {
     "@babel/core": "~7.16.12",
