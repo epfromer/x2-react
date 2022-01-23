@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.15.16",
-    "@reduxjs/toolkit": "^1.6.2",
+    "@reduxjs/toolkit": "^1.7.1",
     "eslint-plugin-prettier": "^4.0.0",
     "graphql": "^15.7.2",
     "graphql-request": "^3.7.0",
