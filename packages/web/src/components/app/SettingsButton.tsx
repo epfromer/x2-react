@@ -14,8 +14,8 @@ export default function SettingsButton() {
     <Tooltip title="Settings" aria-label="Settings">
       <IconButton
         color="inherit"
-        onClick={() =>
-          loginWithRedirect({
+        onClick={async () =>
+          await loginWithRedirect({
             redirectUri: window.location.origin + '/AppSettingsView',
           })
         }

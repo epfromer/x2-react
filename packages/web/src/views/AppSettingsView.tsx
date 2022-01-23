@@ -1,10 +1,10 @@
+import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import React from 'react'
 import CustodianSettings from '../components/CustodianSettings'
 import ImportLog from '../components/ImportLog'
 import ThemePicker from '../components/ThemePicker'
-import Grid from '@material-ui/core/Grid'
 
 const useStyles = makeStyles(() => ({
   header: { marginTop: 15 },
@@ -12,6 +12,7 @@ const useStyles = makeStyles(() => ({
 
 export default function AppSettingsView() {
   const classes = useStyles()
+
   return (
     <div>
       <Grid container spacing={3}>

@@ -13,13 +13,12 @@ import SearchView from '../views/SearchView'
 import TreeMapView from '../views/TreeMapView'
 import VolumeTimelineView from '../views/VolumeTimelineView'
 import WordCloudView from '../views/WordCloudView'
-import ProtectedRoute from './ProtectedRoute'
 
 export default function AppRouting() {
   return (
     <Routes>
-      {/* <ProtectedRoute path="/AppSettingsView" component={AppSettingsView} /> */}
       <Route path="/" element={<HomeView />} />
+      <Route path="/AppSettingsView" element={<AppSettingsView />} />
       <Route path="/SearchHistoryView" element={<SearchHistoryView />} />
       <Route path="/SearchView" element={<SearchView data-testid="switch" />} />
       <Route path="/ChordView" element={<ChordView />} />
