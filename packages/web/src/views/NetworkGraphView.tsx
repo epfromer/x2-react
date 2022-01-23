@@ -10,14 +10,14 @@ import {
 import Typography from '@material-ui/core/Typography'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import LoadingIndicator from '../components/LoadingIndicator'
 import NetworkGraphECharts from '../components/ECharts/NetworkGraphECharts'
 import NetworkGraphHighcharts from '../components/Highcharts/NetworkGraphHighcharts'
 
 export default function NetworkGraphView() {
   const dispatch = useDispatch()
-  const history = useHistory()
+  const navigate = useNavigate()
   const emailSentByCustodian = useSelector(getEmailSentByCustodian)
   const custodiansLoading = useSelector(getCustodiansLoading)
 
@@ -30,7 +30,7 @@ export default function NetworkGraphView() {
       dispatch(setTo(to.slice(0, to.search(/,/))))
     }
     getEmailAsync(store)
-    history.push('/SearchView')
+    navigate('/SearchView')
   }
 
   return (

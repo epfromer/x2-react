@@ -5,7 +5,7 @@ import CardMedia from '@material-ui/core/CardMedia'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import React from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const useStyles = makeStyles(() => ({
   cardImage: { height: 340 },
@@ -19,10 +19,10 @@ interface Props {
 }
 export default function HomeCard({ image, title, description, link }: Props) {
   const classes = useStyles()
-  const history = useHistory()
+  const navigate = useNavigate()
   return (
     <Card>
-      <CardActionArea onClick={() => history.push(link)}>
+      <CardActionArea onClick={() => navigate(link)}>
         <CardMedia className={classes.cardImage} image={image} title={title} />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">

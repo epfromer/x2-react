@@ -9,7 +9,7 @@ import {
 import Typography from '@material-ui/core/Typography'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import VolumeTimelineChartJS from '../components/ChartJS/VolumeTimelineChartJS'
 import VolumeTimelineECharts from '../components/ECharts/VolumeTimelineECharts'
 import VolumeTimelineHighcharts from '../components/Highcharts/VolumeTimelineHighcharts'
@@ -18,7 +18,7 @@ import VolumeTimelineVictory from '../components/Victory/VolumeTimelineVictory'
 
 export default function TimelineView() {
   const dispatch = useDispatch()
-  const history = useHistory()
+  const navigate = useNavigate()
   const emailSentByDayLoading = useSelector(getEmailSentByDayLoading)
   const emailSentByDay = useSelector(getEmailSentByDay)
 
@@ -26,7 +26,7 @@ export default function TimelineView() {
     dispatch(clearSearch())
     dispatch(setSent(date))
     getEmailAsync(store)
-    history.push('/SearchView')
+    navigate('/SearchView')
   }
 
   return (

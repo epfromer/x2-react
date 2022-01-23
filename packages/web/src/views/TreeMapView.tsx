@@ -13,14 +13,14 @@ import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import LoadingIndicator from '../components/LoadingIndicator'
 import TreeMapECharts from '../components/ECharts/TreeMapECharts'
 import TreeMapHighcharts from '../components/Highcharts/TreeMapHighcharts'
 
 export default function TreeMapView() {
   const dispatch = useDispatch()
-  const history = useHistory()
+  const navigate = useNavigate()
   const custodiansLoading = useSelector(getCustodiansLoading)
   const custodians = useSelector(getCustodians)
   const emailSenders = useSelector(getEmailSenders)
@@ -31,7 +31,7 @@ export default function TreeMapView() {
     const name = value.slice(0, value.search(/,/))
     dispatch(search === 'from' ? setFrom(name) : setTo(name))
     getEmailAsync(store)
-    history.push('/SearchView')
+    navigate('/SearchView')
   }
 
   return (

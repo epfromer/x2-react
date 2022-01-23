@@ -31,7 +31,7 @@ import { ActionCreatorWithPayload } from '@reduxjs/toolkit'
 import debounce from 'lodash/debounce'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import FilterDate from './FilterDateDlg'
 
 const DEBOUNCE_MS = 1000
@@ -39,7 +39,7 @@ const FILTER_DATE = '2000-10-04'
 
 const EmailTableHead: React.FC = () => {
   const dispatch = useDispatch()
-  const history = useHistory()
+  const navigate = useNavigate()
   const [datePickerOpen, setDatePickerOpen] = useState(false)
   const sort = useSelector(getSort)
   const order = useSelector(getOrder)
@@ -116,7 +116,7 @@ const EmailTableHead: React.FC = () => {
             <Tooltip title="Search History" aria-label="Search History">
               <IconButton
                 aria-label="Search History"
-                onClick={() => history.push('/SearchHistoryView')}
+                onClick={() => navigate('/SearchHistoryView')}
               >
                 <HistoryIcon />
               </IconButton>

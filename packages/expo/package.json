@@ -48,7 +48,7 @@
     "react-native-webview": "^11.13.0",
     "react-native-word-cloud": "^1.0.7",
     "react-redux": "^7.2.6",
-    "react-router-native": "^5.2.1",
+    "react-router-native": "^6.2.1",
     "redux": "^4.1.2",
     "victory-native": "^36.2.0"
   },

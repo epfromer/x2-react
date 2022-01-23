@@ -3,7 +3,7 @@ import Collapse from '@material-ui/core/Collapse'
 import TableCell from '@material-ui/core/TableCell'
 import TableRow from '@material-ui/core/TableRow'
 import React from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import ExpandMoreButton from './ExpandMore'
 
 const EXPANDED_BODY_LENGTH = 1000
@@ -14,14 +14,14 @@ interface Props {
 }
 export default function ExpandingRow({ email, lastRowRef }: Props) {
   const [open, setOpen] = React.useState(false)
-  const history = useHistory()
+  const navigate = useNavigate()
 
   interface CellProps {
     field: string
     id: string
   }
   const LinkedTableCell: React.FC<CellProps> = ({ field, id }) => (
-    <TableCell onClick={() => history.push(`/EmailDetailView/${id}`)}>
+    <TableCell onClick={() => navigate(`/EmailDetailView/${id}`)}>
       {field}
     </TableCell>
   )

@@ -12,7 +12,7 @@ import SearchIcon from '@material-ui/icons/Search'
 import clsx from 'clsx'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import SettingsButton from './SettingsButton'
 
 // https://material-ui.com/components/material-icons/
@@ -32,7 +32,7 @@ interface Props {
 }
 export default function AppToolbar({ drawerOpen, setDrawerOpen }: Props) {
   const classes = useStyles()
-  const history = useHistory()
+  const navigate = useNavigate()
   const darkMode = useSelector(getDarkMode)
 
   return (
@@ -92,12 +92,12 @@ export default function AppToolbar({ drawerOpen, setDrawerOpen }: Props) {
       )}
       <SettingsButton />
       <Tooltip title="Search" aria-label="Search">
-        <IconButton color="inherit" onClick={() => history.push('/SearchView')}>
+        <IconButton color="inherit" onClick={() => navigate('/SearchView')}>
           <SearchIcon />
         </IconButton>
       </Tooltip>
       <Tooltip title="x2 Home" aria-label="x2 Home">
-        <IconButton color="inherit" onClick={() => history.push('/')}>
+        <IconButton color="inherit" onClick={() => navigate('/')}>
           <HomeIcon />
         </IconButton>
       </Tooltip>

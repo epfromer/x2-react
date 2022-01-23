@@ -10,14 +10,14 @@ import {
 import Typography from '@material-ui/core/Typography'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import LoadingIndicator from '../components/LoadingIndicator'
 import ChordECharts from '../components/ECharts/ChordECharts'
 import ChordHighcharts from '../components/Highcharts/ChordHighcharts'
 
 export default function ChordView() {
   const dispatch = useDispatch()
-  const history = useHistory()
+  const navigate = useNavigate()
   const emailSentByCustodian = useSelector(getEmailSentByCustodian)
   const custodiansLoading = useSelector(getCustodiansLoading)
 
@@ -27,7 +27,7 @@ export default function ChordView() {
     dispatch(setFrom(from.slice(0, from.search(/,/))))
     dispatch(setTo(to.slice(0, to.search(/,/))))
     getEmailAsync(store)
-    history.push('/SearchView')
+    navigate('/SearchView')
   }
 
   return (

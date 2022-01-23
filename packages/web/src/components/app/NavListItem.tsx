@@ -2,7 +2,7 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import React from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 interface Props {
   icon: JSX.Element
@@ -11,10 +11,10 @@ interface Props {
 }
 
 export default function NavListItem({ icon, name, route }: Props) {
-  const history = useHistory()
+  const navigate = useNavigate()
 
   return (
-    <ListItem button onClick={() => history.push(route)}>
+    <ListItem button onClick={() => navigate(route)}>
       <ListItemIcon>{icon}</ListItemIcon>
       <ListItemText primary={name} />
     </ListItem>

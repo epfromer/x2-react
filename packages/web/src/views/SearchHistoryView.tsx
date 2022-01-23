@@ -18,7 +18,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import { DataGrid } from '@material-ui/data-grid'
 import { gql, request } from 'graphql-request'
 import React, { useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import LoadingIndicator from '../components/LoadingIndicator'
 
 const useStyles = makeStyles((theme) => ({
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function SearchHistoryView() {
-  const history = useHistory()
+  const navigate = useNavigate()
   const classes = useStyles()
   const [log, setLog] = useState([])
   const [logLoading, setLogLoading] = useState(false)
@@ -66,7 +66,7 @@ export default function SearchHistoryView() {
     if (o.hasOwnProperty('allText')) store.dispatch(setAllText(o.allText))
     if (o.hasOwnProperty('body')) store.dispatch(setBody(o.body))
     getEmailAsync(store)
-    history.push('/SearchView')
+    navigate('/SearchView')
   }
 
   const onClearHistory = () => {

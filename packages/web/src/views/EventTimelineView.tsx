@@ -19,7 +19,7 @@ import HighchartsReact from 'highcharts-react-official'
 import HighchartTimeline from 'highcharts/modules/timeline'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import LoadingIndicator from '../components/LoadingIndicator'
 
 HighchartTimeline(Highcharts)
@@ -35,7 +35,7 @@ HighchartTimeline(Highcharts)
 export default function EventTimelineView() {
   const theme = useTheme()
   const dispatch = useDispatch()
-  const history = useHistory()
+  const navigate = useNavigate()
   const custodiansLoading = useSelector(getCustodiansLoading)
   const custodians = useSelector(getCustodians)
   const [vertical, setVertical] = useState(true)
@@ -60,7 +60,7 @@ export default function EventTimelineView() {
       dispatch(setAllText(value))
     }
     getEmailAsync(store)
-    history.push('/SearchView')
+    navigate('/SearchView')
   }
 
   const config: any = {

@@ -9,14 +9,14 @@ import {
 import Typography from '@material-ui/core/Typography'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import LoadingIndicator from '../components/LoadingIndicator'
 import WordCloudECharts from '../components/ECharts/WordCloudECharts'
 import WordCloudHighcharts from '../components/Highcharts/WordCloudHighcharts'
 
 export default function WordCloudView() {
   const dispatch = useDispatch()
-  const history = useHistory()
+  const navigate = useNavigate()
   const wordCloudLoading = useSelector(getWordCloudLoading)
   const wordCloud = useSelector(getWordCloud)
 
@@ -24,7 +24,7 @@ export default function WordCloudView() {
     dispatch(clearSearch())
     dispatch(setAllText(word))
     getEmailAsync(store)
-    history.push('/SearchView')
+    navigate('/SearchView')
   }
 
   return (

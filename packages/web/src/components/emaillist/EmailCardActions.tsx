@@ -14,13 +14,13 @@ import ArrowLeftIcon from '@material-ui/icons/ArrowLeft'
 import ArrowRightIcon from '@material-ui/icons/ArrowRight'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 interface Props {
   id: string
 }
 export default function EmailCardActions({ id }: Props) {
-  const history = useHistory()
+  const navigate = useNavigate()
   const totalEmails = useSelector(getEmail)?.length
   const emailIndex = getEmailIndex(store, id)
   const previousEmailId = getPreviousEmailId(store, id)
@@ -34,7 +34,7 @@ export default function EmailCardActions({ id }: Props) {
             <IconButton
               aria-label="back to list"
               data-testid="back-to-list"
-              onClick={() => history.push(`/SearchView`)}
+              onClick={() => navigate(`/SearchView`)}
             >
               <ArrowBack />
             </IconButton>
@@ -48,9 +48,7 @@ export default function EmailCardActions({ id }: Props) {
                 aria-label="previous email"
                 data-testid="previous-email"
                 disabled={!previousEmailId}
-                onClick={() =>
-                  history.push(`/EmailDetailView/${previousEmailId}`)
-                }
+                onClick={() => navigate(`/EmailDetailView/${previousEmailId}`)}
               >
                 <ArrowLeftIcon />
               </IconButton>
@@ -62,7 +60,7 @@ export default function EmailCardActions({ id }: Props) {
                 aria-label="next email"
                 data-testid="next-email"
                 disabled={!nextEmailId}
-                onClick={() => history.push(`/EmailDetailView/${nextEmailId}`)}
+                onClick={() => navigate(`/EmailDetailView/${nextEmailId}`)}
               >
                 <ArrowRightIcon />
               </IconButton>

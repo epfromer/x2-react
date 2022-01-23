@@ -11,7 +11,7 @@ import Tooltip from '@material-ui/core/Tooltip'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 import Settings from '@material-ui/icons/Settings'
 import React from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const StyledMenuItem = withStyles((theme) => ({
   root: {
@@ -26,7 +26,7 @@ const StyledMenuItem = withStyles((theme) => ({
 
 export default function SettingsMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null)
-  const history = useHistory()
+  const navigate = useNavigate()
   const { user } = useAuth0<{ name: string; picture: string }>()
   const { logout } = useAuth0()
 
@@ -40,7 +40,7 @@ export default function SettingsMenu() {
 
   const navTo = (loc: string) => {
     handleClose()
-    history.push(loc)
+    navigate(loc)
   }
 
   return (
