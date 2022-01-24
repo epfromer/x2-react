@@ -1,5 +1,5 @@
 import { EmailXferedDatum } from '@klonzo/common'
-import { useTheme } from '@material-ui/core/styles'
+import { useTheme } from '@mui/material/styles'
 import React from 'react'
 import { VictoryAxis, VictoryBar, VictoryChart, VictoryLabel } from 'victory'
 

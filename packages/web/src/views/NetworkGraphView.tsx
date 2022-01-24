@@ -7,13 +7,13 @@ import {
   setTo,
   store,
 } from '@klonzo/common'
-import Typography from '@material-ui/core/Typography'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import LoadingIndicator from '../components/LoadingIndicator'
 import NetworkGraphECharts from '../components/ECharts/NetworkGraphECharts'
 import NetworkGraphHighcharts from '../components/Highcharts/NetworkGraphHighcharts'
+import { Typography } from '@mui/material'
 
 export default function NetworkGraphView() {
   const dispatch = useDispatch()

@@ -9,8 +9,6 @@ import {
   setTo,
   store,
 } from '@klonzo/common'
-import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -19,6 +17,7 @@ import PieChartJS from '../components/ChartJS/PieChartJS'
 import PieECharts from '../components/ECharts/PieECharts'
 import PieHighcharts from '../components/Highcharts/PieHighcharts'
 import PieVictory from '../components/Victory/PieVictory'
+import { Grid, Typography } from '@mui/material'
 
 export default function PieView() {
   const dispatch = useDispatch()

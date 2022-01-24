@@ -1,7 +1,7 @@
 import {
+  getAllText,
   getDateStr,
   getEmailAsync,
-  getAllText,
   getFrom,
   getOrder,
   getSent,
@@ -18,15 +18,16 @@ import {
   setTo,
   store,
 } from '@klonzo/common'
-import IconButton from '@material-ui/core/IconButton'
-import TableCell from '@material-ui/core/TableCell'
-import TableHead from '@material-ui/core/TableHead'
-import TableRow from '@material-ui/core/TableRow'
-import TableSortLabel from '@material-ui/core/TableSortLabel'
-import TextField from '@material-ui/core/TextField'
-import Tooltip from '@material-ui/core/Tooltip'
-import DateRangeIcon from '@material-ui/icons/DateRange'
-import HistoryIcon from '@material-ui/icons/History'
+import { DateRange, History } from '@mui/icons-material'
+import {
+  IconButton,
+  TableCell,
+  TableHead,
+  TableRow,
+  TableSortLabel,
+  TextField,
+  Tooltip,
+} from '@mui/material'
 import { ActionCreatorWithPayload } from '@reduxjs/toolkit'
 import debounce from 'lodash/debounce'
 import React, { useState } from 'react'
@@ -118,7 +119,7 @@ const EmailTableHead: React.FC = () => {
                 aria-label="Search History"
                 onClick={() => navigate('/SearchHistoryView')}
               >
-                <HistoryIcon />
+                <History />
               </IconButton>
             </Tooltip>
           </TableCell>
@@ -153,7 +154,7 @@ const EmailTableHead: React.FC = () => {
                 data-testid="open-date-picker"
                 onClick={() => setDatePickerOpen(true)}
               >
-                <DateRangeIcon />
+                <DateRange />
               </IconButton>
             </Tooltip>
           </TableCell>

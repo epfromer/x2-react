@@ -1,7 +1,5 @@
 import { Email } from '@klonzo/common'
-import Collapse from '@material-ui/core/Collapse'
-import TableCell from '@material-ui/core/TableCell'
-import TableRow from '@material-ui/core/TableRow'
+import { Collapse, TableCell, TableRow } from '@mui/material'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import ExpandMoreButton from './ExpandMore'

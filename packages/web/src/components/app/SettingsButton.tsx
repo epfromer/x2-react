@@ -1,7 +1,6 @@
 import { useAuth0 } from '@auth0/auth0-react'
-import IconButton from '@material-ui/core/IconButton'
-import Tooltip from '@material-ui/core/Tooltip'
-import BuildIcon from '@material-ui/icons/Build'
+import { Build } from '@mui/icons-material'
+import { IconButton, Tooltip } from '@mui/material'
 import React from 'react'
 import SettingsMenu from './SettingsMenu'
 
@@ -20,7 +19,7 @@ export default function SettingsButton() {
           })
         }
       >
-        <BuildIcon />
+        <Build />
       </IconButton>
     </Tooltip>
   )

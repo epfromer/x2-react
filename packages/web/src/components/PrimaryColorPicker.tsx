@@ -1,11 +1,8 @@
-import * as colors from '@material-ui/core/colors'
-import Radio from '@material-ui/core/Radio'
-import Slider from '@material-ui/core/Slider'
-import { makeStyles } from '@material-ui/core/styles'
-import Tooltip from '@material-ui/core/Tooltip'
-import Typography from '@material-ui/core/Typography'
-import CheckIcon from '@material-ui/icons/Check'
+import { Check } from '@mui/icons-material'
+import { Radio, Slider, Tooltip, Typography } from '@mui/material'
+import { makeStyles } from '@mui/styles'
 import React from 'react'
+import * as colors from '@mui/material/colors'
 
 interface Props {
   defaultColor?: string | null
@@ -30,7 +27,7 @@ const shades = [
   50,
 ]
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   radio: {
     padding: 0,
   },
@@ -41,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   radioIconSelectedWhite: {
     width: 48,
     height: 48,
-    color: theme.palette.common.white,
+    // color: theme.palette.common.white,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -60,15 +57,15 @@ const useStyles = makeStyles((theme) => ({
     width: 192,
     display: 'flex',
     alignItems: 'center',
-    marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(2),
+    marginTop: 2,
+    marginBottom: 2,
   },
   slider: {
     width: 'calc(100% - 40px)',
-    marginLeft: theme.spacing(2),
-    marginRight: theme.spacing(1),
+    marginLeft: 2,
+    marginRight: 1,
   },
-}))
+})
 
 // map of color to hue, shade
 interface ColorToHueShadeItem {
@@ -106,7 +103,7 @@ export default function PrimaryColorPicker({ defaultColor, onChange }: Props) {
   const [selectedHue, setSelectedHue] = React.useState(
     hueFromColor(defaultColor ? defaultColor : '#2196f3')
   )
-  const [selectedShadeIndex, setSelectedShadeIndex] = React.useState(
+  const [idx, setIdx] = React.useState(
     shadeFromColor(defaultColor ? defaultColor : '#2196f3')
   )
 
@@ -116,7 +113,7 @@ export default function PrimaryColorPicker({ defaultColor, onChange }: Props) {
         <Typography id={'ShadeSliderLabel'}>Shade:</Typography>
         <Slider
           className={classes.slider}
-          value={selectedShadeIndex}
+          value={idx}
           min={0}
           max={13}
           step={1}
@@ -124,7 +121,7 @@ export default function PrimaryColorPicker({ defaultColor, onChange }: Props) {
             // @ts-ignore
             onChange(colors[selectedHue][shades[shadeIndex]])
             // @ts-ignore
-            setSelectedShadeIndex(shadeIndex)
+            setIdx(shadeIndex)
           }}
           aria-labelledby={'ShadeSliderLabel'}
         />
@@ -132,7 +129,7 @@ export default function PrimaryColorPicker({ defaultColor, onChange }: Props) {
       <div className={classes.swatch}>
         {hues.map((hue) => {
           // @ts-ignore
-          const backgroundColor = colors[hue][shades[selectedShadeIndex]]
+          const backgroundColor = colors[hue][shades[idx]]
           return (
             <Tooltip placement="right" title={hue} key={hue}>
               <Radio
@@ -140,14 +137,13 @@ export default function PrimaryColorPicker({ defaultColor, onChange }: Props) {
                 color="default"
                 checked={
                   // @ts-ignore
-                  colors[selectedHue][shades[selectedShadeIndex]] ===
-                  backgroundColor
+                  colors[selectedHue][shades[idx]] === backgroundColor
                 }
                 data-testid={hue}
                 onChange={(e) => {
                   onChange(
                     // @ts-ignore
-                    colors[e.target.value][shades[selectedShadeIndex]]
+                    colors[e.target.value][shades[idx]]
                   )
                   setSelectedHue(e.target.value)
                 }}
@@ -162,14 +158,13 @@ export default function PrimaryColorPicker({ defaultColor, onChange }: Props) {
                 checkedIcon={
                   <div
                     className={
-                      (selectedShadeIndex >= 6 && selectedShadeIndex <= 9) ||
-                      selectedShadeIndex === 13
+                      (idx >= 6 && idx <= 9) || idx === 13
                         ? classes.radioIconSelectedBlack
                         : classes.radioIconSelectedWhite
                     }
                     style={{ backgroundColor }}
                   >
-                    <CheckIcon style={{ fontSize: 30 }} />
+                    <Check style={{ fontSize: 30 }} />
                   </div>
                 }
               />

@@ -9,11 +9,9 @@ import {
   setTo,
   store,
 } from '@klonzo/common'
-import IconButton from '@material-ui/core/IconButton'
-import { useTheme } from '@material-ui/core/styles'
-import Tooltip from '@material-ui/core/Tooltip'
-import SwapHorizontalCircleIcon from '@material-ui/icons/SwapHorizontalCircle'
-import SwapVerticalCircleIcon from '@material-ui/icons/SwapVerticalCircle'
+import { SwapHorizontalCircle, SwapVerticalCircle } from '@mui/icons-material'
+import { IconButton, Tooltip } from '@mui/material'
+import { useTheme } from '@mui/material/styles'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import HighchartTimeline from 'highcharts/modules/timeline'
@@ -274,8 +272,8 @@ export default function EventTimelineView() {
               data-testid="toggle-vertical"
               onClick={() => toggleVertical()}
             >
-              {vertical && <SwapVerticalCircleIcon />}
-              {!vertical && <SwapHorizontalCircleIcon />}
+              {vertical && <SwapVerticalCircle />}
+              {!vertical && <SwapHorizontalCircle />}
             </IconButton>
           </Tooltip>
         </div>

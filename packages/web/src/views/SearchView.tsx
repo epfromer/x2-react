@@ -1,19 +1,21 @@
 import {
   defaultLimit,
   getEmail,
+  getEmailAsync,
   getEmailListPage,
   getEmailLoading,
-  getEmailAsync,
   getEmailTotal,
   setEmailListPage,
   store,
 } from '@klonzo/common'
-import LinearProgress from '@material-ui/core/LinearProgress'
-import Paper from '@material-ui/core/Paper'
-import { makeStyles } from '@material-ui/core/styles'
-import Table from '@material-ui/core/Table'
-import TableBody from '@material-ui/core/TableBody'
-import TableContainer from '@material-ui/core/TableContainer'
+import {
+  LinearProgress,
+  Paper,
+  Table,
+  TableBody,
+  TableContainer,
+} from '@mui/material'
+import { makeStyles } from '@mui/styles'
 import React, { useCallback, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import EmailTableHead from '../components/emaillist/EmailTableHead'
@@ -21,11 +23,11 @@ import ExpandingRow from '../components/emaillist/ExpandingRow'
 
 // https://github.com/WebDevSimplified/React-Infinite-Scrolling
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   root: { width: '100%' },
-  paper: { width: '100%', marginBottom: theme.spacing(2) },
+  paper: { width: '100%', marginBottom: 2 },
   table: { minWidth: 350 },
-}))
+})
 
 export default function SearchView() {
   const dispatch = useDispatch()

@@ -1,24 +1,27 @@
 import { importLoc, x2Server } from '@klonzo/common'
-import { Checkbox, FormControlLabel } from '@material-ui/core'
-import Button from '@material-ui/core/Button'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
-import Paper from '@material-ui/core/Paper'
-import { makeStyles } from '@material-ui/core/styles'
+import {
+  Button,
+  Checkbox,
+  FormControlLabel,
+  List,
+  ListItem,
+  ListItemText,
+  Paper,
+} from '@mui/material'
+import { makeStyles } from '@mui/styles'
 import { gql, request } from 'graphql-request'
 import React, { useEffect, useRef, useState } from 'react'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   root: {
     width: '100%',
-    marginTop: theme.spacing(2),
+    marginTop: 2,
     overflow: 'auto',
     maxHeight: 300,
   },
   button: { margin: 15 },
   text: { marginLeft: 15, paddingBottom: 15 },
-}))
+})
 
 interface ImportLogEntry {
   id: string

@@ -1,8 +1,6 @@
-import DateFnsUtils from '@date-io/date-fns'
-import Button from '@material-ui/core/Button'
-import Dialog from '@material-ui/core/Dialog'
-import DialogActions from '@material-ui/core/DialogActions'
-import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers/'
+import DatePicker from '@mui/lab/DatePicker'
+import { Button, Dialog, DialogActions, TextField } from '@mui/material'
+import { parseISO } from 'date-fns'
 import React, { useState } from 'react'
 
 interface Props {
@@ -20,20 +18,18 @@ export default function FilterDate({ onClose, onClear, date, open }: Props) {
 
   return (
     <Dialog aria-labelledby="filter-date" open={open}>
-      <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <DatePicker
-          autoOk
-          orientation="portrait"
-          variant="static"
-          openTo="date"
-          value={filterDate}
-          minDate={new Date('1999-07-02')}
-          maxDate={new Date('2002-01-30')}
-          onChange={(d: any) => setFilterDate(d)}
-          disableFuture
-          animateYearScrolling
-        />
-      </MuiPickersUtilsProvider>
+      <DatePicker
+        // autoOk
+        orientation="portrait"
+        // variant="static"
+        // openTo="date"
+        value={filterDate}
+        minDate={parseISO('1999-07-02')}
+        maxDate={parseISO('2002-01-30')}
+        onChange={(d: any) => setFilterDate(d)}
+        disableFuture
+        renderInput={(params) => <TextField {...params} />}
+      />
       <DialogActions>
         <Button
           onClick={onClear}

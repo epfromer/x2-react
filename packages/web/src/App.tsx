@@ -1,20 +1,23 @@
 import { Auth0Provider } from '@auth0/auth0-react'
+import AdapterDateFns from '@date-io/date-fns'
 import {
   getDarkMode,
   getEmailAsync,
   getInitialDataAsync,
-  getThemeName,
   loadAppSettingsAsync,
   store,
 } from '@klonzo/common'
-import AppBar from '@material-ui/core/AppBar'
-import Container from '@material-ui/core/Container'
-import CssBaseline from '@material-ui/core/CssBaseline'
+import LocalizationProvider from '@mui/lab/LocalizationProvider'
 import {
+  AppBar,
+  Container,
   createTheme,
-  makeStyles,
+  PaletteMode,
   ThemeProvider,
-} from '@material-ui/core/styles'
+} from '@mui/material'
+import { green, grey } from '@mui/material/colors'
+import CssBaseline from '@mui/material/CssBaseline'
+import { makeStyles } from '@mui/styles'
 import React from 'react'
 import { Provider, useSelector } from 'react-redux'
 import { BrowserRouter as Router, useNavigate } from 'react-router-dom'
@@ -22,14 +25,13 @@ import './App.css'
 import AppDrawer from './components/app/AppDrawer'
 import AppToolbar from './components/app/AppToolbar'
 import AppRouting from './router/AppRouting'
-import { getTheme } from './utils/appThemes'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   root: { display: 'flex' },
-  appBarSpacer: theme.mixins.toolbar,
+  appBarSpacer: { height: 70 },
   content: { flexGrow: 1, height: '98vh', overflow: 'auto' },
-  container: { paddingTop: theme.spacing(1), paddingBottom: theme.spacing(4) },
-}))
+  container: { paddingTop: 1, paddingBottom: 4 },
+})
 
 getInitialDataAsync(store)
 getEmailAsync(store)
@@ -72,17 +74,54 @@ const WithAuth0 = () => {
   )
 }
 
+const WithLocalization = () => (
+  <LocalizationProvider dateAdapter={AdapterDateFns}>
+    <WithAuth0 />
+  </LocalizationProvider>
+)
+
 const WithRouter = () => (
   <Router>
-    <WithAuth0 />
+    <WithLocalization />
   </Router>
 )
 
+function getTheme(mode: PaletteMode) {
+  const lightPalette = {
+    // palette values for light mode
+    primary: green,
+    divider: green[200],
+    text: {
+      primary: grey[900],
+      secondary: grey[800],
+    },
+  }
+  const darkPalette = {
+    // palette values for dark mode
+    primary: green,
+    divider: green[700],
+    background: {
+      default: grey[900],
+      paper: green[800],
+    },
+    text: {
+      primary: '#fff',
+      secondary: grey[500],
+    },
+  }
+
+  return {
+    palette: {
+      mode,
+      ...(mode === 'light' ? lightPalette : darkPalette),
+    },
+  }
+}
+
 const WithTheme = () => {
-  const darkMode = useSelector(getDarkMode)
-  const palette: any = getTheme(useSelector(getThemeName))
-  palette.type = darkMode ? 'dark' : 'light'
-  const customTheme = createTheme({ palette })
+  const customTheme = createTheme(
+    getTheme(useSelector(getDarkMode) ? 'dark' : 'light')
+  )
   return (
     <ThemeProvider theme={customTheme}>
       <WithRouter />

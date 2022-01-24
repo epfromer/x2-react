@@ -1,5 +1,5 @@
 import { EmailSentByDay, getDarkMode } from '@klonzo/common'
-import { useTheme } from '@material-ui/core/styles'
+import { useTheme } from '@mui/material/styles'
 import { Chart } from 'chart.js'
 import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'

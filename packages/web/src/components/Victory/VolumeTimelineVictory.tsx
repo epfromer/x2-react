@@ -1,5 +1,5 @@
 import { EmailSentByDay } from '@klonzo/common'
-import { useTheme } from '@material-ui/core/styles'
+import { useTheme } from '@mui/material/styles'
 import React, { useState } from 'react'
 import {
   VictoryAxis,

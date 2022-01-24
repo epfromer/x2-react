@@ -1,4 +1,4 @@
-import { useTheme } from '@material-ui/core/styles'
+import { useTheme } from '@mui/material/styles'
 import ReactEcharts from 'echarts-for-react'
 import 'echarts-wordcloud'
 import React from 'react'

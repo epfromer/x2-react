@@ -1,4 +1,3 @@
-import Grid from '@material-ui/core/Grid'
 import React from 'react'
 import HomeCard from '../components/HomeCard'
 import pie from './img/pie.png'
@@ -9,6 +8,7 @@ import volumetimeline from './img/volumetimeline.png'
 import networkgraph from './img/networkgraph.png'
 import treemap from './img/treemap.png'
 import eventtimeline from './img/eventtimeline.png'
+import { Grid } from '@mui/material'
 
 export default function HomeView() {
   const makeCard = (

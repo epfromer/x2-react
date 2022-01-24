@@ -1,17 +1,12 @@
 import {
+  getEmail,
   getEmailIndex,
   getNextEmailId,
   getPreviousEmailId,
-  getEmail,
   store,
 } from '@klonzo/common'
-import CardActions from '@material-ui/core/CardActions'
-import Grid from '@material-ui/core/Grid'
-import IconButton from '@material-ui/core/IconButton'
-import Tooltip from '@material-ui/core/Tooltip'
-import ArrowBack from '@material-ui/icons/ArrowBack'
-import ArrowLeftIcon from '@material-ui/icons/ArrowLeft'
-import ArrowRightIcon from '@material-ui/icons/ArrowRight'
+import { ArrowBack, ArrowLeft, ArrowRight } from '@mui/icons-material'
+import { CardActions, Grid, IconButton, Tooltip } from '@mui/material'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -28,7 +23,7 @@ export default function EmailCardActions({ id }: Props) {
 
   return (
     <CardActions>
-      <Grid justify="space-between" container>
+      <Grid container>
         <Grid item>
           <Tooltip title="Back to list">
             <IconButton
@@ -50,7 +45,7 @@ export default function EmailCardActions({ id }: Props) {
                 disabled={!previousEmailId}
                 onClick={() => navigate(`/EmailDetailView/${previousEmailId}`)}
               >
-                <ArrowLeftIcon />
+                <ArrowLeft />
               </IconButton>
             </span>
           </Tooltip>
@@ -62,7 +57,7 @@ export default function EmailCardActions({ id }: Props) {
                 disabled={!nextEmailId}
                 onClick={() => navigate(`/EmailDetailView/${nextEmailId}`)}
               >
-                <ArrowRightIcon />
+                <ArrowRight />
               </IconButton>
             </span>
           </Tooltip>

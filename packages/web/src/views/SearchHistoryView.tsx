@@ -12,19 +12,18 @@ import {
   store,
   x2Server,
 } from '@klonzo/common'
-import Button from '@material-ui/core/Button'
-import Paper from '@material-ui/core/Paper'
-import { makeStyles } from '@material-ui/core/styles'
-import { DataGrid } from '@material-ui/data-grid'
+import { Button, Paper } from '@mui/material'
+import { makeStyles } from '@mui/styles'
+import { DataGrid } from '@mui/x-data-grid'
 import { gql, request } from 'graphql-request'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import LoadingIndicator from '../components/LoadingIndicator'
 
-const useStyles = makeStyles((theme) => ({
-  root: { width: '100%', marginTop: theme.spacing(2) },
+const useStyles = makeStyles({
+  root: { width: '100%', marginTop: 2 },
   text: { padding: 15 },
-}))
+})
 
 export default function SearchHistoryView() {
   const navigate = useNavigate()

@@ -9,22 +9,20 @@ import {
   store,
   x2Server,
 } from '@klonzo/common'
-import Card from '@material-ui/core/Card'
-import CardContent from '@material-ui/core/CardContent'
-import { makeStyles } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
 import { gql, request } from 'graphql-request'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import LoadingIndicator from '../components/LoadingIndicator'
 import EmailCardActions from '../components/emaillist/EmailCardActions'
+import { makeStyles } from '@mui/styles'
+import { Card, CardContent, Typography } from '@mui/material'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   root: { width: '100%' },
-  paper: { width: '100%', marginBottom: theme.spacing(2) },
+  paper: { width: '100%', marginBottom: 2 },
   title: { fontSize: 27 },
-}))
+})
 
 export default function EmailDetailView() {
   const classes = useStyles()

@@ -1,28 +1,17 @@
 import { useAuth0 } from '@auth0/auth0-react'
-import Avatar from '@material-ui/core/Avatar'
-import Divider from '@material-ui/core/Divider'
-import IconButton from '@material-ui/core/IconButton'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import ListItemText from '@material-ui/core/ListItemText'
-import Menu from '@material-ui/core/Menu'
-import MenuItem from '@material-ui/core/MenuItem'
-import { withStyles } from '@material-ui/core/styles'
-import Tooltip from '@material-ui/core/Tooltip'
-import ExitToAppIcon from '@material-ui/icons/ExitToApp'
-import Settings from '@material-ui/icons/Settings'
+import { ExitToApp, Settings } from '@mui/icons-material'
+import {
+  Avatar,
+  Divider,
+  IconButton,
+  ListItemIcon,
+  ListItemText,
+  Menu,
+  MenuItem,
+  Tooltip,
+} from '@mui/material'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-
-const StyledMenuItem = withStyles((theme) => ({
-  root: {
-    '&:focus': {
-      backgroundColor: theme.palette.primary.main,
-      '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
-        color: theme.palette.common.white,
-      },
-    },
-  },
-}))(MenuItem)
 
 export default function SettingsMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null)
@@ -57,7 +46,6 @@ export default function SettingsMenu() {
       </Tooltip>
       <Menu
         elevation={10}
-        getContentAnchorEl={null}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
         transformOrigin={{ vertical: 'top', horizontal: 'center' }}
         id="customized-menu"
@@ -66,22 +54,22 @@ export default function SettingsMenu() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <StyledMenuItem>
+        <MenuItem>
           <ListItemText primary={user?.name} />
-        </StyledMenuItem>
+        </MenuItem>
         <Divider />
-        <StyledMenuItem onClick={() => navTo('/AppSettingsView')}>
+        <MenuItem onClick={() => navTo('/AppSettingsView')}>
           <ListItemIcon>
             <Settings fontSize="small" />
           </ListItemIcon>
           <ListItemText primary="Settings" />
-        </StyledMenuItem>
-        <StyledMenuItem onClick={signOut} data-testid="sign-out">
+        </MenuItem>
+        <MenuItem onClick={signOut} data-testid="sign-out">
           <ListItemIcon>
-            <ExitToAppIcon fontSize="small" />
+            <ExitToApp fontSize="small" />
           </ListItemIcon>
           <ListItemText primary="Sign Out" />
-        </StyledMenuItem>
+        </MenuItem>
       </Menu>
     </div>
   )

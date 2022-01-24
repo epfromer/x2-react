@@ -1,15 +1,15 @@
-import Divider from '@material-ui/core/Divider'
-import Drawer from '@material-ui/core/Drawer'
-import List from '@material-ui/core/List'
-import AutorenewIcon from '@material-ui/icons/Autorenew'
-import BarChartIcon from '@material-ui/icons/BarChart'
-import CloudIcon from '@material-ui/icons/Cloud'
-import DeviceHubIcon from '@material-ui/icons/DeviceHub'
-import HomeIcon from '@material-ui/icons/Home'
-import PieChart from '@material-ui/icons/PieChart'
-import SearchIcon from '@material-ui/icons/Search'
-import TimelineIcon from '@material-ui/icons/Timeline'
-import ViewQuiltIcon from '@material-ui/icons/ViewQuilt'
+import {
+  Autorenew,
+  BarChart,
+  Cloud,
+  DeviceHub,
+  Home,
+  PieChart,
+  Search,
+  Timeline,
+  ViewQuilt,
+} from '@mui/icons-material'
+import { Divider, Drawer, MenuList } from '@mui/material'
 import React from 'react'
 import NavListItem from './NavListItem'
 
@@ -19,34 +19,45 @@ interface Props {
   open: boolean
   setOpen: (s: boolean) => void
 }
-
 export default function AppDrawer({ open, setOpen }: Props) {
   const mainListItems = [
-    { icon: <HomeIcon />, name: 'x2 Home', route: '/' },
-    { icon: <SearchIcon />, name: 'Search', route: '/SearchView' },
+    { icon: <Home fontSize="small" />, name: 'x2 Home', route: '/' },
+    { icon: <Search fontSize="small" />, name: 'Search', route: '/SearchView' },
   ]
 
   const secondaryListItems = [
-    { icon: <AutorenewIcon />, name: 'Chord', route: '/ChordView' },
-    { icon: <CloudIcon />, name: 'Word Cloud', route: '/WordCloudView' },
     {
-      icon: <DeviceHubIcon />,
+      icon: <Autorenew fontSize="small" />,
+      name: 'Chord',
+      route: '/ChordView',
+    },
+    {
+      icon: <Cloud fontSize="small" />,
+      name: 'Word Cloud',
+      route: '/WordCloudView',
+    },
+    {
+      icon: <DeviceHub fontSize="small" />,
       name: 'Network Graph',
       route: '/NetworkGraphView',
     },
     {
-      icon: <TimelineIcon />,
+      icon: <Timeline fontSize="small" />,
       name: 'Volume Timeline',
       route: '/VolumeTimelineView',
     },
-    { icon: <ViewQuiltIcon />, name: 'Tree Map', route: '/TreeMapView' },
     {
-      icon: <TimelineIcon />,
+      icon: <ViewQuilt fontSize="small" />,
+      name: 'Tree Map',
+      route: '/TreeMapView',
+    },
+    {
+      icon: <Timeline fontSize="small" />,
       name: 'Event Timeline',
       route: '/EventTimelineView',
     },
-    { icon: <BarChartIcon />, name: 'Bar', route: '/BarView' },
-    { icon: <PieChart />, name: 'Pie', route: '/PieView' },
+    { icon: <BarChart fontSize="small" />, name: 'Bar', route: '/BarView' },
+    { icon: <PieChart fontSize="small" />, name: 'Pie', route: '/PieView' },
   ]
 
   return (
@@ -56,7 +67,7 @@ export default function AppDrawer({ open, setOpen }: Props) {
       onClose={() => setOpen(false)}
       onClick={() => setOpen(false)}
     >
-      <List>
+      <MenuList>
         {mainListItems.map((item) => (
           <NavListItem
             icon={item.icon}
@@ -65,9 +76,9 @@ export default function AppDrawer({ open, setOpen }: Props) {
             key={item.name}
           />
         ))}
-      </List>
+      </MenuList>
       <Divider />
-      <List>
+      <MenuList>
         {secondaryListItems.map((item) => (
           <NavListItem
             icon={item.icon}
@@ -76,7 +87,7 @@ export default function AppDrawer({ open, setOpen }: Props) {
             key={item.name}
           />
         ))}
-      </List>
+      </MenuList>
     </Drawer>
   )
 }

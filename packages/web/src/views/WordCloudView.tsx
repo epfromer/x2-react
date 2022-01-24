@@ -6,13 +6,13 @@ import {
   setAllText,
   store,
 } from '@klonzo/common'
-import Typography from '@material-ui/core/Typography'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import LoadingIndicator from '../components/LoadingIndicator'
 import WordCloudECharts from '../components/ECharts/WordCloudECharts'
 import WordCloudHighcharts from '../components/Highcharts/WordCloudHighcharts'
+import { Typography } from '@mui/material'
 
 export default function WordCloudView() {
   const dispatch = useDispatch()

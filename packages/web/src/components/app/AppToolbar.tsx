@@ -1,14 +1,13 @@
 import { getDarkMode, setDarkModeAsync, store } from '@klonzo/common'
-import IconButton from '@material-ui/core/IconButton'
-import { makeStyles } from '@material-ui/core/styles'
-import Toolbar from '@material-ui/core/Toolbar'
-import Tooltip from '@material-ui/core/Tooltip'
-import Typography from '@material-ui/core/Typography'
-import Brightness4 from '@material-ui/icons/Brightness4'
-import Brightness7 from '@material-ui/icons/Brightness7'
-import HomeIcon from '@material-ui/icons/Home'
-import MenuIcon from '@material-ui/icons/Menu'
-import SearchIcon from '@material-ui/icons/Search'
+import {
+  Brightness4,
+  Brightness7,
+  Home,
+  Menu,
+  Search,
+} from '@mui/icons-material'
+import { IconButton, Toolbar, Tooltip, Typography } from '@mui/material'
+import { makeStyles } from '@mui/styles'
 import clsx from 'clsx'
 import React from 'react'
 import { useSelector } from 'react-redux'
@@ -49,7 +48,7 @@ export default function AppToolbar({ drawerOpen, setDrawerOpen }: Props) {
             drawerOpen && classes.menuButtonHidden
           )}
         >
-          <MenuIcon />
+          <Menu />
         </IconButton>
       </Tooltip>
       <Typography
@@ -93,12 +92,12 @@ export default function AppToolbar({ drawerOpen, setDrawerOpen }: Props) {
       <SettingsButton />
       <Tooltip title="Search" aria-label="Search">
         <IconButton color="inherit" onClick={() => navigate('/SearchView')}>
-          <SearchIcon />
+          <Search />
         </IconButton>
       </Tooltip>
       <Tooltip title="x2 Home" aria-label="x2 Home">
         <IconButton color="inherit" onClick={() => navigate('/')}>
-          <HomeIcon />
+          <Home />
         </IconButton>
       </Tooltip>
     </Toolbar>

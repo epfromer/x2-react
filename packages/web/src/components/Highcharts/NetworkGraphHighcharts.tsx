@@ -1,5 +1,5 @@
 import { getDarkMode } from '@klonzo/common'
-import { useTheme } from '@material-ui/core/styles'
+import { useTheme } from '@mui/material/styles'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import HighchartNetworkGraph from 'highcharts/modules/networkgraph'

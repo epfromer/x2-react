@@ -1,5 +1,5 @@
 import { EmailXferedDatum, getPieEChartsConfig } from '@klonzo/common'
-import { useTheme } from '@material-ui/core/styles'
+import { useTheme } from '@mui/material/styles'
 import ReactEcharts from 'echarts-for-react'
 import React from 'react'
 

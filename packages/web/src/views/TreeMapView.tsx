@@ -9,14 +9,13 @@ import {
   setTo,
   store,
 } from '@klonzo/common'
-import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import LoadingIndicator from '../components/LoadingIndicator'
 import TreeMapECharts from '../components/ECharts/TreeMapECharts'
 import TreeMapHighcharts from '../components/Highcharts/TreeMapHighcharts'
+import { Grid, Typography } from '@mui/material'
 
 export default function TreeMapView() {
   const dispatch = useDispatch()

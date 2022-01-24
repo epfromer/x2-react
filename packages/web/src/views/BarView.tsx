@@ -9,7 +9,6 @@ import {
   setTo,
   store,
 } from '@klonzo/common'
-import Typography from '@material-ui/core/Typography'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -18,7 +17,7 @@ import BarChartJS from '../components/ChartJS/BarChartJS'
 import BarECharts from '../components/ECharts/BarECharts'
 import BarHighcarts from '../components/Highcharts/BarHighcharts'
 import BarVictory from '../components/Victory/BarVictory'
-import { Grid } from '@material-ui/core'
+import { Grid, Typography } from '@mui/material'
 
 export default function BarView() {
   const dispatch = useDispatch()
