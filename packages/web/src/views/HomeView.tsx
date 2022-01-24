@@ -61,7 +61,7 @@ export default function HomeView() {
       {makeCard(
         eventtimeline,
         'Event Timeline',
-        'Enron fraud and litigation events.',
+        'Enron fraud & litigation events.',
         '/EventTimelineView'
       )}
     </Grid>

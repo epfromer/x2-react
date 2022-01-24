@@ -8,14 +8,7 @@ import {
   store,
 } from '@klonzo/common'
 import LocalizationProvider from '@mui/lab/LocalizationProvider'
-import {
-  AppBar,
-  Container,
-  createTheme,
-  PaletteMode,
-  ThemeProvider,
-} from '@mui/material'
-import { green, grey } from '@mui/material/colors'
+import { AppBar, Container, createTheme, ThemeProvider } from '@mui/material'
 import CssBaseline from '@mui/material/CssBaseline'
 import { makeStyles } from '@mui/styles'
 import React from 'react'
@@ -25,6 +18,7 @@ import './App.css'
 import AppDrawer from './components/app/AppDrawer'
 import AppToolbar from './components/app/AppToolbar'
 import AppRouting from './router/AppRouting'
+import { getTheme } from './utils/appThemes'
 
 const useStyles = makeStyles({
   root: { display: 'flex' },
@@ -85,38 +79,6 @@ const WithRouter = () => (
     <WithLocalization />
   </Router>
 )
-
-function getTheme(mode: PaletteMode) {
-  const lightPalette = {
-    // palette values for light mode
-    primary: green,
-    divider: green[200],
-    text: {
-      primary: grey[900],
-      secondary: grey[800],
-    },
-  }
-  const darkPalette = {
-    // palette values for dark mode
-    primary: green,
-    divider: green[700],
-    background: {
-      default: grey[900],
-      paper: green[800],
-    },
-    text: {
-      primary: '#fff',
-      secondary: grey[500],
-    },
-  }
-
-  return {
-    palette: {
-      mode,
-      ...(mode === 'light' ? lightPalette : darkPalette),
-    },
-  }
-}
 
 const WithTheme = () => {
   const customTheme = createTheme(

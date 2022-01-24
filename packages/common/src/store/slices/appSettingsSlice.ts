@@ -13,17 +13,14 @@ import { setWordCloud, setWordCloudLoading } from './wordCloudSlice'
 export interface AppSettingsState {
   darkMode: boolean
   orientation: string
-  themeName: string
 }
 const initialState: AppSettingsState = {
   darkMode: false,
   orientation: 'portrait',
-  themeName: defaultThemeName,
 }
 
 // Actions
 export const setDarkMode = createAction<boolean>('appSettings/setDarkMode')
-export const setThemeName = createAction<string>('appSettings/setThemeName')
 
 // Reducer
 export const appSettingsSlice = createSlice({
@@ -31,13 +28,9 @@ export const appSettingsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder
-      .addCase(setDarkMode, (state, action) => {
-        state.darkMode = action.payload
-      })
-      .addCase(setThemeName, (state, action) => {
-        state.themeName = action.payload
-      })
+    builder.addCase(setDarkMode, (state, action) => {
+      state.darkMode = action.payload
+    })
   },
 })
 export default appSettingsSlice.reducer
@@ -45,8 +38,6 @@ export default appSettingsSlice.reducer
 // selectors & getters
 export const getDarkMode = (state: RootState): boolean =>
   state.appSettings.darkMode
-export const getThemeName = (state: RootState): string =>
-  state.appSettings.themeName
 
 export async function loadAppSettingsAsync(store: Store): Promise<void> {
   try {
@@ -68,13 +59,10 @@ export async function loadAppSettingsAsync(store: Store): Promise<void> {
         themeName = localStorage.getItem('themeName')
       }
     } else {
-      let value = await AsyncStorage.getItem('darkMode')
+      const value = await AsyncStorage.getItem('darkMode')
       if (value === 'true') darkMode = true
-      value = await AsyncStorage.getItem('themeName')
-      if (value) themeName = value
     }
     store.dispatch(setDarkMode(darkMode))
-    store.dispatch(setThemeName(themeName))
   } catch (e) {
     console.error(e)
   }
@@ -90,18 +78,6 @@ export async function setDarkModeAsync(
     await AsyncStorage.setItem('darkMode', String(darkMode))
   }
   store.dispatch(setDarkMode(darkMode))
-}
-
-export async function setThemeNameAsync(
-  store: Store,
-  themeName: string
-): Promise<void> {
-  if (typeof Storage !== 'undefined') {
-    localStorage.setItem('themeName', themeName)
-  } else {
-    await AsyncStorage.setItem('themeName', themeName)
-  }
-  store.dispatch(setThemeName(themeName))
 }
 
 // const sleep = (ms = 0) => new Promise((r) => setTimeout(r, ms))
