@@ -6,22 +6,13 @@ import {
   Menu,
   Search,
 } from '@mui/icons-material'
-import { IconButton, Toolbar, Tooltip, Typography } from '@mui/material'
-import { makeStyles } from '@mui/styles'
-import clsx from 'clsx'
+import { Box, IconButton, Toolbar, Tooltip, Typography } from '@mui/material'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import SettingsButton from './SettingsButton'
 
 // https://material-ui.com/components/material-icons/
-
-const useStyles = makeStyles(() => ({
-  toolbar: { paddingRight: 24 },
-  title: { flexGrow: 1 },
-  menuButton: { marginRight: 36 },
-  menuButtonHidden: { display: 'none' },
-}))
 
 const APP_NAME = 'x2 React'
 
@@ -30,12 +21,11 @@ interface Props {
   setDrawerOpen: (s: boolean) => void
 }
 export default function AppToolbar({ drawerOpen, setDrawerOpen }: Props) {
-  const classes = useStyles()
   const navigate = useNavigate()
   const darkMode = useSelector(getDarkMode)
 
   return (
-    <Toolbar className={classes.toolbar}>
+    <Toolbar>
       <Tooltip title="Open drawer" aria-label="Open drawer">
         <IconButton
           edge="start"
@@ -43,24 +33,14 @@ export default function AppToolbar({ drawerOpen, setDrawerOpen }: Props) {
           aria-label="open drawer"
           data-testid="open-drawer"
           onClick={() => setDrawerOpen(true)}
-          className={clsx(
-            classes.menuButton,
-            drawerOpen && classes.menuButtonHidden
-          )}
         >
           <Menu />
         </IconButton>
       </Tooltip>
-      <Typography
-        component="h1"
-        variant="h6"
-        color="inherit"
-        noWrap
-        className={classes.title}
-      >
+      <Typography component="h1" variant="h6" color="inherit" noWrap>
         {APP_NAME}
       </Typography>
-
+      <Box sx={{ flexGrow: 1 }}></Box>
       {darkMode && (
         <Tooltip
           title="Toggle light/dark theme"

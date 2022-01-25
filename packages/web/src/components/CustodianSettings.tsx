@@ -14,9 +14,10 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Typography,
 } from '@mui/material'
 import { gql, request } from 'graphql-request'
-import React, { useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ColorPickerDlg from './ColorPickerDlg'
 import LoadingIndicator from './LoadingIndicator'
@@ -78,7 +79,10 @@ export default function CustodianSettings() {
   )
 
   return (
-    <>
+    <Fragment>
+      <Typography variant="h5" sx={{ marginBottom: 2 }}>
+        Custodians
+      </Typography>
       <ColorPickerDlg
         open={colorPickerDlgOpen}
         defaultColor={pickedColor}
@@ -108,6 +112,6 @@ export default function CustodianSettings() {
         onClick={() => handleColorChosen('red')}
         data-testid="handle-click"
       ></button>
-    </>
+    </Fragment>
   )
 }

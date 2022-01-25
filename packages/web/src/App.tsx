@@ -8,10 +8,18 @@ import {
   store,
 } from '@klonzo/common'
 import LocalizationProvider from '@mui/lab/LocalizationProvider'
-import { AppBar, Container, createTheme, ThemeProvider } from '@mui/material'
+import {
+  AppBar,
+  Box,
+  Container,
+  createTheme,
+  Slide,
+  ThemeProvider,
+  Toolbar,
+  useScrollTrigger,
+} from '@mui/material'
 import CssBaseline from '@mui/material/CssBaseline'
-import { makeStyles } from '@mui/styles'
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Provider, useSelector } from 'react-redux'
 import { BrowserRouter as Router, useNavigate } from 'react-router-dom'
 import './App.css'
@@ -20,34 +28,37 @@ import AppToolbar from './components/app/AppToolbar'
 import AppRouting from './router/AppRouting'
 import { getTheme } from './utils/appThemes'
 
-const useStyles = makeStyles({
-  root: { display: 'flex' },
-  appBarSpacer: { height: 70 },
-  content: { flexGrow: 1, height: '98vh', overflow: 'auto' },
-  container: { paddingTop: 1, paddingBottom: 4 },
-})
-
 getInitialDataAsync(store)
 getEmailAsync(store)
 loadAppSettingsAsync(store)
 
+const HideOnScroll = (props: any) => {
+  const { children, window } = props
+  const trigger = useScrollTrigger({ target: window ? window() : undefined })
+  return (
+    <Slide appear={false} direction="down" in={!trigger}>
+      {children}
+    </Slide>
+  )
+}
+
 const CoreApp = () => {
-  const classes = useStyles()
   const [drawerOpen, setDrawerOpen] = React.useState(false)
   return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <AppBar position="absolute">
-        <AppToolbar drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen} />
-      </AppBar>
+    <Fragment>
+      <HideOnScroll>
+        <AppBar>
+          <AppToolbar drawerOpen={drawerOpen} setDrawerOpen={setDrawerOpen} />
+        </AppBar>
+      </HideOnScroll>
       <AppDrawer open={drawerOpen} setOpen={setDrawerOpen} />
-      <main className={classes.content}>
-        <div className={classes.appBarSpacer} />
-        <Container maxWidth={false} className={classes.container}>
+      <Toolbar />
+      <Container>
+        <Box sx={{ my: 2 }}>
           <AppRouting />
-        </Container>
-      </main>
-    </div>
+        </Box>
+      </Container>
+    </Fragment>
   )
 }
 
@@ -86,6 +97,7 @@ const WithTheme = () => {
   )
   return (
     <ThemeProvider theme={customTheme}>
+      <CssBaseline />
       <WithRouter />
     </ThemeProvider>
   )

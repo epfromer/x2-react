@@ -1,15 +1,12 @@
 import { Backdrop, CircularProgress } from '@mui/material'
-import { makeStyles } from '@mui/styles'
 import React from 'react'
 
-const useStyles = makeStyles({
-  backdrop: { color: '#fff' },
-})
-
 export default function LoadingIndicator() {
-  const classes = useStyles()
   return (
-    <Backdrop className={classes.backdrop} open={true}>
+    <Backdrop
+      sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+      open={true}
+    >
       <CircularProgress color="inherit" />
     </Backdrop>
   )

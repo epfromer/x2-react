@@ -1,27 +1,16 @@
 import { importLoc, x2Server } from '@klonzo/common'
 import {
+  Box,
   Button,
   Checkbox,
   FormControlLabel,
   List,
   ListItem,
   ListItemText,
-  Paper,
+  Typography,
 } from '@mui/material'
-import { makeStyles } from '@mui/styles'
 import { gql, request } from 'graphql-request'
-import React, { useEffect, useRef, useState } from 'react'
-
-const useStyles = makeStyles({
-  root: {
-    width: '100%',
-    marginTop: 2,
-    overflow: 'auto',
-    maxHeight: 300,
-  },
-  button: { margin: 15 },
-  text: { marginLeft: 15, paddingBottom: 15 },
-})
+import React, { Fragment, useEffect, useRef, useState } from 'react'
 
 interface ImportLogEntry {
   id: string
@@ -30,7 +19,6 @@ interface ImportLogEntry {
 }
 
 export default function ImportLog() {
-  const classes = useStyles()
   const lastRowRef = useRef(null)
   let importInterval: number | undefined | NodeJS.Timer
   const [log, setLog] = useState([])
@@ -88,22 +76,30 @@ export default function ImportLog() {
   })
 
   return (
-    <Paper>
-      <Button
-        variant="contained"
-        color="secondary"
-        className={classes.button}
-        onClick={startImport}
-      >
+    <Fragment>
+      <Typography variant="h5" sx={{ marginTop: 2, marginBottom: 2 }}>
+        Import Log
+      </Typography>
+      <Button variant="contained" color="primary" onClick={startImport}>
         Import Email
       </Button>
       <FormControlLabel
-        control={<Checkbox checked={scrollIntoView} onChange={setScroll} />}
+        control={
+          <Checkbox
+            checked={scrollIntoView}
+            sx={{ marginLeft: 2 }}
+            onChange={setScroll}
+          />
+        }
         label="Auto-scroll to latest entries"
       />
-      {log.length === 0 && <div className={classes.text}>No log entries</div>}
+      {log.length === 0 && <Box sx={{ marginTop: 2 }}>No log entries</Box>}
       {log.length !== 0 && (
-        <List dense className={classes.root} aria-label="import-log">
+        <List
+          dense
+          sx={{ width: '100%', marginTop: 2, overflow: 'auto', maxHeight: 300 }}
+          aria-label="import-log"
+        >
           {log?.map((logEntry: ImportLogEntry) => {
             return (
               <ListItem key={logEntry.id} alignItems="flex-start">
@@ -113,9 +109,9 @@ export default function ImportLog() {
               </ListItem>
             )
           })}
-          <div style={{ float: 'left', clear: 'both' }} ref={lastRowRef}></div>
+          <Box sx={{ float: 'left', clear: 'both' }} ref={lastRowRef} />
         </List>
       )}
-    </Paper>
+    </Fragment>
   )
 }

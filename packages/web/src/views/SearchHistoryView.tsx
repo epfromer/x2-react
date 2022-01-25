@@ -12,22 +12,15 @@ import {
   store,
   x2Server,
 } from '@klonzo/common'
-import { Button, Paper } from '@mui/material'
-import { makeStyles } from '@mui/styles'
+import { Box, Button } from '@mui/material'
 import { DataGrid } from '@mui/x-data-grid'
 import { gql, request } from 'graphql-request'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import LoadingIndicator from '../components/LoadingIndicator'
 
-const useStyles = makeStyles({
-  root: { width: '100%', marginTop: 2 },
-  text: { padding: 15 },
-})
-
 export default function SearchHistoryView() {
   const navigate = useNavigate()
-  const classes = useStyles()
   const [log, setLog] = useState([])
   const [logLoading, setLogLoading] = useState(false)
 
@@ -94,27 +87,22 @@ export default function SearchHistoryView() {
   ]
 
   return (
-    <div className={classes.root}>
-      <Paper>
-        {logLoading && <LoadingIndicator />}
-        <Button onClick={onClearHistory} data-testid="clear-history">
-          Clear History
-        </Button>
-        {!log.length && <div className={classes.text}>No log entries.</div>}
-        {log.length !== 0 && (
-          <div style={{ height: 600, width: '100%' }}>
-            <div style={{ display: 'flex', height: '100%' }}>
-              <div style={{ flexGrow: 1 }}>
-                <DataGrid
-                  onRowClick={onSearchHistory}
-                  rows={log}
-                  columns={columns}
-                />
-              </div>
-            </div>
-          </div>
-        )}
-      </Paper>
-    </div>
+    <Box>
+      {logLoading && <LoadingIndicator />}
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={onClearHistory}
+        data-testid="clear-history"
+      >
+        Clear History
+      </Button>
+      {!log.length && <Box sx={{ marginTop: 2 }}>No log entries</Box>}
+      {log.length !== 0 && (
+        <Box sx={{ height: 600, width: '100%' }}>
+          <DataGrid onRowClick={onSearchHistory} rows={log} columns={columns} />
+        </Box>
+      )}
+    </Box>
   )
 }

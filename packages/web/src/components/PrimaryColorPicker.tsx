@@ -1,6 +1,5 @@
 import { Check } from '@mui/icons-material'
-import { Radio, Slider, Tooltip, Typography } from '@mui/material'
-import { makeStyles } from '@mui/styles'
+import { Box, Radio, Slider, Tooltip, Typography } from '@mui/material'
 import React from 'react'
 import * as colors from '@mui/material/colors'
 
@@ -8,7 +7,6 @@ interface Props {
   defaultColor?: string | null
   onChange: (color: string) => void
 }
-
 const hues = Object.keys(colors).slice(1, 17) // missing: "brown", "grey", "blueGrey"
 const shades = [
   900,
@@ -26,46 +24,6 @@ const shades = [
   'A100',
   50,
 ]
-
-const useStyles = makeStyles({
-  radio: {
-    padding: 0,
-  },
-  radioIcon: {
-    width: 48,
-    height: 48,
-  },
-  radioIconSelectedWhite: {
-    width: 48,
-    height: 48,
-    // color: theme.palette.common.white,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  radioIconSelectedBlack: {
-    width: 48,
-    height: 48,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  swatch: {
-    width: 192,
-  },
-  sliderContainer: {
-    width: 192,
-    display: 'flex',
-    alignItems: 'center',
-    marginTop: 2,
-    marginBottom: 2,
-  },
-  slider: {
-    width: 'calc(100% - 40px)',
-    marginLeft: 2,
-    marginRight: 1,
-  },
-})
 
 // map of color to hue, shade
 interface ColorToHueShadeItem {
@@ -99,7 +57,6 @@ function shadeFromColor(color: string) {
 }
 
 export default function PrimaryColorPicker({ defaultColor, onChange }: Props) {
-  const classes = useStyles()
   const [selectedHue, setSelectedHue] = React.useState(
     hueFromColor(defaultColor ? defaultColor : '#2196f3')
   )
@@ -109,14 +66,14 @@ export default function PrimaryColorPicker({ defaultColor, onChange }: Props) {
 
   return (
     <React.Fragment>
-      <div className={classes.sliderContainer}>
+      <Box sx={{ my: 1 }}>
         <Typography id={'ShadeSliderLabel'}>Shade:</Typography>
         <Slider
-          className={classes.slider}
           value={idx}
           min={0}
           max={13}
           step={1}
+          sx={{ width: 'calc(100% - 40px)', marginLeft: 2, marginRight: 1 }}
           onChange={(e, shadeIndex) => {
             // @ts-ignore
             onChange(colors[selectedHue][shades[shadeIndex]])
@@ -125,15 +82,15 @@ export default function PrimaryColorPicker({ defaultColor, onChange }: Props) {
           }}
           aria-labelledby={'ShadeSliderLabel'}
         />
-      </div>
-      <div className={classes.swatch}>
+      </Box>
+      <Box sx={{ width: 192 }}>
         {hues.map((hue) => {
           // @ts-ignore
           const backgroundColor = colors[hue][shades[idx]]
           return (
             <Tooltip placement="right" title={hue} key={hue}>
               <Radio
-                className={classes.radio}
+                sx={{ padding: 0 }}
                 color="default"
                 checked={
                   // @ts-ignore
@@ -150,28 +107,30 @@ export default function PrimaryColorPicker({ defaultColor, onChange }: Props) {
                 value={hue}
                 aria-labelledby={`tooltip-${hue}`}
                 icon={
-                  <div
-                    className={classes.radioIcon}
+                  <Box
+                    sx={{ width: 48, height: 48 }}
                     style={{ backgroundColor }}
                   />
                 }
                 checkedIcon={
-                  <div
-                    className={
-                      (idx >= 6 && idx <= 9) || idx === 13
-                        ? classes.radioIconSelectedBlack
-                        : classes.radioIconSelectedWhite
-                    }
+                  <Box
+                    sx={{
+                      width: 48,
+                      height: 48,
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}
                     style={{ backgroundColor }}
                   >
                     <Check style={{ fontSize: 30 }} />
-                  </div>
+                  </Box>
                 }
               />
             </Tooltip>
           )
         })}
-      </div>
+      </Box>
     </React.Fragment>
   )
 }

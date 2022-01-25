@@ -9,23 +9,15 @@ import {
   store,
   x2Server,
 } from '@klonzo/common'
+import { Card, CardContent, Typography } from '@mui/material'
 import { gql, request } from 'graphql-request'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import LoadingIndicator from '../components/LoadingIndicator'
 import EmailCardActions from '../components/emaillist/EmailCardActions'
-import { makeStyles } from '@mui/styles'
-import { Card, CardContent, Typography } from '@mui/material'
-
-const useStyles = makeStyles({
-  root: { width: '100%' },
-  paper: { width: '100%', marginBottom: 2 },
-  title: { fontSize: 27 },
-})
+import LoadingIndicator from '../components/LoadingIndicator'
 
 export default function EmailDetailView() {
-  const classes = useStyles()
   const { id } = useParams() as any
   const [loading, setLoading] = useState(false)
   const [email, setEmail] = useState<Email | null>(null)
@@ -123,13 +115,17 @@ export default function EmailDetailView() {
   }
 
   return (
-    <Card className={classes.root} data-testid="emailcard">
+    <Card data-testid="emailcard">
       {loading && <LoadingIndicator />}
       {email && (
         <>
           <EmailCardActions id={id} />
           <CardContent>
-            {displayText(email.subject, classes.title)}
+            <Typography variant="body1" component="p" sx={{ fontSize: 25 }}>
+              <span
+                dangerouslySetInnerHTML={{ __html: highlight(email.subject) }}
+              />
+            </Typography>
             {displayText(`Sent: ${new Date(+email.sent).toUTCString()}`)}
             {/* // todo same for expo */}
             {displayText(`From: ${fromStr()}`)}
