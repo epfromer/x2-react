@@ -2,10 +2,8 @@
 import {
   getDarkMode,
   getEmailAsync,
-  getInitialDataAsync,
-  getThemeName,
-  loadAppSettingsAsync,
-  store,
+  getInitialDataAsync, loadAppSettingsAsync,
+  store
 } from '@klonzo/common'
 import React from 'react'
 import { ThemeProvider } from 'react-native-elements'
@@ -29,7 +27,7 @@ loadAppSettingsAsync(store)
 function ThemedApp() {
   return (
     <ThemeProvider
-      theme={getTheme(useSelector(getThemeName))}
+      theme={getTheme('Brown')}
       useDark={useSelector(getDarkMode)}
     >
       <Router>
