@@ -2,8 +2,9 @@
 import {
   getDarkMode,
   getEmailAsync,
-  getInitialDataAsync, loadAppSettingsAsync,
-  store
+  getInitialDataAsync,
+  loadAppSettingsAsync,
+  store,
 } from '@klonzo/common'
 import React from 'react'
 import { ThemeProvider } from 'react-native-elements'
@@ -26,10 +27,7 @@ loadAppSettingsAsync(store)
 // updated.  Need to await loadAppSettingsAsync and then set the theme in ThemeProvider.
 function ThemedApp() {
   return (
-    <ThemeProvider
-      theme={getTheme('Brown')}
-      useDark={useSelector(getDarkMode)}
-    >
+    <ThemeProvider theme={getTheme('Brown')} useDark={useSelector(getDarkMode)}>
       <Router>
         <AppTopToolbar />
         <BackButton />
