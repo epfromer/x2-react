@@ -19,7 +19,7 @@
     "expo-random": "~12.1.2",
     "get-best-contrast-color": "^0.3.1",
     "graphql": "^16.3.0",
-    "graphql-request": "^4.0.0",
+    "graphql-request": "^4.2.0",
     "jwt-decode": "^3.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
