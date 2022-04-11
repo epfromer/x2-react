@@ -17,8 +17,8 @@
     "watch": "run-s build compile:watch"
   },
   "dependencies": {
-    "@react-native-async-storage/async-storage": "^1.16.1",
-    "@reduxjs/toolkit": "^1.8.0",
+    "@react-native-async-storage/async-storage": "^1.17.3",
+    "@reduxjs/toolkit": "^1.8.1",
     "eslint-plugin-prettier": "^4.0.0",
     "graphql": "^16.3.0",
     "graphql-request": "^4.2.0",
