@@ -34,7 +34,7 @@ export default function SearchView() {
 
   const observer: any = useRef()
   const lastRowRef = useCallback(
-    (node) => {
+    (node: any) => {
       if (emailLoading) return
       if (observer.current) observer.current.disconnect()
       observer.current = new IntersectionObserver((entries) => {
