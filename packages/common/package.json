@@ -23,7 +23,7 @@
     "graphql": "^16.3.0",
     "graphql-request": "^4.0.0",
     "react": "17.0.2",
-    "react-redux": "^7.2.6",
+    "react-redux": "^7.2.8",
     "redux": "^4.1.2",
     "redux-logger": "^3.0.6"
   },
