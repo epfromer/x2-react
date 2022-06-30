@@ -7,7 +7,7 @@ import {
   loadAppSettingsAsync,
   store,
 } from '@klonzo/common'
-import LocalizationProvider from '@mui/lab/LocalizationProvider'
+import { LocalizationProvider } from '@mui/x-date-pickers'
 import {
   AppBar,
   Box,

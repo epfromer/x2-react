@@ -59,7 +59,7 @@ export default function PieView() {
               handleClick={handleClick}
             />
           </Grid>
-          {/* <Grid item xs={12}>
+          <Grid item xs={12}>
             <Typography variant="h5">ChartJS</Typography>
           </Grid>
           <Grid item xs={12} md={6}>
@@ -96,7 +96,7 @@ export default function PieView() {
               data={emailReceivers}
               handleClick={handleClick}
             />
-          </Grid> */}
+          </Grid>
           <Grid item xs={12}>
             <Typography variant="h5">Victory</Typography>
           </Grid>

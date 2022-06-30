@@ -8,7 +8,7 @@ import {
   Title,
   Tooltip,
 } from 'chart.js'
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 
 const chartHeight = '250'
@@ -28,7 +28,6 @@ export default function PieChartJS({
   handleClick,
 }: Props) {
   const chartContainer: any = useRef(null)
-  const [getChartInstance, setChartInstance] = useState<any>(null)
   const darkMode = useSelector(getDarkMode)
   const theme = useTheme()
 
@@ -68,10 +67,12 @@ export default function PieChartJS({
   }
 
   useEffect(() => {
+    let instance: Chart
     if (chartContainer && chartContainer.current) {
-      if (getChartInstance) getChartInstance.destroy()
-      const newChartInstance = new Chart(chartContainer.current, config)
-      setChartInstance(newChartInstance)
+      instance = new Chart(chartContainer.current, config)
+    }
+    return () => {
+      if (instance) instance.destroy()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chartContainer, darkMode])

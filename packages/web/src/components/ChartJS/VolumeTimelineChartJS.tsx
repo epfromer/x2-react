@@ -1,7 +1,7 @@
 import { EmailSentByDay, getDarkMode } from '@klonzo/common'
 import { useTheme } from '@mui/material/styles'
 import { Chart } from 'chart.js'
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 
 // https://www.chartjs.org/docs/latest/charts/bar.html
@@ -20,7 +20,6 @@ export default function VolumeTimelineChartJS({
   handleClick,
 }: Props) {
   const chartContainer: any = useRef(null)
-  const [, setChartInstance] = useState<any>(null)
   const darkMode = useSelector(getDarkMode)
   const theme = useTheme()
 
@@ -95,9 +94,12 @@ export default function VolumeTimelineChartJS({
   }
 
   useEffect(() => {
+    let instance: Chart
     if (chartContainer && chartContainer.current) {
-      const newChartInstance = new Chart(chartContainer.current, config)
-      setChartInstance(newChartInstance)
+      instance = new Chart(chartContainer.current, config)
+    }
+    return () => {
+      if (instance) instance.destroy()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chartContainer, darkMode])
