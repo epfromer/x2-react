@@ -7,7 +7,6 @@ import {
   loadAppSettingsAsync,
   store,
 } from '@klonzo/common'
-import { LocalizationProvider } from '@mui/x-date-pickers'
 import {
   AppBar,
   Box,
@@ -19,14 +18,18 @@ import {
   useScrollTrigger,
 } from '@mui/material'
 import CssBaseline from '@mui/material/CssBaseline'
+import { LocalizationProvider } from '@mui/x-date-pickers'
 import React, { Fragment } from 'react'
 import { Provider, useSelector } from 'react-redux'
 import { BrowserRouter as Router, useNavigate } from 'react-router-dom'
 import './App.css'
 import AppDrawer from './components/app/AppDrawer'
 import AppToolbar from './components/app/AppToolbar'
+import ChartJSInit from './components/ChartJS'
 import AppRouting from './router/AppRouting'
-import { getTheme } from './utils/appThemes'
+import getTheme from './utils/appThemes'
+
+ChartJSInit()
 
 getInitialDataAsync(store)
 getEmailAsync(store)

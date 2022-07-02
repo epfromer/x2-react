@@ -1,27 +1,6 @@
-import { EmailXferedDatum, getDarkMode } from '@klonzo/common'
+import { EmailXferedDatum } from '@klonzo/common'
 import { useTheme } from '@mui/material/styles'
-import {
-  BarController,
-  BarElement,
-  CategoryScale,
-  Chart,
-  LinearScale,
-  Title,
-  Tooltip,
-} from 'chart.js'
-import { useEffect, useRef } from 'react'
-import { useSelector } from 'react-redux'
-
-const chartHeight = '220'
-
-Chart.register(
-  BarController,
-  BarElement,
-  CategoryScale,
-  LinearScale,
-  Title,
-  Tooltip
-)
+import { Bar } from 'react-chartjs-2'
 
 interface Props {
   title: string
@@ -35,70 +14,51 @@ export default function BarChartJS({
   data,
   handleClick,
 }: Props) {
-  const chartContainer: any = useRef(null)
-  const darkMode = useSelector(getDarkMode)
   const theme = useTheme()
 
-  const config: any = {
-    type: 'bar',
-    options: {
-      indexAxis: 'y',
-      plugins: {
-        title: {
-          display: true,
-          padding: { bottom: 10 },
-          color: theme.palette.text.primary,
-          font: { size: 18 },
-          text: title,
-        },
-        legend: {
-          display: false,
-        },
+  const options: any = {
+    indexAxis: 'y' as const,
+    plugins: {
+      title: {
+        display: true,
+        padding: { bottom: 10 },
+        color: theme.palette.text.primary,
+        font: { size: 18 },
+        text: title,
       },
-      onClick: (e: any, item: any) => {
-        if (item && item.length > 0) {
-          handleClick(search, data[item[0].index].name)
-        }
-      },
-      scales: {
-        x: {
-          ticks: {
-            color: theme.palette.text.primary,
-          },
-        },
-        y: {
-          ticks: {
-            color: theme.palette.text.primary,
-          },
-        },
+      legend: {
+        display: false,
       },
     },
-    data: {
-      labels: data.map((datum) => datum.name),
-      datasets: [
-        {
-          label: title,
-          backgroundColor: data.map((datum) => datum.color),
-          data: data.map((datum) => datum.value),
+    onClick: (e: any, item: any) => {
+      if (item && item.length > 0) {
+        handleClick(search, data[item[0].index].name)
+      }
+    },
+    scales: {
+      x: {
+        ticks: {
+          color: theme.palette.text.primary,
         },
-      ],
+      },
+      y: {
+        ticks: {
+          color: theme.palette.text.primary,
+        },
+      },
     },
   }
 
-  useEffect(() => {
-    let instance: Chart
-    if (chartContainer && chartContainer.current) {
-      instance = new Chart(chartContainer.current, config)
-    }
-    return () => {
-      if (instance) instance.destroy()
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [chartContainer, darkMode])
+  const chartData: any = {
+    labels: data.map((datum) => datum.name),
+    datasets: [
+      {
+        label: title,
+        backgroundColor: data.map((datum) => datum.color),
+        data: data.map((datum) => datum.value),
+      },
+    ],
+  }
 
-  return (
-    <div>
-      <canvas height={chartHeight} ref={chartContainer} />
-    </div>
-  )
+  return <Bar options={options} data={chartData} />
 }

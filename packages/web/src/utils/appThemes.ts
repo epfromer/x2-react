@@ -4,7 +4,7 @@ import { brown, grey } from '@mui/material/colors'
 // https://reactnativeelements.com/docs/button
 // https://reactnativeelements.com/docs/header
 
-export function getTheme(mode: PaletteMode) {
+export default function getTheme(mode: PaletteMode) {
   const lightPalette = {
     // palette values for light mode
     primary: brown,

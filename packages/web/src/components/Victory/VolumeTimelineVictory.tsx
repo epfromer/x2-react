@@ -1,6 +1,6 @@
 import { EmailSentByDay } from '@klonzo/common'
 import { useTheme } from '@mui/material/styles'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import {
   VictoryAxis,
   VictoryBrushContainer,
@@ -43,7 +43,7 @@ export default function VolumeTimelineVictory({
     <div>
       <VictoryChart
         height={chartHeight}
-        scale={{ x: 'time' }}
+        // scale={{ x: 'time' }}
         containerComponent={
           <VictoryZoomContainer
             zoomDimension="x"
@@ -79,10 +79,10 @@ export default function VolumeTimelineVictory({
               fill: theme.palette.text.primary,
             },
           }}
-          animate={{
-            duration: 2000,
-            onLoad: { duration: 1000 },
-          }}
+          // animate={{
+          //   duration: 2000,
+          //   onLoad: { duration: 1000 },
+          // }}
           data={chartData}
           x="sent"
           y="value"
@@ -92,7 +92,7 @@ export default function VolumeTimelineVictory({
         padding={{ top: 0, left: 50, right: 50, bottom: 30 }}
         width={600}
         height={100}
-        scale={{ x: 'time' }}
+        // scale={{ x: 'time' }}
         containerComponent={
           <VictoryBrushContainer
             brushDimension="x"
@@ -119,10 +119,10 @@ export default function VolumeTimelineVictory({
               fill: theme.palette.text.primary,
             },
           }}
-          animate={{
-            duration: 2000,
-            onLoad: { duration: 1000 },
-          }}
+          // animate={{
+          //   duration: 2000,
+          //   onLoad: { duration: 1000 },
+          // }}
           data={chartData}
           x="sent"
           y="value"

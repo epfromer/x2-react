@@ -1,19 +1,10 @@
 import { EmailXferedDatum, getDarkMode } from '@klonzo/common'
 import { useTheme } from '@mui/material/styles'
-import {
-  ArcElement,
-  Chart,
-  Legend,
-  PieController,
-  Title,
-  Tooltip,
-} from 'chart.js'
+import { Chart } from 'chart.js'
 import { useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 
 const chartHeight = '250'
-
-Chart.register(ArcElement, PieController, Legend, Title, Tooltip)
 
 interface Props {
   title: string

@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 
 // https://www.chartjs.org/docs/latest/charts/bar.html
 // https://www.createwithdata.com/react-chartjs-dashboard/
+// https://react-chartjs-2.js.org/examples/line-chart
 
 const chartHeight = '400'
 
@@ -56,25 +57,21 @@ export default function VolumeTimelineChartJS({
         }
       },
       scales: {
-        xAxes: [
-          {
-            type: 'time',
-            time: {
-              unit: 'month',
-            },
-            ticks: {
-              fontColor: theme.palette.text.primary,
-            },
+        x: {
+          type: 'time' as const,
+          time: {
+            unit: 'month',
           },
-        ],
-        yAxes: [
-          {
-            ticks: {
-              min: 0,
-              fontColor: theme.palette.text.primary,
-            },
+          ticks: {
+            fontColor: theme.palette.text.primary,
           },
-        ],
+        },
+        y: {
+          ticks: {
+            min: 0,
+            fontColor: theme.palette.text.primary,
+          },
+        },
       },
     },
     data: {
