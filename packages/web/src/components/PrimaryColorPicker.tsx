@@ -1,7 +1,8 @@
 import { Check } from '@mui/icons-material'
-import { Box, Radio, Slider, Tooltip, Typography } from '@mui/material'
-import React from 'react'
+import { Radio, Slider, Tooltip, Typography } from '@mui/material'
 import * as colors from '@mui/material/colors'
+import { Box } from '@mui/system'
+import React from 'react'
 
 interface Props {
   defaultColor?: string | null

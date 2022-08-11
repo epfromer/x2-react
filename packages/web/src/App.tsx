@@ -9,7 +9,6 @@ import {
 } from '@klonzo/common'
 import {
   AppBar,
-  Box,
   Container,
   createTheme,
   Slide,
@@ -18,6 +17,7 @@ import {
   useScrollTrigger,
 } from '@mui/material'
 import CssBaseline from '@mui/material/CssBaseline'
+import { Box } from '@mui/system'
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import React, { Fragment } from 'react'
 import { Provider, useSelector } from 'react-redux'

@@ -19,7 +19,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-native'
 import ChartPicker from '../components/ChartPicker'
 import BarECharts from '../components/ECharts/BarECharts'
-import BarHighcharts from '../components/Highcharts/BarHighcharts'
 import BarVictory from '../components/Victory/BarVictory'
 import XmitTypePicker from '../components/XmitTypePicker'
 
@@ -101,26 +100,6 @@ export default function BarView() {
                 )}
                 {!isSenders && (
                   <BarVictory
-                    title="Receivers"
-                    search="to"
-                    data={emailReceivers}
-                    handleClick={handleClick}
-                  />
-                )}
-              </>
-            )}
-            {chartLib === 'Highcharts' && (
-              <>
-                {isSenders && (
-                  <BarHighcharts
-                    title="Senders"
-                    search="from"
-                    data={emailSenders}
-                    handleClick={handleClick}
-                  />
-                )}
-                {!isSenders && (
-                  <BarHighcharts
                     title="Receivers"
                     search="to"
                     data={emailReceivers}

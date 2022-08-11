@@ -12,10 +12,11 @@ import {
   store,
   x2Server,
 } from '@klonzo/common'
-import { Box, Button } from '@mui/material'
+import { Button } from '@mui/material'
+import { Box } from '@mui/system'
 import { DataGrid } from '@mui/x-data-grid'
 import { gql, request } from 'graphql-request'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import LoadingIndicator from '../components/LoadingIndicator'
 

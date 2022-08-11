@@ -1,6 +1,5 @@
 import { importLoc, x2Server } from '@klonzo/common'
 import {
-  Box,
   Button,
   Checkbox,
   FormControlLabel,
@@ -9,8 +8,9 @@ import {
   ListItemText,
   Typography,
 } from '@mui/material'
+import { Box } from '@mui/system'
 import { gql, request } from 'graphql-request'
-import React, { Fragment, useEffect, useRef, useState } from 'react'
+import { Fragment, useEffect, useRef, useState } from 'react'
 
 interface ImportLogEntry {
   id: string

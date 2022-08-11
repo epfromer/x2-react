@@ -1,5 +1,6 @@
-import { Box, Dialog } from '@mui/material'
-import React, { useState } from 'react'
+import { Dialog } from '@mui/material'
+import { Box } from '@mui/system'
+import { useState } from 'react'
 import PrimaryColorPicker from './PrimaryColorPicker'
 
 interface Props {

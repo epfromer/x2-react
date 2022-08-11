@@ -10,11 +10,11 @@ import React from 'react'
 import { ThemeProvider } from 'react-native-elements'
 import 'react-native-gesture-handler'
 import { Provider, useSelector } from 'react-redux'
-import { BackButton, NativeRouter as Router } from 'react-router-native'
 import AppBottomToolbar from './src/components/app/AppBottomToolbar'
 import AppTopToolbar from './src/components/app/AppTopToolbar'
 import AppRouting from './src/router/AppRouting'
 import { getTheme } from './src/utils/appThemes'
+import { BrowserRouter } from 'react-router-dom'
 
 getInitialDataAsync(store)
 getEmailAsync(store)
@@ -28,12 +28,12 @@ loadAppSettingsAsync(store)
 function ThemedApp() {
   return (
     <ThemeProvider theme={getTheme('Brown')} useDark={useSelector(getDarkMode)}>
-      <Router>
+      <BrowserRouter>
         <AppTopToolbar />
-        <BackButton />
+        {/* <BackButton /> */}
         <AppRouting />
         <AppBottomToolbar />
-      </Router>
+      </BrowserRouter>
     </ThemeProvider>
   )
 }

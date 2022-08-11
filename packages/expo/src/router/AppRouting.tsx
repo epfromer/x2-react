@@ -1,5 +1,6 @@
 import React from 'react'
-import { Route, Switch } from 'react-router-native'
+import { Route } from 'react-router-dom'
+import { Routes } from 'react-router-native'
 import AppSettingsView from '../views/AppSettingsView'
 import BarView from '../views/BarView'
 import EmailDetailView from '../views/EmailDetailView'
@@ -27,37 +28,17 @@ export const routeNames = {
 
 export default function AppRouting() {
   return (
-    <Switch>
-      <Route path="/AppSettingsView">
-        <AppSettingsView />
-      </Route>
-      <Route path="/SearchHistoryView">
-        <SearchHistoryView />
-      </Route>
-      <Route path="/SearchView">
-        <SearchView />
-      </Route>
-      <Route path="/PieView">
-        <PieView />
-      </Route>
-      <Route path="/BarView">
-        <BarView />
-      </Route>
-      <Route path="/NetworkGraphView">
-        <NetworkGraphView />
-      </Route>
-      <Route path="/TreeMapView">
-        <TreeMapView />
-      </Route>
-      <Route path="/VolumeTimelineView">
-        <VolumeTimelineView />
-      </Route>
-      <Route path="/EmailDetailView/:id">
-        <EmailDetailView />
-      </Route>
-      <Route exact path="/">
-        <HomeView />
-      </Route>
-    </Switch>
+    <Routes>
+      <Route path="/AppSettingsView" element={<AppSettingsView />} />
+      <Route path="/SearchHistoryView" element={<SearchHistoryView />} />
+      <Route path="/SearchView" element={<SearchView />} />
+      <Route path="/PieView" element={<PieView />} />
+      <Route path="/BarView" element={<BarView />} />
+      <Route path="/NetworkGraphView" element={<NetworkGraphView />} />
+      <Route path="/TreeMapView" element={<TreeMapView />} />
+      <Route path="/VolumeTimelineView" element={<VolumeTimelineView />} />
+      <Route path="/EmailDetailView/:id" element={<EmailDetailView />} />
+      <Route path="/HomeView" element={<HomeView />} />
+    </Routes>
   )
 }

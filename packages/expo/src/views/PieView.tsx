@@ -19,7 +19,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-native'
 import ChartPicker from '../components/ChartPicker'
 import PieECharts from '../components/ECharts/PieECharts'
-import PieHighcharts from '../components/Highcharts/PieHighcharts'
 import PieVictory from '../components/Victory/PieVictory'
 import XmitTypePicker from '../components/XmitTypePicker'
 
@@ -101,26 +100,6 @@ export default function PieView() {
                 )}
                 {!isSenders && (
                   <PieVictory
-                    title="Receivers"
-                    search="to"
-                    data={emailReceivers}
-                    handleClick={handleClick}
-                  />
-                )}
-              </>
-            )}
-            {chartLib === 'Highcharts' && (
-              <>
-                {isSenders && (
-                  <PieHighcharts
-                    title="Senders"
-                    search="from"
-                    data={emailSenders}
-                    handleClick={handleClick}
-                  />
-                )}
-                {!isSenders && (
-                  <PieHighcharts
                     title="Receivers"
                     search="to"
                     data={emailReceivers}

@@ -28,7 +28,7 @@ export default function FilterDate({ onClose, onClear, date, open }: Props) {
         maxDate={parseISO('2002-01-30')}
         onChange={(d: any) => setFilterDate(d)}
         disableFuture
-        renderInput={(params) => <TextField {...params} />}
+        renderInput={(params: any) => <TextField {...params} />}
       />
       <DialogActions>
         <Button

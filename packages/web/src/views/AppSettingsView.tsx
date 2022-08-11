@@ -1,5 +1,4 @@
 import { Box } from '@mui/system'
-import React from 'react'
 import CustodianSettings from '../components/CustodianSettings'
 import ImportLog from '../components/ImportLog'
 

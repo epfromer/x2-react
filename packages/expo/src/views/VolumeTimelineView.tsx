@@ -17,7 +17,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-native'
 import ChartPicker from '../components/ChartPicker'
 import VolumeTimelineECharts from '../components/ECharts/VolumeTimelineECharts'
-import VolumeTimelineHighcharts from '../components/Highcharts/VolumeTimelineHighcharts'
 import VolumeTimelineVictory from '../components/Victory/VolumeTimelineVictory'
 
 export default function VolumeTimelineView() {
@@ -79,13 +78,6 @@ export default function VolumeTimelineView() {
             )}
             {chartLib === 'Victory' && (
               <VolumeTimelineVictory
-                title="Email Volume per Day"
-                data={data}
-                handleClick={handleClick}
-              />
-            )}
-            {chartLib === 'Highcharts' && (
-              <VolumeTimelineHighcharts
                 title="Email Volume per Day"
                 data={data}
                 handleClick={handleClick}

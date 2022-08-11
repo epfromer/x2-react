@@ -6,8 +6,8 @@ import {
   Menu,
   Search,
 } from '@mui/icons-material'
-import { Box, IconButton, Toolbar, Tooltip, Typography } from '@mui/material'
-import React from 'react'
+import { IconButton, Toolbar, Tooltip, Typography } from '@mui/material'
+import { Box } from '@mui/system'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import SettingsButton from './SettingsButton'

@@ -102,7 +102,7 @@ export default function VolumeTimelineVictory({
         }
       >
         <VictoryAxis
-          tickFormat={(x) => new Date(x).getFullYear()}
+          tickFormat={(x: any) => new Date(x).getFullYear()}
           style={{
             tickLabels: {
               fill: theme.palette.text.primary,

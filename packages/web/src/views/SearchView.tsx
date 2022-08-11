@@ -9,14 +9,14 @@ import {
   store,
 } from '@klonzo/common'
 import {
-  Box,
   LinearProgress,
   Paper,
   Table,
   TableBody,
   TableContainer,
 } from '@mui/material'
-import React, { useCallback, useRef } from 'react'
+import { Box } from '@mui/system'
+import { useCallback, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import EmailTableHead from '../components/emaillist/EmailTableHead'
 import ExpandingRow from '../components/emaillist/ExpandingRow'
