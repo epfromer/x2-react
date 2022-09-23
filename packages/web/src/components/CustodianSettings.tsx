@@ -88,7 +88,6 @@ export default function CustodianSettings() {
         defaultColor={pickedColor}
         onClose={(color) => handleColorChosen(color)}
       />
-      {custodiansLoading && <LoadingIndicator />}
       <TableContainer component={Paper}>
         <Table size="small" aria-label="custodians">
           <TableHead>
