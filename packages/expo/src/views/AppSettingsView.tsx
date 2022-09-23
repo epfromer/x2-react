@@ -9,6 +9,7 @@ import React, { useContext } from 'react'
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import { Button, ThemeContext } from 'react-native-elements'
 import { useSelector } from 'react-redux'
+// TODO
 import { useHistory } from 'react-router-native'
 import CustodianSettings from '../components/CustodianSettings'
 import Gravatar from '../components/Gravatar'

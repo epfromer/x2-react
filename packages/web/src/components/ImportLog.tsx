@@ -20,7 +20,6 @@ interface ImportLogEntry {
 
 export default function ImportLog() {
   const lastRowRef = useRef(null)
-  let importInterval: number | undefined | NodeJS.Timer
   const [log, setLog] = useState([])
   const [scrollIntoView, setScrollIntoView] = useState(true)
 
@@ -42,6 +41,17 @@ export default function ImportLog() {
       .catch((e) => console.error(e))
   }
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      getImportStatus()
+      if (lastRowRef && lastRowRef.current && log.length && scrollIntoView) {
+        // @ts-ignore
+        lastRowRef.current.scrollIntoView({ behavior: 'smooth' })
+      }
+    }, 1000 * 2)
+    return () => clearInterval(interval)
+  })
+
   const startImport = () => {
     const server = process.env.REACT_APP_X2_SERVER
       ? process.env.REACT_APP_X2_SERVER
@@ -54,26 +64,9 @@ export default function ImportLog() {
     request(`${server}/graphql/`, mutation, { loc: importLoc })
   }
 
-  const stopImportStatusInterval = (): void => {
-    if (!importInterval) return
-    clearInterval(importInterval as number)
-    importInterval = undefined
-  }
-
-  if (!importInterval) importInterval = setInterval(getImportStatus, 2000)
-
   const setScroll = (e: any) => {
     setScrollIntoView(e.target.checked)
   }
-
-  useEffect(() => stopImportStatusInterval)
-
-  useEffect(() => {
-    if (lastRowRef && lastRowRef.current && log.length && scrollIntoView) {
-      // @ts-ignore
-      lastRowRef.current.scrollIntoView({ behavior: 'smooth' })
-    }
-  })
 
   return (
     <Fragment>
