@@ -10,7 +10,6 @@ import {
   setSubject,
   setTo,
   store,
-  x2Server,
 } from '@klonzo/common'
 import { Button } from '@mui/material'
 import { Box } from '@mui/system'
@@ -27,9 +26,6 @@ export default function SearchHistoryView() {
 
   const getSearchHistory = (): void => {
     setLogLoading(true)
-    const server = process.env.REACT_APP_X2_SERVER
-      ? process.env.REACT_APP_X2_SERVER
-      : x2Server
     const query = gql`
       {
         getSearchHistory {
@@ -39,7 +35,7 @@ export default function SearchHistoryView() {
         }
       }
     `
-    request(`${server}/graphql/`, query)
+    request(`${process.env.REACT_APP_X2_SERVER}/graphql/`, query)
       .then((data) => {
         setLog(data.getSearchHistory)
         setLogLoading(false)
@@ -63,15 +59,12 @@ export default function SearchHistoryView() {
   }
 
   const onClearHistory = () => {
-    const server = process.env.REACT_APP_X2_SERVER
-      ? process.env.REACT_APP_X2_SERVER
-      : x2Server
     const mutation = gql`
       mutation {
         clearSearchHistory
       }
     `
-    request(`${server}/graphql/`, mutation)
+    request(`${process.env.REACT_APP_X2_SERVER}/graphql/`, mutation)
       .then(() => getSearchHistory())
       .catch((e) => console.error(e))
   }

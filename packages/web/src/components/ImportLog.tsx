@@ -1,4 +1,3 @@
-import { importLoc, x2Server } from '@klonzo/common'
 import {
   Button,
   Checkbox,
@@ -24,9 +23,10 @@ export default function ImportLog() {
   const [scrollIntoView, setScrollIntoView] = useState(true)
 
   const getImportStatus = () => {
-    const server = process.env.REACT_APP_X2_SERVER
-      ? process.env.REACT_APP_X2_SERVER
-      : x2Server
+    if (!process.env.REACT_APP_X2_SERVER) {
+      console.error('REACT_APP_X2_SERVER undefined')
+      return
+    }
     const query = gql`
       {
         getImportStatus {
@@ -36,7 +36,7 @@ export default function ImportLog() {
         }
       }
     `
-    request(`${server}/graphql/`, query)
+    request(`${process.env.REACT_APP_X2_SERVER}/graphql/`, query)
       .then((data) => setLog(data.getImportStatus))
       .catch((e) => console.error(e))
   }
@@ -53,15 +53,18 @@ export default function ImportLog() {
   })
 
   const startImport = () => {
-    const server = process.env.REACT_APP_X2_SERVER
-      ? process.env.REACT_APP_X2_SERVER
-      : x2Server
+    if (!process.env.REACT_APP_X2_SERVER || !process.env.REACT_APP_X2_PST_LOC) {
+      console.error('REACT_APP_X2_SERVER or REACT_APP_X2_PST_LOC undefined')
+      return
+    }
     const mutation = gql`
       mutation importPST($loc: String) {
         importPST(loc: $loc)
       }
     `
-    request(`${server}/graphql/`, mutation, { loc: importLoc })
+    request(`${process.env.REACT_APP_X2_SERVER}/graphql/`, mutation, {
+      loc: process.env.REACT_APP_X2_PST_LOC,
+    })
   }
 
   const setScroll = (e: any) => {

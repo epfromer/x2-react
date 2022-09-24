@@ -1,7 +1,7 @@
 import { createAction, createSlice, Store } from '@reduxjs/toolkit'
 import request, { gql } from 'graphql-request'
 import { RootState } from '..'
-import { defaultLimit, x2Server } from '../../constants'
+import { defaultLimit } from '../../constants'
 import { Email } from '../types'
 
 export interface EmailState {
@@ -80,10 +80,6 @@ function getQueryObj(store: Store): unknown {
 
 export function getEmailAsync(store: Store, append = false): void {
   store.dispatch(setEmailLoading(true))
-  const server = process.env.REACT_APP_X2_SERVER
-    ? process.env.REACT_APP_X2_SERVER
-    : x2Server
-  // console.log(server)
   const query = gql`
     query getEmail(
       $skip: Int
@@ -126,7 +122,11 @@ export function getEmailAsync(store: Store, append = false): void {
       }
     }
   `
-  request(`${server}/graphql/`, query, getQueryObj(store))
+  request(
+    `${process.env.REACT_APP_X2_SERVER}/graphql/`,
+    query,
+    getQueryObj(store)
+  )
     .then((data) => {
       if (append) {
         store.dispatch(appendEmail(data.getEmail.emails))

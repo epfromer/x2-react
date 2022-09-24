@@ -2,7 +2,6 @@
 import { createAction, createSlice, Store } from '@reduxjs/toolkit'
 import { gql, request } from 'graphql-request'
 import { RootState } from '..'
-import { x2Server } from '../../constants'
 import { Custodian, EmailXferedDatum } from '../types'
 
 export interface CustodiansState {
@@ -125,9 +124,6 @@ export function getEmailSentByCustodian(
 
 export function getCustodiansAsync(store: Store): void {
   store.dispatch(setCustodiansLoading(true))
-  const server = process.env.REACT_APP_X2_SERVER
-    ? process.env.REACT_APP_X2_SERVER
-    : x2Server
   const query = gql`
     {
       getCustodians {
@@ -144,7 +140,7 @@ export function getCustodiansAsync(store: Store): void {
       }
     }
   `
-  request(`${server}/graphql/`, query)
+  request(`${process.env.REACT_APP_X2_SERVER}/graphql/`, query)
     .then((data) => {
       store.dispatch(setCustodians(data.getCustodians))
       store.dispatch(setCustodiansLoading(false))

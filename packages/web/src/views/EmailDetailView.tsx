@@ -7,7 +7,6 @@ import {
   getSubject,
   getTo,
   store,
-  x2Server,
 } from '@klonzo/common'
 import { Card, CardContent, Typography } from '@mui/material'
 import { gql, request } from 'graphql-request'
@@ -40,9 +39,6 @@ export default function EmailDetailView() {
     if (cachedEmail) {
       setEmail(cachedEmail)
     } else {
-      const server = process.env.REACT_APP_X2_SERVER
-        ? process.env.REACT_APP_X2_SERVER
-        : x2Server
       setLoading(true)
       const query = gql`
         query getEmail($id: ID) {
@@ -64,7 +60,7 @@ export default function EmailDetailView() {
           }
         }
       `
-      request(`${server}/graphql/`, query, { id })
+      request(`${process.env.REACT_APP_X2_SERVER}/graphql/`, query, { id })
         .then((data) => {
           // prevents update if component destroyed before request/fetch completes
           if (isSubscribed) {

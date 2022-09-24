@@ -1,10 +1,4 @@
-import {
-  Custodian,
-  getCustodians,
-  getCustodiansLoading,
-  setCustodians,
-  x2Server,
-} from '@klonzo/common'
+import { Custodian, getCustodians, setCustodians } from '@klonzo/common'
 import {
   Button,
   Paper,
@@ -17,25 +11,20 @@ import {
   Typography,
 } from '@mui/material'
 import { gql, request } from 'graphql-request'
-import React, { Fragment, useState } from 'react'
+import { Fragment, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ColorPickerDlg from './ColorPickerDlg'
-import LoadingIndicator from './LoadingIndicator'
 
 export default function CustodianSettings() {
   const dispatch = useDispatch()
   const [colorPickerDlgOpen, setColorPickerDlgOpen] = useState(false)
   const [pickedColor, setPickedColor] = useState('')
   const [custodianId, setCustodianId] = useState('')
-  const custodiansLoading = useSelector(getCustodiansLoading)
   const custodians = useSelector(getCustodians)
 
   const handleColorChosen = (color: string) => {
     setColorPickerDlgOpen(false)
     if (!color) return
-    const server = process.env.REACT_APP_X2_SERVER
-      ? process.env.REACT_APP_X2_SERVER
-      : x2Server
     const mutation = gql`
       mutation setCustodianColor($id: ID, $color: String) {
         setCustodianColor(id: $id, color: $color) {
@@ -52,7 +41,10 @@ export default function CustodianSettings() {
         }
       }
     `
-    request(`${server}/graphql/`, mutation, { id: custodianId, color })
+    request(`${process.env.REACT_APP_X2_SERVER}/graphql/`, mutation, {
+      id: custodianId,
+      color,
+    })
       .then((data) => dispatch(setCustodians(data.setCustodianColor)))
       .catch((e) => console.error(e))
   }

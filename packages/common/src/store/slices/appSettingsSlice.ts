@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { createAction, createSlice, Store } from '@reduxjs/toolkit'
 import { gql, GraphQLClient } from 'graphql-request'
 import { RootState } from '..'
-import { defaultThemeName, x2Server } from '../../constants'
+import { defaultThemeName } from '../../constants'
 import { setCustodians, setCustodiansLoading } from './custodiansSlice'
 import {
   setEmailSentByDay,
@@ -87,9 +87,6 @@ export function getInitialDataAsync(store: Store): void {
   store.dispatch(setWordCloudLoading(true))
   store.dispatch(setEmailSentByDayLoading(true))
   store.dispatch(setCustodiansLoading(true))
-  const server = process.env.REACT_APP_X2_SERVER
-    ? process.env.REACT_APP_X2_SERVER
-    : x2Server
   const query = gql`
     {
       getWordCloud {
@@ -115,7 +112,7 @@ export function getInitialDataAsync(store: Store): void {
     }
   `
   // console.log('setting headers')
-  const endpoint = `${server}/graphql/`
+  const endpoint = `${process.env.REACT_APP_X2_SERVER}/graphql/`
   const graphQLClient = new GraphQLClient(endpoint, {
     mode: 'no-cors',
   })
