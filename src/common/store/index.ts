@@ -5,7 +5,7 @@ import {
   createSerializableStateInvariantMiddleware,
 } from '@reduxjs/toolkit'
 // import logger from 'redux-logger'
-import appSettingsReducer from '../../../../src/common/store/slices/appSettingsSlice'
+import appSettingsReducer from './slices/appSettingsSlice'
 import authenticationReducer from './slices/authenticationSlice'
 import custodiansReducer from './slices/custodiansSlice'
 import emailSentByDayReducer from './slices/emailSentByDaySlice'
@@ -13,7 +13,7 @@ import emailReducer from './slices/emailSlice'
 import queryReducer from './slices/querySlice'
 import wordCloudReducer from './slices/wordCloudSlice'
 
-export * from '../../../../src/common/store/slices/appSettingsSlice'
+export * from './slices/appSettingsSlice'
 export * from './slices/authenticationSlice'
 export * from './slices/custodiansSlice'
 export * from './slices/emailSentByDaySlice'

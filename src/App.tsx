@@ -1,13 +1,6 @@
 import { Auth0Provider } from '@auth0/auth0-react'
 import AdapterDateFns from '@date-io/date-fns'
 import {
-  getDarkMode,
-  getEmailAsync,
-  getInitialDataAsync,
-  loadAppSettingsAsync,
-  store,
-} from './common'
-import {
   AppBar,
   Container,
   createTheme,
@@ -23,11 +16,18 @@ import React, { Fragment } from 'react'
 import { Provider, useSelector } from 'react-redux'
 import { BrowserRouter as Router, useNavigate } from 'react-router-dom'
 import './App.css'
-// import AppDrawer from '../../../src/components/app/AppDrawer'
-// import AppToolbar from '../../../src/components/app/AppToolbar'
+import {
+  getDarkMode,
+  getEmailAsync,
+  getInitialDataAsync,
+  loadAppSettingsAsync,
+  store,
+} from './common'
+import AppDrawer from './components/app/AppDrawer'
+import AppToolbar from './components/app/AppToolbar'
 import ChartJSInit from './components/ChartJS'
-// import AppRouting from '../../../src/router/AppRouting'
-// import getTheme from '../../../src/utils/appThemes'
+import AppRouting from './router/AppRouting'
+import getTheme from './utils/appThemes'
 
 ChartJSInit()
 
