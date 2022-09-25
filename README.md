@@ -1,5 +1,5 @@
 # x2-react
 
-Monorepo of React based front ends (React, React Native) for data visualization and searching of Enron email. Interfaces to x2-server (<https://github.com/epfromer/x2-server>).
+React front-end for x2-servers (<https://github.com/epfromer/x2-servers>).
 
-React app is served at <https://x2-react.herokuapp.com/>, which may take a minute or so to launch as app is brought out of hibernation.
+Served at <https://x2-react.herokuapp.com/>.  This may take a minute or so to launch as app is brought out of hibernation.
