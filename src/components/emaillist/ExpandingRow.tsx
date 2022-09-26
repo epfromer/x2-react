@@ -1,7 +1,7 @@
-import { Email } from '@klonzo/common'
 import { Collapse, TableCell, TableRow } from '@mui/material'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Email } from '../../common'
 import ExpandMoreButton from './ExpandMore'
 
 const EXPANDED_BODY_LENGTH = 1000

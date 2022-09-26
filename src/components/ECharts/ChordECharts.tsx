@@ -1,7 +1,6 @@
 import { useTheme } from '@mui/material/styles'
 import ReactEcharts from 'echarts-for-react'
 import 'echarts-wordcloud'
-import React from 'react'
 
 // https://echarts.apache.org/examples/en/index.html#chart-type-graph
 

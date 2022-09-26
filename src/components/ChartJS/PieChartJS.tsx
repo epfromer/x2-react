@@ -1,6 +1,6 @@
-import { EmailXferedDatum } from '@klonzo/common'
 import { useTheme } from '@mui/material/styles'
 import { Pie } from 'react-chartjs-2'
+import { EmailXferedDatum } from '../../common'
 
 interface Props {
   title: string

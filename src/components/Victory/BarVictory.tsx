@@ -1,7 +1,6 @@
-import { EmailXferedDatum } from '@klonzo/common'
 import { useTheme } from '@mui/material/styles'
-import React from 'react'
 import { VictoryAxis, VictoryBar, VictoryChart, VictoryLabel } from 'victory'
+import { EmailXferedDatum } from '../../common'
 
 // https://formidable.com/open-source/victory/docs/victory-bar
 

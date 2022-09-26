@@ -10,7 +10,6 @@ import {
   ViewQuilt,
 } from '@mui/icons-material'
 import { Divider, Drawer, MenuList } from '@mui/material'
-import React from 'react'
 import NavListItem from './NavListItem'
 
 // https://material-ui.com/components/material-icons/

@@ -1,8 +1,7 @@
-import { WordCloudTag } from '@klonzo/common'
 import { useTheme } from '@mui/material/styles'
 import ReactEcharts from 'echarts-for-react'
 import 'echarts-wordcloud'
-import React from 'react'
+import { WordCloudTag } from '../../common'
 
 // https://www.npmjs.com/package/echarts-wordcloud
 

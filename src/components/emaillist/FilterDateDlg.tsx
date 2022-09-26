@@ -1,7 +1,7 @@
 import DatePicker from '@mui/lab/DatePicker'
 import { Button, Dialog, DialogActions, TextField } from '@mui/material'
 import { parseISO } from 'date-fns'
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 interface Props {
   date: string

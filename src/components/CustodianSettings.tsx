@@ -1,4 +1,3 @@
-import { Custodian, getCustodians, setCustodians } from '@klonzo/common'
 import {
   Button,
   Paper,
@@ -13,6 +12,7 @@ import {
 import { gql, request } from 'graphql-request'
 import { Fragment, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Custodian, getCustodians, setCustodians } from '../common'
 import ColorPickerDlg from './ColorPickerDlg'
 
 export default function CustodianSettings() {

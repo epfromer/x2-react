@@ -1,8 +1,7 @@
-import { EmailXferedDatum, getPieHighchartsConfig } from '@klonzo/common'
 import { useTheme } from '@mui/material/styles'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
-import React from 'react'
+import { EmailXferedDatum, getPieHighchartsConfig } from '../../common'
 
 require('highcharts/modules/exporting')(Highcharts)
 require('highcharts/modules/export-data')(Highcharts)

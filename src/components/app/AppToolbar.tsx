@@ -1,4 +1,3 @@
-import { getDarkMode, setDarkModeAsync, store } from '@klonzo/common'
 import {
   Brightness4,
   Brightness7,
@@ -10,6 +9,7 @@ import { IconButton, Toolbar, Tooltip, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { getDarkMode, setDarkModeAsync, store } from '../../common'
 import SettingsButton from './SettingsButton'
 
 // https://material-ui.com/components/material-icons/

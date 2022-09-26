@@ -1,14 +1,12 @@
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import { createAction, createSlice, Store } from '@reduxjs/toolkit'
 import { gql, GraphQLClient } from 'graphql-request'
-import { RootState } from '@klonzo/common/src/store'
-import { defaultThemeName } from '@klonzo/common/src/constants'
-import { setCustodians, setCustodiansLoading } from '@klonzo/common/src/store/slices/custodiansSlice'
+import { RootState } from '..'
+import { setCustodians, setCustodiansLoading } from './custodiansSlice'
 import {
   setEmailSentByDay,
   setEmailSentByDayLoading,
-} from '@klonzo/common/src/store/slices/emailSentByDaySlice'
-import { setWordCloud, setWordCloudLoading } from '@klonzo/common/src/store/slices/wordCloudSlice'
+} from './emailSentByDaySlice'
+import { setWordCloud, setWordCloudLoading } from './wordCloudSlice'
 
 export interface AppSettingsState {
   darkMode: boolean
@@ -42,25 +40,11 @@ export const getDarkMode = (state: RootState): boolean =>
 export async function loadAppSettingsAsync(store: Store): Promise<void> {
   try {
     let darkMode = false
-    let themeName = defaultThemeName
-    if (typeof Storage !== 'undefined') {
-      if (
-        localStorage.getItem('darkMode') &&
-        localStorage.getItem('darkMode') === 'true'
-      ) {
-        darkMode = true
-      }
-      if (
-        localStorage.getItem('themeName') &&
-        localStorage.getItem('themeName') !== 'null'
-      ) {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        themeName = localStorage.getItem('themeName')
-      }
-    } else {
-      const value = await AsyncStorage.getItem('darkMode')
-      if (value === 'true') darkMode = true
+    if (
+      localStorage.getItem('darkMode') &&
+      localStorage.getItem('darkMode') === 'true'
+    ) {
+      darkMode = true
     }
     store.dispatch(setDarkMode(darkMode))
   } catch (e) {
@@ -72,11 +56,7 @@ export async function setDarkModeAsync(
   store: Store,
   darkMode: boolean
 ): Promise<void> {
-  if (typeof Storage !== 'undefined') {
-    localStorage.setItem('darkMode', String(darkMode))
-  } else {
-    await AsyncStorage.setItem('darkMode', String(darkMode))
-  }
+  localStorage.setItem('darkMode', String(darkMode))
   store.dispatch(setDarkMode(darkMode))
 }
 

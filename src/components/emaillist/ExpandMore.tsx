@@ -1,6 +1,6 @@
 import { ExpandMore } from '@mui/icons-material'
 import { IconButton, Tooltip } from '@mui/material'
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 export default function ExpandMoreButton() {
   const [open, setOpen] = useState(false)

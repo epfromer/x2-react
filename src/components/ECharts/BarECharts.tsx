@@ -1,7 +1,6 @@
-import { EmailXferedDatum, getBarEChartsConfig } from '@klonzo/common'
 import { useTheme } from '@mui/material/styles'
 import ReactEcharts from 'echarts-for-react'
-import React from 'react'
+import { EmailXferedDatum, getBarEChartsConfig } from '../../common'
 
 // https://echarts.apache.org/examples/en/index.html#chart-type-bar
 

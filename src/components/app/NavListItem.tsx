@@ -1,5 +1,4 @@
 import { ListItemIcon, ListItemText, MenuItem } from '@mui/material'
-import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 interface Props {

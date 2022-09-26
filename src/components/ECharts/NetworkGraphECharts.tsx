@@ -1,7 +1,6 @@
-import { getNetworkGraphEChartsConfig } from '@klonzo/common'
 import { useTheme } from '@mui/material/styles'
 import ReactEcharts from 'echarts-for-react'
-import React from 'react'
+import { getNetworkGraphEChartsConfig } from '../../common'
 
 // https://echarts.apache.org/examples/en/editor.html?c=graph
 

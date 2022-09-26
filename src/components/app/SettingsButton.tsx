@@ -1,7 +1,6 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { Build } from '@mui/icons-material'
 import { IconButton, Tooltip } from '@mui/material'
-import React from 'react'
 import SettingsMenu from './SettingsMenu'
 
 export default function SettingsButton() {

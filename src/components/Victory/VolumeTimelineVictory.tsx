@@ -1,4 +1,3 @@
-import { EmailSentByDay } from '@klonzo/common'
 import { useTheme } from '@mui/material/styles'
 import { useState } from 'react'
 import {
@@ -8,6 +7,7 @@ import {
   VictoryLine,
   VictoryZoomContainer,
 } from 'victory'
+import { EmailSentByDay } from '../../common'
 
 // https://formidable.com/open-source/victory/gallery/brush-and-zoom
 

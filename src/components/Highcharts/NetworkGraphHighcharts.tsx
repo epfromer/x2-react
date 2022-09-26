@@ -1,10 +1,10 @@
-import { getDarkMode } from '@klonzo/common'
 import { useTheme } from '@mui/material/styles'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import HighchartNetworkGraph from 'highcharts/modules/networkgraph'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { getDarkMode } from '../../common'
 
 HighchartNetworkGraph(Highcharts)
 require('highcharts/modules/exporting')(Highcharts)

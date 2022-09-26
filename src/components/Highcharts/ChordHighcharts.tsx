@@ -1,11 +1,11 @@
-import { getDarkMode } from '@klonzo/common'
 import { useTheme } from '@mui/material/styles'
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import HighchartsWheel from 'highcharts/modules/dependency-wheel'
 import HighchartSankey from 'highcharts/modules/sankey'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { getDarkMode } from '../../common'
 
 HighchartSankey(Highcharts)
 HighchartsWheel(Highcharts)
