@@ -1,3 +1,6 @@
+import { Grid, Typography } from '@mui/material'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import {
   clearSearch,
   getCustodians,
@@ -8,16 +11,12 @@ import {
   setFrom,
   setTo,
   store,
-} from '@klonzo/common'
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import LoadingIndicator from '../../../../src/components/LoadingIndicator'
-import PieChartJS from '../../../../src/components/ChartJS/PieChartJS'
-import PieECharts from '../../../../src/components/ECharts/PieECharts'
-import PieHighcharts from '../../../../src/components/Highcharts/PieHighcharts'
-import PieVictory from '../../../../src/components/Victory/PieVictory'
-import { Grid, Typography } from '@mui/material'
+} from '../common'
+import PieChartJS from '../components/ChartJS/PieChartJS'
+import PieECharts from '../components/ECharts/PieECharts'
+import PieHighcharts from '../components/Highcharts/PieHighcharts'
+import LoadingIndicator from '../components/LoadingIndicator'
+import PieVictory from '../components/Victory/PieVictory'
 
 export default function PieView() {
   const dispatch = useDispatch()

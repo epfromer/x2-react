@@ -1,8 +1,7 @@
 import { fireEvent } from '@testing-library/react'
 import { createMemoryHistory } from 'history'
-import React from 'react'
 import { renderComp } from '../../setupTests'
-import WordCloudView from '../../../packages/web/src/views/WordCloudView'
+import WordCloudView from '../WordCloudView'
 
 beforeAll(() => jest.useFakeTimers())
 afterAll(() => jest.useRealTimers())

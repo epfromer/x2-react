@@ -1,8 +1,7 @@
 import { fireEvent } from '@testing-library/react'
 import { createMemoryHistory } from 'history'
-import React from 'react'
 import { renderComp } from '../../setupTests'
-import EventTimelineView from '../../../packages/web/src/views/EventTimelineView'
+import EventTimelineView from '../EventTimelineView'
 
 test('toggle vertical', async () => {
   const { getByTestId } = renderComp(<EventTimelineView />)

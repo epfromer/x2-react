@@ -1,6 +1,5 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { fireEvent } from '@testing-library/react'
-import React from 'react'
 import { renderComp } from '../../../setupTests'
 import SettingsMenu from '../SettingsMenu'
 

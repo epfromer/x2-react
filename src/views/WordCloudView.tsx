@@ -1,3 +1,6 @@
+import { Typography } from '@mui/material'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import {
   clearSearch,
   getEmailAsync,
@@ -5,14 +8,10 @@ import {
   getWordCloudLoading,
   setAllText,
   store,
-} from '@klonzo/common'
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import LoadingIndicator from '../../../../src/components/LoadingIndicator'
-import WordCloudECharts from '../../../../src/components/ECharts/WordCloudECharts'
-import WordCloudHighcharts from '../../../../src/components/Highcharts/WordCloudHighcharts'
-import { Typography } from '@mui/material'
+} from '../common'
+import WordCloudECharts from '../components/ECharts/WordCloudECharts'
+import WordCloudHighcharts from '../components/Highcharts/WordCloudHighcharts'
+import LoadingIndicator from '../components/LoadingIndicator'
 
 export default function WordCloudView() {
   const dispatch = useDispatch()

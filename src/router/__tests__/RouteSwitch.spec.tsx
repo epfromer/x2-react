@@ -1,4 +1,3 @@
-import React from 'react'
 import { renderComp } from '../../setupTests'
 import AppRouting from '../AppRouting'
 

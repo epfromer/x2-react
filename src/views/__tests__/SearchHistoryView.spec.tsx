@@ -1,7 +1,6 @@
 import { fireEvent } from '@testing-library/react'
-import React from 'react'
 import { renderComp } from '../../setupTests'
-import SearchHistoryView from '../../../packages/web/src/views/SearchHistoryView'
+import SearchHistoryView from '../SearchHistoryView'
 
 test('renders', async () => {
   const { getByTestId } = renderComp(<SearchHistoryView />)

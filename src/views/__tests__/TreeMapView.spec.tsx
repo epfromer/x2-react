@@ -1,8 +1,7 @@
 import { fireEvent } from '@testing-library/react'
 import { createMemoryHistory } from 'history'
-import React from 'react'
 import { renderComp } from '../../setupTests'
-import TreeMapView from '../../../packages/web/src/views/TreeMapView'
+import TreeMapView from '../TreeMapView'
 
 beforeAll(() => jest.useFakeTimers())
 afterAll(() => jest.useRealTimers())

@@ -8,7 +8,7 @@ import {
   setFrom,
   setTo,
   store,
-} from '@klonzo/common'
+} from '../common'
 import { SwapHorizontalCircle, SwapVerticalCircle } from '@mui/icons-material'
 import { IconButton, Tooltip } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
@@ -18,7 +18,7 @@ import HighchartTimeline from 'highcharts/modules/timeline'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import LoadingIndicator from '../../../../src/components/LoadingIndicator'
+import LoadingIndicator from '../components/LoadingIndicator'
 
 HighchartTimeline(Highcharts)
 

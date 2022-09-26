@@ -1,3 +1,6 @@
+import { Grid, Typography } from '@mui/material'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import {
   clearSearch,
   getCustodians,
@@ -8,14 +11,10 @@ import {
   setFrom,
   setTo,
   store,
-} from '@klonzo/common'
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import LoadingIndicator from '../../../../src/components/LoadingIndicator'
-import TreeMapECharts from '../../../../src/components/ECharts/TreeMapECharts'
-import TreeMapHighcharts from '../../../../src/components/Highcharts/TreeMapHighcharts'
-import { Grid, Typography } from '@mui/material'
+} from '../common'
+import TreeMapECharts from '../components/ECharts/TreeMapECharts'
+import TreeMapHighcharts from '../components/Highcharts/TreeMapHighcharts'
+import LoadingIndicator from '../components/LoadingIndicator'
 
 export default function TreeMapView() {
   const dispatch = useDispatch()

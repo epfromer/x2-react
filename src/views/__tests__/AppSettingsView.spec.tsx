@@ -1,4 +1,3 @@
-import React from 'react'
 import { renderComp } from '../../setupTests'
 import AppSettingsView from '../AppSettingsView'
 

@@ -1,7 +1,6 @@
 import { fireEvent } from '@testing-library/react'
-import React from 'react'
 import { renderComp } from '../../setupTests'
-import SearchView from '../../../packages/web/src/views/SearchView'
+import SearchView from '../SearchView'
 
 test('search-results-table', async () => {
   const { getByTestId } = renderComp(<SearchView />)

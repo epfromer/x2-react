@@ -1,14 +1,4 @@
 import {
-  defaultLimit,
-  getEmail,
-  getEmailAsync,
-  getEmailListPage,
-  getEmailLoading,
-  getEmailTotal,
-  setEmailListPage,
-  store,
-} from '@klonzo/common'
-import {
   LinearProgress,
   Paper,
   Table,
@@ -18,8 +8,18 @@ import {
 import { Box } from '@mui/system'
 import { useCallback, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import EmailTableHead from '../../../../src/components/emaillist/EmailTableHead'
-import ExpandingRow from '../../../../src/components/emaillist/ExpandingRow'
+import {
+  defaultLimit,
+  getEmail,
+  getEmailAsync,
+  getEmailListPage,
+  getEmailLoading,
+  getEmailTotal,
+  setEmailListPage,
+  store,
+} from '../common'
+import EmailTableHead from '../components/emaillist/EmailTableHead'
+import ExpandingRow from '../components/emaillist/ExpandingRow'
 
 // https://github.com/WebDevSimplified/React-Infinite-Scrolling
 

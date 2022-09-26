@@ -1,3 +1,9 @@
+import { Button } from '@mui/material'
+import { Box } from '@mui/system'
+import { DataGrid } from '@mui/x-data-grid'
+import { gql, request } from 'graphql-request'
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import {
   clearSearch,
   getEmailAsync,
@@ -10,14 +16,8 @@ import {
   setSubject,
   setTo,
   store,
-} from '@klonzo/common'
-import { Button } from '@mui/material'
-import { Box } from '@mui/system'
-import { DataGrid } from '@mui/x-data-grid'
-import { gql, request } from 'graphql-request'
-import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import LoadingIndicator from '../../../../src/components/LoadingIndicator'
+} from '../common'
+import LoadingIndicator from '../components/LoadingIndicator'
 
 export default function SearchHistoryView() {
   const navigate = useNavigate()

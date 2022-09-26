@@ -1,3 +1,6 @@
+import { Typography } from '@mui/material'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import {
   clearSearch,
   getCustodiansLoading,
@@ -6,14 +9,10 @@ import {
   setFrom,
   setTo,
   store,
-} from '@klonzo/common'
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import LoadingIndicator from '../../../../src/components/LoadingIndicator'
-import NetworkGraphECharts from '../../../../src/components/ECharts/NetworkGraphECharts'
-import NetworkGraphHighcharts from '../../../../src/components/Highcharts/NetworkGraphHighcharts'
-import { Typography } from '@mui/material'
+} from '../common'
+import NetworkGraphECharts from '../components/ECharts/NetworkGraphECharts'
+import NetworkGraphHighcharts from '../components/Highcharts/NetworkGraphHighcharts'
+import LoadingIndicator from '../components/LoadingIndicator'
 
 export default function NetworkGraphView() {
   const dispatch = useDispatch()

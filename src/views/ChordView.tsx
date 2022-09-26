@@ -1,3 +1,6 @@
+import { Typography } from '@mui/material'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import {
   clearSearch,
   getCustodiansLoading,
@@ -6,14 +9,10 @@ import {
   setFrom,
   setTo,
   store,
-} from '@klonzo/common'
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import LoadingIndicator from '../../../../src/components/LoadingIndicator'
-import ChordECharts from '../../../../src/components/ECharts/ChordECharts'
-import ChordHighcharts from '../../../../src/components/Highcharts/ChordHighcharts'
-import { Typography } from '@mui/material'
+} from '../common'
+import ChordECharts from '../components/ECharts/ChordECharts'
+import ChordHighcharts from '../components/Highcharts/ChordHighcharts'
+import LoadingIndicator from '../components/LoadingIndicator'
 
 export default function ChordView() {
   const dispatch = useDispatch()

@@ -1,8 +1,7 @@
-import React from 'react'
-import { renderComp } from '../../../setupTests'
-import EmailCardActions from '../EmailCardActions'
 import { fireEvent } from '@testing-library/react'
 import { createMemoryHistory } from 'history'
+import { renderComp } from '../../../setupTests'
+import EmailCardActions from '../EmailCardActions'
 
 test('back-to-list', async () => {
   const history = createMemoryHistory()

@@ -1,14 +1,13 @@
-import React from 'react'
-import HomeCard from '../../../../src/components/HomeCard'
-import pie from './img/pie.png'
-import barchart from './img/barchart.png'
+import { Grid } from '@mui/material'
+import HomeCard from '../components/HomeCard'
+import barchart from '../img/barchart.png'
+import pie from '../img/pie.png'
 import chord from './img/chord.png'
-import wordcloud from './img/wordcloud.png'
-import volumetimeline from './img/volumetimeline.png'
+import eventtimeline from './img/eventtimeline.png'
 import networkgraph from './img/networkgraph.png'
 import treemap from './img/treemap.png'
-import eventtimeline from './img/eventtimeline.png'
-import { Grid } from '@mui/material'
+import volumetimeline from './img/volumetimeline.png'
+import wordcloud from './img/wordcloud.png'
 
 export default function HomeView() {
   const makeCard = (

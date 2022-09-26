@@ -1,3 +1,8 @@
+import { Card, CardContent, Typography } from '@mui/material'
+import { gql, request } from 'graphql-request'
+import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
 import {
   Email,
   getAllText,
@@ -7,14 +12,9 @@ import {
   getSubject,
   getTo,
   store,
-} from '@klonzo/common'
-import { Card, CardContent, Typography } from '@mui/material'
-import { gql, request } from 'graphql-request'
-import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
-import EmailCardActions from '../../../../src/components/emaillist/EmailCardActions'
-import LoadingIndicator from '../../../../src/components/LoadingIndicator'
+} from '../common'
+import EmailCardActions from '../components/emaillist/EmailCardActions'
+import LoadingIndicator from '../components/LoadingIndicator'
 
 export default function EmailDetailView() {
   const { id } = useParams() as any

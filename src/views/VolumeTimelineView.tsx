@@ -1,3 +1,6 @@
+import { Typography } from '@mui/material'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import {
   clearSearch,
   getEmailAsync,
@@ -5,15 +8,11 @@ import {
   getEmailSentByDayLoading,
   setSent,
   store,
-} from '@klonzo/common'
-import { Typography } from '@mui/material'
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import VolumeTimelineECharts from '../../../../src/components/ECharts/VolumeTimelineECharts'
-import VolumeTimelineHighcharts from '../../../../src/components/Highcharts/VolumeTimelineHighcharts'
-import LoadingIndicator from '../../../../src/components/LoadingIndicator'
-import VolumeTimelineVictory from '../../../../src/components/Victory/VolumeTimelineVictory'
+} from '../common'
+import VolumeTimelineECharts from '../components/ECharts/VolumeTimelineECharts'
+import VolumeTimelineHighcharts from '../components/Highcharts/VolumeTimelineHighcharts'
+import LoadingIndicator from '../components/LoadingIndicator'
+import VolumeTimelineVictory from '../components/Victory/VolumeTimelineVictory'
 
 export default function TimelineView() {
   const dispatch = useDispatch()
