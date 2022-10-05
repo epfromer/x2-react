@@ -93,7 +93,7 @@ export function getEmailSentByCustodian(
 ): EmailSentByCustodian {
   const custodianNameFromId = (id: string): string => {
     if (state.custodians && state.custodians.custodians) {
-      const c = state.custodians.custodians.find((c: Custodian) => c.id === id)
+      const c = state.custodians.custodians.find((cust) => cust.id === id)
       return c ? c.name : ''
     }
     return ''

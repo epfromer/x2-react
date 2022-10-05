@@ -93,11 +93,7 @@ export function getInitialDataAsync(store: Store): void {
   `
   // console.log('setting headers')
   const endpoint = `${process.env.REACT_APP_X2_SERVER}/graphql/`
-  const graphQLClient = new GraphQLClient(endpoint, {
-    mode: 'no-cors',
-  })
-  graphQLClient.setHeader('Access-Control-Allow-Origin', '*')
-  // console.log('calling client')
+  const graphQLClient = new GraphQLClient(endpoint, { method: 'GET' })
   graphQLClient
     .request(query)
     .then(async (data) => {
@@ -110,9 +106,5 @@ export function getInitialDataAsync(store: Store): void {
       store.dispatch(setEmailSentByDayLoading(false))
       store.dispatch(setCustodiansLoading(false))
     })
-    .catch((e) => {
-      console.log('got an error')
-      console.error(e)
-    })
-  // console.log('returning from calling client')
+    .catch((e) => console.error('getInitialDataAsync', e))
 }

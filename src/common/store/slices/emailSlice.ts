@@ -122,12 +122,14 @@ export function getEmailAsync(store: Store, append = false): void {
       }
     }
   `
+  // console.log('getEmailAsync')
   request(
     `${process.env.REACT_APP_X2_SERVER}/graphql/`,
     query,
     getQueryObj(store)
   )
     .then((data) => {
+      // console.log('getEmailAsync completed', data)
       if (append) {
         store.dispatch(appendEmail(data.getEmail.emails))
       } else {
@@ -136,7 +138,7 @@ export function getEmailAsync(store: Store, append = false): void {
       store.dispatch(setEmailTotal(data.getEmail.total))
       store.dispatch(setEmailLoading(false))
     })
-    .catch((e) => console.error(e))
+    .catch((e) => console.error('getEmailAsync', e))
 }
 
 export const getEmailById = (store: Store, id: string): Email | undefined => {
