@@ -1,0 +1,6 @@
+services:
+  x2-react:
+    build: .
+    ports:
+      - "80:80"
+    env_file: .env
