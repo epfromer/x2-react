@@ -8,6 +8,8 @@ import {
 } from './emailSentByDaySlice'
 import { setWordCloud, setWordCloudLoading } from './wordCloudSlice'
 
+const VERBOSE = process.env.REACT_APP_VERBOSE === '1'
+
 export interface AppSettingsState {
   darkMode: boolean
   orientation: string
@@ -93,6 +95,7 @@ export function getInitialDataAsync(store: Store): void {
   `
   // console.log('setting headers')
   const endpoint = `${process.env.REACT_APP_X2_SERVER}/graphql/`
+  if (VERBOSE) console.log('getInitialDataAsync', endpoint)
   const graphQLClient = new GraphQLClient(endpoint, { method: 'GET' })
   graphQLClient
     .request(query)

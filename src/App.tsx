@@ -1,4 +1,4 @@
-import { Auth0Provider } from '@auth0/auth0-react'
+// import { Auth0Provider } from '@auth0/auth0-react'
 import AdapterDateFns from '@date-io/date-fns'
 import {
   AppBar,
@@ -28,6 +28,9 @@ import AppToolbar from './components/app/AppToolbar'
 import ChartJSInit from './components/ChartJS'
 import AppRouting from './router/AppRouting'
 import getTheme from './utils/appThemes'
+
+const VERBOSE = process.env.REACT_APP_VERBOSE === '1'
+console.log('VERBOSE', VERBOSE)
 
 ChartJSInit()
 
@@ -65,26 +68,26 @@ const CoreApp = () => {
   )
 }
 
-const WithAuth0 = () => {
-  const domain = process.env.REACT_APP_AUTH0_DOMAIN
-  const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID
-  const navigate = useNavigate()
+// const WithAuth0 = () => {
+//   const domain = process.env.REACT_APP_AUTH0_DOMAIN
+//   const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID
+//   const navigate = useNavigate()
 
-  return (
-    <Auth0Provider
-      domain={domain as string}
-      clientId={clientId as string}
-      redirectUri={window.location.origin}
-      onRedirectCallback={() => navigate('/AppSettingsView')}
-    >
-      <CoreApp />
-    </Auth0Provider>
-  )
-}
+//   return (
+//     <Auth0Provider
+//       domain={domain as string}
+//       clientId={clientId as string}
+//       redirectUri={window.location.origin}
+//       onRedirectCallback={() => navigate('/AppSettingsView')}
+//     >
+//       <CoreApp />
+//     </Auth0Provider>
+//   )
+// }
 
 const WithLocalization = () => (
   <LocalizationProvider dateAdapter={AdapterDateFns}>
-    <WithAuth0 />
+    <CoreApp />
   </LocalizationProvider>
 )
 
