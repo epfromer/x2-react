@@ -60,7 +60,7 @@ export const getEmailTotal = (state: RootState): number =>
   state.email.emailTotal
 
 // graphQl query
-function getQueryObj(store: Store): unknown {
+function getQueryObj(store: Store): any {
   const state = store.getState()
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const query: any = {
