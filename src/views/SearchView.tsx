@@ -32,6 +32,8 @@ export default function SearchView() {
 
   const hasMore = () => (emailListPage + 1) * defaultLimit < emailTotal
 
+  // use an intersection observer to see when last row comes into view
+  // and go out and get another page of data
   const observer: any = useRef()
   const lastRowRef = useCallback(
     (node: any) => {
