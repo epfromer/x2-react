@@ -1,5 +1,4 @@
 // import { Auth0Provider } from '@auth0/auth0-react'
-import AdapterDateFns from '@date-io/date-fns'
 import {
   AppBar,
   Container,
@@ -9,12 +8,14 @@ import {
   Toolbar,
   useScrollTrigger,
 } from '@mui/material'
+
 import CssBaseline from '@mui/material/CssBaseline'
 import { Box } from '@mui/system'
 import { LocalizationProvider } from '@mui/x-date-pickers'
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
 import React, { Fragment } from 'react'
 import { Provider, useSelector } from 'react-redux'
-import { BrowserRouter as Router, useNavigate } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import './App.css'
 import {
   getDarkMode,
