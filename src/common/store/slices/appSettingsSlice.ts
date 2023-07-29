@@ -93,15 +93,14 @@ export function getInitialDataAsync(store: Store): void {
       }
     }
   `
-  // console.log('setting headers')
-  const endpoint = `${process.env.REACT_APP_X2_SERVER}/graphql/`
+  const proxy = `${process.env.REACT_APP_CORS}/`
+  const endpoint = `${proxy}${process.env.REACT_APP_X2_SERVER}/graphql/`
   if (VERBOSE) console.log('getInitialDataAsync', endpoint)
   const graphQLClient = new GraphQLClient(endpoint, { method: 'GET' })
   graphQLClient
     .request(query)
-    .then(async (data) => {
-      // console.log('got it!')
-      // await sleep(5000)
+    .then(async (data: any) => {
+      if (VERBOSE) console.log('getInitialDataAsync completed', data)
       store.dispatch(setWordCloud(data.getWordCloud))
       store.dispatch(setEmailSentByDay(data.getEmailSentByDay))
       store.dispatch(setCustodians(data.getCustodians))

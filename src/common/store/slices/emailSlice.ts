@@ -1,8 +1,10 @@
 import { createAction, createSlice, Store } from '@reduxjs/toolkit'
-import request, { gql } from 'graphql-request'
+import { gql, GraphQLClient } from 'graphql-request'
 import { RootState } from '..'
 import { defaultLimit } from '../../constants'
 import { Email } from '../types'
+
+const VERBOSE = process.env.REACT_APP_VERBOSE === '1'
 
 export interface EmailState {
   emailLoading: boolean
@@ -122,14 +124,14 @@ export function getEmailAsync(store: Store, append = false): void {
       }
     }
   `
-  // console.log('getEmailAsync')
-  request(
-    `${process.env.REACT_APP_X2_SERVER}/graphql/`,
-    query,
-    getQueryObj(store)
-  )
-    .then((data) => {
-      // console.log('getEmailAsync completed', data)
+  const proxy = `${process.env.REACT_APP_CORS}/`
+  const endpoint = `${proxy}${process.env.REACT_APP_X2_SERVER}/graphql/`
+  if (VERBOSE) console.log('getEmailAsync', endpoint)
+  const graphQLClient = new GraphQLClient(endpoint, { method: 'GET' })
+  graphQLClient
+    .request(query, getQueryObj(store))
+    .then((data: any) => {
+      if (VERBOSE) console.log('getEmailAsync completed', data)
       if (append) {
         store.dispatch(appendEmail(data.getEmail.emails))
       } else {

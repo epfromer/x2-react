@@ -141,7 +141,7 @@ export function getCustodiansAsync(store: Store): void {
     }
   `
   request(`${process.env.REACT_APP_X2_SERVER}/graphql/`, query)
-    .then((data) => {
+    .then((data: any) => {
       store.dispatch(setCustodians(data.getCustodians))
       store.dispatch(setCustodiansLoading(false))
     })
