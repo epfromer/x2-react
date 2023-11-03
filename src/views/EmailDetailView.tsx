@@ -61,7 +61,7 @@ export default function EmailDetailView() {
         }
       `
       request(`${process.env.REACT_APP_X2_SERVER}/graphql/`, query, { id })
-        .then((data) => {
+        .then((data: any) => {
           // prevents update if component destroyed before request/fetch completes
           if (isSubscribed) {
             setEmail(data.getEmail.emails[0])

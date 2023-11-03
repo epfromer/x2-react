@@ -36,7 +36,7 @@ export default function SearchHistoryView() {
       }
     `
     request(`${process.env.REACT_APP_X2_SERVER}/graphql/`, query)
-      .then((data) => {
+      .then((data: any) => {
         setLog(data.getSearchHistory)
         setLogLoading(false)
       })

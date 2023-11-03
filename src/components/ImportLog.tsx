@@ -37,7 +37,7 @@ export default function ImportLog() {
       }
     `
     request(`${process.env.REACT_APP_X2_SERVER}/graphql/`, query)
-      .then((data) => setLog(data.getImportStatus))
+      .then((data: any) => setLog(data.getImportStatus))
       .catch((e) => console.error(e))
   }
 

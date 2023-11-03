@@ -124,7 +124,10 @@ export function getEmailAsync(store: Store, append = false): void {
       }
     }
   `
-  const proxy = `${process.env.REACT_APP_CORS}/`
+  const proxy =
+    process.env.REACT_APP_X2_SERVER!.search('localhost') >= 0
+      ? ''
+      : `${process.env.REACT_APP_CORS}/`
   const endpoint = `${proxy}${process.env.REACT_APP_X2_SERVER}/graphql/`
   if (VERBOSE) console.log('getEmailAsync', endpoint)
   const graphQLClient = new GraphQLClient(endpoint, { method: 'GET' })

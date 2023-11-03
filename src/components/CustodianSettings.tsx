@@ -45,7 +45,7 @@ export default function CustodianSettings() {
       id: custodianId,
       color,
     })
-      .then((data) => dispatch(setCustodians(data.setCustodianColor)))
+      .then((data: any) => dispatch(setCustodians(data.setCustodianColor)))
       .catch((e) => console.error(e))
   }
 
