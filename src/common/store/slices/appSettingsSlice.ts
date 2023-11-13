@@ -111,5 +111,10 @@ export function getInitialDataAsync(store: Store): void {
       store.dispatch(setEmailSentByDayLoading(false))
       store.dispatch(setCustodiansLoading(false))
     })
-    .catch((e) => console.error('getInitialDataAsync', e))
+    .catch((e) => {
+      console.error('getInitialDataAsync', e)
+      store.dispatch(setWordCloudLoading(false))
+      store.dispatch(setEmailSentByDayLoading(false))
+      store.dispatch(setCustodiansLoading(false))
+    })
 }
