@@ -1,5 +1,5 @@
 # Pull node image from Docker Hub
-FROM node:18 as build-deps
+FROM node:20 as build-deps
 
 # Create app directory
 WORKDIR /usr/src/app
